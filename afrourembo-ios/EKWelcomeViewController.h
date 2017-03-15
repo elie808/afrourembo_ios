@@ -10,4 +10,6 @@
 
 @interface EKWelcomeViewController : UIViewController
 
+- (IBAction)didTapNewUserButton:(id)sender;
+
 @end
