@@ -5,6 +5,7 @@
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -29,10 +30,10 @@
             </objects>
             <point key="canvasLocation" x="-5214" y="-323"/>
         </scene>
-        <!--View Controller-->
+        <!--Welcome View Controller-->
         <scene sceneID="SQO-nM-Bst">
             <objects>
-                <viewController id="LYP-UW-ygc" sceneMemberID="viewController">
+                <viewController id="LYP-UW-ygc" customClass="EKWelcomeViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="3fr-HM-x0F"/>
                         <viewControllerLayoutGuide type="bottom" id="PKx-ff-lCr"/>
@@ -40,12 +41,64 @@
                     <view key="view" contentMode="scaleToFill" id="RU9-He-l0z">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" name="alternateSelectedControlColor" catalog="System" colorSpace="catalog"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TwD-Nb-Qqc">
+                                <rect key="frame" x="164" y="617" width="46" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="XD6-bd-IOZ"/>
+                                    <constraint firstAttribute="width" constant="46" id="s8c-KQ-IQP"/>
+                                </constraints>
+                                <state key="normal" title="Skip"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BjB-c9-vW8">
+                                <rect key="frame" x="16" y="569" width="343" height="40"/>
+                                <color key="backgroundColor" red="1" green="0.78706597219999996" blue="0.3486979167" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="Id8-JI-t9A"/>
+                                </constraints>
+                                <state key="normal" title="Sign In">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AKT-gE-iri">
+                                <rect key="frame" x="16" y="521" width="343" height="40"/>
+                                <color key="backgroundColor" red="0.30830429339999998" green="0.4247457583" blue="0.93176513910000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="W5O-AV-I8q"/>
+                                </constraints>
+                                <state key="normal" title="New User">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome text to explain to users what to do next " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nPf-AL-gI3">
+                                <rect key="frame" x="90" y="403" width="194" height="62"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="62" id="lWZ-wt-ZXz"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="AKT-gE-iri" firstAttribute="trailing" secondItem="RU9-He-l0z" secondAttribute="trailingMargin" id="0QY-pK-NrH"/>
+                            <constraint firstItem="AKT-gE-iri" firstAttribute="leading" secondItem="BjB-c9-vW8" secondAttribute="leading" id="1vR-7n-TXb"/>
+                            <constraint firstItem="TwD-Nb-Qqc" firstAttribute="top" secondItem="BjB-c9-vW8" secondAttribute="bottom" constant="8" symbolic="YES" id="2L1-QC-PNP"/>
+                            <constraint firstItem="nPf-AL-gI3" firstAttribute="leading" secondItem="RU9-He-l0z" secondAttribute="leadingMargin" constant="74" id="85W-J0-bYJ"/>
+                            <constraint firstItem="AKT-gE-iri" firstAttribute="top" secondItem="nPf-AL-gI3" secondAttribute="bottom" constant="56" id="GLK-JU-uA6"/>
+                            <constraint firstItem="nPf-AL-gI3" firstAttribute="centerX" secondItem="AKT-gE-iri" secondAttribute="centerX" id="IYG-Ch-MpX"/>
+                            <constraint firstItem="AKT-gE-iri" firstAttribute="leading" secondItem="RU9-He-l0z" secondAttribute="leadingMargin" id="U3b-EB-Jjc"/>
+                            <constraint firstItem="BjB-c9-vW8" firstAttribute="top" secondItem="AKT-gE-iri" secondAttribute="bottom" constant="8" symbolic="YES" id="eMM-nT-Wwy"/>
+                            <constraint firstItem="BjB-c9-vW8" firstAttribute="centerX" secondItem="TwD-Nb-Qqc" secondAttribute="centerX" id="ltd-Re-TGx"/>
+                            <constraint firstAttribute="bottom" secondItem="TwD-Nb-Qqc" secondAttribute="bottom" constant="20" symbolic="YES" id="rua-aJ-6AQ"/>
+                            <constraint firstItem="AKT-gE-iri" firstAttribute="trailing" secondItem="BjB-c9-vW8" secondAttribute="trailing" id="wRI-GC-RNO"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lC5-BB-ISy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-4426" y="-323"/>
+            <point key="canvasLocation" x="-4426.3999999999996" y="-323.38830584707648"/>
         </scene>
     </scenes>
 </document>
