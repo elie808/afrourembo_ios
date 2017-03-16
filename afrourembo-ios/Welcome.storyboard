@@ -167,13 +167,40 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pgl-3Q-nHC">
-                                <rect key="frame" x="164" y="72" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Z8B-xA-JMY">
+                                <rect key="frame" x="16" y="72" width="343" height="587"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pgl-3Q-nHC">
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="190.5"/>
+                                        <color key="backgroundColor" red="0.97075098600456855" green="0.97075098600456855" blue="0.97075098600456855" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <state key="normal" title="I want to discover services">
+                                            <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IIC-Sr-oeH">
+                                        <rect key="frame" x="0.0" y="198.5" width="343" height="190"/>
+                                        <color key="backgroundColor" red="0.97075098600456855" green="0.97075098600456855" blue="0.97075098600456855" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <state key="normal" title="I'm an individual beauty professional">
+                                            <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eEa-bA-Cxo">
+                                        <rect key="frame" x="0.0" y="396.5" width="343" height="190.5"/>
+                                        <color key="backgroundColor" red="0.97075098600456855" green="0.97075098600456855" blue="0.97075098600456855" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <state key="normal" title="I have a salon">
+                                            <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Z8B-xA-JMY" firstAttribute="leading" secondItem="3iF-Zt-KoE" secondAttribute="leadingMargin" id="9bP-QI-0rV"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Z8B-xA-JMY" secondAttribute="trailing" id="NU4-Ac-6vO"/>
+                            <constraint firstItem="JS8-jl-qcJ" firstAttribute="top" secondItem="Z8B-xA-JMY" secondAttribute="bottom" constant="8" id="PwI-xj-nsL"/>
+                            <constraint firstItem="Z8B-xA-JMY" firstAttribute="top" secondItem="ZwK-7g-zH4" secondAttribute="bottom" constant="8" id="zDc-dM-rdF"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dvD-0k-PGQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
