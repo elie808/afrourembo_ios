@@ -59,6 +59,9 @@
                                 <state key="normal" title="Sign In">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="didTapSignInButton:" destination="LYP-UW-ygc" eventType="touchDown" id="EVG-eX-Rjb"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AKT-gE-iri">
                                 <rect key="frame" x="16" y="521" width="343" height="40"/>
@@ -101,11 +104,30 @@
                     <navigationItem key="navigationItem" id="Een-yY-HqS"/>
                     <connections>
                         <segue destination="eQd-wG-mFC" kind="show" identifier="welcomeNewUserToOnboarding" id="tFf-91-2gi"/>
+                        <segue destination="WtR-ZX-27w" kind="show" identifier="welcomeSignInToSignIn" id="3Ys-Df-dpz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lC5-BB-ISy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-3545" y="-323"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="Hri-RA-0DZ">
+            <objects>
+                <viewController id="WtR-ZX-27w" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="M7g-Tu-8yu"/>
+                        <viewControllerLayoutGuide type="bottom" id="Hbq-KJ-KcR"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="4M9-93-ovc">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="agK-r7-cmT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2759" y="72"/>
         </scene>
         <!--Onboarding View Controller-->
         <scene sceneID="MLt-ho-kW8">
@@ -153,7 +175,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KxJ-RE-bQO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2700" y="-323.38830584707648"/>
+            <point key="canvasLocation" x="-2759" y="-690"/>
         </scene>
         <!--Role View Controller-->
         <scene sceneID="5A5-0Z-4Nm">
@@ -205,7 +227,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dvD-0k-PGQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1879" y="-323"/>
+            <point key="canvasLocation" x="-1938" y="-690"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="CSt-ji-mD8">

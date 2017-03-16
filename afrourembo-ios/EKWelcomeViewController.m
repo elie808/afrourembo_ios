@@ -9,6 +9,7 @@
 #import "EKWelcomeViewController.h"
 
 static NSString * const kOnboardingSegue = @"welcomeNewUserToOnboarding";
+static NSString * const kSignInSegue = @"welcomeSignInToSignIn";
 
 @implementation EKWelcomeViewController
 
@@ -23,11 +24,20 @@ static NSString * const kOnboardingSegue = @"welcomeNewUserToOnboarding";
     [self performSegueWithIdentifier:kOnboardingSegue sender:nil];
 }
 
+- (IBAction)didTapSignInButton:(id)sender {
+    
+    [self performSegueWithIdentifier:kSignInSegue sender:nil];
+}
+
 #pragma mark - Navigation
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     
     if ([segue.identifier isEqualToString:kOnboardingSegue]) {
+        
+    }
+    
+    if ([segue.identifier isEqualToString:kSignInSegue]) {
         
     }
 }
