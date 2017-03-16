@@ -13,6 +13,7 @@
 		478278D91E7923D000FB2FD2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 478278D81E7923D000FB2FD2 /* Assets.xcassets */; };
 		478278DC1E7923D000FB2FD2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 478278DA1E7923D000FB2FD2 /* LaunchScreen.storyboard */; };
 		47919E5A1E795664001C5600 /* EKOnboardingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47919E591E795664001C5600 /* EKOnboardingViewController.m */; };
+		47A3BB881E7A8C0B00963F27 /* EKRoleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47A3BB871E7A8C0B00963F27 /* EKRoleViewController.m */; };
 		47D88E681E79329D001B88D0 /* Welcome.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 47D88E671E79329D001B88D0 /* Welcome.storyboard */; };
 		47D88E6B1E793347001B88D0 /* EKSplashViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47D88E6A1E793347001B88D0 /* EKSplashViewController.m */; };
 		47D88E6E1E793893001B88D0 /* EKWelcomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47D88E6D1E793893001B88D0 /* EKWelcomeViewController.m */; };
@@ -31,6 +32,8 @@
 		478278DD1E7923D000FB2FD2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		47919E581E795664001C5600 /* EKOnboardingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKOnboardingViewController.h; sourceTree = "<group>"; };
 		47919E591E795664001C5600 /* EKOnboardingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKOnboardingViewController.m; sourceTree = "<group>"; };
+		47A3BB861E7A8C0B00963F27 /* EKRoleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKRoleViewController.h; sourceTree = "<group>"; };
+		47A3BB871E7A8C0B00963F27 /* EKRoleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKRoleViewController.m; sourceTree = "<group>"; };
 		47D88E671E79329D001B88D0 /* Welcome.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Welcome.storyboard; sourceTree = "<group>"; };
 		47D88E691E793347001B88D0 /* EKSplashViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKSplashViewController.h; sourceTree = "<group>"; };
 		47D88E6A1E793347001B88D0 /* EKSplashViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKSplashViewController.m; sourceTree = "<group>"; };
@@ -83,12 +86,7 @@
 			children = (
 				478278CF1E7923D000FB2FD2 /* AppDelegate.h */,
 				478278D01E7923D000FB2FD2 /* AppDelegate.m */,
-				47D88E691E793347001B88D0 /* EKSplashViewController.h */,
-				47D88E6A1E793347001B88D0 /* EKSplashViewController.m */,
-				47D88E6C1E793892001B88D0 /* EKWelcomeViewController.h */,
-				47D88E6D1E793893001B88D0 /* EKWelcomeViewController.m */,
-				47919E581E795664001C5600 /* EKOnboardingViewController.h */,
-				47919E591E795664001C5600 /* EKOnboardingViewController.m */,
+				47A3BB851E7A8BE400963F27 /* View Controllers */,
 				478278E31E79240C00FB2FD2 /* Storyboards */,
 				478278D81E7923D000FB2FD2 /* Assets.xcassets */,
 				478278DD1E7923D000FB2FD2 /* Info.plist */,
@@ -113,6 +111,53 @@
 				47D88E671E79329D001B88D0 /* Welcome.storyboard */,
 			);
 			name = Storyboards;
+			sourceTree = "<group>";
+		};
+		47A3BB821E7A8BA200963F27 /* Onboarding ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				47919E581E795664001C5600 /* EKOnboardingViewController.h */,
+				47919E591E795664001C5600 /* EKOnboardingViewController.m */,
+			);
+			name = "Onboarding ViewController";
+			sourceTree = "<group>";
+		};
+		47A3BB831E7A8BD600963F27 /* Welcome ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				47D88E6C1E793892001B88D0 /* EKWelcomeViewController.h */,
+				47D88E6D1E793893001B88D0 /* EKWelcomeViewController.m */,
+			);
+			name = "Welcome ViewController";
+			sourceTree = "<group>";
+		};
+		47A3BB841E7A8BDD00963F27 /* Splash ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				47D88E691E793347001B88D0 /* EKSplashViewController.h */,
+				47D88E6A1E793347001B88D0 /* EKSplashViewController.m */,
+			);
+			name = "Splash ViewController";
+			sourceTree = "<group>";
+		};
+		47A3BB851E7A8BE400963F27 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				47A3BB841E7A8BDD00963F27 /* Splash ViewController */,
+				47A3BB831E7A8BD600963F27 /* Welcome ViewController */,
+				47A3BB821E7A8BA200963F27 /* Onboarding ViewController */,
+				47A3BB891E7A8C1000963F27 /* Role ViewController */,
+			);
+			name = "View Controllers";
+			sourceTree = "<group>";
+		};
+		47A3BB891E7A8C1000963F27 /* Role ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				47A3BB861E7A8C0B00963F27 /* EKRoleViewController.h */,
+				47A3BB871E7A8C0B00963F27 /* EKRoleViewController.m */,
+			);
+			name = "Role ViewController";
 			sourceTree = "<group>";
 		};
 		A377625E4420D4B718A46A25 /* Pods */ = {
@@ -248,6 +293,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				47A3BB881E7A8C0B00963F27 /* EKRoleViewController.m in Sources */,
 				478278D11E7923D000FB2FD2 /* AppDelegate.m in Sources */,
 				47D88E6B1E793347001B88D0 /* EKSplashViewController.m in Sources */,
 				47919E5A1E795664001C5600 /* EKOnboardingViewController.m in Sources */,

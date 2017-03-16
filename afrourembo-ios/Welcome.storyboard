@@ -155,10 +155,10 @@
             </objects>
             <point key="canvasLocation" x="-2700" y="-323.38830584707648"/>
         </scene>
-        <!--View Controller-->
+        <!--Role View Controller-->
         <scene sceneID="5A5-0Z-4Nm">
             <objects>
-                <viewController id="ka6-cs-vBb" sceneMemberID="viewController">
+                <viewController id="ka6-cs-vBb" customClass="EKRoleViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ZwK-7g-zH4"/>
                         <viewControllerLayoutGuide type="bottom" id="JS8-jl-qcJ"/>

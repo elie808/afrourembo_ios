@@ -26,9 +26,10 @@ static NSString * const kRoleSegue = @"onboardingToRoleSegue";
     page2.desc = @"DESCRIPTIONNN goes here for tutorial 2";
     page2.bgColor = [UIColor blueColor];
     
+    self.introView.backgroundColor = [UIColor grayColor];
     self.introView.skipButton = nil;
-    [self.introView setPages:@[page1, page2]];
     [self.introView setDelegate:self];
+    [self.introView setPages:@[page1, page2]];
     
     [self.introView showInView:self.view animateDuration:0.0];
 }
@@ -37,6 +38,7 @@ static NSString * const kRoleSegue = @"onboardingToRoleSegue";
 
 - (void)introDidFinish:(EAIntroView *)introView wasSkipped:(BOOL)wasSkipped {
     
+    [self performSegueWithIdentifier:kRoleSegue sender:nil];
 }
 
 - (void)intro:(EAIntroView *)introView pageAppeared:(EAIntroPage *)page withIndex:(NSUInteger)pageIndex {
