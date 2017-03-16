@@ -8,7 +8,7 @@
 
 #import "EKSplashViewController.h"
 
-static NSString * const kWelcomeSegue = @"splashToWelcomeSegue";
+static NSString * const kWelcomeSegue = @"splashToWelcome";
 
 @implementation EKSplashViewController
 

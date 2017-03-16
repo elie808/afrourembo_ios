@@ -8,7 +8,7 @@
 
 #import "EKOnboardingViewController.h"
 
-static NSString * const kRoleSegue = @"onboardingToRoleSegue";
+static NSString * const kRoleSegue = @"onboardingToRole";
 
 @implementation EKOnboardingViewController
 

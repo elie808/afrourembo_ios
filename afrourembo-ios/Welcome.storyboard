@@ -23,7 +23,7 @@
                         <color key="backgroundColor" red="0.30830429339999998" green="0.4247457583" blue="0.93176513910000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <connections>
-                        <segue destination="MFz-5t-LMA" kind="show" identifier="splashToWelcomeSegue" id="wie-UR-Gh7"/>
+                        <segue destination="MFz-5t-LMA" kind="show" identifier="splashToWelcome" id="wie-UR-Gh7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Yrc-gR-hZr" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -100,7 +100,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="Een-yY-HqS"/>
                     <connections>
-                        <segue destination="eQd-wG-mFC" kind="show" identifier="welcomeNewUserToOnboardingSegue" id="tFf-91-2gi"/>
+                        <segue destination="eQd-wG-mFC" kind="show" identifier="welcomeNewUserToOnboarding" id="tFf-91-2gi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lC5-BB-ISy" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -148,7 +148,7 @@
                     <navigationItem key="navigationItem" id="xLJ-EG-ucI"/>
                     <connections>
                         <outlet property="introView" destination="nDH-L9-ERS" id="Aag-Uc-QGN"/>
-                        <segue destination="ka6-cs-vBb" kind="show" identifier="onboardingToRoleSegue" id="HmY-BJ-Cb5"/>
+                        <segue destination="ka6-cs-vBb" kind="show" identifier="onboardingToRole" id="HmY-BJ-Cb5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KxJ-RE-bQO" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -166,6 +166,13 @@
                     <view key="view" contentMode="scaleToFill" id="3iF-Zt-KoE">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pgl-3Q-nHC">
+                                <rect key="frame" x="164" y="72" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                 </viewController>

@@ -8,7 +8,7 @@
 
 #import "EKWelcomeViewController.h"
 
-static NSString * const kOnboardingSegue = @"welcomeNewUserToOnboardingSegue";
+static NSString * const kOnboardingSegue = @"welcomeNewUserToOnboarding";
 
 @implementation EKWelcomeViewController
 
