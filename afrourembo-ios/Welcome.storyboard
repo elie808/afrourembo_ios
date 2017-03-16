@@ -107,10 +107,10 @@
             </objects>
             <point key="canvasLocation" x="-3545" y="-323"/>
         </scene>
-        <!--View Controller-->
+        <!--Onboarding View Controller-->
         <scene sceneID="MLt-ho-kW8">
             <objects>
-                <viewController id="eQd-wG-mFC" sceneMemberID="viewController">
+                <viewController id="eQd-wG-mFC" customClass="EKOnboardingViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="nps-Gy-m9J"/>
                         <viewControllerLayoutGuide type="bottom" id="mUy-x5-lHs"/>
@@ -118,13 +118,60 @@
                     <view key="view" contentMode="scaleToFill" id="PAw-zv-Ws5">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" name="alternateSelectedControlColor" catalog="System" colorSpace="catalog"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SNz-uZ-UI6">
+                                <rect key="frame" x="16" y="607" width="343" height="40"/>
+                                <color key="backgroundColor" red="0.5568627451" green="0.79215686269999996" blue="0.42352941179999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="pea-N3-HIi"/>
+                                </constraints>
+                                <state key="normal" title="Sign Up">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nDH-L9-ERS" customClass="EAIntroView">
+                                <rect key="frame" x="16" y="72" width="343" height="527"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="SNz-uZ-UI6" firstAttribute="trailing" secondItem="PAw-zv-Ws5" secondAttribute="trailingMargin" id="1uD-0c-T3D"/>
+                            <constraint firstItem="nDH-L9-ERS" firstAttribute="trailing" secondItem="SNz-uZ-UI6" secondAttribute="trailing" id="8w9-7E-TLa"/>
+                            <constraint firstItem="nDH-L9-ERS" firstAttribute="top" secondItem="nps-Gy-m9J" secondAttribute="bottom" constant="8" symbolic="YES" id="aKw-4e-9E9"/>
+                            <constraint firstItem="SNz-uZ-UI6" firstAttribute="leading" secondItem="PAw-zv-Ws5" secondAttribute="leadingMargin" id="f4J-LG-VDO"/>
+                            <constraint firstItem="nDH-L9-ERS" firstAttribute="leading" secondItem="SNz-uZ-UI6" secondAttribute="leading" id="gNM-jO-SZb"/>
+                            <constraint firstItem="SNz-uZ-UI6" firstAttribute="top" secondItem="nDH-L9-ERS" secondAttribute="bottom" constant="8" symbolic="YES" id="knI-Cz-l8Y"/>
+                            <constraint firstItem="mUy-x5-lHs" firstAttribute="top" secondItem="SNz-uZ-UI6" secondAttribute="bottom" constant="20" id="uVl-6f-D7b"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="xLJ-EG-ucI"/>
+                    <connections>
+                        <outlet property="introView" destination="nDH-L9-ERS" id="Aag-Uc-QGN"/>
+                        <segue destination="ka6-cs-vBb" kind="show" identifier="onboardingToRoleSegue" id="HmY-BJ-Cb5"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KxJ-RE-bQO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2700" y="-323"/>
+            <point key="canvasLocation" x="-2700" y="-323.38830584707648"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="5A5-0Z-4Nm">
+            <objects>
+                <viewController id="ka6-cs-vBb" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ZwK-7g-zH4"/>
+                        <viewControllerLayoutGuide type="bottom" id="JS8-jl-qcJ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="3iF-Zt-KoE">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dvD-0k-PGQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1879" y="-323"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="CSt-ji-mD8">

@@ -14,6 +14,9 @@ PODS:
   - AFNetworking/Serialization (3.1.0)
   - AFNetworking/UIKit (3.1.0):
     - AFNetworking/NSURLSession
+  - EAIntroView (2.10.0):
+    - EARestrictedScrollView (~> 1.1.0)
+  - EARestrictedScrollView (1.1.0)
   - ISO8601DateFormatterValueTransformer (0.6.1):
     - RKValueTransformers (~> 1.1.0)
   - JNKeychain (0.1.4)
@@ -53,6 +56,7 @@ PODS:
 
 DEPENDENCIES:
   - AFNetworking
+  - EAIntroView
   - JNKeychain
   - Mantle
   - Realm
@@ -63,6 +67,8 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
+  EAIntroView: 3494b7bbd1212e3a4f7e8d16194a1b00e7b9abb2
+  EARestrictedScrollView: b0c2a3f92fb2610bb44d71c5e4893777c89e45ef
   ISO8601DateFormatterValueTransformer: 52da467d6ec899d6aedda8e48280ac92e8ee97e6
   JNKeychain: fb6cc9ec95959ba46cd95d0ee6f7a05e41da9f42
   Mantle: 2fa750afa478cd625a94230fbf1c13462f29395b
@@ -75,6 +81,6 @@ SPEC CHECKSUMS:
   UIActivityIndicator-for-SDWebImage: 7bf7ebbf0ed1747dedc0d6e949c4603a6d0f9e0c
   XLForm: d5c391dfc62865927b5bcab0a5a0dbfb3e02b0ec
 
-PODFILE CHECKSUM: 566e21adc7dbc1e2dfa8a39577db3d118cc002f3
+PODFILE CHECKSUM: 8d0b0e9ec45458e0429b9fb8f5e4ca14e8ebfd12
 
 COCOAPODS: 1.1.1
