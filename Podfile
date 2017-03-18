@@ -11,8 +11,9 @@ target 'afrourembo-ios' do
   pod 'Mantle'
   pod 'Realm'
 	pod 'JNKeychain'
-  pod 'XLForm'
 	pod 'SDWebImage'
 	pod 'UIActivityIndicator-for-SDWebImage'
+  pod 'XLForm'
+  pod 'EAIntroView'
 
 end

@@ -8,6 +8,9 @@
 
 #import "AppDelegate.h"
 
+static NSString * const kWelcomeStoryboard = @"Welcome";
+static NSString * const kSplashVC = @"splashVC";
+
 @interface AppDelegate ()
 
 @end
@@ -16,7 +19,12 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+    
+    // Start at Splash Screen
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:kWelcomeStoryboard bundle:nil];
+    UINavigationController *rootViewController = [storyboard instantiateViewControllerWithIdentifier:kSplashVC];
+    self.window.rootViewController = rootViewController;
+    
     return YES;
 }
 

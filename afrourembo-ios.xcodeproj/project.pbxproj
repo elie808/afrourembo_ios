@@ -12,6 +12,12 @@
 		478278D71E7923D000FB2FD2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 478278D51E7923D000FB2FD2 /* Main.storyboard */; };
 		478278D91E7923D000FB2FD2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 478278D81E7923D000FB2FD2 /* Assets.xcassets */; };
 		478278DC1E7923D000FB2FD2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 478278DA1E7923D000FB2FD2 /* LaunchScreen.storyboard */; };
+		47919E5A1E795664001C5600 /* EKOnboardingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47919E591E795664001C5600 /* EKOnboardingViewController.m */; };
+		47A3BB881E7A8C0B00963F27 /* EKRoleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47A3BB871E7A8C0B00963F27 /* EKRoleViewController.m */; };
+		47A3BB8C1E7A9F3500963F27 /* EKSignInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47A3BB8B1E7A9F3500963F27 /* EKSignInViewController.m */; };
+		47D88E681E79329D001B88D0 /* Welcome.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 47D88E671E79329D001B88D0 /* Welcome.storyboard */; };
+		47D88E6B1E793347001B88D0 /* EKSplashViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47D88E6A1E793347001B88D0 /* EKSplashViewController.m */; };
+		47D88E6E1E793893001B88D0 /* EKWelcomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47D88E6D1E793893001B88D0 /* EKWelcomeViewController.m */; };
 		BEF4D67868C23697EF923AAA /* libPods-afrourembo-ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 572155C7C18553B923C74DE5 /* libPods-afrourembo-ios.a */; };
 /* End PBXBuildFile section */
 
@@ -25,6 +31,17 @@
 		478278D81E7923D000FB2FD2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		478278DB1E7923D000FB2FD2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		478278DD1E7923D000FB2FD2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		47919E581E795664001C5600 /* EKOnboardingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKOnboardingViewController.h; sourceTree = "<group>"; };
+		47919E591E795664001C5600 /* EKOnboardingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKOnboardingViewController.m; sourceTree = "<group>"; };
+		47A3BB861E7A8C0B00963F27 /* EKRoleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKRoleViewController.h; sourceTree = "<group>"; };
+		47A3BB871E7A8C0B00963F27 /* EKRoleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKRoleViewController.m; sourceTree = "<group>"; };
+		47A3BB8A1E7A9F3500963F27 /* EKSignInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKSignInViewController.h; sourceTree = "<group>"; };
+		47A3BB8B1E7A9F3500963F27 /* EKSignInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKSignInViewController.m; sourceTree = "<group>"; };
+		47D88E671E79329D001B88D0 /* Welcome.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Welcome.storyboard; sourceTree = "<group>"; };
+		47D88E691E793347001B88D0 /* EKSplashViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKSplashViewController.h; sourceTree = "<group>"; };
+		47D88E6A1E793347001B88D0 /* EKSplashViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKSplashViewController.m; sourceTree = "<group>"; };
+		47D88E6C1E793892001B88D0 /* EKWelcomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKWelcomeViewController.h; sourceTree = "<group>"; };
+		47D88E6D1E793893001B88D0 /* EKWelcomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKWelcomeViewController.m; sourceTree = "<group>"; };
 		572155C7C18553B923C74DE5 /* libPods-afrourembo-ios.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-afrourembo-ios.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A719D80C2C1E030C543CB612 /* Pods-afrourembo-ios.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-afrourembo-ios.release.xcconfig"; path = "Pods/Target Support Files/Pods-afrourembo-ios/Pods-afrourembo-ios.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -72,6 +89,7 @@
 			children = (
 				478278CF1E7923D000FB2FD2 /* AppDelegate.h */,
 				478278D01E7923D000FB2FD2 /* AppDelegate.m */,
+				47A3BB851E7A8BE400963F27 /* View Controllers */,
 				478278E31E79240C00FB2FD2 /* Storyboards */,
 				478278D81E7923D000FB2FD2 /* Assets.xcassets */,
 				478278DD1E7923D000FB2FD2 /* Info.plist */,
@@ -93,8 +111,66 @@
 			children = (
 				478278D51E7923D000FB2FD2 /* Main.storyboard */,
 				478278DA1E7923D000FB2FD2 /* LaunchScreen.storyboard */,
+				47D88E671E79329D001B88D0 /* Welcome.storyboard */,
 			);
 			name = Storyboards;
+			sourceTree = "<group>";
+		};
+		47A3BB821E7A8BA200963F27 /* Onboarding ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				47919E581E795664001C5600 /* EKOnboardingViewController.h */,
+				47919E591E795664001C5600 /* EKOnboardingViewController.m */,
+			);
+			name = "Onboarding ViewController";
+			sourceTree = "<group>";
+		};
+		47A3BB831E7A8BD600963F27 /* Welcome ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				47D88E6C1E793892001B88D0 /* EKWelcomeViewController.h */,
+				47D88E6D1E793893001B88D0 /* EKWelcomeViewController.m */,
+			);
+			name = "Welcome ViewController";
+			sourceTree = "<group>";
+		};
+		47A3BB841E7A8BDD00963F27 /* Splash ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				47D88E691E793347001B88D0 /* EKSplashViewController.h */,
+				47D88E6A1E793347001B88D0 /* EKSplashViewController.m */,
+			);
+			name = "Splash ViewController";
+			sourceTree = "<group>";
+		};
+		47A3BB851E7A8BE400963F27 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				47A3BB841E7A8BDD00963F27 /* Splash ViewController */,
+				47A3BB831E7A8BD600963F27 /* Welcome ViewController */,
+				47A3BB821E7A8BA200963F27 /* Onboarding ViewController */,
+				47A3BB891E7A8C1000963F27 /* Role ViewController */,
+				47A3BB8D1E7A9F4100963F27 /* Sign In ViewController */,
+			);
+			name = "View Controllers";
+			sourceTree = "<group>";
+		};
+		47A3BB891E7A8C1000963F27 /* Role ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				47A3BB861E7A8C0B00963F27 /* EKRoleViewController.h */,
+				47A3BB871E7A8C0B00963F27 /* EKRoleViewController.m */,
+			);
+			name = "Role ViewController";
+			sourceTree = "<group>";
+		};
+		47A3BB8D1E7A9F4100963F27 /* Sign In ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				47A3BB8A1E7A9F3500963F27 /* EKSignInViewController.h */,
+				47A3BB8B1E7A9F3500963F27 /* EKSignInViewController.m */,
+			);
+			name = "Sign In ViewController";
 			sourceTree = "<group>";
 		};
 		A377625E4420D4B718A46A25 /* Pods */ = {
@@ -169,6 +245,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				478278DC1E7923D000FB2FD2 /* LaunchScreen.storyboard in Resources */,
+				47D88E681E79329D001B88D0 /* Welcome.storyboard in Resources */,
 				478278D91E7923D000FB2FD2 /* Assets.xcassets in Resources */,
 				478278D71E7923D000FB2FD2 /* Main.storyboard in Resources */,
 			);
@@ -229,8 +306,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				47A3BB881E7A8C0B00963F27 /* EKRoleViewController.m in Sources */,
 				478278D11E7923D000FB2FD2 /* AppDelegate.m in Sources */,
+				47D88E6B1E793347001B88D0 /* EKSplashViewController.m in Sources */,
+				47A3BB8C1E7A9F3500963F27 /* EKSignInViewController.m in Sources */,
+				47919E5A1E795664001C5600 /* EKOnboardingViewController.m in Sources */,
 				478278CE1E7923D000FB2FD2 /* main.m in Sources */,
+				47D88E6E1E793893001B88D0 /* EKWelcomeViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
