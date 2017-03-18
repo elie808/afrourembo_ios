@@ -8,7 +8,9 @@
 
 #import "EKRoleViewController.h"
 
-static NSString * const kCustomerSignUpSegue = @"roleCustomerToSignUpCustomer";
+static NSString * const kCustomerSignUpSegue = @"roleToSignUpCustomer";
+static NSString * const kSalonSignUpSegue = @"roleToSignUpSalon";
+static NSString * const kBPSignUpSegue = @"roleToSignUpBP";
 
 @implementation EKRoleViewController
 
@@ -16,6 +18,20 @@ static NSString * const kCustomerSignUpSegue = @"roleCustomerToSignUpCustomer";
     [super viewDidLoad];
     
     self.title = @"Select your role";
+}
+
+#pragma mark - Actions
+
+- (IBAction)didTapSignupCustomer:(id)sender {
+    [self performSegueWithIdentifier:kCustomerSignUpSegue sender:nil];
+}
+
+- (IBAction)didTapSignupSalon:(id)sender {
+    [self performSegueWithIdentifier:kSalonSignUpSegue sender:nil];
+}
+
+- (IBAction)didTapSignupBP:(id)sender {
+    [self performSegueWithIdentifier:kBPSignUpSegue sender:nil];
 }
 
 #pragma mark - Navigation

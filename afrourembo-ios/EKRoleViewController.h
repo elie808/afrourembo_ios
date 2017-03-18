@@ -10,4 +10,8 @@
 
 @interface EKRoleViewController : UIViewController
 
+- (IBAction)didTapSignupCustomer:(id)sender;
+- (IBAction)didTapSignupSalon:(id)sender;
+- (IBAction)didTapSignupBP:(id)sender;
+
 @end

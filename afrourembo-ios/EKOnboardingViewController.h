@@ -13,4 +13,6 @@
 
 @property(nonatomic,weak) IBOutlet EAIntroView *introView;
 
+- (IBAction)didTapSignUpButton:(id)sender;
+
 @end

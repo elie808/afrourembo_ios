@@ -34,6 +34,13 @@ static NSString * const kRoleSegue = @"onboardingToRole";
     [self.introView showInView:self.view animateDuration:0.0];
 }
 
+#pragma mark - Actions
+
+- (IBAction)didTapSignUpButton:(id)sender {
+    
+    [self performSegueWithIdentifier:kRoleSegue sender:nil];
+}
+
 #pragma mark - EAIntroDelegate
 
 - (void)introDidFinish:(EAIntroView *)introView wasSkipped:(BOOL)wasSkipped {
