@@ -14,6 +14,7 @@
 		478278DC1E7923D000FB2FD2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 478278DA1E7923D000FB2FD2 /* LaunchScreen.storyboard */; };
 		47919E5A1E795664001C5600 /* EKOnboardingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47919E591E795664001C5600 /* EKOnboardingViewController.m */; };
 		47A3BB881E7A8C0B00963F27 /* EKRoleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47A3BB871E7A8C0B00963F27 /* EKRoleViewController.m */; };
+		47A3BB8C1E7A9F3500963F27 /* EKSignInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47A3BB8B1E7A9F3500963F27 /* EKSignInViewController.m */; };
 		47D88E681E79329D001B88D0 /* Welcome.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 47D88E671E79329D001B88D0 /* Welcome.storyboard */; };
 		47D88E6B1E793347001B88D0 /* EKSplashViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47D88E6A1E793347001B88D0 /* EKSplashViewController.m */; };
 		47D88E6E1E793893001B88D0 /* EKWelcomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47D88E6D1E793893001B88D0 /* EKWelcomeViewController.m */; };
@@ -34,6 +35,8 @@
 		47919E591E795664001C5600 /* EKOnboardingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKOnboardingViewController.m; sourceTree = "<group>"; };
 		47A3BB861E7A8C0B00963F27 /* EKRoleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKRoleViewController.h; sourceTree = "<group>"; };
 		47A3BB871E7A8C0B00963F27 /* EKRoleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKRoleViewController.m; sourceTree = "<group>"; };
+		47A3BB8A1E7A9F3500963F27 /* EKSignInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKSignInViewController.h; sourceTree = "<group>"; };
+		47A3BB8B1E7A9F3500963F27 /* EKSignInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKSignInViewController.m; sourceTree = "<group>"; };
 		47D88E671E79329D001B88D0 /* Welcome.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Welcome.storyboard; sourceTree = "<group>"; };
 		47D88E691E793347001B88D0 /* EKSplashViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKSplashViewController.h; sourceTree = "<group>"; };
 		47D88E6A1E793347001B88D0 /* EKSplashViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKSplashViewController.m; sourceTree = "<group>"; };
@@ -147,6 +150,7 @@
 				47A3BB831E7A8BD600963F27 /* Welcome ViewController */,
 				47A3BB821E7A8BA200963F27 /* Onboarding ViewController */,
 				47A3BB891E7A8C1000963F27 /* Role ViewController */,
+				47A3BB8D1E7A9F4100963F27 /* Sign In ViewController */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -158,6 +162,15 @@
 				47A3BB871E7A8C0B00963F27 /* EKRoleViewController.m */,
 			);
 			name = "Role ViewController";
+			sourceTree = "<group>";
+		};
+		47A3BB8D1E7A9F4100963F27 /* Sign In ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				47A3BB8A1E7A9F3500963F27 /* EKSignInViewController.h */,
+				47A3BB8B1E7A9F3500963F27 /* EKSignInViewController.m */,
+			);
+			name = "Sign In ViewController";
 			sourceTree = "<group>";
 		};
 		A377625E4420D4B718A46A25 /* Pods */ = {
@@ -296,6 +309,7 @@
 				47A3BB881E7A8C0B00963F27 /* EKRoleViewController.m in Sources */,
 				478278D11E7923D000FB2FD2 /* AppDelegate.m in Sources */,
 				47D88E6B1E793347001B88D0 /* EKSplashViewController.m in Sources */,
+				47A3BB8C1E7A9F3500963F27 /* EKSignInViewController.m in Sources */,
 				47919E5A1E795664001C5600 /* EKOnboardingViewController.m in Sources */,
 				478278CE1E7923D000FB2FD2 /* main.m in Sources */,
 				47D88E6E1E793893001B88D0 /* EKWelcomeViewController.m in Sources */,

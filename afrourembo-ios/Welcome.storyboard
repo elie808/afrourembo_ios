@@ -111,10 +111,10 @@
             </objects>
             <point key="canvasLocation" x="-3545" y="-323"/>
         </scene>
-        <!--View Controller-->
+        <!--Sign In View Controller-->
         <scene sceneID="Hri-RA-0DZ">
             <objects>
-                <viewController id="WtR-ZX-27w" sceneMemberID="viewController">
+                <viewController id="WtR-ZX-27w" customClass="EKSignInViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="M7g-Tu-8yu"/>
                         <viewControllerLayoutGuide type="bottom" id="Hbq-KJ-KcR"/>
@@ -122,12 +122,94 @@
                     <view key="view" contentMode="scaleToFill" id="4M9-93-ovc">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="QwR-cH-fnA">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="599"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <view key="tableHeaderView" contentMode="scaleToFill" id="c9Q-vZ-yza">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="127"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </view>
+                                <view key="tableFooterView" contentMode="scaleToFill" id="0Hz-4i-KDW">
+                                    <rect key="frame" x="0.0" y="199" width="375" height="127"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5zX-CB-Hgp">
+                                            <rect key="frame" x="8" y="8" width="359" height="40"/>
+                                            <color key="backgroundColor" red="0.26757025690000003" green="0.29177431799999998" blue="0.93176513910000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="40" id="kv9-DK-IPr"/>
+                                            </constraints>
+                                            <state key="normal" title="Sign in">
+                                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                        </button>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OD2-Pa-mjH">
+                                            <rect key="frame" x="8" y="79" width="359" height="40"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="40" id="LMx-pl-KRR"/>
+                                            </constraints>
+                                            <state key="normal" title="Forgot your password ?">
+                                                <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                        </button>
+                                    </subviews>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <constraints>
+                                        <constraint firstItem="5zX-CB-Hgp" firstAttribute="top" secondItem="0Hz-4i-KDW" secondAttribute="topMargin" id="NkW-Fi-5qk"/>
+                                        <constraint firstItem="5zX-CB-Hgp" firstAttribute="trailing" secondItem="OD2-Pa-mjH" secondAttribute="trailing" id="hms-NU-rE0"/>
+                                        <constraint firstItem="5zX-CB-Hgp" firstAttribute="leading" secondItem="0Hz-4i-KDW" secondAttribute="leadingMargin" id="p7Z-NF-VtU"/>
+                                        <constraint firstItem="5zX-CB-Hgp" firstAttribute="trailing" secondItem="0Hz-4i-KDW" secondAttribute="trailingMargin" id="wq1-Kt-135"/>
+                                        <constraint firstItem="5zX-CB-Hgp" firstAttribute="leading" secondItem="OD2-Pa-mjH" secondAttribute="leading" id="zA6-7o-Mvc"/>
+                                        <constraint firstItem="OD2-Pa-mjH" firstAttribute="bottom" secondItem="0Hz-4i-KDW" secondAttribute="bottomMargin" id="zdA-Lh-Kch"/>
+                                    </constraints>
+                                </view>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="signinCell" id="YVK-fo-Rbi">
+                                        <rect key="frame" x="0.0" y="155" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="YVK-fo-Rbi" id="qJs-1j-uk8">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <sections/>
+                                <connections>
+                                    <outlet property="dataSource" destination="WtR-ZX-27w" id="gFU-2i-fwL"/>
+                                    <outlet property="delegate" destination="WtR-ZX-27w" id="46A-Ac-Yok"/>
+                                </connections>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YDs-IH-HfM">
+                                <rect key="frame" x="16" y="607" width="343" height="40"/>
+                                <color key="backgroundColor" red="0.23137254901960785" green="0.34901960784313724" blue="0.59607843137254901" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="AG7-P4-1SA"/>
+                                </constraints>
+                                <state key="normal" title="Sign in via Facebook">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="YDs-IH-HfM" secondAttribute="bottom" constant="20" symbolic="YES" id="LuU-Lo-eL1"/>
+                            <constraint firstItem="YDs-IH-HfM" firstAttribute="top" secondItem="QwR-cH-fnA" secondAttribute="bottom" constant="8" symbolic="YES" id="Mky-mh-W3G"/>
+                            <constraint firstItem="QwR-cH-fnA" firstAttribute="leading" secondItem="4M9-93-ovc" secondAttribute="leading" id="OyE-uJ-Ymn"/>
+                            <constraint firstItem="YDs-IH-HfM" firstAttribute="leading" secondItem="4M9-93-ovc" secondAttribute="leadingMargin" id="TmF-8g-Qfm"/>
+                            <constraint firstItem="QwR-cH-fnA" firstAttribute="centerX" secondItem="YDs-IH-HfM" secondAttribute="centerX" id="U44-2Z-ySU"/>
+                            <constraint firstAttribute="trailing" secondItem="QwR-cH-fnA" secondAttribute="trailing" id="ZBB-lb-LYb"/>
+                            <constraint firstItem="QwR-cH-fnA" firstAttribute="top" secondItem="4M9-93-ovc" secondAttribute="top" id="kPl-Xa-FtW"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="QwR-cH-fnA" id="Rfz-Np-ptR"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="agK-r7-cmT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2759" y="72"/>
+            <point key="canvasLocation" x="-2759.1999999999998" y="71.514242878560722"/>
         </scene>
         <!--Onboarding View Controller-->
         <scene sceneID="MLt-ho-kW8">
