@@ -36,9 +36,11 @@ static NSString * const kSigninCell = @"signinCell";
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kSigninCell forIndexPath:indexPath];
+    EKTextFieldTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kSigninCell forIndexPath:indexPath];
 
-    cell.textLabel.text = _dataSourceArray[indexPath.row];
+//    cell.textLabel.text = _dataSourceArray[indexPath.row];
+    cell.cellTitleLabel.text = _dataSourceArray[indexPath.row];;
+    cell.cellTextField.placeholder = @"address@mail";
     
     return cell;
 }
