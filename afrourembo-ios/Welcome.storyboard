@@ -230,7 +230,7 @@
                                         <rect key="frame" x="0.0" y="28" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="YVK-fo-Rbi" id="qJs-1j-uk8">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="address@mail.com" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lGZ-Yd-NJe">
@@ -384,23 +384,33 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Z8B-xA-JMY">
-                                <rect key="frame" x="16" y="72" width="288" height="488"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="EYC-ee-gUI">
+                                <rect key="frame" x="8" y="72" width="304" height="488"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pgl-3Q-nHC">
-                                        <rect key="frame" x="0.0" y="0.0" width="288" height="157.5"/>
-                                        <color key="backgroundColor" red="0.97075098600456855" green="0.97075098600456855" blue="0.97075098600456855" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="304" height="155"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="155" id="Rht-6t-TB5"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="16"/>
                                         <state key="normal" title="I want to discover services" image="icCustomer">
-                                            <color key="titleColor" red="0.28235294117647058" green="0.28235294117647058" blue="0.28235294117647058" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleColor" red="0.28235294119999998" green="0.28235294119999998" blue="0.28235294119999998" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <connections>
                                             <action selector="didTapSignupCustomer:" destination="ka6-cs-vBb" eventType="touchDown" id="vk1-qS-mMp"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IIC-Sr-oeH">
-                                        <rect key="frame" x="0.0" y="165.5" width="288" height="157"/>
-                                        <color key="backgroundColor" red="0.97075098600456855" green="0.97075098600456855" blue="0.97075098600456855" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <view contentMode="scaleToFill" verticalHuggingPriority="254" placeholderIntrinsicWidth="infinite" placeholderIntrinsicHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="9nk-iD-2Xg">
+                                        <rect key="frame" x="0.0" y="163" width="304" height="1"/>
+                                        <color key="backgroundColor" red="1" green="0.76470588240000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IIC-Sr-oeH">
+                                        <rect key="frame" x="0.0" y="172" width="304" height="137"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="137" id="9Dc-g0-KQu"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="16"/>
                                         <state key="normal" title="I'm an individual beauty professional" image="icScissors">
                                             <color key="titleColor" red="0.28235294119999998" green="0.28235294119999998" blue="0.28235294119999998" alpha="1" colorSpace="calibratedRGB"/>
@@ -409,26 +419,41 @@
                                             <action selector="didTapSignupBP:" destination="ka6-cs-vBb" eventType="touchDown" id="3PO-JK-SH9"/>
                                         </connections>
                                     </button>
+                                    <view contentMode="scaleToFill" verticalHuggingPriority="255" placeholderIntrinsicWidth="infinite" placeholderIntrinsicHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="Edo-WP-ED0">
+                                        <rect key="frame" x="0.0" y="317" width="304" height="1"/>
+                                        <color key="backgroundColor" red="1" green="0.76470588240000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eEa-bA-Cxo">
-                                        <rect key="frame" x="0.0" y="330.5" width="288" height="157.5"/>
-                                        <color key="backgroundColor" red="0.97075098600456855" green="0.97075098600456855" blue="0.97075098600456855" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <rect key="frame" x="0.0" y="326" width="304" height="162"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="162" id="el2-Ip-ebX"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="16"/>
                                         <state key="normal" title="I have a salon" image="icBusiness">
-                                            <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleColor" red="0.28235294119999998" green="0.28235294119999998" blue="0.28235294119999998" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <connections>
                                             <action selector="didTapSignupSalon:" destination="ka6-cs-vBb" eventType="touchDown" id="dYU-mY-aQJ"/>
                                         </connections>
                                     </button>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstItem="Edo-WP-ED0" firstAttribute="leading" secondItem="eEa-bA-Cxo" secondAttribute="leading" id="4bF-7i-INN"/>
+                                    <constraint firstItem="pgl-3Q-nHC" firstAttribute="leading" secondItem="EYC-ee-gUI" secondAttribute="leading" id="7aX-e5-4M5"/>
+                                    <constraint firstItem="9nk-iD-2Xg" firstAttribute="leading" secondItem="IIC-Sr-oeH" secondAttribute="leading" id="9tq-MG-GbB"/>
+                                    <constraint firstItem="IIC-Sr-oeH" firstAttribute="top" secondItem="EYC-ee-gUI" secondAttribute="top" constant="172" id="Xfy-ZC-urW"/>
+                                    <constraint firstItem="IIC-Sr-oeH" firstAttribute="leading" secondItem="Edo-WP-ED0" secondAttribute="leading" id="bqV-DV-rWb"/>
+                                    <constraint firstItem="pgl-3Q-nHC" firstAttribute="leading" secondItem="9nk-iD-2Xg" secondAttribute="leading" id="bzH-bo-omV"/>
+                                </constraints>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="Z8B-xA-JMY" firstAttribute="leading" secondItem="3iF-Zt-KoE" secondAttribute="leadingMargin" id="9bP-QI-0rV"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="Z8B-xA-JMY" secondAttribute="trailing" id="NU4-Ac-6vO"/>
-                            <constraint firstItem="JS8-jl-qcJ" firstAttribute="top" secondItem="Z8B-xA-JMY" secondAttribute="bottom" constant="8" id="PwI-xj-nsL"/>
-                            <constraint firstItem="Z8B-xA-JMY" firstAttribute="top" secondItem="ZwK-7g-zH4" secondAttribute="bottom" constant="8" id="zDc-dM-rdF"/>
+                            <constraint firstAttribute="trailing" secondItem="EYC-ee-gUI" secondAttribute="trailing" constant="8" id="JgK-9L-42n"/>
+                            <constraint firstItem="EYC-ee-gUI" firstAttribute="top" secondItem="ZwK-7g-zH4" secondAttribute="bottom" constant="8" id="QKy-IE-eIm"/>
+                            <constraint firstItem="EYC-ee-gUI" firstAttribute="leading" secondItem="3iF-Zt-KoE" secondAttribute="leading" constant="8" id="k8B-2F-eE8"/>
+                            <constraint firstItem="JS8-jl-qcJ" firstAttribute="top" secondItem="EYC-ee-gUI" secondAttribute="bottom" constant="8" id="w1u-hO-UUG"/>
                         </constraints>
                     </view>
                     <connections>
@@ -439,7 +464,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dvD-0k-PGQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1562" y="-692"/>
+            <point key="canvasLocation" x="-1563.75" y="-692.95774647887322"/>
         </scene>
         <!--signUpCustomer-->
         <scene sceneID="cUT-I7-RWr">
