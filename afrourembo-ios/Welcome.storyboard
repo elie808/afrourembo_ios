@@ -387,30 +387,33 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Z8B-xA-JMY">
                                 <rect key="frame" x="16" y="72" width="288" height="488"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pgl-3Q-nHC">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pgl-3Q-nHC">
                                         <rect key="frame" x="0.0" y="0.0" width="288" height="157.5"/>
                                         <color key="backgroundColor" red="0.97075098600456855" green="0.97075098600456855" blue="0.97075098600456855" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <state key="normal" title="I want to discover services">
-                                            <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="16"/>
+                                        <state key="normal" title="I want to discover services" image="icCustomer">
+                                            <color key="titleColor" red="0.28235294117647058" green="0.28235294117647058" blue="0.28235294117647058" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <connections>
                                             <action selector="didTapSignupCustomer:" destination="ka6-cs-vBb" eventType="touchDown" id="vk1-qS-mMp"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IIC-Sr-oeH">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IIC-Sr-oeH">
                                         <rect key="frame" x="0.0" y="165.5" width="288" height="157"/>
                                         <color key="backgroundColor" red="0.97075098600456855" green="0.97075098600456855" blue="0.97075098600456855" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <state key="normal" title="I'm an individual beauty professional">
-                                            <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="16"/>
+                                        <state key="normal" title="I'm an individual beauty professional" image="icScissors">
+                                            <color key="titleColor" red="0.28235294119999998" green="0.28235294119999998" blue="0.28235294119999998" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <connections>
                                             <action selector="didTapSignupBP:" destination="ka6-cs-vBb" eventType="touchDown" id="3PO-JK-SH9"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eEa-bA-Cxo">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eEa-bA-Cxo">
                                         <rect key="frame" x="0.0" y="330.5" width="288" height="157.5"/>
                                         <color key="backgroundColor" red="0.97075098600456855" green="0.97075098600456855" blue="0.97075098600456855" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <state key="normal" title="I have a salon">
+                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="16"/>
+                                        <state key="normal" title="I have a salon" image="icBusiness">
                                             <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
@@ -502,6 +505,9 @@
     <resources>
         <image name="brush" width="320" height="568"/>
         <image name="brush_tableview" width="320" height="285"/>
+        <image name="icBusiness" width="56" height="43"/>
+        <image name="icCustomer" width="56" height="40"/>
+        <image name="icScissors" width="44" height="45"/>
         <image name="logotype" width="201" height="110"/>
     </resources>
 </document>
