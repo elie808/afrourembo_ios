@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "EKExploreCollectionViewCell.h"
+#import "Service.h"
 
 @interface EKExploreViewController : UIViewController <UICollectionViewDelegate, UICollectionViewDataSource>
 

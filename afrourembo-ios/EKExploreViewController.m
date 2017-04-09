@@ -10,10 +10,33 @@
 
 static NSString * const kExploreCell = @"exploreCollectionCell";
 
-@implementation EKExploreViewController
+@implementation EKExploreViewController {
+    NSArray *_dataSourceArray;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    //TODO: REMOVE AFTER TESTING
+    _dataSourceArray = [self createStubs];
+    [self.collectionView reloadData];
+}
+
+- (NSArray *)createStubs {
+    
+    Service *service1 = [Service new];
+    service1.serviceTitle = @"NATURAL HAIR";
+    service1.serviceImage = @"";
+    
+    Service *service2 = [Service new];
+    service2.serviceTitle = @"BEST WEAVING & EXTENSIONS";
+    service2.serviceImage = @"";
+    
+    Service *service3 = [Service new];
+    service3.serviceTitle = @"TRENDING BARBERS";
+    service3.serviceImage = @"";
+    
+    return @[service1, service2, service3, service1, service2, service3, service1, service2, service3];
 }
 
 #pragma mark - UICollectionViewDataSource
@@ -23,7 +46,7 @@ static NSString * const kExploreCell = @"exploreCollectionCell";
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return 15;
+    return _dataSourceArray.count;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -31,14 +54,8 @@ static NSString * const kExploreCell = @"exploreCollectionCell";
     EKExploreCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kExploreCell forIndexPath:indexPath];
     cell.backgroundColor = [UIColor darkGrayColor];
     
-    switch (indexPath.row % 2) {
-            
-        case 0: cell.cellTitleLabel.text = @"BEST WEAVING & EXTENSIONS"; break;
-        case 1: cell.cellTitleLabel.text = @"NATURAL HAIR"; break;
-            
-        default: break;
-    }
-    
+//        cell.cellTitleLabel.text =
+
     return cell;
 }
 
