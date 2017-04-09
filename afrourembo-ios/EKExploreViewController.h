@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "EKExploreCollectionViewCell.h"
 
-@interface EKExploreViewController : UIViewController
+@interface EKExploreViewController : UIViewController <UICollectionViewDelegate, UICollectionViewDataSource>
+
+@property (strong, nonatomic) IBOutlet UICollectionView *collectionView;
 
 @end

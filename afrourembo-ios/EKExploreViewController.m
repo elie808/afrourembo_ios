@@ -8,20 +8,44 @@
 
 #import "EKExploreViewController.h"
 
-@interface EKExploreViewController ()
-
-@end
+static NSString * const kExploreCell = @"exploreCollectionCell";
 
 @implementation EKExploreViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+#pragma mark - UICollectionViewDataSource
+
+- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
+    return 1;
+}
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+    return 15;
+}
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    
+    EKExploreCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kExploreCell forIndexPath:indexPath];
+    cell.backgroundColor = [UIColor darkGrayColor];
+    
+    switch (indexPath.row % 2) {
+            
+        case 0: cell.cellTitleLabel.text = @"BEST WEAVING & EXTENSIONS"; break;
+        case 1: cell.cellTitleLabel.text = @"NATURAL HAIR"; break;
+            
+        default: break;
+    }
+    
+    return cell;
+}
+
+#pragma mark - UICollectionViewDelegate
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+
 }
 
 /*
