@@ -14,4 +14,6 @@
 
 @property (strong, nonatomic) IBOutlet UICollectionView *collectionView;
 
+- (IBAction)unwindToExploreVC:(UIStoryboardSegue *)segue;
+
 @end

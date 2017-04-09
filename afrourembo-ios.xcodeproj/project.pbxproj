@@ -18,6 +18,9 @@
 		478BDEF11E99B7D700F74A5C /* EKExploreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 478BDEF01E99B7D700F74A5C /* EKExploreViewController.m */; };
 		478BDEF51E99C20900F74A5C /* EKExploreCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 478BDEF41E99C20900F74A5C /* EKExploreCollectionViewCell.m */; };
 		478BDEF91E99C5FC00F74A5C /* Service.m in Sources */ = {isa = PBXBuildFile; fileRef = 478BDEF81E99C5FC00F74A5C /* Service.m */; };
+		478BDEFD1E99D36000F74A5C /* EKSideMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 478BDEFC1E99D36000F74A5C /* EKSideMenuViewController.m */; };
+		478BDF031E99D81F00F74A5C /* EKLeftPushSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 478BDF001E99D81E00F74A5C /* EKLeftPushSegue.m */; };
+		478BDF041E99D81F00F74A5C /* EKLeftPushUnwindSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 478BDF021E99D81E00F74A5C /* EKLeftPushUnwindSegue.m */; };
 		47919E5A1E795664001C5600 /* EKOnboardingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47919E591E795664001C5600 /* EKOnboardingViewController.m */; };
 		47A3BB881E7A8C0B00963F27 /* EKRoleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47A3BB871E7A8C0B00963F27 /* EKRoleViewController.m */; };
 		47A3BB8C1E7A9F3500963F27 /* EKSignInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47A3BB8B1E7A9F3500963F27 /* EKSignInViewController.m */; };
@@ -25,6 +28,7 @@
 		47C42DDE1E7D65D1008CBF51 /* SignUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 47C42DDD1E7D65D1008CBF51 /* SignUp.storyboard */; };
 		47D88E6B1E793347001B88D0 /* EKSplashViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47D88E6A1E793347001B88D0 /* EKSplashViewController.m */; };
 		47D88E6E1E793893001B88D0 /* EKWelcomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47D88E6D1E793893001B88D0 /* EKWelcomeViewController.m */; };
+		47FFF9751E99E81F008B6A31 /* EKImageTextTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 47FFF9741E99E81F008B6A31 /* EKImageTextTableViewCell.m */; };
 		BEF4D67868C23697EF923AAA /* libPods-afrourembo-ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 572155C7C18553B923C74DE5 /* libPods-afrourembo-ios.a */; };
 /* End PBXBuildFile section */
 
@@ -50,6 +54,13 @@
 		478BDEF41E99C20900F74A5C /* EKExploreCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKExploreCollectionViewCell.m; sourceTree = "<group>"; };
 		478BDEF71E99C5FC00F74A5C /* Service.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Service.h; sourceTree = "<group>"; };
 		478BDEF81E99C5FC00F74A5C /* Service.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Service.m; sourceTree = "<group>"; };
+		478BDEFB1E99D36000F74A5C /* EKSideMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKSideMenuViewController.h; sourceTree = "<group>"; };
+		478BDEFC1E99D36000F74A5C /* EKSideMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKSideMenuViewController.m; sourceTree = "<group>"; };
+		478BDEFF1E99D81E00F74A5C /* EKLeftPushSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKLeftPushSegue.h; sourceTree = "<group>"; };
+		478BDF001E99D81E00F74A5C /* EKLeftPushSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKLeftPushSegue.m; sourceTree = "<group>"; };
+		478BDF011E99D81E00F74A5C /* EKLeftPushUnwindSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKLeftPushUnwindSegue.h; sourceTree = "<group>"; };
+		478BDF021E99D81E00F74A5C /* EKLeftPushUnwindSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKLeftPushUnwindSegue.m; sourceTree = "<group>"; };
+		478BDF061E99D85500F74A5C /* EKConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKConstants.h; sourceTree = "<group>"; };
 		47919E581E795664001C5600 /* EKOnboardingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKOnboardingViewController.h; sourceTree = "<group>"; };
 		47919E591E795664001C5600 /* EKOnboardingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKOnboardingViewController.m; sourceTree = "<group>"; };
 		47A3BB861E7A8C0B00963F27 /* EKRoleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKRoleViewController.h; sourceTree = "<group>"; };
@@ -62,6 +73,8 @@
 		47D88E6A1E793347001B88D0 /* EKSplashViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKSplashViewController.m; sourceTree = "<group>"; };
 		47D88E6C1E793892001B88D0 /* EKWelcomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKWelcomeViewController.h; sourceTree = "<group>"; };
 		47D88E6D1E793893001B88D0 /* EKWelcomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKWelcomeViewController.m; sourceTree = "<group>"; };
+		47FFF9731E99E81F008B6A31 /* EKImageTextTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKImageTextTableViewCell.h; sourceTree = "<group>"; };
+		47FFF9741E99E81F008B6A31 /* EKImageTextTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKImageTextTableViewCell.m; sourceTree = "<group>"; };
 		572155C7C18553B923C74DE5 /* libPods-afrourembo-ios.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-afrourembo-ios.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A719D80C2C1E030C543CB612 /* Pods-afrourembo-ios.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-afrourembo-ios.release.xcconfig"; path = "Pods/Target Support Files/Pods-afrourembo-ios/Pods-afrourembo-ios.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -111,12 +124,12 @@
 				478278D01E7923D000FB2FD2 /* AppDelegate.m */,
 				474BD56E1E97F721009410C4 /* EKNavigationViewController.h */,
 				474BD56F1E97F721009410C4 /* EKNavigationViewController.m */,
-				474BD5711E97F8F3009410C4 /* EKTextFieldTableViewCell.h */,
-				474BD5721E97F8F3009410C4 /* EKTextFieldTableViewCell.m */,
+				47FFF9721E99E7FD008B6A31 /* Cells */,
 				478BDEEC1E99A25E00F74A5C /* EKImageTextButton.h */,
 				478BDEED1E99A25E00F74A5C /* EKImageTextButton.m */,
 				478BDEFA1E99C60100F74A5C /* Models */,
 				47A3BB851E7A8BE400963F27 /* View Controllers */,
+				478BDF091E99D85E00F74A5C /* Utilities */,
 				478278E31E79240C00FB2FD2 /* Storyboards */,
 				478278D81E7923D000FB2FD2 /* Assets.xcassets */,
 				478278DD1E7923D000FB2FD2 /* Info.plist */,
@@ -172,6 +185,35 @@
 			name = Models;
 			sourceTree = "<group>";
 		};
+		478BDEFE1E99D36500F74A5C /* Side Menu */ = {
+			isa = PBXGroup;
+			children = (
+				478BDEFB1E99D36000F74A5C /* EKSideMenuViewController.h */,
+				478BDEFC1E99D36000F74A5C /* EKSideMenuViewController.m */,
+				478BDF051E99D82400F74A5C /* Segues */,
+			);
+			name = "Side Menu";
+			sourceTree = "<group>";
+		};
+		478BDF051E99D82400F74A5C /* Segues */ = {
+			isa = PBXGroup;
+			children = (
+				478BDEFF1E99D81E00F74A5C /* EKLeftPushSegue.h */,
+				478BDF001E99D81E00F74A5C /* EKLeftPushSegue.m */,
+				478BDF011E99D81E00F74A5C /* EKLeftPushUnwindSegue.h */,
+				478BDF021E99D81E00F74A5C /* EKLeftPushUnwindSegue.m */,
+			);
+			name = Segues;
+			sourceTree = "<group>";
+		};
+		478BDF091E99D85E00F74A5C /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				478BDF061E99D85500F74A5C /* EKConstants.h */,
+			);
+			name = Utilities;
+			sourceTree = "<group>";
+		};
 		47A3BB821E7A8BA200963F27 /* Onboarding ViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -208,6 +250,7 @@
 				47A3BB891E7A8C1000963F27 /* Role ViewController */,
 				47A3BB8D1E7A9F4100963F27 /* Sign In ViewController */,
 				478BDEF21E99B7DD00F74A5C /* Explore ViewController */,
+				478BDEFE1E99D36500F74A5C /* Side Menu */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -228,6 +271,17 @@
 				47A3BB8B1E7A9F3500963F27 /* EKSignInViewController.m */,
 			);
 			name = "Sign In ViewController";
+			sourceTree = "<group>";
+		};
+		47FFF9721E99E7FD008B6A31 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				474BD5711E97F8F3009410C4 /* EKTextFieldTableViewCell.h */,
+				474BD5721E97F8F3009410C4 /* EKTextFieldTableViewCell.m */,
+				47FFF9731E99E81F008B6A31 /* EKImageTextTableViewCell.h */,
+				47FFF9741E99E81F008B6A31 /* EKImageTextTableViewCell.m */,
+			);
+			name = Cells;
 			sourceTree = "<group>";
 		};
 		A377625E4420D4B718A46A25 /* Pods */ = {
@@ -366,13 +420,17 @@
 			files = (
 				478BDEEE1E99A25E00F74A5C /* EKImageTextButton.m in Sources */,
 				47A3BB881E7A8C0B00963F27 /* EKRoleViewController.m in Sources */,
+				478BDEFD1E99D36000F74A5C /* EKSideMenuViewController.m in Sources */,
+				47FFF9751E99E81F008B6A31 /* EKImageTextTableViewCell.m in Sources */,
 				474BD5731E97F8F3009410C4 /* EKTextFieldTableViewCell.m in Sources */,
+				478BDF031E99D81F00F74A5C /* EKLeftPushSegue.m in Sources */,
 				478BDEF91E99C5FC00F74A5C /* Service.m in Sources */,
 				478278D11E7923D000FB2FD2 /* AppDelegate.m in Sources */,
 				47D88E6B1E793347001B88D0 /* EKSplashViewController.m in Sources */,
 				478BDEF11E99B7D700F74A5C /* EKExploreViewController.m in Sources */,
 				478BDEF51E99C20900F74A5C /* EKExploreCollectionViewCell.m in Sources */,
 				47A3BB8C1E7A9F3500963F27 /* EKSignInViewController.m in Sources */,
+				478BDF041E99D81F00F74A5C /* EKLeftPushUnwindSegue.m in Sources */,
 				47919E5A1E795664001C5600 /* EKOnboardingViewController.m in Sources */,
 				478278CE1E7923D000FB2FD2 /* main.m in Sources */,
 				474BD5701E97F721009410C4 /* EKNavigationViewController.m in Sources */,

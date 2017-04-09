@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "EKConstants.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
