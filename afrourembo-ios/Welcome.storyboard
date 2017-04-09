@@ -205,6 +205,9 @@
                                                 </userDefinedRuntimeAttribute>
                                                 <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                             </userDefinedRuntimeAttributes>
+                                            <connections>
+                                                <action selector="didTapSignInButton:" destination="WtR-ZX-27w" eventType="touchDown" id="ps5-N6-bY3"/>
+                                            </connections>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OD2-Pa-mjH">
                                             <rect key="frame" x="8" y="60" width="304" height="22"/>
@@ -308,11 +311,20 @@
                     <navigationItem key="navigationItem" id="smk-Yf-YFU"/>
                     <connections>
                         <outlet property="tableView" destination="QwR-cH-fnA" id="Rfz-Np-ptR"/>
+                        <segue destination="yb9-O1-mQe" kind="presentation" identifier="signInToExploreVC" id="ww5-5g-70c"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="agK-r7-cmT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-2593.125" y="64.436619718309856"/>
+        </scene>
+        <!--exploreVC-->
+        <scene sceneID="QiG-zj-CiB">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Main" referencedIdentifier="exploreVC" id="yb9-O1-mQe" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2VG-E1-ax6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1854" y="64"/>
         </scene>
         <!--Onboarding View Controller-->
         <scene sceneID="MLt-ho-kW8">

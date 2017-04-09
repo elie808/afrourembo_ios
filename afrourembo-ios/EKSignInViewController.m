@@ -9,6 +9,7 @@
 #import "EKSignInViewController.h"
 
 static NSString * const kSigninCell = @"signinCell";
+static NSString * const kExploreSegue = @"signInToExploreVC";
 
 @interface EKSignInViewController() {
     NSArray *_dataSourceArray;
@@ -51,6 +52,12 @@ static NSString * const kSigninCell = @"signinCell";
 
 }
 
+#pragma mark - Actions
+
+- (IBAction)didTapSignInButton:(id)sender {
+    
+    [self performSegueWithIdentifier:kExploreSegue sender:nil];
+}
 
 /*
 #pragma mark - Navigation

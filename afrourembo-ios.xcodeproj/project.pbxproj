@@ -15,6 +15,7 @@
 		478278D91E7923D000FB2FD2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 478278D81E7923D000FB2FD2 /* Assets.xcassets */; };
 		478278DC1E7923D000FB2FD2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 478278DA1E7923D000FB2FD2 /* LaunchScreen.storyboard */; };
 		478BDEEE1E99A25E00F74A5C /* EKImageTextButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 478BDEED1E99A25E00F74A5C /* EKImageTextButton.m */; };
+		478BDEF11E99B7D700F74A5C /* EKExploreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 478BDEF01E99B7D700F74A5C /* EKExploreViewController.m */; };
 		47919E5A1E795664001C5600 /* EKOnboardingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47919E591E795664001C5600 /* EKOnboardingViewController.m */; };
 		47A3BB881E7A8C0B00963F27 /* EKRoleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47A3BB871E7A8C0B00963F27 /* EKRoleViewController.m */; };
 		47A3BB8C1E7A9F3500963F27 /* EKSignInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47A3BB8B1E7A9F3500963F27 /* EKSignInViewController.m */; };
@@ -41,6 +42,8 @@
 		478278DD1E7923D000FB2FD2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		478BDEEC1E99A25E00F74A5C /* EKImageTextButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKImageTextButton.h; sourceTree = "<group>"; };
 		478BDEED1E99A25E00F74A5C /* EKImageTextButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKImageTextButton.m; sourceTree = "<group>"; };
+		478BDEEF1E99B7D700F74A5C /* EKExploreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKExploreViewController.h; sourceTree = "<group>"; };
+		478BDEF01E99B7D700F74A5C /* EKExploreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKExploreViewController.m; sourceTree = "<group>"; };
 		47919E581E795664001C5600 /* EKOnboardingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKOnboardingViewController.h; sourceTree = "<group>"; };
 		47919E591E795664001C5600 /* EKOnboardingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKOnboardingViewController.m; sourceTree = "<group>"; };
 		47A3BB861E7A8C0B00963F27 /* EKRoleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKRoleViewController.h; sourceTree = "<group>"; };
@@ -134,6 +137,15 @@
 			name = Storyboards;
 			sourceTree = "<group>";
 		};
+		478BDEF21E99B7DD00F74A5C /* Explore ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				478BDEEF1E99B7D700F74A5C /* EKExploreViewController.h */,
+				478BDEF01E99B7D700F74A5C /* EKExploreViewController.m */,
+			);
+			name = "Explore ViewController";
+			sourceTree = "<group>";
+		};
 		47A3BB821E7A8BA200963F27 /* Onboarding ViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -169,6 +181,7 @@
 				47A3BB821E7A8BA200963F27 /* Onboarding ViewController */,
 				47A3BB891E7A8C1000963F27 /* Role ViewController */,
 				47A3BB8D1E7A9F4100963F27 /* Sign In ViewController */,
+				478BDEF21E99B7DD00F74A5C /* Explore ViewController */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -330,6 +343,7 @@
 				474BD5731E97F8F3009410C4 /* EKTextFieldTableViewCell.m in Sources */,
 				478278D11E7923D000FB2FD2 /* AppDelegate.m in Sources */,
 				47D88E6B1E793347001B88D0 /* EKSplashViewController.m in Sources */,
+				478BDEF11E99B7D700F74A5C /* EKExploreViewController.m in Sources */,
 				47A3BB8C1E7A9F3500963F27 /* EKSignInViewController.m in Sources */,
 				47919E5A1E795664001C5600 /* EKOnboardingViewController.m in Sources */,
 				478278CE1E7923D000FB2FD2 /* main.m in Sources */,
