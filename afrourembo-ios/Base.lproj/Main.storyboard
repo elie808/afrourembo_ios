@@ -234,10 +234,12 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="229"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="P2E-en-Jcn" customClass="EKInCellCollectionView">
+                                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="P2E-en-Jcn" customClass="EKInCellCollectionView">
                                                     <rect key="frame" x="0.0" y="179" width="375" height="50"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <color key="backgroundColor" red="1" green="0.33725490200000002" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="50" id="DWr-fd-Sah"/>
+                                                    </constraints>
                                                     <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="LV6-p7-MAV">
                                                         <size key="itemSize" width="66" height="35"/>
                                                         <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -277,7 +279,19 @@
                                                         <outlet property="delegate" destination="N64-wl-HyW" id="Zbg-y3-dtk"/>
                                                     </connections>
                                                 </collectionView>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="MPr-Px-M5P">
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="179"/>
+                                                </imageView>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="MPr-Px-M5P" firstAttribute="leading" secondItem="rKQ-Bg-kks" secondAttribute="leading" id="CTu-F5-eQu"/>
+                                                <constraint firstAttribute="trailing" secondItem="MPr-Px-M5P" secondAttribute="trailing" id="FvS-g2-LIT"/>
+                                                <constraint firstItem="P2E-en-Jcn" firstAttribute="leading" secondItem="rKQ-Bg-kks" secondAttribute="leading" id="fXP-O3-tHh"/>
+                                                <constraint firstAttribute="bottom" secondItem="P2E-en-Jcn" secondAttribute="bottom" id="oZB-q8-H3m"/>
+                                                <constraint firstItem="P2E-en-Jcn" firstAttribute="top" secondItem="MPr-Px-M5P" secondAttribute="bottom" id="qFF-i2-Ell"/>
+                                                <constraint firstItem="MPr-Px-M5P" firstAttribute="top" secondItem="rKQ-Bg-kks" secondAttribute="top" id="s2f-JB-XGc"/>
+                                                <constraint firstAttribute="trailing" secondItem="P2E-en-Jcn" secondAttribute="trailing" id="wYn-Ku-c50"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.8980392157" green="0.8980392157" blue="0.8980392157" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>
