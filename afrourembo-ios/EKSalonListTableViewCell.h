@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "EKInCellCollectionView.h"
+#import "Salon.h"
 
 @interface EKSalonListTableViewCell : UITableViewCell
 
@@ -20,5 +21,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *cellAddressLabel;
 
 @property (strong, nonatomic) IBOutlet EKInCellCollectionView *collectionView;
+
+- (void)configureCellWithSalon:(Salon *)salon;
 
 @end

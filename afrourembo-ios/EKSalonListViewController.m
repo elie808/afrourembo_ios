@@ -21,7 +21,7 @@ static NSString * const  kCollectionViewCell = @"salongListInCellCollectionViewC
     [super viewDidLoad];
     
     _contentOffsetDictionary = [NSMutableDictionary new];
-    _dataSourceArray = @[@"", @"", @"", @""];
+    _dataSourceArray = [self createStubs];
     _collectionDataSourceArray = @[@"", @"", @"", @"", @"", @"", @"", @"", @"", @""];
 }
 
@@ -39,7 +39,9 @@ static NSString * const  kCollectionViewCell = @"salongListInCellCollectionViewC
     
     EKSalonListTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kTableViewCell forIndexPath:indexPath];
     
-    cell.backgroundColor = [UIColor brownColor];
+    Salon *salon = [_dataSourceArray objectAtIndex:indexPath.row];
+    
+    [cell configureCellWithSalon:salon];
     
     return cell;
 }
@@ -102,5 +104,40 @@ static NSString * const  kCollectionViewCell = @"salongListInCellCollectionViewC
     // Pass the selected object to the new view controller.
 }
 */
+
+#pragma mark - Helpers
+
+//TODO: REMOVE AFTER TESTING
+- (NSArray *)createStubs {
+    
+    Salon *salon = [Salon new];
+    salon.mainImageName = @"dummy_portrait1";
+    salon.stars = @5;
+    salon.price = @30;
+    salon.photoCount = @10;
+    salon.userImageName = @"dummy_male1";
+    salon.userName = @"Adele Hampton";
+    salon.address = @"Muindi Mbingu St.";
+    
+    Salon *salon1 = [Salon new];
+    salon1.mainImageName = @"dummy_portrait2";
+    salon1.stars = @3;
+    salon1.price = @300;
+    salon1.photoCount = @100;
+    salon1.userImageName = @"dummy_male1";
+    salon1.userName = @"James Lipton";
+    salon1.address = @"More of Muindi Mbingu St.";
+    
+    Salon *salon3 = [Salon new];
+    salon3.mainImageName = @"dummy_portrait3";
+    salon3.stars = @3;
+    salon3.price = @30;
+    salon3.photoCount = @10;
+    salon3.userImageName = @"dummy_male2";
+    salon3.userName = @"James Earl Lipton";
+    salon3.address = @"Muindi Mbingu St.";
+    
+    return @[salon, salon1, salon3];
+}
 
 @end

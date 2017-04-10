@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "EKSalonListTableViewCell.h"
 #import "EKSalonListCollectionViewCell.h"
+#import "Salon.h"
 
 @interface EKSalonListViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UICollectionViewDataSource,UICollectionViewDelegate>
 
