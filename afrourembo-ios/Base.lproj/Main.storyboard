@@ -82,6 +82,9 @@
                         <rightBarButtonItems>
                             <barButtonItem image="icFavorites" id="2K4-Ew-M44">
                                 <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <segue destination="N64-wl-HyW" kind="show" id="Jra-9e-jJr"/>
+                                </connections>
                             </barButtonItem>
                             <barButtonItem image="icSearch" id="1zr-tG-XYo">
                                 <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -114,19 +117,19 @@
                                 </connections>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="52" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="028-9K-J9i">
-                                <rect key="frame" x="0.0" y="64" width="235" height="551"/>
+                                <rect key="frame" x="0.0" y="64" width="320" height="551"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <view key="tableFooterView" contentMode="scaleToFill" id="mjT-CX-Qhq">
-                                    <rect key="frame" x="0.0" y="80" width="235" height="44"/>
+                                    <rect key="frame" x="0.0" y="80" width="320" height="44"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </view>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="sideMenuCell" id="m87-sc-eJn" customClass="EKImageTextTableViewCell">
-                                        <rect key="frame" x="0.0" y="28" width="235" height="52"/>
+                                        <rect key="frame" x="0.0" y="28" width="320" height="52"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="m87-sc-eJn" id="zQV-Dj-BiU">
-                                            <rect key="frame" x="0.0" y="0.0" width="235" height="51"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="51"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3Uy-dO-RY9">
@@ -137,9 +140,9 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZQ1-ey-gbT">
-                                                    <rect key="frame" x="46" y="8" width="181" height="35"/>
+                                                    <rect key="frame" x="46" y="8" width="266" height="35"/>
                                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
-                                                    <color key="textColor" red="1" green="0.76470588240000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -164,11 +167,11 @@
                                 </connections>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ukv-Sp-ndE">
-                                <rect key="frame" x="0.0" y="615" width="235" height="52"/>
+                                <rect key="frame" x="0.0" y="615" width="320" height="52"/>
                                 <color key="backgroundColor" red="0.98431372549019602" green="0.98431372549019602" blue="0.98431372549019602" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="52" id="Icx-gG-bDq"/>
-                                    <constraint firstAttribute="width" constant="235" id="ssC-Ph-mxQ"/>
+                                    <constraint firstAttribute="width" constant="320" id="ssC-Ph-mxQ"/>
                                 </constraints>
                                 <inset key="titleEdgeInsets" minX="24" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <inset key="imageEdgeInsets" minX="12" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -180,7 +183,7 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="028-9K-J9i" firstAttribute="top" secondItem="fOK-Sf-Qgw" secondAttribute="top" constant="64" id="583-TY-kx9"/>
-                            <constraint firstAttribute="trailing" secondItem="028-9K-J9i" secondAttribute="trailing" constant="140" id="6Ux-4D-DgA"/>
+                            <constraint firstAttribute="trailing" secondItem="028-9K-J9i" secondAttribute="trailing" constant="55" id="6Ux-4D-DgA"/>
                             <constraint firstItem="7OC-dT-PIe" firstAttribute="top" secondItem="fOK-Sf-Qgw" secondAttribute="top" id="AZ9-DE-exi"/>
                             <constraint firstAttribute="trailing" secondItem="7OC-dT-PIe" secondAttribute="trailing" id="K9C-dW-cU3"/>
                             <constraint firstItem="7OC-dT-PIe" firstAttribute="bottom" secondItem="QY5-zz-kD7" secondAttribute="top" id="KiK-Ga-0mL"/>
@@ -207,6 +210,24 @@
                 </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1685.5999999999999" y="-645.42728635682158"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="pjW-SC-Ltb">
+            <objects>
+                <viewController id="N64-wl-HyW" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="kj4-kO-G1E"/>
+                        <viewControllerLayoutGuide type="bottom" id="Bvb-Ge-UAI"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="AHq-ww-jZc">
+                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uCw-Y4-AZw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1686" y="-1392"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="sGq-TO-TjC">

@@ -20,11 +20,18 @@ static NSString * const kUnwindSegue = @"sideMenuToExploreVC";
     
     self.backgroundView.alpha = 0;
     
-    _dataSourceArray = @[ @{@"icExploreActive"  : @"Explore"},
-                          @{@"icCartActive"     : @"Cart"},
-                          @{@"icPaymentsActive" : @"Orders"},
-                          @{@"icGiftActive"     : @"Gifts"},
-                          @{@"icSettingsActive" : @"Settings"}
+//    _dataSourceArray = @[ @{@"icExploreActive"  : @"Explore"},
+//                          @{@"icCartActive"     : @"Cart"},
+//                          @{@"icPaymentsActive" : @"Orders"},
+//                          @{@"icGiftActive"     : @"Gifts"},
+//                          @{@"icSettingsActive" : @"Settings"}
+//                          ];
+    
+    _dataSourceArray = @[ @{@"icExploreNormal"  : @"Explore"},
+                          @{@"icCartNormal"     : @"Cart"},
+                          @{@"icPaymentsNormal" : @"Orders"},
+                          @{@"icGiftNormal"     : @"Gifts"},
+                          @{@"icSettingsNormal" : @"Settings"}
                           ];
 }
 
@@ -60,6 +67,10 @@ static NSString * const kUnwindSegue = @"sideMenuToExploreVC";
     
     cell.cellImageView.image = [UIImage imageNamed:imageName];
     cell.cellTextLabel.text = textValue;
+    
+    // IF SELECTED
+    cell.cellTextLabel.font = [UIFont boldSystemFontOfSize:16.0];
+    cell.cellTextLabel.textColor = [UIColor colorWithRed:255./255. green:195./255. blue:0./255. alpha:1.0];
     
     return cell;
 }
