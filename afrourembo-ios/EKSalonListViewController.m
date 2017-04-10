@@ -9,7 +9,8 @@
 #import "EKSalonListViewController.h"
 
 static NSString * const  kTableViewCell = @"salonListCell";
-static NSString * const  kCollectionViewCell = @"salongListInCellCollectionViewCell";
+static NSString * const  kCollectionViewCell = @"yellowSalonListInCellCollectionViewCell";
+static NSString * const  kDayCollectionViewCell = @"whiteSalonListInCellCollectionViewCell";
 
 @implementation EKSalonListViewController {
     NSArray *_dataSourceArray;
@@ -40,7 +41,6 @@ static NSString * const  kCollectionViewCell = @"salongListInCellCollectionViewC
     EKSalonListTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kTableViewCell forIndexPath:indexPath];
     
     Salon *salon = [_dataSourceArray objectAtIndex:indexPath.row];
-    
     [cell configureCellWithSalon:salon];
     
     return cell;
@@ -78,15 +78,35 @@ static NSString * const  kCollectionViewCell = @"salongListInCellCollectionViewC
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return _collectionDataSourceArray.count;
+    
+    NSInteger index = ((EKInCellCollectionView*)collectionView).collectionIndexPath.row;
+    Salon *salon = [_dataSourceArray objectAtIndex:index];
+    
+    return salon.timesArray.count;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     
-    EKSalonListCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kCollectionViewCell forIndexPath:indexPath];
-    cell.cellTextLabel.text = [NSString stringWithFormat:@"%ld", (long)indexPath.row];
-    
-    return cell;
+    if (indexPath.row % 4 == 0) {
+        
+        EKSalonListCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kDayCollectionViewCell forIndexPath:indexPath];
+        
+        NSInteger index = ((EKInCellCollectionView*)collectionView).collectionIndexPath.row;
+        Salon *salon = [_dataSourceArray objectAtIndex:index];
+        cell.cellTextLabel.text = [salon.timesArray objectAtIndex:indexPath.row];
+        
+        return cell;
+        
+    } else {
+
+        EKSalonListCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kCollectionViewCell forIndexPath:indexPath];
+        
+        NSInteger index = ((EKInCellCollectionView*)collectionView).collectionIndexPath.row;
+        Salon *salon = [_dataSourceArray objectAtIndex:index];
+        cell.cellTextLabel.text = [salon.timesArray objectAtIndex:indexPath.row];
+        
+        return cell;
+    }
 }
 
 #pragma mark - UICollectionViewDelegate
@@ -118,6 +138,7 @@ static NSString * const  kCollectionViewCell = @"salongListInCellCollectionViewC
     salon.userImageName = @"dummy_male1";
     salon.userName = @"Adele Hampton";
     salon.address = @"Muindi Mbingu St.";
+    salon.timesArray = @[@"Today", @"9:00 AM", @"12:15 PM"];
     
     Salon *salon1 = [Salon new];
     salon1.mainImageName = @"dummy_portrait2";
@@ -127,6 +148,7 @@ static NSString * const  kCollectionViewCell = @"salongListInCellCollectionViewC
     salon1.userImageName = @"dummy_male1";
     salon1.userName = @"James Lipton";
     salon1.address = @"More of Muindi Mbingu St.";
+    salon1.timesArray = @[@"Today", @"9:00 AM", @"12:15 PM", @"1:30 PM", @"Tue", @"8:20 AM", @"12:55 PM"];
     
     Salon *salon3 = [Salon new];
     salon3.mainImageName = @"dummy_portrait3";
@@ -136,6 +158,7 @@ static NSString * const  kCollectionViewCell = @"salongListInCellCollectionViewC
     salon3.userImageName = @"dummy_male2";
     salon3.userName = @"James Earl Lipton";
     salon3.address = @"Muindi Mbingu St.";
+    salon3.timesArray = @[@"Today", @"9:00 AM"];
     
     return @[salon, salon1, salon3];
 }

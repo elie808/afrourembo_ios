@@ -18,6 +18,7 @@
 @property NSString *userName;
 @property NSString *address;
 
-//TODO: ADD AVAILABLE DATES DATA (array)
+//TODO: CHANGE STRUCTURE. POSSIBLY HAVE A SEPARATE TIME OBJECT
+@property NSArray *timesArray;
 
 @end
