@@ -282,19 +282,80 @@
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="MPr-Px-M5P">
                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="179"/>
                                                 </imageView>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="EdU-W5-9l8">
+                                                    <rect key="frame" x="11" y="20" width="100" height="20"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="20" id="Fpo-R6-SVT"/>
+                                                        <constraint firstAttribute="width" constant="100" id="q3z-wh-USr"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hSu-Bq-YXp">
+                                                    <rect key="frame" x="11" y="48" width="35.5" height="17"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AMY-dc-u1b">
+                                                    <rect key="frame" x="322" y="17" width="53" height="27"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <color key="backgroundColor" red="1" green="0.76470588240000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="f8s-GF-DTw">
+                                                    <rect key="frame" x="11" y="143" width="28" height="28"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="28" id="8BN-9i-VN0"/>
+                                                        <constraint firstAttribute="width" constant="28" id="taX-dC-SkI"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sx5-jS-Vaq">
+                                                    <rect key="frame" x="47" y="150" width="37.5" height="18"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HGP-CY-LOa">
+                                                    <rect key="frame" x="247" y="147" width="120" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="21" id="SAh-Lw-2iD"/>
+                                                        <constraint firstAttribute="width" constant="120" id="fk8-eC-pCn"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="Sx5-jS-Vaq" firstAttribute="leading" secondItem="f8s-GF-DTw" secondAttribute="trailing" constant="8" id="5Fr-Vx-R0o"/>
+                                                <constraint firstItem="hSu-Bq-YXp" firstAttribute="leading" secondItem="rKQ-Bg-kks" secondAttribute="leadingMargin" constant="3" id="B5a-oh-r5F"/>
                                                 <constraint firstItem="MPr-Px-M5P" firstAttribute="leading" secondItem="rKQ-Bg-kks" secondAttribute="leading" id="CTu-F5-eQu"/>
+                                                <constraint firstItem="P2E-en-Jcn" firstAttribute="top" secondItem="f8s-GF-DTw" secondAttribute="bottom" constant="8" id="CZF-1Z-Nmy"/>
                                                 <constraint firstAttribute="trailing" secondItem="MPr-Px-M5P" secondAttribute="trailing" id="FvS-g2-LIT"/>
+                                                <constraint firstItem="EdU-W5-9l8" firstAttribute="leading" secondItem="rKQ-Bg-kks" secondAttribute="leadingMargin" constant="3" id="IpT-i1-RLe"/>
+                                                <constraint firstItem="f8s-GF-DTw" firstAttribute="leading" secondItem="rKQ-Bg-kks" secondAttribute="leadingMargin" constant="3" id="Lej-5U-Bg0"/>
+                                                <constraint firstItem="P2E-en-Jcn" firstAttribute="top" secondItem="HGP-CY-LOa" secondAttribute="bottom" constant="11" id="NZG-vG-RCs"/>
+                                                <constraint firstItem="P2E-en-Jcn" firstAttribute="top" secondItem="Sx5-jS-Vaq" secondAttribute="bottom" constant="11" id="aGr-k7-0kh"/>
                                                 <constraint firstItem="P2E-en-Jcn" firstAttribute="leading" secondItem="rKQ-Bg-kks" secondAttribute="leading" id="fXP-O3-tHh"/>
+                                                <constraint firstItem="EdU-W5-9l8" firstAttribute="top" secondItem="rKQ-Bg-kks" secondAttribute="topMargin" constant="12" id="gbs-g7-drZ"/>
+                                                <constraint firstItem="hSu-Bq-YXp" firstAttribute="top" secondItem="EdU-W5-9l8" secondAttribute="bottom" constant="8" id="mxN-Hf-fTZ"/>
                                                 <constraint firstAttribute="bottom" secondItem="P2E-en-Jcn" secondAttribute="bottom" id="oZB-q8-H3m"/>
                                                 <constraint firstItem="P2E-en-Jcn" firstAttribute="top" secondItem="MPr-Px-M5P" secondAttribute="bottom" id="qFF-i2-Ell"/>
                                                 <constraint firstItem="MPr-Px-M5P" firstAttribute="top" secondItem="rKQ-Bg-kks" secondAttribute="top" id="s2f-JB-XGc"/>
+                                                <constraint firstItem="HGP-CY-LOa" firstAttribute="trailing" secondItem="rKQ-Bg-kks" secondAttribute="trailingMargin" id="uLi-tM-bc8"/>
                                                 <constraint firstAttribute="trailing" secondItem="P2E-en-Jcn" secondAttribute="trailing" id="wYn-Ku-c50"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.8980392157" green="0.8980392157" blue="0.8980392157" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>
+                                            <outlet property="cellAddressLabel" destination="HGP-CY-LOa" id="Swo-x0-mhU"/>
+                                            <outlet property="cellMainImageView" destination="MPr-Px-M5P" id="ghm-ea-pRj"/>
+                                            <outlet property="cellPhotoCountLabel" destination="hSu-Bq-YXp" id="3Xu-N7-9kN"/>
+                                            <outlet property="cellPriceLabel" destination="AMY-dc-u1b" id="hPs-dL-4aK"/>
+                                            <outlet property="cellStarImageView" destination="EdU-W5-9l8" id="JmA-bA-Eoa"/>
+                                            <outlet property="cellUserImageView" destination="f8s-GF-DTw" id="u9i-1y-X2w"/>
+                                            <outlet property="cellUserNameLabel" destination="Sx5-jS-Vaq" id="Ocu-uh-L7y"/>
                                             <outlet property="collectionView" destination="P2E-en-Jcn" id="0em-qC-LUG"/>
                                         </connections>
                                     </tableViewCell>

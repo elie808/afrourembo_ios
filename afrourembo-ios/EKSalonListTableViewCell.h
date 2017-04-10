@@ -11,6 +11,14 @@
 
 @interface EKSalonListTableViewCell : UITableViewCell
 
+@property (strong, nonatomic) IBOutlet UIImageView *cellMainImageView;
+@property (strong, nonatomic) IBOutlet UIImageView *cellStarImageView;
+@property (strong, nonatomic) IBOutlet UILabel *cellPriceLabel;
+@property (strong, nonatomic) IBOutlet UILabel *cellPhotoCountLabel;
+@property (strong, nonatomic) IBOutlet UIImageView *cellUserImageView;
+@property (strong, nonatomic) IBOutlet UILabel *cellUserNameLabel;
+@property (strong, nonatomic) IBOutlet UILabel *cellAddressLabel;
+
 @property (strong, nonatomic) IBOutlet EKInCellCollectionView *collectionView;
 
 @end
