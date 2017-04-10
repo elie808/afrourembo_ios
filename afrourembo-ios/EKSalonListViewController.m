@@ -81,8 +81,8 @@ static NSString * const  kCollectionViewCell = @"salongListInCellCollectionViewC
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     
-    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kCollectionViewCell forIndexPath:indexPath];
-    cell.backgroundColor = [UIColor darkGrayColor];
+    EKSalonListCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kCollectionViewCell forIndexPath:indexPath];
+    cell.cellTextLabel.text = [NSString stringWithFormat:@"%ld", (long)indexPath.row];
     
     return cell;
 }

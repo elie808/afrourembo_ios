@@ -27,6 +27,7 @@
 		47AF51A81E9B6356005FE6EB /* EKSalonListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47AF51A71E9B6356005FE6EB /* EKSalonListViewController.m */; };
 		47AF51AF1E9B686F005FE6EB /* EKInCellCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 47AF51AE1E9B686F005FE6EB /* EKInCellCollectionView.m */; };
 		47AF51B21E9B6897005FE6EB /* EKSalonListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 47AF51B11E9B6897005FE6EB /* EKSalonListTableViewCell.m */; };
+		47AF51B71E9B765D005FE6EB /* EKSalonListCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 47AF51B61E9B765D005FE6EB /* EKSalonListCollectionViewCell.m */; };
 		47C42DDC1E7D6509008CBF51 /* Welcome.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 47C42DDB1E7D6509008CBF51 /* Welcome.storyboard */; };
 		47C42DDE1E7D65D1008CBF51 /* SignUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 47C42DDD1E7D65D1008CBF51 /* SignUp.storyboard */; };
 		47D88E6B1E793347001B88D0 /* EKSplashViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47D88E6A1E793347001B88D0 /* EKSplashViewController.m */; };
@@ -76,6 +77,8 @@
 		47AF51AE1E9B686F005FE6EB /* EKInCellCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKInCellCollectionView.m; sourceTree = "<group>"; };
 		47AF51B01E9B6897005FE6EB /* EKSalonListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKSalonListTableViewCell.h; sourceTree = "<group>"; };
 		47AF51B11E9B6897005FE6EB /* EKSalonListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKSalonListTableViewCell.m; sourceTree = "<group>"; };
+		47AF51B51E9B765D005FE6EB /* EKSalonListCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKSalonListCollectionViewCell.h; sourceTree = "<group>"; };
+		47AF51B61E9B765D005FE6EB /* EKSalonListCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKSalonListCollectionViewCell.m; sourceTree = "<group>"; };
 		47C42DDB1E7D6509008CBF51 /* Welcome.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Welcome.storyboard; sourceTree = "<group>"; };
 		47C42DDD1E7D65D1008CBF51 /* SignUp.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SignUp.storyboard; sourceTree = "<group>"; };
 		47D88E691E793347001B88D0 /* EKSplashViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKSplashViewController.h; sourceTree = "<group>"; };
@@ -308,6 +311,8 @@
 			children = (
 				47AF51B01E9B6897005FE6EB /* EKSalonListTableViewCell.h */,
 				47AF51B11E9B6897005FE6EB /* EKSalonListTableViewCell.m */,
+				47AF51B51E9B765D005FE6EB /* EKSalonListCollectionViewCell.h */,
+				47AF51B61E9B765D005FE6EB /* EKSalonListCollectionViewCell.m */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -466,6 +471,7 @@
 				478BDEF91E99C5FC00F74A5C /* Service.m in Sources */,
 				478278D11E7923D000FB2FD2 /* AppDelegate.m in Sources */,
 				47D88E6B1E793347001B88D0 /* EKSplashViewController.m in Sources */,
+				47AF51B71E9B765D005FE6EB /* EKSalonListCollectionViewCell.m in Sources */,
 				47AF51AF1E9B686F005FE6EB /* EKInCellCollectionView.m in Sources */,
 				478BDEF11E99B7D700F74A5C /* EKExploreViewController.m in Sources */,
 				478BDEF51E99C20900F74A5C /* EKExploreCollectionViewCell.m in Sources */,
