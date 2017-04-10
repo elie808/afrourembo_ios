@@ -269,6 +269,12 @@
                                                                 <constraint firstItem="0Fs-F8-qmf" firstAttribute="top" secondItem="EXL-gO-I2V" secondAttribute="top" id="Ozj-9l-AyW"/>
                                                                 <constraint firstAttribute="trailing" secondItem="0Fs-F8-qmf" secondAttribute="trailing" id="POk-Ta-CGI"/>
                                                             </constraints>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                    <integer key="value" value="2"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                                <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                                            </userDefinedRuntimeAttributes>
                                                             <connections>
                                                                 <outlet property="cellTextLabel" destination="0Fs-F8-qmf" id="ETS-Nz-Xwr"/>
                                                             </connections>
