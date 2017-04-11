@@ -21,7 +21,6 @@
 
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) NSArray *dataSourceArray;
-@property (strong, nonatomic) NSArray *collectionDataSourceArray;
 @property (strong, nonatomic) NSMutableDictionary *contentOffsetDictionary; // used to keep track of collectionViews scrolling positions/offsets
 
 @end

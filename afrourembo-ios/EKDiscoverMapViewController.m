@@ -17,11 +17,11 @@
  
     self.contentOffsetDictionary = [NSMutableDictionary new];
     self.dataSourceArray = [self createStubs];
-    self.collectionDataSourceArray = @[@"", @"", @"", @"", @"", @"", @"", @"", @"", @""];
-    
-    self.navigationItem.titleView = self.searchBar;
     
     self.venueCoordinates = CLLocationCoordinate2DMake(33.888630, 35.495480);
+    
+    
+    self.navigationItem.titleView = self.searchBar;
     
     [self placeVenuePin];
 }
