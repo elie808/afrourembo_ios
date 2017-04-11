@@ -10,20 +10,47 @@
 #import "EKDiscoverMapViewController+MapDelegate.h"
 #import "EKDiscoverMapViewController+TableView.h"
 
-@implementation EKDiscoverMapViewController
+@implementation EKDiscoverMapViewController {
+    BOOL _listViewVisible; // keep track if tableView is visible or not. Animate toggleButton accordingly
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
  
-    self.contentOffsetDictionary = [NSMutableDictionary new];
-    self.dataSourceArray = [self createStubs];
+    [self initLayout];
     
-    self.venueCoordinates = CLLocationCoordinate2DMake(33.888630, 35.495480);
-    
-    
-    self.navigationItem.titleView = self.searchBar;
+    [self initDataSources];
     
     [self placeVenuePin];
+}
+
+#pragma mark - Actions
+
+- (IBAction)didTapPresentListButton:(UIButton *)sender {
+    
+    CGRect visibleListFrame = CGRectMake(self.mapView.frame.origin.x, self.mapView.frame.origin.y,
+                                      self.mapView.frame.size.width, self.mapView.frame.size.height);
+    
+    CGRect hiddenListFrame = CGRectMake(self.mapView.frame.origin.x, self.mapView.frame.size.height,
+                                      self.mapView.frame.size.width, self.mapView.frame.size.height);
+    
+    [UIView animateWithDuration:0.6
+                          delay:0.0
+         usingSpringWithDamping:0.6
+          initialSpringVelocity:0.5
+                        options:UIViewAnimationOptionCurveLinear
+                     animations:^{
+                         
+                         self.tableView.frame = _listViewVisible ? hiddenListFrame : visibleListFrame;
+                     }
+                     completion:^(BOOL finished) {
+                         
+                         _listViewVisible = !_listViewVisible;
+                         
+                         _listViewVisible ?
+                         [self.toggleButton setImage:[UIImage imageNamed:@"icXListView"] forState:UIControlStateNormal] :
+                         [self.toggleButton setImage:[UIImage imageNamed:@"icListView"] forState:UIControlStateNormal];
+                     }];
 }
 
 /*
@@ -37,6 +64,31 @@
 */
 
 #pragma mark - Helpers
+
+- (void)initDataSources {
+    
+    self.contentOffsetDictionary = [NSMutableDictionary new];
+    self.dataSourceArray = [self createStubs];
+    self.venueCoordinates = CLLocationCoordinate2DMake(33.888630, 35.495480);
+}
+
+- (void)initLayout {
+    
+    _listViewVisible = NO;
+    
+    self.toggleButton.layer.shadowColor = [UIColor blackColor].CGColor;
+    self.toggleButton.layer.shadowOpacity = 0.3;
+    self.toggleButton.layer.shadowRadius = 1;
+    self.toggleButton.layer.shadowOffset = CGSizeMake(0, 3.5f);
+    
+    self.navigationItem.titleView = self.searchBar;
+    
+    // to ensure the toggleButton is always visible as the topmost view (could use layer.zPosition = MAXFLOAT as an alternative)
+    [self.view insertSubview:self.tableView belowSubview:self.toggleButton];
+    
+    self.tableView.frame = CGRectMake(self.mapView.frame.origin.x, self.mapView.frame.size.height,
+                                      self.mapView.frame.size.width, self.mapView.frame.size.height);
+}
 
 //TODO: REMOVE AFTER TESTING
 - (NSArray *)createStubs {
