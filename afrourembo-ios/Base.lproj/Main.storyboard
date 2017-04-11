@@ -251,7 +251,7 @@
                                                     </collectionViewFlowLayout>
                                                     <cells>
                                                         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="yellowSalonListInCellCollectionViewCell" id="EXL-gO-I2V" customClass="EKSalonListCollectionViewCell">
-                                                            <rect key="frame" x="0.0" y="7.5" width="66" height="35"/>
+                                                            <rect key="frame" x="0.0" y="8" width="66" height="35"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                                                 <rect key="frame" x="0.0" y="0.0" width="66" height="35"/>
@@ -283,7 +283,7 @@
                                                             </connections>
                                                         </collectionViewCell>
                                                         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="whiteSalonListInCellCollectionViewCell" id="iDC-pZ-1La" customClass="EKSalonListCollectionViewCell">
-                                                            <rect key="frame" x="76" y="7.5" width="66" height="35"/>
+                                                            <rect key="frame" x="76" y="8" width="66" height="35"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                                                 <rect key="frame" x="0.0" y="0.0" width="66" height="35"/>
@@ -485,7 +485,7 @@
             <objects>
                 <navigationController storyboardIdentifier="exploreVC" automaticallyAdjustsScrollViewInsets="NO" id="8Yi-lV-eOl" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="iF0-Uh-jpZ">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="iF0-Uh-jpZ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="1" green="0.76470588240000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

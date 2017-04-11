@@ -7,12 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
-
 #import <MapKit/MapKit.h>
 
-@interface EKDiscoverMapViewController : UIViewController <UISearchControllerDelegate, UISearchResultsUpdating, UISearchBarDelegate>
+@interface EKDiscoverMapViewController : UIViewController <UISearchControllerDelegate, UISearchBarDelegate, MKMapViewDelegate>
 
 @property (strong, nonatomic) IBOutlet UISearchBar *searchBar;
 @property (strong, nonatomic) IBOutlet MKMapView *mapView;
+
+@property (assign, nonatomic) CLLocationCoordinate2D venueCoordinates;
 
 @end

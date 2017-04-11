@@ -7,6 +7,7 @@
 //
 
 #import "EKDiscoverMapViewController.h"
+#import "EKDiscoverMapViewController+MapDelegate.h"
 
 @implementation EKDiscoverMapViewController
 
@@ -14,6 +15,10 @@
     [super viewDidLoad];
  
     self.navigationItem.titleView = self.searchBar;
+    
+    self.venueCoordinates = CLLocationCoordinate2DMake(33.888630, 35.495480);
+    
+    [self placeVenuePin];
 }
 
 /*
