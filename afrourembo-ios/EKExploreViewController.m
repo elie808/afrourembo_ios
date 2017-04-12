@@ -40,6 +40,26 @@ static NSString * const kSideMenuSegue = @"exploreVcToSideMenuVC";
     return @[service1, service2, service3, service1, service2, service3, service1, service2, service3];
 }
 
+#pragma mark - UICollectionViewLayout
+
+- (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
+    
+    return UIEdgeInsetsMake(1, 2, 1, 2);
+}
+
+- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(nonnull UICollectionViewLayout *)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section {
+    
+    return 1.0;
+}
+
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
+    
+    CGFloat cellWidth = (collectionView.bounds.size.width - 8) / 2 ;
+    CGFloat cellHeight = cellWidth * 0.75;
+    
+    return CGSizeMake(cellWidth, cellHeight);
+}
+
 #pragma mark - UICollectionViewDataSource
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
