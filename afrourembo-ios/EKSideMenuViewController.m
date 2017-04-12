@@ -18,7 +18,7 @@ static NSString * const kUnwindSegue = @"sideMenuToExploreVC";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.backgroundView.alpha = 0;
+//    self.backgroundView.alpha = 0;
     
 //    _dataSourceArray = @[ @{@"icExploreActive"  : @"Explore"},
 //                          @{@"icCartActive"     : @"Cart"},
@@ -33,19 +33,27 @@ static NSString * const kUnwindSegue = @"sideMenuToExploreVC";
                           @{@"icGiftNormal"     : @"Gifts"},
                           @{@"icSettingsNormal" : @"Settings"}
                           ];
+    
+    // add drop shadow
+    self.tableView.clipsToBounds = NO;
+    self.tableView.layer.masksToBounds = NO;
+    [self.tableView.layer setShadowColor:[[UIColor blackColor] CGColor]];
+    [self.tableView.layer setShadowOffset:CGSizeMake(-10, 10)];
+    [self.tableView.layer setShadowRadius:10.0];
+    [self.tableView.layer setShadowOpacity:0.6];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     
     // Animate to a dark backgroundView after the view has entered the window
-    [UIView animateWithDuration:kLeftPushAnimationDuration
-                          delay:kLeftPushAnimationDuration
-                        options:UIViewAnimationOptionCurveLinear
-                     animations:^{
-                         self.backgroundView.alpha = 0.6;
-                     }
-                     completion:nil];
+//    [UIView animateWithDuration:kLeftPushAnimationDuration
+//                          delay:kLeftPushAnimationDuration
+//                        options:UIViewAnimationOptionCurveLinear
+//                     animations:^{
+//                         self.backgroundView.alpha = 0.6;
+//                     }
+//                     completion:nil];
 }
 
 #pragma mark - UITableViewDataSource
