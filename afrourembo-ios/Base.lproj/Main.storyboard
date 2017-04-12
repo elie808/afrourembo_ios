@@ -39,6 +39,9 @@
                                             <rect key="frame" x="0.0" y="0.0" width="170" height="130"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="yIA-jU-Thm">
+                                                    <rect key="frame" x="0.0" y="0.0" width="170" height="130"/>
+                                                </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="bottomLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BEST WEAVING &amp; EXTENSIONS" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SsU-nk-HJs">
                                                     <rect key="frame" x="8" y="78" width="154" height="44"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -49,11 +52,16 @@
                                         </view>
                                         <constraints>
                                             <constraint firstItem="SsU-nk-HJs" firstAttribute="leading" secondItem="nqO-Op-auX" secondAttribute="leadingMargin" id="92q-n0-wib"/>
+                                            <constraint firstItem="yIA-jU-Thm" firstAttribute="top" secondItem="nqO-Op-auX" secondAttribute="top" id="Eoo-wv-bGE"/>
+                                            <constraint firstItem="yIA-jU-Thm" firstAttribute="leading" secondItem="nqO-Op-auX" secondAttribute="leading" id="Pn2-IU-7JX"/>
                                             <constraint firstItem="SsU-nk-HJs" firstAttribute="top" secondItem="nqO-Op-auX" secondAttribute="topMargin" constant="70" id="Vps-87-lb4"/>
+                                            <constraint firstAttribute="bottom" secondItem="yIA-jU-Thm" secondAttribute="bottom" id="XT6-YX-J3M"/>
+                                            <constraint firstAttribute="trailing" secondItem="yIA-jU-Thm" secondAttribute="trailing" id="iC0-q1-snl"/>
                                             <constraint firstItem="SsU-nk-HJs" firstAttribute="bottom" secondItem="nqO-Op-auX" secondAttribute="bottomMargin" id="jh8-G1-fni"/>
                                             <constraint firstItem="SsU-nk-HJs" firstAttribute="trailing" secondItem="nqO-Op-auX" secondAttribute="trailingMargin" id="m6B-au-bgw"/>
                                         </constraints>
                                         <connections>
+                                            <outlet property="cellImageView" destination="yIA-jU-Thm" id="ye1-ir-gMc"/>
                                             <outlet property="cellTitleLabel" destination="SsU-nk-HJs" id="sbp-n6-l45"/>
                                         </connections>
                                     </collectionViewCell>

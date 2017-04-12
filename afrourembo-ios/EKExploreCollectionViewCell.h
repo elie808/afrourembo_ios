@@ -10,6 +10,7 @@
 
 @interface EKExploreCollectionViewCell : UICollectionViewCell
 
+@property (strong, nonatomic) IBOutlet UIImageView *cellImageView;
 @property (strong, nonatomic) IBOutlet UILabel *cellTitleLabel;
 
 @end

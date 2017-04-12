@@ -27,17 +27,21 @@ static NSString * const kSideMenuSegue = @"exploreVcToSideMenuVC";
     
     Service *service1 = [Service new];
     service1.serviceTitle = @"NATURAL HAIR";
-    service1.serviceImage = @"";
+    service1.serviceImage = @"dummy_portrait1";
     
     Service *service2 = [Service new];
     service2.serviceTitle = @"BEST WEAVING & EXTENSIONS";
-    service2.serviceImage = @"";
+    service2.serviceImage = @"dummy_portrait2";
     
     Service *service3 = [Service new];
     service3.serviceTitle = @"TRENDING BARBERS";
-    service3.serviceImage = @"";
+    service3.serviceImage = @"dummy_portrait3";
     
-    return @[service1, service2, service3, service1, service2, service3, service1, service2, service3];
+    Service *service4 = [Service new];
+    service4.serviceTitle = @"SPECIAL OCCASIONS PROS";
+    service4.serviceImage = @"dummy_portrait4";
+    
+    return @[service1, service2, service3, service4, service1, service2, service3, service4, service1, service2, service3, service4];
 }
 
 #pragma mark - UICollectionViewLayout
@@ -72,10 +76,11 @@ static NSString * const kSideMenuSegue = @"exploreVcToSideMenuVC";
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     
-    EKExploreCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kExploreCell forIndexPath:indexPath];
-    cell.backgroundColor = [UIColor darkGrayColor];
+    Service *service = [_dataSourceArray objectAtIndex:indexPath.row];
     
-//        cell.cellTitleLabel.text =
+    EKExploreCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kExploreCell forIndexPath:indexPath];
+    cell.cellTitleLabel.text = service.serviceTitle;
+    cell.cellImageView.image = [UIImage imageNamed:service.serviceImage];
 
     return cell;
 }
@@ -85,7 +90,6 @@ static NSString * const kSideMenuSegue = @"exploreVcToSideMenuVC";
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
 
 }
-
 
 #pragma mark - Navigation
 
