@@ -9,7 +9,7 @@
 #import "AppDelegate.h"
 
 static NSString * const kWelcomeStoryboard = @"Welcome";
-static NSString * const kSplashVC = @"splashVC";
+static NSString * const kMainStoryboard = @"Main";
 
 @interface AppDelegate ()
 
@@ -24,6 +24,10 @@ static NSString * const kSplashVC = @"splashVC";
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:kWelcomeStoryboard bundle:nil];
     UINavigationController *rootViewController = [storyboard instantiateViewControllerWithIdentifier:kSplashVC];
     self.window.rootViewController = rootViewController;
+
+//    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:kMainStoryboard bundle:nil];
+//    UINavigationController *rootViewController = [storyboard instantiateViewControllerWithIdentifier:kExploreVC];
+//    self.window.rootViewController = rootViewController;
     
     return YES;
 }

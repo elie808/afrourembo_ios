@@ -7,9 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "EKTextFieldTableViewCell.h"
 
 @interface EKSignInViewController : UIViewController
 
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
+
+- (IBAction)didTapSignInButton:(id)sender;
 
 @end

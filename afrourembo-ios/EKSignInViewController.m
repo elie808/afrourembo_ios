@@ -9,6 +9,7 @@
 #import "EKSignInViewController.h"
 
 static NSString * const kSigninCell = @"signinCell";
+static NSString * const kExploreSegue = @"signInToExploreVC";
 
 @interface EKSignInViewController() {
     NSArray *_dataSourceArray;
@@ -36,9 +37,11 @@ static NSString * const kSigninCell = @"signinCell";
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kSigninCell forIndexPath:indexPath];
+    EKTextFieldTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kSigninCell forIndexPath:indexPath];
 
-    cell.textLabel.text = _dataSourceArray[indexPath.row];
+//    cell.textLabel.text = _dataSourceArray[indexPath.row];
+    cell.cellTitleLabel.text = _dataSourceArray[indexPath.row];;
+    cell.cellTextField.placeholder = @"address@mail";
     
     return cell;
 }
@@ -49,6 +52,12 @@ static NSString * const kSigninCell = @"signinCell";
 
 }
 
+#pragma mark - Actions
+
+- (IBAction)didTapSignInButton:(id)sender {
+    
+    [self performSegueWithIdentifier:kExploreSegue sender:nil];
+}
 
 /*
 #pragma mark - Navigation
