@@ -10,6 +10,8 @@
 #import "EKCompanyServiceTableViewCell.h"
 #import "EKCompanyReviewTableViewCell.h"
 
+#import "EKCompanyContactTableViewCell.h"
+
 @interface EKCompanyProfileViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 
 @property (strong, nonatomic) IBOutlet UITableView *tableView;

@@ -71,7 +71,7 @@ static NSString * const kContactsCell       = @"companyContactsCell";
             
         case 3: { // Contacts
             
-            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kContactsCell forIndexPath:indexPath];
+            EKCompanyContactTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kContactsCell forIndexPath:indexPath];
             
             return cell;
             
@@ -102,6 +102,16 @@ static NSString * const kContactsCell       = @"companyContactsCell";
             
         default: return 44.0; break;
     }
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    
+    return @"SECTION";
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    
+    return 82.0;
 }
 
 #pragma mark - UITableViewDelegate

@@ -502,6 +502,11 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="eqU-Vo-25N">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <view key="tableFooterView" contentMode="scaleToFill" id="0GJ-7f-p0R">
+                                    <rect key="frame" x="0.0" y="451" width="375" height="44"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <color key="backgroundColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </view>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="companyServicesCell" rowHeight="83" id="gBY-cw-kgc" customClass="EKCompanyServiceTableViewCell">
                                         <rect key="frame" x="0.0" y="28" width="375" height="83"/>
@@ -672,7 +677,7 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="1" green="0.33725490200000002" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="companyContactsCell" rowHeight="72" id="OKy-LV-Elw">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="companyContactsCell" rowHeight="72" id="OKy-LV-Elw" customClass="EKCompanyContactTableViewCell">
                                         <rect key="frame" x="0.0" y="379" width="375" height="72"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="OKy-LV-Elw" id="4fn-sU-FFd">
@@ -712,6 +717,10 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <connections>
+                                            <outlet property="cellContactTypeLabel" destination="gyA-Lw-1Ky" id="o52-9n-cHv"/>
+                                            <outlet property="cellContactValueLabel" destination="TQ1-CJ-qTA" id="6uP-HZ-eAT"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
