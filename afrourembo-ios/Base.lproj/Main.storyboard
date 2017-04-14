@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C63a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="8Yi-lV-eOl">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16C63a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="8Yi-lV-eOl">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -137,7 +137,7 @@
                                         <rect key="frame" x="0.0" y="28" width="320" height="52"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="m87-sc-eJn" id="zQV-Dj-BiU">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="52"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="51.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3Uy-dO-RY9">
@@ -238,7 +238,7 @@
                                 </connections>
                             </mapView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jN8-kN-Fac">
-                                <rect key="frame" x="159" y="524" width="56" height="56"/>
+                                <rect key="frame" x="160" y="524" width="56" height="56"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="56" id="9cH-M3-Tzd"/>
@@ -260,12 +260,12 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="ovS-qw-uBP" firstAttribute="top" secondItem="LFw-Ad-vrJ" secondAttribute="bottom" id="LKc-ab-nJt"/>
+                            <constraint firstItem="ovS-qw-uBP" firstAttribute="top" secondItem="LFw-Ad-vrJ" secondAttribute="bottom" id="BvP-VP-cRs"/>
+                            <constraint firstItem="ovS-qw-uBP" firstAttribute="leading" secondItem="6HU-cE-APG" secondAttribute="leading" id="Lr4-oR-ajX"/>
                             <constraint firstItem="IJr-V1-3Vc" firstAttribute="top" secondItem="jN8-kN-Fac" secondAttribute="bottom" constant="23" id="PJK-Sd-wSY"/>
-                            <constraint firstItem="jN8-kN-Fac" firstAttribute="centerX" secondItem="ovS-qw-uBP" secondAttribute="centerX" id="Yoi-vq-gNS"/>
-                            <constraint firstItem="ovS-qw-uBP" firstAttribute="bottom" secondItem="IJr-V1-3Vc" secondAttribute="top" id="jCZ-ed-U5P"/>
-                            <constraint firstAttribute="trailing" secondItem="ovS-qw-uBP" secondAttribute="trailing" id="nQL-gM-x79"/>
-                            <constraint firstItem="ovS-qw-uBP" firstAttribute="leading" secondItem="6HU-cE-APG" secondAttribute="leading" id="rpJ-hO-tCr"/>
+                            <constraint firstAttribute="trailing" secondItem="ovS-qw-uBP" secondAttribute="trailing" id="V2U-vO-Rqn"/>
+                            <constraint firstItem="jN8-kN-Fac" firstAttribute="centerX" secondItem="ovS-qw-uBP" secondAttribute="centerX" id="ldl-FH-Uoi"/>
+                            <constraint firstItem="IJr-V1-3Vc" firstAttribute="top" secondItem="ovS-qw-uBP" secondAttribute="bottom" id="uGs-my-BgY"/>
                         </constraints>
                     </view>
                     <connections>
