@@ -106,12 +106,31 @@ static NSString * const kContactsCell       = @"companyContactsCell";
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
     
-    return @"SECTION";
+    switch (section) {
+            
+        case 0: return @"SERVICES"; break; // Services
+            
+        case 1: return @"REVIEWS"; break; // Reviews
+            
+        case 2: return @"BEAUTY PROFESSIONALS"; break; // Professionals
+            
+        case 3: return @"CONTACT INFO"; break; // Contacts
+            
+        default: return @""; break;
+    }
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+- (void)tableView:(UITableView *)tableView willDisplayHeaderView:(UIView *)view forSection:(NSInteger)section {
     
-    return 82.0;
+    UITableViewHeaderFooterView *header = (UITableViewHeaderFooterView *)view;
+    
+    header.textLabel.font = [UIFont boldSystemFontOfSize:22.];
+    
+    if (section == 3) {
+        
+        header.backgroundColor = [UIColor darkGrayColor];
+        header.textLabel.textColor = [UIColor whiteColor];
+    }
 }
 
 #pragma mark - UITableViewDelegate
