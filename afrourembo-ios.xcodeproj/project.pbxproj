@@ -25,6 +25,8 @@
 		478BDF031E99D81F00F74A5C /* EKLeftPushSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 478BDF001E99D81E00F74A5C /* EKLeftPushSegue.m */; };
 		478BDF041E99D81F00F74A5C /* EKLeftPushUnwindSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 478BDF021E99D81E00F74A5C /* EKLeftPushUnwindSegue.m */; };
 		47919E5A1E795664001C5600 /* EKOnboardingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47919E591E795664001C5600 /* EKOnboardingViewController.m */; };
+		479AB2681EA0B9E300A74659 /* EKCompanyProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 479AB2671EA0B9E300A74659 /* EKCompanyProfileViewController.m */; };
+		479AB26C1EA0CC0000A74659 /* EKCompanyServiceTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 479AB26B1EA0CC0000A74659 /* EKCompanyServiceTableViewCell.m */; };
 		47A3BB881E7A8C0B00963F27 /* EKRoleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47A3BB871E7A8C0B00963F27 /* EKRoleViewController.m */; };
 		47A3BB8C1E7A9F3500963F27 /* EKSignInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47A3BB8B1E7A9F3500963F27 /* EKSignInViewController.m */; };
 		47AF51AF1E9B686F005FE6EB /* EKInCellCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 47AF51AE1E9B686F005FE6EB /* EKInCellCollectionView.m */; };
@@ -76,6 +78,10 @@
 		478BDF061E99D85500F74A5C /* EKConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKConstants.h; sourceTree = "<group>"; };
 		47919E581E795664001C5600 /* EKOnboardingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKOnboardingViewController.h; sourceTree = "<group>"; };
 		47919E591E795664001C5600 /* EKOnboardingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKOnboardingViewController.m; sourceTree = "<group>"; };
+		479AB2661EA0B9E300A74659 /* EKCompanyProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKCompanyProfileViewController.h; sourceTree = "<group>"; };
+		479AB2671EA0B9E300A74659 /* EKCompanyProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKCompanyProfileViewController.m; sourceTree = "<group>"; };
+		479AB26A1EA0CC0000A74659 /* EKCompanyServiceTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKCompanyServiceTableViewCell.h; sourceTree = "<group>"; };
+		479AB26B1EA0CC0000A74659 /* EKCompanyServiceTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKCompanyServiceTableViewCell.m; sourceTree = "<group>"; };
 		47A3BB861E7A8C0B00963F27 /* EKRoleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKRoleViewController.h; sourceTree = "<group>"; };
 		47A3BB871E7A8C0B00963F27 /* EKRoleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKRoleViewController.m; sourceTree = "<group>"; };
 		47A3BB8A1E7A9F3500963F27 /* EKSignInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKSignInViewController.h; sourceTree = "<group>"; };
@@ -252,6 +258,25 @@
 			name = Utilities;
 			sourceTree = "<group>";
 		};
+		479AB2691EA0B9EE00A74659 /* Company Profile */ = {
+			isa = PBXGroup;
+			children = (
+				479AB2661EA0B9E300A74659 /* EKCompanyProfileViewController.h */,
+				479AB2671EA0B9E300A74659 /* EKCompanyProfileViewController.m */,
+				479AB26D1EA0CC0400A74659 /* Cells */,
+			);
+			name = "Company Profile";
+			sourceTree = "<group>";
+		};
+		479AB26D1EA0CC0400A74659 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				479AB26A1EA0CC0000A74659 /* EKCompanyServiceTableViewCell.h */,
+				479AB26B1EA0CC0000A74659 /* EKCompanyServiceTableViewCell.m */,
+			);
+			name = Cells;
+			sourceTree = "<group>";
+		};
 		47A3BB821E7A8BA200963F27 /* Onboarding ViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -290,6 +315,7 @@
 				478BDEF21E99B7DD00F74A5C /* Explore ViewController */,
 				478BDEFE1E99D36500F74A5C /* Side Menu */,
 				47AF51BE1E9C4013005FE6EB /* Discover Map ViewController */,
+				479AB2691EA0B9EE00A74659 /* Company Profile */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -507,11 +533,13 @@
 				478278D11E7923D000FB2FD2 /* AppDelegate.m in Sources */,
 				47D88E6B1E793347001B88D0 /* EKSplashViewController.m in Sources */,
 				47AF51B71E9B765D005FE6EB /* EKSalonListCollectionViewCell.m in Sources */,
+				479AB26C1EA0CC0000A74659 /* EKCompanyServiceTableViewCell.m in Sources */,
 				474ED7BC1E9C68940099CA0A /* EKDiscoverMapViewController+MapDelegate.m in Sources */,
 				47AF51AF1E9B686F005FE6EB /* EKInCellCollectionView.m in Sources */,
 				478BDEF11E99B7D700F74A5C /* EKExploreViewController.m in Sources */,
 				478BDEF51E99C20900F74A5C /* EKExploreCollectionViewCell.m in Sources */,
 				47A3BB8C1E7A9F3500963F27 /* EKSignInViewController.m in Sources */,
+				479AB2681EA0B9E300A74659 /* EKCompanyProfileViewController.m in Sources */,
 				478BDF041E99D81F00F74A5C /* EKLeftPushUnwindSegue.m in Sources */,
 				47919E5A1E795664001C5600 /* EKOnboardingViewController.m in Sources */,
 				478278CE1E7923D000FB2FD2 /* main.m in Sources */,
