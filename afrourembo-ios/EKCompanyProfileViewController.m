@@ -31,11 +31,11 @@ static NSString * const kContactsCell       = @"companyContactsCell";
             
         case 0: return 3; break; // Services
             
-        case 1: return 1; break; // Reviews
+        case 1: return 2; break; // Reviews
             
         case 2: return 1; break; // Professionals
             
-        case 3: return 1; break; // Contacts
+        case 3: return 3; break; // Contacts
             
         default: return 0; break;
     }
@@ -55,7 +55,7 @@ static NSString * const kContactsCell       = @"companyContactsCell";
         
         case 1: { // Reviews
             
-            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kReviewsCell forIndexPath:indexPath];
+            EKCompanyReviewTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kReviewsCell forIndexPath:indexPath];
             
             return cell;
             
@@ -85,17 +85,20 @@ static NSString * const kContactsCell       = @"companyContactsCell";
     
     switch (indexPath.section) {
             
-        case 0: { // Services
+        // Services
+        case 0: return 82.0; break;
             
-            return 82.0;
+        // Reviews
+        case 1: {
+            
+            if (indexPath.row == 0) return 350;
+            
+            return 220.0;
             
         } break;
             
-        case 1: { // Reviews
-            
-            return 44.0;
-            
-        } break;
+        // Services
+        case 3: return 72.0; break;
             
         default: return 44.0; break;
     }

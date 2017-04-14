@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "EKCompanyServiceTableViewCell.h"
+#import "EKCompanyReviewTableViewCell.h"
 
 @interface EKCompanyProfileViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 
