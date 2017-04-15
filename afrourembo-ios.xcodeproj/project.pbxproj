@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		470CD7461EA10B920086DEE4 /* EKCompanyReviewTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 470CD7451EA10B920086DEE4 /* EKCompanyReviewTableViewCell.m */; };
 		470CD7491EA11AD40086DEE4 /* EKCompanyContactTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 470CD7481EA11AD40086DEE4 /* EKCompanyContactTableViewCell.m */; };
+		470CD74C1EA1C6C00086DEE4 /* EKCompanyProfessionalTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 470CD74B1EA1C6C00086DEE4 /* EKCompanyProfessionalTableViewCell.m */; };
+		470CD74F1EA1C87D0086DEE4 /* EKCompanyProfileViewController+TableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 470CD74E1EA1C87D0086DEE4 /* EKCompanyProfileViewController+TableView.m */; };
+		470CD7531EA1CB930086DEE4 /* EKCompanyProfessionalCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 470CD7521EA1CB930086DEE4 /* EKCompanyProfessionalCollectionViewCell.m */; };
 		474BD5701E97F721009410C4 /* EKNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 474BD56F1E97F721009410C4 /* EKNavigationViewController.m */; };
 		474BD5731E97F8F3009410C4 /* EKTextFieldTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 474BD5721E97F8F3009410C4 /* EKTextFieldTableViewCell.m */; };
 		474ED7B91E9C471F0099CA0A /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 474ED7B81E9C471F0099CA0A /* MapKit.framework */; };
@@ -50,6 +53,12 @@
 		470CD7451EA10B920086DEE4 /* EKCompanyReviewTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKCompanyReviewTableViewCell.m; sourceTree = "<group>"; };
 		470CD7471EA11AD40086DEE4 /* EKCompanyContactTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKCompanyContactTableViewCell.h; sourceTree = "<group>"; };
 		470CD7481EA11AD40086DEE4 /* EKCompanyContactTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKCompanyContactTableViewCell.m; sourceTree = "<group>"; };
+		470CD74A1EA1C6C00086DEE4 /* EKCompanyProfessionalTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKCompanyProfessionalTableViewCell.h; sourceTree = "<group>"; };
+		470CD74B1EA1C6C00086DEE4 /* EKCompanyProfessionalTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKCompanyProfessionalTableViewCell.m; sourceTree = "<group>"; };
+		470CD74D1EA1C87D0086DEE4 /* EKCompanyProfileViewController+TableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "EKCompanyProfileViewController+TableView.h"; sourceTree = "<group>"; };
+		470CD74E1EA1C87D0086DEE4 /* EKCompanyProfileViewController+TableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "EKCompanyProfileViewController+TableView.m"; sourceTree = "<group>"; };
+		470CD7511EA1CB930086DEE4 /* EKCompanyProfessionalCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKCompanyProfessionalCollectionViewCell.h; sourceTree = "<group>"; };
+		470CD7521EA1CB930086DEE4 /* EKCompanyProfessionalCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKCompanyProfessionalCollectionViewCell.m; sourceTree = "<group>"; };
 		474BD56E1E97F721009410C4 /* EKNavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKNavigationViewController.h; sourceTree = "<group>"; };
 		474BD56F1E97F721009410C4 /* EKNavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKNavigationViewController.m; sourceTree = "<group>"; };
 		474BD5711E97F8F3009410C4 /* EKTextFieldTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKTextFieldTableViewCell.h; sourceTree = "<group>"; };
@@ -134,6 +143,15 @@
 				572155C7C18553B923C74DE5 /* libPods-afrourembo-ios.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		470CD7501EA1C8B80086DEE4 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				470CD74D1EA1C87D0086DEE4 /* EKCompanyProfileViewController+TableView.h */,
+				470CD74E1EA1C87D0086DEE4 /* EKCompanyProfileViewController+TableView.m */,
+			);
+			name = Categories;
 			sourceTree = "<group>";
 		};
 		474ED7BD1E9C689A0099CA0A /* Categories */ = {
@@ -269,6 +287,7 @@
 			children = (
 				479AB2661EA0B9E300A74659 /* EKCompanyProfileViewController.h */,
 				479AB2671EA0B9E300A74659 /* EKCompanyProfileViewController.m */,
+				470CD7501EA1C8B80086DEE4 /* Categories */,
 				479AB26D1EA0CC0400A74659 /* Cells */,
 			);
 			name = "Company Profile";
@@ -281,8 +300,12 @@
 				479AB26B1EA0CC0000A74659 /* EKCompanyServiceTableViewCell.m */,
 				470CD7441EA10B920086DEE4 /* EKCompanyReviewTableViewCell.h */,
 				470CD7451EA10B920086DEE4 /* EKCompanyReviewTableViewCell.m */,
+				470CD74A1EA1C6C00086DEE4 /* EKCompanyProfessionalTableViewCell.h */,
+				470CD74B1EA1C6C00086DEE4 /* EKCompanyProfessionalTableViewCell.m */,
 				470CD7471EA11AD40086DEE4 /* EKCompanyContactTableViewCell.h */,
 				470CD7481EA11AD40086DEE4 /* EKCompanyContactTableViewCell.m */,
+				470CD7511EA1CB930086DEE4 /* EKCompanyProfessionalCollectionViewCell.h */,
+				470CD7521EA1CB930086DEE4 /* EKCompanyProfessionalCollectionViewCell.m */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -534,9 +557,11 @@
 				478BDEEE1E99A25E00F74A5C /* EKImageTextButton.m in Sources */,
 				474ED7C01E9C6BD90099CA0A /* EKDiscoverMapViewController+TableView.m in Sources */,
 				47A3BB881E7A8C0B00963F27 /* EKRoleViewController.m in Sources */,
+				470CD74C1EA1C6C00086DEE4 /* EKCompanyProfessionalTableViewCell.m in Sources */,
 				478BDEFD1E99D36000F74A5C /* EKSideMenuViewController.m in Sources */,
 				47FFF9751E99E81F008B6A31 /* EKImageTextTableViewCell.m in Sources */,
 				474BD5731E97F8F3009410C4 /* EKTextFieldTableViewCell.m in Sources */,
+				470CD74F1EA1C87D0086DEE4 /* EKCompanyProfileViewController+TableView.m in Sources */,
 				47AF51BA1E9B8561005FE6EB /* Salon.m in Sources */,
 				478BDF031E99D81F00F74A5C /* EKLeftPushSegue.m in Sources */,
 				47AF51BD1E9C4001005FE6EB /* EKDiscoverMapViewController.m in Sources */,
@@ -558,6 +583,7 @@
 				47AF51B21E9B6897005FE6EB /* EKSalonListTableViewCell.m in Sources */,
 				474BD5701E97F721009410C4 /* EKNavigationViewController.m in Sources */,
 				47D88E6E1E793893001B88D0 /* EKWelcomeViewController.m in Sources */,
+				470CD7531EA1CB930086DEE4 /* EKCompanyProfessionalCollectionViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

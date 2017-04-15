@@ -9,10 +9,13 @@
 #import <UIKit/UIKit.h>
 #import "EKCompanyServiceTableViewCell.h"
 #import "EKCompanyReviewTableViewCell.h"
-
+#import "EKCompanyProfessionalTableViewCell.h"
 #import "EKCompanyContactTableViewCell.h"
 
-@interface EKCompanyProfileViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
+#import "EKInCellCollectionView.h"
+#import "EKCompanyProfessionalCollectionViewCell.h"
+
+@interface EKCompanyProfileViewController : UIViewController
 
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 
