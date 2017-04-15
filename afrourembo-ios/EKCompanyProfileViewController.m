@@ -15,6 +15,19 @@
     [super viewDidLoad];
 }
 
+#pragma mark - Actions
+
+- (IBAction)didTapInstagramButton:(id)sender {
+    
+}
+
+- (IBAction)didTapFacebookButton:(id)sender {
+    
+}
+
+- (IBAction)didTapTwitterButton:(id)sender {
+    
+}
 
 #pragma mark - Navigation
 

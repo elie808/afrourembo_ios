@@ -89,9 +89,9 @@ static NSString * const kProfessionalsCollectionCell = @"companyProfessionalsCol
             // Reviews
         case 1: {
             
-            if (indexPath.row == 0) return 350;
+//            if (indexPath.row == 0) return 350;
             
-            return 220.0;
+            return 380.0;
             
         } break;
             

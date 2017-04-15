@@ -19,4 +19,8 @@
 
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 
+- (IBAction)didTapInstagramButton:(id)sender;
+- (IBAction)didTapFacebookButton:(id)sender;
+- (IBAction)didTapTwitterButton:(id)sender;
+
 @end
