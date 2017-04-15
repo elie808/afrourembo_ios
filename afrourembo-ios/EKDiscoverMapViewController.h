@@ -12,6 +12,8 @@
 #import "EKSalonListCollectionViewCell.h"
 #import "Salon.h"
 
+static NSString * const kCompanyProfile = @"discoverMapToCompanyProfileVC";
+
 @interface EKDiscoverMapViewController : UIViewController <UISearchControllerDelegate, UISearchBarDelegate, MKMapViewDelegate>
 
 @property (strong, nonatomic) IBOutlet UISearchBar *searchBar;

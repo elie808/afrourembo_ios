@@ -57,6 +57,7 @@ static NSString * const  kDayCollectionViewCell = @"whiteSalonListInCellCollecti
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
+    [self performSegueWithIdentifier:kCompanyProfile sender:nil];
 }
 
 #pragma mark - UICollectionViewDataSource
