@@ -103,10 +103,58 @@ static NSString * const kTimeCell = @"bookingTimeCell";
     }
 }
 
+#pragma mark - UIGestureRecognizerDelegate
+
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
+    
+    return YES;
+}
+
 #pragma mark - Navigation
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     
+}
+
+#pragma mark - Helpers
+
+- (void)initGestureRecognizer {
+    
+    UIPanGestureRecognizer *panRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(didSwipeCollecitonView:)];
+    panRecognizer.delegate = self;
+    [self.timeCollectionView addGestureRecognizer:panRecognizer];
+}
+
+- (IBAction)didSwipeCollecitonView:(UIPanGestureRecognizer *)gesture {
+    
+    NSLog(@"SWIPING");
+    
+    CGFloat swipeSensitivity = 20.0;
+    CGPoint translation = [gesture translationInView:self.timeCollectionView];
+    
+    if ( fabs(translation.x) > swipeSensitivity) {
+        
+        switch (gesture.state) {
+                
+            case UIGestureRecognizerStateBegan: {
+                
+            } break;
+                
+            case UIGestureRecognizerStateChanged: {
+                
+            } break;
+                
+            case (UIGestureRecognizerStateEnded): {
+                
+            } break;
+                
+            case UIGestureRecognizerStateCancelled:{
+                
+            } break;
+                
+            default: break;
+        }
+    }
 }
 
 @end

@@ -877,9 +877,9 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Ijo-ep-hjH">
-                                <rect key="frame" x="0.0" y="72" width="375" height="205"/>
+                                <rect key="frame" x="0.0" y="72" width="375" height="223"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="une-2o-m5m">
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="0.0" id="une-2o-m5m">
                                     <size key="itemSize" width="110" height="130"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -887,7 +887,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="bookingProfessionalCell" id="AO8-9D-Ydn" customClass="EKBookingProCollectionViewCell">
-                                        <rect key="frame" x="10" y="5.5" width="110" height="130"/>
+                                        <rect key="frame" x="10" y="14.5" width="110" height="130"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="110" height="130"/>
@@ -955,50 +955,6 @@
                                     <outlet property="delegate" destination="lyj-pg-PLO" id="Qdb-tl-kem"/>
                                 </connections>
                             </collectionView>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="oDu-xr-RGM">
-                                <rect key="frame" x="0.0" y="355" width="375" height="256"/>
-                                <color key="backgroundColor" red="1" green="0.76470588240000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <gestureRecognizers/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="5" minimumInteritemSpacing="5" id="taX-SK-1qR">
-                                    <size key="itemSize" width="80" height="48"/>
-                                    <size key="headerReferenceSize" width="8" height="8"/>
-                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="5" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                </collectionViewFlowLayout>
-                                <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="bookingTimeCell" id="z18-qM-vnt" customClass="EKBookingTimeCollectionViewCell">
-                                        <rect key="frame" x="5" y="8" width="80" height="48"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="80" height="48"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="11:30 AM" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f3w-eH-BBA">
-                                                    <rect key="frame" x="0.0" y="13" width="80" height="22"/>
-                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
-                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                        </view>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        <constraints>
-                                            <constraint firstItem="f3w-eH-BBA" firstAttribute="leading" secondItem="z18-qM-vnt" secondAttribute="leading" id="Xf4-la-Le7"/>
-                                            <constraint firstItem="f3w-eH-BBA" firstAttribute="top" secondItem="z18-qM-vnt" secondAttribute="top" constant="13" id="dH6-Yl-qsj"/>
-                                            <constraint firstAttribute="bottom" secondItem="f3w-eH-BBA" secondAttribute="bottom" constant="13" id="q1z-1E-EY7"/>
-                                            <constraint firstAttribute="trailing" secondItem="f3w-eH-BBA" secondAttribute="trailing" id="xpz-m9-VU4"/>
-                                        </constraints>
-                                    </collectionViewCell>
-                                </cells>
-                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="v6J-3p-u8K">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="8"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </collectionReusableView>
-                                <connections>
-                                    <outlet property="dataSource" destination="lyj-pg-PLO" id="tlc-K7-0Zz"/>
-                                    <outlet property="delegate" destination="lyj-pg-PLO" id="DnP-cy-deu"/>
-                                </connections>
-                            </collectionView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="BD3-fN-II5">
                                 <rect key="frame" x="0.0" y="295" width="375" height="60"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1049,6 +1005,50 @@
                                     <outlet property="delegate" destination="lyj-pg-PLO" id="rSP-na-1cr"/>
                                 </connections>
                             </collectionView>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="oDu-xr-RGM">
+                                <rect key="frame" x="0.0" y="355" width="375" height="256"/>
+                                <color key="backgroundColor" red="1" green="0.76470588240000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <gestureRecognizers/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="5" minimumInteritemSpacing="5" id="taX-SK-1qR">
+                                    <size key="itemSize" width="80" height="48"/>
+                                    <size key="headerReferenceSize" width="8" height="8"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="5" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="bookingTimeCell" id="z18-qM-vnt" customClass="EKBookingTimeCollectionViewCell">
+                                        <rect key="frame" x="5" y="8" width="80" height="48"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="80" height="48"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="11:30 AM" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f3w-eH-BBA">
+                                                    <rect key="frame" x="0.0" y="13" width="80" height="22"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </view>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstItem="f3w-eH-BBA" firstAttribute="leading" secondItem="z18-qM-vnt" secondAttribute="leading" id="Xf4-la-Le7"/>
+                                            <constraint firstItem="f3w-eH-BBA" firstAttribute="top" secondItem="z18-qM-vnt" secondAttribute="top" constant="13" id="dH6-Yl-qsj"/>
+                                            <constraint firstAttribute="bottom" secondItem="f3w-eH-BBA" secondAttribute="bottom" constant="13" id="q1z-1E-EY7"/>
+                                            <constraint firstAttribute="trailing" secondItem="f3w-eH-BBA" secondAttribute="trailing" id="xpz-m9-VU4"/>
+                                        </constraints>
+                                    </collectionViewCell>
+                                </cells>
+                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="v6J-3p-u8K">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="8"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </collectionReusableView>
+                                <connections>
+                                    <outlet property="dataSource" destination="lyj-pg-PLO" id="tlc-K7-0Zz"/>
+                                    <outlet property="delegate" destination="lyj-pg-PLO" id="DnP-cy-deu"/>
+                                </connections>
+                            </collectionView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="50I-BK-8wJ">
                                 <rect key="frame" x="0.0" y="619" width="375" height="48"/>
                                 <constraints>
@@ -1073,7 +1073,7 @@
                             <constraint firstItem="50I-BK-8wJ" firstAttribute="leading" secondItem="Z6g-ar-0oz" secondAttribute="leading" id="fcw-7C-2xq"/>
                             <constraint firstItem="Ijo-ep-hjH" firstAttribute="trailing" secondItem="BD3-fN-II5" secondAttribute="trailing" id="hTl-dK-hee"/>
                             <constraint firstItem="oDu-xr-RGM" firstAttribute="trailing" secondItem="50I-BK-8wJ" secondAttribute="trailing" id="ks8-Pf-HdY"/>
-                            <constraint firstItem="BD3-fN-II5" firstAttribute="top" secondItem="Ijo-ep-hjH" secondAttribute="bottom" constant="18" id="pG1-Uy-Jjo"/>
+                            <constraint firstItem="BD3-fN-II5" firstAttribute="top" secondItem="Ijo-ep-hjH" secondAttribute="bottom" id="pG1-Uy-Jjo"/>
                             <constraint firstItem="Ijo-ep-hjH" firstAttribute="leading" secondItem="BD3-fN-II5" secondAttribute="leading" id="q4Y-8l-MSh"/>
                             <constraint firstItem="oDu-xr-RGM" firstAttribute="top" secondItem="BD3-fN-II5" secondAttribute="bottom" id="uJh-wC-JRz"/>
                         </constraints>

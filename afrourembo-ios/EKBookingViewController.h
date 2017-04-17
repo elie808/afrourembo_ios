@@ -11,7 +11,7 @@
 #import "EKBookingDayCollectionViewCell.h"
 #import "EKBookingTimeCollectionViewCell.h"
 
-@interface EKBookingViewController : UIViewController <UICollectionViewDataSource, UICollectionViewDelegate>
+@interface EKBookingViewController : UIViewController <UICollectionViewDataSource, UICollectionViewDelegate, UIGestureRecognizerDelegate>
 
 @property (strong, nonatomic) IBOutlet UICollectionView *proCollectionView;
 @property (strong, nonatomic) IBOutlet UICollectionView *dayCollectionView;
