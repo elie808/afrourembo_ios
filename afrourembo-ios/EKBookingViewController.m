@@ -65,7 +65,7 @@ static NSString * const kTimeCell = @"bookingTimeCell";
     
     if (collectionView == self.dayCollectionView) {
      
-        UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kDayCell forIndexPath:indexPath];
+        EKBookingDayCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kDayCell forIndexPath:indexPath];
         
         return cell;
     }
@@ -90,6 +90,12 @@ static NSString * const kTimeCell = @"bookingTimeCell";
     
     if (collectionView == self.dayCollectionView) {
      
+        // ANIMATE CELL TO GROW
+        // Prepare for animation
+//        [collectionView.collectionViewLayout invalidateLayout];
+//        EKBookingDayCollectionViewCell *__weak cell = (EKBookingDayCollectionViewCell*)[collectionView cellForItemAtIndexPath:indexPath]; // Avoid retain cycles
+
+//        [cell animateCell];
     }
     
     if (collectionView == self.timeCollectionView) {

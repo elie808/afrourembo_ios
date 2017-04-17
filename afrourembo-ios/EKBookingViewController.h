@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "EKBookingProCollectionViewCell.h"
+#import "EKBookingDayCollectionViewCell.h"
 
 @interface EKBookingViewController : UIViewController <UICollectionViewDataSource, UICollectionViewDelegate>
 
