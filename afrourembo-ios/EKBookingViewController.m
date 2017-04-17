@@ -72,7 +72,7 @@ static NSString * const kTimeCell = @"bookingTimeCell";
     
     if (collectionView == self.timeCollectionView) {
         
-        UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kTimeCell forIndexPath:indexPath];
+        EKBookingTimeCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kTimeCell forIndexPath:indexPath];
         
         return cell;
     }
