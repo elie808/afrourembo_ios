@@ -17,11 +17,13 @@
 		474ED7B91E9C471F0099CA0A /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 474ED7B81E9C471F0099CA0A /* MapKit.framework */; };
 		474ED7BC1E9C68940099CA0A /* EKDiscoverMapViewController+MapDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 474ED7BB1E9C68940099CA0A /* EKDiscoverMapViewController+MapDelegate.m */; };
 		474ED7C01E9C6BD90099CA0A /* EKDiscoverMapViewController+TableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 474ED7BF1E9C6BD90099CA0A /* EKDiscoverMapViewController+TableView.m */; };
+		47800BC31EA3B2FA00F450DB /* EKBookingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47800BC21EA3B2FA00F450DB /* EKBookingViewController.m */; };
 		478278CE1E7923D000FB2FD2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 478278CD1E7923D000FB2FD2 /* main.m */; };
 		478278D11E7923D000FB2FD2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 478278D01E7923D000FB2FD2 /* AppDelegate.m */; };
 		478278D71E7923D000FB2FD2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 478278D51E7923D000FB2FD2 /* Main.storyboard */; };
 		478278D91E7923D000FB2FD2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 478278D81E7923D000FB2FD2 /* Assets.xcassets */; };
 		478278DC1E7923D000FB2FD2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 478278DA1E7923D000FB2FD2 /* LaunchScreen.storyboard */; };
+		4783DF8D1EA4CDAD00C87C60 /* EKBookingTimeCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4783DF8C1EA4CDAD00C87C60 /* EKBookingTimeCollectionViewCell.m */; };
 		478BDEEE1E99A25E00F74A5C /* EKImageTextButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 478BDEED1E99A25E00F74A5C /* EKImageTextButton.m */; };
 		478BDEF11E99B7D700F74A5C /* EKExploreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 478BDEF01E99B7D700F74A5C /* EKExploreViewController.m */; };
 		478BDEF51E99C20900F74A5C /* EKExploreCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 478BDEF41E99C20900F74A5C /* EKExploreCollectionViewCell.m */; };
@@ -39,6 +41,8 @@
 		47AF51B71E9B765D005FE6EB /* EKSalonListCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 47AF51B61E9B765D005FE6EB /* EKSalonListCollectionViewCell.m */; };
 		47AF51BA1E9B8561005FE6EB /* Salon.m in Sources */ = {isa = PBXBuildFile; fileRef = 47AF51B91E9B8561005FE6EB /* Salon.m */; };
 		47AF51BD1E9C4001005FE6EB /* EKDiscoverMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47AF51BC1E9C4001005FE6EB /* EKDiscoverMapViewController.m */; };
+		47BFEA651EA49AB10091522B /* EKBookingProCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 47BFEA641EA49AB10091522B /* EKBookingProCollectionViewCell.m */; };
+		47BFEA691EA4A9A30091522B /* EKBookingDayCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 47BFEA681EA4A9A30091522B /* EKBookingDayCollectionViewCell.m */; };
 		47C42DDC1E7D6509008CBF51 /* Welcome.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 47C42DDB1E7D6509008CBF51 /* Welcome.storyboard */; };
 		47C42DDE1E7D65D1008CBF51 /* SignUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 47C42DDD1E7D65D1008CBF51 /* SignUp.storyboard */; };
 		47D88E6B1E793347001B88D0 /* EKSplashViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47D88E6A1E793347001B88D0 /* EKSplashViewController.m */; };
@@ -68,6 +72,8 @@
 		474ED7BB1E9C68940099CA0A /* EKDiscoverMapViewController+MapDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "EKDiscoverMapViewController+MapDelegate.m"; sourceTree = "<group>"; };
 		474ED7BE1E9C6BD90099CA0A /* EKDiscoverMapViewController+TableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "EKDiscoverMapViewController+TableView.h"; sourceTree = "<group>"; };
 		474ED7BF1E9C6BD90099CA0A /* EKDiscoverMapViewController+TableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "EKDiscoverMapViewController+TableView.m"; sourceTree = "<group>"; };
+		47800BC11EA3B2FA00F450DB /* EKBookingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKBookingViewController.h; sourceTree = "<group>"; };
+		47800BC21EA3B2FA00F450DB /* EKBookingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKBookingViewController.m; sourceTree = "<group>"; };
 		478278C91E7923D000FB2FD2 /* afrourembo-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "afrourembo-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		478278CD1E7923D000FB2FD2 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		478278CF1E7923D000FB2FD2 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -76,6 +82,8 @@
 		478278D81E7923D000FB2FD2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		478278DB1E7923D000FB2FD2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		478278DD1E7923D000FB2FD2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4783DF8B1EA4CDAD00C87C60 /* EKBookingTimeCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKBookingTimeCollectionViewCell.h; sourceTree = "<group>"; };
+		4783DF8C1EA4CDAD00C87C60 /* EKBookingTimeCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKBookingTimeCollectionViewCell.m; sourceTree = "<group>"; };
 		478BDEEC1E99A25E00F74A5C /* EKImageTextButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKImageTextButton.h; sourceTree = "<group>"; };
 		478BDEED1E99A25E00F74A5C /* EKImageTextButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKImageTextButton.m; sourceTree = "<group>"; };
 		478BDEEF1E99B7D700F74A5C /* EKExploreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKExploreViewController.h; sourceTree = "<group>"; };
@@ -111,6 +119,10 @@
 		47AF51B91E9B8561005FE6EB /* Salon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Salon.m; sourceTree = "<group>"; };
 		47AF51BB1E9C4001005FE6EB /* EKDiscoverMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKDiscoverMapViewController.h; sourceTree = "<group>"; };
 		47AF51BC1E9C4001005FE6EB /* EKDiscoverMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKDiscoverMapViewController.m; sourceTree = "<group>"; };
+		47BFEA631EA49AB10091522B /* EKBookingProCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKBookingProCollectionViewCell.h; sourceTree = "<group>"; };
+		47BFEA641EA49AB10091522B /* EKBookingProCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKBookingProCollectionViewCell.m; sourceTree = "<group>"; };
+		47BFEA671EA4A9A30091522B /* EKBookingDayCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKBookingDayCollectionViewCell.h; sourceTree = "<group>"; };
+		47BFEA681EA4A9A30091522B /* EKBookingDayCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKBookingDayCollectionViewCell.m; sourceTree = "<group>"; };
 		47C42DDB1E7D6509008CBF51 /* Welcome.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Welcome.storyboard; sourceTree = "<group>"; };
 		47C42DDD1E7D65D1008CBF51 /* SignUp.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SignUp.storyboard; sourceTree = "<group>"; };
 		47D88E691E793347001B88D0 /* EKSplashViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKSplashViewController.h; sourceTree = "<group>"; };
@@ -163,6 +175,16 @@
 				474ED7BF1E9C6BD90099CA0A /* EKDiscoverMapViewController+TableView.m */,
 			);
 			name = Categories;
+			sourceTree = "<group>";
+		};
+		47800BC41EA3B2FF00F450DB /* Booking ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				47800BC11EA3B2FA00F450DB /* EKBookingViewController.h */,
+				47800BC21EA3B2FA00F450DB /* EKBookingViewController.m */,
+				47BFEA661EA49D3B0091522B /* Cells */,
+			);
+			name = "Booking ViewController";
 			sourceTree = "<group>";
 		};
 		478278C01E7923D000FB2FD2 = {
@@ -349,6 +371,7 @@
 				478BDEFE1E99D36500F74A5C /* Side Menu */,
 				47AF51BE1E9C4013005FE6EB /* Discover Map ViewController */,
 				479AB2691EA0B9EE00A74659 /* Company Profile */,
+				47800BC41EA3B2FF00F450DB /* Booking ViewController */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -401,6 +424,19 @@
 				474ED7BD1E9C689A0099CA0A /* Categories */,
 			);
 			name = "Discover Map ViewController";
+			sourceTree = "<group>";
+		};
+		47BFEA661EA49D3B0091522B /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				47BFEA631EA49AB10091522B /* EKBookingProCollectionViewCell.h */,
+				47BFEA641EA49AB10091522B /* EKBookingProCollectionViewCell.m */,
+				47BFEA671EA4A9A30091522B /* EKBookingDayCollectionViewCell.h */,
+				47BFEA681EA4A9A30091522B /* EKBookingDayCollectionViewCell.m */,
+				4783DF8B1EA4CDAD00C87C60 /* EKBookingTimeCollectionViewCell.h */,
+				4783DF8C1EA4CDAD00C87C60 /* EKBookingTimeCollectionViewCell.m */,
+			);
+			name = Cells;
 			sourceTree = "<group>";
 		};
 		47FFF9721E99E7FD008B6A31 /* Cells */ = {
@@ -558,13 +594,17 @@
 				474ED7C01E9C6BD90099CA0A /* EKDiscoverMapViewController+TableView.m in Sources */,
 				47A3BB881E7A8C0B00963F27 /* EKRoleViewController.m in Sources */,
 				470CD74C1EA1C6C00086DEE4 /* EKCompanyProfessionalTableViewCell.m in Sources */,
+				47BFEA651EA49AB10091522B /* EKBookingProCollectionViewCell.m in Sources */,
 				478BDEFD1E99D36000F74A5C /* EKSideMenuViewController.m in Sources */,
 				47FFF9751E99E81F008B6A31 /* EKImageTextTableViewCell.m in Sources */,
+				47BFEA691EA4A9A30091522B /* EKBookingDayCollectionViewCell.m in Sources */,
 				474BD5731E97F8F3009410C4 /* EKTextFieldTableViewCell.m in Sources */,
 				470CD74F1EA1C87D0086DEE4 /* EKCompanyProfileViewController+TableView.m in Sources */,
 				47AF51BA1E9B8561005FE6EB /* Salon.m in Sources */,
 				478BDF031E99D81F00F74A5C /* EKLeftPushSegue.m in Sources */,
+				4783DF8D1EA4CDAD00C87C60 /* EKBookingTimeCollectionViewCell.m in Sources */,
 				47AF51BD1E9C4001005FE6EB /* EKDiscoverMapViewController.m in Sources */,
+				47800BC31EA3B2FA00F450DB /* EKBookingViewController.m in Sources */,
 				478BDEF91E99C5FC00F74A5C /* Service.m in Sources */,
 				478278D11E7923D000FB2FD2 /* AppDelegate.m in Sources */,
 				47D88E6B1E793347001B88D0 /* EKSplashViewController.m in Sources */,
