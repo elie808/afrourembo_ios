@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		47074F8B1EAEB4A600E35EA7 /* EKSignupBPViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47074F8A1EAEB4A600E35EA7 /* EKSignupBPViewController.m */; };
 		470CD7461EA10B920086DEE4 /* EKCompanyReviewTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 470CD7451EA10B920086DEE4 /* EKCompanyReviewTableViewCell.m */; };
 		470CD7491EA11AD40086DEE4 /* EKCompanyContactTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 470CD7481EA11AD40086DEE4 /* EKCompanyContactTableViewCell.m */; };
 		470CD74C1EA1C6C00086DEE4 /* EKCompanyProfessionalTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 470CD74B1EA1C6C00086DEE4 /* EKCompanyProfessionalTableViewCell.m */; };
@@ -57,6 +58,8 @@
 
 /* Begin PBXFileReference section */
 		2A4784F414DB67A4877E7962 /* Pods-afrourembo-ios.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-afrourembo-ios.debug.xcconfig"; path = "Pods/Target Support Files/Pods-afrourembo-ios/Pods-afrourembo-ios.debug.xcconfig"; sourceTree = "<group>"; };
+		47074F891EAEB4A600E35EA7 /* EKSignupBPViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKSignupBPViewController.h; sourceTree = "<group>"; };
+		47074F8A1EAEB4A600E35EA7 /* EKSignupBPViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKSignupBPViewController.m; sourceTree = "<group>"; };
 		470CD7441EA10B920086DEE4 /* EKCompanyReviewTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKCompanyReviewTableViewCell.h; sourceTree = "<group>"; };
 		470CD7451EA10B920086DEE4 /* EKCompanyReviewTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKCompanyReviewTableViewCell.m; sourceTree = "<group>"; };
 		470CD7471EA11AD40086DEE4 /* EKCompanyContactTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKCompanyContactTableViewCell.h; sourceTree = "<group>"; };
@@ -169,6 +172,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		47074F8C1EAEB4AC00E35EA7 /* BP - Sign up ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				47074F891EAEB4A600E35EA7 /* EKSignupBPViewController.h */,
+				47074F8A1EAEB4A600E35EA7 /* EKSignupBPViewController.m */,
+			);
+			name = "BP - Sign up ViewController";
+			sourceTree = "<group>";
+		};
 		470CD7501EA1C8B80086DEE4 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
@@ -178,7 +190,7 @@
 			name = Categories;
 			sourceTree = "<group>";
 		};
-		47448ADB1EAE16580098CED3 /* Sign up ViewController */ = {
+		47448ADB1EAE16580098CED3 /* Customer - Sign up ViewController */ = {
 			isa = PBXGroup;
 			children = (
 				47E2F0041EA5FE9D002E2FD4 /* EKSignupViewController.h */,
@@ -186,7 +198,7 @@
 				47448ADE1EAE462F0098CED3 /* EKEditProfileInfoViewController.h */,
 				47448ADF1EAE462F0098CED3 /* EKEditProfileInfoViewController.m */,
 			);
-			name = "Sign up ViewController";
+			name = "Customer - Sign up ViewController";
 			sourceTree = "<group>";
 		};
 		47448ADC1EAE18430098CED3 /* Customer - Basic FB Profile Info */ = {
@@ -408,9 +420,10 @@
 				47A3BB821E7A8BA200963F27 /* Onboarding ViewController */,
 				47A3BB891E7A8C1000963F27 /* Role ViewController */,
 				47A3BB8D1E7A9F4100963F27 /* Sign In ViewController */,
-				47448ADB1EAE16580098CED3 /* Sign up ViewController */,
+				47448ADB1EAE16580098CED3 /* Customer - Sign up ViewController */,
 				47448ADC1EAE18430098CED3 /* Customer - Basic FB Profile Info */,
 				47448ADD1EAE46110098CED3 /* Customer - Edit FB Profile Info */,
+				47074F8C1EAEB4AC00E35EA7 /* BP - Sign up ViewController */,
 				478BDEF21E99B7DD00F74A5C /* Explore ViewController */,
 				478BDEFE1E99D36500F74A5C /* Side Menu */,
 				47AF51BE1E9C4013005FE6EB /* Discover Map ViewController */,
@@ -661,6 +674,7 @@
 				47AF51AF1E9B686F005FE6EB /* EKInCellCollectionView.m in Sources */,
 				478BDEF11E99B7D700F74A5C /* EKExploreViewController.m in Sources */,
 				478BDEF51E99C20900F74A5C /* EKExploreCollectionViewCell.m in Sources */,
+				47074F8B1EAEB4A600E35EA7 /* EKSignupBPViewController.m in Sources */,
 				47A3BB8C1E7A9F3500963F27 /* EKSignInViewController.m in Sources */,
 				479AB2681EA0B9E300A74659 /* EKCompanyProfileViewController.m in Sources */,
 				478BDF041E99D81F00F74A5C /* EKLeftPushUnwindSegue.m in Sources */,
