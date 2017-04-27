@@ -16,13 +16,13 @@ static NSString * const kMainStoryboard = @"Main";
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
     // Start at Splash Screen
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:kWelcomeStoryboard bundle:nil];
-    UINavigationController *rootViewController = [storyboard instantiateViewControllerWithIdentifier:kSplashVC];
-    self.window.rootViewController = rootViewController;
-
-//    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:kMainStoryboard bundle:nil];
-//    UINavigationController *rootViewController = [storyboard instantiateViewControllerWithIdentifier:kExploreVC];
+//    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:kWelcomeStoryboard bundle:nil];
+//    UINavigationController *rootViewController = [storyboard instantiateViewControllerWithIdentifier:kSplashVC];
 //    self.window.rootViewController = rootViewController;
+
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:kMainStoryboard bundle:nil];
+    UINavigationController *rootViewController = [storyboard instantiateViewControllerWithIdentifier:kExploreVC];
+    self.window.rootViewController = rootViewController;
     
     return YES;
 }

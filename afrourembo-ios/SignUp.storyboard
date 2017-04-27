@@ -1464,7 +1464,7 @@
         <image name="icScissors" width="44" height="45"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="wXO-6x-bt5"/>
         <segue reference="6Mh-f9-UZo"/>
+        <segue reference="wXO-6x-bt5"/>
     </inferredMetricsTieBreakers>
 </document>
