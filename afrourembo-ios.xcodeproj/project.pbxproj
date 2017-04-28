@@ -26,6 +26,8 @@
 		478278D91E7923D000FB2FD2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 478278D81E7923D000FB2FD2 /* Assets.xcassets */; };
 		478278DC1E7923D000FB2FD2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 478278DA1E7923D000FB2FD2 /* LaunchScreen.storyboard */; };
 		4783DF8D1EA4CDAD00C87C60 /* EKBookingTimeCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4783DF8C1EA4CDAD00C87C60 /* EKBookingTimeCollectionViewCell.m */; };
+		4787C6D51EB4013200DF7B83 /* EKCartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4787C6D41EB4013200DF7B83 /* EKCartViewController.m */; };
+		4787C6D91EB402A500DF7B83 /* EKCartCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4787C6D81EB402A500DF7B83 /* EKCartCollectionViewCell.m */; };
 		478971941EA756F100917DB1 /* EKEditFacebookProfileInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 478971931EA756F100917DB1 /* EKEditFacebookProfileInfoViewController.m */; };
 		478BDEEE1E99A25E00F74A5C /* EKImageTextButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 478BDEED1E99A25E00F74A5C /* EKImageTextButton.m */; };
 		478BDEF11E99B7D700F74A5C /* EKExploreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 478BDEF01E99B7D700F74A5C /* EKExploreViewController.m */; };
@@ -35,6 +37,7 @@
 		478BDF031E99D81F00F74A5C /* EKLeftPushSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 478BDF001E99D81E00F74A5C /* EKLeftPushSegue.m */; };
 		478BDF041E99D81F00F74A5C /* EKLeftPushUnwindSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 478BDF021E99D81E00F74A5C /* EKLeftPushUnwindSegue.m */; };
 		47919E5A1E795664001C5600 /* EKOnboardingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47919E591E795664001C5600 /* EKOnboardingViewController.m */; };
+		4795200F1EB3A40700E377E5 /* EKScheduleMonthlyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4795200E1EB3A40700E377E5 /* EKScheduleMonthlyViewController.m */; };
 		479AB2681EA0B9E300A74659 /* EKCompanyProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 479AB2671EA0B9E300A74659 /* EKCompanyProfileViewController.m */; };
 		479AB26C1EA0CC0000A74659 /* EKCompanyServiceTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 479AB26B1EA0CC0000A74659 /* EKCompanyServiceTableViewCell.m */; };
 		47A3BB881E7A8C0B00963F27 /* EKRoleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47A3BB871E7A8C0B00963F27 /* EKRoleViewController.m */; };
@@ -94,6 +97,10 @@
 		478278DD1E7923D000FB2FD2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4783DF8B1EA4CDAD00C87C60 /* EKBookingTimeCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKBookingTimeCollectionViewCell.h; sourceTree = "<group>"; };
 		4783DF8C1EA4CDAD00C87C60 /* EKBookingTimeCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKBookingTimeCollectionViewCell.m; sourceTree = "<group>"; };
+		4787C6D31EB4013200DF7B83 /* EKCartViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKCartViewController.h; sourceTree = "<group>"; };
+		4787C6D41EB4013200DF7B83 /* EKCartViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKCartViewController.m; sourceTree = "<group>"; };
+		4787C6D71EB402A500DF7B83 /* EKCartCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKCartCollectionViewCell.h; sourceTree = "<group>"; };
+		4787C6D81EB402A500DF7B83 /* EKCartCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKCartCollectionViewCell.m; sourceTree = "<group>"; };
 		478971921EA756F100917DB1 /* EKEditFacebookProfileInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKEditFacebookProfileInfoViewController.h; sourceTree = "<group>"; };
 		478971931EA756F100917DB1 /* EKEditFacebookProfileInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKEditFacebookProfileInfoViewController.m; sourceTree = "<group>"; };
 		478BDEEC1E99A25E00F74A5C /* EKImageTextButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKImageTextButton.h; sourceTree = "<group>"; };
@@ -113,6 +120,8 @@
 		478BDF061E99D85500F74A5C /* EKConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKConstants.h; sourceTree = "<group>"; };
 		47919E581E795664001C5600 /* EKOnboardingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKOnboardingViewController.h; sourceTree = "<group>"; };
 		47919E591E795664001C5600 /* EKOnboardingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKOnboardingViewController.m; sourceTree = "<group>"; };
+		4795200D1EB3A40700E377E5 /* EKScheduleMonthlyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKScheduleMonthlyViewController.h; sourceTree = "<group>"; };
+		4795200E1EB3A40700E377E5 /* EKScheduleMonthlyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKScheduleMonthlyViewController.m; sourceTree = "<group>"; };
 		479AB2661EA0B9E300A74659 /* EKCompanyProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKCompanyProfileViewController.h; sourceTree = "<group>"; };
 		479AB2671EA0B9E300A74659 /* EKCompanyProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKCompanyProfileViewController.m; sourceTree = "<group>"; };
 		479AB26A1EA0CC0000A74659 /* EKCompanyServiceTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKCompanyServiceTableViewCell.h; sourceTree = "<group>"; };
@@ -301,6 +310,25 @@
 			name = Storyboards;
 			sourceTree = "<group>";
 		};
+		4787C6D61EB4013900DF7B83 /* Customer - Cart review */ = {
+			isa = PBXGroup;
+			children = (
+				4787C6D31EB4013200DF7B83 /* EKCartViewController.h */,
+				4787C6D41EB4013200DF7B83 /* EKCartViewController.m */,
+				4787C6DA1EB4034600DF7B83 /* Cells */,
+			);
+			name = "Customer - Cart review";
+			sourceTree = "<group>";
+		};
+		4787C6DA1EB4034600DF7B83 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				4787C6D71EB402A500DF7B83 /* EKCartCollectionViewCell.h */,
+				4787C6D81EB402A500DF7B83 /* EKCartCollectionViewCell.m */,
+			);
+			name = Cells;
+			sourceTree = "<group>";
+		};
 		478BDEF21E99B7DD00F74A5C /* Explore ViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -358,6 +386,15 @@
 				478BDF061E99D85500F74A5C /* EKConstants.h */,
 			);
 			name = Utilities;
+			sourceTree = "<group>";
+		};
+		479520101EB3A40A00E377E5 /* BP - Monthly Schedule */ = {
+			isa = PBXGroup;
+			children = (
+				4795200D1EB3A40700E377E5 /* EKScheduleMonthlyViewController.h */,
+				4795200E1EB3A40700E377E5 /* EKScheduleMonthlyViewController.m */,
+			);
+			name = "BP - Monthly Schedule";
 			sourceTree = "<group>";
 		};
 		479AB2691EA0B9EE00A74659 /* Company Profile */ = {
@@ -426,12 +463,14 @@
 				47448ADB1EAE16580098CED3 /* Customer - Sign up ViewController */,
 				47448ADC1EAE18430098CED3 /* Customer - Basic FB Profile Info */,
 				47448ADD1EAE46110098CED3 /* Customer - Edit FB Profile Info */,
-				47074F8C1EAEB4AC00E35EA7 /* BP - Sign up ViewController */,
+				4787C6D61EB4013900DF7B83 /* Customer - Cart review */,
 				478BDEF21E99B7DD00F74A5C /* Explore ViewController */,
 				478BDEFE1E99D36500F74A5C /* Side Menu */,
 				47AF51BE1E9C4013005FE6EB /* Discover Map ViewController */,
 				479AB2691EA0B9EE00A74659 /* Company Profile */,
 				47800BC41EA3B2FF00F450DB /* Booking ViewController */,
+				47074F8C1EAEB4AC00E35EA7 /* BP - Sign up ViewController */,
+				479520101EB3A40A00E377E5 /* BP - Monthly Schedule */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -654,8 +693,10 @@
 				478BDEEE1E99A25E00F74A5C /* EKImageTextButton.m in Sources */,
 				474ED7C01E9C6BD90099CA0A /* EKDiscoverMapViewController+TableView.m in Sources */,
 				47A3BB881E7A8C0B00963F27 /* EKRoleViewController.m in Sources */,
+				4787C6D51EB4013200DF7B83 /* EKCartViewController.m in Sources */,
 				470CD74C1EA1C6C00086DEE4 /* EKCompanyProfessionalTableViewCell.m in Sources */,
 				47BFEA651EA49AB10091522B /* EKBookingProCollectionViewCell.m in Sources */,
+				4795200F1EB3A40700E377E5 /* EKScheduleMonthlyViewController.m in Sources */,
 				478BDEFD1E99D36000F74A5C /* EKSideMenuViewController.m in Sources */,
 				478971941EA756F100917DB1 /* EKEditFacebookProfileInfoViewController.m in Sources */,
 				47FFF9751E99E81F008B6A31 /* EKImageTextTableViewCell.m in Sources */,
@@ -682,6 +723,7 @@
 				47A3BB8C1E7A9F3500963F27 /* EKSignInViewController.m in Sources */,
 				479AB2681EA0B9E300A74659 /* EKCompanyProfileViewController.m in Sources */,
 				478BDF041E99D81F00F74A5C /* EKLeftPushUnwindSegue.m in Sources */,
+				4787C6D91EB402A500DF7B83 /* EKCartCollectionViewCell.m in Sources */,
 				47919E5A1E795664001C5600 /* EKOnboardingViewController.m in Sources */,
 				478278CE1E7923D000FB2FD2 /* main.m in Sources */,
 				47448AE01EAE462F0098CED3 /* EKEditProfileInfoViewController.m in Sources */,

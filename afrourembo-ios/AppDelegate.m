@@ -21,13 +21,14 @@ static NSString * const kVendorMainStoryboard = @"Vendor_Main";
 //    UINavigationController *rootViewController = [storyboard instantiateViewControllerWithIdentifier:kSplashVC];
 //    self.window.rootViewController = rootViewController;
 
-//    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:kMainStoryboard bundle:nil];
-//    UINavigationController *rootViewController = [storyboard instantiateViewControllerWithIdentifier:kExploreVC];
-//    self.window.rootViewController = rootViewController;
-
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:kVendorMainStoryboard bundle:nil];
-    UINavigationController *rootViewController = [storyboard instantiateViewControllerWithIdentifier:kVendorDashVC];
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:kMainStoryboard bundle:nil];
+    UINavigationController *rootViewController = [storyboard instantiateViewControllerWithIdentifier:kExploreVC];
     self.window.rootViewController = rootViewController;
+
+    // Vendor
+//    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:kVendorMainStoryboard bundle:nil];
+//    UINavigationController *rootViewController = [storyboard instantiateViewControllerWithIdentifier:kVendorDashVC];
+//    self.window.rootViewController = rootViewController;
     
     return YES;
 }
