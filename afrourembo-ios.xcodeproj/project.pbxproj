@@ -50,6 +50,7 @@
 		47C42DDE1E7D65D1008CBF51 /* SignUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 47C42DDD1E7D65D1008CBF51 /* SignUp.storyboard */; };
 		47D88E6B1E793347001B88D0 /* EKSplashViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47D88E6A1E793347001B88D0 /* EKSplashViewController.m */; };
 		47D88E6E1E793893001B88D0 /* EKWelcomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47D88E6D1E793893001B88D0 /* EKWelcomeViewController.m */; };
+		47DD4CCA1EB2149A009AA482 /* Vendor_Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 47DD4CC91EB2149A009AA482 /* Vendor_Main.storyboard */; };
 		47E2F0061EA5FE9D002E2FD4 /* EKSignupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47E2F0051EA5FE9D002E2FD4 /* EKSignupViewController.m */; };
 		47E2F0091EA5FF97002E2FD4 /* EKProfileInfoFacebookViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47E2F0081EA5FF97002E2FD4 /* EKProfileInfoFacebookViewController.m */; };
 		47FFF9751E99E81F008B6A31 /* EKImageTextTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 47FFF9741E99E81F008B6A31 /* EKImageTextTableViewCell.m */; };
@@ -140,6 +141,7 @@
 		47D88E6A1E793347001B88D0 /* EKSplashViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKSplashViewController.m; sourceTree = "<group>"; };
 		47D88E6C1E793892001B88D0 /* EKWelcomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKWelcomeViewController.h; sourceTree = "<group>"; };
 		47D88E6D1E793893001B88D0 /* EKWelcomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKWelcomeViewController.m; sourceTree = "<group>"; };
+		47DD4CC91EB2149A009AA482 /* Vendor_Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Vendor_Main.storyboard; sourceTree = "<group>"; };
 		47E2F0041EA5FE9D002E2FD4 /* EKSignupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKSignupViewController.h; sourceTree = "<group>"; };
 		47E2F0051EA5FE9D002E2FD4 /* EKSignupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKSignupViewController.m; sourceTree = "<group>"; };
 		47E2F0071EA5FF97002E2FD4 /* EKProfileInfoFacebookViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKProfileInfoFacebookViewController.h; sourceTree = "<group>"; };
@@ -294,6 +296,7 @@
 				47C42DDB1E7D6509008CBF51 /* Welcome.storyboard */,
 				47C42DDD1E7D65D1008CBF51 /* SignUp.storyboard */,
 				478278D51E7923D000FB2FD2 /* Main.storyboard */,
+				47DD4CC91EB2149A009AA482 /* Vendor_Main.storyboard */,
 			);
 			name = Storyboards;
 			sourceTree = "<group>";
@@ -586,6 +589,7 @@
 				478278DC1E7923D000FB2FD2 /* LaunchScreen.storyboard in Resources */,
 				47C42DDC1E7D6509008CBF51 /* Welcome.storyboard in Resources */,
 				478278D91E7923D000FB2FD2 /* Assets.xcassets in Resources */,
+				47DD4CCA1EB2149A009AA482 /* Vendor_Main.storyboard in Resources */,
 				478278D71E7923D000FB2FD2 /* Main.storyboard in Resources */,
 				47C42DDE1E7D65D1008CBF51 /* SignUp.storyboard in Resources */,
 			);

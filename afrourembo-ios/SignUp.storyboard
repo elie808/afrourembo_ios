@@ -573,7 +573,7 @@
         <!--exploreVC-->
         <scene sceneID="HYP-dm-neH">
             <objects>
-                <viewControllerPlaceholder storyboardIdentifier="exploreVC" storyboardName="Main" referencedIdentifier="exploreVC" id="WIc-6j-gwA" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardIdentifier="exploreVC" storyboardName="Customer_Main" referencedIdentifier="exploreVC" id="WIc-6j-gwA" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7z3-UU-3kP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="416" y="-1157"/>
@@ -765,6 +765,9 @@
                                 <state key="normal" title="Submit">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <segue destination="OGU-6s-Tuh" kind="presentation" id="jUX-mO-gi2"/>
+                                </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Business Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hLl-yA-xKk">
                                 <rect key="frame" x="16" y="72" width="343" height="40"/>
@@ -790,6 +793,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5iP-XG-rl7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2436" y="384"/>
+        </scene>
+        <!--Vendor_Main-->
+        <scene sceneID="iSC-NV-Qur">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="vendor_dashboard" storyboardName="Vendor_Main" id="OGU-6s-Tuh" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Uc1-yU-AeG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3196" y="300"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="OJ7-ZT-d2d">
@@ -914,7 +925,7 @@
                                         </state>
                                         <connections>
                                             <action selector="didTapSignupBP:" destination="niy-0f-08G" eventType="touchDown" id="A2F-cj-11M"/>
-                                            <segue destination="fYx-x9-wM9" kind="show" id="wXO-6x-bt5"/>
+                                            <segue destination="fYx-x9-wM9" kind="show" identifier="roleToSignUpBP" id="wXO-6x-bt5"/>
                                         </connections>
                                     </button>
                                     <view contentMode="scaleToFill" verticalHuggingPriority="255" placeholderIntrinsicWidth="infinite" placeholderIntrinsicHeight="2" translatesAutoresizingMaskIntoConstraints="NO" id="BEh-bT-ov4">
@@ -1452,7 +1463,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ysO-lW-SEq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="549.60000000000002" y="2410.344827586207"/>
+            <point key="canvasLocation" x="270" y="2431"/>
         </scene>
     </scenes>
     <resources>

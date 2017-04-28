@@ -10,6 +10,7 @@
 
 static NSString * const kWelcomeStoryboard = @"Welcome";
 static NSString * const kMainStoryboard = @"Main";
+static NSString * const kVendorMainStoryboard = @"Vendor_Main";
 
 @implementation AppDelegate
 
@@ -20,8 +21,12 @@ static NSString * const kMainStoryboard = @"Main";
 //    UINavigationController *rootViewController = [storyboard instantiateViewControllerWithIdentifier:kSplashVC];
 //    self.window.rootViewController = rootViewController;
 
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:kMainStoryboard bundle:nil];
-    UINavigationController *rootViewController = [storyboard instantiateViewControllerWithIdentifier:kExploreVC];
+//    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:kMainStoryboard bundle:nil];
+//    UINavigationController *rootViewController = [storyboard instantiateViewControllerWithIdentifier:kExploreVC];
+//    self.window.rootViewController = rootViewController;
+
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:kVendorMainStoryboard bundle:nil];
+    UINavigationController *rootViewController = [storyboard instantiateViewControllerWithIdentifier:kVendorDashVC];
     self.window.rootViewController = rootViewController;
     
     return YES;
