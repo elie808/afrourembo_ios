@@ -7,6 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+
+#import "EKNetworkManager.h"
 #import "EKConstants.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>

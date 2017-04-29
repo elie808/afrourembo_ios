@@ -16,6 +16,8 @@ static NSString * const kVendorMainStoryboard = @"Vendor_Main";
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
+    [EKNetworkManager configureRestKit];
+    
     // Start at Splash Screen
 //    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:kWelcomeStoryboard bundle:nil];
 //    UINavigationController *rootViewController = [storyboard instantiateViewControllerWithIdentifier:kSplashVC];
