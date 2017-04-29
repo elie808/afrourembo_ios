@@ -10,4 +10,15 @@
 
 @implementation EKCartCollectionViewCell
 
+- (void)didTapEditButtonAtIndex:(NSIndexPath *)indexPath {
+    
+    if (self.delegate && [self.delegate respondsToSelector:@selector(didTapEditButtonAtIndex:)]) {
+        [self.delegate didTapEditButtonAtIndex:indexPath];
+    }
+}
+
+- (IBAction)didTapEditButton:(id)sender {
+    [self didTapEditButtonAtIndex:self.cellIndexPath];
+}
+
 @end

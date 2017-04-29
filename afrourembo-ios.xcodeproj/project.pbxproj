@@ -28,6 +28,8 @@
 		4783DF8D1EA4CDAD00C87C60 /* EKBookingTimeCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4783DF8C1EA4CDAD00C87C60 /* EKBookingTimeCollectionViewCell.m */; };
 		4787C6D51EB4013200DF7B83 /* EKCartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4787C6D41EB4013200DF7B83 /* EKCartViewController.m */; };
 		4787C6D91EB402A500DF7B83 /* EKCartCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4787C6D81EB402A500DF7B83 /* EKCartCollectionViewCell.m */; };
+		4787C6DD1EB40D5500DF7B83 /* Booking.m in Sources */ = {isa = PBXBuildFile; fileRef = 4787C6DC1EB40D5500DF7B83 /* Booking.m */; };
+		4787C6E01EB40DD200DF7B83 /* EKCartCollectionViewCell+Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 4787C6DF1EB40DD200DF7B83 /* EKCartCollectionViewCell+Helpers.m */; };
 		478971941EA756F100917DB1 /* EKEditFacebookProfileInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 478971931EA756F100917DB1 /* EKEditFacebookProfileInfoViewController.m */; };
 		478BDEEE1E99A25E00F74A5C /* EKImageTextButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 478BDEED1E99A25E00F74A5C /* EKImageTextButton.m */; };
 		478BDEF11E99B7D700F74A5C /* EKExploreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 478BDEF01E99B7D700F74A5C /* EKExploreViewController.m */; };
@@ -101,6 +103,10 @@
 		4787C6D41EB4013200DF7B83 /* EKCartViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKCartViewController.m; sourceTree = "<group>"; };
 		4787C6D71EB402A500DF7B83 /* EKCartCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKCartCollectionViewCell.h; sourceTree = "<group>"; };
 		4787C6D81EB402A500DF7B83 /* EKCartCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKCartCollectionViewCell.m; sourceTree = "<group>"; };
+		4787C6DB1EB40D5500DF7B83 /* Booking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Booking.h; sourceTree = "<group>"; };
+		4787C6DC1EB40D5500DF7B83 /* Booking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Booking.m; sourceTree = "<group>"; };
+		4787C6DE1EB40DD200DF7B83 /* EKCartCollectionViewCell+Helpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "EKCartCollectionViewCell+Helpers.h"; sourceTree = "<group>"; };
+		4787C6DF1EB40DD200DF7B83 /* EKCartCollectionViewCell+Helpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "EKCartCollectionViewCell+Helpers.m"; sourceTree = "<group>"; };
 		478971921EA756F100917DB1 /* EKEditFacebookProfileInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKEditFacebookProfileInfoViewController.h; sourceTree = "<group>"; };
 		478971931EA756F100917DB1 /* EKEditFacebookProfileInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKEditFacebookProfileInfoViewController.m; sourceTree = "<group>"; };
 		478BDEEC1E99A25E00F74A5C /* EKImageTextButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKImageTextButton.h; sourceTree = "<group>"; };
@@ -316,6 +322,7 @@
 				4787C6D31EB4013200DF7B83 /* EKCartViewController.h */,
 				4787C6D41EB4013200DF7B83 /* EKCartViewController.m */,
 				4787C6DA1EB4034600DF7B83 /* Cells */,
+				4787C6E11EB40DDD00DF7B83 /* Categories */,
 			);
 			name = "Customer - Cart review";
 			sourceTree = "<group>";
@@ -327,6 +334,15 @@
 				4787C6D81EB402A500DF7B83 /* EKCartCollectionViewCell.m */,
 			);
 			name = Cells;
+			sourceTree = "<group>";
+		};
+		4787C6E11EB40DDD00DF7B83 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				4787C6DE1EB40DD200DF7B83 /* EKCartCollectionViewCell+Helpers.h */,
+				4787C6DF1EB40DD200DF7B83 /* EKCartCollectionViewCell+Helpers.m */,
+			);
+			name = Categories;
 			sourceTree = "<group>";
 		};
 		478BDEF21E99B7DD00F74A5C /* Explore ViewController */ = {
@@ -355,6 +371,8 @@
 				47AF51B91E9B8561005FE6EB /* Salon.m */,
 				478BDEF71E99C5FC00F74A5C /* Service.h */,
 				478BDEF81E99C5FC00F74A5C /* Service.m */,
+				4787C6DB1EB40D5500DF7B83 /* Booking.h */,
+				4787C6DC1EB40D5500DF7B83 /* Booking.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -698,6 +716,7 @@
 				47BFEA651EA49AB10091522B /* EKBookingProCollectionViewCell.m in Sources */,
 				4795200F1EB3A40700E377E5 /* EKScheduleMonthlyViewController.m in Sources */,
 				478BDEFD1E99D36000F74A5C /* EKSideMenuViewController.m in Sources */,
+				4787C6DD1EB40D5500DF7B83 /* Booking.m in Sources */,
 				478971941EA756F100917DB1 /* EKEditFacebookProfileInfoViewController.m in Sources */,
 				47FFF9751E99E81F008B6A31 /* EKImageTextTableViewCell.m in Sources */,
 				47BFEA691EA4A9A30091522B /* EKBookingDayCollectionViewCell.m in Sources */,
@@ -711,6 +730,7 @@
 				47800BC31EA3B2FA00F450DB /* EKBookingViewController.m in Sources */,
 				478BDEF91E99C5FC00F74A5C /* Service.m in Sources */,
 				478278D11E7923D000FB2FD2 /* AppDelegate.m in Sources */,
+				4787C6E01EB40DD200DF7B83 /* EKCartCollectionViewCell+Helpers.m in Sources */,
 				47D88E6B1E793347001B88D0 /* EKSplashViewController.m in Sources */,
 				47AF51B71E9B765D005FE6EB /* EKSalonListCollectionViewCell.m in Sources */,
 				479AB26C1EA0CC0000A74659 /* EKCompanyServiceTableViewCell.m in Sources */,

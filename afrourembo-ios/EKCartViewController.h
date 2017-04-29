@@ -7,10 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Booking.h"
 #import "EKCartCollectionViewCell.h"
+#import "EKCartCollectionViewCell+Helpers.h"
 
-@interface EKCartViewController : UIViewController <UICollectionViewDelegate, UICollectionViewDataSource>
+@interface EKCartViewController : UIViewController <UICollectionViewDelegate, UICollectionViewDataSource, EKCartCollectionViewCellDelegate>
 
 @property (strong, nonatomic) IBOutlet UICollectionView *collectionView;
+@property (strong, nonatomic) IBOutlet UIView *bottomBar;
 
 @end

@@ -217,7 +217,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1670" y="108"/>
+            <point key="canvasLocation" x="1670" y="116"/>
         </scene>
         <!--Discover Map View Controller-->
         <scene sceneID="ImL-uB-trZ">
@@ -514,7 +514,7 @@
                                     <color key="backgroundColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </view>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="companyServicesCell" rowHeight="83" id="gBY-cw-kgc" customClass="EKCompanyServiceTableViewCell">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="companyServicesCell" rowHeight="83" id="gBY-cw-kgc" customClass="EKCompanyServiceTableViewCell">
                                         <rect key="frame" x="0.0" y="255" width="375" height="83"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gBY-cw-kgc" id="yhl-jZ-NCu">
@@ -579,7 +579,7 @@
                                             <outlet property="cellServiceLaborLabel" destination="O3v-4e-bLh" id="LAz-wD-I3c"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="companyReviewsCell" rowHeight="224" id="Ik2-B3-0tp" customClass="EKCompanyReviewTableViewCell">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="companyReviewsCell" rowHeight="224" id="Ik2-B3-0tp" customClass="EKCompanyReviewTableViewCell">
                                         <rect key="frame" x="0.0" y="338" width="375" height="224"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Ik2-B3-0tp" id="FSb-N8-SDF">
@@ -675,7 +675,7 @@
                                             <outlet property="cellTextView" destination="Yx5-Uc-aMz" id="HUu-3R-ymi"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="companyProfessionalsCell" rowHeight="110" id="4yl-9I-qMS" customClass="EKCompanyProfessionalTableViewCell">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="companyProfessionalsCell" rowHeight="110" id="4yl-9I-qMS" customClass="EKCompanyProfessionalTableViewCell">
                                         <rect key="frame" x="0.0" y="562" width="375" height="110"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="4yl-9I-qMS" id="uvZ-Bi-8an">
@@ -753,7 +753,7 @@
                                             <outlet property="cellCollectionView" destination="82L-QY-L9d" id="Dzu-HY-0zr"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="companyContactsCell" rowHeight="52" id="OKy-LV-Elw" customClass="EKCompanyContactTableViewCell">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="companyContactsCell" rowHeight="52" id="OKy-LV-Elw" customClass="EKCompanyContactTableViewCell">
                                         <rect key="frame" x="0.0" y="672" width="375" height="52"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="OKy-LV-Elw" id="4fn-sU-FFd">
@@ -1105,7 +1105,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="QQA-0P-dZT">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="611"/>
                                 <color key="backgroundColor" red="0.8980392157" green="0.8980392157" blue="0.8980392157" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="bVI-Fp-1hK">
                                     <size key="itemSize" width="362" height="220"/>
@@ -1115,7 +1115,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cartCollectionCellID" id="Rpk-hJ-1f3" customClass="EKCartCollectionViewCell">
-                                        <rect key="frame" x="6.5" y="10" width="362" height="220"/>
+                                        <rect key="frame" x="7" y="10" width="362" height="220"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="362" height="220"/>
@@ -1160,7 +1160,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="McLaren Barbershop" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eHb-TV-6Ba">
-                                                    <rect key="frame" x="10" y="54" width="129.5" height="16"/>
+                                                    <rect key="frame" x="10" y="54" width="130" height="16"/>
                                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="13"/>
                                                     <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -1172,7 +1172,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NTr-48-gbh" userLabel="upper separator">
-                                                    <rect key="frame" x="9.5" y="104" width="342" height="1"/>
+                                                    <rect key="frame" x="10" y="104" width="342" height="1"/>
                                                     <color key="backgroundColor" red="0.83921568627450982" green="0.83921568627450982" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="1" id="bD4-22-o07"/>
@@ -1204,11 +1204,14 @@
                                                     </constraints>
                                                 </view>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ojd-B8-PKi">
-                                                    <rect key="frame" x="15.5" y="177" width="330" height="33"/>
+                                                    <rect key="frame" x="16" y="177" width="330" height="33"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <state key="normal" title="Edit">
                                                         <color key="titleColor" red="1" green="0.76470588240000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </state>
+                                                    <connections>
+                                                        <action selector="didTapEditButton:" destination="Rpk-hJ-1f3" eventType="touchDown" id="7dH-ks-eFP"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                         </view>
@@ -1238,6 +1241,15 @@
                                             <constraint firstItem="0y9-Y3-DfF" firstAttribute="leading" secondItem="Rpk-hJ-1f3" secondAttribute="leading" id="wfC-LD-QXU"/>
                                             <constraint firstItem="vWp-Jp-KBW" firstAttribute="trailing" secondItem="Rpk-hJ-1f3" secondAttribute="trailingMargin" constant="2" id="xyL-mf-jeW"/>
                                         </constraints>
+                                        <connections>
+                                            <outlet property="bookingCostLabel" destination="fft-8F-9Te" id="t27-xn-Ob4"/>
+                                            <outlet property="bookingDateLabel" destination="eLr-kM-ReD" id="dfR-QL-PdL"/>
+                                            <outlet property="bookingDescriptionLabel" destination="tJH-D8-6Co" id="2cc-G9-44d"/>
+                                            <outlet property="bookingTimeLabel" destination="xoT-np-wfT" id="kPm-sa-MM4"/>
+                                            <outlet property="bookingTitleLabel" destination="UOf-dB-3Vr" id="s70-CI-nVa"/>
+                                            <outlet property="bookingVendorLabel" destination="eHb-TV-6Ba" id="QfS-hQ-3Cf"/>
+                                            <outlet property="practionnerLabel" destination="cxd-nc-Gfw" id="kTU-Fi-wWy"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                                 <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="Flo-qe-FWT">
@@ -1249,16 +1261,60 @@
                                     <outlet property="delegate" destination="p8b-NN-oDW" id="x3h-85-iKG"/>
                                 </connections>
                             </collectionView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="af3-h4-gbz">
+                                <rect key="frame" x="0.0" y="611" width="375" height="56"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IJK-mk-axZ">
+                                        <rect key="frame" x="8" y="8" width="175" height="39"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <state key="normal" title="Continue exploring">
+                                            <color key="titleColor" red="1" green="0.76470588240000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nqF-cV-I42">
+                                        <rect key="frame" x="192" y="9" width="175" height="38"/>
+                                        <color key="backgroundColor" red="1" green="0.33725490200000002" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="175" id="7Y3-ed-2YO"/>
+                                            <constraint firstAttribute="height" constant="38" id="aSr-Db-SAp"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <state key="normal" title="Checkout">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="20"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="NO"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="nqF-cV-I42" firstAttribute="leading" secondItem="IJK-mk-axZ" secondAttribute="trailing" constant="9" id="7ai-Hm-RR7"/>
+                                    <constraint firstItem="IJK-mk-axZ" firstAttribute="bottom" secondItem="nqF-cV-I42" secondAttribute="bottom" id="GFg-eR-OOj"/>
+                                    <constraint firstItem="IJK-mk-axZ" firstAttribute="top" secondItem="af3-h4-gbz" secondAttribute="topMargin" id="LhH-1M-IKa"/>
+                                    <constraint firstItem="IJK-mk-axZ" firstAttribute="leading" secondItem="af3-h4-gbz" secondAttribute="leadingMargin" id="MSK-gb-Qbi"/>
+                                    <constraint firstItem="nqF-cV-I42" firstAttribute="trailing" secondItem="af3-h4-gbz" secondAttribute="trailingMargin" id="Xtv-rR-oMH"/>
+                                    <constraint firstAttribute="height" constant="56" id="ZUT-yd-fn2"/>
+                                    <constraint firstItem="IJK-mk-axZ" firstAttribute="centerY" secondItem="nqF-cV-I42" secondAttribute="centerY" id="baX-2h-qUz"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="af3-h4-gbz" firstAttribute="top" secondItem="QQA-0P-dZT" secondAttribute="bottom" id="2EM-co-R09"/>
+                            <constraint firstItem="af3-h4-gbz" firstAttribute="leading" secondItem="Zum-6C-S6A" secondAttribute="leading" id="3cc-e7-htp"/>
                             <constraint firstItem="QQA-0P-dZT" firstAttribute="top" secondItem="Zum-6C-S6A" secondAttribute="top" id="5Gb-Bn-iEZ"/>
-                            <constraint firstItem="QQA-0P-dZT" firstAttribute="bottom" secondItem="mJE-R3-HI9" secondAttribute="top" id="Ihu-kl-emQ"/>
+                            <constraint firstAttribute="trailing" secondItem="af3-h4-gbz" secondAttribute="trailing" id="BQc-Zo-ltz"/>
+                            <constraint firstItem="mJE-R3-HI9" firstAttribute="top" secondItem="af3-h4-gbz" secondAttribute="bottom" id="QNc-zF-0L6"/>
                             <constraint firstItem="QQA-0P-dZT" firstAttribute="leading" secondItem="Zum-6C-S6A" secondAttribute="leading" id="lhc-BO-Vqz"/>
                             <constraint firstAttribute="trailing" secondItem="QQA-0P-dZT" secondAttribute="trailing" id="rXl-q8-feg"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="bottomBar" destination="af3-h4-gbz" id="i0e-8J-cx2"/>
                         <outlet property="collectionView" destination="QQA-0P-dZT" id="yhW-fw-GNI"/>
                     </connections>
                 </viewController>
