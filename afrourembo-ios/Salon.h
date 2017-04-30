@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 @interface Salon : NSObject
 
@@ -17,6 +18,10 @@
 @property NSString *userImageName;
 @property NSString *userName;
 @property NSString *address;
+
+//TODO: Encapsulate into object ?
+@property CGFloat longitude;
+@property CGFloat latitude;
 
 //TODO: CHANGE STRUCTURE. POSSIBLY HAVE A SEPARATE TIME OBJECT
 @property NSArray *timesArray;

@@ -501,8 +501,8 @@
 				47A3BB831E7A8BD600963F27 /* Welcome ViewController */,
 				47A3BB821E7A8BA200963F27 /* Onboarding ViewController */,
 				47A3BB891E7A8C1000963F27 /* Role ViewController */,
-				47A3BB8D1E7A9F4100963F27 /* Sign In ViewController */,
 				47448ADB1EAE16580098CED3 /* Customer - Sign up ViewController */,
+				47A3BB8D1E7A9F4100963F27 /* Customer - Sign In ViewController */,
 				47448ADC1EAE18430098CED3 /* Customer - Basic FB Profile Info */,
 				47448ADD1EAE46110098CED3 /* Customer - Edit FB Profile Info */,
 				4787C6D61EB4013900DF7B83 /* Customer - Cart review */,
@@ -526,13 +526,13 @@
 			name = "Role ViewController";
 			sourceTree = "<group>";
 		};
-		47A3BB8D1E7A9F4100963F27 /* Sign In ViewController */ = {
+		47A3BB8D1E7A9F4100963F27 /* Customer - Sign In ViewController */ = {
 			isa = PBXGroup;
 			children = (
 				47A3BB8A1E7A9F3500963F27 /* EKSignInViewController.h */,
 				47A3BB8B1E7A9F3500963F27 /* EKSignInViewController.m */,
 			);
-			name = "Sign In ViewController";
+			name = "Customer - Sign In ViewController";
 			sourceTree = "<group>";
 		};
 		47AF51B31E9B68A3005FE6EB /* Views */ = {

@@ -30,7 +30,7 @@ static NSString *kSalonAnnotation = @"salonLocations";
             annotationView = [[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:kSalonAnnotation];
             annotationView.enabled = YES;
             annotationView.canShowCallout = YES;
-            annotationView.image = [UIImage imageNamed:@"annotation"]; //here we use a nice image instead of the default pins
+            annotationView.image = [UIImage imageNamed:@"icPinNormal"]; //here we use a nice image instead of the default pins
             
         } else {
             
@@ -55,18 +55,28 @@ static NSString *kSalonAnnotation = @"salonLocations";
     }
 }
 
-- (void)placeVenuePin {
+- (void)placeVenuePins:(NSArray *)dataSource {
+
+    NSMutableArray *pinsArray = [NSMutableArray array];
+    CLLocationCoordinate2D coords = CLLocationCoordinate2DMake(0, 0);
     
-    MKPointAnnotation *annotation = [[MKPointAnnotation alloc] init];
-    annotation.coordinate = self.venueCoordinates;
-    annotation.title = @"";
+    for (Salon *salonObj in dataSource) {
+        
+        // Create Pin object
+        MKPointAnnotation *annotation = [[MKPointAnnotation alloc] init];
+        coords = CLLocationCoordinate2DMake(salonObj.latitude, salonObj.longitude);
+        annotation.coordinate = coords;
+        annotation.title = salonObj.userName;
+        
+        [pinsArray addObject:annotation];
+    }
     
     // Set pin on map
-    [self.mapView addAnnotation:annotation];
+    [self.mapView addAnnotations:pinsArray];
     
     // zoom to pin Location
-    MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(self.venueCoordinates, ONEPIN_ZOOM_FACTOR * METERS_PER_MILE, ONEPIN_ZOOM_FACTOR * METERS_PER_MILE);
-    
+    MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(coords, PINS_ZOOM_FACTOR * METERS_PER_MILE,
+                                                                       PINS_ZOOM_FACTOR * METERS_PER_MILE);
     [self.mapView setRegion:viewRegion animated:YES];
 }
 

@@ -11,7 +11,7 @@
 
 @interface EKDiscoverMapViewController (MapDelegate)
 
-- (void)placeVenuePin;
+- (void)placeVenuePins:(NSArray *)dataSource;
 - (void)clearAllPins;
 
 @end
