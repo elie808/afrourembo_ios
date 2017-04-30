@@ -59,6 +59,8 @@
 		47DD4CCA1EB2149A009AA482 /* Vendor_Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 47DD4CC91EB2149A009AA482 /* Vendor_Main.storyboard */; };
 		47E2F0061EA5FE9D002E2FD4 /* EKSignupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47E2F0051EA5FE9D002E2FD4 /* EKSignupViewController.m */; };
 		47E2F0091EA5FF97002E2FD4 /* EKProfileInfoFacebookViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47E2F0081EA5FF97002E2FD4 /* EKProfileInfoFacebookViewController.m */; };
+		47FF4F681EB5520E0022A6ED /* Customer.m in Sources */ = {isa = PBXBuildFile; fileRef = 47FF4F671EB5520E0022A6ED /* Customer.m */; };
+		47FF4F6B1EB557620022A6ED /* Customer+API.m in Sources */ = {isa = PBXBuildFile; fileRef = 47FF4F6A1EB557620022A6ED /* Customer+API.m */; };
 		47FFF9751E99E81F008B6A31 /* EKImageTextTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 47FFF9741E99E81F008B6A31 /* EKImageTextTableViewCell.m */; };
 		BEF4D67868C23697EF923AAA /* libPods-afrourembo-ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 572155C7C18553B923C74DE5 /* libPods-afrourembo-ios.a */; };
 /* End PBXBuildFile section */
@@ -165,6 +167,10 @@
 		47E2F0051EA5FE9D002E2FD4 /* EKSignupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKSignupViewController.m; sourceTree = "<group>"; };
 		47E2F0071EA5FF97002E2FD4 /* EKProfileInfoFacebookViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKProfileInfoFacebookViewController.h; sourceTree = "<group>"; };
 		47E2F0081EA5FF97002E2FD4 /* EKProfileInfoFacebookViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKProfileInfoFacebookViewController.m; sourceTree = "<group>"; };
+		47FF4F661EB5520E0022A6ED /* Customer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Customer.h; sourceTree = "<group>"; };
+		47FF4F671EB5520E0022A6ED /* Customer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Customer.m; sourceTree = "<group>"; };
+		47FF4F691EB557620022A6ED /* Customer+API.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Customer+API.h"; sourceTree = "<group>"; };
+		47FF4F6A1EB557620022A6ED /* Customer+API.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Customer+API.m"; sourceTree = "<group>"; };
 		47FFF9731E99E81F008B6A31 /* EKImageTextTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKImageTextTableViewCell.h; sourceTree = "<group>"; };
 		47FFF9741E99E81F008B6A31 /* EKImageTextTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKImageTextTableViewCell.m; sourceTree = "<group>"; };
 		572155C7C18553B923C74DE5 /* libPods-afrourembo-ios.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-afrourembo-ios.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -356,6 +362,7 @@
 				4787C6E61EB4216000DF7B83 /* EKNetworkingConstants.h */,
 				4787C6E21EB4212F00DF7B83 /* EKNetworkManager.h */,
 				4787C6E31EB4212F00DF7B83 /* EKNetworkManager.m */,
+				47FF4F6C1EB557660022A6ED /* API */,
 			);
 			name = Networking;
 			sourceTree = "<group>";
@@ -382,6 +389,8 @@
 		478BDEFA1E99C60100F74A5C /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				47FF4F661EB5520E0022A6ED /* Customer.h */,
+				47FF4F671EB5520E0022A6ED /* Customer.m */,
 				47AF51B81E9B8561005FE6EB /* Salon.h */,
 				47AF51B91E9B8561005FE6EB /* Salon.m */,
 				478BDEF71E99C5FC00F74A5C /* Service.h */,
@@ -571,6 +580,15 @@
 			name = Cells;
 			sourceTree = "<group>";
 		};
+		47FF4F6C1EB557660022A6ED /* API */ = {
+			isa = PBXGroup;
+			children = (
+				47FF4F691EB557620022A6ED /* Customer+API.h */,
+				47FF4F6A1EB557620022A6ED /* Customer+API.m */,
+			);
+			name = API;
+			sourceTree = "<group>";
+		};
 		47FFF9721E99E7FD008B6A31 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
@@ -722,6 +740,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				47FF4F6B1EB557620022A6ED /* Customer+API.m in Sources */,
 				470CD7491EA11AD40086DEE4 /* EKCompanyContactTableViewCell.m in Sources */,
 				478BDEEE1E99A25E00F74A5C /* EKImageTextButton.m in Sources */,
 				474ED7C01E9C6BD90099CA0A /* EKDiscoverMapViewController+TableView.m in Sources */,
@@ -731,6 +750,7 @@
 				47BFEA651EA49AB10091522B /* EKBookingProCollectionViewCell.m in Sources */,
 				4795200F1EB3A40700E377E5 /* EKScheduleMonthlyViewController.m in Sources */,
 				478BDEFD1E99D36000F74A5C /* EKSideMenuViewController.m in Sources */,
+				47FF4F681EB5520E0022A6ED /* Customer.m in Sources */,
 				4787C6DD1EB40D5500DF7B83 /* Booking.m in Sources */,
 				478971941EA756F100917DB1 /* EKEditFacebookProfileInfoViewController.m in Sources */,
 				47FFF9751E99E81F008B6A31 /* EKImageTextTableViewCell.m in Sources */,

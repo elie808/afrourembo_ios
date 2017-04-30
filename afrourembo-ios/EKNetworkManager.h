@@ -11,6 +11,8 @@
 
 #import "EKNetworkingConstants.h"
 
+#import "Customer+API.h"
+
 @interface EKNetworkManager : NSObject
 
 + (void)configureRestKit;

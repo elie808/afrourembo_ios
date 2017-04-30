@@ -11,11 +11,12 @@
 
 #pragma mark - URLs
 
-static NSString * const kBaseURL = @"http://35.157.203.137/api/v1/";
+static NSString * const kBaseURL = @"http://35.158.118.170/api/v1/";
 
 #pragma mark - Routes
 
-//static NSString * const kUserRegisterPhoneAPIPath = @"user/register/phone";
+static NSString * const kUserRegisterAPIPath = @"user/register";
+static NSString * const kUserLoginAPIPath = @"user/login";
 
 #pragma mark - Status Codes
 

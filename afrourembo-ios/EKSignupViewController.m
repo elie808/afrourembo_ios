@@ -10,6 +10,8 @@
 
 static NSString * const kSignUpCell = @"signUpCell";
 
+static NSString * const kEditProfileSegue = @"signUpToEditProfile";
+
 @interface EKSignupViewController() {
     NSArray *_dataSourceArray;
 }
@@ -56,14 +58,25 @@ static NSString * const kSignUpCell = @"signUpCell";
     
 }
 
-/*
 #pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (IBAction)didTapSignUpButton:(id)sender {
+ 
+    [Customer signUpCustomer:@"email1@address.com"
+                    password:@"12345678"
+                   withBlock:^(Customer *customerObj) {
+                       NSLog(@"USER SIGNED UP!!");
+                   }
+                  withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
+                      
+                  }];
 }
-*/
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    
+    if ([segue.identifier isEqualToString:kEditProfileSegue]) {
+        
+    }
+}
 
 @end

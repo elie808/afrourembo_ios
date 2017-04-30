@@ -33,8 +33,8 @@
 
 + (void)configureRequestDescriptors:(RKObjectManager *)objectManager {
     
-//    [objectManager addRequestDescriptor:[UserRegisterPhone userRegistrationRequestDescriptor]];
-//    
+    [objectManager addRequestDescriptor:[Customer userRegistrationRequestDescriptor]];
+//
 //    [objectManager addRequestDescriptorsFromArray:@[[Interest putInterestsRequestDescriptor]]];
 }
 
@@ -42,8 +42,8 @@
 
 + (void)configureResponseDescriptors:(RKObjectManager *)objectManager {
     
-//    [objectManager addResponseDescriptor:[Properties getDefaultPropertiesResponseDescriptor]];
-//    
+    [objectManager addResponseDescriptor:[Customer userRegistrationResponseDescriptor]];
+//
 //    [objectManager addResponseDescriptorsFromArray:@[
 //                                                     [UserProfilePicture postProfilePictureResponseDescriptor],
 //                                                     [UserProfilePicture postDefaultProfilePictureResponseDescriptor]

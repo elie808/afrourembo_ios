@@ -19,13 +19,13 @@ static NSString * const kVendorMainStoryboard = @"Vendor_Main";
     [EKNetworkManager configureRestKit];
     
     // Start at Splash Screen
-//    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:kWelcomeStoryboard bundle:nil];
-//    UINavigationController *rootViewController = [storyboard instantiateViewControllerWithIdentifier:kSplashVC];
-//    self.window.rootViewController = rootViewController;
-
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:kMainStoryboard bundle:nil];
-    UINavigationController *rootViewController = [storyboard instantiateViewControllerWithIdentifier:kExploreVC];
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:kWelcomeStoryboard bundle:nil];
+    UINavigationController *rootViewController = [storyboard instantiateViewControllerWithIdentifier:kSplashVC];
     self.window.rootViewController = rootViewController;
+
+//    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:kMainStoryboard bundle:nil];
+//    UINavigationController *rootViewController = [storyboard instantiateViewControllerWithIdentifier:kExploreVC];
+//    self.window.rootViewController = rootViewController;
 
     // Vendor
 //    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:kVendorMainStoryboard bundle:nil];
