@@ -95,11 +95,14 @@
                             <barButtonItem image="icSearch" id="1zr-tG-XYo">
                                 <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
-                                    <segue destination="ITR-70-tiW" kind="show" id="RGr-Lm-qTz"/>
+                                    <segue destination="ITR-70-tiW" kind="show" identifier="exploreToDiscoverSearch" id="RGr-Lm-qTz"/>
                                 </connections>
                             </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
+                    <connections>
+                        <segue destination="ITR-70-tiW" kind="show" identifier="exploreToDiscover" id="0Iw-2o-UQu"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -1367,4 +1370,7 @@
         <image name="icSearch" width="18" height="18"/>
         <image name="icTwitterActive" width="24" height="21"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="0Iw-2o-UQu"/>
+    </inferredMetricsTieBreakers>
 </document>

@@ -17,6 +17,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
  
+    NSLog(@"SERVICE %@", self.passedService.serviceTitle);
+    if (!self.passedService) {
+        //TODO: Regular Search
+    } else {
+        //TODO: Service specific
+    }
+    
     [self initLayout];
     
     [self initDataSources];

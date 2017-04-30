@@ -9,7 +9,10 @@
 #import "EKExploreViewController.h"
 
 static NSString * const kExploreCell = @"exploreCollectionCell";
-static NSString * const kSideMenuSegue = @"exploreVcToSideMenuVC";
+
+static NSString * const kSideMenuSegue  = @"exploreVcToSideMenuVC";
+static NSString * const kSearchSegue    = @"exploreToDiscoverSearch";
+static NSString * const kDiscoverSegue  = @"exploreToDiscover";
 
 @implementation EKExploreViewController {
     NSArray *_dataSourceArray;
@@ -26,19 +29,19 @@ static NSString * const kSideMenuSegue = @"exploreVcToSideMenuVC";
 - (NSArray *)createStubs {
     
     Service *service1 = [Service new];
-    service1.serviceTitle = @"NATURAL HAIR";
+    service1.serviceTitle = kService1;
     service1.serviceImage = @"dummy_portrait1";
     
     Service *service2 = [Service new];
-    service2.serviceTitle = @"BEST WEAVING & EXTENSIONS";
+    service2.serviceTitle = kService2;
     service2.serviceImage = @"dummy_portrait2";
     
     Service *service3 = [Service new];
-    service3.serviceTitle = @"TRENDING BARBERS";
+    service3.serviceTitle = kService3;
     service3.serviceImage = @"dummy_portrait3";
     
     Service *service4 = [Service new];
-    service4.serviceTitle = @"SPECIAL OCCASIONS PROS";
+    service4.serviceTitle = kService4;
     service4.serviceImage = @"dummy_portrait4";
     
     return @[service1, service2, service3, service4, service1, service2, service3, service4, service1, service2, service3, service4];
@@ -89,15 +92,28 @@ static NSString * const kSideMenuSegue = @"exploreVcToSideMenuVC";
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
 
+    Service *service = [_dataSourceArray objectAtIndex:indexPath.row];
+    
+    [self performSegueWithIdentifier:kDiscoverSegue sender:service];
 }
 
 #pragma mark - Navigation
 
-- (IBAction)unwindToExploreVC:(UIStoryboardSegue *)segue {
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     
+    if ([segue.identifier isEqualToString:kDiscoverSegue]) {
+        
+        EKDiscoverMapViewController *vc = segue.destinationViewController;
+        vc.passedService = (Service*)sender;
+    }
+    
+    if ([segue.identifier isEqualToString:kSearchSegue]) {
+        
+    }
 }
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+- (IBAction)unwindToExploreVC:(UIStoryboardSegue *)segue {
+    
 }
 
 @end
