@@ -105,7 +105,7 @@
     
     Salon *salon1 = [Salon new];
     salon1.mainImageName = @"dummy_portrait2";
-    salon1.stars = @3;
+    salon1.stars = @2;
     salon1.price = @300;
     salon1.photoCount = @100;
     salon1.userImageName = @"dummy_male1";
@@ -117,7 +117,7 @@
     
     Salon *salon3 = [Salon new];
     salon3.mainImageName = @"dummy_portrait3";
-    salon3.stars = @3;
+    salon3.stars = @5;
     salon3.price = @30;
     salon3.photoCount = @10;
     salon3.userImageName = @"dummy_male2";
@@ -127,7 +127,19 @@
     salon3.longitude = 36.805736;
     salon3.timesArray = @[@"Today", @"9:00 AM"];
     
-    return @[salon, salon1, salon3];
+    Salon *salon4 = [Salon new];
+    salon4.mainImageName = @"dummy_portrait5";
+    salon4.stars = @5;
+    salon4.price = @300;
+    salon4.photoCount = @10;
+    salon4.userImageName = @"dummy_male1";
+    salon4.userName = @"Twinning Matumbo";
+    salon4.address = @"Konakri Mbingu St.";
+    salon4.latitude = -1.391536;
+    salon4.longitude = 36.905736;
+    salon4.timesArray = @[@"Today", @"9:00 AM", @"12:15 PM", @"1:30 PM", @"Tue", @"8:20 AM", @"12:55 PM"];
+    
+    return @[salon, salon1, salon3, salon4];
 }
 
 @end

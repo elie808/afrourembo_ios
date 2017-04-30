@@ -22,7 +22,7 @@
 
     self.cellMainImageView.image = [UIImage imageNamed:salon.mainImageName];
     
-    self.cellStarImageView.image = [self imageForStars:@3];
+    self.cellStarImageView.image = [self imageForStars:salon.stars];
     self.cellPriceLabel.text = [NSString stringWithFormat:@"$%@+", salon.price];
     self.cellPhotoCountLabel.text = [NSString stringWithFormat:@"%@ Photo(s)", salon.photoCount];
     
@@ -34,14 +34,15 @@
 - (UIImage *)imageForStars:(NSNumber *)numberOfStars {
     
     switch ([numberOfStars integerValue]) {
-            
+        
+        case 0: return [UIImage imageNamed:@"0star"]; break;
         case 1: return [UIImage imageNamed:@"1star"]; break;
         case 2: return [UIImage imageNamed:@"2star"]; break;
         case 3: return [UIImage imageNamed:@"3star"]; break;
         case 4: return [UIImage imageNamed:@"4star"]; break;
         case 5: return [UIImage imageNamed:@"5star"]; break;
             
-        default: return [UIImage imageNamed:@""]; break;
+        default: return [UIImage imageNamed:@"0star"]; break;
     }
 }
 
