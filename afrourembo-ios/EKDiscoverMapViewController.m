@@ -99,8 +99,8 @@
     salon.userImageName = @"dummy_male1";
     salon.userName = @"Adele Hampton";
     salon.address = @"Muindi Mbingu St.";
-    salon.latitude = 33.883630;
-    salon.longitude = 35.495480;
+    salon.latitude = -1.271536; //33.883630;
+    salon.longitude = 36.845736; //35.495480;
     salon.timesArray = @[@"Today", @"9:00 AM", @"12:15 PM"];
     
     Salon *salon1 = [Salon new];
@@ -111,8 +111,8 @@
     salon1.userImageName = @"dummy_male1";
     salon1.userName = @"James Lipton";
     salon1.address = @"More of Muindi Mbingu St.";
-    salon1.latitude = 33.888655;
-    salon1.longitude = 35.415480;
+    salon1.latitude = -1.291536;
+    salon1.longitude = 36.825736;
     salon1.timesArray = @[@"Today", @"9:00 AM", @"12:15 PM", @"1:30 PM", @"Tue", @"8:20 AM", @"12:55 PM"];
     
     Salon *salon3 = [Salon new];
@@ -123,8 +123,8 @@
     salon3.userImageName = @"dummy_male2";
     salon3.userName = @"James Earl Lipton";
     salon3.address = @"Muindi Mbingu St.";
-    salon3.latitude = 33.688679;
-    salon3.longitude = 35.495463;
+    salon3.latitude = -1.331536;
+    salon3.longitude = 36.805736;
     salon3.timesArray = @[@"Today", @"9:00 AM"];
     
     return @[salon, salon1, salon3];

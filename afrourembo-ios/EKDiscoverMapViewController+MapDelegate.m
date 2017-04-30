@@ -8,8 +8,8 @@
 
 #import "EKDiscoverMapViewController+MapDelegate.h"
 
-#define ONEPIN_ZOOM_FACTOR 1.8
-#define PINS_ZOOM_FACTOR 100.0
+#define ONEPIN_ZOOM_FACTOR 2.5
+#define PINS_ZOOM_FACTOR 25.0
 
 #define METERS_PER_MILE 1609.344
 
