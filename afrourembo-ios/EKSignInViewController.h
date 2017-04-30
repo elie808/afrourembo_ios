@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "EKTextFieldTableViewCell.h"
+#import "Customer+API.h"
 
 @interface EKSignInViewController : UIViewController
 

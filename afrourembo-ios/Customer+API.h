@@ -18,8 +18,11 @@ typedef void (^CustomerSignUpErrorBlock)(NSError *error, NSString *errorMessage,
 /// email, password
 + (RKObjectMapping *)map1;
 
-/// Maps the returned reponse from the POST call
+/// Maps the returned reponse from the POST Sign Up call
 + (RKResponseDescriptor *)userRegistrationResponseDescriptor;
+
+/// Maps the returned reponse from the POST Login call
++ (RKResponseDescriptor *)userLoginResponseDescriptor;
 
 /// Maps the REQUEST for the POST call
 + (RKRequestDescriptor *)userRegistrationRequestDescriptor;
@@ -32,5 +35,7 @@ typedef void (^CustomerSignUpErrorBlock)(NSError *error, NSString *errorMessage,
  @param errorBlock Server error logging
  */
 + (void)signUpCustomer:(NSString *)email password:(NSString *)password withBlock:(CustomerSignUpSuccessBlock)successBlock withErrors:(CustomerSignUpErrorBlock)errorBlock;
+
++ (void)loginCustomer:(NSString *)email password:(NSString *)password withBlock:(CustomerSignUpSuccessBlock)successBlock withErrors:(CustomerSignUpErrorBlock)errorBlock;
 
 @end

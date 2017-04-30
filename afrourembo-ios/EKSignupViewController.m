@@ -65,7 +65,9 @@ static NSString * const kEditProfileSegue = @"signUpToEditProfile";
     [Customer signUpCustomer:@"email1@address.com"
                     password:@"12345678"
                    withBlock:^(Customer *customerObj) {
+                       
                        NSLog(@"USER SIGNED UP!!");
+                       [self performSegueWithIdentifier:kEditProfileSegue sender:nil];
                    }
                   withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
                       

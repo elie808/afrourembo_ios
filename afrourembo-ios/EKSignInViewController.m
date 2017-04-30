@@ -38,8 +38,7 @@ static NSString * const kExploreSegue = @"signInToExploreVC";
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     EKTextFieldTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kSigninCell forIndexPath:indexPath];
-
-//    cell.textLabel.text = _dataSourceArray[indexPath.row];
+    
     cell.cellTitleLabel.text = _dataSourceArray[indexPath.row];;
     cell.cellTextField.placeholder = @"address@mail";
     
@@ -56,7 +55,15 @@ static NSString * const kExploreSegue = @"signInToExploreVC";
 
 - (IBAction)didTapSignInButton:(id)sender {
     
-    [self performSegueWithIdentifier:kExploreSegue sender:nil];
+    [Customer loginCustomer:@"email@address.com"
+                   password:@"12345678"
+                  withBlock:^(Customer *customerObj) {
+                    
+                      [self performSegueWithIdentifier:kExploreSegue sender:nil];
+                  }
+                 withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
+                     
+                 }];
 }
 
 /*
