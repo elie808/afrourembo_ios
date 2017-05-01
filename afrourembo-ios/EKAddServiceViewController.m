@@ -8,6 +8,9 @@
 
 #import "EKAddServiceViewController.h"
 
+static NSString * const kEditServiceSegue = @"serviceListToEditService";
+static NSString * const kNewServiceSegue  = @"serviceListToNewService";
+
 static NSString * const kServiceCell = @"addServiceCell";
 
 @implementation EKAddServiceViewController {
@@ -36,8 +39,12 @@ static NSString * const kServiceCell = @"addServiceCell";
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kServiceCell forIndexPath:indexPath];
+    EKAccessoryTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kServiceCell forIndexPath:indexPath];
     
+    cell.delegate = self;
+    cell.cellIndexPath = indexPath;
+    
+    cell.cellTextLabel.text = @"Hair";
 //    NSString *labelValue = [[(NSDictionary *)[_dataSourceArray objectAtIndex:indexPath.row] allKeys] firstObject];
 //    NSString *placeHolderValue = [[(NSDictionary *)[_dataSourceArray objectAtIndex:indexPath.row] allValues] firstObject];
     
@@ -50,14 +57,32 @@ static NSString * const kServiceCell = @"addServiceCell";
     
 }
 
-/*
+#pragma mark - EKAccessoryCellDelegate
+
+- (void)didTapAccessoryButtonAtIndex:(NSIndexPath *)indexPath {
+    
+    //TODO: Pass sender Service obj
+    [self performSegueWithIdentifier:kEditServiceSegue sender:nil];
+}
+
+#pragma mark - Actions
+
+- (IBAction)didTapAddServiceButton:(id)sender {
+    
+    [self performSegueWithIdentifier:kNewServiceSegue sender:nil];
+}
+
 #pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+
+    if ([segue.identifier isEqualToString:kNewServiceSegue]) {
+        
+    }
+    
+    if ([segue.identifier isEqualToString:kEditServiceSegue]) {
+        
+    }
 }
-*/
 
 @end

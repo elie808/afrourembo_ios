@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "EKAccessoryTableViewCell.h"
 
-@interface EKAddServiceViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
+@interface EKAddServiceViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, EKAccessoryCellDelegate>
 
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 
