@@ -8,6 +8,8 @@
 
 #import "EKAvailabilityViewController.h"
 
+static NSString * const kVendorDashSegue = @"availabilityVcToVendorDashboard";
+
 static NSString * const kSwitchCell = @"availabilitySwitchCell";
 static NSString * const kTimeCell   = @"availabilityTimeCell";
 
@@ -26,6 +28,11 @@ static NSString * const kTimeCell   = @"availabilityTimeCell";
                          @{@"Password" : @"Your password"},
                          @{@"Password" : @"Your password"}
                          ];
+    
+    UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithTitle:@"Done"
+                                                                    style:UIBarButtonItemStyleDone
+                                                                   target:self action:@selector(didTapDoneButton)];
+    self.navigationItem.rightBarButtonItem = rightButton;
 }
 
 #pragma mark - UITableViewDataSource
@@ -98,6 +105,12 @@ static NSString * const kTimeCell   = @"availabilityTimeCell";
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
+}
+
+#pragma mark - Actions
+
+- (void)didTapDoneButton {
+    [self performSegueWithIdentifier:kVendorDashSegue sender:nil];
 }
 
 #pragma mark - Helpers

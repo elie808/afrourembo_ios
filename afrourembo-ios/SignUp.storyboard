@@ -920,7 +920,7 @@
                                 <color key="backgroundColor" red="0.92549019607843142" green="0.92549019607843142" blue="0.92549019607843142" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="availabilitySwitchCell" id="uIV-EW-o1d">
-                                        <rect key="frame" x="0.0" y="55.5" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="56" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="uIV-EW-o1d" id="IrG-il-4wK">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
@@ -949,7 +949,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="availabilityTimeCell" id="EQG-60-bbB">
-                                        <rect key="frame" x="0.0" y="99.5" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="100" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="EQG-60-bbB" id="zRR-ss-vKV">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
@@ -1003,11 +1003,20 @@
                     </view>
                     <connections>
                         <outlet property="tableView" destination="CFz-OH-1zY" id="zJJ-UT-h2g"/>
+                        <segue destination="fOE-tV-ZTA" kind="presentation" identifier="availabilityVcToVendorDashboard" id="CeF-Xb-Gm3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oC3-gb-AOf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4252" y="-802.848575712144"/>
+        </scene>
+        <!--Vendor_Main-->
+        <scene sceneID="1Xq-Y4-2YB">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Vendor_Main" id="fOE-tV-ZTA" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LRC-2z-Lwe" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4978" y="-803"/>
         </scene>
         <!--Add New Service View Controller-->
         <scene sceneID="QQe-7f-iWJ">
