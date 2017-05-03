@@ -8,6 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol EKSwitchCellDelegate <NSObject>
+- (void)didChangeSwitchValue:(BOOL)switchValue atIndex:(NSIndexPath *)indexPath;
+@end
+
 @interface EKSwitchTableViewCell : UITableViewCell
+
+@property (strong, nonatomic) NSIndexPath *cellIndexPath;
+@property (assign, nonatomic) id<EKSwitchCellDelegate> delegate;
+
+@property (strong, nonatomic) IBOutlet UISwitch *cellSwitch;
 
 @end

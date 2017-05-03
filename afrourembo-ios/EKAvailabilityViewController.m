@@ -15,6 +15,8 @@ static NSString * const kTimeCell   = @"availabilityTimeCell";
 
 @implementation EKAvailabilityViewController {
     NSArray *_dataSourceArray;
+    
+    NSArray *_section0DataSource;
 }
 
 - (void)viewDidLoad {
@@ -23,9 +25,6 @@ static NSString * const kTimeCell   = @"availabilityTimeCell";
     self.title = @"Availability";
     
     _dataSourceArray = @[
-                         @{@"Password" : @"Your password"},
-                         @{@"Password" : @"Your password"},
-                         @{@"Password" : @"Your password"},
                          @{@"Password" : @"Your password"}
                          ];
     
@@ -71,6 +70,9 @@ static NSString * const kTimeCell   = @"availabilityTimeCell";
         
         EKSwitchTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kSwitchCell forIndexPath:indexPath];
         
+        cell.delegate = self;
+        cell.cellIndexPath = indexPath;
+        
         //    NSString *labelValue = [[(NSDictionary *)[_dataSourceArray objectAtIndex:indexPath.row] allKeys] firstObject];
         //    NSString *placeHolderValue = [[(NSDictionary *)[_dataSourceArray objectAtIndex:indexPath.row] allValues] firstObject];
         
@@ -105,6 +107,14 @@ static NSString * const kTimeCell   = @"availabilityTimeCell";
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
+}
+
+#pragma mark - EKSwitchCellDelegate
+
+- (void)didChangeSwitchValue:(BOOL)switchValue atIndex:(NSIndexPath *)indexPath {
+    
+    NSLog(@"SWITCHED TO: %d", switchValue ? YES : NO);
+    NSLog(@"AT INDEX: %@", indexPath);
 }
 
 #pragma mark - Actions

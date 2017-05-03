@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "EKSwitchTableViewCell.h"
 
-@interface EKAvailabilityViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
+@interface EKAvailabilityViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, EKSwitchCellDelegate>
 
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 

@@ -12,13 +12,23 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    // Initialization code
 }
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
+- (IBAction)didChangeSwitchValue:(UISwitch *)cellSwitch {
+    
+    BOOL boolValue = cellSwitch.isOn ? YES : NO;
+    
+    [self didChangeSwitchValue:boolValue atIndex:self.cellIndexPath];
+}
 
-    // Configure the view for the selected state
+#pragma mark - EKSwitchCellDelegate
+
+- (void)didChangeSwitchValue:(BOOL)switchValue atIndex:(NSIndexPath *)indexPath {
+ 
+    if (self.delegate && [self.delegate respondsToSelector:@selector(didChangeSwitchValue:atIndex:)]) {
+        
+        [self.delegate didChangeSwitchValue:switchValue atIndex:self.cellIndexPath];
+    }
 }
 
 @end
