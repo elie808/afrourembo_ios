@@ -21,6 +21,8 @@
 		474ED7C01E9C6BD90099CA0A /* EKDiscoverMapViewController+TableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 474ED7BF1E9C6BD90099CA0A /* EKDiscoverMapViewController+TableView.m */; };
 		475FC37D1EB6B57900BB0731 /* EKAddServiceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 475FC37C1EB6B57900BB0731 /* EKAddServiceViewController.m */; };
 		475FC3811EB6BF5E00BB0731 /* EKAddNewServiceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 475FC3801EB6BF5E00BB0731 /* EKAddNewServiceViewController.m */; };
+		477256051EB958FF007CBD6B /* EKAvailabilityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 477256041EB958FF007CBD6B /* EKAvailabilityViewController.m */; };
+		477256091EB95EA4007CBD6B /* EKSwitchTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 477256081EB95EA4007CBD6B /* EKSwitchTableViewCell.m */; };
 		47800BC31EA3B2FA00F450DB /* EKBookingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47800BC21EA3B2FA00F450DB /* EKBookingViewController.m */; };
 		478278CE1E7923D000FB2FD2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 478278CD1E7923D000FB2FD2 /* main.m */; };
 		478278D11E7923D000FB2FD2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 478278D01E7923D000FB2FD2 /* AppDelegate.m */; };
@@ -97,6 +99,10 @@
 		475FC37C1EB6B57900BB0731 /* EKAddServiceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKAddServiceViewController.m; sourceTree = "<group>"; };
 		475FC37F1EB6BF5E00BB0731 /* EKAddNewServiceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKAddNewServiceViewController.h; sourceTree = "<group>"; };
 		475FC3801EB6BF5E00BB0731 /* EKAddNewServiceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKAddNewServiceViewController.m; sourceTree = "<group>"; };
+		477256031EB958FF007CBD6B /* EKAvailabilityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKAvailabilityViewController.h; sourceTree = "<group>"; };
+		477256041EB958FF007CBD6B /* EKAvailabilityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKAvailabilityViewController.m; sourceTree = "<group>"; };
+		477256071EB95EA4007CBD6B /* EKSwitchTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKSwitchTableViewCell.h; sourceTree = "<group>"; };
+		477256081EB95EA4007CBD6B /* EKSwitchTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKSwitchTableViewCell.m; sourceTree = "<group>"; };
 		47800BC11EA3B2FA00F450DB /* EKBookingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKBookingViewController.h; sourceTree = "<group>"; };
 		47800BC21EA3B2FA00F450DB /* EKBookingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKBookingViewController.m; sourceTree = "<group>"; };
 		478278C91E7923D000FB2FD2 /* afrourembo-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "afrourembo-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -282,6 +288,25 @@
 				475FC3801EB6BF5E00BB0731 /* EKAddNewServiceViewController.m */,
 			);
 			name = "BP - Create New Service";
+			sourceTree = "<group>";
+		};
+		477256061EB95908007CBD6B /* BP - Availability */ = {
+			isa = PBXGroup;
+			children = (
+				477256031EB958FF007CBD6B /* EKAvailabilityViewController.h */,
+				477256041EB958FF007CBD6B /* EKAvailabilityViewController.m */,
+				4772560A1EB95EBD007CBD6B /* Cells */,
+			);
+			name = "BP - Availability";
+			sourceTree = "<group>";
+		};
+		4772560A1EB95EBD007CBD6B /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				477256071EB95EA4007CBD6B /* EKSwitchTableViewCell.h */,
+				477256081EB95EA4007CBD6B /* EKSwitchTableViewCell.m */,
+			);
+			name = Cells;
 			sourceTree = "<group>";
 		};
 		47800BC41EA3B2FF00F450DB /* Customer - Booking ViewController */ = {
@@ -541,6 +566,7 @@
 				47074F8C1EAEB4AC00E35EA7 /* BP - Sign up ViewController */,
 				475FC37E1EB6B57D00BB0731 /* BP - Add Service List */,
 				475FC3821EB6BF6100BB0731 /* BP - Create New Service */,
+				477256061EB95908007CBD6B /* BP - Availability */,
 				479520101EB3A40A00E377E5 /* BP - Monthly Schedule */,
 			);
 			name = "View Controllers";
@@ -790,10 +816,12 @@
 				47BFEA691EA4A9A30091522B /* EKBookingDayCollectionViewCell.m in Sources */,
 				474BD5731E97F8F3009410C4 /* EKTextFieldTableViewCell.m in Sources */,
 				470CD74F1EA1C87D0086DEE4 /* EKCompanyProfileViewController+TableView.m in Sources */,
+				477256091EB95EA4007CBD6B /* EKSwitchTableViewCell.m in Sources */,
 				47AF51BA1E9B8561005FE6EB /* Salon.m in Sources */,
 				478BDF031E99D81F00F74A5C /* EKLeftPushSegue.m in Sources */,
 				47E2F0091EA5FF97002E2FD4 /* EKProfileInfoFacebookViewController.m in Sources */,
 				4783DF8D1EA4CDAD00C87C60 /* EKBookingTimeCollectionViewCell.m in Sources */,
+				477256051EB958FF007CBD6B /* EKAvailabilityViewController.m in Sources */,
 				47AF51BD1E9C4001005FE6EB /* EKDiscoverMapViewController.m in Sources */,
 				47800BC31EA3B2FA00F450DB /* EKBookingViewController.m in Sources */,
 				478BDEF91E99C5FC00F74A5C /* Service.m in Sources */,

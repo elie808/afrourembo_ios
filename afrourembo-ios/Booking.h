@@ -10,12 +10,12 @@
 
 @interface Booking : NSObject
 
-@property NSString *bookingTitle;
-@property NSString *bookingCost;
-@property NSString *bookingVendor;
-@property NSString *practionner;
-@property NSString *bookingDate;
-@property NSString *bookingTime;
-@property NSString *bookingDescription;
+@property NSString *bookingTitle;   //Service Type
+@property NSString *bookingCost;    //cost
+@property NSString *bookingVendor;  //Salon
+@property NSString *practionner;    // Beauty Professional
+@property NSString *bookingDate;    // day/month/year
+@property NSString *bookingTime;    // Time of the day
+@property NSString *bookingDescription; // Free text ("Note" in the design), restricted to 300 chars
 
 @end

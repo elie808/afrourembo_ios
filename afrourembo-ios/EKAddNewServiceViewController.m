@@ -8,6 +8,11 @@
 
 #import "EKAddNewServiceViewController.h"
 
+static NSString * const kTitleCell = @"createServiceCellTitle";
+static NSString * const kGroupCell = @"createServiceCellGroup";
+static NSString * const kPriceCell = @"createServiceCellPrice";
+static NSString * const kTimeCell  = @"createServiceCellTime";
+
 static NSString * const kAddService = @"createServiceCell";
 
 @implementation EKAddNewServiceViewController {
@@ -17,9 +22,13 @@ static NSString * const kAddService = @"createServiceCell";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.title = @"Services";
+    self.title = @"New service";
     
+    //TODO: Replace with Service/view model
     _dataSourceArray = @[
+                         @{@"Password" : @"Your password"},
+                         @{@"Password" : @"Your password"},
+                         @{@"Password" : @"Your password"},
                          @{@"Password" : @"Your password"}
                          ];
 }
@@ -27,21 +36,49 @@ static NSString * const kAddService = @"createServiceCell";
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
+    return 4;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return _dataSourceArray.count;
+    return 1;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kAddService forIndexPath:indexPath];
-    
+    switch (indexPath.row) {
+        case 0: {
+            
+            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kTitleCell forIndexPath:indexPath];
+            return cell;
+            
+        } break;
+        
+        case 1: {
+            
+            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kGroupCell forIndexPath:indexPath];
+            return cell;
+            
+        } break;
+            
+        case 2: {
+            
+            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kPriceCell forIndexPath:indexPath];
+            return cell;
+            
+        } break;
+            
+        case 3: {
+            
+            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kTimeCell forIndexPath:indexPath];
+            return cell;
+            
+        } break;
+            
+        default: return nil; break;
+    }
+
     //    NSString *labelValue = [[(NSDictionary *)[_dataSourceArray objectAtIndex:indexPath.row] allKeys] firstObject];
     //    NSString *placeHolderValue = [[(NSDictionary *)[_dataSourceArray objectAtIndex:indexPath.row] allValues] firstObject];
-    
-    return cell;
 }
 
 #pragma mark - UITableViewDelegate
@@ -50,6 +87,10 @@ static NSString * const kAddService = @"createServiceCell";
     
 }
 
+#pragma mark - Actions
+
+- (IBAction)didTapRemoveServiceButton:(id)sender {
+}
 
 /*
 #pragma mark - Navigation
