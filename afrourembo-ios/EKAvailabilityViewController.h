@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "EKSwitchTableViewCell.h"
+#import "EKDualButtonTableViewCell.h"
 
 @interface EKAvailabilityViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, EKSwitchCellDelegate>
 

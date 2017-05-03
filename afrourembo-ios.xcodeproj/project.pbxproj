@@ -30,6 +30,7 @@
 		478278D91E7923D000FB2FD2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 478278D81E7923D000FB2FD2 /* Assets.xcassets */; };
 		478278DC1E7923D000FB2FD2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 478278DA1E7923D000FB2FD2 /* LaunchScreen.storyboard */; };
 		4783DF8D1EA4CDAD00C87C60 /* EKBookingTimeCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4783DF8C1EA4CDAD00C87C60 /* EKBookingTimeCollectionViewCell.m */; };
+		47871AE51EBA17A3003B9BEB /* EKDualButtonTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 47871AE41EBA17A3003B9BEB /* EKDualButtonTableViewCell.m */; };
 		4787C6D51EB4013200DF7B83 /* EKCartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4787C6D41EB4013200DF7B83 /* EKCartViewController.m */; };
 		4787C6D91EB402A500DF7B83 /* EKCartCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4787C6D81EB402A500DF7B83 /* EKCartCollectionViewCell.m */; };
 		4787C6DD1EB40D5500DF7B83 /* Booking.m in Sources */ = {isa = PBXBuildFile; fileRef = 4787C6DC1EB40D5500DF7B83 /* Booking.m */; };
@@ -115,6 +116,8 @@
 		478278DD1E7923D000FB2FD2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4783DF8B1EA4CDAD00C87C60 /* EKBookingTimeCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKBookingTimeCollectionViewCell.h; sourceTree = "<group>"; };
 		4783DF8C1EA4CDAD00C87C60 /* EKBookingTimeCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKBookingTimeCollectionViewCell.m; sourceTree = "<group>"; };
+		47871AE31EBA17A3003B9BEB /* EKDualButtonTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKDualButtonTableViewCell.h; sourceTree = "<group>"; };
+		47871AE41EBA17A3003B9BEB /* EKDualButtonTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKDualButtonTableViewCell.m; sourceTree = "<group>"; };
 		4787C6D31EB4013200DF7B83 /* EKCartViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKCartViewController.h; sourceTree = "<group>"; };
 		4787C6D41EB4013200DF7B83 /* EKCartViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKCartViewController.m; sourceTree = "<group>"; };
 		4787C6D71EB402A500DF7B83 /* EKCartCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKCartCollectionViewCell.h; sourceTree = "<group>"; };
@@ -305,6 +308,8 @@
 			children = (
 				477256071EB95EA4007CBD6B /* EKSwitchTableViewCell.h */,
 				477256081EB95EA4007CBD6B /* EKSwitchTableViewCell.m */,
+				47871AE31EBA17A3003B9BEB /* EKDualButtonTableViewCell.h */,
+				47871AE41EBA17A3003B9BEB /* EKDualButtonTableViewCell.m */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -844,6 +849,7 @@
 				4787C6D91EB402A500DF7B83 /* EKCartCollectionViewCell.m in Sources */,
 				47919E5A1E795664001C5600 /* EKOnboardingViewController.m in Sources */,
 				478278CE1E7923D000FB2FD2 /* main.m in Sources */,
+				47871AE51EBA17A3003B9BEB /* EKDualButtonTableViewCell.m in Sources */,
 				47448AE01EAE462F0098CED3 /* EKEditProfileInfoViewController.m in Sources */,
 				47AF51B21E9B6897005FE6EB /* EKSalonListTableViewCell.m in Sources */,
 				47E2F0061EA5FE9D002E2FD4 /* EKSignupViewController.m in Sources */,

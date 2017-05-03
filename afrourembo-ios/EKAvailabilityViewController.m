@@ -14,9 +14,7 @@ static NSString * const kSwitchCell = @"availabilitySwitchCell";
 static NSString * const kTimeCell   = @"availabilityTimeCell";
 
 @implementation EKAvailabilityViewController {
-    NSArray *_dataSourceArray;
-    
-    NSArray *_section0DataSource;
+    NSMutableArray *_dataSourceArray;
 }
 
 - (void)viewDidLoad {
@@ -54,7 +52,7 @@ static NSString * const kTimeCell   = @"availabilityTimeCell";
     
     switch (section) {
             
-        case 0: return 1; break;
+        case 0: return _dataSourceArray.count; break;
             
         case 1: return 2; break;
             
@@ -81,7 +79,7 @@ static NSString * const kTimeCell   = @"availabilityTimeCell";
     
     if (indexPath.row == 1) {
         
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kTimeCell forIndexPath:indexPath];
+        EKDualButtonTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kTimeCell forIndexPath:indexPath];
         
         return cell;
     }
@@ -95,7 +93,7 @@ static NSString * const kTimeCell   = @"availabilityTimeCell";
     
     if (indexPath.row == 3) {
         
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kTimeCell forIndexPath:indexPath];
+        EKDualButtonTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kTimeCell forIndexPath:indexPath];
         
         return cell;
     }
@@ -115,6 +113,16 @@ static NSString * const kTimeCell   = @"availabilityTimeCell";
     
     NSLog(@"SWITCHED TO: %d", switchValue ? YES : NO);
     NSLog(@"AT INDEX: %@", indexPath);
+}
+
+#pragma mark - EKDualButtonCellDelegate
+
+- (void)didTapLeftButtonAtIndexPath:(NSIndexPath *)indexPath {
+    NSLog(@"BUTTON AT INDEX: %@", indexPath);
+}
+
+- (void)didTapRightButtonAtIndexPath:(NSIndexPath *)indexPath {
+    NSLog(@"BUTTON AT INDEX: %@", indexPath);
 }
 
 #pragma mark - Actions
