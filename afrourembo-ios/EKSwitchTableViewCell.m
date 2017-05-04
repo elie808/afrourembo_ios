@@ -14,10 +14,46 @@
     [super awakeFromNib];
 }
 
+- (void)configureLunchCellForDay:(Day *)dayModel forIndex:(NSIndexPath *)indexPath {
+    
+    self.cellIndexPath = indexPath;
+    
+    [self.cellSwitch setOn:dayModel.lunchBreakSelected];
+    self.cellTitleLabel.text = @"Lunch break";
+    
+    if (dayModel.daySelected) {
+        
+        self.cellTitleLabel.textColor = [UIColor colorWithRed:51./255. green:51./255. blue:51./255. alpha:1.0];
+        
+    } else {
+        
+        self.cellTitleLabel.textColor = [UIColor colorWithRed:229./255. green:229./255. blue:229./255. alpha:1.0];
+    }
+}
+
+- (void)configureCellForDay:(Day *)dayModel forIndex:(NSIndexPath *)indexPath {
+    
+    self.cellIndexPath = indexPath;
+    
+    [self.cellSwitch setOn:dayModel.daySelected];
+    self.cellTitleLabel.text = dayModel.dayName;
+    
+    if (dayModel.daySelected) {
+        
+        self.cellTitleLabel.textColor = [UIColor colorWithRed:51./255. green:51./255. blue:51./255. alpha:1.0];
+        
+    } else {
+        
+        self.cellTitleLabel.textColor = [UIColor colorWithRed:229./255. green:229./255. blue:229./255. alpha:1.0];
+    }
+}
+
+#pragma mark - Actions
+
 - (IBAction)didChangeSwitchValue:(UISwitch *)cellSwitch {
     
     BOOL boolValue = cellSwitch.isOn ? YES : NO;
-    
+
     [self didChangeSwitchValue:boolValue atIndex:self.cellIndexPath];
 }
 

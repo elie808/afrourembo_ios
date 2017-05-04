@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Day.h"
 
 @protocol EKSwitchCellDelegate <NSObject>
 - (void)didChangeSwitchValue:(BOOL)switchValue atIndex:(NSIndexPath *)indexPath;
@@ -17,6 +18,10 @@
 @property (strong, nonatomic) NSIndexPath *cellIndexPath;
 @property (assign, nonatomic) id<EKSwitchCellDelegate> delegate;
 
+@property (strong, nonatomic) IBOutlet UILabel *cellTitleLabel;
 @property (strong, nonatomic) IBOutlet UISwitch *cellSwitch;
+
+- (void)configureCellForDay:(Day *)dayModel forIndex:(NSIndexPath *)indexPath;
+- (void)configureLunchCellForDay:(Day *)dayModel forIndex:(NSIndexPath *)indexPath;
 
 @end
