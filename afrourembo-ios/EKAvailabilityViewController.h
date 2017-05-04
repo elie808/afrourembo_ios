@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "EKSwitchTableViewCell.h"
 #import "EKDualButtonTableViewCell.h"
+#import "Day.h"
 
 @interface EKAvailabilityViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, EKSwitchCellDelegate>
 

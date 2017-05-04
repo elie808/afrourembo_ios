@@ -952,6 +952,7 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="cellSwitch" destination="pIz-3f-DYI" id="vrK-BW-6wx"/>
+                                            <outlet property="cellTitleLabel" destination="QOu-FC-qFM" id="7Uu-VK-tHS"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="availabilityTimeCell" id="EQG-60-bbB" customClass="EKDualButtonTableViewCell">

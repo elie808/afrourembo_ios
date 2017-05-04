@@ -22,14 +22,24 @@ static NSString * const kTimeCell   = @"availabilityTimeCell";
     
     self.title = @"Availability";
     
-    _dataSourceArray = @[
-                         @{@"Password" : @"Your password"}
-                         ];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]
+                                              initWithTitle:@"Done" style:UIBarButtonItemStyleDone
+                                              target:self action:@selector(didTapDoneButton)];
     
-    UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithTitle:@"Done"
-                                                                    style:UIBarButtonItemStyleDone
-                                                                   target:self action:@selector(didTapDoneButton)];
-    self.navigationItem.rightBarButtonItem = rightButton;
+    _dataSourceArray = [NSMutableArray arrayWithArray:[self createDataSource]];
+}
+
+- (NSArray *)createDataSource {
+    
+    Day *monday     = [Day defaultModelForDay:@"Monday"];
+    Day *tuesday    = [Day defaultModelForDay:@"Tuesday"];
+    Day *wednesday  = [Day defaultModelForDay:@"Wednesday"];
+    Day *thursday   = [Day defaultModelForDay:@"Thursday"];
+    Day *friday     = [Day defaultModelForDay:@"Friday"];
+    Day *saturday   = [Day defaultModelForDay:@"Saturday"];
+    Day *sunday     = [Day defaultModelForDay:@"Sunday"];
+    
+    return @[monday, tuesday, wednesday, thursday, friday, saturday, sunday];
 }
 
 #pragma mark - UITableViewDataSource
@@ -45,34 +55,37 @@ static NSString * const kTimeCell   = @"availabilityTimeCell";
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 7;
+    return _dataSourceArray.count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
-    switch (section) {
-            
-        case 0: return _dataSourceArray.count; break;
-            
-        case 1: return 2; break;
-            
-        case 2: return 4; break;
-            
-        default: return 1; break;
+    Day *dayModel = [_dataSourceArray objectAtIndex:section];
+    
+    if (dayModel.daySelected && !dayModel.lunchBreakSelected) {
+
+        return 3;
+
+    } else if (dayModel.daySelected && dayModel.lunchBreakSelected) {
+
+        return 4;
+
+    } else {
+
+        return 1;
     }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    Day *dayModel = [_dataSourceArray objectAtIndex:indexPath.section];
     
     if (indexPath.row == 0) {
         
         EKSwitchTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kSwitchCell forIndexPath:indexPath];
         
         cell.delegate = self;
-        cell.cellIndexPath = indexPath;
-        
-        //    NSString *labelValue = [[(NSDictionary *)[_dataSourceArray objectAtIndex:indexPath.row] allKeys] firstObject];
-        //    NSString *placeHolderValue = [[(NSDictionary *)[_dataSourceArray objectAtIndex:indexPath.row] allValues] firstObject];
+        [cell configureCellForDay:dayModel forIndex:indexPath];
         
         return cell;
     }
@@ -81,19 +94,28 @@ static NSString * const kTimeCell   = @"availabilityTimeCell";
         
         EKDualButtonTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kTimeCell forIndexPath:indexPath];
         
+        [cell.leftButton setTitle:dayModel.serviceStartDate forState:UIControlStateNormal];
+        [cell.rightButton setTitle:dayModel.serviceEndDate forState:UIControlStateNormal];
+        
         return cell;
     }
     
     if (indexPath.row == 2) {
         
         EKSwitchTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kSwitchCell forIndexPath:indexPath];
-        
+
+        cell.delegate = self;
+        [cell configureCellForDay:dayModel forIndex:indexPath];
+
         return cell;
     }
     
     if (indexPath.row == 3) {
         
         EKDualButtonTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kTimeCell forIndexPath:indexPath];
+        
+        [cell.leftButton setTitle:dayModel.lunchStartDate forState:UIControlStateNormal];
+        [cell.rightButton setTitle:dayModel.lunchEndDate forState:UIControlStateNormal];
         
         return cell;
     }
@@ -110,9 +132,19 @@ static NSString * const kTimeCell   = @"availabilityTimeCell";
 #pragma mark - EKSwitchCellDelegate
 
 - (void)didChangeSwitchValue:(BOOL)switchValue atIndex:(NSIndexPath *)indexPath {
+
+    Day *dayModel = [_dataSourceArray objectAtIndex:indexPath.section];
     
-    NSLog(@"SWITCHED TO: %d", switchValue ? YES : NO);
-    NSLog(@"AT INDEX: %@", indexPath);
+    if (indexPath.row == 0) {
+        
+        dayModel.daySelected = switchValue;
+        
+        if (!switchValue) { [dayModel resetModel]; }
+    }
+    
+    if (indexPath.row == 2) { dayModel.lunchBreakSelected = switchValue; }
+    
+    [self.tableView reloadData];
 }
 
 #pragma mark - EKDualButtonCellDelegate
