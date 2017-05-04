@@ -11,7 +11,7 @@
 #import "EKDualButtonTableViewCell.h"
 #import "Day.h"
 
-@interface EKAvailabilityViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, EKSwitchCellDelegate>
+@interface EKAvailabilityViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, EKSwitchCellDelegate, EKDualButtonCellDelegate>
 
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 

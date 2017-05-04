@@ -28,10 +28,18 @@
 
 - (void)didTapLeftButtonAtIndexPath:(NSIndexPath *)indexPath {
     
+    if ( self.delegate && [self.delegate respondsToSelector:@selector(didTapLeftButtonAtIndexPath:)] ) {
+     
+        [self.delegate didTapLeftButtonAtIndexPath:indexPath];
+    }
 }
 
 - (void)didTapRightButtonAtIndexPath:(NSIndexPath *)indexPath {
     
+    if ( self.delegate && [self.delegate respondsToSelector:@selector(didTapRightButtonAtIndexPath:)] ) {
+        
+        [self.delegate didTapRightButtonAtIndexPath:indexPath];
+    }
 }
 
 @end

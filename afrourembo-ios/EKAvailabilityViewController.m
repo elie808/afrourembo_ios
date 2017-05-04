@@ -94,6 +94,8 @@ static NSString * const kTimeCell   = @"availabilityTimeCell";
         
         EKDualButtonTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kTimeCell forIndexPath:indexPath];
         
+        cell.delegate = self;
+        cell.cellIndexPath = indexPath;
         [cell.leftButton setTitle:dayModel.serviceStartDate forState:UIControlStateNormal];
         [cell.rightButton setTitle:dayModel.serviceEndDate forState:UIControlStateNormal];
         
@@ -105,7 +107,7 @@ static NSString * const kTimeCell   = @"availabilityTimeCell";
         EKSwitchTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kSwitchCell forIndexPath:indexPath];
 
         cell.delegate = self;
-        [cell configureCellForDay:dayModel forIndex:indexPath];
+        [cell configureLunchCellForDay:dayModel forIndex:indexPath];
 
         return cell;
     }
@@ -114,6 +116,8 @@ static NSString * const kTimeCell   = @"availabilityTimeCell";
         
         EKDualButtonTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kTimeCell forIndexPath:indexPath];
         
+        cell.delegate = self;
+        cell.cellIndexPath = indexPath;
         [cell.leftButton setTitle:dayModel.lunchStartDate forState:UIControlStateNormal];
         [cell.rightButton setTitle:dayModel.lunchEndDate forState:UIControlStateNormal];
         
@@ -150,11 +154,33 @@ static NSString * const kTimeCell   = @"availabilityTimeCell";
 #pragma mark - EKDualButtonCellDelegate
 
 - (void)didTapLeftButtonAtIndexPath:(NSIndexPath *)indexPath {
-    NSLog(@"BUTTON AT INDEX: %@", indexPath);
+    
+    Day *dayModel = [_dataSourceArray objectAtIndex:indexPath.section];
+    
+    if (indexPath.row == 1) {
+        dayModel.serviceStartDate = @"YAS";
+    }
+    
+    if (indexPath.row == 3) {
+        dayModel.lunchStartDate = @"YAS-L";
+    }
+    
+    [self.tableView reloadData];
 }
 
 - (void)didTapRightButtonAtIndexPath:(NSIndexPath *)indexPath {
-    NSLog(@"BUTTON AT INDEX: %@", indexPath);
+    
+    Day *dayModel = [_dataSourceArray objectAtIndex:indexPath.section];
+    
+    if (indexPath.row == 1) {
+        dayModel.serviceEndDate = @"NAY";
+    }
+    
+    if (indexPath.row == 3) {
+        dayModel.lunchEndDate = @"NAY-L";
+    }
+    
+    [self.tableView reloadData];
 }
 
 #pragma mark - Actions
