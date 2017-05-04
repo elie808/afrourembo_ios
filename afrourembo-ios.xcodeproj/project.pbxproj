@@ -59,6 +59,7 @@
 		47BFEA691EA4A9A30091522B /* EKBookingDayCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 47BFEA681EA4A9A30091522B /* EKBookingDayCollectionViewCell.m */; };
 		47C42DDC1E7D6509008CBF51 /* Welcome.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 47C42DDB1E7D6509008CBF51 /* Welcome.storyboard */; };
 		47C42DDE1E7D65D1008CBF51 /* SignUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 47C42DDD1E7D65D1008CBF51 /* SignUp.storyboard */; };
+		47C7D4CC1EBB5EF000457E53 /* Day.m in Sources */ = {isa = PBXBuildFile; fileRef = 47C7D4CB1EBB5EF000457E53 /* Day.m */; };
 		47D88E6B1E793347001B88D0 /* EKSplashViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47D88E6A1E793347001B88D0 /* EKSplashViewController.m */; };
 		47D88E6E1E793893001B88D0 /* EKWelcomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47D88E6D1E793893001B88D0 /* EKWelcomeViewController.m */; };
 		47DD4CCA1EB2149A009AA482 /* Vendor_Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 47DD4CC91EB2149A009AA482 /* Vendor_Main.storyboard */; };
@@ -174,6 +175,8 @@
 		47BFEA681EA4A9A30091522B /* EKBookingDayCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKBookingDayCollectionViewCell.m; sourceTree = "<group>"; };
 		47C42DDB1E7D6509008CBF51 /* Welcome.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Welcome.storyboard; sourceTree = "<group>"; };
 		47C42DDD1E7D65D1008CBF51 /* SignUp.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SignUp.storyboard; sourceTree = "<group>"; };
+		47C7D4CA1EBB5EF000457E53 /* Day.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Day.h; sourceTree = "<group>"; };
+		47C7D4CB1EBB5EF000457E53 /* Day.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Day.m; sourceTree = "<group>"; };
 		47D88E691E793347001B88D0 /* EKSplashViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKSplashViewController.h; sourceTree = "<group>"; };
 		47D88E6A1E793347001B88D0 /* EKSplashViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKSplashViewController.m; sourceTree = "<group>"; };
 		47D88E6C1E793892001B88D0 /* EKWelcomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKWelcomeViewController.h; sourceTree = "<group>"; };
@@ -454,6 +457,8 @@
 				478BDEF81E99C5FC00F74A5C /* Service.m */,
 				4787C6DB1EB40D5500DF7B83 /* Booking.h */,
 				4787C6DC1EB40D5500DF7B83 /* Booking.m */,
+				47C7D4CA1EBB5EF000457E53 /* Day.h */,
+				47C7D4CB1EBB5EF000457E53 /* Day.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -824,6 +829,7 @@
 				477256091EB95EA4007CBD6B /* EKSwitchTableViewCell.m in Sources */,
 				47AF51BA1E9B8561005FE6EB /* Salon.m in Sources */,
 				478BDF031E99D81F00F74A5C /* EKLeftPushSegue.m in Sources */,
+				47C7D4CC1EBB5EF000457E53 /* Day.m in Sources */,
 				47E2F0091EA5FF97002E2FD4 /* EKProfileInfoFacebookViewController.m in Sources */,
 				4783DF8D1EA4CDAD00C87C60 /* EKBookingTimeCollectionViewCell.m in Sources */,
 				477256051EB958FF007CBD6B /* EKAvailabilityViewController.m in Sources */,
