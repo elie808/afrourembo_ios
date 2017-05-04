@@ -24,6 +24,24 @@
     [self didTapRightButtonAtIndexPath:self.cellIndexPath];
 }
 
+#pragma mark - Helpers
+
+- (void)configureCellForService:(Day *)dayModel forIndex:(NSIndexPath *)indexPath {
+    
+    self.cellIndexPath = indexPath;
+    
+    [self.leftButton setTitle:dayModel.serviceStartDate forState:UIControlStateNormal];
+    [self.rightButton setTitle:dayModel.serviceEndDate forState:UIControlStateNormal];
+}
+
+- (void)configureCellForLunch:(Day *)dayModel forIndex:(NSIndexPath *)indexPath {
+    
+    self.cellIndexPath = indexPath;
+    
+    [self.leftButton setTitle:dayModel.lunchStartDate forState:UIControlStateNormal];
+    [self.rightButton setTitle:dayModel.lunchEndDate forState:UIControlStateNormal];
+}
+
 #pragma mark - EKDualButtonCellDelegate
 
 - (void)didTapLeftButtonAtIndexPath:(NSIndexPath *)indexPath {

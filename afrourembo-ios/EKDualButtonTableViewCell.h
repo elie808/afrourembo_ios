@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Day.h"
 
 @protocol EKDualButtonCellDelegate <NSObject>
 - (void)didTapLeftButtonAtIndexPath:(NSIndexPath *)indexPath;
@@ -24,5 +25,8 @@
 
 - (IBAction)didTapLeftButton:(id)sender;
 - (IBAction)didTapRightButton:(id)sender;
+
+- (void)configureCellForService:(Day *)dayModel forIndex:(NSIndexPath *)indexPath;
+- (void)configureCellForLunch:(Day *)dayModel forIndex:(NSIndexPath *)indexPath;
 
 @end

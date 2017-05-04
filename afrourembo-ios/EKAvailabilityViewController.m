@@ -95,9 +95,7 @@ static NSString * const kTimeCell   = @"availabilityTimeCell";
         EKDualButtonTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kTimeCell forIndexPath:indexPath];
         
         cell.delegate = self;
-        cell.cellIndexPath = indexPath;
-        [cell.leftButton setTitle:dayModel.serviceStartDate forState:UIControlStateNormal];
-        [cell.rightButton setTitle:dayModel.serviceEndDate forState:UIControlStateNormal];
+        [cell configureCellForService:dayModel forIndex:indexPath];
         
         return cell;
     }
@@ -117,9 +115,7 @@ static NSString * const kTimeCell   = @"availabilityTimeCell";
         EKDualButtonTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kTimeCell forIndexPath:indexPath];
         
         cell.delegate = self;
-        cell.cellIndexPath = indexPath;
-        [cell.leftButton setTitle:dayModel.lunchStartDate forState:UIControlStateNormal];
-        [cell.rightButton setTitle:dayModel.lunchEndDate forState:UIControlStateNormal];
+        [cell configureCellForLunch:dayModel forIndex:indexPath];
         
         return cell;
     }
