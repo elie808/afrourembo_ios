@@ -22,9 +22,8 @@ static NSString * const kTimeCell   = @"availabilityTimeCell";
     
     self.title = @"Availability";
     
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]
-                                              initWithTitle:@"Done" style:UIBarButtonItemStyleDone
-                                              target:self action:@selector(didTapDoneButton)];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleDone
+                                                                             target:self action:@selector(didTapDoneButton)];
     
     _dataSourceArray = [NSMutableArray arrayWithArray:[self createDataSource]];
 }
@@ -142,9 +141,12 @@ static NSString * const kTimeCell   = @"availabilityTimeCell";
         if (!switchValue) { [dayModel resetModel]; }
     }
     
-    if (indexPath.row == 2) { dayModel.lunchBreakSelected = switchValue; }
+    if (indexPath.row == 2) {
     
-    [self.tableView reloadData];
+        dayModel.lunchBreakSelected = switchValue;
+    }
+    
+    [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:indexPath.section] withRowAnimation:UITableViewRowAnimationMiddle];
 }
 
 #pragma mark - EKDualButtonCellDelegate
@@ -162,6 +164,7 @@ static NSString * const kTimeCell   = @"availabilityTimeCell";
     }
     
     [self.tableView reloadData];
+    
 }
 
 - (void)didTapRightButtonAtIndexPath:(NSIndexPath *)indexPath {
@@ -183,22 +186,6 @@ static NSString * const kTimeCell   = @"availabilityTimeCell";
 
 - (void)didTapDoneButton {
     [self performSegueWithIdentifier:kVendorDashSegue sender:nil];
-}
-
-#pragma mark - Helpers
-
-- (void)addRowAtIndexPath:(NSIndexPath*)indexPath {
-    
-    [self.tableView beginUpdates];
-    [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationBottom];
-    [self.tableView endUpdates];
-}
-
-- (void)removeRowAtIndexPath:(NSIndexPath*)indexPath {
-    
-    [self.tableView beginUpdates];
-    [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationTop];
-    [self.tableView endUpdates];
 }
 
 /*
