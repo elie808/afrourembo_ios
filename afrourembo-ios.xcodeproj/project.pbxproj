@@ -19,6 +19,7 @@
 		474ED7B91E9C471F0099CA0A /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 474ED7B81E9C471F0099CA0A /* MapKit.framework */; };
 		474ED7BC1E9C68940099CA0A /* EKDiscoverMapViewController+MapDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 474ED7BB1E9C68940099CA0A /* EKDiscoverMapViewController+MapDelegate.m */; };
 		474ED7C01E9C6BD90099CA0A /* EKDiscoverMapViewController+TableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 474ED7BF1E9C6BD90099CA0A /* EKDiscoverMapViewController+TableView.m */; };
+		475A4CEF1EBF74D50089D477 /* EKFilterSearchTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 475A4CEE1EBF74D50089D477 /* EKFilterSearchTableViewCell.m */; };
 		475FC37D1EB6B57900BB0731 /* EKAddServiceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 475FC37C1EB6B57900BB0731 /* EKAddServiceViewController.m */; };
 		475FC3811EB6BF5E00BB0731 /* EKAddNewServiceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 475FC3801EB6BF5E00BB0731 /* EKAddNewServiceViewController.m */; };
 		477256051EB958FF007CBD6B /* EKAvailabilityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 477256041EB958FF007CBD6B /* EKAvailabilityViewController.m */; };
@@ -60,6 +61,8 @@
 		47C42DDC1E7D6509008CBF51 /* Welcome.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 47C42DDB1E7D6509008CBF51 /* Welcome.storyboard */; };
 		47C42DDE1E7D65D1008CBF51 /* SignUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 47C42DDD1E7D65D1008CBF51 /* SignUp.storyboard */; };
 		47C7D4CC1EBB5EF000457E53 /* Day.m in Sources */ = {isa = PBXBuildFile; fileRef = 47C7D4CB1EBB5EF000457E53 /* Day.m */; };
+		47D44C2D1EBEBB25007ACFAA /* EKFilterSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47D44C2C1EBEBB25007ACFAA /* EKFilterSearchViewController.m */; };
+		47D44C311EBEBD1A007ACFAA /* EKFilterSearchViewController+TableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 47D44C301EBEBD1A007ACFAA /* EKFilterSearchViewController+TableView.m */; };
 		47D88E6B1E793347001B88D0 /* EKSplashViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47D88E6A1E793347001B88D0 /* EKSplashViewController.m */; };
 		47D88E6E1E793893001B88D0 /* EKWelcomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47D88E6D1E793893001B88D0 /* EKWelcomeViewController.m */; };
 		47DD4CCA1EB2149A009AA482 /* Vendor_Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 47DD4CC91EB2149A009AA482 /* Vendor_Main.storyboard */; };
@@ -97,6 +100,8 @@
 		474ED7BB1E9C68940099CA0A /* EKDiscoverMapViewController+MapDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "EKDiscoverMapViewController+MapDelegate.m"; sourceTree = "<group>"; };
 		474ED7BE1E9C6BD90099CA0A /* EKDiscoverMapViewController+TableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "EKDiscoverMapViewController+TableView.h"; sourceTree = "<group>"; };
 		474ED7BF1E9C6BD90099CA0A /* EKDiscoverMapViewController+TableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "EKDiscoverMapViewController+TableView.m"; sourceTree = "<group>"; };
+		475A4CED1EBF74D50089D477 /* EKFilterSearchTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKFilterSearchTableViewCell.h; sourceTree = "<group>"; };
+		475A4CEE1EBF74D50089D477 /* EKFilterSearchTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKFilterSearchTableViewCell.m; sourceTree = "<group>"; };
 		475FC37B1EB6B57900BB0731 /* EKAddServiceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKAddServiceViewController.h; sourceTree = "<group>"; };
 		475FC37C1EB6B57900BB0731 /* EKAddServiceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKAddServiceViewController.m; sourceTree = "<group>"; };
 		475FC37F1EB6BF5E00BB0731 /* EKAddNewServiceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKAddNewServiceViewController.h; sourceTree = "<group>"; };
@@ -177,6 +182,10 @@
 		47C42DDD1E7D65D1008CBF51 /* SignUp.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SignUp.storyboard; sourceTree = "<group>"; };
 		47C7D4CA1EBB5EF000457E53 /* Day.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Day.h; sourceTree = "<group>"; };
 		47C7D4CB1EBB5EF000457E53 /* Day.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Day.m; sourceTree = "<group>"; };
+		47D44C2B1EBEBB25007ACFAA /* EKFilterSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKFilterSearchViewController.h; sourceTree = "<group>"; };
+		47D44C2C1EBEBB25007ACFAA /* EKFilterSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKFilterSearchViewController.m; sourceTree = "<group>"; };
+		47D44C2F1EBEBD1A007ACFAA /* EKFilterSearchViewController+TableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "EKFilterSearchViewController+TableView.h"; sourceTree = "<group>"; };
+		47D44C301EBEBD1A007ACFAA /* EKFilterSearchViewController+TableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "EKFilterSearchViewController+TableView.m"; sourceTree = "<group>"; };
 		47D88E691E793347001B88D0 /* EKSplashViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKSplashViewController.h; sourceTree = "<group>"; };
 		47D88E6A1E793347001B88D0 /* EKSplashViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKSplashViewController.m; sourceTree = "<group>"; };
 		47D88E6C1E793892001B88D0 /* EKWelcomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKWelcomeViewController.h; sourceTree = "<group>"; };
@@ -274,6 +283,24 @@
 				474ED7BB1E9C68940099CA0A /* EKDiscoverMapViewController+MapDelegate.m */,
 				474ED7BE1E9C6BD90099CA0A /* EKDiscoverMapViewController+TableView.h */,
 				474ED7BF1E9C6BD90099CA0A /* EKDiscoverMapViewController+TableView.m */,
+			);
+			name = Categories;
+			sourceTree = "<group>";
+		};
+		475A4CF01EBF74D90089D477 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				475A4CED1EBF74D50089D477 /* EKFilterSearchTableViewCell.h */,
+				475A4CEE1EBF74D50089D477 /* EKFilterSearchTableViewCell.m */,
+			);
+			name = Cells;
+			sourceTree = "<group>";
+		};
+		475A4CF11EBF74E20089D477 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				47D44C2F1EBEBD1A007ACFAA /* EKFilterSearchViewController+TableView.h */,
+				47D44C301EBEBD1A007ACFAA /* EKFilterSearchViewController+TableView.m */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -570,6 +597,7 @@
 				4787C6D61EB4013900DF7B83 /* Customer - Cart review */,
 				478BDEF21E99B7DD00F74A5C /* Explore ViewController */,
 				478BDEFE1E99D36500F74A5C /* Side Menu */,
+				47D44C2E1EBEBB2A007ACFAA /* Customer - Filter & Search ViewController */,
 				47AF51BE1E9C4013005FE6EB /* Customer - Discover Map ViewController */,
 				479AB2691EA0B9EE00A74659 /* Customer - Company Profile */,
 				47800BC41EA3B2FF00F450DB /* Customer - Booking ViewController */,
@@ -643,6 +671,17 @@
 				4783DF8C1EA4CDAD00C87C60 /* EKBookingTimeCollectionViewCell.m */,
 			);
 			name = Cells;
+			sourceTree = "<group>";
+		};
+		47D44C2E1EBEBB2A007ACFAA /* Customer - Filter & Search ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				47D44C2B1EBEBB25007ACFAA /* EKFilterSearchViewController.h */,
+				47D44C2C1EBEBB25007ACFAA /* EKFilterSearchViewController.m */,
+				475A4CF01EBF74D90089D477 /* Cells */,
+				475A4CF11EBF74E20089D477 /* Categories */,
+			);
+			name = "Customer - Filter & Search ViewController";
 			sourceTree = "<group>";
 		};
 		47FF4F6C1EB557660022A6ED /* API */ = {
@@ -813,6 +852,7 @@
 				474ED7C01E9C6BD90099CA0A /* EKDiscoverMapViewController+TableView.m in Sources */,
 				47A3BB881E7A8C0B00963F27 /* EKRoleViewController.m in Sources */,
 				4787C6D51EB4013200DF7B83 /* EKCartViewController.m in Sources */,
+				47D44C311EBEBD1A007ACFAA /* EKFilterSearchViewController+TableView.m in Sources */,
 				470CD74C1EA1C6C00086DEE4 /* EKCompanyProfessionalTableViewCell.m in Sources */,
 				47BFEA651EA49AB10091522B /* EKBookingProCollectionViewCell.m in Sources */,
 				4795200F1EB3A40700E377E5 /* EKScheduleMonthlyViewController.m in Sources */,
@@ -825,6 +865,7 @@
 				4787C6E41EB4212F00DF7B83 /* EKNetworkManager.m in Sources */,
 				47BFEA691EA4A9A30091522B /* EKBookingDayCollectionViewCell.m in Sources */,
 				474BD5731E97F8F3009410C4 /* EKTextFieldTableViewCell.m in Sources */,
+				475A4CEF1EBF74D50089D477 /* EKFilterSearchTableViewCell.m in Sources */,
 				470CD74F1EA1C87D0086DEE4 /* EKCompanyProfileViewController+TableView.m in Sources */,
 				477256091EB95EA4007CBD6B /* EKSwitchTableViewCell.m in Sources */,
 				47AF51BA1E9B8561005FE6EB /* Salon.m in Sources */,
@@ -851,6 +892,7 @@
 				47074F8B1EAEB4A600E35EA7 /* EKSignupBPViewController.m in Sources */,
 				47A3BB8C1E7A9F3500963F27 /* EKSignInViewController.m in Sources */,
 				479AB2681EA0B9E300A74659 /* EKCompanyProfileViewController.m in Sources */,
+				47D44C2D1EBEBB25007ACFAA /* EKFilterSearchViewController.m in Sources */,
 				478BDF041E99D81F00F74A5C /* EKLeftPushUnwindSegue.m in Sources */,
 				4787C6D91EB402A500DF7B83 /* EKCartCollectionViewCell.m in Sources */,
 				47919E5A1E795664001C5600 /* EKOnboardingViewController.m in Sources */,

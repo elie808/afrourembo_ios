@@ -8,6 +8,6 @@
 
 #import "EKFilterSearchViewController.h"
 
-@interface EKFilterSearchViewController (TableView)
+@interface EKFilterSearchViewController (TableView) <UITableViewDelegate, UITableViewDataSource, UICollectionViewDelegate, UICollectionViewDataSource>
 
 @end
