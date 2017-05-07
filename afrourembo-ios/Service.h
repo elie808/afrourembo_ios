@@ -18,4 +18,8 @@ static NSString * const kService4 = @"SPECIAL OCCASIONS PROS";
 @property NSString *serviceTitle;
 @property NSString *serviceImage;
 
+@property NSString *serviceGroup;
+@property CGFloat servicePrice;
+@property NSString *serviceLaborTime; //in minutes
+
 @end
