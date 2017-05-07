@@ -7,9 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "EKAddNewServiceViewController.h"
 #import "EKAccessoryTableViewCell.h"
+#import "Service.h"
 
 @interface EKAddServiceViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, EKAccessoryCellDelegate>
+
+@property (strong, nonatomic) NSMutableArray *dataSourceArray;
 
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 

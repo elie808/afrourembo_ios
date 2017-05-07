@@ -20,6 +20,7 @@
 		474ED7BC1E9C68940099CA0A /* EKDiscoverMapViewController+MapDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 474ED7BB1E9C68940099CA0A /* EKDiscoverMapViewController+MapDelegate.m */; };
 		474ED7C01E9C6BD90099CA0A /* EKDiscoverMapViewController+TableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 474ED7BF1E9C6BD90099CA0A /* EKDiscoverMapViewController+TableView.m */; };
 		475A4CEF1EBF74D50089D477 /* EKFilterSearchTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 475A4CEE1EBF74D50089D477 /* EKFilterSearchTableViewCell.m */; };
+		475A4CF41EBF7EFC0089D477 /* EKAddNewServiceTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 475A4CF31EBF7EFC0089D477 /* EKAddNewServiceTableViewCell.m */; };
 		475FC37D1EB6B57900BB0731 /* EKAddServiceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 475FC37C1EB6B57900BB0731 /* EKAddServiceViewController.m */; };
 		475FC3811EB6BF5E00BB0731 /* EKAddNewServiceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 475FC3801EB6BF5E00BB0731 /* EKAddNewServiceViewController.m */; };
 		477256051EB958FF007CBD6B /* EKAvailabilityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 477256041EB958FF007CBD6B /* EKAvailabilityViewController.m */; };
@@ -102,6 +103,8 @@
 		474ED7BF1E9C6BD90099CA0A /* EKDiscoverMapViewController+TableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "EKDiscoverMapViewController+TableView.m"; sourceTree = "<group>"; };
 		475A4CED1EBF74D50089D477 /* EKFilterSearchTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKFilterSearchTableViewCell.h; sourceTree = "<group>"; };
 		475A4CEE1EBF74D50089D477 /* EKFilterSearchTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKFilterSearchTableViewCell.m; sourceTree = "<group>"; };
+		475A4CF21EBF7EFC0089D477 /* EKAddNewServiceTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKAddNewServiceTableViewCell.h; sourceTree = "<group>"; };
+		475A4CF31EBF7EFC0089D477 /* EKAddNewServiceTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKAddNewServiceTableViewCell.m; sourceTree = "<group>"; };
 		475FC37B1EB6B57900BB0731 /* EKAddServiceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKAddServiceViewController.h; sourceTree = "<group>"; };
 		475FC37C1EB6B57900BB0731 /* EKAddServiceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKAddServiceViewController.m; sourceTree = "<group>"; };
 		475FC37F1EB6BF5E00BB0731 /* EKAddNewServiceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKAddNewServiceViewController.h; sourceTree = "<group>"; };
@@ -319,6 +322,8 @@
 			children = (
 				475FC37F1EB6BF5E00BB0731 /* EKAddNewServiceViewController.h */,
 				475FC3801EB6BF5E00BB0731 /* EKAddNewServiceViewController.m */,
+				475A4CF21EBF7EFC0089D477 /* EKAddNewServiceTableViewCell.h */,
+				475A4CF31EBF7EFC0089D477 /* EKAddNewServiceTableViewCell.m */,
 			);
 			name = "BP - Create New Service";
 			sourceTree = "<group>";
@@ -454,14 +459,14 @@
 			name = Networking;
 			sourceTree = "<group>";
 		};
-		478BDEF21E99B7DD00F74A5C /* Explore ViewController */ = {
+		478BDEF21E99B7DD00F74A5C /* Customer - Explore ViewController */ = {
 			isa = PBXGroup;
 			children = (
 				478BDEEF1E99B7D700F74A5C /* EKExploreViewController.h */,
 				478BDEF01E99B7D700F74A5C /* EKExploreViewController.m */,
 				478BDEF61E99C21000F74A5C /* Views */,
 			);
-			name = "Explore ViewController";
+			name = "Customer - Explore ViewController";
 			sourceTree = "<group>";
 		};
 		478BDEF61E99C21000F74A5C /* Views */ = {
@@ -490,14 +495,14 @@
 			name = Models;
 			sourceTree = "<group>";
 		};
-		478BDEFE1E99D36500F74A5C /* Side Menu */ = {
+		478BDEFE1E99D36500F74A5C /* Customer - Side Menu */ = {
 			isa = PBXGroup;
 			children = (
 				478BDEFB1E99D36000F74A5C /* EKSideMenuViewController.h */,
 				478BDEFC1E99D36000F74A5C /* EKSideMenuViewController.m */,
 				478BDF051E99D82400F74A5C /* Segues */,
 			);
-			name = "Side Menu";
+			name = "Customer - Side Menu";
 			sourceTree = "<group>";
 		};
 		478BDF051E99D82400F74A5C /* Segues */ = {
@@ -595,8 +600,8 @@
 				47448ADC1EAE18430098CED3 /* Customer - Basic FB Profile Info */,
 				47448ADD1EAE46110098CED3 /* Customer - Edit FB Profile Info */,
 				4787C6D61EB4013900DF7B83 /* Customer - Cart review */,
-				478BDEF21E99B7DD00F74A5C /* Explore ViewController */,
-				478BDEFE1E99D36500F74A5C /* Side Menu */,
+				478BDEF21E99B7DD00F74A5C /* Customer - Explore ViewController */,
+				478BDEFE1E99D36500F74A5C /* Customer - Side Menu */,
 				47D44C2E1EBEBB2A007ACFAA /* Customer - Filter & Search ViewController */,
 				47AF51BE1E9C4013005FE6EB /* Customer - Discover Map ViewController */,
 				479AB2691EA0B9EE00A74659 /* Customer - Company Profile */,
@@ -892,6 +897,7 @@
 				47074F8B1EAEB4A600E35EA7 /* EKSignupBPViewController.m in Sources */,
 				47A3BB8C1E7A9F3500963F27 /* EKSignInViewController.m in Sources */,
 				479AB2681EA0B9E300A74659 /* EKCompanyProfileViewController.m in Sources */,
+				475A4CF41EBF7EFC0089D477 /* EKAddNewServiceTableViewCell.m in Sources */,
 				47D44C2D1EBEBB25007ACFAA /* EKFilterSearchViewController.m in Sources */,
 				478BDF041E99D81F00F74A5C /* EKLeftPushUnwindSegue.m in Sources */,
 				4787C6D91EB402A500DF7B83 /* EKCartCollectionViewCell.m in Sources */,

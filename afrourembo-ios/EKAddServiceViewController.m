@@ -13,18 +13,16 @@ static NSString * const kNewServiceSegue  = @"serviceListToNewService";
 
 static NSString * const kServiceCell = @"addServiceCell";
 
-@implementation EKAddServiceViewController {
-    NSArray *_dataSourceArray;
-}
+static NSString * const kUnwindFromNewService = @"unwindFromNewServiceToServiceVC";
+
+@implementation EKAddServiceViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     self.title = @"Services";
     
-    _dataSourceArray = @[
-                         @{@"Password" : @"Your password"}
-                         ];
+    self.dataSourceArray = [NSMutableArray new];
 }
 
 #pragma mark - UITableViewDataSource
@@ -34,7 +32,7 @@ static NSString * const kServiceCell = @"addServiceCell";
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return _dataSourceArray.count;
+    return self.dataSourceArray.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -44,9 +42,9 @@ static NSString * const kServiceCell = @"addServiceCell";
     cell.delegate = self;
     cell.cellIndexPath = indexPath;
     
-    cell.cellTextLabel.text = @"Hair";
-//    NSString *labelValue = [[(NSDictionary *)[_dataSourceArray objectAtIndex:indexPath.row] allKeys] firstObject];
-//    NSString *placeHolderValue = [[(NSDictionary *)[_dataSourceArray objectAtIndex:indexPath.row] allValues] firstObject];
+    Service *serviceObj = [self.dataSourceArray objectAtIndex:indexPath.row];
+    
+    cell.cellTextLabel.text = serviceObj.serviceTitle;
     
     return cell;
 }
@@ -54,15 +52,15 @@ static NSString * const kServiceCell = @"addServiceCell";
 #pragma mark - UITableViewDelegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
 }
 
 #pragma mark - EKAccessoryCellDelegate
 
 - (void)didTapAccessoryButtonAtIndex:(NSIndexPath *)indexPath {
     
-    //TODO: Pass sender Service obj
-    [self performSegueWithIdentifier:kEditServiceSegue sender:nil];
+    Service *serviceObj = [self.dataSourceArray objectAtIndex:indexPath.row];
+    
+    [self performSegueWithIdentifier:kEditServiceSegue sender:serviceObj];
 }
 
 #pragma mark - Actions
@@ -74,6 +72,9 @@ static NSString * const kServiceCell = @"addServiceCell";
 
 #pragma mark - Navigation
 
+- (IBAction)unwindToAddServiceVC:(UIStoryboardSegue *)segue {
+}
+
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
 
     if ([segue.identifier isEqualToString:kNewServiceSegue]) {
@@ -82,6 +83,8 @@ static NSString * const kServiceCell = @"addServiceCell";
     
     if ([segue.identifier isEqualToString:kEditServiceSegue]) {
         
+        EKAddNewServiceViewController *vc = segue.destinationViewController;
+        vc.passedService = (Service*)sender;
     }
 }
 

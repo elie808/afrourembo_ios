@@ -21,6 +21,6 @@ static NSString * const kService4 = @"SPECIAL OCCASIONS PROS";
 
 @property NSString *serviceGroup;
 @property CGFloat servicePrice;
-@property NSString *serviceLaborTime; //in minutes
+@property CGFloat serviceLaborTime; //in minutes
 
 @end

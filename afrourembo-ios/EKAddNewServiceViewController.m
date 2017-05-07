@@ -15,8 +15,12 @@ static NSString * const kTimeCell  = @"createServiceCellTime";
 
 static NSString * const kAddService = @"createServiceCell";
 
+static NSString * const kUnwindSegue = @"unwindFromNewServiceToServiceVC";
+static NSString * const kUnwindRemoveSegue = @"unwindNewServiceToServiceVCREMOVE";
+
 @implementation EKAddNewServiceViewController {
     NSArray *_dataSourceArray;
+    Service *_serviceToEdit;
 }
 
 - (void)viewDidLoad {
@@ -24,61 +28,54 @@ static NSString * const kAddService = @"createServiceCell";
     
     self.title = @"New service";
     
-    //TODO: Replace with Service/view model
+    _serviceToEdit = [Service new];
+    
+    if (!self.passedService) {
+        
+        _serviceToEdit.serviceGroup = @"group";
+        _serviceToEdit.serviceTitle = @"title here";
+        _serviceToEdit.servicePrice = 10;
+        _serviceToEdit.serviceLaborTime = 20;
+        
+        self.removeServiceButton.hidden = YES;
+        
+    } else {
+    
+        _serviceToEdit.serviceGroup = self.passedService.serviceGroup;
+        _serviceToEdit.serviceTitle = self.passedService.serviceTitle;
+        _serviceToEdit.servicePrice = self.passedService.servicePrice;
+        _serviceToEdit.serviceLaborTime = self.passedService.serviceLaborTime;
+    }
+    
     _dataSourceArray = @[
-                         @{@"Password" : @"Your password"},
-                         @{@"Password" : @"Your password"},
-                         @{@"Password" : @"Your password"},
-                         @{@"Password" : @"Your password"}
+                         @{@"Group" : _serviceToEdit.serviceGroup},
+                         @{@"Title" : _serviceToEdit.serviceTitle},
+                         @{@"Price" : [NSString stringWithFormat:@"%f", _serviceToEdit.servicePrice]},
+                         @{@"Time for service" : [NSString stringWithFormat:@"%f", _serviceToEdit.serviceLaborTime]}
                          ];
 }
 
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 4;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 1;
+    return 4;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    switch (indexPath.row) {
-        case 0: {
-            
-            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kTitleCell forIndexPath:indexPath];
-            return cell;
-            
-        } break;
-        
-        case 1: {
-            
-            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kGroupCell forIndexPath:indexPath];
-            return cell;
-            
-        } break;
-            
-        case 2: {
-            
-            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kPriceCell forIndexPath:indexPath];
-            return cell;
-            
-        } break;
-            
-        case 3: {
-            
-            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kTimeCell forIndexPath:indexPath];
-            return cell;
-            
-        } break;
-            
-        default: return nil; break;
-    }
-
-    //    NSString *labelValue = [[(NSDictionary *)[_dataSourceArray objectAtIndex:indexPath.row] allKeys] firstObject];
-    //    NSString *placeHolderValue = [[(NSDictionary *)[_dataSourceArray objectAtIndex:indexPath.row] allValues] firstObject];
+    NSString *labelValue = [[(NSDictionary *)[_dataSourceArray objectAtIndex:indexPath.row] allKeys] firstObject];
+    NSString *placeHolderValue = [[(NSDictionary *)[_dataSourceArray objectAtIndex:indexPath.row] allValues] firstObject];
+    
+    EKAddNewServiceTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kTitleCell forIndexPath:indexPath];
+    
+    cell.cellTextLabel.text = labelValue;
+    cell.cellTextField.text = placeHolderValue;
+    
+    return cell;
 }
 
 #pragma mark - UITableViewDelegate
@@ -89,17 +86,43 @@ static NSString * const kAddService = @"createServiceCell";
 
 #pragma mark - Actions
 
-- (IBAction)didTapRemoveServiceButton:(id)sender {
+- (IBAction)didTapDoneButton:(UIBarButtonItem *)sender {
+
+    [self performSegueWithIdentifier:kUnwindSegue sender:nil];
 }
 
-/*
+- (IBAction)didTapRemoveServiceButton:(id)sender {
+    
+    [self performSegueWithIdentifier:kUnwindRemoveSegue sender:nil];
+}
+
 #pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    
+    if ([segue.identifier isEqualToString:kUnwindSegue]) {
+        
+        EKAddServiceViewController *vc = segue.destinationViewController;
+        
+        if (!self.passedService) {
+            
+            [vc.dataSourceArray addObject:_serviceToEdit];
+            
+        } else {
+            
+            [vc.dataSourceArray removeObject:self.passedService];
+            [vc.dataSourceArray addObject:_serviceToEdit];
+        }
+     
+        [vc.tableView reloadData];
+    }
+    
+    if ([segue.identifier isEqualToString:kUnwindRemoveSegue]) {
+        
+        EKAddServiceViewController *vc = segue.destinationViewController;
+        [vc.dataSourceArray removeObject:self.passedService];
+        [vc.tableView reloadData];
+    }
 }
-*/
 
 @end
