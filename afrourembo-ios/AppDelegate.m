@@ -23,9 +23,10 @@ static NSString * const kVendorMainStoryboard = @"Vendor_Main";
 //    UINavigationController *rootViewController = [storyboard instantiateViewControllerWithIdentifier:kSplashVC];
 //    self.window.rootViewController = rootViewController;
 
-//    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:kMainStoryboard bundle:nil];
-//    UINavigationController *rootViewController = [storyboard instantiateViewControllerWithIdentifier:kExploreVC];
-//    self.window.rootViewController = rootViewController;
+    // Explore
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:kMainStoryboard bundle:nil];
+    UINavigationController *rootViewController = [storyboard instantiateViewControllerWithIdentifier:kExploreVC];
+    self.window.rootViewController = rootViewController;
 
     // Vendor
 //    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:kVendorMainStoryboard bundle:nil];
@@ -33,9 +34,9 @@ static NSString * const kVendorMainStoryboard = @"Vendor_Main";
 //    self.window.rootViewController = rootViewController;
     
     // role VC
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"SignUp" bundle:nil];
-    UINavigationController *rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"roleVC"];
-    self.window.rootViewController = rootViewController;
+//    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"SignUp" bundle:nil];
+//    UINavigationController *rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"roleVC"];
+//    self.window.rootViewController = rootViewController;
 
     return YES;
 }

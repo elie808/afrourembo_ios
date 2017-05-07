@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 static NSString * const kService1 = @"NATURAL HAIR";
 static NSString * const kService2 = @"BEST WEAVING & EXTENSIONS";
