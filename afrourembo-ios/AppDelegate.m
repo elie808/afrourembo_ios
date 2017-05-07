@@ -10,20 +10,33 @@
 
 static NSString * const kWelcomeStoryboard = @"Welcome";
 static NSString * const kMainStoryboard = @"Main";
+static NSString * const kVendorMainStoryboard = @"Vendor_Main";
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    
+    [EKNetworkManager configureRestKit];
     
     // Start at Splash Screen
 //    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:kWelcomeStoryboard bundle:nil];
 //    UINavigationController *rootViewController = [storyboard instantiateViewControllerWithIdentifier:kSplashVC];
 //    self.window.rootViewController = rootViewController;
 
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:kMainStoryboard bundle:nil];
-    UINavigationController *rootViewController = [storyboard instantiateViewControllerWithIdentifier:kExploreVC];
-    self.window.rootViewController = rootViewController;
+//    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:kMainStoryboard bundle:nil];
+//    UINavigationController *rootViewController = [storyboard instantiateViewControllerWithIdentifier:kExploreVC];
+//    self.window.rootViewController = rootViewController;
+
+    // Vendor
+//    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:kVendorMainStoryboard bundle:nil];
+//    UINavigationController *rootViewController = [storyboard instantiateViewControllerWithIdentifier:kVendorDashVC];
+//    self.window.rootViewController = rootViewController;
     
+    // role VC
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"SignUp" bundle:nil];
+    UINavigationController *rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"roleVC"];
+    self.window.rootViewController = rootViewController;
+
     return YES;
 }
 

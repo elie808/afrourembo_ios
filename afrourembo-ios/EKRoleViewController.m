@@ -9,8 +9,8 @@
 #import "EKRoleViewController.h"
 
 static NSString * const kCustomerSignUpSegue = @"roleToSignUpCustomer";
-static NSString * const kSalonSignUpSegue = @"roleToSignUpSalon";
-static NSString * const kBPSignUpSegue = @"roleToSignUpBP";
+static NSString * const kSalonSignUpSegue    = @"roleToSignUpSalon";
+static NSString * const kBPSignUpSegue       = @"roleToSignUpBP";
 
 @implementation EKRoleViewController
 

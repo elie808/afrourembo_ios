@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "EKDiscoverMapViewController.h"
 #import "EKExploreCollectionViewCell.h"
 #import "Service.h"
 

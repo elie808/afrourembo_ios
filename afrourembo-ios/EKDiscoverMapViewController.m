@@ -17,11 +17,16 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
  
+    NSLog(@"SERVICE %@", self.passedService.serviceTitle);
+    if (!self.passedService) {
+        //TODO: Regular Search
+    } else {
+        //TODO: Service specific
+    }
+    
     [self initLayout];
     
     [self initDataSources];
-    
-    [self placeVenuePin];
 }
 
 #pragma mark - Actions
@@ -69,7 +74,7 @@
     
     self.contentOffsetDictionary = [NSMutableDictionary new];
     self.dataSourceArray = [self createStubs];
-    self.venueCoordinates = CLLocationCoordinate2DMake(33.888630, 35.495480);
+    [self placeVenuePins:self.dataSourceArray];
 }
 
 - (void)initLayout {
@@ -101,29 +106,47 @@
     salon.userImageName = @"dummy_male1";
     salon.userName = @"Adele Hampton";
     salon.address = @"Muindi Mbingu St.";
+    salon.latitude = -1.271536; //33.883630;
+    salon.longitude = 36.845736; //35.495480;
     salon.timesArray = @[@"Today", @"9:00 AM", @"12:15 PM"];
     
     Salon *salon1 = [Salon new];
     salon1.mainImageName = @"dummy_portrait2";
-    salon1.stars = @3;
+    salon1.stars = @2;
     salon1.price = @300;
     salon1.photoCount = @100;
     salon1.userImageName = @"dummy_male1";
     salon1.userName = @"James Lipton";
     salon1.address = @"More of Muindi Mbingu St.";
+    salon1.latitude = -1.291536;
+    salon1.longitude = 36.825736;
     salon1.timesArray = @[@"Today", @"9:00 AM", @"12:15 PM", @"1:30 PM", @"Tue", @"8:20 AM", @"12:55 PM"];
     
     Salon *salon3 = [Salon new];
     salon3.mainImageName = @"dummy_portrait3";
-    salon3.stars = @3;
+    salon3.stars = @5;
     salon3.price = @30;
     salon3.photoCount = @10;
     salon3.userImageName = @"dummy_male2";
     salon3.userName = @"James Earl Lipton";
     salon3.address = @"Muindi Mbingu St.";
+    salon3.latitude = -1.331536;
+    salon3.longitude = 36.805736;
     salon3.timesArray = @[@"Today", @"9:00 AM"];
     
-    return @[salon, salon1, salon3, salon3, salon1];
+    Salon *salon4 = [Salon new];
+    salon4.mainImageName = @"dummy_portrait5";
+    salon4.stars = @5;
+    salon4.price = @300;
+    salon4.photoCount = @10;
+    salon4.userImageName = @"dummy_male1";
+    salon4.userName = @"Twinning Matumbo";
+    salon4.address = @"Konakri Mbingu St.";
+    salon4.latitude = -1.391536;
+    salon4.longitude = 36.905736;
+    salon4.timesArray = @[@"Today", @"9:00 AM", @"12:15 PM", @"1:30 PM", @"Tue", @"8:20 AM", @"12:55 PM"];
+    
+    return @[salon, salon1, salon3, salon4];
 }
 
 @end

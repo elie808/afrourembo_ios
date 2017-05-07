@@ -8,9 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import "EKTextFieldTableViewCell.h"
+#import "Customer+API.h"
 
 @interface EKSignupViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
+
+- (IBAction)didTapSignUpButton:(id)sender;
 
 @end

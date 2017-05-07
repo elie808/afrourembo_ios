@@ -17,6 +17,7 @@
 
 static NSString * const kSplashVC = @"splashVC";
 static NSString * const kExploreVC = @"exploreVC";
+static NSString * const kVendorDashVC = @"vendor_dashboard";
 
 #pragma mark - Image Names
 
