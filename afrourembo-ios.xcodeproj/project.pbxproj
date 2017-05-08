@@ -21,6 +21,7 @@
 		474ED7C01E9C6BD90099CA0A /* EKDiscoverMapViewController+TableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 474ED7BF1E9C6BD90099CA0A /* EKDiscoverMapViewController+TableView.m */; };
 		475A4CEF1EBF74D50089D477 /* EKFilterSearchTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 475A4CEE1EBF74D50089D477 /* EKFilterSearchTableViewCell.m */; };
 		475A4CF41EBF7EFC0089D477 /* EKAddNewServiceTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 475A4CF31EBF7EFC0089D477 /* EKAddNewServiceTableViewCell.m */; };
+		475A4CF71EC0041F0089D477 /* EKCheckoutSuccessViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 475A4CF61EC0041F0089D477 /* EKCheckoutSuccessViewController.m */; };
 		475FC37D1EB6B57900BB0731 /* EKAddServiceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 475FC37C1EB6B57900BB0731 /* EKAddServiceViewController.m */; };
 		475FC3811EB6BF5E00BB0731 /* EKAddNewServiceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 475FC3801EB6BF5E00BB0731 /* EKAddNewServiceViewController.m */; };
 		477256051EB958FF007CBD6B /* EKAvailabilityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 477256041EB958FF007CBD6B /* EKAvailabilityViewController.m */; };
@@ -105,6 +106,8 @@
 		475A4CEE1EBF74D50089D477 /* EKFilterSearchTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKFilterSearchTableViewCell.m; sourceTree = "<group>"; };
 		475A4CF21EBF7EFC0089D477 /* EKAddNewServiceTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKAddNewServiceTableViewCell.h; sourceTree = "<group>"; };
 		475A4CF31EBF7EFC0089D477 /* EKAddNewServiceTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKAddNewServiceTableViewCell.m; sourceTree = "<group>"; };
+		475A4CF51EC0041F0089D477 /* EKCheckoutSuccessViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKCheckoutSuccessViewController.h; sourceTree = "<group>"; };
+		475A4CF61EC0041F0089D477 /* EKCheckoutSuccessViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKCheckoutSuccessViewController.m; sourceTree = "<group>"; };
 		475FC37B1EB6B57900BB0731 /* EKAddServiceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKAddServiceViewController.h; sourceTree = "<group>"; };
 		475FC37C1EB6B57900BB0731 /* EKAddServiceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKAddServiceViewController.m; sourceTree = "<group>"; };
 		475FC37F1EB6BF5E00BB0731 /* EKAddNewServiceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKAddNewServiceViewController.h; sourceTree = "<group>"; };
@@ -306,6 +309,15 @@
 				47D44C301EBEBD1A007ACFAA /* EKFilterSearchViewController+TableView.m */,
 			);
 			name = Categories;
+			sourceTree = "<group>";
+		};
+		475A4CF81EC004500089D477 /* Customer - Success checkout ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				475A4CF51EC0041F0089D477 /* EKCheckoutSuccessViewController.h */,
+				475A4CF61EC0041F0089D477 /* EKCheckoutSuccessViewController.m */,
+			);
+			name = "Customer - Success checkout ViewController";
 			sourceTree = "<group>";
 		};
 		475FC37E1EB6B57D00BB0731 /* BP - Add Service List */ = {
@@ -600,6 +612,7 @@
 				47448ADC1EAE18430098CED3 /* Customer - Basic FB Profile Info */,
 				47448ADD1EAE46110098CED3 /* Customer - Edit FB Profile Info */,
 				4787C6D61EB4013900DF7B83 /* Customer - Cart review */,
+				475A4CF81EC004500089D477 /* Customer - Success checkout ViewController */,
 				478BDEF21E99B7DD00F74A5C /* Customer - Explore ViewController */,
 				478BDEFE1E99D36500F74A5C /* Customer - Side Menu */,
 				47D44C2E1EBEBB2A007ACFAA /* Customer - Filter & Search ViewController */,
@@ -901,6 +914,7 @@
 				47D44C2D1EBEBB25007ACFAA /* EKFilterSearchViewController.m in Sources */,
 				478BDF041E99D81F00F74A5C /* EKLeftPushUnwindSegue.m in Sources */,
 				4787C6D91EB402A500DF7B83 /* EKCartCollectionViewCell.m in Sources */,
+				475A4CF71EC0041F0089D477 /* EKCheckoutSuccessViewController.m in Sources */,
 				47919E5A1E795664001C5600 /* EKOnboardingViewController.m in Sources */,
 				478278CE1E7923D000FB2FD2 /* main.m in Sources */,
 				47871AE51EBA17A3003B9BEB /* EKDualButtonTableViewCell.m in Sources */,

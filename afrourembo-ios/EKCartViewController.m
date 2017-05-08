@@ -8,6 +8,7 @@
 
 #import "EKCartViewController.h"
 
+static NSString * const kSuccessSegue = @"cartToSuccessVC";
 static NSString * const kCartCell = @"cartCollectionCellID";
 
 @implementation EKCartViewController {
@@ -34,7 +35,8 @@ static NSString * const kCartCell = @"cartCollectionCellID";
     booking1.practionner = @"Johanna Mullins";
     booking1.bookingDate = @"Tue, 23 Nov, 2017";
     booking1.bookingTime = @"12:30 PM";
-    booking1.bookingDescription = @"The virtual realm is uncharted territory for many designers. In the last few years, we’ve witnessed an explosion in virtual reality (VR) hardware and.";
+    booking1.bookingDescription = @"";
+    //booking1.bookingDescription = @"The virtual realm is uncharted territory for many designers. In the last few years, we’ve witnessed an explosion in virtual reality (VR) hardware and.";
     
     Booking *booking2 = [Booking new];
     booking2.bookingTitle = @"Nail Polish";
@@ -43,7 +45,8 @@ static NSString * const kCartCell = @"cartCollectionCellID";
     booking2.practionner = @"Mansa Musa";
     booking2.bookingDate = @"Mon, 23 Jan, 2017";
     booking2.bookingTime = @"09:05 AM";
-    booking2.bookingDescription = @"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla convallis posuere viverra. Donec in efficitur nisi, ut faucibus ante. Duis sed facilisis orci. Phasellus sit amet leo iaculis, efficitur metus ut, fermentum ex.";
+    booking2.bookingDescription = @"";
+//    booking2.bookingDescription = @"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla convallis posuere viverra. Donec in efficitur nisi, ut faucibus ante. Duis sed facilisis orci. Phasellus sit amet leo iaculis, efficitur metus ut, fermentum ex.";
     
     Booking *booking3 = [Booking new];
     booking3.bookingTitle = @"Skin Care";
@@ -52,7 +55,8 @@ static NSString * const kCartCell = @"cartCollectionCellID";
     booking3.practionner = @"Bob Muller";
     booking3.bookingDate = @"Tue, 24 Dec, 2017";
     booking3.bookingTime = @"06:23 PM";
-    booking3.bookingDescription = @"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla convallis posuere viverra. Donec in efficitur nisi, ut faucibus ante. Duis sed facilisis orci. Phasellus sit amet leo iaculis, efficitur metus ut, fermentum ex.";
+    booking3.bookingDescription = @"";
+//    booking3.bookingDescription = @"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla convallis posuere viverra. Donec in efficitur nisi, ut faucibus ante. Duis sed facilisis orci. Phasellus sit amet leo iaculis, efficitur metus ut, fermentum ex.";
     
     return @[booking1, booking2, booking3, booking2, booking1];
 }
@@ -91,14 +95,20 @@ static NSString * const kCartCell = @"cartCollectionCellID";
     NSLog(@"TAPPING CELL AT ROW: %@", indexPath);
 }
 
-/*
+#pragma mark - Actions
+
+- (IBAction)didTapCheckoutButton:(UIButton *)button {
+ 
+    [self performSegueWithIdentifier:kSuccessSegue sender:nil];
+}
+
 #pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    
+    if ([segue.identifier isEqualToString:kSuccessSegue]) {
+        
+    }
 }
-*/
 
 @end

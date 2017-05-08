@@ -7,7 +7,6 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
-        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -88,17 +87,12 @@
                                 <segue destination="5oT-KN-NPR" kind="presentation" identifier="exploreVcToSideMenuVC" customClass="EKLeftPushSegue" modalPresentationStyle="overCurrentContext" id="3ZZ-4F-Cl0"/>
                             </connections>
                         </barButtonItem>
-                        <rightBarButtonItems>
-                            <barButtonItem image="icFavorites" id="2K4-Ew-M44">
-                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </barButtonItem>
-                            <barButtonItem image="icSearch" id="1zr-tG-XYo">
-                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <connections>
-                                    <segue destination="ufK-GA-kWe" kind="show" identifier="exploreToDiscoverSearch" id="d5v-qM-DWS"/>
-                                </connections>
-                            </barButtonItem>
-                        </rightBarButtonItems>
+                        <barButtonItem key="rightBarButtonItem" image="icSearch" id="1zr-tG-XYo">
+                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <segue destination="ufK-GA-kWe" kind="show" identifier="exploreToDiscoverSearch" id="d5v-qM-DWS"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <segue destination="ITR-70-tiW" kind="show" identifier="exploreToDiscover" id="0Iw-2o-UQu"/>
@@ -479,7 +473,7 @@
                             <rect key="frame" x="0.0" y="28" width="226" height="48"/>
                             <autoresizingMask key="autoresizingMask"/>
                             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="om7-Vq-7EC" id="4Ex-Ca-hQl">
-                                <rect key="frame" x="0.0" y="0.0" width="226" height="48"/>
+                                <rect key="frame" x="0.0" y="0.0" width="226" height="47.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0iV-5J-7pq">
@@ -523,7 +517,7 @@
                             <rect key="frame" x="0.0" y="28" width="240" height="48"/>
                             <autoresizingMask key="autoresizingMask"/>
                             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gnC-av-ecT" id="TvU-ft-utt">
-                                <rect key="frame" x="0.0" y="0.0" width="240" height="48"/>
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="47.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qaK-BV-XyF">
@@ -1392,7 +1386,7 @@
                                     <constraint firstAttribute="height" constant="48" id="bI7-qH-xac"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                <state key="normal" title="ADD NOTE">
+                                <state key="normal" title="ADD BOOKING TO CART">
                                     <color key="titleColor" red="1" green="0.76470588240000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
@@ -1607,6 +1601,9 @@
                                         <state key="normal" title="Continue exploring">
                                             <color key="titleColor" red="1" green="0.76470588240000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
+                                        <connections>
+                                            <segue destination="XQ5-mU-IKS" kind="presentation" id="U39-u0-bPg"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nqF-cV-I42">
                                         <rect key="frame" x="192" y="9" width="175" height="38"/>
@@ -1625,6 +1622,9 @@
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="NO"/>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="didTapCheckoutButton:" destination="p8b-NN-oDW" eventType="touchDown" id="Xpp-yY-IzC"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1653,11 +1653,94 @@
                     <connections>
                         <outlet property="bottomBar" destination="af3-h4-gbz" id="i0e-8J-cx2"/>
                         <outlet property="collectionView" destination="QQA-0P-dZT" id="yhW-fw-GNI"/>
+                        <segue destination="rtY-H3-YQr" kind="show" identifier="cartToSuccessVC" id="Tgh-kR-Ldd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KLN-9k-UYM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4488.8000000000002" y="-645.42728635682158"/>
+        </scene>
+        <!--Checkout Success View Controller-->
+        <scene sceneID="Vtt-9W-Mde">
+            <objects>
+                <viewController id="rtY-H3-YQr" customClass="EKCheckoutSuccessViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="0p2-tu-arO"/>
+                        <viewControllerLayoutGuide type="bottom" id="dRS-Nu-C6k"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="nMk-Cb-cph">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="brush_tableview" translatesAutoresizingMaskIntoConstraints="NO" id="zx4-In-z3K">
+                                <rect key="frame" x="0.0" y="240" width="375" height="427"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="427" id="AXi-dv-1Uf"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nUR-44-RY2">
+                                <rect key="frame" x="8" y="608" width="359" height="44"/>
+                                <color key="backgroundColor" red="1" green="0.76470588240000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="MU9-ro-Px7"/>
+                                </constraints>
+                                <state key="normal" title="Continue exploring">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="22"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <segue destination="XQ5-mU-IKS" kind="presentation" id="MUO-W6-Tur"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icPaymentDone" translatesAutoresizingMaskIntoConstraints="NO" id="Q6I-Xj-QaU">
+                                <rect key="frame" x="155" y="168" width="64" height="64"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="64" id="1xr-aI-P8c"/>
+                                    <constraint firstAttribute="width" constant="64" id="HEL-x9-AqY"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your services were successfully booked" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yrU-vd-SZH">
+                                <rect key="frame" x="80" y="240" width="215" height="54"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="54" id="sBH-pU-Xig"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="dRS-Nu-C6k" firstAttribute="top" secondItem="nUR-44-RY2" secondAttribute="bottom" constant="15" id="5dv-v6-e8i"/>
+                            <constraint firstItem="yrU-vd-SZH" firstAttribute="top" secondItem="zx4-In-z3K" secondAttribute="top" id="63n-b0-vqe"/>
+                            <constraint firstItem="zx4-In-z3K" firstAttribute="leading" secondItem="nMk-Cb-cph" secondAttribute="leading" id="OWH-LF-ySz"/>
+                            <constraint firstItem="Q6I-Xj-QaU" firstAttribute="centerX" secondItem="yrU-vd-SZH" secondAttribute="centerX" id="XcC-0Q-6qr"/>
+                            <constraint firstItem="nUR-44-RY2" firstAttribute="leading" secondItem="nMk-Cb-cph" secondAttribute="leading" constant="8" id="Zac-J2-Yle"/>
+                            <constraint firstItem="dRS-Nu-C6k" firstAttribute="top" secondItem="zx4-In-z3K" secondAttribute="bottom" id="dH1-a7-RkF"/>
+                            <constraint firstItem="yrU-vd-SZH" firstAttribute="centerX" secondItem="nUR-44-RY2" secondAttribute="centerX" id="fHC-xf-wqH"/>
+                            <constraint firstItem="yrU-vd-SZH" firstAttribute="leading" secondItem="nMk-Cb-cph" secondAttribute="leadingMargin" constant="64" id="odj-CV-hmI"/>
+                            <constraint firstItem="zx4-In-z3K" firstAttribute="top" secondItem="Q6I-Xj-QaU" secondAttribute="bottom" constant="8" symbolic="YES" id="vRP-gX-5Sz"/>
+                            <constraint firstAttribute="trailing" secondItem="nUR-44-RY2" secondAttribute="trailing" constant="8" id="wLW-3r-nKE"/>
+                            <constraint firstAttribute="trailing" secondItem="zx4-In-z3K" secondAttribute="trailing" id="zUN-vp-hNV"/>
+                        </constraints>
+                    </view>
+                    <nil key="simulatedTopBarMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="F13-Vl-4Kt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5345" y="-645"/>
+        </scene>
+        <!--Main-->
+        <scene sceneID="Wbn-FR-exa">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Main" id="XQ5-mU-IKS" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aDz-wr-Z89" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4894" y="-194"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="sGq-TO-TjC">
@@ -1689,15 +1772,19 @@
     </scenes>
     <resources>
         <image name="0star" width="108" height="15"/>
+        <image name="brush_tableview" width="320" height="285"/>
         <image name="dummy_male1" width="118" height="118"/>
         <image name="dummy_male2" width="153" height="151"/>
-        <image name="icFavorites" width="14" height="17"/>
         <image name="icFbActive" width="24" height="24"/>
         <image name="icInstagramActive" width="24" height="24"/>
         <image name="icListView" width="18" height="18"/>
         <image name="icLogout" width="22" height="20"/>
         <image name="icMenu" width="16" height="16"/>
+        <image name="icPaymentDone" width="64" height="64"/>
         <image name="icSearch" width="18" height="18"/>
         <image name="icTwitterActive" width="24" height="21"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="U39-u0-bPg"/>
+    </inferredMetricsTieBreakers>
 </document>

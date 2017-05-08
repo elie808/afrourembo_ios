@@ -16,4 +16,6 @@
 @property (strong, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (strong, nonatomic) IBOutlet UIView *bottomBar;
 
+- (IBAction)didTapCheckoutButton:(UIButton *)button;
+
 @end
