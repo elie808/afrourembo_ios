@@ -229,20 +229,16 @@
                         <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="jVZ-p1-fcI">
-                                <rect key="frame" x="16" y="8" width="343" height="29"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <segments>
-                                    <segment title="All"/>
-                                    <segment title="Salons"/>
-                                    <segment title="Professionals"/>
-                                </segments>
-                                <color key="tintColor" red="1" green="0.76470588240000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </segmentedControl>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="230" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="UK3-xH-UdZ">
-                                <rect key="frame" x="0.0" y="44" width="375" height="559"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="nQQ-fY-qQX">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                <color key="barTintColor" red="1" green="0.76470588240000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="ufK-GA-kWe" id="bRN-TA-I25"/>
+                                </connections>
+                            </searchBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="230" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="UK3-xH-UdZ">
+                                <rect key="frame" x="0.0" y="88" width="375" height="515"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="salonListCell" id="ZLI-i3-qQ5" customClass="EKSalonListTableViewCell">
@@ -442,10 +438,33 @@
                                     <outlet property="delegate" destination="ufK-GA-kWe" id="NSJ-cn-T2a"/>
                                 </connections>
                             </tableView>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="jVZ-p1-fcI">
+                                <rect key="frame" x="16" y="52" width="343" height="29"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <segments>
+                                    <segment title="All"/>
+                                    <segment title="Salons"/>
+                                    <segment title="Professionals"/>
+                                </segments>
+                                <color key="tintColor" red="1" green="0.76470588240000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="nQQ-fY-qQX" secondAttribute="trailing" id="1hS-I6-zyD"/>
+                            <constraint firstItem="nQQ-fY-qQX" firstAttribute="leading" secondItem="HSV-1C-k5b" secondAttribute="leading" id="9fO-h9-TJP"/>
+                            <constraint firstItem="UK3-xH-UdZ" firstAttribute="top" secondItem="jVZ-p1-fcI" secondAttribute="bottom" constant="8" id="Bcj-eh-bQs"/>
+                            <constraint firstItem="jVZ-p1-fcI" firstAttribute="top" secondItem="nQQ-fY-qQX" secondAttribute="bottom" constant="8" id="Hvc-aM-mJ9"/>
+                            <constraint firstAttribute="trailing" secondItem="UK3-xH-UdZ" secondAttribute="trailing" id="Sp3-nH-Sla"/>
+                            <constraint firstItem="nQQ-fY-qQX" firstAttribute="top" secondItem="1Sv-g4-hQl" secondAttribute="bottom" id="Zhk-Dr-9Pz"/>
+                            <constraint firstItem="UK3-xH-UdZ" firstAttribute="leading" secondItem="HSV-1C-k5b" secondAttribute="leading" id="c2u-6s-9qs"/>
+                            <constraint firstItem="jVZ-p1-fcI" firstAttribute="trailing" secondItem="HSV-1C-k5b" secondAttribute="trailingMargin" id="frJ-FC-BgT"/>
+                            <constraint firstItem="jVZ-p1-fcI" firstAttribute="leading" secondItem="HSV-1C-k5b" secondAttribute="leadingMargin" id="iw4-0P-6ZB"/>
+                            <constraint firstItem="vj2-Ys-ypn" firstAttribute="top" secondItem="UK3-xH-UdZ" secondAttribute="bottom" id="mkZ-rK-oEK"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Filters &amp; search" id="bw9-yJ-p81">
+                        <barButtonItem key="backBarButtonItem" title=" " id="xES-qs-fze"/>
                         <barButtonItem key="rightBarButtonItem" title="Filter" id="GYb-vO-XKP">
                             <connections>
                                 <action selector="didTapFilterButton:" destination="ufK-GA-kWe" id="58b-mh-QnW"/>
@@ -454,6 +473,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="categoryTableView" destination="on9-pw-eOY" id="SmO-QJ-prF"/>
+                        <outlet property="searchBar" destination="nQQ-fY-qQX" id="gGM-CV-edP"/>
                         <outlet property="subCategoryTableView" destination="sSf-pe-x82" id="bTe-ZF-eqn"/>
                         <outlet property="tableView" destination="UK3-xH-UdZ" id="wXk-EE-BrV"/>
                     </connections>
@@ -545,7 +565,7 @@
                     </connections>
                 </tableView>
             </objects>
-            <point key="canvasLocation" x="1670" y="-1391"/>
+            <point key="canvasLocation" x="1669.5999999999999" y="-1391.1544227886059"/>
         </scene>
         <!--Discover Map View Controller-->
         <scene sceneID="ImL-uB-trZ">
