@@ -119,6 +119,17 @@
     }
 }
 
+#pragma mark - Navigation
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    
+    if ([segue.identifier isEqualToString:kCompanyProfile]) {
+        
+    }
+}
+
+#pragma mark - Helpers
+
 //TODO: REMOVE AFTER TESTING
 - (NSArray *)createStubs {
     
@@ -171,11 +182,6 @@
     salon4.timesArray = @[@"Today", @"9:00 AM", @"12:15 PM", @"1:30 PM", @"Tue", @"8:20 AM", @"12:55 PM"];
     
     return @[salon, salon1, salon3, salon4];
-}
-
-#pragma mark - Navigation
-
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
 }
 
 @end

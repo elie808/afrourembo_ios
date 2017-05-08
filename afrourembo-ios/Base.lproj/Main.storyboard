@@ -476,6 +476,7 @@
                         <outlet property="searchBar" destination="nQQ-fY-qQX" id="gGM-CV-edP"/>
                         <outlet property="subCategoryTableView" destination="sSf-pe-x82" id="bTe-ZF-eqn"/>
                         <outlet property="tableView" destination="UK3-xH-UdZ" id="wXk-EE-BrV"/>
+                        <segue destination="q3N-QV-x45" kind="show" identifier="filterSearchVCToCompanyProfileVC" id="xaI-bI-zkP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VmJ-CZ-IPx" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -565,7 +566,7 @@
                     </connections>
                 </tableView>
             </objects>
-            <point key="canvasLocation" x="1669.5999999999999" y="-1391.1544227886059"/>
+            <point key="canvasLocation" x="1670" y="-1406"/>
         </scene>
         <!--Discover Map View Controller-->
         <scene sceneID="ImL-uB-trZ">
@@ -1805,6 +1806,7 @@
         <image name="icTwitterActive" width="24" height="21"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="xaI-bI-zkP"/>
         <segue reference="U39-u0-bPg"/>
     </inferredMetricsTieBreakers>
 </document>

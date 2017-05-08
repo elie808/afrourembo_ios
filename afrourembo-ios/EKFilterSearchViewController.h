@@ -13,6 +13,8 @@
 #import "EKSalonListCollectionViewCell.h"
 #import "EKFilterSearchTableViewCell.h"
 
+static NSString * const kCompanyProfile = @"filterSearchVCToCompanyProfileVC";
+
 @interface EKFilterSearchViewController : UIViewController <UISearchControllerDelegate, UISearchBarDelegate>
 
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;

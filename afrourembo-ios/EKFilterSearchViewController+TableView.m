@@ -110,7 +110,8 @@ static NSString * const  kSubCategoryCell = @"subCategoryCellID";
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     if (tableView == self.tableView) {
-        //    [self performSegueWithIdentifier:kCompanyProfile sender:nil];
+        
+        [self performSegueWithIdentifier:kCompanyProfile sender:nil];
     }
     
     if (tableView == self.categoryTableView) {
