@@ -22,6 +22,7 @@
 		475A4CEF1EBF74D50089D477 /* EKFilterSearchTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 475A4CEE1EBF74D50089D477 /* EKFilterSearchTableViewCell.m */; };
 		475A4CF41EBF7EFC0089D477 /* EKAddNewServiceTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 475A4CF31EBF7EFC0089D477 /* EKAddNewServiceTableViewCell.m */; };
 		475A4CF71EC0041F0089D477 /* EKCheckoutSuccessViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 475A4CF61EC0041F0089D477 /* EKCheckoutSuccessViewController.m */; };
+		475A4CFB1EC01EAB0089D477 /* EKExploreViewController+SideMenuTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 475A4CFA1EC01EAB0089D477 /* EKExploreViewController+SideMenuTableView.m */; };
 		475FC37D1EB6B57900BB0731 /* EKAddServiceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 475FC37C1EB6B57900BB0731 /* EKAddServiceViewController.m */; };
 		475FC3811EB6BF5E00BB0731 /* EKAddNewServiceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 475FC3801EB6BF5E00BB0731 /* EKAddNewServiceViewController.m */; };
 		477256051EB958FF007CBD6B /* EKAvailabilityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 477256041EB958FF007CBD6B /* EKAvailabilityViewController.m */; };
@@ -44,9 +45,6 @@
 		478BDEF11E99B7D700F74A5C /* EKExploreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 478BDEF01E99B7D700F74A5C /* EKExploreViewController.m */; };
 		478BDEF51E99C20900F74A5C /* EKExploreCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 478BDEF41E99C20900F74A5C /* EKExploreCollectionViewCell.m */; };
 		478BDEF91E99C5FC00F74A5C /* Service.m in Sources */ = {isa = PBXBuildFile; fileRef = 478BDEF81E99C5FC00F74A5C /* Service.m */; };
-		478BDEFD1E99D36000F74A5C /* EKSideMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 478BDEFC1E99D36000F74A5C /* EKSideMenuViewController.m */; };
-		478BDF031E99D81F00F74A5C /* EKLeftPushSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 478BDF001E99D81E00F74A5C /* EKLeftPushSegue.m */; };
-		478BDF041E99D81F00F74A5C /* EKLeftPushUnwindSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 478BDF021E99D81E00F74A5C /* EKLeftPushUnwindSegue.m */; };
 		47919E5A1E795664001C5600 /* EKOnboardingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47919E591E795664001C5600 /* EKOnboardingViewController.m */; };
 		4795200F1EB3A40700E377E5 /* EKScheduleMonthlyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4795200E1EB3A40700E377E5 /* EKScheduleMonthlyViewController.m */; };
 		479AB2681EA0B9E300A74659 /* EKCompanyProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 479AB2671EA0B9E300A74659 /* EKCompanyProfileViewController.m */; };
@@ -108,6 +106,8 @@
 		475A4CF31EBF7EFC0089D477 /* EKAddNewServiceTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKAddNewServiceTableViewCell.m; sourceTree = "<group>"; };
 		475A4CF51EC0041F0089D477 /* EKCheckoutSuccessViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKCheckoutSuccessViewController.h; sourceTree = "<group>"; };
 		475A4CF61EC0041F0089D477 /* EKCheckoutSuccessViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKCheckoutSuccessViewController.m; sourceTree = "<group>"; };
+		475A4CF91EC01EAB0089D477 /* EKExploreViewController+SideMenuTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "EKExploreViewController+SideMenuTableView.h"; sourceTree = "<group>"; };
+		475A4CFA1EC01EAB0089D477 /* EKExploreViewController+SideMenuTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "EKExploreViewController+SideMenuTableView.m"; sourceTree = "<group>"; };
 		475FC37B1EB6B57900BB0731 /* EKAddServiceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKAddServiceViewController.h; sourceTree = "<group>"; };
 		475FC37C1EB6B57900BB0731 /* EKAddServiceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKAddServiceViewController.m; sourceTree = "<group>"; };
 		475FC37F1EB6BF5E00BB0731 /* EKAddNewServiceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKAddNewServiceViewController.h; sourceTree = "<group>"; };
@@ -151,12 +151,6 @@
 		478BDEF41E99C20900F74A5C /* EKExploreCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKExploreCollectionViewCell.m; sourceTree = "<group>"; };
 		478BDEF71E99C5FC00F74A5C /* Service.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Service.h; sourceTree = "<group>"; };
 		478BDEF81E99C5FC00F74A5C /* Service.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Service.m; sourceTree = "<group>"; };
-		478BDEFB1E99D36000F74A5C /* EKSideMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKSideMenuViewController.h; sourceTree = "<group>"; };
-		478BDEFC1E99D36000F74A5C /* EKSideMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKSideMenuViewController.m; sourceTree = "<group>"; };
-		478BDEFF1E99D81E00F74A5C /* EKLeftPushSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKLeftPushSegue.h; sourceTree = "<group>"; };
-		478BDF001E99D81E00F74A5C /* EKLeftPushSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKLeftPushSegue.m; sourceTree = "<group>"; };
-		478BDF011E99D81E00F74A5C /* EKLeftPushUnwindSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKLeftPushUnwindSegue.h; sourceTree = "<group>"; };
-		478BDF021E99D81E00F74A5C /* EKLeftPushUnwindSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKLeftPushUnwindSegue.m; sourceTree = "<group>"; };
 		478BDF061E99D85500F74A5C /* EKConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKConstants.h; sourceTree = "<group>"; };
 		47919E581E795664001C5600 /* EKOnboardingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKOnboardingViewController.h; sourceTree = "<group>"; };
 		47919E591E795664001C5600 /* EKOnboardingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKOnboardingViewController.m; sourceTree = "<group>"; };
@@ -320,6 +314,15 @@
 			name = "Customer - Success checkout ViewController";
 			sourceTree = "<group>";
 		};
+		475A4CFC1EC01EB70089D477 /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				475A4CF91EC01EAB0089D477 /* EKExploreViewController+SideMenuTableView.h */,
+				475A4CFA1EC01EAB0089D477 /* EKExploreViewController+SideMenuTableView.m */,
+			);
+			name = Category;
+			sourceTree = "<group>";
+		};
 		475FC37E1EB6B57D00BB0731 /* BP - Add Service List */ = {
 			isa = PBXGroup;
 			children = (
@@ -476,6 +479,7 @@
 			children = (
 				478BDEEF1E99B7D700F74A5C /* EKExploreViewController.h */,
 				478BDEF01E99B7D700F74A5C /* EKExploreViewController.m */,
+				475A4CFC1EC01EB70089D477 /* Category */,
 				478BDEF61E99C21000F74A5C /* Views */,
 			);
 			name = "Customer - Explore ViewController";
@@ -505,27 +509,6 @@
 				47C7D4CB1EBB5EF000457E53 /* Day.m */,
 			);
 			name = Models;
-			sourceTree = "<group>";
-		};
-		478BDEFE1E99D36500F74A5C /* Customer - Side Menu */ = {
-			isa = PBXGroup;
-			children = (
-				478BDEFB1E99D36000F74A5C /* EKSideMenuViewController.h */,
-				478BDEFC1E99D36000F74A5C /* EKSideMenuViewController.m */,
-				478BDF051E99D82400F74A5C /* Segues */,
-			);
-			name = "Customer - Side Menu";
-			sourceTree = "<group>";
-		};
-		478BDF051E99D82400F74A5C /* Segues */ = {
-			isa = PBXGroup;
-			children = (
-				478BDEFF1E99D81E00F74A5C /* EKLeftPushSegue.h */,
-				478BDF001E99D81E00F74A5C /* EKLeftPushSegue.m */,
-				478BDF011E99D81E00F74A5C /* EKLeftPushUnwindSegue.h */,
-				478BDF021E99D81E00F74A5C /* EKLeftPushUnwindSegue.m */,
-			);
-			name = Segues;
 			sourceTree = "<group>";
 		};
 		478BDF091E99D85E00F74A5C /* Utilities */ = {
@@ -614,7 +597,6 @@
 				4787C6D61EB4013900DF7B83 /* Customer - Cart review */,
 				475A4CF81EC004500089D477 /* Customer - Success checkout ViewController */,
 				478BDEF21E99B7DD00F74A5C /* Customer - Explore ViewController */,
-				478BDEFE1E99D36500F74A5C /* Customer - Side Menu */,
 				47D44C2E1EBEBB2A007ACFAA /* Customer - Filter & Search ViewController */,
 				47AF51BE1E9C4013005FE6EB /* Customer - Discover Map ViewController */,
 				479AB2691EA0B9EE00A74659 /* Customer - Company Profile */,
@@ -874,7 +856,6 @@
 				470CD74C1EA1C6C00086DEE4 /* EKCompanyProfessionalTableViewCell.m in Sources */,
 				47BFEA651EA49AB10091522B /* EKBookingProCollectionViewCell.m in Sources */,
 				4795200F1EB3A40700E377E5 /* EKScheduleMonthlyViewController.m in Sources */,
-				478BDEFD1E99D36000F74A5C /* EKSideMenuViewController.m in Sources */,
 				47FF4F681EB5520E0022A6ED /* Customer.m in Sources */,
 				4787C6DD1EB40D5500DF7B83 /* Booking.m in Sources */,
 				475FC37D1EB6B57900BB0731 /* EKAddServiceViewController.m in Sources */,
@@ -887,7 +868,6 @@
 				470CD74F1EA1C87D0086DEE4 /* EKCompanyProfileViewController+TableView.m in Sources */,
 				477256091EB95EA4007CBD6B /* EKSwitchTableViewCell.m in Sources */,
 				47AF51BA1E9B8561005FE6EB /* Salon.m in Sources */,
-				478BDF031E99D81F00F74A5C /* EKLeftPushSegue.m in Sources */,
 				47C7D4CC1EBB5EF000457E53 /* Day.m in Sources */,
 				47E2F0091EA5FF97002E2FD4 /* EKProfileInfoFacebookViewController.m in Sources */,
 				4783DF8D1EA4CDAD00C87C60 /* EKBookingTimeCollectionViewCell.m in Sources */,
@@ -912,10 +892,10 @@
 				479AB2681EA0B9E300A74659 /* EKCompanyProfileViewController.m in Sources */,
 				475A4CF41EBF7EFC0089D477 /* EKAddNewServiceTableViewCell.m in Sources */,
 				47D44C2D1EBEBB25007ACFAA /* EKFilterSearchViewController.m in Sources */,
-				478BDF041E99D81F00F74A5C /* EKLeftPushUnwindSegue.m in Sources */,
 				4787C6D91EB402A500DF7B83 /* EKCartCollectionViewCell.m in Sources */,
 				475A4CF71EC0041F0089D477 /* EKCheckoutSuccessViewController.m in Sources */,
 				47919E5A1E795664001C5600 /* EKOnboardingViewController.m in Sources */,
+				475A4CFB1EC01EAB0089D477 /* EKExploreViewController+SideMenuTableView.m in Sources */,
 				478278CE1E7923D000FB2FD2 /* main.m in Sources */,
 				47871AE51EBA17A3003B9BEB /* EKDualButtonTableViewCell.m in Sources */,
 				47448AE01EAE462F0098CED3 /* EKEditProfileInfoViewController.m in Sources */,

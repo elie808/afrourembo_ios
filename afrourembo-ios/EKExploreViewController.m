@@ -16,10 +16,32 @@ static NSString * const kDiscoverSegue  = @"exploreToDiscover";
 
 @implementation EKExploreViewController {
     NSArray *_dataSourceArray;
+    BOOL _sideMenuOpen;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.sideMenuDataSource = @[ @{@"icExploreNormal"  : @"Explore"},
+                                 @{@"icCartNormal"     : @"Cart"},
+                                 @{@"icPaymentsNormal" : @"Orders"},
+                                 @{@"icGiftNormal"     : @"Gifts"},
+                                 @{@"icSettingsNormal" : @"Settings"}
+                                 ];
+    
+    _sideMenuOpen = NO;
+    self.sideMenuTableView.frame = CGRectMake(-self.view.frame.size.width, 0,
+                                              self.view.frame.size.width/1.5, self.view.frame.size.height);
+    [self.view addSubview:self.sideMenuTableView];
+    
+    // add drop shadow
+    self.sideMenuTableView.clipsToBounds = NO;
+    self.sideMenuTableView.layer.masksToBounds = NO;
+    [self.sideMenuTableView.layer setShadowColor:[[UIColor blackColor] CGColor]];
+    [self.sideMenuTableView.layer setShadowOffset:CGSizeMake(-10, 10)];
+    [self.sideMenuTableView.layer setShadowRadius:10.0];
+    [self.sideMenuTableView.layer setShadowOpacity:0.6];
+
     
     //TODO: REMOVE AFTER TESTING
     _dataSourceArray = [self createStubs];
@@ -110,6 +132,27 @@ static NSString * const kDiscoverSegue  = @"exploreToDiscover";
     if ([segue.identifier isEqualToString:kSearchSegue]) {
         
     }
+}
+
+- (IBAction)didTapSideMenuButton:(UIBarButtonItem *)sender {
+    
+    CGRect sideMenuFrame = CGRectZero;
+    
+    if (_sideMenuOpen) {
+        
+        sideMenuFrame = CGRectMake(-self.view.frame.size.width, 0, self.view.frame.size.width/1.5, self.view.frame.size.height);
+        
+    } else {
+        
+        sideMenuFrame = CGRectMake(0, 0, self.view.frame.size.width/1.5, self.view.frame.size.height);
+    }
+    
+    _sideMenuOpen = !_sideMenuOpen;
+    
+    [UIView animateWithDuration:0.3
+                     animations:^{
+                         self.sideMenuTableView.frame = sideMenuFrame;
+                     }];
 }
 
 - (IBAction)unwindToExploreVC:(UIStoryboardSegue *)segue {
