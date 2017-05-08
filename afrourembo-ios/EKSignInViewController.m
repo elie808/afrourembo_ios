@@ -55,15 +55,17 @@ static NSString * const kExploreSegue = @"signInToExploreVC";
 
 - (IBAction)didTapSignInButton:(id)sender {
     
-    [Customer loginCustomer:@"email@address.com"
-                   password:@"12345678"
-                  withBlock:^(Customer *customerObj) {
-                    
-                      [self performSegueWithIdentifier:kExploreSegue sender:nil];
-                  }
-                 withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
-                     
-                 }];
+//    [Customer loginCustomer:@"email@address.com"
+//                   password:@"12345678"
+//                  withBlock:^(Customer *customerObj) {
+//                    
+//                      [self performSegueWithIdentifier:kExploreSegue sender:nil];
+//                  }
+//                 withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
+//                     
+//                 }];
+    
+    [self performSegueWithIdentifier:kExploreSegue sender:nil];
 }
 
 /*

@@ -72,6 +72,8 @@ static NSString * const kEditProfileSegue = @"signUpToEditProfile";
 //                  withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
 //                      
 //                  }];
+    
+    [self performSegueWithIdentifier:kEditProfileSegue sender:nil];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {

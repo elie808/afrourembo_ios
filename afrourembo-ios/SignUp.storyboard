@@ -734,7 +734,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5qq-wY-fDo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-543.20000000000005" y="383.65817091454278"/>
+            <point key="canvasLocation" x="-543" y="384"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="hTP-dt-5TN">
@@ -895,6 +895,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="tableView" destination="Mod-NP-lO6" id="qVo-M7-e5V"/>
                         <segue destination="bDT-Qn-xWO" kind="show" identifier="serviceListToNewService" id="qBK-gk-z1I"/>
                         <segue destination="bDT-Qn-xWO" kind="show" identifier="serviceListToEditService" id="pcN-xV-EFc"/>
                     </connections>
@@ -1025,7 +1026,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oC3-gb-AOf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4252" y="-802.848575712144"/>
+            <point key="canvasLocation" x="4252" y="-718"/>
         </scene>
         <!--Vendor_Main-->
         <scene sceneID="1Xq-Y4-2YB">
@@ -1033,9 +1034,9 @@
                 <viewControllerPlaceholder storyboardName="Vendor_Main" id="fOE-tV-ZTA" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LRC-2z-Lwe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4978" y="-803"/>
+            <point key="canvasLocation" x="5000" y="-719"/>
         </scene>
-        <!--Add New Service View Controller-->
+        <!--New service-->
         <scene sceneID="QQe-7f-iWJ">
             <objects>
                 <viewController id="bDT-Qn-xWO" customClass="EKAddNewServiceViewController" sceneMemberID="viewController">
@@ -1081,38 +1082,40 @@
                                     </constraints>
                                 </view>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="createServiceCellTitle" id="tmU-a9-cW7">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="createServiceCellTitle" id="tmU-a9-cW7" customClass="EKAddNewServiceTableViewCell">
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="tmU-a9-cW7" id="MOq-pL-xQj">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c3J-yj-edu">
-                                                    <rect key="frame" x="23" y="8" width="33.5" height="28"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c3J-yj-edu">
+                                                    <rect key="frame" x="23" y="8" width="36.5" height="28"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SPA&amp;Salon" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qrq-mZ-amr">
-                                                    <rect key="frame" x="211" y="8" width="148" height="28"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="148" id="Um0-CU-CbV"/>
-                                                    </constraints>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="placeholder" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vAz-gz-4cu">
+                                                    <rect key="frame" x="67.5" y="7" width="299.5" height="30"/>
+                                                    <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" red="0.8980392157" green="0.8980392157" blue="0.8980392157" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                </textField>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="qrq-mZ-amr" firstAttribute="baseline" secondItem="c3J-yj-edu" secondAttribute="baseline" id="3j4-JF-aeS"/>
-                                                <constraint firstItem="c3J-yj-edu" firstAttribute="top" secondItem="MOq-pL-xQj" secondAttribute="topMargin" id="UGf-Jf-Spi"/>
-                                                <constraint firstItem="qrq-mZ-amr" firstAttribute="firstBaseline" secondItem="c3J-yj-edu" secondAttribute="firstBaseline" id="m42-nE-yYh"/>
-                                                <constraint firstItem="c3J-yj-edu" firstAttribute="leading" secondItem="MOq-pL-xQj" secondAttribute="leadingMargin" constant="15" id="pAX-6s-UZ2"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="qrq-mZ-amr" secondAttribute="trailing" constant="8" id="t7c-N7-0uL"/>
-                                                <constraint firstItem="c3J-yj-edu" firstAttribute="bottom" secondItem="MOq-pL-xQj" secondAttribute="bottomMargin" id="x1e-Dg-Ftf"/>
+                                                <constraint firstItem="c3J-yj-edu" firstAttribute="centerY" secondItem="vAz-gz-4cu" secondAttribute="centerY" id="9aZ-Jz-6nw"/>
+                                                <constraint firstItem="vAz-gz-4cu" firstAttribute="top" secondItem="MOq-pL-xQj" secondAttribute="topMargin" constant="-1" id="Frp-mU-mXx"/>
+                                                <constraint firstItem="c3J-yj-edu" firstAttribute="leading" secondItem="MOq-pL-xQj" secondAttribute="leadingMargin" constant="15" id="U9q-od-6RZ"/>
+                                                <constraint firstItem="vAz-gz-4cu" firstAttribute="leading" secondItem="c3J-yj-edu" secondAttribute="trailing" constant="8" symbolic="YES" id="WPv-mz-Hgk"/>
+                                                <constraint firstItem="vAz-gz-4cu" firstAttribute="trailing" secondItem="MOq-pL-xQj" secondAttribute="trailingMargin" id="fMR-fi-hys"/>
+                                                <constraint firstItem="c3J-yj-edu" firstAttribute="centerY" secondItem="MOq-pL-xQj" secondAttribute="centerY" id="ytj-7e-YoN"/>
+                                                <constraint firstItem="c3J-yj-edu" firstAttribute="top" secondItem="MOq-pL-xQj" secondAttribute="topMargin" id="yu9-bt-YJt"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="cellTextField" destination="vAz-gz-4cu" id="aQI-ON-KgO"/>
+                                            <outlet property="cellTextLabel" destination="c3J-yj-edu" id="t1s-SX-OAg"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="createServiceCellGroup" id="0hI-Tm-gUB">
                                         <rect key="frame" x="0.0" y="72" width="375" height="44"/>
@@ -1228,13 +1231,25 @@
                             <constraint firstItem="0fY-Jg-TSi" firstAttribute="top" secondItem="sec-cA-evy" secondAttribute="top" id="yKG-gh-MFC"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="New service" id="uTz-Xd-khv">
+                        <barButtonItem key="rightBarButtonItem" title="Done" id="sHb-mh-Glc">
+                            <color key="tintColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <action selector="didTapDoneButton:" destination="bDT-Qn-xWO" id="Od3-o9-0i0"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
-                        <outlet property="tableView" destination="0fY-Jg-TSi" id="QSb-iC-z6f"/>
+                        <outlet property="removeServiceButton" destination="xVm-gD-OA7" id="KVV-gX-YQi"/>
+                        <outlet property="tableView" destination="0fY-Jg-TSi" id="s4y-Ho-Iy6"/>
+                        <segue destination="3yg-LA-sOH" kind="unwind" identifier="unwindFromNewServiceToServiceVC" unwindAction="unwindToAddServiceVC:" id="xei-Ey-lJu"/>
+                        <segue destination="3yg-LA-sOH" kind="unwind" identifier="unwindNewServiceToServiceVCREMOVE" unwindAction="unwindToAddServiceVC:" id="c2Z-6x-l5W"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2rD-rY-KOn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="3yg-LA-sOH" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="4253.6000000000004" y="-48.125937031484263"/>
+            <point key="canvasLocation" x="4252" y="-10"/>
         </scene>
         <!--Vendor_Main-->
         <scene sceneID="iSC-NV-Qur">
