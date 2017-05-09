@@ -575,7 +575,7 @@
         <!--exploreVC-->
         <scene sceneID="HYP-dm-neH">
             <objects>
-                <viewControllerPlaceholder storyboardIdentifier="exploreVC" storyboardName="Customer_Main" referencedIdentifier="exploreVC" id="WIc-6j-gwA" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardIdentifier="exploreVC" storyboardName="Main" referencedIdentifier="exploreVC" id="WIc-6j-gwA" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7z3-UU-3kP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="416" y="-1157"/>

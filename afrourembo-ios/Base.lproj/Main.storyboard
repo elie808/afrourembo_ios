@@ -118,7 +118,7 @@
                             <rect key="frame" x="0.0" y="28" width="388" height="52"/>
                             <autoresizingMask key="autoresizingMask"/>
                             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="1Ij-9X-UlQ" id="YTh-4S-Iu2">
-                                <rect key="frame" x="0.0" y="0.0" width="388" height="51.5"/>
+                                <rect key="frame" x="0.0" y="0.0" width="388" height="52"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Egp-PP-CrF">
@@ -406,7 +406,8 @@
                     </view>
                     <navigationItem key="navigationItem" title="Filters &amp; search" id="bw9-yJ-p81">
                         <barButtonItem key="backBarButtonItem" title=" " id="xES-qs-fze"/>
-                        <barButtonItem key="rightBarButtonItem" title="Filter" id="GYb-vO-XKP">
+                        <barButtonItem key="rightBarButtonItem" image="icFilter" id="GYb-vO-XKP">
+                            <color key="tintColor" red="0.98431372549999996" green="0.98431372549999996" blue="0.98431372549999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <action selector="didTapFilterButton:" destination="ufK-GA-kWe" id="58b-mh-QnW"/>
                             </connections>
@@ -1738,6 +1739,7 @@
         <image name="dummy_male1" width="118" height="118"/>
         <image name="dummy_male2" width="153" height="151"/>
         <image name="icFbActive" width="24" height="24"/>
+        <image name="icFilter" width="18" height="16"/>
         <image name="icInstagramActive" width="24" height="24"/>
         <image name="icListView" width="18" height="18"/>
         <image name="icLogout" width="22" height="20"/>
