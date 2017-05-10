@@ -29,15 +29,32 @@
     [self initDataSources];
 }
 
+/*
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
+
 #pragma mark - Actions
 
 - (IBAction)didTapPresentListButton:(UIButton *)sender {
     
+    if (!_listViewVisible) {
+    
+        [self.dataSourceArray removeAllObjects];
+        [self.dataSourceArray addObjectsFromArray:self.venuesList];
+        [self.tableView reloadData];
+    }
+    
     CGRect visibleListFrame = CGRectMake(self.mapView.frame.origin.x, self.mapView.frame.origin.y,
-                                      self.mapView.frame.size.width, self.mapView.frame.size.height);
+                                         self.mapView.frame.size.width, self.mapView.frame.size.height);
     
     CGRect hiddenListFrame = CGRectMake(self.mapView.frame.origin.x, self.mapView.frame.size.height,
-                                      self.mapView.frame.size.width, self.mapView.frame.size.height);
+                                        self.mapView.frame.size.width, self.mapView.frame.size.height);
     
     [UIView animateWithDuration:0.6
                           delay:0.0
@@ -58,22 +75,36 @@
                      }];
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
-
 #pragma mark - Helpers
 
+- (void)animateOneCellList:(BOOL)show {
+    
+    CGRect visibleCellFrame = CGRectMake(self.mapView.frame.origin.x, self.mapView.frame.origin.y,
+                                         self.mapView.frame.size.width, 230);
+    
+    CGRect hiddenCellFrame = CGRectMake(self.mapView.frame.origin.x, self.mapView.frame.size.height,
+                                        self.mapView.frame.size.width, self.mapView.frame.size.height);
+    
+    [UIView animateWithDuration:0.6
+                          delay:0.0
+         usingSpringWithDamping:0.6
+          initialSpringVelocity:0.5
+                        options:UIViewAnimationOptionCurveLinear
+                     animations:^{
+
+                         self.tableView.frame = show ? visibleCellFrame : hiddenCellFrame;
+                     }
+                     completion:^(BOOL finished) {
+                     }];
+}
+
 - (void)initDataSources {
+
+    _listViewVisible = NO;
     
     self.contentOffsetDictionary = [NSMutableDictionary new];
-    self.dataSourceArray = [self createStubs];
+    self.venuesList = [self createStubs];
+    self.dataSourceArray = [NSMutableArray arrayWithArray:self.venuesList];
     [self placeVenuePins:self.dataSourceArray];
 }
 

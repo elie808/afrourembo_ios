@@ -46,8 +46,26 @@ static NSString *kSalonAnnotation = @"salonLocations";
 - (void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view {
     
     if ([view.annotation isKindOfClass:[EKAnnotation class]]) {
+
+        Salon *salonObj = ((EKAnnotation*)view.annotation).salonObj;
+
+        [self.dataSourceArray removeAllObjects];
+        [self.dataSourceArray addObject:salonObj];
+        [self.tableView reloadData];
         
-        NSLog(@"TAP TAP TAP TAP: %@", ((EKAnnotation*) view.annotation).salonObj.userName);
+        [self animateOneCellList:YES];
+    }
+}
+
+- (void)mapView:(MKMapView *)mapView didDeselectAnnotationView:(MKAnnotationView *)view {
+    
+    if ([view.annotation isKindOfClass:[EKAnnotation class]]) {
+        
+        [self animateOneCellList:NO];
+        
+        [self.dataSourceArray removeAllObjects];
+        [self.dataSourceArray addObjectsFromArray:self.venuesList];
+        [self.tableView reloadData];
     }
 }
 

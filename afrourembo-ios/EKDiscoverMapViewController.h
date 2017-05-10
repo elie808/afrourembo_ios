@@ -19,6 +19,7 @@ static NSString * const kCompanyProfile = @"discoverMapToCompanyProfileVC";
 @interface EKDiscoverMapViewController : UIViewController <UISearchControllerDelegate, UISearchBarDelegate, MKMapViewDelegate>
 
 @property (strong, nonatomic) Service *passedService;
+@property (strong, nonatomic) NSArray *venuesList; // store Salon list, to enable filtering tableView dataSource for oneCell display
 
 @property (strong, nonatomic) IBOutlet UISearchBar *searchBar;
 @property (strong, nonatomic) IBOutlet UIButton *toggleButton;
@@ -27,12 +28,12 @@ static NSString * const kCompanyProfile = @"discoverMapToCompanyProfileVC";
 @property (assign, nonatomic) CLLocationCoordinate2D venueCoordinates;
 
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
-@property (strong, nonatomic) NSArray *dataSourceArray;
+@property (strong, nonatomic) NSMutableArray *dataSourceArray;
 @property (strong, nonatomic) NSMutableDictionary *contentOffsetDictionary; // used to keep track of collectionViews scrolling positions/offsets
 
-@property (strong, nonatomic) IBOutlet UITableView *overlayTableView;
-@property (strong, nonatomic) NSArray *zdataSourceArray;
-
 - (IBAction)didTapPresentListButton:(UIButton *)sender;
+
+/// Show/Hide list tableView in "one cell" layout, on top of map
+- (void)animateOneCellList:(BOOL)show;
 
 @end
