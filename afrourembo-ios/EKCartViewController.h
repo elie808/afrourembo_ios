@@ -13,6 +13,8 @@
 
 @interface EKCartViewController : UIViewController <UICollectionViewDelegate, UICollectionViewDataSource, EKCartCollectionViewCellDelegate>
 
+@property (strong, nonatomic) Booking *passedBooking;
+
 @property (strong, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (strong, nonatomic) IBOutlet UIView *bottomBar;
 

@@ -35,8 +35,7 @@ static NSString * const kCartCell = @"cartCollectionCellID";
     booking1.practionner = @"Johanna Mullins";
     booking1.bookingDate = @"Tue, 23 Nov, 2017";
     booking1.bookingTime = @"12:30 PM";
-    booking1.bookingDescription = @"";
-    //booking1.bookingDescription = @"The virtual realm is uncharted territory for many designers. In the last few years, we’ve witnessed an explosion in virtual reality (VR) hardware and.";
+    booking1.bookingDescription = @"The virtual realm is uncharted territory for many designers. In the last few years, we’ve witnessed an explosion in virtual reality (VR) hardware and.";
     
     Booking *booking2 = [Booking new];
     booking2.bookingTitle = @"Nail Polish";
@@ -58,7 +57,7 @@ static NSString * const kCartCell = @"cartCollectionCellID";
     booking3.bookingDescription = @"";
 //    booking3.bookingDescription = @"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla convallis posuere viverra. Donec in efficitur nisi, ut faucibus ante. Duis sed facilisis orci. Phasellus sit amet leo iaculis, efficitur metus ut, fermentum ex.";
     
-    return @[booking1, booking2, booking3, booking2, booking1];
+    return @[booking1, booking2, booking3];
 }
 
 #pragma mark - UICollectionViewDataSource

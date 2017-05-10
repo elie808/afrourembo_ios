@@ -12,10 +12,50 @@ static NSString * const kProCell = @"bookingProfessionalCell";
 static NSString * const kDayCell = @"bookingDayCell";
 static NSString * const kTimeCell = @"bookingTimeCell";
 
-@implementation EKBookingViewController
+static NSString * const kCartSegue = @"bookingTimeToCartVC";
+
+@implementation EKBookingViewController {
+    BOOL _keyboardShowing;
+    CGFloat _containerViewHeight;
+    
+    NSMutableArray *_prosDataSource;
+    NSMutableArray *_daysDataSource;
+    NSMutableArray *_timesDataSource;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+
+    self.booking = [Booking new];
+    
+//    _prosDataSource;
+//    _daysDataSource;
+//    _timesDataSource
+    
+    _containerViewHeight = 200;
+    self.containerView.frame = CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, _containerViewHeight);
+    [self.view addSubview:self.containerView];
+    
+    self.containerView.hidden = YES;
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillHideNotification object:nil];
+}
+
+- (void)textViewDidChange:(UITextView *)textView {
+
+    self.booking.bookingDescription = textView.text;
 }
 
 #pragma mark - UICollectionViewDataSource
@@ -110,50 +150,66 @@ static NSString * const kTimeCell = @"bookingTimeCell";
     return YES;
 }
 
+#pragma mark - Actions
+
+- (IBAction)didTapNextButton:(UIBarButtonItem *)sender {
+
+    [self performSegueWithIdentifier:kCartSegue sender:nil];
+}
+
+- (IBAction)didTapAddNoteButton:(id)sender {
+    
+    self.containerView.hidden = NO;
+    [self.textView becomeFirstResponder];
+}
+
+- (IBAction)didTapDoneButton:(id)sender {
+    
+    [self.textView resignFirstResponder];
+    self.containerView.hidden = YES;
+}
+
 #pragma mark - Navigation
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     
+    if ([segue.identifier isEqualToString:kCartSegue]) {
+        
+        EKCartViewController *vc = segue.destinationViewController;
+        vc.passedBooking = self.booking;
+    }
 }
 
 #pragma mark - Helpers
 
-- (void)initGestureRecognizer {
+- (void)keyboardWillShow:(NSNotification *)notification {
     
-    UIPanGestureRecognizer *panRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(didSwipeCollecitonView:)];
-    panRecognizer.delegate = self;
-    [self.timeCollectionView addGestureRecognizer:panRecognizer];
+    CGSize keyboardSize = [[[notification userInfo] objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
+    
+    if (!_keyboardShowing) {
+        
+        [UIView animateWithDuration:0.5 animations:^{
+            
+            self.containerView.hidden = NO;
+            
+            self.containerView.frame = CGRectMake(0, keyboardSize.height,
+                                                  self.view.frame.size.width,
+                                                  self.textView.frame.size.height);
+            _keyboardShowing = YES;
+        }];
+    }
 }
 
-- (IBAction)didSwipeCollecitonView:(UIPanGestureRecognizer *)gesture {
+- (void)keyboardWillHide:(NSNotification *)notification {
     
-    NSLog(@"SWIPING");
-    
-    CGFloat swipeSensitivity = 20.0;
-    CGPoint translation = [gesture translationInView:self.timeCollectionView];
-    
-    if ( fabs(translation.x) > swipeSensitivity) {
+    if (_keyboardShowing) {
         
-        switch (gesture.state) {
-                
-            case UIGestureRecognizerStateBegan: {
-                
-            } break;
-                
-            case UIGestureRecognizerStateChanged: {
-                
-            } break;
-                
-            case (UIGestureRecognizerStateEnded): {
-                
-            } break;
-                
-            case UIGestureRecognizerStateCancelled:{
-                
-            } break;
-                
-            default: break;
-        }
+        [UIView animateWithDuration:0.5 animations:^{
+            
+            self.containerView.frame = CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, _containerViewHeight);;
+            self.containerView.hidden = YES;
+            _keyboardShowing = NO;
+        }];
     }
 }
 

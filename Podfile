@@ -7,12 +7,10 @@ target 'afrourembo-ios' do
 
   # Pods for afrourembo-ios
   pod 'RestKit'
-  pod 'AFNetworking'
-  pod 'Mantle'
-  pod 'Realm'
 	pod 'JNKeychain'
   pod 'EAIntroView'
   pod 'FSCalendar'
   pod 'YYWebImage'
+  pod 'STPopup'
 
 end
