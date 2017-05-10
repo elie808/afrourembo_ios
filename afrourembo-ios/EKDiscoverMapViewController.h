@@ -10,6 +10,7 @@
 #import <MapKit/MapKit.h>
 #import "EKSalonListTableViewCell.h"
 #import "EKSalonListCollectionViewCell.h"
+#import "EKAnnotation.h"
 #import "Service.h"
 #import "Salon.h"
 
@@ -28,6 +29,9 @@ static NSString * const kCompanyProfile = @"discoverMapToCompanyProfileVC";
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) NSArray *dataSourceArray;
 @property (strong, nonatomic) NSMutableDictionary *contentOffsetDictionary; // used to keep track of collectionViews scrolling positions/offsets
+
+@property (strong, nonatomic) IBOutlet UITableView *overlayTableView;
+@property (strong, nonatomic) NSArray *zdataSourceArray;
 
 - (IBAction)didTapPresentListButton:(UIButton *)sender;
 

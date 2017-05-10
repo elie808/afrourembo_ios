@@ -43,6 +43,14 @@ static NSString *kSalonAnnotation = @"salonLocations";
     return nil;
 }
 
+- (void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view {
+    
+    if ([view.annotation isKindOfClass:[EKAnnotation class]]) {
+        
+        NSLog(@"TAP TAP TAP TAP: %@", ((EKAnnotation*) view.annotation).salonObj.userName);
+    }
+}
+
 #pragma mark - Map UI
 
 - (void)clearAllPins {
@@ -63,10 +71,11 @@ static NSString *kSalonAnnotation = @"salonLocations";
     for (Salon *salonObj in dataSource) {
         
         // Create Pin object
-        MKPointAnnotation *annotation = [[MKPointAnnotation alloc] init];
+        EKAnnotation *annotation = [[EKAnnotation alloc] init];
         coords = CLLocationCoordinate2DMake(salonObj.latitude, salonObj.longitude);
         annotation.coordinate = coords;
         annotation.title = salonObj.userName;
+        annotation.salonObj = salonObj;
         
         [pinsArray addObject:annotation];
     }

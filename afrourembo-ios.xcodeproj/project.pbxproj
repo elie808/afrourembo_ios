@@ -56,6 +56,7 @@
 		47AF51B71E9B765D005FE6EB /* EKSalonListCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 47AF51B61E9B765D005FE6EB /* EKSalonListCollectionViewCell.m */; };
 		47AF51BA1E9B8561005FE6EB /* Salon.m in Sources */ = {isa = PBXBuildFile; fileRef = 47AF51B91E9B8561005FE6EB /* Salon.m */; };
 		47AF51BD1E9C4001005FE6EB /* EKDiscoverMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47AF51BC1E9C4001005FE6EB /* EKDiscoverMapViewController.m */; };
+		47BD3CEC1EC2A7680062AA97 /* EKAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 47BD3CEB1EC2A7680062AA97 /* EKAnnotation.m */; };
 		47BFEA651EA49AB10091522B /* EKBookingProCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 47BFEA641EA49AB10091522B /* EKBookingProCollectionViewCell.m */; };
 		47BFEA691EA4A9A30091522B /* EKBookingDayCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 47BFEA681EA4A9A30091522B /* EKBookingDayCollectionViewCell.m */; };
 		47C42DDC1E7D6509008CBF51 /* Welcome.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 47C42DDB1E7D6509008CBF51 /* Welcome.storyboard */; };
@@ -174,6 +175,8 @@
 		47AF51B91E9B8561005FE6EB /* Salon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Salon.m; sourceTree = "<group>"; };
 		47AF51BB1E9C4001005FE6EB /* EKDiscoverMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKDiscoverMapViewController.h; sourceTree = "<group>"; };
 		47AF51BC1E9C4001005FE6EB /* EKDiscoverMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKDiscoverMapViewController.m; sourceTree = "<group>"; };
+		47BD3CEA1EC2A7680062AA97 /* EKAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKAnnotation.h; sourceTree = "<group>"; };
+		47BD3CEB1EC2A7680062AA97 /* EKAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKAnnotation.m; sourceTree = "<group>"; };
 		47BFEA631EA49AB10091522B /* EKBookingProCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKBookingProCollectionViewCell.h; sourceTree = "<group>"; };
 		47BFEA641EA49AB10091522B /* EKBookingProCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKBookingProCollectionViewCell.m; sourceTree = "<group>"; };
 		47BFEA671EA4A9A30091522B /* EKBookingDayCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKBookingDayCollectionViewCell.h; sourceTree = "<group>"; };
@@ -280,6 +283,8 @@
 		474ED7BD1E9C689A0099CA0A /* Categories */ = {
 			isa = PBXGroup;
 			children = (
+				47BD3CEA1EC2A7680062AA97 /* EKAnnotation.h */,
+				47BD3CEB1EC2A7680062AA97 /* EKAnnotation.m */,
 				474ED7BA1E9C68940099CA0A /* EKDiscoverMapViewController+MapDelegate.h */,
 				474ED7BB1E9C68940099CA0A /* EKDiscoverMapViewController+MapDelegate.m */,
 				474ED7BE1E9C6BD90099CA0A /* EKDiscoverMapViewController+TableView.h */,
@@ -895,6 +900,7 @@
 				47074F8B1EAEB4A600E35EA7 /* EKSignupBPViewController.m in Sources */,
 				47A3BB8C1E7A9F3500963F27 /* EKSignInViewController.m in Sources */,
 				479AB2681EA0B9E300A74659 /* EKCompanyProfileViewController.m in Sources */,
+				47BD3CEC1EC2A7680062AA97 /* EKAnnotation.m in Sources */,
 				475A4CF41EBF7EFC0089D477 /* EKAddNewServiceTableViewCell.m in Sources */,
 				47D44C2D1EBEBB25007ACFAA /* EKFilterSearchViewController.m in Sources */,
 				4787C6D91EB402A500DF7B83 /* EKCartCollectionViewCell.m in Sources */,
