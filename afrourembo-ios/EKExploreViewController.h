@@ -16,6 +16,7 @@
 
 @property (strong, nonatomic) NSArray *sideMenuDataSource;
 
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *sideMenuButton;
 @property (strong, nonatomic) IBOutlet UITableView *sideMenuTableView;
 @property (strong, nonatomic) IBOutlet UICollectionView *collectionView;
 

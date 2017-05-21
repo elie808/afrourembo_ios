@@ -95,6 +95,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="sideMenuButton" destination="sk3-lC-cna" id="8gH-7o-CB1"/>
                         <outlet property="sideMenuTableView" destination="T0y-Fx-VWk" id="2RM-JF-Ho8"/>
                         <segue destination="ITR-70-tiW" kind="show" identifier="exploreToDiscover" id="0Iw-2o-UQu"/>
                     </connections>

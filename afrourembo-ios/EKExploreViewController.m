@@ -119,6 +119,35 @@ static NSString * const kDiscoverSegue  = @"exploreToDiscover";
     [self performSegueWithIdentifier:kDiscoverSegue sender:service];
 }
 
+#pragma mark - Helpers
+
+- (void)animateSideMenu {
+    
+    CGRect sideMenuFrame = CGRectZero;
+    UIImage *sideButtonImage;
+    
+    if (_sideMenuOpen) {
+        
+        sideButtonImage = [UIImage imageNamed:@"icMenu"];
+        sideMenuFrame = CGRectMake(-self.view.frame.size.width, 0, self.view.frame.size.width/1.5, self.view.frame.size.height);
+        
+    } else {
+        
+        sideButtonImage = [UIImage imageNamed:@"icExit"];
+        sideMenuFrame = CGRectMake(0, 0, self.view.frame.size.width/1.5, self.view.frame.size.height);
+    }
+    
+    _sideMenuOpen = !_sideMenuOpen;
+    
+    [UIView animateWithDuration:0.3
+                     animations:^{
+                         self.sideMenuTableView.frame = sideMenuFrame;
+                     }
+                     completion:^(BOOL finished) {
+                         [self.sideMenuButton setImage:sideButtonImage];
+                     }];
+}
+
 #pragma mark - Navigation
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
@@ -137,23 +166,7 @@ static NSString * const kDiscoverSegue  = @"exploreToDiscover";
 
 - (IBAction)didTapSideMenuButton:(UIBarButtonItem *)sender {
     
-    CGRect sideMenuFrame = CGRectZero;
-    
-    if (_sideMenuOpen) {
-        
-        sideMenuFrame = CGRectMake(-self.view.frame.size.width, 0, self.view.frame.size.width/1.5, self.view.frame.size.height);
-        
-    } else {
-        
-        sideMenuFrame = CGRectMake(0, 0, self.view.frame.size.width/1.5, self.view.frame.size.height);
-    }
-    
-    _sideMenuOpen = !_sideMenuOpen;
-    
-    [UIView animateWithDuration:0.3
-                     animations:^{
-                         self.sideMenuTableView.frame = sideMenuFrame;
-                     }];
+    [self animateSideMenu];
 }
 
 - (IBAction)unwindToExploreVC:(UIStoryboardSegue *)segue {
