@@ -126,6 +126,7 @@ static NSString * const kDiscoverSegue  = @"exploreToDiscover";
     if ([segue.identifier isEqualToString:kDiscoverSegue]) {
         
         EKDiscoverMapViewController *vc = segue.destinationViewController;
+        vc.title = ((Service*)sender).serviceTitle;
         vc.passedService = (Service*)sender;
     }
     
