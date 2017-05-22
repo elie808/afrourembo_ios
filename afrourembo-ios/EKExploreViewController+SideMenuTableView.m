@@ -10,6 +10,17 @@
 
 static NSString * const  kSideMenuCell = @"sideMenuCell";
 
+static NSString * const kDiscoverSegue  = @"exploreToDiscover";
+
+static NSString * const kCartSegue  = @"sideMenuToCartVC";
+static NSString * const kWelcomeSegue  = @"sideMenuToWelcomeVC";
+
+//@{@"icExploreNormal"  : @"Explore"},
+//@{@"icCartNormal"     : @"Cart"},
+//@{@"icPaymentsNormal" : @"Orders"},
+//@{@"icGiftNormal"     : @"Gifts"},
+//@{@"icSettingsNormal" : @"Settings"}
+
 @implementation EKExploreViewController (SideMenuTableView)
 
 #pragma mark - UITableViewDataSource
@@ -39,11 +50,30 @@ static NSString * const  kSideMenuCell = @"sideMenuCell";
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
+    switch (indexPath.row) {
+            
+        case 1: [self performSegueWithIdentifier:kCartSegue sender:nil]; break; // Cart
+            
+        case 2:  break; // Orders
+            
+        case 3:  break; // Gifts
+            
+        case 4: break; // Settings
+            
+        default: break;
+    }
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     return 52.0;
+}
+
+#pragma mark - Actions
+
+- (IBAction)didTapLogoutButton:(id)sender {
+    
+    [self performSegueWithIdentifier:kWelcomeSegue sender:nil];
 }
 
 @end

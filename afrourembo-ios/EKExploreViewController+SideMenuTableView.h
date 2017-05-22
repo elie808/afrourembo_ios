@@ -10,4 +10,6 @@
 
 @interface EKExploreViewController (SideMenuTableView) <UITableViewDelegate, UITableViewDataSource>
 
+- (IBAction)didTapLogoutButton:(id)sender;
+
 @end

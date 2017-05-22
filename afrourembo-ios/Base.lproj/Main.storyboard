@@ -98,6 +98,8 @@
                         <outlet property="sideMenuButton" destination="sk3-lC-cna" id="8gH-7o-CB1"/>
                         <outlet property="sideMenuTableView" destination="T0y-Fx-VWk" id="2RM-JF-Ho8"/>
                         <segue destination="ITR-70-tiW" kind="show" identifier="exploreToDiscover" id="0Iw-2o-UQu"/>
+                        <segue destination="Hb4-MP-4d0" kind="show" identifier="sideMenuToCartVC" id="FFu-FQ-rc9"/>
+                        <segue destination="kLq-Hf-7Zv" kind="presentation" identifier="sideMenuToWelcomeVC" id="JXs-69-ShI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -113,6 +115,9 @@
                         <state key="normal" title="Log out" image="icLogout">
                             <color key="titleColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </state>
+                        <connections>
+                            <action selector="didTapLogoutButton:" destination="BYZ-38-t0r" eventType="touchDown" id="U0O-Ny-1ik"/>
+                        </connections>
                     </button>
                     <prototypes>
                         <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="sideMenuCell" id="1Ij-9X-UlQ" customClass="EKImageTextTableViewCell">
@@ -158,6 +163,22 @@
                 </tableView>
             </objects>
             <point key="canvasLocation" x="869.60000000000002" y="-645.42728635682158"/>
+        </scene>
+        <!--welcomeVC-->
+        <scene sceneID="VDI-aZ-W3b">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="welcomeVC" storyboardName="Welcome" referencedIdentifier="welcomeVC" id="kLq-Hf-7Zv" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wwV-0C-fuU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="870" y="-71"/>
+        </scene>
+        <!--cartVC-->
+        <scene sceneID="LAu-hv-S7Z">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="customerCartVC" storyboardName="Main" referencedIdentifier="cartVC" id="Hb4-MP-4d0" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="h7W-z8-RHc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1452" y="-194"/>
         </scene>
         <!--Filters & search-->
         <scene sceneID="QfZ-YZ-irF">
@@ -1450,7 +1471,7 @@
         <!--Cart View Controller-->
         <scene sceneID="iIT-Yj-6W2">
             <objects>
-                <viewController id="p8b-NN-oDW" customClass="EKCartViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="cartVC" id="p8b-NN-oDW" customClass="EKCartViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="U2e-j6-DPP"/>
                         <viewControllerLayoutGuide type="bottom" id="mJE-R3-HI9"/>

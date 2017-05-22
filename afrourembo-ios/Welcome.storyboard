@@ -53,7 +53,7 @@
         <!--Welcome View Controller-->
         <scene sceneID="SQO-nM-Bst">
             <objects>
-                <viewController id="LYP-UW-ygc" customClass="EKWelcomeViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="welcomeVC" id="LYP-UW-ygc" customClass="EKWelcomeViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="3fr-HM-x0F"/>
                         <viewControllerLayoutGuide type="bottom" id="PKx-ff-lCr"/>
