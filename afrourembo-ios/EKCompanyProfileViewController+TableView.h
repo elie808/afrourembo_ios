@@ -8,6 +8,6 @@
 
 #import "EKCompanyProfileViewController.h"
 
-@interface EKCompanyProfileViewController (TableView) <UITableViewDelegate, UITableViewDataSource, UICollectionViewDelegate, UICollectionViewDataSource>
+@interface EKCompanyProfileViewController (TableView) <UITableViewDelegate, UITableViewDataSource, UICollectionViewDelegate, UICollectionViewDataSource, EKCompanyServiceCellDelegate>
 
 @end

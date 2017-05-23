@@ -15,8 +15,12 @@
 #import "EKInCellCollectionView.h"
 #import "EKCompanyProfessionalCollectionViewCell.h"
 
+#import "Salon.h"
+#import "Service.h"
+
 @interface EKCompanyProfileViewController : UIViewController
 
+@property (strong, nonatomic) Salon *salon;
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 
 - (IBAction)didTapInstagramButton:(id)sender;

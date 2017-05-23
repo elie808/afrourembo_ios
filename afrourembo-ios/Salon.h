@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+#import "Service.h"
 
 @interface Salon : NSObject
 
@@ -25,5 +26,7 @@
 
 //TODO: CHANGE STRUCTURE. POSSIBLY HAVE A SEPARATE TIME OBJECT
 @property NSArray *timesArray;
+
+@property NSArray<Service*> *servicesArray;
 
 @end

@@ -12,13 +12,26 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    // Initialization code
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
+}
 
-    // Configure the view for the selected state
+- (void)configureEmptyCell {
+    
+    self.cellBookButton.hidden = YES;
+    self.cellServiceLabel.text = @"";
+
+    self.cellServiceLaborLabel.textColor = [UIColor colorWithRed:255./255. green:195./255. blue:0./255. alpha:1.0];
+    self.cellServiceLaborLabel.text = @"There are no services yet.";
+}
+
+- (void)configureCellForService:(Service *)serviceObj {
+    
+    self.cellServiceLabel.text = serviceObj.serviceTitle;
+    self.cellServiceLaborLabel.text = [NSString stringWithFormat:@"$%.2f for %.f mins",
+                                       serviceObj.servicePrice, serviceObj.serviceLaborTime];
 }
 
 - (IBAction)didTapBookButton:(id)sender {

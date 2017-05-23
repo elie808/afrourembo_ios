@@ -27,7 +27,7 @@ static NSString * const kProfessionalsCollectionCell = @"companyProfessionalsCol
     
     switch (section) {
             
-        case 0: return 3; break; // Services
+        case 0: return self.salon.servicesArray.count > 0 ? self.salon.servicesArray.count : 1; break; // Services
             
         case 1: return 2; break; // Reviews
             
@@ -44,8 +44,20 @@ static NSString * const kProfessionalsCollectionCell = @"companyProfessionalsCol
     switch (indexPath.section) {
             
         case 0: { // Services
-            
+
             EKCompanyServiceTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kServicesCell forIndexPath:indexPath];
+            
+            if (self.salon.servicesArray.count > 0) {
+            
+                Service *serviceObj = [self.salon.servicesArray objectAtIndex:indexPath.row];
+             
+                cell.cellDelegate = self;
+                [cell configureCellForService:serviceObj];
+            
+            } else {
+            
+                [cell configureEmptyCell];
+            }
             
             return cell;
             

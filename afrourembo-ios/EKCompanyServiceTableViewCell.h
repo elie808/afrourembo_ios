@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Service.h"
 
 @protocol EKCompanyServiceCellDelegate <NSObject>
 - (void)didTapBookButtonAtIndexPath:(NSIndexPath *)indexPath;
@@ -21,6 +22,9 @@
 
 @property (strong, nonatomic) IBOutlet UILabel *cellServiceLabel;
 @property (strong, nonatomic) IBOutlet UILabel *cellServiceLaborLabel;
+
+- (void)configureEmptyCell;
+- (void)configureCellForService:(Service *)serviceObj;
 
 - (IBAction)didTapBookButton:(id)sender;
 
