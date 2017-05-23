@@ -10,4 +10,6 @@
 
 @interface UIImage (Helpers)
 
++ (UIImage *)imageForStars:(NSNumber *)numberOfStars;
+
 @end
