@@ -13,6 +13,7 @@
 		470CD74C1EA1C6C00086DEE4 /* EKCompanyProfessionalTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 470CD74B1EA1C6C00086DEE4 /* EKCompanyProfessionalTableViewCell.m */; };
 		470CD74F1EA1C87D0086DEE4 /* EKCompanyProfileViewController+TableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 470CD74E1EA1C87D0086DEE4 /* EKCompanyProfileViewController+TableView.m */; };
 		470CD7531EA1CB930086DEE4 /* EKCompanyProfessionalCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 470CD7521EA1CB930086DEE4 /* EKCompanyProfessionalCollectionViewCell.m */; };
+		471AA1881ED44A0E009B840A /* Review.m in Sources */ = {isa = PBXBuildFile; fileRef = 471AA1871ED44A0E009B840A /* Review.m */; };
 		47448AE01EAE462F0098CED3 /* EKEditProfileInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47448ADF1EAE462F0098CED3 /* EKEditProfileInfoViewController.m */; };
 		474BD5701E97F721009410C4 /* EKNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 474BD56F1E97F721009410C4 /* EKNavigationViewController.m */; };
 		474BD5731E97F8F3009410C4 /* EKTextFieldTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 474BD5721E97F8F3009410C4 /* EKTextFieldTableViewCell.m */; };
@@ -90,6 +91,8 @@
 		470CD74E1EA1C87D0086DEE4 /* EKCompanyProfileViewController+TableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "EKCompanyProfileViewController+TableView.m"; sourceTree = "<group>"; };
 		470CD7511EA1CB930086DEE4 /* EKCompanyProfessionalCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKCompanyProfessionalCollectionViewCell.h; sourceTree = "<group>"; };
 		470CD7521EA1CB930086DEE4 /* EKCompanyProfessionalCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKCompanyProfessionalCollectionViewCell.m; sourceTree = "<group>"; };
+		471AA1861ED44A0E009B840A /* Review.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Review.h; sourceTree = "<group>"; };
+		471AA1871ED44A0E009B840A /* Review.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Review.m; sourceTree = "<group>"; };
 		47448ADE1EAE462F0098CED3 /* EKEditProfileInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKEditProfileInfoViewController.h; sourceTree = "<group>"; };
 		47448ADF1EAE462F0098CED3 /* EKEditProfileInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKEditProfileInfoViewController.m; sourceTree = "<group>"; };
 		474BD56E1E97F721009410C4 /* EKNavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKNavigationViewController.h; sourceTree = "<group>"; };
@@ -504,16 +507,18 @@
 		478BDEFA1E99C60100F74A5C /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				4787C6DB1EB40D5500DF7B83 /* Booking.h */,
+				4787C6DC1EB40D5500DF7B83 /* Booking.m */,
 				47FF4F661EB5520E0022A6ED /* Customer.h */,
 				47FF4F671EB5520E0022A6ED /* Customer.m */,
+				47C7D4CA1EBB5EF000457E53 /* Day.h */,
+				47C7D4CB1EBB5EF000457E53 /* Day.m */,
+				471AA1861ED44A0E009B840A /* Review.h */,
+				471AA1871ED44A0E009B840A /* Review.m */,
 				47AF51B81E9B8561005FE6EB /* Salon.h */,
 				47AF51B91E9B8561005FE6EB /* Salon.m */,
 				478BDEF71E99C5FC00F74A5C /* Service.h */,
 				478BDEF81E99C5FC00F74A5C /* Service.m */,
-				4787C6DB1EB40D5500DF7B83 /* Booking.h */,
-				4787C6DC1EB40D5500DF7B83 /* Booking.m */,
-				47C7D4CA1EBB5EF000457E53 /* Day.h */,
-				47C7D4CB1EBB5EF000457E53 /* Day.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -885,6 +890,7 @@
 				47AF51BD1E9C4001005FE6EB /* EKDiscoverMapViewController.m in Sources */,
 				47800BC31EA3B2FA00F450DB /* EKBookingViewController.m in Sources */,
 				478BDEF91E99C5FC00F74A5C /* Service.m in Sources */,
+				471AA1881ED44A0E009B840A /* Review.m in Sources */,
 				478278D11E7923D000FB2FD2 /* AppDelegate.m in Sources */,
 				4787C6E01EB40DD200DF7B83 /* EKCartCollectionViewCell+Helpers.m in Sources */,
 				47D88E6B1E793347001B88D0 /* EKSplashViewController.m in Sources */,
