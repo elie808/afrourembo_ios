@@ -17,6 +17,7 @@
 
 #import "Salon.h"
 #import "Service.h"
+#import "Review.h"
 
 @interface EKCompanyProfileViewController : UIViewController
 

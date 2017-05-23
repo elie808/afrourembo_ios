@@ -29,7 +29,7 @@ static NSString * const kProfessionalsCollectionCell = @"companyProfessionalsCol
             
         case 0: return self.salon.servicesArray.count > 0 ? self.salon.servicesArray.count : 1; break; // Services
             
-        case 1: return 2; break; // Reviews
+        case 1: return self.salon.reviewsArray.count > 0 ? self.salon.reviewsArray.count : 1; break; // Reviews
             
         case 2: return 1; break; // Professionals
             
@@ -66,6 +66,17 @@ static NSString * const kProfessionalsCollectionCell = @"companyProfessionalsCol
         case 1: { // Reviews
             
             EKCompanyReviewTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kReviewsCell forIndexPath:indexPath];
+            
+            if (self.salon.reviewsArray.count > 0) {
+                
+                Review *reviewObj = [self.salon.reviewsArray objectAtIndex:indexPath.row];
+                
+                [cell configureCellForReview:reviewObj];
+                
+            } else {
+                
+                [cell configureEmptyCell];
+            }
             
             return cell;
             

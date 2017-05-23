@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 #import "Service.h"
+#import "Review.h"
 
 @interface Salon : NSObject
 
@@ -28,5 +29,6 @@
 @property NSArray *timesArray;
 
 @property NSArray<Service*> *servicesArray;
+@property NSArray<Review*> *reviewsArray;
 
 @end

@@ -33,12 +33,15 @@
      */
     
     /*
-     @property NSString *serviceTitle;
-     @property NSString *serviceImage;
+     @property NSString *reviewTitle;
+     @property NSNumber *reviewStars;
+     @property NSString *reviewAuthor;
+     @property NSString *reviewText;
+     @property NSDate *reviewDate;
      
-     @property NSString *serviceGroup;
-     @property CGFloat servicePrice;
-     @property CGFloat serviceLaborTime; //in minutes
+     //TODO: Replace with professional NSObject
+     @property NSString *reviewProfessional; // reviewed professional
+     @property NSString *reviewProfessionalImage; // reviewed professional profile image
      */
 
     Service *service1 = [Service new];
@@ -51,9 +54,23 @@
     service2.servicePrice = 10;
     service2.serviceLaborTime = 20;
     
+    Review *review1 = [Review new];
+    review1.reviewTitle = @"Review 1 title";
+    review1.reviewStars = @3;
+    review1.reviewAuthor = @"James Bond";
+    review1.reviewText = @"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla convallis posuere viverra. Donec in efficitur nisi, ut faucibus ante. Duis sed facilisis orci. Phasellus sit amet leo iaculis, efficitur metus ut, fermentum ex.";
+    review1.reviewTitle = @"Review 1 title";
+    review1.reviewDate = @"Friday 13, 2017";
+    review1.reviewProfessional = @"Mathew McCormick";
+    review1.reviewProfessionalImage = @"dummy_male2";
+    
+    //------
+    
     self.salon = [Salon new];
     self.salon.userName = @"LE SALON";
     self.salon.servicesArray = @[service1, service2];
+    
+    self.salon.reviewsArray = @[review1];
 }
 
 #pragma mark - Actions

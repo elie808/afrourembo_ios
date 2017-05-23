@@ -14,7 +14,7 @@
 @property NSNumber *reviewStars;
 @property NSString *reviewAuthor;
 @property NSString *reviewText;
-@property NSDate *reviewDate;
+@property NSString *reviewDate; //TODO: Change to NSDate
 
 //TODO: Replace with professional NSObject
 @property NSString *reviewProfessional; // reviewed professional

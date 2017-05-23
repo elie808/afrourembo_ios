@@ -7,6 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Review.h"
+#import "UIImage+Helpers.h"
 
 @interface EKCompanyReviewTableViewCell : UITableViewCell
 
@@ -19,5 +21,8 @@
 
 @property (strong, nonatomic) IBOutlet UIImageView *cellStarsImageView;
 @property (strong, nonatomic) IBOutlet UIImageView *cellCustomerImageView;
+
+- (void)configureEmptyCell;
+- (void)configureCellForReview:(Review *)reviewObj;
 
 @end

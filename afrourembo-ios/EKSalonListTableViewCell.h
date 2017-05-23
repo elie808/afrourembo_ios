@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "EKInCellCollectionView.h"
 #import "Salon.h"
+#import "UIImage+Helpers.h"
 
 @interface EKSalonListTableViewCell : UITableViewCell
 
