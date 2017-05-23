@@ -71,19 +71,19 @@ static NSString * const kDiscoverSegue  = @"exploreToDiscover";
 
 #pragma mark - UICollectionViewLayout
 
-- (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
-    
-    return UIEdgeInsetsMake(1, 2, 1, 2);
-}
-
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(nonnull UICollectionViewLayout *)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section {
     
     return 1.0;
 }
 
+- (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
+    
+    return UIEdgeInsetsMake(1, 1.5, 1, 1.5);
+}
+
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
     
-    CGFloat cellWidth = (collectionView.bounds.size.width - 8) / 2 ;
+    CGFloat cellWidth = (collectionView.bounds.size.width - 4) / 2 ;
     CGFloat cellHeight = cellWidth * 0.75;
     
     return CGSizeMake(cellWidth, cellHeight);

@@ -162,7 +162,7 @@
                     </connections>
                 </tableView>
             </objects>
-            <point key="canvasLocation" x="869.60000000000002" y="-645.42728635682158"/>
+            <point key="canvasLocation" x="870" y="-645"/>
         </scene>
         <!--welcomeVC-->
         <scene sceneID="VDI-aZ-W3b">
