@@ -43,12 +43,12 @@
                         </constraints>
                     </view>
                     <connections>
-                        <segue destination="LYP-UW-ygc" kind="show" identifier="splashToWelcome" id="gsV-NZ-ATC"/>
+                        <segue destination="fcI-7P-J4S" kind="show" identifier="splashToWelcome" id="gsV-NZ-ATC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Yrc-gR-hZr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-5299" y="-315"/>
+            <point key="canvasLocation" x="-4144" y="-317"/>
         </scene>
         <!--Welcome View Controller-->
         <scene sceneID="SQO-nM-Bst">
@@ -161,14 +161,15 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Een-yY-HqS"/>
+                    <nil key="simulatedTopBarMetrics"/>
                     <connections>
-                        <segue destination="RKC-ic-ZCi" kind="show" identifier="welcomeNewUserToOnboarding" id="aZb-Oe-rK2"/>
-                        <segue destination="3Pv-CG-JBa" kind="show" identifier="welcomeSignInToSignIn" id="0S4-IV-rDb"/>
+                        <segue destination="WtR-ZX-27w" kind="show" identifier="welcomeSignInToSignIn" id="Gpg-8R-SYq"/>
+                        <segue destination="eQd-wG-mFC" kind="show" identifier="welcomeNewUserToOnboarding" id="Sla-kg-Gac"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lC5-BB-ISy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-4428.75" y="-315.84507042253523"/>
+            <point key="canvasLocation" x="-2424" y="-316"/>
         </scene>
         <!--exploreVC-->
         <scene sceneID="Wh5-MH-PgS">
@@ -176,7 +177,7 @@
                 <viewControllerPlaceholder storyboardName="Main" referencedIdentifier="exploreVC" id="xTI-DJ-UaF" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JfK-Ev-UKs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-4428" y="158"/>
+            <point key="canvasLocation" x="-2424" y="145"/>
         </scene>
         <!--Sign In View Controller-->
         <scene sceneID="Hri-RA-0DZ">
@@ -244,7 +245,7 @@
                                         <rect key="frame" x="0.0" y="28" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="YVK-fo-Rbi" id="qJs-1j-uk8">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="address@mail.com" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lGZ-Yd-NJe">
@@ -327,7 +328,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="agK-r7-cmT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2593.125" y="64.436619718309856"/>
+            <point key="canvasLocation" x="-1595.625" y="64.436619718309856"/>
         </scene>
         <!--exploreVC-->
         <scene sceneID="QiG-zj-CiB">
@@ -335,7 +336,7 @@
                 <viewControllerPlaceholder storyboardName="Main" referencedIdentifier="exploreVC" id="yb9-O1-mQe" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2VG-E1-ax6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1854" y="64"/>
+            <point key="canvasLocation" x="-1596" y="545"/>
         </scene>
         <!--Onboarding View Controller-->
         <scene sceneID="MLt-ho-kW8">
@@ -393,7 +394,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KxJ-RE-bQO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2593" y="-696"/>
+            <point key="canvasLocation" x="-1595.625" y="-696.12676056338034"/>
         </scene>
         <!--Role View Controller-->
         <scene sceneID="5A5-0Z-4Nm">
@@ -490,7 +491,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dvD-0k-PGQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1563.75" y="-692.95774647887322"/>
+            <point key="canvasLocation" x="-566.25" y="-692.95774647887322"/>
         </scene>
         <!--signUpCustomer-->
         <scene sceneID="cUT-I7-RWr">
@@ -498,7 +499,7 @@
                 <viewControllerPlaceholder storyboardIdentifier="signUpCustomer" storyboardName="SignUp" referencedIdentifier="signUpCustomer" id="dk4-mV-x4y" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="z5F-i3-Nca" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-819" y="-955"/>
+            <point key="canvasLocation" x="77" y="-978"/>
         </scene>
         <!--signUpSalon-->
         <scene sceneID="hIT-Yo-Se2">
@@ -506,7 +507,7 @@
                 <viewControllerPlaceholder storyboardName="SignUp" referencedIdentifier="signUpSalon" id="BLK-b1-D1c" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1gz-cT-SPi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-834" y="-696"/>
+            <point key="canvasLocation" x="101" y="-696"/>
         </scene>
         <!--signUpBP-->
         <scene sceneID="VZ0-hi-Epq">
@@ -514,43 +515,25 @@
                 <viewControllerPlaceholder storyboardName="SignUp" referencedIdentifier="signUpBP" id="7rb-Bp-r30" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nkw-gI-Mr2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-819" y="-461"/>
+            <point key="canvasLocation" x="37" y="-411"/>
         </scene>
         <!--Navigation View Controller-->
-        <scene sceneID="ow0-hW-gla">
+        <scene sceneID="ec9-EH-SMC">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="RKC-ic-ZCi" customClass="EKNavigationViewController" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="fcI-7P-J4S" customClass="EKNavigationViewController" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="qcu-WD-i0r">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ifm-cd-jEP">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="eQd-wG-mFC" kind="relationship" relationship="rootViewController" id="8K5-II-Wfm"/>
+                        <segue destination="LYP-UW-ygc" kind="relationship" relationship="rootViewController" id="HNG-Xu-g9j"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="BoV-pa-PZa" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sX3-Va-ieD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3591" y="-696"/>
-        </scene>
-        <!--Navigation View Controller-->
-        <scene sceneID="oaQ-OL-Moq">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="3Pv-CG-JBa" customClass="EKNavigationViewController" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="THT-vT-fcQ">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="WtR-ZX-27w" kind="relationship" relationship="rootViewController" id="kkh-FH-Prj"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="QRy-Ob-bMG" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-3591" y="65"/>
+            <point key="canvasLocation" x="-3272" y="-317"/>
         </scene>
     </scenes>
     <resources>
