@@ -15,21 +15,42 @@ static NSString * const kRoleSegue = @"onboardingToRole";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    // basic
+    /*
     EAIntroPage *page1 = [EAIntroPage page];
     page1.title = @"Tutorial 1";
-    page1.desc = @"DESCRIPTIONNN goes here for tutorial 1";
+    page1.desc = @"EXPLORE SALONS AND PROFESSIONALS NEAR YOU";
     page1.bgColor = [UIColor redColor];
     
     EAIntroPage *page2 = [EAIntroPage page];
     page2.title = @"Tutorial 2";
-    page2.desc = @"DESCRIPTIONNN goes here for tutorial 2";
+    page2.desc = @"FIND AND BOOK THE BEST BEAUTY SERVICES";
     page2.bgColor = [UIColor blueColor];
+    
+    EAIntroPage *page3 = [EAIntroPage page];
+    page3.title = @"Tutorial 3";
+    page3.desc = @"RATE AND SAVE FAVORITED PROFESSIONALS";
+    page3.bgColor = [UIColor blueColor];
+    */
+    
+    EAIntroPage *page1 = [EAIntroPage page];
+    page1.title = @"EXPLORE SALONS AND PROFESSIONALS NEAR YOU";
+    page1.titleFont = [UIFont boldSystemFontOfSize:26];
+    page1.bgImage = [UIImage imageNamed:@"bg1"];
+    
+    EAIntroPage *page2 = [EAIntroPage page];
+    page2.title = @"FIND AND BOOK THE BEST BEAUTY SERVICES";
+    page2.titleFont = [UIFont boldSystemFontOfSize:26];
+    page2.bgImage = [UIImage imageNamed:@"bg2"];
+    
+    EAIntroPage *page3 = [EAIntroPage page];
+    page3.title = @"RATE AND SAVE FAVORITED PROFESSIONALS";
+    page3.bgImage = [UIImage imageNamed:@"bg3"];
+    page3.titleFont = [UIFont boldSystemFontOfSize:26];
     
     self.introView.backgroundColor = [UIColor grayColor];
     self.introView.skipButton = nil;
     [self.introView setDelegate:self];
-    [self.introView setPages:@[page1, page2]];
+    [self.introView setPages:@[page1, page2, page3]];
     
     [self.introView showInView:self.view animateDuration:0.0];
 }
