@@ -28,6 +28,8 @@
 //TODO: CHANGE STRUCTURE. POSSIBLY HAVE A SEPARATE TIME OBJECT
 @property NSArray *timesArray;
 
+@property (assign, nonatomic) BOOL isCentralizedModel;
+
 @property NSArray<Service*> *servicesArray;
 @property NSArray<Review*> *reviewsArray;
 

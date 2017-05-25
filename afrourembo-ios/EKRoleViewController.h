@@ -7,11 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "EKBusinessModelViewController.h"
 
 @interface EKRoleViewController : UIViewController
 
 - (IBAction)didTapSignupCustomer:(id)sender;
 - (IBAction)didTapSignupSalon:(id)sender;
 - (IBAction)didTapSignupBP:(id)sender;
+
+- (IBAction)didTapBPWorkAlone:(id)sender;
+- (IBAction)didTapBPWorkSalon:(id)sender;
 
 @end

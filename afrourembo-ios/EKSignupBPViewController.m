@@ -10,6 +10,8 @@
 
 static NSString * const kSignUpCell = @"signUpBPCell";
 
+static NSString * const kRoleSegue = @"signupBPToRoleVC";
+
 @interface EKSignupBPViewController () {
     NSArray *_dataSourceArray;
 } @end
@@ -54,6 +56,13 @@ static NSString * const kSignUpCell = @"signUpBPCell";
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
+}
+
+#pragma mark - Actions
+
+- (IBAction)didTapSignUpButton:(id)sender {
+    
+    [self performSegueWithIdentifier:kRoleSegue sender:nil];
 }
 
 /*

@@ -12,6 +12,9 @@ static NSString * const kCustomerSignUpSegue = @"roleToSignUpCustomer";
 static NSString * const kSalonSignUpSegue    = @"roleToSignUpSalon";
 static NSString * const kBPSignUpSegue       = @"roleToSignUpBP";
 
+static NSString * const kWorkAloneBP     =  @"aloneRoleVCToBusinessModelVC";
+static NSString * const kWorkInSalonBP   =  @"salonRoleVCToBusinessModelVC";
+
 @implementation EKRoleViewController
 
 - (void)viewDidLoad {
@@ -34,9 +37,30 @@ static NSString * const kBPSignUpSegue       = @"roleToSignUpBP";
     [self performSegueWithIdentifier:kBPSignUpSegue sender:nil];
 }
 
+///// For BP flow
+
+- (IBAction)didTapBPWorkAlone:(id)sender {
+
+    [self performSegueWithIdentifier:kWorkAloneBP sender:nil];
+}
+
+- (IBAction)didTapBPWorkSalon:(id)sender {
+    [self performSegueWithIdentifier:kWorkInSalonBP sender:nil];
+}
+
 #pragma mark - Navigation
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    
+    EKBusinessModelViewController *vc = segue.destinationViewController;
+    
+    if ([segue.identifier isEqualToString:kWorkAloneBP]) {
+        vc.BusinessModelUser = BusinessModelUserIndependentBP;
+    }
+    
+    if ([segue.identifier isEqualToString:kWorkInSalonBP]) {
+        vc.BusinessModelUser = BusinessModelUserWorksInSalonBP;
+    }
 }
 
 @end

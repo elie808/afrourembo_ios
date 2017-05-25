@@ -13,4 +13,6 @@
 
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 
+- (IBAction)didTapSignUpButton:(id)sender;
+
 @end

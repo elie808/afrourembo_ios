@@ -72,6 +72,9 @@
 		47E2F0061EA5FE9D002E2FD4 /* EKSignupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47E2F0051EA5FE9D002E2FD4 /* EKSignupViewController.m */; };
 		47E2F0091EA5FF97002E2FD4 /* EKProfileInfoFacebookViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47E2F0081EA5FF97002E2FD4 /* EKProfileInfoFacebookViewController.m */; };
 		47EA09DC1EB7594800400603 /* EKAccessoryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 47EA09DB1EB7594800400603 /* EKAccessoryTableViewCell.m */; };
+		47F7140D1ED6FB2D0028FB65 /* EKBusinessModelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47F7140C1ED6FB2D0028FB65 /* EKBusinessModelViewController.m */; };
+		47F714111ED704350028FB65 /* EKSalonSelectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47F714101ED704350028FB65 /* EKSalonSelectViewController.m */; };
+		47F714151ED70AFB0028FB65 /* EKSalonSelectTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 47F714141ED70AFB0028FB65 /* EKSalonSelectTableViewCell.m */; };
 		47FF4F681EB5520E0022A6ED /* Customer.m in Sources */ = {isa = PBXBuildFile; fileRef = 47FF4F671EB5520E0022A6ED /* Customer.m */; };
 		47FF4F6B1EB557620022A6ED /* Customer+API.m in Sources */ = {isa = PBXBuildFile; fileRef = 47FF4F6A1EB557620022A6ED /* Customer+API.m */; };
 		47FFF9751E99E81F008B6A31 /* EKImageTextTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 47FFF9741E99E81F008B6A31 /* EKImageTextTableViewCell.m */; };
@@ -207,6 +210,12 @@
 		47E2F0081EA5FF97002E2FD4 /* EKProfileInfoFacebookViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKProfileInfoFacebookViewController.m; sourceTree = "<group>"; };
 		47EA09DA1EB7594800400603 /* EKAccessoryTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKAccessoryTableViewCell.h; sourceTree = "<group>"; };
 		47EA09DB1EB7594800400603 /* EKAccessoryTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKAccessoryTableViewCell.m; sourceTree = "<group>"; };
+		47F7140B1ED6FB2D0028FB65 /* EKBusinessModelViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKBusinessModelViewController.h; sourceTree = "<group>"; };
+		47F7140C1ED6FB2D0028FB65 /* EKBusinessModelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKBusinessModelViewController.m; sourceTree = "<group>"; };
+		47F7140F1ED704350028FB65 /* EKSalonSelectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKSalonSelectViewController.h; sourceTree = "<group>"; };
+		47F714101ED704350028FB65 /* EKSalonSelectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKSalonSelectViewController.m; sourceTree = "<group>"; };
+		47F714131ED70AFB0028FB65 /* EKSalonSelectTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKSalonSelectTableViewCell.h; sourceTree = "<group>"; };
+		47F714141ED70AFB0028FB65 /* EKSalonSelectTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKSalonSelectTableViewCell.m; sourceTree = "<group>"; };
 		47FF4F661EB5520E0022A6ED /* Customer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Customer.h; sourceTree = "<group>"; };
 		47FF4F671EB5520E0022A6ED /* Customer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Customer.m; sourceTree = "<group>"; };
 		47FF4F691EB557620022A6ED /* Customer+API.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Customer+API.h"; sourceTree = "<group>"; };
@@ -619,6 +628,8 @@
 				479AB2691EA0B9EE00A74659 /* Customer - Company Profile */,
 				47800BC41EA3B2FF00F450DB /* Customer - Booking ViewController */,
 				47074F8C1EAEB4AC00E35EA7 /* BP - Sign up ViewController */,
+				47F7140E1ED6FB320028FB65 /* BP - Business Model */,
+				47F714121ED70ACF0028FB65 /* BP - Salon select List */,
 				475FC37E1EB6B57D00BB0731 /* BP - Add Service List */,
 				475FC3821EB6BF6100BB0731 /* BP - Create New Service */,
 				477256061EB95908007CBD6B /* BP - Availability */,
@@ -699,6 +710,26 @@
 				475A4CF11EBF74E20089D477 /* Categories */,
 			);
 			name = "Customer - Filter & Search ViewController";
+			sourceTree = "<group>";
+		};
+		47F7140E1ED6FB320028FB65 /* BP - Business Model */ = {
+			isa = PBXGroup;
+			children = (
+				47F7140B1ED6FB2D0028FB65 /* EKBusinessModelViewController.h */,
+				47F7140C1ED6FB2D0028FB65 /* EKBusinessModelViewController.m */,
+			);
+			name = "BP - Business Model";
+			sourceTree = "<group>";
+		};
+		47F714121ED70ACF0028FB65 /* BP - Salon select List */ = {
+			isa = PBXGroup;
+			children = (
+				47F7140F1ED704350028FB65 /* EKSalonSelectViewController.h */,
+				47F714101ED704350028FB65 /* EKSalonSelectViewController.m */,
+				47F714131ED70AFB0028FB65 /* EKSalonSelectTableViewCell.h */,
+				47F714141ED70AFB0028FB65 /* EKSalonSelectTableViewCell.m */,
+			);
+			name = "BP - Salon select List";
 			sourceTree = "<group>";
 		};
 		47FF4F6C1EB557660022A6ED /* API */ = {
@@ -868,6 +899,7 @@
 			files = (
 				47FF4F6B1EB557620022A6ED /* Customer+API.m in Sources */,
 				470CD7491EA11AD40086DEE4 /* EKCompanyContactTableViewCell.m in Sources */,
+				47F714111ED704350028FB65 /* EKSalonSelectViewController.m in Sources */,
 				478BDEEE1E99A25E00F74A5C /* EKImageTextButton.m in Sources */,
 				474ED7C01E9C6BD90099CA0A /* EKDiscoverMapViewController+TableView.m in Sources */,
 				47A3BB881E7A8C0B00963F27 /* EKRoleViewController.m in Sources */,
@@ -884,6 +916,7 @@
 				4787C6E41EB4212F00DF7B83 /* EKNetworkManager.m in Sources */,
 				47BFEA691EA4A9A30091522B /* EKBookingDayCollectionViewCell.m in Sources */,
 				474BD5731E97F8F3009410C4 /* EKTextFieldTableViewCell.m in Sources */,
+				47F7140D1ED6FB2D0028FB65 /* EKBusinessModelViewController.m in Sources */,
 				475A4CEF1EBF74D50089D477 /* EKFilterSearchTableViewCell.m in Sources */,
 				470CD74F1EA1C87D0086DEE4 /* EKCompanyProfileViewController+TableView.m in Sources */,
 				471AA18B1ED45DD0009B840A /* UIImage+Helpers.m in Sources */,
@@ -903,6 +936,7 @@
 				47AF51B71E9B765D005FE6EB /* EKSalonListCollectionViewCell.m in Sources */,
 				47EA09DC1EB7594800400603 /* EKAccessoryTableViewCell.m in Sources */,
 				479AB26C1EA0CC0000A74659 /* EKCompanyServiceTableViewCell.m in Sources */,
+				47F714151ED70AFB0028FB65 /* EKSalonSelectTableViewCell.m in Sources */,
 				475FC3811EB6BF5E00BB0731 /* EKAddNewServiceViewController.m in Sources */,
 				474ED7BC1E9C68940099CA0A /* EKDiscoverMapViewController+MapDelegate.m in Sources */,
 				470CD7461EA10B920086DEE4 /* EKCompanyReviewTableViewCell.m in Sources */,
