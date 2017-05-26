@@ -21,6 +21,7 @@
 		474ED7B91E9C471F0099CA0A /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 474ED7B81E9C471F0099CA0A /* MapKit.framework */; };
 		474ED7BC1E9C68940099CA0A /* EKDiscoverMapViewController+MapDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 474ED7BB1E9C68940099CA0A /* EKDiscoverMapViewController+MapDelegate.m */; };
 		474ED7C01E9C6BD90099CA0A /* EKDiscoverMapViewController+TableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 474ED7BF1E9C6BD90099CA0A /* EKDiscoverMapViewController+TableView.m */; };
+		4757C6491ED879FB00C2B52F /* EKTodayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4757C6481ED879FB00C2B52F /* EKTodayViewController.m */; };
 		475A4CEF1EBF74D50089D477 /* EKFilterSearchTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 475A4CEE1EBF74D50089D477 /* EKFilterSearchTableViewCell.m */; };
 		475A4CF41EBF7EFC0089D477 /* EKAddNewServiceTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 475A4CF31EBF7EFC0089D477 /* EKAddNewServiceTableViewCell.m */; };
 		475A4CF71EC0041F0089D477 /* EKCheckoutSuccessViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 475A4CF61EC0041F0089D477 /* EKCheckoutSuccessViewController.m */; };
@@ -110,6 +111,8 @@
 		474ED7BB1E9C68940099CA0A /* EKDiscoverMapViewController+MapDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "EKDiscoverMapViewController+MapDelegate.m"; sourceTree = "<group>"; };
 		474ED7BE1E9C6BD90099CA0A /* EKDiscoverMapViewController+TableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "EKDiscoverMapViewController+TableView.h"; sourceTree = "<group>"; };
 		474ED7BF1E9C6BD90099CA0A /* EKDiscoverMapViewController+TableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "EKDiscoverMapViewController+TableView.m"; sourceTree = "<group>"; };
+		4757C6471ED879FB00C2B52F /* EKTodayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKTodayViewController.h; sourceTree = "<group>"; };
+		4757C6481ED879FB00C2B52F /* EKTodayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKTodayViewController.m; sourceTree = "<group>"; };
 		475A4CED1EBF74D50089D477 /* EKFilterSearchTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKFilterSearchTableViewCell.h; sourceTree = "<group>"; };
 		475A4CEE1EBF74D50089D477 /* EKFilterSearchTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKFilterSearchTableViewCell.m; sourceTree = "<group>"; };
 		475A4CF21EBF7EFC0089D477 /* EKAddNewServiceTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKAddNewServiceTableViewCell.h; sourceTree = "<group>"; };
@@ -306,6 +309,15 @@
 				474ED7BF1E9C6BD90099CA0A /* EKDiscoverMapViewController+TableView.m */,
 			);
 			name = Categories;
+			sourceTree = "<group>";
+		};
+		4757C64A1ED87A0300C2B52F /* BP - BP Today Calendar View */ = {
+			isa = PBXGroup;
+			children = (
+				4757C6471ED879FB00C2B52F /* EKTodayViewController.h */,
+				4757C6481ED879FB00C2B52F /* EKTodayViewController.m */,
+			);
+			name = "BP - BP Today Calendar View";
 			sourceTree = "<group>";
 		};
 		475A4CF01EBF74D90089D477 /* Cells */ = {
@@ -629,6 +641,7 @@
 				47800BC41EA3B2FF00F450DB /* Customer - Booking ViewController */,
 				47074F8C1EAEB4AC00E35EA7 /* BP - Sign up ViewController */,
 				47F7140E1ED6FB320028FB65 /* BP - Business Model */,
+				4757C64A1ED87A0300C2B52F /* BP - BP Today Calendar View */,
 				47F714121ED70ACF0028FB65 /* BP - Salon select List */,
 				475FC37E1EB6B57D00BB0731 /* BP - Add Service List */,
 				475FC3821EB6BF6100BB0731 /* BP - Create New Service */,
@@ -899,6 +912,7 @@
 			files = (
 				47FF4F6B1EB557620022A6ED /* Customer+API.m in Sources */,
 				470CD7491EA11AD40086DEE4 /* EKCompanyContactTableViewCell.m in Sources */,
+				4757C6491ED879FB00C2B52F /* EKTodayViewController.m in Sources */,
 				47F714111ED704350028FB65 /* EKSalonSelectViewController.m in Sources */,
 				478BDEEE1E99A25E00F74A5C /* EKImageTextButton.m in Sources */,
 				474ED7C01E9C6BD90099CA0A /* EKDiscoverMapViewController+TableView.m in Sources */,

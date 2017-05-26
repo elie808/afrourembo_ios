@@ -83,7 +83,7 @@
         <!--Today-->
         <scene sceneID="GxE-il-GXw">
             <objects>
-                <viewController id="mdi-cb-zSc" sceneMemberID="viewController">
+                <viewController id="mdi-cb-zSc" customClass="EKTodayViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="3dF-PK-eP0"/>
                         <viewControllerLayoutGuide type="bottom" id="Y1w-Jg-pUK"/>
@@ -91,13 +91,58 @@
                     <view key="view" contentMode="scaleToFill" id="WPk-ab-jzA">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DRn-xN-Dfr">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <items>
+                                    <navigationItem title="Title" id="n7c-Kf-0bd"/>
+                                </items>
+                            </navigationBar>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="wMG-6U-Wcm">
+                                <rect key="frame" x="0.0" y="72" width="375" height="546"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="ezb-BO-PKJ">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="todayCell" id="IqC-f5-gcy">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </view>
+                                        <color key="backgroundColor" red="0.69019607839999997" green="0.13725490200000001" blue="0.1647058824" alpha="1" colorSpace="calibratedRGB"/>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="mdi-cb-zSc" id="pbQ-Gd-ofR"/>
+                                    <outlet property="delegate" destination="mdi-cb-zSc" id="9nR-ts-2qj"/>
+                                </connections>
+                            </collectionView>
+                        </subviews>
                         <color key="backgroundColor" red="0.23137254900000001" green="0.34901960780000002" blue="0.59607843140000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="DRn-xN-Dfr" secondAttribute="trailing" id="0Ot-tH-7b3"/>
+                            <constraint firstItem="DRn-xN-Dfr" firstAttribute="leading" secondItem="wMG-6U-Wcm" secondAttribute="leading" id="17H-dH-pjC"/>
+                            <constraint firstItem="DRn-xN-Dfr" firstAttribute="trailing" secondItem="wMG-6U-Wcm" secondAttribute="trailing" id="1mg-cQ-Psg"/>
+                            <constraint firstItem="wMG-6U-Wcm" firstAttribute="bottom" secondItem="Y1w-Jg-pUK" secondAttribute="top" id="9Pz-jV-K7s"/>
+                            <constraint firstItem="wMG-6U-Wcm" firstAttribute="top" secondItem="DRn-xN-Dfr" secondAttribute="bottom" id="IVC-1z-n9u"/>
+                            <constraint firstItem="DRn-xN-Dfr" firstAttribute="leading" secondItem="WPk-ab-jzA" secondAttribute="leading" id="fXj-ED-MKU"/>
+                            <constraint firstItem="DRn-xN-Dfr" firstAttribute="top" secondItem="3dF-PK-eP0" secondAttribute="bottom" constant="8" id="s2v-H9-EmL"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Today" image="icDailyNormal" id="RvW-ML-7Ob"/>
+                    <connections>
+                        <outlet property="collectionView" destination="wMG-6U-Wcm" id="bJr-F4-i9L"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6jn-04-hYb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2892" y="-1769"/>
+            <point key="canvasLocation" x="2892" y="-1769.865067466267"/>
         </scene>
         <!--Dashboard-->
         <scene sceneID="k8R-0g-2Vv">
@@ -181,7 +226,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eB7-Us-jA5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2892" y="1376"/>
+            <point key="canvasLocation" x="2121" y="571"/>
         </scene>
     </scenes>
     <resources>
