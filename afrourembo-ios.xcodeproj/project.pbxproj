@@ -76,6 +76,7 @@
 		47E2F0061EA5FE9D002E2FD4 /* EKSignupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47E2F0051EA5FE9D002E2FD4 /* EKSignupViewController.m */; };
 		47E2F0091EA5FF97002E2FD4 /* EKProfileInfoFacebookViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47E2F0081EA5FF97002E2FD4 /* EKProfileInfoFacebookViewController.m */; };
 		47EA09DC1EB7594800400603 /* EKAccessoryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 47EA09DB1EB7594800400603 /* EKAccessoryTableViewCell.m */; };
+		47EF0E301EDA23B3000B07BB /* Today.m in Sources */ = {isa = PBXBuildFile; fileRef = 47EF0E2F1EDA23B3000B07BB /* Today.m */; };
 		47F7140D1ED6FB2D0028FB65 /* EKBusinessModelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47F7140C1ED6FB2D0028FB65 /* EKBusinessModelViewController.m */; };
 		47F714111ED704350028FB65 /* EKSalonSelectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47F714101ED704350028FB65 /* EKSalonSelectViewController.m */; };
 		47F714151ED70AFB0028FB65 /* EKSalonSelectTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 47F714141ED70AFB0028FB65 /* EKSalonSelectTableViewCell.m */; };
@@ -222,6 +223,8 @@
 		47E2F0081EA5FF97002E2FD4 /* EKProfileInfoFacebookViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKProfileInfoFacebookViewController.m; sourceTree = "<group>"; };
 		47EA09DA1EB7594800400603 /* EKAccessoryTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKAccessoryTableViewCell.h; sourceTree = "<group>"; };
 		47EA09DB1EB7594800400603 /* EKAccessoryTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKAccessoryTableViewCell.m; sourceTree = "<group>"; };
+		47EF0E2E1EDA23B3000B07BB /* Today.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Today.h; sourceTree = "<group>"; };
+		47EF0E2F1EDA23B3000B07BB /* Today.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Today.m; sourceTree = "<group>"; };
 		47F7140B1ED6FB2D0028FB65 /* EKBusinessModelViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKBusinessModelViewController.h; sourceTree = "<group>"; };
 		47F7140C1ED6FB2D0028FB65 /* EKBusinessModelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKBusinessModelViewController.m; sourceTree = "<group>"; };
 		47F7140F1ED704350028FB65 /* EKSalonSelectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKSalonSelectViewController.h; sourceTree = "<group>"; };
@@ -566,6 +569,8 @@
 				47AF51B91E9B8561005FE6EB /* Salon.m */,
 				478BDEF71E99C5FC00F74A5C /* Service.h */,
 				478BDEF81E99C5FC00F74A5C /* Service.m */,
+				47EF0E2E1EDA23B3000B07BB /* Today.h */,
+				47EF0E2F1EDA23B3000B07BB /* Today.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -978,6 +983,7 @@
 				47F714151ED70AFB0028FB65 /* EKSalonSelectTableViewCell.m in Sources */,
 				475FC3811EB6BF5E00BB0731 /* EKAddNewServiceViewController.m in Sources */,
 				474ED7BC1E9C68940099CA0A /* EKDiscoverMapViewController+MapDelegate.m in Sources */,
+				47EF0E301EDA23B3000B07BB /* Today.m in Sources */,
 				470CD7461EA10B920086DEE4 /* EKCompanyReviewTableViewCell.m in Sources */,
 				47AF51AF1E9B686F005FE6EB /* EKInCellCollectionView.m in Sources */,
 				478BDEF11E99B7D700F74A5C /* EKExploreViewController.m in Sources */,
