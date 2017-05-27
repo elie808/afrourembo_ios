@@ -11,6 +11,7 @@
 
 @interface EKTodayTableViewCell : UITableViewCell
 
+@property (strong, nonatomic) IBOutlet UILabel *cellHourOfTheDayLabel;
 @property (strong, nonatomic) IBOutlet EKInCellCollectionView *collectionView;
 
 @end

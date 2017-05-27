@@ -12,7 +12,12 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    // Initialization code
+    
+    // Add upper border to collectionVIew
+    CALayer *upperBorder = [CALayer layer];
+    upperBorder.backgroundColor = [[UIColor colorWithRed:229./255. green:229./255. blue:229./255. alpha:1.0] CGColor];
+    upperBorder.frame = CGRectMake(0, 0, CGRectGetWidth(self.frame), 1.0f);
+    [self.collectionView.layer addSublayer:upperBorder];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

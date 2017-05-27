@@ -323,16 +323,22 @@
 		4757C64A1ED87A0300C2B52F /* BP - BP Today Calendar View */ = {
 			isa = PBXGroup;
 			children = (
-				4757C6511ED98D8000C2B52F /* Appointment.h */,
-				4757C6521ED98D8000C2B52F /* Appointment.m */,
 				4757C6471ED879FB00C2B52F /* EKTodayViewController.h */,
 				4757C6481ED879FB00C2B52F /* EKTodayViewController.m */,
+				4757C6541EDA17AF00C2B52F /* Cells */,
+			);
+			name = "BP - BP Today Calendar View";
+			sourceTree = "<group>";
+		};
+		4757C6541EDA17AF00C2B52F /* Cells */ = {
+			isa = PBXGroup;
+			children = (
 				4757C64B1ED973FD00C2B52F /* EKTodayTableViewCell.h */,
 				4757C64C1ED973FD00C2B52F /* EKTodayTableViewCell.m */,
 				4757C64E1ED9862800C2B52F /* EKTodayCollectionViewCell.h */,
 				4757C64F1ED9862800C2B52F /* EKTodayCollectionViewCell.m */,
 			);
-			name = "BP - BP Today Calendar View";
+			name = Cells;
 			sourceTree = "<group>";
 		};
 		475A4CF01EBF74D90089D477 /* Cells */ = {
@@ -546,6 +552,8 @@
 		478BDEFA1E99C60100F74A5C /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				4757C6511ED98D8000C2B52F /* Appointment.h */,
+				4757C6521ED98D8000C2B52F /* Appointment.m */,
 				4787C6DB1EB40D5500DF7B83 /* Booking.h */,
 				4787C6DC1EB40D5500DF7B83 /* Booking.m */,
 				47FF4F661EB5520E0022A6ED /* Customer.h */,
