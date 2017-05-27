@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Appointment.h"
 
 @interface EKTodayCollectionViewCell : UICollectionViewCell
 
@@ -15,6 +16,6 @@
 @property (strong, nonatomic) IBOutlet UILabel *cellTimeLabel;
 @property (strong, nonatomic) IBOutlet UIImageView *cellStatusImageView;
 
-- (void)configureCellForAppointment;
+- (void)configureCellForAppointment:(Appointment *)appointment;
 
 @end

@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "EKTodayCollectionViewCell.h"
+#import "Appointment.h"
 
 @interface EKTodayViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UICollectionViewDelegate, UICollectionViewDataSource>
 

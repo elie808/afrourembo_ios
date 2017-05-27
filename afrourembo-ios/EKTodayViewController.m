@@ -11,10 +11,21 @@
 static NSString * const kTableCell = @"todayTableCell";
 static NSString * const kCollectionCell = @"todayCell";
 
-@implementation EKTodayViewController
+@implementation EKTodayViewController {
+    NSMutableArray *_dataSource;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    Appointment *appt1 = [Appointment new];
+    appt1.clientName = @"Fannie Ballard";
+    appt1.serviceDescription = @"Natural Hair";
+    appt1.serviceTime = @"9:00 AM";
+    appt1.serviceDuration = @15;
+    appt1.serviceStatus = @"done";
+    
+    _dataSource = [NSMutableArray arrayWithObjects:appt1, appt1, appt1, nil];
 }
 
 #pragma mark - UITableViewDataSource
@@ -52,14 +63,16 @@ static NSString * const kCollectionCell = @"todayCell";
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return 15;
+    return _dataSource.count;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     
+    Appointment *aptObj = [_dataSource objectAtIndex:indexPath.row];
+    
     EKTodayCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kCollectionCell forIndexPath:indexPath];
     
-    [cell configureCellForAppointment];
+    [cell configureCellForAppointment:aptObj];
     
     return cell;
 }
