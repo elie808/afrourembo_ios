@@ -7,9 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "EKTodayCollectionViewCell.h"
 
-@interface EKTodayViewController : UIViewController <UICollectionViewDelegate, UICollectionViewDataSource>
+@interface EKTodayViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UICollectionViewDelegate, UICollectionViewDataSource>
 
+@property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) IBOutlet UICollectionView *collectionView;
 
 @end
