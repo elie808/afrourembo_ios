@@ -158,14 +158,14 @@
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icDone" translatesAutoresizingMaskIntoConstraints="NO" id="suB-Wl-ZJH">
-                                                                        <rect key="frame" x="111" y="53" width="12" height="12"/>
+                                                                        <rect key="frame" x="111" y="52" width="12" height="12"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="width" constant="12" id="2HV-SZ-aLw"/>
                                                                             <constraint firstAttribute="height" constant="12" id="ikI-A2-Qah"/>
                                                                         </constraints>
                                                                     </imageView>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="09.00 AM 15 m" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hkI-Cb-dfh">
-                                                                        <rect key="frame" x="6" y="53" width="102" height="12"/>
+                                                                        <rect key="frame" x="6" y="52" width="102" height="12"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                                                         <nil key="textColor"/>
                                                                         <nil key="highlightedColor"/>
@@ -276,7 +276,7 @@
         <!--Dashboard-->
         <scene sceneID="k8R-0g-2Vv">
             <objects>
-                <viewController id="ujd-HZ-l3o" sceneMemberID="viewController">
+                <viewController id="ujd-HZ-l3o" customClass="EKDashboardViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="dMk-b3-voY"/>
                         <viewControllerLayoutGuide type="bottom" id="SP2-Er-Qln"/>
@@ -291,6 +291,50 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Z0-6t-tbN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2892" y="-194"/>
+        </scene>
+        <!--Page View Controller-->
+        <scene sceneID="sQq-dP-PzE">
+            <objects>
+                <pageViewController storyboardIdentifier="PageViewController" autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="vertical" spineLocation="none" id="4Et-IN-sKQ" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xld-rj-eQe" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3668" y="-194"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="LaB-ec-1xh">
+            <objects>
+                <viewController storyboardIdentifier="content2" id="xp8-w3-rmy" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="O1v-4u-0Dk"/>
+                        <viewControllerLayoutGuide type="bottom" id="sja-dv-LBu"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="9O6-v4-nz3">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.69019607839999997" green="0.13725490200000001" blue="0.1647058824" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3wz-Ln-h4m" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4498" y="126"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="JmU-p4-SmC">
+            <objects>
+                <viewController storyboardIdentifier="content1" id="dZt-BJ-UtL" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Guh-pf-QJ0"/>
+                        <viewControllerLayoutGuide type="bottom" id="4Kx-d1-gSx"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="em6-rr-lCY">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.20784313730000001" green="0.57647058819999997" blue="0.47058823529999999" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AOk-TP-qDi" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4506" y="-544"/>
         </scene>
         <!--Clients-->
         <scene sceneID="LZP-x5-1R6">

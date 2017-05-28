@@ -13,6 +13,7 @@
 		470CD74C1EA1C6C00086DEE4 /* EKCompanyProfessionalTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 470CD74B1EA1C6C00086DEE4 /* EKCompanyProfessionalTableViewCell.m */; };
 		470CD74F1EA1C87D0086DEE4 /* EKCompanyProfileViewController+TableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 470CD74E1EA1C87D0086DEE4 /* EKCompanyProfileViewController+TableView.m */; };
 		470CD7531EA1CB930086DEE4 /* EKCompanyProfessionalCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 470CD7521EA1CB930086DEE4 /* EKCompanyProfessionalCollectionViewCell.m */; };
+		470F0B951EDB7DF2002FDE96 /* EKDashboardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 470F0B941EDB7DF2002FDE96 /* EKDashboardViewController.m */; };
 		471AA1881ED44A0E009B840A /* Review.m in Sources */ = {isa = PBXBuildFile; fileRef = 471AA1871ED44A0E009B840A /* Review.m */; };
 		471AA18B1ED45DD0009B840A /* UIImage+Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 471AA18A1ED45DD0009B840A /* UIImage+Helpers.m */; };
 		47448AE01EAE462F0098CED3 /* EKEditProfileInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47448ADF1EAE462F0098CED3 /* EKEditProfileInfoViewController.m */; };
@@ -100,6 +101,8 @@
 		470CD74E1EA1C87D0086DEE4 /* EKCompanyProfileViewController+TableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "EKCompanyProfileViewController+TableView.m"; sourceTree = "<group>"; };
 		470CD7511EA1CB930086DEE4 /* EKCompanyProfessionalCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKCompanyProfessionalCollectionViewCell.h; sourceTree = "<group>"; };
 		470CD7521EA1CB930086DEE4 /* EKCompanyProfessionalCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKCompanyProfessionalCollectionViewCell.m; sourceTree = "<group>"; };
+		470F0B931EDB7DF2002FDE96 /* EKDashboardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKDashboardViewController.h; sourceTree = "<group>"; };
+		470F0B941EDB7DF2002FDE96 /* EKDashboardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKDashboardViewController.m; sourceTree = "<group>"; };
 		471AA1861ED44A0E009B840A /* Review.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Review.h; sourceTree = "<group>"; };
 		471AA1871ED44A0E009B840A /* Review.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Review.m; sourceTree = "<group>"; };
 		471AA1891ED45DD0009B840A /* UIImage+Helpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Helpers.h"; sourceTree = "<group>"; };
@@ -279,6 +282,15 @@
 				470CD74E1EA1C87D0086DEE4 /* EKCompanyProfileViewController+TableView.m */,
 			);
 			name = Categories;
+			sourceTree = "<group>";
+		};
+		470F0B921EDB7D5A002FDE96 /* BP - Dashboard */ = {
+			isa = PBXGroup;
+			children = (
+				470F0B931EDB7DF2002FDE96 /* EKDashboardViewController.h */,
+				470F0B941EDB7DF2002FDE96 /* EKDashboardViewController.m */,
+			);
+			name = "BP - Dashboard";
 			sourceTree = "<group>";
 		};
 		47448ADB1EAE16580098CED3 /* Customer - Sign up ViewController */ = {
@@ -669,6 +681,7 @@
 				47800BC41EA3B2FF00F450DB /* Customer - Booking ViewController */,
 				47074F8C1EAEB4AC00E35EA7 /* BP - Sign up ViewController */,
 				47F7140E1ED6FB320028FB65 /* BP - Business Model */,
+				470F0B921EDB7D5A002FDE96 /* BP - Dashboard */,
 				4757C64A1ED87A0300C2B52F /* BP - BP Today Calendar View */,
 				47F714121ED70ACF0028FB65 /* BP - Salon select List */,
 				475FC37E1EB6B57D00BB0731 /* BP - Add Service List */,
@@ -947,6 +960,7 @@
 				47A3BB881E7A8C0B00963F27 /* EKRoleViewController.m in Sources */,
 				4787C6D51EB4013200DF7B83 /* EKCartViewController.m in Sources */,
 				47D44C311EBEBD1A007ACFAA /* EKFilterSearchViewController+TableView.m in Sources */,
+				470F0B951EDB7DF2002FDE96 /* EKDashboardViewController.m in Sources */,
 				470CD74C1EA1C6C00086DEE4 /* EKCompanyProfessionalTableViewCell.m in Sources */,
 				47BFEA651EA49AB10091522B /* EKBookingProCollectionViewCell.m in Sources */,
 				4795200F1EB3A40700E377E5 /* EKScheduleMonthlyViewController.m in Sources */,
