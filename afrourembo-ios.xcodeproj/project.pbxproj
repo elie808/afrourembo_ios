@@ -35,6 +35,8 @@
 		477256051EB958FF007CBD6B /* EKAvailabilityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 477256041EB958FF007CBD6B /* EKAvailabilityViewController.m */; };
 		477256091EB95EA4007CBD6B /* EKSwitchTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 477256081EB95EA4007CBD6B /* EKSwitchTableViewCell.m */; };
 		47800BC31EA3B2FA00F450DB /* EKBookingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47800BC21EA3B2FA00F450DB /* EKBookingViewController.m */; };
+		47822B051EDDAE49001E247F /* EKSalesSummaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47822B041EDDAE49001E247F /* EKSalesSummaryViewController.m */; };
+		47822B091EDDC37C001E247F /* EKSalesSummaryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 47822B081EDDC37C001E247F /* EKSalesSummaryTableViewCell.m */; };
 		478278CE1E7923D000FB2FD2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 478278CD1E7923D000FB2FD2 /* main.m */; };
 		478278D11E7923D000FB2FD2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 478278D01E7923D000FB2FD2 /* AppDelegate.m */; };
 		478278D71E7923D000FB2FD2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 478278D51E7923D000FB2FD2 /* Main.storyboard */; };
@@ -144,6 +146,10 @@
 		477256081EB95EA4007CBD6B /* EKSwitchTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKSwitchTableViewCell.m; sourceTree = "<group>"; };
 		47800BC11EA3B2FA00F450DB /* EKBookingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKBookingViewController.h; sourceTree = "<group>"; };
 		47800BC21EA3B2FA00F450DB /* EKBookingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKBookingViewController.m; sourceTree = "<group>"; };
+		47822B031EDDAE49001E247F /* EKSalesSummaryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKSalesSummaryViewController.h; sourceTree = "<group>"; };
+		47822B041EDDAE49001E247F /* EKSalesSummaryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKSalesSummaryViewController.m; sourceTree = "<group>"; };
+		47822B071EDDC37C001E247F /* EKSalesSummaryTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKSalesSummaryTableViewCell.h; sourceTree = "<group>"; };
+		47822B081EDDC37C001E247F /* EKSalesSummaryTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKSalesSummaryTableViewCell.m; sourceTree = "<group>"; };
 		478278C91E7923D000FB2FD2 /* afrourembo-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "afrourembo-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		478278CD1E7923D000FB2FD2 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		478278CF1E7923D000FB2FD2 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -289,6 +295,7 @@
 			children = (
 				470F0B931EDB7DF2002FDE96 /* EKDashboardViewController.h */,
 				470F0B941EDB7DF2002FDE96 /* EKDashboardViewController.m */,
+				47822B061EDDC356001E247F /* view1 - Sales */,
 			);
 			name = "BP - Dashboard";
 			sourceTree = "<group>";
@@ -441,6 +448,17 @@
 				47BFEA661EA49D3B0091522B /* Cells */,
 			);
 			name = "Customer - Booking ViewController";
+			sourceTree = "<group>";
+		};
+		47822B061EDDC356001E247F /* view1 - Sales */ = {
+			isa = PBXGroup;
+			children = (
+				47822B031EDDAE49001E247F /* EKSalesSummaryViewController.h */,
+				47822B041EDDAE49001E247F /* EKSalesSummaryViewController.m */,
+				47822B071EDDC37C001E247F /* EKSalesSummaryTableViewCell.h */,
+				47822B081EDDC37C001E247F /* EKSalesSummaryTableViewCell.m */,
+			);
+			name = "view1 - Sales";
 			sourceTree = "<group>";
 		};
 		478278C01E7923D000FB2FD2 = {
@@ -968,6 +986,7 @@
 				4787C6DD1EB40D5500DF7B83 /* Booking.m in Sources */,
 				475FC37D1EB6B57900BB0731 /* EKAddServiceViewController.m in Sources */,
 				478971941EA756F100917DB1 /* EKEditFacebookProfileInfoViewController.m in Sources */,
+				47822B091EDDC37C001E247F /* EKSalesSummaryTableViewCell.m in Sources */,
 				47FFF9751E99E81F008B6A31 /* EKImageTextTableViewCell.m in Sources */,
 				4787C6E41EB4212F00DF7B83 /* EKNetworkManager.m in Sources */,
 				47BFEA691EA4A9A30091522B /* EKBookingDayCollectionViewCell.m in Sources */,
@@ -1021,6 +1040,7 @@
 				474BD5701E97F721009410C4 /* EKNavigationViewController.m in Sources */,
 				47D88E6E1E793893001B88D0 /* EKWelcomeViewController.m in Sources */,
 				470CD7531EA1CB930086DEE4 /* EKCompanyProfessionalCollectionViewCell.m in Sources */,
+				47822B051EDDAE49001E247F /* EKSalesSummaryViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

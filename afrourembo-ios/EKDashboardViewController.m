@@ -19,7 +19,7 @@
     
     // Create PageViewController
     self.pageViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"PageViewController"];
-    self.pageViewController.view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
+    self.pageViewController.view.frame = CGRectMake(0, 64, self.view.frame.size.width, self.view.frame.size.height-64);
     self.pageViewController.dataSource = self;
     
     UIViewController *startingViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"content1"];
@@ -35,6 +35,7 @@
 
 - (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerBeforeViewController:(UIViewController *)viewController {
     
+    NSLog(@"\n");
     NSLog(@"ViewBEFORE - Index: %lu", (unsigned long)_index);
     
     if (_index > 0) {
@@ -50,6 +51,7 @@
 
 - (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerAfterViewController:(UIViewController *)viewController {
     
+    NSLog(@"\n");
     NSLog(@"ViewAFTER - Index: %lu", (unsigned long)_index);
 
     if (_index < 1) {//view count - 1
@@ -68,6 +70,8 @@
 //    if ((index > 1) || (index == NSNotFound)) {
 //        return nil;
 //    }
+    
+    NSLog(@"SUPPLY VIEW AT INDEX: %lu", (unsigned long)index);
     
     switch (index) {
             
