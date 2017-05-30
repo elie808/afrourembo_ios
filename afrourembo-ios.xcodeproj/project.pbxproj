@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		22C292D6FFA22AC47BB29DD5 /* Pods_afrourembo_ios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B75458C58C1790EFF018F83 /* Pods_afrourembo_ios.framework */; };
 		47074F8B1EAEB4A600E35EA7 /* EKSignupBPViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47074F8A1EAEB4A600E35EA7 /* EKSignupBPViewController.m */; };
 		470CD7461EA10B920086DEE4 /* EKCompanyReviewTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 470CD7451EA10B920086DEE4 /* EKCompanyReviewTableViewCell.m */; };
 		470CD7491EA11AD40086DEE4 /* EKCompanyContactTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 470CD7481EA11AD40086DEE4 /* EKCompanyContactTableViewCell.m */; };
@@ -16,6 +17,7 @@
 		470F0B951EDB7DF2002FDE96 /* EKDashboardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 470F0B941EDB7DF2002FDE96 /* EKDashboardViewController.m */; };
 		471AA1881ED44A0E009B840A /* Review.m in Sources */ = {isa = PBXBuildFile; fileRef = 471AA1871ED44A0E009B840A /* Review.m */; };
 		471AA18B1ED45DD0009B840A /* UIImage+Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 471AA18A1ED45DD0009B840A /* UIImage+Helpers.m */; };
+		4740243D1EDE1DB30089A6D2 /* EKChartSummaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4740243C1EDE1DB30089A6D2 /* EKChartSummaryViewController.m */; };
 		47448AE01EAE462F0098CED3 /* EKEditProfileInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47448ADF1EAE462F0098CED3 /* EKEditProfileInfoViewController.m */; };
 		474BD5701E97F721009410C4 /* EKNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 474BD56F1E97F721009410C4 /* EKNavigationViewController.m */; };
 		474BD5731E97F8F3009410C4 /* EKTextFieldTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 474BD5721E97F8F3009410C4 /* EKTextFieldTableViewCell.m */; };
@@ -86,11 +88,11 @@
 		47FF4F681EB5520E0022A6ED /* Customer.m in Sources */ = {isa = PBXBuildFile; fileRef = 47FF4F671EB5520E0022A6ED /* Customer.m */; };
 		47FF4F6B1EB557620022A6ED /* Customer+API.m in Sources */ = {isa = PBXBuildFile; fileRef = 47FF4F6A1EB557620022A6ED /* Customer+API.m */; };
 		47FFF9751E99E81F008B6A31 /* EKImageTextTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 47FFF9741E99E81F008B6A31 /* EKImageTextTableViewCell.m */; };
-		BEF4D67868C23697EF923AAA /* libPods-afrourembo-ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 572155C7C18553B923C74DE5 /* libPods-afrourembo-ios.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		2A4784F414DB67A4877E7962 /* Pods-afrourembo-ios.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-afrourembo-ios.debug.xcconfig"; path = "Pods/Target Support Files/Pods-afrourembo-ios/Pods-afrourembo-ios.debug.xcconfig"; sourceTree = "<group>"; };
+		3B75458C58C1790EFF018F83 /* Pods_afrourembo_ios.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_afrourembo_ios.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		47074F891EAEB4A600E35EA7 /* EKSignupBPViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKSignupBPViewController.h; sourceTree = "<group>"; };
 		47074F8A1EAEB4A600E35EA7 /* EKSignupBPViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKSignupBPViewController.m; sourceTree = "<group>"; };
 		470CD7441EA10B920086DEE4 /* EKCompanyReviewTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKCompanyReviewTableViewCell.h; sourceTree = "<group>"; };
@@ -109,6 +111,9 @@
 		471AA1871ED44A0E009B840A /* Review.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Review.m; sourceTree = "<group>"; };
 		471AA1891ED45DD0009B840A /* UIImage+Helpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Helpers.h"; sourceTree = "<group>"; };
 		471AA18A1ED45DD0009B840A /* UIImage+Helpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Helpers.m"; sourceTree = "<group>"; };
+		4740243B1EDE1DB30089A6D2 /* EKChartSummaryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKChartSummaryViewController.h; sourceTree = "<group>"; };
+		4740243C1EDE1DB30089A6D2 /* EKChartSummaryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKChartSummaryViewController.m; sourceTree = "<group>"; };
+		474024411EDE23390089A6D2 /* afrourembo-ios-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "afrourembo-ios-Bridging-Header.h"; sourceTree = "<group>"; };
 		47448ADE1EAE462F0098CED3 /* EKEditProfileInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKEditProfileInfoViewController.h; sourceTree = "<group>"; };
 		47448ADF1EAE462F0098CED3 /* EKEditProfileInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKEditProfileInfoViewController.m; sourceTree = "<group>"; };
 		474BD56E1E97F721009410C4 /* EKNavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKNavigationViewController.h; sourceTree = "<group>"; };
@@ -246,7 +251,6 @@
 		47FF4F6A1EB557620022A6ED /* Customer+API.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Customer+API.m"; sourceTree = "<group>"; };
 		47FFF9731E99E81F008B6A31 /* EKImageTextTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKImageTextTableViewCell.h; sourceTree = "<group>"; };
 		47FFF9741E99E81F008B6A31 /* EKImageTextTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKImageTextTableViewCell.m; sourceTree = "<group>"; };
-		572155C7C18553B923C74DE5 /* libPods-afrourembo-ios.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-afrourembo-ios.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A719D80C2C1E030C543CB612 /* Pods-afrourembo-ios.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-afrourembo-ios.release.xcconfig"; path = "Pods/Target Support Files/Pods-afrourembo-ios/Pods-afrourembo-ios.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -256,7 +260,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				474ED7B91E9C471F0099CA0A /* MapKit.framework in Frameworks */,
-				BEF4D67868C23697EF923AAA /* libPods-afrourembo-ios.a in Frameworks */,
+				22C292D6FFA22AC47BB29DD5 /* Pods_afrourembo_ios.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -267,7 +271,7 @@
 			isa = PBXGroup;
 			children = (
 				474ED7B81E9C471F0099CA0A /* MapKit.framework */,
-				572155C7C18553B923C74DE5 /* libPods-afrourembo-ios.a */,
+				3B75458C58C1790EFF018F83 /* Pods_afrourembo_ios.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -295,6 +299,9 @@
 			children = (
 				470F0B931EDB7DF2002FDE96 /* EKDashboardViewController.h */,
 				470F0B941EDB7DF2002FDE96 /* EKDashboardViewController.m */,
+				4740243B1EDE1DB30089A6D2 /* EKChartSummaryViewController.h */,
+				4740243C1EDE1DB30089A6D2 /* EKChartSummaryViewController.m */,
+				474024411EDE23390089A6D2 /* afrourembo-ios-Bridging-Header.h */,
 				47822B061EDDC356001E247F /* view1 - Sales */,
 			);
 			name = "BP - Dashboard";
@@ -870,6 +877,7 @@
 					478278C81E7923D000FB2FD2 = {
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = Z6WQVEM27Z;
+						LastSwiftMigration = 0830;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.Maps.iOS = {
@@ -1007,6 +1015,7 @@
 				47800BC31EA3B2FA00F450DB /* EKBookingViewController.m in Sources */,
 				478BDEF91E99C5FC00F74A5C /* Service.m in Sources */,
 				471AA1881ED44A0E009B840A /* Review.m in Sources */,
+				4740243D1EDE1DB30089A6D2 /* EKChartSummaryViewController.m in Sources */,
 				478278D11E7923D000FB2FD2 /* AppDelegate.m in Sources */,
 				4787C6E01EB40DD200DF7B83 /* EKCartCollectionViewCell+Helpers.m in Sources */,
 				47D88E6B1E793347001B88D0 /* EKSplashViewController.m in Sources */,
@@ -1159,6 +1168,7 @@
 			baseConfigurationReference = 2A4784F414DB67A4877E7962 /* Pods-afrourembo-ios.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "afrourembo-ios/afrourembo-ios.entitlements";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = Z6WQVEM27Z;
@@ -1169,6 +1179,9 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "afrourembo-ios/afrourembo-ios-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -1177,6 +1190,7 @@
 			baseConfigurationReference = A719D80C2C1E030C543CB612 /* Pods-afrourembo-ios.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "afrourembo-ios/afrourembo-ios.entitlements";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = Z6WQVEM27Z;
@@ -1187,6 +1201,8 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "afrourembo-ios/afrourembo-ios-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
