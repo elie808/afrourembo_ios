@@ -12,4 +12,6 @@
 
 @property (strong, nonatomic) UIPageViewController *pageViewController;
 
+- (IBAction)didTapFilterButton:(UIBarButtonItem *)sender;
+
 @end

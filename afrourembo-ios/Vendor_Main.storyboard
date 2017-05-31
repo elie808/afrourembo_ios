@@ -273,6 +273,14 @@
             </objects>
             <point key="canvasLocation" x="2892" y="-1769.865067466267"/>
         </scene>
+        <!--welcomeVC-->
+        <scene sceneID="v9f-5i-kK5">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Welcome" referencedIdentifier="welcomeVC" id="JfT-dJ-4HH" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eFI-4M-xbs" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3456" y="254"/>
+        </scene>
         <!--Dashboard-->
         <scene sceneID="k8R-0g-2Vv">
             <objects>
@@ -297,7 +305,14 @@
                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </textAttributes>
                                 <items>
-                                    <navigationItem title="Dashboard" id="gJT-zK-dMb"/>
+                                    <navigationItem title="Dashboard" id="gJT-zK-dMb">
+                                        <barButtonItem key="rightBarButtonItem" image="icFilter" id="sKR-2i-yMZ">
+                                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <connections>
+                                                <action selector="didTapFilterButton:" destination="ujd-HZ-l3o" id="UmJ-fT-iLo"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
                                 </items>
                             </navigationBar>
                         </subviews>
@@ -313,6 +328,9 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Dashboard" image="icDashNormal" id="gVQ-zN-3cP"/>
+                    <connections>
+                        <segue destination="JfT-dJ-4HH" kind="presentation" identifier="dashboardToWelcomeVC" id="q7G-IF-CTz"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Z0-6t-tbN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

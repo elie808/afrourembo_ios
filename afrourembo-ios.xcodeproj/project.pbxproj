@@ -299,12 +299,19 @@
 			children = (
 				470F0B931EDB7DF2002FDE96 /* EKDashboardViewController.h */,
 				470F0B941EDB7DF2002FDE96 /* EKDashboardViewController.m */,
-				4740243B1EDE1DB30089A6D2 /* EKChartSummaryViewController.h */,
-				4740243C1EDE1DB30089A6D2 /* EKChartSummaryViewController.m */,
-				474024411EDE23390089A6D2 /* afrourembo-ios-Bridging-Header.h */,
 				47822B061EDDC356001E247F /* view1 - Sales */,
+				472C582C1EDED431008E016C /* view2 - Chart */,
 			);
 			name = "BP - Dashboard";
+			sourceTree = "<group>";
+		};
+		472C582C1EDED431008E016C /* view2 - Chart */ = {
+			isa = PBXGroup;
+			children = (
+				4740243B1EDE1DB30089A6D2 /* EKChartSummaryViewController.h */,
+				4740243C1EDE1DB30089A6D2 /* EKChartSummaryViewController.m */,
+			);
+			name = "view2 - Chart";
 			sourceTree = "<group>";
 		};
 		47448ADB1EAE16580098CED3 /* Customer - Sign up ViewController */ = {
@@ -615,6 +622,7 @@
 		478BDF091E99D85E00F74A5C /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				474024411EDE23390089A6D2 /* afrourembo-ios-Bridging-Header.h */,
 				478BDF061E99D85500F74A5C /* EKConstants.h */,
 				471AA1891ED45DD0009B840A /* UIImage+Helpers.h */,
 				471AA18A1ED45DD0009B840A /* UIImage+Helpers.m */,
