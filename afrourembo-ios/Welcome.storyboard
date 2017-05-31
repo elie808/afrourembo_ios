@@ -48,7 +48,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Yrc-gR-hZr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-4144" y="-317"/>
+            <point key="canvasLocation" x="-5629" y="-329"/>
         </scene>
         <!--Welcome View Controller-->
         <scene sceneID="SQO-nM-Bst">
@@ -163,13 +163,13 @@
                     <navigationItem key="navigationItem" id="Een-yY-HqS"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
-                        <segue destination="WtR-ZX-27w" kind="show" identifier="welcomeSignInToSignIn" id="Gpg-8R-SYq"/>
                         <segue destination="eQd-wG-mFC" kind="show" identifier="welcomeNewUserToOnboarding" id="Sla-kg-Gac"/>
+                        <segue destination="RJ6-XM-7HL" kind="show" identifier="welcomeSignInToSignIn" id="Qd3-DN-6Rs"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lC5-BB-ISy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2424" y="-316"/>
+            <point key="canvasLocation" x="-3908" y="-327"/>
         </scene>
         <!--exploreVC-->
         <scene sceneID="Wh5-MH-PgS">
@@ -177,7 +177,7 @@
                 <viewControllerPlaceholder storyboardName="Main" referencedIdentifier="exploreVC" id="xTI-DJ-UaF" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JfK-Ev-UKs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2424" y="145"/>
+            <point key="canvasLocation" x="-3908" y="134"/>
         </scene>
         <!--Sign In View Controller-->
         <scene sceneID="Hri-RA-0DZ">
@@ -324,6 +324,7 @@
                     <connections>
                         <outlet property="tableView" destination="QwR-cH-fnA" id="Rfz-Np-ptR"/>
                         <segue destination="yb9-O1-mQe" kind="presentation" identifier="signInToExploreVC" id="ww5-5g-70c"/>
+                        <segue destination="Xkv-fa-2q3" kind="presentation" identifier="signInToBPDashboardVC" id="PVL-kl-ePW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="agK-r7-cmT" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -337,6 +338,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2VG-E1-ax6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1596" y="545"/>
+        </scene>
+        <!--vendor_dashboard-->
+        <scene sceneID="421-lV-T18">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Vendor_Main" referencedIdentifier="vendor_dashboard" id="Xkv-fa-2q3" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Hvi-p7-xcx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1234" y="544"/>
         </scene>
         <!--Onboarding View Controller-->
         <scene sceneID="MLt-ho-kW8">
@@ -491,7 +500,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dvD-0k-PGQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-566.25" y="-692.95774647887322"/>
+            <point key="canvasLocation" x="-668" y="-697"/>
         </scene>
         <!--signUpCustomer-->
         <scene sceneID="cUT-I7-RWr">
@@ -533,7 +542,104 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sX3-Va-ieD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3272" y="-317"/>
+            <point key="canvasLocation" x="-4757" y="-329"/>
+        </scene>
+        <!--Role View Controller-->
+        <scene sceneID="Fe6-Wg-hIK">
+            <objects>
+                <viewController id="RJ6-XM-7HL" customClass="EKRoleViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="wIB-W9-XRi"/>
+                        <viewControllerLayoutGuide type="bottom" id="Noj-NR-27n"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="uEp-Hu-Cre">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="h0I-7k-dUw">
+                                <rect key="frame" x="8" y="28" width="304" height="532"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s0m-Bc-zuv">
+                                        <rect key="frame" x="0.0" y="0.0" width="304" height="166"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="16"/>
+                                        <state key="normal" title="I want to discover services" image="icCustomer">
+                                            <color key="titleColor" red="0.28235294119999998" green="0.28235294119999998" blue="0.28235294119999998" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="didTapSignInCustomer:" destination="RJ6-XM-7HL" eventType="touchDown" id="OJm-0J-YdC"/>
+                                        </connections>
+                                    </button>
+                                    <view contentMode="scaleToFill" verticalHuggingPriority="254" placeholderIntrinsicWidth="infinite" placeholderIntrinsicHeight="2" translatesAutoresizingMaskIntoConstraints="NO" id="asq-S4-UAs">
+                                        <rect key="frame" x="0.0" y="174" width="304" height="1"/>
+                                        <color key="backgroundColor" red="1" green="0.76470588240000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="1" id="rCS-iO-3ND"/>
+                                        </constraints>
+                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DEf-q1-stA">
+                                        <rect key="frame" x="0.0" y="183" width="304" height="166"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="16"/>
+                                        <state key="normal" title="I'm an individual beauty professional" image="icScissors">
+                                            <color key="titleColor" red="0.28235294119999998" green="0.28235294119999998" blue="0.28235294119999998" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="didTapSignInBP:" destination="RJ6-XM-7HL" eventType="touchDown" id="sUB-lo-c6a"/>
+                                        </connections>
+                                    </button>
+                                    <view contentMode="scaleToFill" verticalHuggingPriority="255" placeholderIntrinsicWidth="infinite" placeholderIntrinsicHeight="2" translatesAutoresizingMaskIntoConstraints="NO" id="7xK-Po-vSx">
+                                        <rect key="frame" x="0.0" y="357" width="304" height="1"/>
+                                        <color key="backgroundColor" red="1" green="0.76470588240000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="1" id="4rH-GD-Qed"/>
+                                        </constraints>
+                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hyk-GK-Zlf">
+                                        <rect key="frame" x="0.0" y="366" width="304" height="166"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="16"/>
+                                        <state key="normal" title="I have a salon" image="icBusiness">
+                                            <color key="titleColor" red="0.28235294119999998" green="0.28235294119999998" blue="0.28235294119999998" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="didTapSignInSalon:" destination="RJ6-XM-7HL" eventType="touchDown" id="zib-yT-FFA"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="DEf-q1-stA" firstAttribute="height" secondItem="s0m-Bc-zuv" secondAttribute="height" id="37h-uL-Zt1"/>
+                                    <constraint firstItem="7xK-Po-vSx" firstAttribute="leading" secondItem="h0I-7k-dUw" secondAttribute="leading" id="4AN-xG-JlQ"/>
+                                    <constraint firstAttribute="trailing" secondItem="DEf-q1-stA" secondAttribute="trailing" id="8NF-oq-NYK"/>
+                                    <constraint firstAttribute="trailing" secondItem="7xK-Po-vSx" secondAttribute="trailing" id="Eh7-Q8-2Yq"/>
+                                    <constraint firstItem="DEf-q1-stA" firstAttribute="leading" secondItem="h0I-7k-dUw" secondAttribute="leading" id="J1z-7S-9Bg"/>
+                                    <constraint firstAttribute="trailing" secondItem="asq-S4-UAs" secondAttribute="trailing" id="JAX-bF-p8c"/>
+                                    <constraint firstItem="asq-S4-UAs" firstAttribute="leading" secondItem="h0I-7k-dUw" secondAttribute="leading" id="KRn-rS-CEx"/>
+                                    <constraint firstAttribute="trailing" secondItem="s0m-Bc-zuv" secondAttribute="trailing" id="PZM-oC-A7C"/>
+                                    <constraint firstItem="hyk-GK-Zlf" firstAttribute="leading" secondItem="h0I-7k-dUw" secondAttribute="leading" id="Qc2-14-Rzm"/>
+                                    <constraint firstAttribute="trailing" secondItem="hyk-GK-Zlf" secondAttribute="trailing" id="Yc5-3K-2BG"/>
+                                    <constraint firstItem="hyk-GK-Zlf" firstAttribute="height" secondItem="s0m-Bc-zuv" secondAttribute="height" id="qdW-o9-NqS"/>
+                                    <constraint firstItem="s0m-Bc-zuv" firstAttribute="leading" secondItem="h0I-7k-dUw" secondAttribute="leading" id="sLB-M0-t53"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Noj-NR-27n" firstAttribute="top" secondItem="h0I-7k-dUw" secondAttribute="bottom" constant="8" id="LPo-I8-xKJ"/>
+                            <constraint firstAttribute="trailing" secondItem="h0I-7k-dUw" secondAttribute="trailing" constant="8" id="g0Q-tK-ZaP"/>
+                            <constraint firstItem="h0I-7k-dUw" firstAttribute="top" secondItem="wIB-W9-XRi" secondAttribute="bottom" constant="8" id="jH5-Dp-h1T"/>
+                            <constraint firstItem="h0I-7k-dUw" firstAttribute="leading" secondItem="uEp-Hu-Cre" secondAttribute="leading" constant="8" id="p3r-SO-9nb"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <segue destination="WtR-ZX-27w" kind="show" identifier="roleToSignInCustomer" id="ByE-f1-RDX"/>
+                        <segue destination="WtR-ZX-27w" kind="show" identifier="roleToSignInSalon" id="7dj-kd-dEh"/>
+                        <segue destination="WtR-ZX-27w" kind="show" identifier="roleToSignInBP" id="XKN-VH-5W9"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cJ5-Lr-mlg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2698" y="64"/>
         </scene>
     </scenes>
     <resources>
@@ -545,4 +651,7 @@
         <image name="icScissors" width="44" height="45"/>
         <image name="logotype" width="201" height="110"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="XKN-VH-5W9"/>
+    </inferredMetricsTieBreakers>
 </document>

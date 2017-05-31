@@ -8,8 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import "EKBusinessModelViewController.h"
+#import "EKSignInViewController.h"
 
 @interface EKRoleViewController : UIViewController
+
+- (IBAction)didTapSignInCustomer:(id)sender;
+- (IBAction)didTapSignInSalon:(id)sender;
+- (IBAction)didTapSignInBP:(id)sender;
 
 - (IBAction)didTapSignupCustomer:(id)sender;
 - (IBAction)didTapSignupSalon:(id)sender;

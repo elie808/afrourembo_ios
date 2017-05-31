@@ -19,9 +19,9 @@ static NSString * const kVendorMainStoryboard = @"Vendor_Main";
     [EKNetworkManager configureRestKit];
     
     // Start at Splash Screen
-//    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:kWelcomeStoryboard bundle:nil];
-//    UINavigationController *rootViewController = [storyboard instantiateViewControllerWithIdentifier:kSplashVC];
-//    self.window.rootViewController = rootViewController;
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:kWelcomeStoryboard bundle:nil];
+    UINavigationController *rootViewController = [storyboard instantiateViewControllerWithIdentifier:kSplashVC];
+    self.window.rootViewController = rootViewController;
 
     // Explore
 //    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:kMainStoryboard bundle:nil];
@@ -29,9 +29,9 @@ static NSString * const kVendorMainStoryboard = @"Vendor_Main";
 //    self.window.rootViewController = rootViewController;
 
     // Vendor
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:kVendorMainStoryboard bundle:nil];
-    UINavigationController *rootViewController = [storyboard instantiateViewControllerWithIdentifier:kVendorDashVC];
-    self.window.rootViewController = rootViewController;
+//    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:kVendorMainStoryboard bundle:nil];
+//    UINavigationController *rootViewController = [storyboard instantiateViewControllerWithIdentifier:kVendorDashVC];
+//    self.window.rootViewController = rootViewController;
     
     // role VC
 //    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"SignUp" bundle:nil];

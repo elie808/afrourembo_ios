@@ -10,6 +10,7 @@
 
 static NSString * const kSigninCell = @"signinCell";
 static NSString * const kExploreSegue = @"signInToExploreVC";
+static NSString * const kBPDashSegue = @"signInToBPDashboardVC";
 
 @interface EKSignInViewController() {
     NSArray *_dataSourceArray;
@@ -55,17 +56,24 @@ static NSString * const kExploreSegue = @"signInToExploreVC";
 
 - (IBAction)didTapSignInButton:(id)sender {
     
-//    [Customer loginCustomer:@"email@address.com"
-//                   password:@"12345678"
-//                  withBlock:^(Customer *customerObj) {
-//                    
-//                      [self performSegueWithIdentifier:kExploreSegue sender:nil];
-//                  }
-//                 withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
-//                     
-//                 }];
-    
-    [self performSegueWithIdentifier:kExploreSegue sender:nil];
+    if (self.signInRole == SignInRoleCustomer) {
+        
+        //    [Customer loginCustomer:@"email@address.com"
+        //                   password:@"12345678"
+        //                  withBlock:^(Customer *customerObj) {
+        //
+        //                      [self performSegueWithIdentifier:kExploreSegue sender:nil];
+        //                  }
+        //                 withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
+        //                     
+        //                 }];
+        
+        [self performSegueWithIdentifier:kExploreSegue sender:nil];
+        
+    } else {
+     
+        [self performSegueWithIdentifier:kBPDashSegue sender:nil];
+    }
 }
 
 /*

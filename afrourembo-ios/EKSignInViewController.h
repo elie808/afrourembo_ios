@@ -10,8 +10,15 @@
 #import "EKTextFieldTableViewCell.h"
 #import "Customer+API.h"
 
+typedef NS_ENUM(NSUInteger, SignInRole) {
+    SignInRoleCustomer,
+    SignInRoleSalon,
+    SignInRoleBP
+};
+
 @interface EKSignInViewController : UIViewController
 
+@property (assign, nonatomic) SignInRole signInRole;
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 
 - (IBAction)didTapSignInButton:(id)sender;
