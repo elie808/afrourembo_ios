@@ -103,7 +103,7 @@ static NSString * const kCollectionCell = @"todayCell";
     
     // when time slot falls within time of the day
     if (indexPath.row == 2) {
-            cell.backgroundColor = [UIColor colorWithRed:255./255. green:195./255. blue:0 alpha:1.0];
+//            cell.backgroundColor = [UIColor colorWithRed:255./255. green:195./255. blue:0 alpha:1.0];
         // make font bold
         // make text color white
         // abstract into config cell method
