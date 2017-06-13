@@ -10,6 +10,7 @@
 
 @interface EKTextFieldTableViewCell : UITableViewCell
 
+@property (strong, nonatomic) NSIndexPath *cellIndexPath;
 @property (strong, nonatomic) IBOutlet UILabel *cellTitleLabel;
 @property (strong, nonatomic) IBOutlet UITextField *cellTextField;
 
