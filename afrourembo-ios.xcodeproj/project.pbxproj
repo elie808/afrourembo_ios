@@ -60,6 +60,7 @@
 		4795200F1EB3A40700E377E5 /* EKScheduleMonthlyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4795200E1EB3A40700E377E5 /* EKScheduleMonthlyViewController.m */; };
 		479AB2681EA0B9E300A74659 /* EKCompanyProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 479AB2671EA0B9E300A74659 /* EKCompanyProfileViewController.m */; };
 		479AB26C1EA0CC0000A74659 /* EKCompanyServiceTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 479AB26B1EA0CC0000A74659 /* EKCompanyServiceTableViewCell.m */; };
+		479F7D681EF00A1700EB445A /* UIViewController+Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 479F7D671EF00A1700EB445A /* UIViewController+Helpers.m */; };
 		47A3BB881E7A8C0B00963F27 /* EKRoleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47A3BB871E7A8C0B00963F27 /* EKRoleViewController.m */; };
 		47A3BB8C1E7A9F3500963F27 /* EKSignInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47A3BB8B1E7A9F3500963F27 /* EKSignInViewController.m */; };
 		47AF51AF1E9B686F005FE6EB /* EKInCellCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 47AF51AE1E9B686F005FE6EB /* EKInCellCollectionView.m */; };
@@ -197,6 +198,8 @@
 		479AB2671EA0B9E300A74659 /* EKCompanyProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKCompanyProfileViewController.m; sourceTree = "<group>"; };
 		479AB26A1EA0CC0000A74659 /* EKCompanyServiceTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKCompanyServiceTableViewCell.h; sourceTree = "<group>"; };
 		479AB26B1EA0CC0000A74659 /* EKCompanyServiceTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKCompanyServiceTableViewCell.m; sourceTree = "<group>"; };
+		479F7D661EF00A1700EB445A /* UIViewController+Helpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Helpers.h"; sourceTree = "<group>"; };
+		479F7D671EF00A1700EB445A /* UIViewController+Helpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Helpers.m"; sourceTree = "<group>"; };
 		47A3BB861E7A8C0B00963F27 /* EKRoleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKRoleViewController.h; sourceTree = "<group>"; };
 		47A3BB871E7A8C0B00963F27 /* EKRoleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKRoleViewController.m; sourceTree = "<group>"; };
 		47A3BB8A1E7A9F3500963F27 /* EKSignInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKSignInViewController.h; sourceTree = "<group>"; };
@@ -626,6 +629,8 @@
 				478BDF061E99D85500F74A5C /* EKConstants.h */,
 				471AA1891ED45DD0009B840A /* UIImage+Helpers.h */,
 				471AA18A1ED45DD0009B840A /* UIImage+Helpers.m */,
+				479F7D661EF00A1700EB445A /* UIViewController+Helpers.h */,
+				479F7D671EF00A1700EB445A /* UIViewController+Helpers.m */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -1051,6 +1056,7 @@
 				475A4CFB1EC01EAB0089D477 /* EKExploreViewController+SideMenuTableView.m in Sources */,
 				478278CE1E7923D000FB2FD2 /* main.m in Sources */,
 				47871AE51EBA17A3003B9BEB /* EKDualButtonTableViewCell.m in Sources */,
+				479F7D681EF00A1700EB445A /* UIViewController+Helpers.m in Sources */,
 				47448AE01EAE462F0098CED3 /* EKEditProfileInfoViewController.m in Sources */,
 				47AF51B21E9B6897005FE6EB /* EKSalonListTableViewCell.m in Sources */,
 				47E2F0061EA5FE9D002E2FD4 /* EKSignupViewController.m in Sources */,
