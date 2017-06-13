@@ -20,12 +20,20 @@
     return mapping;
 }
 
++ (RKObjectMapping *)map2 {
+    
+    RKObjectMapping *mapping = [RKObjectMapping mappingForClass:[Customer class]];
+    [mapping addAttributeMappingsFromArray:@[@"email", @"password"]];
+    
+    return mapping;
+}
+
 #pragma mark - Requests
 
 + (RKRequestDescriptor *)userRegistrationRequestDescriptor {
     
     RKRequestDescriptor *request = [RKRequestDescriptor
-                                    requestDescriptorWithMapping:[[Customer map1] inverseMapping]
+                                    requestDescriptorWithMapping:[[Customer map2] inverseMapping]
                                     objectClass:[Customer class]
                                     rootKeyPath:nil
                                     method:RKRequestMethodPOST];

@@ -9,6 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "EKTextFieldTableViewCell.h"
 #import "Customer+API.h"
+#import "EKEditProfileInfoViewController.h"
+#import "UIViewController+Helpers.h"
+#import <MBProgressHUD/MBProgressHUD.h>
 
 @interface EKSignupViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 

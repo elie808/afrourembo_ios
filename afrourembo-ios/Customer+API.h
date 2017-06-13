@@ -18,6 +18,9 @@ typedef void (^CustomerSignUpErrorBlock)(NSError *error, NSString *errorMessage,
 /// email, password, token, fName, lName, phone
 + (RKObjectMapping *)map1;
 
+/// email, password
++ (RKObjectMapping *)map2;
+
 /// Maps the returned reponse from the POST Sign Up call
 + (RKResponseDescriptor *)userRegistrationResponseDescriptor;
 

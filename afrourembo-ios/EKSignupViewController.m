@@ -49,6 +49,8 @@ static NSString * const kEditProfileSegue = @"signUpToEditProfile";
     cell.cellTitleLabel.text = labelValue;
     cell.cellTextField.placeholder = placeHolderValue;
     
+    cell.cellIndexPath = indexPath;
+    
     return cell;
 }
 
@@ -61,25 +63,38 @@ static NSString * const kEditProfileSegue = @"signUpToEditProfile";
 #pragma mark - Navigation
 
 - (IBAction)didTapSignUpButton:(id)sender {
- 
-//    [Customer signUpCustomer:@"email1@address.com"
-//                    password:@"12345678"
-//                   withBlock:^(Customer *customerObj) {
-//                       
-//                       NSLog(@"USER SIGNED UP!!");
-//                       [self performSegueWithIdentifier:kEditProfileSegue sender:nil];
-//                   }
-//                  withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
-//                      
-//                  }];
     
-    [self performSegueWithIdentifier:kEditProfileSegue sender:nil];
+    EKTextFieldTableViewCell *emailCell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
+    EKTextFieldTableViewCell *passCell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:0]];
+    
+    NSString *emailStr  = emailCell.cellTextField.text;
+    NSString *passStr   = passCell.cellTextField.text;
+    
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    [Customer signUpCustomer:emailStr
+                    password:passStr
+                   withBlock:^(Customer *customerObj) {
+                       
+                       NSLog(@"USER SIGNED UP!!");
+                       [MBProgressHUD hideHUDForView:self.view animated:YES];
+                       [self performSegueWithIdentifier:kEditProfileSegue sender:customerObj];
+                   }
+                  withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
+                      
+                      [MBProgressHUD hideHUDForView:self.view animated:YES];
+                      [self showMessage:errorMessage
+                              withTitle:@"There is something wrong"
+                        completionBlock:nil];
+                  }];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     
     if ([segue.identifier isEqualToString:kEditProfileSegue]) {
         
+        EKEditProfileInfoViewController *vc = segue.destinationViewController;
+        Customer *customerObj = (Customer *)sender;
+        vc.passedUser = customerObj;
     }
 }
 
