@@ -13,5 +13,6 @@ target 'afrourembo-ios' do
   pod 'YYWebImage'
   pod 'STPopup'
   pod 'Charts'
+  pod 'MBProgressHUD'
 
 end
