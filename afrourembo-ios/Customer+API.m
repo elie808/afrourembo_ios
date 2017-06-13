@@ -15,7 +15,7 @@
 + (RKObjectMapping *)map1 {
     
     RKObjectMapping *mapping = [RKObjectMapping mappingForClass:[Customer class]];
-    [mapping addAttributeMappingsFromArray:@[@"email", @"password"]];
+    [mapping addAttributeMappingsFromArray:@[@"email", @"password", @"token", @"fName", @"lName", @"phone"]];
     
     return mapping;
 }

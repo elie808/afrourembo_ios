@@ -15,7 +15,7 @@ typedef void (^CustomerSignUpErrorBlock)(NSError *error, NSString *errorMessage,
 
 @interface Customer (API)
 
-/// email, password
+/// email, password, token, fName, lName, phone
 + (RKObjectMapping *)map1;
 
 /// Maps the returned reponse from the POST Sign Up call

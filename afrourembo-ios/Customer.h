@@ -10,8 +10,12 @@
 
 @interface Customer : NSObject
 
+// signup
 @property NSString *email;
 @property NSString *password;
+@property NSString *token;
+
+// profile
 @property NSString *fName;
 @property NSString *lName;
 @property NSString *phone;
