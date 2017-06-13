@@ -7,10 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Customer.h"
 #import "EKTextFieldTableViewCell.h"
 
 @interface EKEditProfileInfoViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 
+@property (strong, nonatomic) Customer *passedUser;
+
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
+
+- (IBAction)didTapSubmitButton:(id)sender;
 
 @end
