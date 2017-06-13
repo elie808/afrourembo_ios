@@ -61,7 +61,32 @@ static NSString * const kExploreSegue = @"editVcToExploreVC";
 #pragma mark - Actions
 
 - (IBAction)didTapSubmitButton:(id)sender {
-    [self performSegueWithIdentifier:kExploreSegue sender:nil];
+
+    EKTextFieldTableViewCell *fNameCell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
+    EKTextFieldTableViewCell *lNameCell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:0]];
+    EKTextFieldTableViewCell *phoneCell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:0]];
+    
+    NSString *fNameStr  = fNameCell.cellTextField.text;
+    NSString *lNameStr   = lNameCell.cellTextField.text;
+    NSString *phoneStr   = phoneCell.cellTextField.text;
+    
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    [Customer updateInterests:fNameStr
+                     lastName:lNameStr
+                        phone:phoneStr
+                      forUser:self.passedUser.token
+                    withBlock:^(Customer *customerObj) {
+                     
+                        [MBProgressHUD hideHUDForView:self.view animated:YES];
+                        [self performSegueWithIdentifier:kExploreSegue sender:nil];
+                    }
+                   withErrors:^(NSError *error, NSString *errorMessage) {
+                       
+                       [MBProgressHUD hideHUDForView:self.view animated:YES];
+                       [self showMessage:errorMessage
+                               withTitle:@"There is something wrong"
+                         completionBlock:nil];
+                   }];
 }
 
 #pragma mark - Navigation

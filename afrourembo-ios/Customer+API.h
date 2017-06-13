@@ -12,6 +12,7 @@
 
 typedef void (^CustomerSignUpSuccessBlock)(Customer *customerObj);
 typedef void (^CustomerSignUpErrorBlock)(NSError *error, NSString *errorMessage, NSInteger statusCode);
+typedef void (^CustomerEditErrorBlock)(NSError *error, NSString *errorMessage);
 
 @interface Customer (API)
 
@@ -21,8 +22,13 @@ typedef void (^CustomerSignUpErrorBlock)(NSError *error, NSString *errorMessage,
 /// email, password
 + (RKObjectMapping *)map2;
 
+/// fName, lName, phone
++ (RKObjectMapping *)map3;
+
 /// Maps the returned reponse from the POST Sign Up call
 + (RKResponseDescriptor *)userRegistrationResponseDescriptor;
+
++ (RKResponseDescriptor *)putUserProfileResponseDescriptor;
 
 /// Maps the returned reponse from the POST Login call
 + (RKResponseDescriptor *)userLoginResponseDescriptor;
@@ -40,5 +46,7 @@ typedef void (^CustomerSignUpErrorBlock)(NSError *error, NSString *errorMessage,
 + (void)signUpCustomer:(NSString *)email password:(NSString *)password withBlock:(CustomerSignUpSuccessBlock)successBlock withErrors:(CustomerSignUpErrorBlock)errorBlock;
 
 + (void)loginCustomer:(NSString *)email password:(NSString *)password withBlock:(CustomerSignUpSuccessBlock)successBlock withErrors:(CustomerSignUpErrorBlock)errorBlock;
+
++ (void)updateInterests:(NSString *)firstName lastName:(NSString *)lastName phone:(NSString *)phone forUser:(NSString *)userToken withBlock:(CustomerSignUpSuccessBlock)successBlock withErrors:(CustomerEditErrorBlock)errorBlock;
 
 @end

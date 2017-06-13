@@ -46,7 +46,8 @@
     
     [objectManager addResponseDescriptorsFromArray:@[
                                                      [Customer userRegistrationResponseDescriptor],
-                                                     [Customer userLoginResponseDescriptor]
+                                                     [Customer userLoginResponseDescriptor],
+                                                     [Customer putUserProfileResponseDescriptor]
                                                      ]];
 //
 //    [objectManager addResponseDescriptorsFromArray:@[

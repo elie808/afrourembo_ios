@@ -28,6 +28,14 @@
     return mapping;
 }
 
++ (RKObjectMapping *)map3 {
+    
+    RKObjectMapping *mapping = [RKObjectMapping mappingForClass:[Customer class]];
+    [mapping addAttributeMappingsFromArray:@[@"fName", @"lName", @"phone"]];
+    
+    return mapping;
+}
+
 #pragma mark - Requests
 
 + (RKRequestDescriptor *)userRegistrationRequestDescriptor {
@@ -48,6 +56,17 @@
                                       responseDescriptorWithMapping:[Customer map1]
                                       method:RKRequestMethodPOST
                                       pathPattern:kUserRegisterAPIPath
+                                      keyPath:nil
+                                      statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+    return response;
+}
+
++ (RKResponseDescriptor *)putUserProfileResponseDescriptor {
+    
+    RKResponseDescriptor *response = [RKResponseDescriptor
+                                      responseDescriptorWithMapping:[Customer map1]
+                                      method:RKRequestMethodPUT
+                                      pathPattern:kUserProfileAPIPath
                                       keyPath:nil
                                       statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     return response;
@@ -124,6 +143,42 @@
                                             
                                             errorBlock(error, errorMessage, [statusCodeNumber integerValue]);
                                         }];
+}
+
++ (void)updateInterests:(NSString *)firstName lastName:(NSString *)lastName phone:(NSString *)phone forUser:(NSString *)userToken withBlock:(CustomerSignUpSuccessBlock)successBlock withErrors:(CustomerEditErrorBlock)errorBlock {
+    
+    [[[RKObjectManager sharedManager] HTTPClient] setDefaultHeader:@"Authorization" value:userToken];
+    
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    [params setValue:firstName forKey:@"fName"];
+    [params setValue:lastName forKey:@"lName"];
+    [params setValue:phone forKey:@"phone"];
+    
+    [[RKObjectManager sharedManager] putObject:nil
+                                          path:kUserProfileAPIPath
+                                    parameters:params
+                                       success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+                                           
+                                           NSLog(@"Success Updating Customer info!!");
+                                           
+                                           Customer *customerObj = [mappingResult.array firstObject];
+                                           successBlock(customerObj);
+                                       }
+                                       failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                                           
+                                           // exctract error message
+                                           NSDictionary *myDic = [NSJSONSerialization
+                                                                  JSONObjectWithData:operation.HTTPRequestOperation.responseData
+                                                                  options:NSJSONReadingMutableLeaves
+                                                                  error:nil];
+                                           
+                                           NSString *errorMessage = [myDic valueForKey:@"message"];
+//                                           NSNumber *errorCode = [myDic valueForKey:@"statusCode"];
+                                           
+                                           NSLog(@"-------ERROR MESSAGE: %@", errorMessage);
+                                           
+                                           errorBlock(error, errorMessage);
+                                       }];
 }
 
 @end
