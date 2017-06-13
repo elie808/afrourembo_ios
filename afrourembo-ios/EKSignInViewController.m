@@ -56,19 +56,32 @@ static NSString * const kBPDashSegue = @"signInToBPDashboardVC";
 
 - (IBAction)didTapSignInButton:(id)sender {
     
+    EKTextFieldTableViewCell *emailCell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
+    EKTextFieldTableViewCell *passCell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:0]];
+    
+    NSString *emailStr  = emailCell.cellTextField.text;
+    NSString *passStr   = passCell.cellTextField.text;
+    
     if (self.signInRole == SignInRoleCustomer) {
         
-        //    [Customer loginCustomer:@"email@address.com"
-        //                   password:@"12345678"
-        //                  withBlock:^(Customer *customerObj) {
-        //
-        //                      [self performSegueWithIdentifier:kExploreSegue sender:nil];
-        //                  }
-        //                 withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
-        //                     
-        //                 }];
+        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        [Customer loginCustomer:emailStr
+                       password:passStr
+                      withBlock:^(Customer *customerObj) {
+    
+                          NSLog(@"USER LOGGED IN!!");
+                          [MBProgressHUD hideHUDForView:self.view animated:YES];
+                          [self performSegueWithIdentifier:kExploreSegue sender:customerObj];
+                      }
+                     withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
+                         
+                         [MBProgressHUD hideHUDForView:self.view animated:YES];
+                         [self showMessage:errorMessage
+                                 withTitle:@"There is something wrong"
+                           completionBlock:nil];
+                     }];
         
-        [self performSegueWithIdentifier:kExploreSegue sender:nil];
+//        [self performSegueWithIdentifier:kExploreSegue sender:nil];
         
     } else {
      
@@ -76,14 +89,22 @@ static NSString * const kBPDashSegue = @"signInToBPDashboardVC";
     }
 }
 
-/*
+
 #pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+
+    if ([segue.identifier isEqualToString:kExploreSegue]) {
+
+        Customer *customerObj = (Customer *)sender;
+        UINavigationController *navController = [segue destinationViewController];
+        EKExploreViewController *vc = (EKExploreViewController *)([navController viewControllers][0]);
+        vc.passedCustomer = customerObj;
+    }
+    
+    if ([segue.identifier isEqualToString:kBPDashSegue]) {
+        
+    }
 }
-*/
 
 @end

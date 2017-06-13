@@ -8,7 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "EKTextFieldTableViewCell.h"
+#import "EKExploreViewController.h"
 #import "Customer+API.h"
+#import "UIViewController+Helpers.h"
+#import <MBProgressHUD/MBProgressHUD.h>
 
 typedef NS_ENUM(NSUInteger, SignInRole) {
     SignInRoleCustomer,

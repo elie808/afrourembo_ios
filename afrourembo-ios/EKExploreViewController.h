@@ -11,10 +11,12 @@
 #import "EKExploreCollectionViewCell.h"
 #import "EKImageTextTableViewCell.h"
 #import "Service.h"
+#import "Customer.h"
 
 @interface EKExploreViewController : UIViewController <UICollectionViewDelegate, UICollectionViewDataSource>
 
 @property (strong, nonatomic) NSArray *sideMenuDataSource;
+@property (strong, nonatomic) Customer *passedCustomer;
 
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *sideMenuButton;
 @property (strong, nonatomic) IBOutlet UITableView *sideMenuTableView;
