@@ -10,4 +10,14 @@
 
 @interface Professional : NSObject
 
+@property NSString *fName;
+@property NSString *lName;
+@property NSString *email;
+@property NSString *password;
+
+@property NSString *token;
+
+@property NSArray *schedule;
+@property NSArray *services;
+
 @end

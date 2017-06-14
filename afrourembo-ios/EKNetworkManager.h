@@ -9,9 +9,10 @@
 #import <Foundation/Foundation.h>
 #import <RestKit/RestKit.h>
 
-#import "EKNetworkingConstants.h"
-
 #import "Customer+API.h"
+#import "Professional+API.h"
+
+#import "EKNetworkingConstants.h"
 
 @interface EKNetworkManager : NSObject
 
