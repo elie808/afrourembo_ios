@@ -80,12 +80,28 @@ static NSString * const kBPDashSegue = @"signInToBPDashboardVC";
                                  withTitle:@"There is something wrong"
                            completionBlock:nil];
                      }];
+
+    } else if (self.signInRole == SignInRoleBP) {
+    
+        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        [ProfessionalLogin loginProfessional:emailStr
+                                    password:passStr
+                                   withBlock:^(Professional *professionalObj) {
+                                     
+                                       NSLog(@"PROFESSIONAL LOGGED IN!!");
+                                       [MBProgressHUD hideHUDForView:self.view animated:YES];
+                                       [self performSegueWithIdentifier:kBPDashSegue sender:nil];
+                                   }
+                                  withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
+                                     
+                                      [MBProgressHUD hideHUDForView:self.view animated:YES];
+                                      [self showMessage:errorMessage
+                                              withTitle:@"There is something wrong"
+                                        completionBlock:nil];
+                                  }];
         
-//        [self performSegueWithIdentifier:kExploreSegue sender:nil];
+    } else if (self.signInRole == SignInRoleSalon) {
         
-    } else {
-     
-        [self performSegueWithIdentifier:kBPDashSegue sender:nil];
     }
 }
 
@@ -96,10 +112,12 @@ static NSString * const kBPDashSegue = @"signInToBPDashboardVC";
 
     if ([segue.identifier isEqualToString:kExploreSegue]) {
 
-        Customer *customerObj = (Customer *)sender;
-        UINavigationController *navController = [segue destinationViewController];
-        EKExploreViewController *vc = (EKExploreViewController *)([navController viewControllers][0]);
-        vc.passedCustomer = customerObj;
+        if (sender) {
+            Customer *customerObj = (Customer *)sender;
+            UINavigationController *navController = [segue destinationViewController];
+            EKExploreViewController *vc = (EKExploreViewController *)([navController viewControllers][0]);
+            vc.passedCustomer = customerObj;
+        }
     }
     
     if ([segue.identifier isEqualToString:kBPDashSegue]) {
