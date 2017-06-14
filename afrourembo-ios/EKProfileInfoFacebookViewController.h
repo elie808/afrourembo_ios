@@ -13,4 +13,6 @@
 
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 
+- (IBAction)unwindToFbProfile:(UIStoryboardSegue *)segue;
+
 @end
