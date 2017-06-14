@@ -63,6 +63,8 @@
 		479F7D681EF00A1700EB445A /* UIViewController+Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 479F7D671EF00A1700EB445A /* UIViewController+Helpers.m */; };
 		479F7D6B1EF0C09600EB445A /* Professional.m in Sources */ = {isa = PBXBuildFile; fileRef = 479F7D6A1EF0C09600EB445A /* Professional.m */; };
 		479F7D6E1EF0C17E00EB445A /* Professional+API.m in Sources */ = {isa = PBXBuildFile; fileRef = 479F7D6D1EF0C17E00EB445A /* Professional+API.m */; };
+		479F7D711EF16D6700EB445A /* ProfessionalLogin.m in Sources */ = {isa = PBXBuildFile; fileRef = 479F7D701EF16D6700EB445A /* ProfessionalLogin.m */; };
+		479F7D741EF16D8600EB445A /* ProfessionalLogin+API.m in Sources */ = {isa = PBXBuildFile; fileRef = 479F7D731EF16D8600EB445A /* ProfessionalLogin+API.m */; };
 		47A3BB881E7A8C0B00963F27 /* EKRoleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47A3BB871E7A8C0B00963F27 /* EKRoleViewController.m */; };
 		47A3BB8C1E7A9F3500963F27 /* EKSignInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47A3BB8B1E7A9F3500963F27 /* EKSignInViewController.m */; };
 		47AF51AF1E9B686F005FE6EB /* EKInCellCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 47AF51AE1E9B686F005FE6EB /* EKInCellCollectionView.m */; };
@@ -206,6 +208,10 @@
 		479F7D6A1EF0C09600EB445A /* Professional.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Professional.m; sourceTree = "<group>"; };
 		479F7D6C1EF0C17E00EB445A /* Professional+API.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Professional+API.h"; sourceTree = "<group>"; };
 		479F7D6D1EF0C17E00EB445A /* Professional+API.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Professional+API.m"; sourceTree = "<group>"; };
+		479F7D6F1EF16D6700EB445A /* ProfessionalLogin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfessionalLogin.h; sourceTree = "<group>"; };
+		479F7D701EF16D6700EB445A /* ProfessionalLogin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfessionalLogin.m; sourceTree = "<group>"; };
+		479F7D721EF16D8600EB445A /* ProfessionalLogin+API.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ProfessionalLogin+API.h"; sourceTree = "<group>"; };
+		479F7D731EF16D8600EB445A /* ProfessionalLogin+API.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ProfessionalLogin+API.m"; sourceTree = "<group>"; };
 		47A3BB861E7A8C0B00963F27 /* EKRoleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKRoleViewController.h; sourceTree = "<group>"; };
 		47A3BB871E7A8C0B00963F27 /* EKRoleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKRoleViewController.m; sourceTree = "<group>"; };
 		47A3BB8A1E7A9F3500963F27 /* EKSignInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKSignInViewController.h; sourceTree = "<group>"; };
@@ -618,6 +624,8 @@
 				47C7D4CB1EBB5EF000457E53 /* Day.m */,
 				479F7D691EF0C09600EB445A /* Professional.h */,
 				479F7D6A1EF0C09600EB445A /* Professional.m */,
+				479F7D6F1EF16D6700EB445A /* ProfessionalLogin.h */,
+				479F7D701EF16D6700EB445A /* ProfessionalLogin.m */,
 				471AA1861ED44A0E009B840A /* Review.h */,
 				471AA1871ED44A0E009B840A /* Review.m */,
 				47AF51B81E9B8561005FE6EB /* Salon.h */,
@@ -839,6 +847,8 @@
 				47FF4F6A1EB557620022A6ED /* Customer+API.m */,
 				479F7D6C1EF0C17E00EB445A /* Professional+API.h */,
 				479F7D6D1EF0C17E00EB445A /* Professional+API.m */,
+				479F7D721EF16D8600EB445A /* ProfessionalLogin+API.h */,
+				479F7D731EF16D8600EB445A /* ProfessionalLogin+API.m */,
 			);
 			name = API;
 			sourceTree = "<group>";
@@ -1029,6 +1039,7 @@
 				471AA18B1ED45DD0009B840A /* UIImage+Helpers.m in Sources */,
 				477256091EB95EA4007CBD6B /* EKSwitchTableViewCell.m in Sources */,
 				47AF51BA1E9B8561005FE6EB /* Salon.m in Sources */,
+				479F7D711EF16D6700EB445A /* ProfessionalLogin.m in Sources */,
 				47C7D4CC1EBB5EF000457E53 /* Day.m in Sources */,
 				4757C6531ED98D8000C2B52F /* Appointment.m in Sources */,
 				47E2F0091EA5FF97002E2FD4 /* EKProfileInfoFacebookViewController.m in Sources */,
@@ -1064,6 +1075,7 @@
 				47D44C2D1EBEBB25007ACFAA /* EKFilterSearchViewController.m in Sources */,
 				4787C6D91EB402A500DF7B83 /* EKCartCollectionViewCell.m in Sources */,
 				475A4CF71EC0041F0089D477 /* EKCheckoutSuccessViewController.m in Sources */,
+				479F7D741EF16D8600EB445A /* ProfessionalLogin+API.m in Sources */,
 				47919E5A1E795664001C5600 /* EKOnboardingViewController.m in Sources */,
 				475A4CFB1EC01EAB0089D477 /* EKExploreViewController+SideMenuTableView.m in Sources */,
 				478278CE1E7923D000FB2FD2 /* main.m in Sources */,

@@ -16,10 +16,11 @@ static NSString * const kBaseURL = @"http://35.158.118.170/api/v1/";
 #pragma mark - Routes
 
 static NSString * const kUserRegisterAPIPath = @"user/register";
-static NSString * const kUserProfileAPIPath  = @"user/profile";
 static NSString * const kUserLoginAPIPath    = @"user/login";
+static NSString * const kUserProfileAPIPath  = @"user/profile";
 
 static NSString * const kProfessionalRegisterAPIPath = @"professional/register";
+static NSString * const kProfessionalLoginAPIPath    = @"professional/login";
 
 #pragma mark - Status Codes
 

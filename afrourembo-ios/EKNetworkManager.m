@@ -33,9 +33,15 @@
 
 + (void)configureRequestDescriptors:(RKObjectManager *)objectManager {
     
-    [objectManager addRequestDescriptorsFromArray:@[[Customer userRegistrationRequestDescriptor] ]];
+    [objectManager addRequestDescriptorsFromArray:@[
+                                                    [Customer userRegistrationRequestDescriptor],
+                                                    ]];
     
-    [objectManager addRequestDescriptorsFromArray:@[[Professional professionalRegistrationRequestDescriptor] ]];
+    [objectManager addRequestDescriptor:[ProfessionalLogin professionalLoginRequestDescriptor]];
+    
+    [objectManager addRequestDescriptorsFromArray:@[
+                                                    [Professional professionalRegistrationRequestDescriptor]
+                                                    ]];
 }
 
 #pragma mark - Response
@@ -47,6 +53,8 @@
                                                      [Customer userLoginResponseDescriptor],
                                                      [Customer putUserProfileResponseDescriptor]
                                                      ]];
+    
+    [objectManager addResponseDescriptor:[ProfessionalLogin professionalLoginResponseDescriptor]];
     
     [objectManager addResponseDescriptorsFromArray:@[
                                                      [Professional professionalRegistrationResponseDescriptor]
