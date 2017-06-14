@@ -65,6 +65,7 @@
 		479F7D6E1EF0C17E00EB445A /* Professional+API.m in Sources */ = {isa = PBXBuildFile; fileRef = 479F7D6D1EF0C17E00EB445A /* Professional+API.m */; };
 		479F7D711EF16D6700EB445A /* ProfessionalLogin.m in Sources */ = {isa = PBXBuildFile; fileRef = 479F7D701EF16D6700EB445A /* ProfessionalLogin.m */; };
 		479F7D741EF16D8600EB445A /* ProfessionalLogin+API.m in Sources */ = {isa = PBXBuildFile; fileRef = 479F7D731EF16D8600EB445A /* ProfessionalLogin+API.m */; };
+		479F7D771EF17BF900EB445A /* EKSalonInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 479F7D761EF17BF900EB445A /* EKSalonInfoViewController.m */; };
 		47A3BB881E7A8C0B00963F27 /* EKRoleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47A3BB871E7A8C0B00963F27 /* EKRoleViewController.m */; };
 		47A3BB8C1E7A9F3500963F27 /* EKSignInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47A3BB8B1E7A9F3500963F27 /* EKSignInViewController.m */; };
 		47AF51AF1E9B686F005FE6EB /* EKInCellCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 47AF51AE1E9B686F005FE6EB /* EKInCellCollectionView.m */; };
@@ -212,6 +213,8 @@
 		479F7D701EF16D6700EB445A /* ProfessionalLogin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfessionalLogin.m; sourceTree = "<group>"; };
 		479F7D721EF16D8600EB445A /* ProfessionalLogin+API.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ProfessionalLogin+API.h"; sourceTree = "<group>"; };
 		479F7D731EF16D8600EB445A /* ProfessionalLogin+API.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ProfessionalLogin+API.m"; sourceTree = "<group>"; };
+		479F7D751EF17BF900EB445A /* EKSalonInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKSalonInfoViewController.h; sourceTree = "<group>"; };
+		479F7D761EF17BF900EB445A /* EKSalonInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKSalonInfoViewController.m; sourceTree = "<group>"; };
 		47A3BB861E7A8C0B00963F27 /* EKRoleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKRoleViewController.h; sourceTree = "<group>"; };
 		47A3BB871E7A8C0B00963F27 /* EKRoleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKRoleViewController.m; sourceTree = "<group>"; };
 		47A3BB8A1E7A9F3500963F27 /* EKSignInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKSignInViewController.h; sourceTree = "<group>"; };
@@ -688,6 +691,15 @@
 			name = Cells;
 			sourceTree = "<group>";
 		};
+		479F7D781EF17C0100EB445A /* SALON - Info */ = {
+			isa = PBXGroup;
+			children = (
+				479F7D751EF17BF900EB445A /* EKSalonInfoViewController.h */,
+				479F7D761EF17BF900EB445A /* EKSalonInfoViewController.m */,
+			);
+			name = "SALON - Info";
+			sourceTree = "<group>";
+		};
 		47A3BB821E7A8BA200963F27 /* Onboarding ViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -742,6 +754,7 @@
 				475FC3821EB6BF6100BB0731 /* BP - Create New Service */,
 				477256061EB95908007CBD6B /* BP - Availability */,
 				479520101EB3A40A00E377E5 /* BP - Monthly Schedule */,
+				479F7D781EF17C0100EB445A /* SALON - Info */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -1056,6 +1069,7 @@
 				47D88E6B1E793347001B88D0 /* EKSplashViewController.m in Sources */,
 				47AF51B71E9B765D005FE6EB /* EKSalonListCollectionViewCell.m in Sources */,
 				47EA09DC1EB7594800400603 /* EKAccessoryTableViewCell.m in Sources */,
+				479F7D771EF17BF900EB445A /* EKSalonInfoViewController.m in Sources */,
 				479AB26C1EA0CC0000A74659 /* EKCompanyServiceTableViewCell.m in Sources */,
 				479F7D6B1EF0C09600EB445A /* Professional.m in Sources */,
 				47F714151ED70AFB0028FB65 /* EKSalonSelectTableViewCell.m in Sources */,
