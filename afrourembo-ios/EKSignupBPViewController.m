@@ -62,17 +62,44 @@ static NSString * const kRoleSegue = @"signupBPToRoleVC";
 
 - (IBAction)didTapSignUpButton:(id)sender {
     
-    [self performSegueWithIdentifier:kRoleSegue sender:nil];
+    EKTextFieldTableViewCell *fNameCell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
+    EKTextFieldTableViewCell *lNameCell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:0]];
+    EKTextFieldTableViewCell *emailCell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:2 inSection:0]];
+    EKTextFieldTableViewCell *passCell  = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:3 inSection:0]];
+    
+    NSString *fNameStr = fNameCell.cellTextField.text;
+    NSString *lNameStr = lNameCell.cellTextField.text;
+    NSString *emailStr = emailCell.cellTextField.text;
+    NSString *passStr  = passCell.cellTextField.text;
+    
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    [Professional signUpProfessional:emailStr
+                            password:passStr
+                           firstName:fNameStr
+                            lastName:lNameStr
+                           withBlock:^(Professional *professionalObj) {
+
+                               NSLog(@"PROFESSIONAL SIGNED UP!!");
+                               [MBProgressHUD hideHUDForView:self.view animated:YES];
+                               [self performSegueWithIdentifier:kRoleSegue sender:professionalObj];
+                           }
+                          withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
+
+                              [MBProgressHUD hideHUDForView:self.view animated:YES];
+                              [self showMessage:errorMessage
+                                      withTitle:@"There is something wrong"
+                                completionBlock:nil];
+                          }];
 }
 
-/*
 #pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+
+    if ([segue.identifier isEqualToString:kRoleSegue]) {
+        
+        Professional *profObj = (Professional *)sender;
+    }
 }
-*/
 
 @end
