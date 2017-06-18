@@ -10,6 +10,7 @@
 
 @interface EKAddNewServiceTableViewCell : UITableViewCell
 
+@property (weak, nonatomic) NSIndexPath *cellIndexPath;
 @property (weak, nonatomic) IBOutlet UILabel *cellTextLabel;
 @property (weak, nonatomic) IBOutlet UITextField *cellTextField;
 

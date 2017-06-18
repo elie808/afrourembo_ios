@@ -52,6 +52,7 @@ static NSString * const kUnwindFromNewService = @"unwindFromNewServiceToServiceV
 #pragma mark - UITableViewDelegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
 }
 
 #pragma mark - EKAccessoryCellDelegate

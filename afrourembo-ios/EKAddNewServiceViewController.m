@@ -15,6 +15,9 @@ static NSString * const kTimeCell  = @"createServiceCellTime";
 
 static NSString * const kAddService = @"createServiceCell";
 
+static NSString * const kGroupListSegue = @"newServiceToCategoryList";
+static NSString * const kServiceListSegue = @"newServiceToServiceList";
+
 static NSString * const kUnwindSegue = @"unwindFromNewServiceToServiceVC";
 static NSString * const kUnwindRemoveSegue = @"unwindNewServiceToServiceVCREMOVE";
 
@@ -72,8 +75,22 @@ static NSString * const kUnwindRemoveSegue = @"unwindNewServiceToServiceVCREMOVE
     
     EKAddNewServiceTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kTitleCell forIndexPath:indexPath];
     
+    cell.cellIndexPath = indexPath;
     cell.cellTextLabel.text = labelValue;
     cell.cellTextField.text = placeHolderValue;
+    
+    cell.cellTextField.tag = indexPath.row;
+    
+    cell.cellTextField.keyboardType = UIKeyboardTypeNumberPad;
+    
+    if (indexPath.row == 0 || indexPath.row == 1) {
+    
+        cell.cellTextField.enabled = NO;
+    
+    } else {
+        
+        cell.cellTextField.enabled = YES;
+    }
     
     return cell;
 }
@@ -82,6 +99,36 @@ static NSString * const kUnwindRemoveSegue = @"unwindNewServiceToServiceVCREMOVE
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
+    switch (indexPath.row) {
+        
+        case 0: [self performSegueWithIdentifier:kGroupListSegue sender:nil]; break;
+            
+        case 1: [self performSegueWithIdentifier:kServiceListSegue sender:nil]; break;
+            
+        default: break;
+    }
+}
+
+#pragma mark - UITextFieldDelegate
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    [textField resignFirstResponder];
+    
+    return YES;
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField {
+    
+    if (textField.tag == 2) {
+        
+        _serviceToEdit.servicePrice = [textField.text floatValue];
+        NSLog(@"service Price: %f", _serviceToEdit.servicePrice);
+        
+    } else if (textField.tag == 3) {
+        
+        _serviceToEdit.serviceLaborTime = [textField.text floatValue];
+        NSLog(@"labor time: %f", _serviceToEdit.serviceLaborTime);
+    }
 }
 
 #pragma mark - Actions
@@ -97,6 +144,8 @@ static NSString * const kUnwindRemoveSegue = @"unwindNewServiceToServiceVCREMOVE
 }
 
 #pragma mark - Navigation
+
+- (IBAction)unwingToAddNewServiceVC:(UIStoryboardSegue *)segue {}
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     

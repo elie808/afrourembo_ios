@@ -11,11 +11,13 @@
 #import "Service.h"
 #import "EKAddNewServiceTableViewCell.h"
 
-@interface EKAddNewServiceViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
+@interface EKAddNewServiceViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate>
 
 @property (strong, nonatomic) Service *passedService;
 
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) IBOutlet UIButton *removeServiceButton;
+
+- (IBAction)unwingToAddNewServiceVC:(UIStoryboardSegue *)segue;
 
 @end
