@@ -9,6 +9,7 @@
 #import "EKSalonSelectViewController.h"
 
 static NSString * const kSalonSelectCell = @"salonSelectCell";
+static NSString * const kServiceSegue = @"salonSelectToServiceVC";
 
 @implementation EKSalonSelectViewController {
     NSMutableArray *_dataSourceArray;
@@ -72,17 +73,13 @@ static NSString * const kSalonSelectCell = @"salonSelectCell";
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    [self performSegueWithIdentifier:@"salonSelectToServiceVC" sender:nil];
+    [self performSegueWithIdentifier:kServiceSegue sender:nil];
 }
 
-/*
 #pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    
 }
-*/
 
 @end
