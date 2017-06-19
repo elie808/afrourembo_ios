@@ -47,8 +47,12 @@ static NSString * const kRoleSegue = @"onboardingToRole";
     page3.bgImage = [UIImage imageNamed:@"bg3"];
     page3.titleFont = [UIFont boldSystemFontOfSize:26];
     
+    UIButton *skipButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [skipButton setTitle:@"Sign Up" forState:UIControlStateNormal];
+    [skipButton addTarget:self action:@selector(didTapSignUpButton:) forControlEvents:UIControlEventTouchDown];
+    
     self.introView.backgroundColor = [UIColor grayColor];
-    self.introView.skipButton = nil;
+    self.introView.skipButton = skipButton;
     [self.introView setDelegate:self];
     [self.introView setPages:@[page1, page2, page3]];
     
