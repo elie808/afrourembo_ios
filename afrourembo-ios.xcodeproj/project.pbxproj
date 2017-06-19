@@ -60,6 +60,8 @@
 		4795200F1EB3A40700E377E5 /* EKScheduleMonthlyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4795200E1EB3A40700E377E5 /* EKScheduleMonthlyViewController.m */; };
 		479AB2681EA0B9E300A74659 /* EKCompanyProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 479AB2671EA0B9E300A74659 /* EKCompanyProfileViewController.m */; };
 		479AB26C1EA0CC0000A74659 /* EKCompanyServiceTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 479AB26B1EA0CC0000A74659 /* EKCompanyServiceTableViewCell.m */; };
+		479B30A11EF7476400DE2121 /* EKCategoryListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 479B30A01EF7476400DE2121 /* EKCategoryListViewController.m */; };
+		479B30A51EF7564300DE2121 /* ServiceCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 479B30A41EF7564300DE2121 /* ServiceCategory.m */; };
 		479F7D681EF00A1700EB445A /* UIViewController+Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 479F7D671EF00A1700EB445A /* UIViewController+Helpers.m */; };
 		479F7D6B1EF0C09600EB445A /* Professional.m in Sources */ = {isa = PBXBuildFile; fileRef = 479F7D6A1EF0C09600EB445A /* Professional.m */; };
 		479F7D6E1EF0C17E00EB445A /* Professional+API.m in Sources */ = {isa = PBXBuildFile; fileRef = 479F7D6D1EF0C17E00EB445A /* Professional+API.m */; };
@@ -203,6 +205,10 @@
 		479AB2671EA0B9E300A74659 /* EKCompanyProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKCompanyProfileViewController.m; sourceTree = "<group>"; };
 		479AB26A1EA0CC0000A74659 /* EKCompanyServiceTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKCompanyServiceTableViewCell.h; sourceTree = "<group>"; };
 		479AB26B1EA0CC0000A74659 /* EKCompanyServiceTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKCompanyServiceTableViewCell.m; sourceTree = "<group>"; };
+		479B309F1EF7476400DE2121 /* EKCategoryListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKCategoryListViewController.h; sourceTree = "<group>"; };
+		479B30A01EF7476400DE2121 /* EKCategoryListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKCategoryListViewController.m; sourceTree = "<group>"; };
+		479B30A31EF7564300DE2121 /* ServiceCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceCategory.h; sourceTree = "<group>"; };
+		479B30A41EF7564300DE2121 /* ServiceCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceCategory.m; sourceTree = "<group>"; };
 		479F7D661EF00A1700EB445A /* UIViewController+Helpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Helpers.h"; sourceTree = "<group>"; };
 		479F7D671EF00A1700EB445A /* UIViewController+Helpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Helpers.m"; sourceTree = "<group>"; };
 		479F7D691EF0C09600EB445A /* Professional.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Professional.h; sourceTree = "<group>"; };
@@ -635,6 +641,8 @@
 				47AF51B91E9B8561005FE6EB /* Salon.m */,
 				478BDEF71E99C5FC00F74A5C /* Service.h */,
 				478BDEF81E99C5FC00F74A5C /* Service.m */,
+				479B30A31EF7564300DE2121 /* ServiceCategory.h */,
+				479B30A41EF7564300DE2121 /* ServiceCategory.m */,
 				47EF0E2E1EDA23B3000B07BB /* Today.h */,
 				47EF0E2F1EDA23B3000B07BB /* Today.m */,
 			);
@@ -689,6 +697,15 @@
 				470CD7521EA1CB930086DEE4 /* EKCompanyProfessionalCollectionViewCell.m */,
 			);
 			name = Cells;
+			sourceTree = "<group>";
+		};
+		479B30A21EF7476D00DE2121 /* BP - Category List */ = {
+			isa = PBXGroup;
+			children = (
+				479B309F1EF7476400DE2121 /* EKCategoryListViewController.h */,
+				479B30A01EF7476400DE2121 /* EKCategoryListViewController.m */,
+			);
+			name = "BP - Category List";
 			sourceTree = "<group>";
 		};
 		479F7D781EF17C0100EB445A /* SALON - Info */ = {
@@ -751,6 +768,7 @@
 				4757C64A1ED87A0300C2B52F /* BP - BP Today Calendar View */,
 				47F714121ED70ACF0028FB65 /* BP - Salon select List */,
 				475FC37E1EB6B57D00BB0731 /* BP - Add Service List */,
+				479B30A21EF7476D00DE2121 /* BP - Category List */,
 				475FC3821EB6BF6100BB0731 /* BP - Create New Service */,
 				477256061EB95908007CBD6B /* BP - Availability */,
 				479520101EB3A40A00E377E5 /* BP - Monthly Schedule */,
@@ -1073,6 +1091,7 @@
 				479AB26C1EA0CC0000A74659 /* EKCompanyServiceTableViewCell.m in Sources */,
 				479F7D6B1EF0C09600EB445A /* Professional.m in Sources */,
 				47F714151ED70AFB0028FB65 /* EKSalonSelectTableViewCell.m in Sources */,
+				479B30A11EF7476400DE2121 /* EKCategoryListViewController.m in Sources */,
 				475FC3811EB6BF5E00BB0731 /* EKAddNewServiceViewController.m in Sources */,
 				474ED7BC1E9C68940099CA0A /* EKDiscoverMapViewController+MapDelegate.m in Sources */,
 				47EF0E301EDA23B3000B07BB /* Today.m in Sources */,
@@ -1092,6 +1111,7 @@
 				479F7D741EF16D8600EB445A /* ProfessionalLogin+API.m in Sources */,
 				47919E5A1E795664001C5600 /* EKOnboardingViewController.m in Sources */,
 				475A4CFB1EC01EAB0089D477 /* EKExploreViewController+SideMenuTableView.m in Sources */,
+				479B30A51EF7564300DE2121 /* ServiceCategory.m in Sources */,
 				478278CE1E7923D000FB2FD2 /* main.m in Sources */,
 				47871AE51EBA17A3003B9BEB /* EKDualButtonTableViewCell.m in Sources */,
 				479F7D681EF00A1700EB445A /* UIViewController+Helpers.m in Sources */,
