@@ -10,6 +10,6 @@
 
 @interface ServiceCategory : NSObject
 
-@property NSString *categorTitle;
+@property NSString *categoryTitle;
 
 @end
