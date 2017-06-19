@@ -23,7 +23,6 @@ static NSString * const kUnwindRemoveSegue = @"unwindNewServiceToServiceVCREMOVE
 
 @implementation EKAddNewServiceViewController {
     NSArray *_dataSourceArray;
-    Service *_serviceToEdit;
 }
 
 - (void)viewDidLoad {
@@ -31,31 +30,26 @@ static NSString * const kUnwindRemoveSegue = @"unwindNewServiceToServiceVCREMOVE
     
     self.title = @"New service";
     
-    _serviceToEdit = [Service new];
+    self.serviceToEdit = [Service new];
     
     if (!self.passedService) {
         
-        _serviceToEdit.serviceGroup = @"group";
-        _serviceToEdit.serviceTitle = @"title here";
-        _serviceToEdit.servicePrice = 10;
-        _serviceToEdit.serviceLaborTime = 20;
+        self.serviceToEdit.serviceGroup = @"";
+        self.serviceToEdit.serviceTitle = @"";
+        self.serviceToEdit.servicePrice = 0;
+        self.serviceToEdit.serviceLaborTime = 0;
         
         self.removeServiceButton.hidden = YES;
         
     } else {
     
-        _serviceToEdit.serviceGroup = self.passedService.serviceGroup;
-        _serviceToEdit.serviceTitle = self.passedService.serviceTitle;
-        _serviceToEdit.servicePrice = self.passedService.servicePrice;
-        _serviceToEdit.serviceLaborTime = self.passedService.serviceLaborTime;
+        self.serviceToEdit.serviceGroup = self.passedService.serviceGroup;
+        self.serviceToEdit.serviceTitle = self.passedService.serviceTitle;
+        self.serviceToEdit.servicePrice = self.passedService.servicePrice;
+        self.serviceToEdit.serviceLaborTime = self.passedService.serviceLaborTime;
     }
     
-    _dataSourceArray = @[
-                         @{@"Group" : _serviceToEdit.serviceGroup},
-                         @{@"Title" : _serviceToEdit.serviceTitle},
-                         @{@"Price" : [NSString stringWithFormat:@"%f", _serviceToEdit.servicePrice]},
-                         @{@"Time for service" : [NSString stringWithFormat:@"%f", _serviceToEdit.serviceLaborTime]}
-                         ];
+    [self initializeDataSource];
 }
 
 #pragma mark - UITableViewDataSource
@@ -121,13 +115,11 @@ static NSString * const kUnwindRemoveSegue = @"unwindNewServiceToServiceVCREMOVE
     
     if (textField.tag == 2) {
         
-        _serviceToEdit.servicePrice = [textField.text floatValue];
-        NSLog(@"service Price: %f", _serviceToEdit.servicePrice);
+        self.serviceToEdit.servicePrice = [textField.text floatValue];
         
     } else if (textField.tag == 3) {
         
-        _serviceToEdit.serviceLaborTime = [textField.text floatValue];
-        NSLog(@"labor time: %f", _serviceToEdit.serviceLaborTime);
+        self.serviceToEdit.serviceLaborTime = [textField.text floatValue];
     }
 }
 
@@ -145,7 +137,20 @@ static NSString * const kUnwindRemoveSegue = @"unwindNewServiceToServiceVCREMOVE
 
 #pragma mark - Navigation
 
-- (IBAction)unwingToAddNewServiceVC:(UIStoryboardSegue *)segue {}
+- (IBAction)unwingToAddNewServiceVC:(UIStoryboardSegue *)segue {
+
+//    if ([segue.identifier isEqualToString:@"selectedCategoryUnwindSegue"]) {
+//        
+//    }
+    
+//    if ([segue.identifier isEqualToString:@"selectedTitleUnwindSegue"]) {
+//        
+//    }
+    
+    [self initializeDataSource];
+    [self.tableView reloadData];
+    
+}
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     
@@ -155,12 +160,12 @@ static NSString * const kUnwindRemoveSegue = @"unwindNewServiceToServiceVCREMOVE
         
         if (!self.passedService) {
             
-            [vc.dataSourceArray addObject:_serviceToEdit];
+            [vc.dataSourceArray addObject:self.serviceToEdit];
             
         } else {
             
             [vc.dataSourceArray removeObject:self.passedService];
-            [vc.dataSourceArray addObject:_serviceToEdit];
+            [vc.dataSourceArray addObject:self.serviceToEdit];
         }
      
         [vc.tableView reloadData];
@@ -172,6 +177,19 @@ static NSString * const kUnwindRemoveSegue = @"unwindNewServiceToServiceVCREMOVE
         [vc.dataSourceArray removeObject:self.passedService];
         [vc.tableView reloadData];
     }
+}
+
+#pragma mark - Helpers
+
+/// used to make populating and updating the tabelView values simple, with a backing data model and minimal code in tableView:cellForRow
+- (void)initializeDataSource {
+    
+    _dataSourceArray = @[
+                         @{@"Group" : self.serviceToEdit.serviceGroup},
+                         @{@"Title" : self.serviceToEdit.serviceTitle},
+                         @{@"Price" : [NSString stringWithFormat:@"%f", self.serviceToEdit.servicePrice]},
+                         @{@"Time for service" : [NSString stringWithFormat:@"%f", self.serviceToEdit.serviceLaborTime]}
+                         ];
 }
 
 @end

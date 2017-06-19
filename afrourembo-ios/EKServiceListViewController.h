@@ -1,5 +1,5 @@
 //
-//  EKCategoryListViewController.h
+//  EKServiceListViewController.h
 //  afrourembo-ios
 //
 //  Created by Elie El Khoury on 6/19/17.
@@ -8,11 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "EKTextFieldTableViewCell.h"
-#import "Service.h"
 #import "EKAddNewServiceViewController.h"
+#import "Service.h"
 #import <MBProgressHUD/MBProgressHUD.h>
 
-@interface EKCategoryListViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
+@interface EKServiceListViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 
