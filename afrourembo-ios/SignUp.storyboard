@@ -1604,9 +1604,12 @@
                                             <subviews>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="placeholder" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="irA-HA-Bwv">
                                                     <rect key="frame" x="66" y="7" width="301" height="30"/>
-                                                    <nil key="textColor"/>
+                                                    <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
+                                                    <connections>
+                                                        <outlet property="delegate" destination="05v-6l-dbB" id="gvI-5l-t2Q"/>
+                                                    </connections>
                                                 </textField>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Rt-if-eu9">
                                                     <rect key="frame" x="16" y="12" width="42" height="21"/>
@@ -1648,7 +1651,7 @@
                                                     <rect key="frame" x="316" y="12" width="44" height="20.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
+                                                    <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -1672,7 +1675,7 @@
                                                     <rect key="frame" x="316" y="12" width="44" height="20.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
+                                                    <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -1706,10 +1709,10 @@
             </objects>
             <point key="canvasLocation" x="1637.5999999999999" y="1669.1154422788607"/>
         </scene>
-        <!--View Controller-->
+        <!--Salon Address View Controller-->
         <scene sceneID="iS1-bV-GDq">
             <objects>
-                <viewController id="1Pe-qS-UPc" sceneMemberID="viewController">
+                <viewController id="1Pe-qS-UPc" customClass="EKSalonAddressViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="tZr-IV-OXC"/>
                         <viewControllerLayoutGuide type="bottom" id="NFM-3S-f3C"/>
@@ -1736,7 +1739,7 @@
                                         <barButtonItem key="rightBarButtonItem" style="done" systemItem="done" id="3aW-Wz-8Qn">
                                             <color key="tintColor" red="1" green="0.76470588240000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <connections>
-                                                <segue destination="Lyk-EI-4bC" kind="unwind" unwindAction="unwindToSalonInfoVC:" id="mpj-ze-7Sc"/>
+                                                <action selector="didTapDone:" destination="1Pe-qS-UPc" id="d4C-5y-eyf"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -1744,6 +1747,9 @@
                             </navigationBar>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="UaD-cb-29k">
                                 <rect key="frame" x="0.0" y="108" width="375" height="559"/>
+                                <connections>
+                                    <outlet property="delegate" destination="1Pe-qS-UPc" id="cg9-eT-2S0"/>
+                                </connections>
                             </mapView>
                             <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="EGO-tD-M1c">
                                 <rect key="frame" x="0.0" y="64" width="375" height="44"/>
@@ -1767,8 +1773,17 @@
                             <constraint firstItem="EGO-tD-M1c" firstAttribute="leading" secondItem="Ikk-g8-ytE" secondAttribute="leading" id="zSM-ja-zak"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="mapView" destination="UaD-cb-29k" id="ZSz-nj-136"/>
+                        <outlet property="pinImageView" destination="tld-Hb-T8P" id="6sA-YB-v51"/>
+                        <segue destination="Lyk-EI-4bC" kind="unwind" identifier="salonAddressToSalonInfoVCSegue" unwindAction="unwindToSalonInfoVC:" id="F29-cO-6Fb"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="T2T-qH-uGt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icPlace" id="tld-Hb-T8P">
+                    <rect key="frame" x="0.0" y="0.0" width="60" height="70"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                </imageView>
                 <exit id="Lyk-EI-4bC" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2432.8000000000002" y="1270.6146926536733"/>
@@ -1781,10 +1796,10 @@
             </objects>
             <point key="canvasLocation" x="2542" y="1691"/>
         </scene>
-        <!--View Controller-->
+        <!--Salon Role View Controller-->
         <scene sceneID="6FF-xu-DDZ">
             <objects>
-                <viewController id="hiu-fb-7EH" sceneMemberID="viewController">
+                <viewController id="hiu-fb-7EH" customClass="EKSalonRoleViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="OGp-QK-4Zm"/>
                         <viewControllerLayoutGuide type="bottom" id="9Cv-pC-BPh"/>
@@ -1792,12 +1807,65 @@
                     <view key="view" contentMode="scaleToFill" id="SZ6-rB-XzD">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="h5V-a3-HX3">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <view key="tableFooterView" contentMode="scaleToFill" id="2ga-vj-7o5">
+                                    <rect key="frame" x="0.0" y="72" width="375" height="44"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </view>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="gray" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="salonRoleCell" id="cJW-tm-mOl" customClass="EKSalonSelectTableViewCell">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cJW-tm-mOl" id="IpI-Xu-01O">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w5y-yP-K6A">
+                                                    <rect key="frame" x="15" y="11" width="352" height="22"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="w5y-yP-K6A" firstAttribute="trailing" secondItem="IpI-Xu-01O" secondAttribute="trailingMargin" id="CAK-IF-5R5"/>
+                                                <constraint firstItem="w5y-yP-K6A" firstAttribute="leading" secondItem="IpI-Xu-01O" secondAttribute="leadingMargin" constant="7" id="KmM-7C-86l"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="w5y-yP-K6A" secondAttribute="bottom" constant="3" id="OPj-64-QBq"/>
+                                                <constraint firstItem="w5y-yP-K6A" firstAttribute="top" secondItem="IpI-Xu-01O" secondAttribute="topMargin" constant="3" id="VN9-Zx-kk3"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="cellTextLabel" destination="w5y-yP-K6A" id="xh3-XZ-vq5"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="hiu-fb-7EH" id="E95-SG-Chz"/>
+                                    <outlet property="delegate" destination="hiu-fb-7EH" id="P8B-K7-5mZ"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="9Cv-pC-BPh" firstAttribute="top" secondItem="h5V-a3-HX3" secondAttribute="bottom" id="9mQ-Ru-lRV"/>
+                            <constraint firstItem="h5V-a3-HX3" firstAttribute="top" secondItem="SZ6-rB-XzD" secondAttribute="top" id="FKg-2H-bSB"/>
+                            <constraint firstItem="h5V-a3-HX3" firstAttribute="leading" secondItem="SZ6-rB-XzD" secondAttribute="leading" id="h9G-Sj-qAx"/>
+                            <constraint firstAttribute="trailing" secondItem="h5V-a3-HX3" secondAttribute="trailing" id="tLj-EM-lBl"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="h5V-a3-HX3" id="rbw-Cj-yBt"/>
+                        <segue destination="WVc-80-3b6" kind="unwind" identifier="salonRoleVcToSalonInfoVC" unwindAction="unwindToSalonInfoVC:" id="7DS-DP-GvV"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4BG-JC-rDH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="WVc-80-3b6" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2434" y="2131"/>
+            <point key="canvasLocation" x="2432.8000000000002" y="2128.785607196402"/>
         </scene>
         <!--Role View Controller-->
         <scene sceneID="h65-hJ-xUR">
@@ -2389,6 +2457,7 @@
         <image name="icDecentrilized" width="20" height="20"/>
         <image name="icEdit" width="21" height="21"/>
         <image name="icFb" width="18" height="18"/>
+        <image name="icPlace" width="26" height="39"/>
         <image name="icPlaceholder" width="62" height="62"/>
         <image name="icScissors" width="44" height="45"/>
         <image name="salonFlowLine" width="300" height="44"/>

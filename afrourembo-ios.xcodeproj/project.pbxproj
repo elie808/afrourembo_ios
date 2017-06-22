@@ -18,6 +18,7 @@
 		471AA1881ED44A0E009B840A /* Review.m in Sources */ = {isa = PBXBuildFile; fileRef = 471AA1871ED44A0E009B840A /* Review.m */; };
 		471AA18B1ED45DD0009B840A /* UIImage+Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 471AA18A1ED45DD0009B840A /* UIImage+Helpers.m */; };
 		4740243D1EDE1DB30089A6D2 /* EKChartSummaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4740243C1EDE1DB30089A6D2 /* EKChartSummaryViewController.m */; };
+		47428CFE1EFB5E70001C193F /* EKSalonRoleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47428CFD1EFB5E70001C193F /* EKSalonRoleViewController.m */; };
 		47448AE01EAE462F0098CED3 /* EKEditProfileInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47448ADF1EAE462F0098CED3 /* EKEditProfileInfoViewController.m */; };
 		474BD5701E97F721009410C4 /* EKNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 474BD56F1E97F721009410C4 /* EKNavigationViewController.m */; };
 		474BD5731E97F8F3009410C4 /* EKTextFieldTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 474BD5721E97F8F3009410C4 /* EKTextFieldTableViewCell.m */; };
@@ -124,6 +125,8 @@
 		4740243B1EDE1DB30089A6D2 /* EKChartSummaryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKChartSummaryViewController.h; sourceTree = "<group>"; };
 		4740243C1EDE1DB30089A6D2 /* EKChartSummaryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKChartSummaryViewController.m; sourceTree = "<group>"; };
 		474024411EDE23390089A6D2 /* afrourembo-ios-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "afrourembo-ios-Bridging-Header.h"; sourceTree = "<group>"; };
+		47428CFC1EFB5E70001C193F /* EKSalonRoleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKSalonRoleViewController.h; sourceTree = "<group>"; };
+		47428CFD1EFB5E70001C193F /* EKSalonRoleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKSalonRoleViewController.m; sourceTree = "<group>"; };
 		47448ADE1EAE462F0098CED3 /* EKEditProfileInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKEditProfileInfoViewController.h; sourceTree = "<group>"; };
 		47448ADF1EAE462F0098CED3 /* EKEditProfileInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKEditProfileInfoViewController.m; sourceTree = "<group>"; };
 		474BD56E1E97F721009410C4 /* EKNavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKNavigationViewController.h; sourceTree = "<group>"; };
@@ -730,6 +733,8 @@
 				479F7D761EF17BF900EB445A /* EKSalonInfoViewController.m */,
 				4760FC7A1EF88C8200099DFD /* EKSalonAddressViewController.h */,
 				4760FC7B1EF88C8200099DFD /* EKSalonAddressViewController.m */,
+				47428CFC1EFB5E70001C193F /* EKSalonRoleViewController.h */,
+				47428CFD1EFB5E70001C193F /* EKSalonRoleViewController.m */,
 			);
 			name = "SALON - Info";
 			sourceTree = "<group>";
@@ -1103,6 +1108,7 @@
 				4740243D1EDE1DB30089A6D2 /* EKChartSummaryViewController.m in Sources */,
 				478278D11E7923D000FB2FD2 /* AppDelegate.m in Sources */,
 				4787C6E01EB40DD200DF7B83 /* EKCartCollectionViewCell+Helpers.m in Sources */,
+				47428CFE1EFB5E70001C193F /* EKSalonRoleViewController.m in Sources */,
 				47D88E6B1E793347001B88D0 /* EKSplashViewController.m in Sources */,
 				47AF51B71E9B765D005FE6EB /* EKSalonListCollectionViewCell.m in Sources */,
 				47EA09DC1EB7594800400603 /* EKAccessoryTableViewCell.m in Sources */,
