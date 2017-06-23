@@ -48,6 +48,8 @@
 
 + (void)configureResponseDescriptors:(RKObjectManager *)objectManager {
     
+    [objectManager addResponseDescriptor:[Category categoryResponseDescriptor]];
+    
     [objectManager addResponseDescriptorsFromArray:@[
                                                      [Customer userRegistrationResponseDescriptor],
                                                      [Customer userLoginResponseDescriptor],

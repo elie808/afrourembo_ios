@@ -18,7 +18,22 @@ static NSString * const kUnwindSegue    = @"selectedCategoryUnwindSegue";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    _dataSourceArray = [NSMutableArray arrayWithArray:[self createStubs]];
+//    _dataSourceArray = [NSMutableArray arrayWithArray:[self createStubs]];
+    
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    [Category getCategoriesWithBlock:^(NSArray<Category *> *categoriesArray) {
+    
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+        _dataSourceArray = [NSMutableArray arrayWithArray:categoriesArray];
+        
+    } withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
+        
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+        [self showMessage:errorMessage
+                withTitle:@"Error"
+          completionBlock:nil];
+    }];
+    
 }
 
 #pragma mark - UITableViewDataSource
@@ -59,6 +74,8 @@ static NSString * const kUnwindSegue    = @"selectedCategoryUnwindSegue";
      
         EKAddNewServiceViewController *vc = segue.destinationViewController;
         vc.serviceToEdit.serviceGroup = ((Service*)sender).serviceGroup;
+        
+        vc.serviceToEdit.name = @"TEST TITLE";
     }
 }
 
@@ -67,22 +84,22 @@ static NSString * const kUnwindSegue    = @"selectedCategoryUnwindSegue";
 - (NSArray *)createStubs {
  
     Service *obj1 = [Service new];
-    obj1.serviceTitle = @"";
-    obj1.serviceImage = nil;
+    obj1.name = @"";
+//    obj1.icon = nil;
     obj1.serviceGroup = @"Category Title 1";
     obj1.servicePrice = 0;
     obj1.serviceLaborTime = 0;
     
     Service *obj2 = [Service new];
-    obj2.serviceTitle = @"";
-    obj2.serviceImage = nil;
+    obj2.name = @"";
+//    obj2.serviceImage = nil;
     obj2.serviceGroup = @"Category Title 2";
     obj2.servicePrice = 0;
     obj2.serviceLaborTime = 0;
     
     Service *obj3 = [Service new];
-    obj3.serviceTitle = @"";
-    obj3.serviceImage = nil;
+    obj3.name = @"";
+//    obj3.serviceImage = nil;
     obj3.serviceGroup = @"Category Title 3";
     obj3.servicePrice = 0;
     obj3.serviceLaborTime = 0;

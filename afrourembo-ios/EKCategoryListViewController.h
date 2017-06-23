@@ -9,8 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "EKTextFieldTableViewCell.h"
 #import "Service.h"
+#import "Category+API.h"
 #import "EKAddNewServiceViewController.h"
 #import <MBProgressHUD/MBProgressHUD.h>
+#import "UIViewController+Helpers.h"
 
 @interface EKCategoryListViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 

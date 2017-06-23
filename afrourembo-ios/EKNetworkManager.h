@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <RestKit/RestKit.h>
 
+#import "Category+API.h"
 #import "Customer+API.h"
 #import "Professional+API.h"
 #import "ProfessionalLogin+API.h"

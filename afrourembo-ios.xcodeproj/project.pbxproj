@@ -97,6 +97,9 @@
 		47F714111ED704350028FB65 /* EKSalonSelectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47F714101ED704350028FB65 /* EKSalonSelectViewController.m */; };
 		47F714151ED70AFB0028FB65 /* EKSalonSelectTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 47F714141ED70AFB0028FB65 /* EKSalonSelectTableViewCell.m */; };
 		47FE51C31EFD26F900A39BAE /* Address.m in Sources */ = {isa = PBXBuildFile; fileRef = 47FE51C21EFD26F900A39BAE /* Address.m */; };
+		47FE51C61EFD59F500A39BAE /* Category.m in Sources */ = {isa = PBXBuildFile; fileRef = 47FE51C51EFD59F500A39BAE /* Category.m */; };
+		47FE51C91EFD5BD400A39BAE /* Category+API.m in Sources */ = {isa = PBXBuildFile; fileRef = 47FE51C81EFD5BD400A39BAE /* Category+API.m */; };
+		47FE51CC1EFD5BE100A39BAE /* Service+API.m in Sources */ = {isa = PBXBuildFile; fileRef = 47FE51CB1EFD5BE100A39BAE /* Service+API.m */; };
 		47FF4F681EB5520E0022A6ED /* Customer.m in Sources */ = {isa = PBXBuildFile; fileRef = 47FF4F671EB5520E0022A6ED /* Customer.m */; };
 		47FF4F6B1EB557620022A6ED /* Customer+API.m in Sources */ = {isa = PBXBuildFile; fileRef = 47FF4F6A1EB557620022A6ED /* Customer+API.m */; };
 		47FFF9751E99E81F008B6A31 /* EKImageTextTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 47FFF9741E99E81F008B6A31 /* EKImageTextTableViewCell.m */; };
@@ -281,6 +284,12 @@
 		47F714141ED70AFB0028FB65 /* EKSalonSelectTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKSalonSelectTableViewCell.m; sourceTree = "<group>"; };
 		47FE51C11EFD26F900A39BAE /* Address.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Address.h; sourceTree = "<group>"; };
 		47FE51C21EFD26F900A39BAE /* Address.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Address.m; sourceTree = "<group>"; };
+		47FE51C41EFD59F500A39BAE /* Category.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Category.h; sourceTree = "<group>"; };
+		47FE51C51EFD59F500A39BAE /* Category.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Category.m; sourceTree = "<group>"; };
+		47FE51C71EFD5BD400A39BAE /* Category+API.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Category+API.h"; sourceTree = "<group>"; };
+		47FE51C81EFD5BD400A39BAE /* Category+API.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Category+API.m"; sourceTree = "<group>"; };
+		47FE51CA1EFD5BE100A39BAE /* Service+API.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Service+API.h"; sourceTree = "<group>"; };
+		47FE51CB1EFD5BE100A39BAE /* Service+API.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Service+API.m"; sourceTree = "<group>"; };
 		47FF4F661EB5520E0022A6ED /* Customer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Customer.h; sourceTree = "<group>"; };
 		47FF4F671EB5520E0022A6ED /* Customer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Customer.m; sourceTree = "<group>"; };
 		47FF4F691EB557620022A6ED /* Customer+API.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Customer+API.h"; sourceTree = "<group>"; };
@@ -641,6 +650,8 @@
 				4757C6521ED98D8000C2B52F /* Appointment.m */,
 				4787C6DB1EB40D5500DF7B83 /* Booking.h */,
 				4787C6DC1EB40D5500DF7B83 /* Booking.m */,
+				47FE51C41EFD59F500A39BAE /* Category.h */,
+				47FE51C51EFD59F500A39BAE /* Category.m */,
 				47FF4F661EB5520E0022A6ED /* Customer.h */,
 				47FF4F671EB5520E0022A6ED /* Customer.m */,
 				47C7D4CA1EBB5EF000457E53 /* Day.h */,
@@ -902,12 +913,16 @@
 		47FF4F6C1EB557660022A6ED /* API */ = {
 			isa = PBXGroup;
 			children = (
+				47FE51C71EFD5BD400A39BAE /* Category+API.h */,
+				47FE51C81EFD5BD400A39BAE /* Category+API.m */,
 				47FF4F691EB557620022A6ED /* Customer+API.h */,
 				47FF4F6A1EB557620022A6ED /* Customer+API.m */,
 				479F7D6C1EF0C17E00EB445A /* Professional+API.h */,
 				479F7D6D1EF0C17E00EB445A /* Professional+API.m */,
 				479F7D721EF16D8600EB445A /* ProfessionalLogin+API.h */,
 				479F7D731EF16D8600EB445A /* ProfessionalLogin+API.m */,
+				47FE51CA1EFD5BE100A39BAE /* Service+API.h */,
+				47FE51CB1EFD5BE100A39BAE /* Service+API.m */,
 			);
 			name = API;
 			sourceTree = "<group>";
@@ -1099,9 +1114,11 @@
 				477256091EB95EA4007CBD6B /* EKSwitchTableViewCell.m in Sources */,
 				47AF51BA1E9B8561005FE6EB /* Salon.m in Sources */,
 				479F7D711EF16D6700EB445A /* ProfessionalLogin.m in Sources */,
+				47FE51CC1EFD5BE100A39BAE /* Service+API.m in Sources */,
 				47C7D4CC1EBB5EF000457E53 /* Day.m in Sources */,
 				4757C6531ED98D8000C2B52F /* Appointment.m in Sources */,
 				47E2F0091EA5FF97002E2FD4 /* EKProfileInfoFacebookViewController.m in Sources */,
+				47FE51C61EFD59F500A39BAE /* Category.m in Sources */,
 				4783DF8D1EA4CDAD00C87C60 /* EKBookingTimeCollectionViewCell.m in Sources */,
 				4760FC7C1EF88C8200099DFD /* EKSalonAddressViewController.m in Sources */,
 				4757C64D1ED973FD00C2B52F /* EKTodayTableViewCell.m in Sources */,
@@ -1151,6 +1168,7 @@
 				47AF51B21E9B6897005FE6EB /* EKSalonListTableViewCell.m in Sources */,
 				47E2F0061EA5FE9D002E2FD4 /* EKSignupViewController.m in Sources */,
 				474BD5701E97F721009410C4 /* EKNavigationViewController.m in Sources */,
+				47FE51C91EFD5BD400A39BAE /* Category+API.m in Sources */,
 				47D88E6E1E793893001B88D0 /* EKWelcomeViewController.m in Sources */,
 				470CD7531EA1CB930086DEE4 /* EKCompanyProfessionalCollectionViewCell.m in Sources */,
 				47822B051EDDAE49001E247F /* EKSalesSummaryViewController.m in Sources */,
