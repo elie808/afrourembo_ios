@@ -10,4 +10,12 @@
 
 @implementation Service (API)
 
++ (RKObjectMapping *)map1 {
+
+    RKObjectMapping *mapping = [RKObjectMapping mappingForClass:[Service class]];
+    [mapping addAttributeMappingsFromArray:@[@"name"]]; //TODO: Add icon
+    
+    return mapping;
+}
+
 @end

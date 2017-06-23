@@ -16,8 +16,8 @@ static NSString * const kService4 = @"SPECIAL OCCASIONS PROS";
 
 @interface Service : NSObject
 
-@property NSString *serviceTitle;
-@property NSString *serviceImage;
+@property NSString *name;
+@property NSString *icon;
 
 @property NSString *serviceGroup;
 @property CGFloat servicePrice;

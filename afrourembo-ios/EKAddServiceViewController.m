@@ -44,7 +44,7 @@ static NSString * const kUnwindFromNewService = @"unwindFromNewServiceToServiceV
     
     Service *serviceObj = [self.dataSourceArray objectAtIndex:indexPath.row];
     
-    cell.cellTextLabel.text = serviceObj.serviceTitle;
+    cell.cellTextLabel.text = serviceObj.name;
     
     return cell;
 }

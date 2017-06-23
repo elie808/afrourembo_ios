@@ -35,7 +35,7 @@ static NSString * const kUnwindRemoveSegue = @"unwindNewServiceToServiceVCREMOVE
     if (!self.passedService) {
         
         self.serviceToEdit.serviceGroup = @"";
-        self.serviceToEdit.serviceTitle = @"";
+        self.serviceToEdit.name = @"";
         self.serviceToEdit.servicePrice = 0;
         self.serviceToEdit.serviceLaborTime = 0;
         
@@ -44,7 +44,7 @@ static NSString * const kUnwindRemoveSegue = @"unwindNewServiceToServiceVCREMOVE
     } else {
     
         self.serviceToEdit.serviceGroup = self.passedService.serviceGroup;
-        self.serviceToEdit.serviceTitle = self.passedService.serviceTitle;
+        self.serviceToEdit.name = self.passedService.name;
         self.serviceToEdit.servicePrice = self.passedService.servicePrice;
         self.serviceToEdit.serviceLaborTime = self.passedService.serviceLaborTime;
     }
@@ -59,7 +59,7 @@ static NSString * const kUnwindRemoveSegue = @"unwindNewServiceToServiceVCREMOVE
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 4;
+    return _dataSourceArray.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -97,7 +97,13 @@ static NSString * const kUnwindRemoveSegue = @"unwindNewServiceToServiceVCREMOVE
         
         case 0: [self performSegueWithIdentifier:kGroupListSegue sender:nil]; break;
             
-        case 1: [self performSegueWithIdentifier:kServiceListSegue sender:nil]; break;
+        case 1: {
+     
+            if (self.serviceToEdit.serviceGroup.length > 0 && self.serviceToEdit.name.length > 0) {
+            
+                [self performSegueWithIdentifier:kServiceListSegue sender:nil]; break;
+            }
+        }
             
         default: break;
     }
@@ -184,12 +190,23 @@ static NSString * const kUnwindRemoveSegue = @"unwindNewServiceToServiceVCREMOVE
 /// used to make populating and updating the tabelView values simple, with a backing data model and minimal code in tableView:cellForRow
 - (void)initializeDataSource {
     
-    _dataSourceArray = @[
-                         @{@"Group" : self.serviceToEdit.serviceGroup},
-                         @{@"Title" : self.serviceToEdit.serviceTitle},
-                         @{@"Price" : [NSString stringWithFormat:@"%f", self.serviceToEdit.servicePrice]},
-                         @{@"Time for service" : [NSString stringWithFormat:@"%f", self.serviceToEdit.serviceLaborTime]}
-                         ];
+    if (self.serviceToEdit.name.length > 0) {
+    
+        _dataSourceArray = @[
+                             @{@"Group" : self.serviceToEdit.serviceGroup},
+                             @{@"Title" : self.serviceToEdit.name},
+                             @{@"Price" : [NSString stringWithFormat:@"%f", self.serviceToEdit.servicePrice]},
+                             @{@"Time for service" : [NSString stringWithFormat:@"%f", self.serviceToEdit.serviceLaborTime]}
+                             ];
+        
+    } else {
+        
+        _dataSourceArray = @[
+                             @{@"Group" : self.serviceToEdit.serviceGroup},
+                             @{@"Price" : [NSString stringWithFormat:@"%f", self.serviceToEdit.servicePrice]},
+                             @{@"Time for service" : [NSString stringWithFormat:@"%f", self.serviceToEdit.serviceLaborTime]}
+                             ];
+    }
 }
 
 @end

@@ -29,7 +29,7 @@
 
 - (void)configureCellForService:(Service *)serviceObj {
     
-    self.cellServiceLabel.text = serviceObj.serviceTitle;
+    self.cellServiceLabel.text = serviceObj.name;
     self.cellServiceLaborLabel.text = [NSString stringWithFormat:@"$%.2f for %.f mins",
                                        serviceObj.servicePrice, serviceObj.serviceLaborTime];
 }

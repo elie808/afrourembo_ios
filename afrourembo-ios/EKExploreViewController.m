@@ -51,20 +51,20 @@ static NSString * const kDiscoverSegue  = @"exploreToDiscover";
 - (NSArray *)createStubs {
     
     Service *service1 = [Service new];
-    service1.serviceTitle = kService1;
-    service1.serviceImage = @"dummy_portrait1";
+    service1.name = kService1;
+    service1.icon = @"dummy_portrait1";
     
     Service *service2 = [Service new];
-    service2.serviceTitle = kService2;
-    service2.serviceImage = @"dummy_portrait2";
+    service2.name = kService2;
+    service2.icon = @"dummy_portrait2";
     
     Service *service3 = [Service new];
-    service3.serviceTitle = kService3;
-    service3.serviceImage = @"dummy_portrait3";
+    service3.name = kService3;
+    service3.icon = @"dummy_portrait3";
     
     Service *service4 = [Service new];
-    service4.serviceTitle = kService4;
-    service4.serviceImage = @"dummy_portrait4";
+    service4.name = kService4;
+    service4.icon = @"dummy_portrait4";
     
     return @[service1, service2, service3, service4, service1, service2, service3, service4, service1, service2, service3, service4];
 }
@@ -104,8 +104,8 @@ static NSString * const kDiscoverSegue  = @"exploreToDiscover";
     Service *service = [_dataSourceArray objectAtIndex:indexPath.row];
     
     EKExploreCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kExploreCell forIndexPath:indexPath];
-    cell.cellTitleLabel.text = service.serviceTitle;
-    cell.cellImageView.image = [UIImage imageNamed:service.serviceImage];
+    cell.cellTitleLabel.text = service.name;
+    cell.cellImageView.image = [UIImage imageNamed:service.icon];
 
     return cell;
 }
@@ -155,7 +155,7 @@ static NSString * const kDiscoverSegue  = @"exploreToDiscover";
     if ([segue.identifier isEqualToString:kDiscoverSegue]) {
         
         EKDiscoverMapViewController *vc = segue.destinationViewController;
-        vc.title = ((Service*)sender).serviceTitle;
+        vc.title = ((Service*)sender).name;
         vc.passedService = (Service*)sender;
     }
     

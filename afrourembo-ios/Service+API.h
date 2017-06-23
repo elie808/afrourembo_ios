@@ -7,7 +7,12 @@
 //
 
 #import "Service.h"
+#import <RestKit/RestKit.h>
+#import "EKNetworkingConstants.h"
 
 @interface Service (API)
+
+// categoryId, categoryName, categoryGender, categoryServices, categoryIcon
++ (RKObjectMapping *)map1;
 
 @end

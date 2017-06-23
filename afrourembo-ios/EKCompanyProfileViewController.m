@@ -45,12 +45,12 @@
      */
 
     Service *service1 = [Service new];
-    service1.serviceTitle = @"Service 1 title";
+    service1.name = @"Service 1 title";
     service1.servicePrice = 40;
     service1.serviceLaborTime = 69;
     
     Service *service2 = [Service new];
-    service2.serviceTitle = @"Service 2 title";
+    service2.name = @"Service 2 title";
     service2.servicePrice = 10;
     service2.serviceLaborTime = 20;
     

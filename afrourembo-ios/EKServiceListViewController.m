@@ -37,7 +37,7 @@ static NSString * const kUnwindSegue    = @"selectedTitleUnwindSegue";
     
     EKTextFieldTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kCellID forIndexPath:indexPath];
     
-    cell.cellTitleLabel.text = obj.serviceTitle;
+    cell.cellTitleLabel.text = obj.name;
     
     return cell;
 }
@@ -58,7 +58,7 @@ static NSString * const kUnwindSegue    = @"selectedTitleUnwindSegue";
     if ([segue.identifier isEqualToString:kUnwindSegue]) {
         
         EKAddNewServiceViewController *vc = segue.destinationViewController;
-        vc.serviceToEdit.serviceTitle = ((Service *)sender).serviceTitle;
+        vc.serviceToEdit.name = ((Service *)sender).name;
     }
 }
 
@@ -67,22 +67,22 @@ static NSString * const kUnwindSegue    = @"selectedTitleUnwindSegue";
 - (NSArray *)createStubs {
     
     Service *obj1 = [Service new];
-    obj1.serviceTitle = @"Service Title 1";
-    obj1.serviceImage = nil;
+    obj1.name = @"Service Title 1";
+//    obj1.serviceImage = nil;
     obj1.serviceGroup = @"";
     obj1.servicePrice = 0;
     obj1.serviceLaborTime = 0;
     
     Service *obj2 = [Service new];
-    obj2.serviceTitle = @"Service Title 2";
-    obj2.serviceImage = nil;
+    obj2.name = @"Service Title 2";
+//    obj2.serviceImage = nil;
     obj2.serviceGroup = @"";
     obj2.servicePrice = 0;
     obj2.serviceLaborTime = 0;
     
     Service *obj3 = [Service new];
-    obj3.serviceTitle = @"Service Title 3";
-    obj3.serviceImage = nil;
+    obj3.name = @"Service Title 3";
+//    obj3.serviceImage = nil;
     obj3.serviceGroup = @"";
     obj3.servicePrice = 0;
     obj3.serviceLaborTime = 0;

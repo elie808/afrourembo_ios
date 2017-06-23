@@ -17,7 +17,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
  
-    NSLog(@"SERVICE %@", self.passedService.serviceTitle);
+    NSLog(@"SERVICE %@", self.passedService.name);
     if (!self.passedService) {
         //TODO: Regular Search
     } else {
