@@ -7,9 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Address.h"
 #import "EKTextFieldTableViewCell.h"
+#import <MapKit/MapKit.h>
 
-@interface EKSalonInfoViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
+@interface EKSalonInfoViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate>
+
+// View model
+@property NSString *companyName;
+@property NSString *role;
+@property NSString *address;
+@property CLLocationCoordinate2D addressCoords;
 
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 

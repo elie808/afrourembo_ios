@@ -1754,6 +1754,9 @@
                             <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="EGO-tD-M1c">
                                 <rect key="frame" x="0.0" y="64" width="375" height="44"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="1Pe-qS-UPc" id="2NR-MX-Z0J"/>
+                                </connections>
                             </searchBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1776,6 +1779,7 @@
                     <connections>
                         <outlet property="mapView" destination="UaD-cb-29k" id="ZSz-nj-136"/>
                         <outlet property="pinImageView" destination="tld-Hb-T8P" id="6sA-YB-v51"/>
+                        <outlet property="searchBar" destination="EGO-tD-M1c" id="sBD-V3-o8e"/>
                         <segue destination="Lyk-EI-4bC" kind="unwind" identifier="salonAddressToSalonInfoVCSegue" unwindAction="unwindToSalonInfoVC:" id="F29-cO-6Fb"/>
                     </connections>
                 </viewController>

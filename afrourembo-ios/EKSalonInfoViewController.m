@@ -15,16 +15,19 @@ static NSString * const kAdressCell = @"salonAddressSignUpCell";
 static NSString * const kAdressSegue = @"salonInfoToSalonAdressVC";
 static NSString * const kRoleSegue = @"salonInfoToRoleVC";
 
-@interface EKSalonInfoViewController() {
+@implementation EKSalonInfoViewController {
     NSArray *_dataSourceArray;
 }
-@end
-
-@implementation EKSalonInfoViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    _dataSourceArray = @[@"Company Name", @"Role", @"Address"];
+    
+    self.companyName = @"";
+    self.role = @"";
+    self.address = @"";
+    self.addressCoords = CLLocationCoordinate2DMake(0, 0);
+    
+    [self initializeDataSource];
 }
 
 #pragma mark - TableView DataSource
@@ -39,10 +42,14 @@ static NSString * const kRoleSegue = @"salonInfoToRoleVC";
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
+    NSString *labelValue = [[(NSDictionary *)[_dataSourceArray objectAtIndex:indexPath.row] allKeys] firstObject];
+    NSString *placeHolderValue = [[(NSDictionary *)[_dataSourceArray objectAtIndex:indexPath.row] allValues] firstObject];
+    
     if (indexPath.row == 0) {
         
         EKTextFieldTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kSalonCell forIndexPath:indexPath];
-        cell.cellTitleLabel.text = _dataSourceArray[indexPath.row];
+        cell.cellTitleLabel.text = labelValue;
+        cell.cellTextField.text = placeHolderValue;
         
         return cell;
     }
@@ -50,8 +57,8 @@ static NSString * const kRoleSegue = @"salonInfoToRoleVC";
     if (indexPath.row == 1) {
         
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kRoleCell forIndexPath:indexPath];
-        cell.textLabel.text = _dataSourceArray[indexPath.row];
-        cell.detailTextLabel.text = @"my role";
+        cell.textLabel.text = labelValue;
+        cell.detailTextLabel.text = placeHolderValue;
         
         return cell;
     }
@@ -59,8 +66,8 @@ static NSString * const kRoleSegue = @"salonInfoToRoleVC";
     if (indexPath.row == 2) {
         
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kAdressCell forIndexPath:indexPath];
-        cell.textLabel.text = _dataSourceArray[indexPath.row];
-        cell.detailTextLabel.text = @"my address";
+        cell.textLabel.text = labelValue;
+        cell.detailTextLabel.text = placeHolderValue;
         
         return cell;
     }
@@ -84,19 +91,50 @@ static NSString * const kRoleSegue = @"salonInfoToRoleVC";
     }
 }
 
+#pragma mark - UITextFieldDelegate
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    [textField resignFirstResponder];
+    
+    return YES;
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField {
+    
+    _companyName = textField.text;
+}
+
 #pragma mark - Actions
 
 - (IBAction)didTapSubmit:(id)sender {
+    
+    NSLog(@"COMPANY: %@", self.companyName);
+    NSLog(@"ROLE: %@", self.role);
+    NSLog(@"ADDRESS: %@", self.address);
+    NSLog(@"COORDS: %f %f", self.addressCoords.latitude, self.addressCoords.longitude);
 }
 
 #pragma mark - Navigation
 
 - (IBAction)unwindToSalonInfoVC:(UIStoryboardSegue *)segue {
-    
+
+        [self initializeDataSource];
+        [self.tableView reloadData];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
  
+}
+
+#pragma mark - Helpers
+
+- (void)initializeDataSource {
+    
+    _dataSourceArray = @[
+                         @{@"Company Name" : self.companyName},
+                         @{@"Role" : self.role},
+                         @{@"Address" : self.address}
+                         ];
 }
 
 @end
