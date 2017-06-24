@@ -46,13 +46,13 @@
 
     Service *service1 = [Service new];
     service1.name = @"Service 1 title";
-    service1.servicePrice = 40;
-    service1.serviceLaborTime = 69;
+    service1.price = 40;
+    service1.time = 69;
     
     Service *service2 = [Service new];
     service2.name = @"Service 2 title";
-    service2.servicePrice = 10;
-    service2.serviceLaborTime = 20;
+    service2.price = 10;
+    service2.time = 20;
     
     Review *review1 = [Review new];
     review1.reviewTitle = @"Review 1 title";

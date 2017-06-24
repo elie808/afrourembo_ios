@@ -23,6 +23,7 @@ static NSString * const kUserProfileAPIPath  = @"user/profile";
 
 static NSString * const kProfessionalRegisterAPIPath = @"professional/register";
 static NSString * const kProfessionalLoginAPIPath    = @"professional/login";
+static NSString * const kProfessionalServiceAPIPath  = @"professional/services";
 
 #pragma mark - Status Codes
 

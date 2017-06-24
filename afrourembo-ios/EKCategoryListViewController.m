@@ -81,7 +81,7 @@ static NSString * const kUnwindSegue    = @"selectedCategoryUnwindSegue";
     if ([segue.identifier isEqualToString:kUnwindSegue]) {
      
 //        EKAddNewServiceViewController *vc = segue.destinationViewController;
-//        vc.serviceToEdit.serviceGroup = ((Category*)sender).name;
+//        vc.serviceToEdit.categoryId = ((Category*)sender).name;
 //        
 //        vc.serviceToEdit.name = @"TEST TITLE";
     }
@@ -94,23 +94,23 @@ static NSString * const kUnwindSegue    = @"selectedCategoryUnwindSegue";
     Service *obj1 = [Service new];
     obj1.name = @"";
 //    obj1.icon = nil;
-    obj1.serviceGroup = @"Category Title 1";
-    obj1.servicePrice = 0;
-    obj1.serviceLaborTime = 0;
+    obj1.categoryId = @"Category Title 1";
+    obj1.price = 0;
+    obj1.time = 0;
     
     Service *obj2 = [Service new];
     obj2.name = @"";
 //    obj2.serviceImage = nil;
-    obj2.serviceGroup = @"Category Title 2";
-    obj2.servicePrice = 0;
-    obj2.serviceLaborTime = 0;
+    obj2.categoryId = @"Category Title 2";
+    obj2.price = 0;
+    obj2.time = 0;
     
     Service *obj3 = [Service new];
     obj3.name = @"";
 //    obj3.serviceImage = nil;
-    obj3.serviceGroup = @"Category Title 3";
-    obj3.servicePrice = 0;
-    obj3.serviceLaborTime = 0;
+    obj3.categoryId = @"Category Title 3";
+    obj3.price = 0;
+    obj3.time = 0;
     
     return @[obj1, obj2, obj3];
 }

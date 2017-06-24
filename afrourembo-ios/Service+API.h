@@ -10,9 +10,20 @@
 #import <RestKit/RestKit.h>
 #import "EKNetworkingConstants.h"
 
+typedef void (^ServicesPostSuccessBlock)(Service *servicenObj);
+typedef void (^ServicesErrorBlock)(NSError *error, NSString *errorMessage, NSNumber *statusCode);
+
 @interface Service (API)
 
-// categoryId, categoryName, categoryGender, categoryServices, categoryIcon
+// name, price, time, serviceId, categoryId
 + (RKObjectMapping *)map1;
+
+// categoryId, serviceId, price, time
++ (RKObjectMapping *)map2;
+
++ (RKResponseDescriptor *)postServicesResponseDescriptor;
++ (RKRequestDescriptor *)postServicesRequestDescriptor;
+
++ (void)postServiceForVendor:(NSString *)vendorToken forCategory:(NSString *)catID service:(NSString *)serviceID price:(CGFloat)price time:(CGFloat)time withBlock:(ServicesPostSuccessBlock)successBlock withErrors:(ServicesErrorBlock)errorBlock;
 
 @end

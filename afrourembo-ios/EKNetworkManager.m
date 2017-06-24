@@ -42,6 +42,10 @@
     [objectManager addRequestDescriptorsFromArray:@[
                                                     [Professional professionalRegistrationRequestDescriptor]
                                                     ]];
+    
+    [objectManager addRequestDescriptorsFromArray:@[
+                                                    [Service postServicesRequestDescriptor]
+                                                    ]];
 }
 
 #pragma mark - Response
@@ -60,6 +64,10 @@
     
     [objectManager addResponseDescriptorsFromArray:@[
                                                      [Professional professionalRegistrationResponseDescriptor]
+                                                     ]];
+    
+    [objectManager addResponseDescriptorsFromArray:@[
+                                                     [Service postServicesResponseDescriptor]
                                                      ]];
 }
 

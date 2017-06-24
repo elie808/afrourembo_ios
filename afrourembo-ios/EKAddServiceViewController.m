@@ -10,6 +10,7 @@
 
 static NSString * const kEditServiceSegue = @"serviceListToEditService";
 static NSString * const kNewServiceSegue  = @"serviceListToNewService";
+static NSString * const kAvailabilitySegue = @"addServiceToAvailabilityVC";
 
 static NSString * const kServiceCell = @"addServiceCell";
 
@@ -71,6 +72,31 @@ static NSString * const kUnwindFromNewService = @"unwindFromNewServiceToServiceV
     [self performSegueWithIdentifier:kNewServiceSegue sender:nil];
 }
 
+- (IBAction)didTapNextButton:(id)sender {
+    
+    Service *serviceObj = [self.dataSourceArray firstObject];
+    
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    [Service postServiceForVendor:self.passedProfessional.token
+                      forCategory:@"5941502e4c59bd6a64bb4def"//serviceObj.categoryId
+                          service:@"590f3fa827757f0c9cf5fc0d"
+                            price:serviceObj.price
+                             time:serviceObj.time
+                        withBlock:^(Service *servicenObj) {
+                            
+                            [MBProgressHUD hideHUDForView:self.view animated:YES];
+                            [self performSegueWithIdentifier:kAvailabilitySegue sender:nil];
+                        }
+                       withErrors:^(NSError *error, NSString *errorMessage, NSNumber *statusCode) {
+                           
+                           [MBProgressHUD hideHUDForView:self.view animated:YES];
+                           
+                           [self showMessage:errorMessage
+                                   withTitle:@"There is something wrong"
+                             completionBlock:nil];
+                       }];
+}
+
 #pragma mark - Navigation
 
 - (IBAction)unwindToAddServiceVC:(UIStoryboardSegue *)segue {
@@ -86,6 +112,10 @@ static NSString * const kUnwindFromNewService = @"unwindFromNewServiceToServiceV
         
         EKAddNewServiceViewController *vc = segue.destinationViewController;
         vc.passedService = (Service*)sender;
+    }
+    
+    if ([segue.identifier isEqualToString:kAvailabilitySegue]) {
+        
     }
 }
 

@@ -31,7 +31,7 @@
     
     self.cellServiceLabel.text = serviceObj.name;
     self.cellServiceLaborLabel.text = [NSString stringWithFormat:@"$%.2f for %.f mins",
-                                       serviceObj.servicePrice, serviceObj.serviceLaborTime];
+                                       serviceObj.price, serviceObj.time];
 }
 
 - (IBAction)didTapBookButton:(id)sender {

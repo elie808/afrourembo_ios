@@ -1096,7 +1096,7 @@
                         <barButtonItem key="rightBarButtonItem" title="Next" id="frB-gg-QPe">
                             <color key="tintColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
-                                <segue destination="rOK-4c-Dey" kind="show" id="e8Z-zD-8mX"/>
+                                <action selector="didTapNextButton:" destination="glK-ac-Okm" id="DjR-qS-Ggd"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -1104,6 +1104,7 @@
                         <outlet property="tableView" destination="Mod-NP-lO6" id="qVo-M7-e5V"/>
                         <segue destination="bDT-Qn-xWO" kind="show" identifier="serviceListToNewService" id="qBK-gk-z1I"/>
                         <segue destination="bDT-Qn-xWO" kind="show" identifier="serviceListToEditService" id="pcN-xV-EFc"/>
+                        <segue destination="rOK-4c-Dey" kind="show" identifier="addServiceToAvailabilityVC" id="bgs-K4-9iK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lva-wj-oco" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1217,7 +1218,6 @@
                                 </connections>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="CFz-OH-1zY" firstAttribute="leading" secondItem="Ibv-ol-XYQ" secondAttribute="leading" id="Acf-VI-mOG"/>
                             <constraint firstItem="jkZ-ZZ-Hc3" firstAttribute="top" secondItem="CFz-OH-1zY" secondAttribute="bottom" id="ZQG-wj-5Tx"/>
@@ -2473,7 +2473,7 @@
     <inferredMetricsTieBreakers>
         <segue reference="zqt-Ee-Ez4"/>
         <segue reference="pcN-xV-EFc"/>
-        <segue reference="XIv-EK-ddw"/>
+        <segue reference="M7l-lQ-QbL"/>
         <segue reference="hg1-H8-gAt"/>
     </inferredMetricsTieBreakers>
 </document>

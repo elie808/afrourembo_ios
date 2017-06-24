@@ -10,6 +10,7 @@
 #import "EKTextFieldTableViewCell.h"
 #import "Professional.h"
 #import "Professional+API.h"
+#import "EKRoleViewController.h"
 #import "UIViewController+Helpers.h"
 #import <MBProgressHUD/MBProgressHUD.h>
 

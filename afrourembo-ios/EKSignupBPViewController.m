@@ -98,7 +98,9 @@ static NSString * const kRoleSegue = @"signupBPToRoleVC";
 
     if ([segue.identifier isEqualToString:kRoleSegue]) {
         
+        EKRoleViewController *vc = segue.destinationViewController;
         Professional *profObj = (Professional *)sender;
+        vc.passedProfessional = profObj;
     }
 }
 

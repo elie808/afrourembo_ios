@@ -9,8 +9,12 @@
 #import <UIKit/UIKit.h>
 #import "EKBusinessModelViewController.h"
 #import "EKSignInViewController.h"
+#import "EKAddServiceViewController.h"
+#import "Professional.h"
 
 @interface EKRoleViewController : UIViewController
+
+@property (strong, nonatomic) Professional *passedProfessional;
 
 - (IBAction)didTapSignInCustomer:(id)sender;
 - (IBAction)didTapSignInSalon:(id)sender;

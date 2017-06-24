@@ -34,19 +34,19 @@ static NSString * const kUnwindRemoveSegue = @"unwindNewServiceToServiceVCREMOVE
     
     if (!self.passedService) {
         
-        self.serviceToEdit.serviceGroup = @"";
+        self.serviceToEdit.categoryId = @"";
         self.serviceToEdit.name = @"";
-        self.serviceToEdit.servicePrice = 0;
-        self.serviceToEdit.serviceLaborTime = 0;
+        self.serviceToEdit.price = 0;
+        self.serviceToEdit.time = 0;
         
         self.removeServiceButton.hidden = YES;
         
     } else {
     
-        self.serviceToEdit.serviceGroup = self.passedService.serviceGroup;
+        self.serviceToEdit.categoryId = self.passedService.categoryId;
         self.serviceToEdit.name = self.passedService.name;
-        self.serviceToEdit.servicePrice = self.passedService.servicePrice;
-        self.serviceToEdit.serviceLaborTime = self.passedService.serviceLaborTime;
+        self.serviceToEdit.price = self.passedService.price;
+        self.serviceToEdit.time = self.passedService.time;
     }
     
     [self initializeDataSource];
@@ -83,8 +83,8 @@ static NSString * const kUnwindRemoveSegue = @"unwindNewServiceToServiceVCREMOVE
         
         cell.cellTextField.enabled = NO;
         
-        if (self.serviceToEdit.serviceGroup.length > 0 && self.serviceToEdit.name.length > 0) {
-            cell.cellTextField.text = [NSString stringWithFormat:@"%@, %@", self.serviceToEdit.serviceGroup, self.serviceToEdit.name];
+        if (self.serviceToEdit.categoryId.length > 0 && self.serviceToEdit.name.length > 0) {
+            cell.cellTextField.text = [NSString stringWithFormat:@"%@, %@", self.serviceToEdit.categoryId, self.serviceToEdit.name];
         }
         
     } else {
@@ -105,7 +105,7 @@ static NSString * const kUnwindRemoveSegue = @"unwindNewServiceToServiceVCREMOVE
             
 //        case 1: {
 //     
-//            if (self.serviceToEdit.serviceGroup.length > 0 && self.serviceToEdit.name.length > 0) {
+//            if (self.serviceToEdit.categoryId.length > 0 && self.serviceToEdit.name.length > 0) {
 //            
 //                [self performSegueWithIdentifier:kServiceListSegue sender:nil]; break;
 //            }
@@ -125,13 +125,13 @@ static NSString * const kUnwindRemoveSegue = @"unwindNewServiceToServiceVCREMOVE
 
 - (void)textFieldDidEndEditing:(UITextField *)textField {
     
-    if (textField.tag == 2) {
+    if (textField.tag == 1) {
         
-        self.serviceToEdit.servicePrice = [textField.text floatValue];
+        self.serviceToEdit.price = [textField.text floatValue];
         
-    } else if (textField.tag == 3) {
+    } else if (textField.tag == 2) {
         
-        self.serviceToEdit.serviceLaborTime = [textField.text floatValue];
+        self.serviceToEdit.time = [textField.text floatValue];
     }
 }
 
@@ -199,18 +199,18 @@ static NSString * const kUnwindRemoveSegue = @"unwindNewServiceToServiceVCREMOVE
 //    if (self.serviceToEdit.name.length > 0) {
 //    
 //        _dataSourceArray = @[
-//                             @{@"Group" : self.serviceToEdit.serviceGroup},
+//                             @{@"Group" : self.serviceToEdit.categoryId},
 //                             @{@"Title" : self.serviceToEdit.name},
-//                             @{@"Price" : [NSString stringWithFormat:@"%f", self.serviceToEdit.servicePrice]},
-//                             @{@"Time for service" : [NSString stringWithFormat:@"%f", self.serviceToEdit.serviceLaborTime]}
+//                             @{@"Price" : [NSString stringWithFormat:@"%f", self.serviceToEdit.price]},
+//                             @{@"Time for service" : [NSString stringWithFormat:@"%f", self.serviceToEdit.time]}
 //                             ];
 //        
 //    } else {
     
         _dataSourceArray = @[
-                             @{@"Service" : self.serviceToEdit.serviceGroup},
-                             @{@"Price" : [NSString stringWithFormat:@"%f", self.serviceToEdit.servicePrice]},
-                             @{@"Time for service" : [NSString stringWithFormat:@"%f", self.serviceToEdit.serviceLaborTime]}
+                             @{@"Service" : self.serviceToEdit.categoryId},
+                             @{@"Price" : [NSString stringWithFormat:@"%f", self.serviceToEdit.price]},
+                             @{@"Time for service" : [NSString stringWithFormat:@"%f", self.serviceToEdit.time]}
                              ];
 //    }
 }

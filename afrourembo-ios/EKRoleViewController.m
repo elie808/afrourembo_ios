@@ -94,11 +94,17 @@ static NSString * const kWorkInSalonBP   =  @"salonRoleVCToBusinessModelVC";
     if ([segue.identifier isEqualToString:kWorkAloneBP]) {
 //        EKBusinessModelViewController *vc = segue.destinationViewController;
 //        vc.BusinessModelUser = BusinessModelUserIndependentBP;
+        
+        EKAddServiceViewController *vc = segue.destinationViewController;
+        vc.passedProfessional = self.passedProfessional;
     }
     
     if ([segue.identifier isEqualToString:kWorkInSalonBP]) {
 //        EKBusinessModelViewController *vc = segue.destinationViewController;
 //        vc.BusinessModelUser = BusinessModelUserWorksInSalonBP;
+        
+        EKAddServiceViewController *vc = segue.destinationViewController;
+        vc.passedProfessional = self.passedProfessional;
     }
 }
 

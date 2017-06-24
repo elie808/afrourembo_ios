@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
+// stubs
 static NSString * const kService1 = @"NATURAL HAIR";
 static NSString * const kService2 = @"BEST WEAVING & EXTENSIONS";
 static NSString * const kService3 = @"TRENDING BARBERS";
@@ -16,11 +17,13 @@ static NSString * const kService4 = @"SPECIAL OCCASIONS PROS";
 
 @interface Service : NSObject
 
+@property NSString *serviceId;
+@property NSString *categoryId; //category to which the service belongs.
+
 @property NSString *name;
 @property NSString *icon;
 
-@property NSString *serviceGroup;
-@property CGFloat servicePrice;
-@property CGFloat serviceLaborTime; //in minutes
+@property CGFloat price; //price
+@property CGFloat time; //in minutes
 
 @end
