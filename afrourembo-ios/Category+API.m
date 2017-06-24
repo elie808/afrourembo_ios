@@ -43,7 +43,7 @@
                                               success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
                                                   
                                                   NSLog(@"Success Fetching Categories!!");
-                                                  successBlock([mappingResult.array firstObject]);
+                                                  successBlock(mappingResult.array);
                                                   
                                               } failure:^(RKObjectRequestOperation *operation, NSError *error) {
                                                   

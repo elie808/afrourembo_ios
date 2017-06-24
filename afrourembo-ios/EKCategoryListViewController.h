@@ -11,8 +11,9 @@
 #import "Service.h"
 #import "Category+API.h"
 #import "EKAddNewServiceViewController.h"
-#import <MBProgressHUD/MBProgressHUD.h>
+#import "EKServiceListViewController.h"
 #import "UIViewController+Helpers.h"
+#import <MBProgressHUD/MBProgressHUD.h>
 
 @interface EKCategoryListViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 

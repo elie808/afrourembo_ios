@@ -77,10 +77,16 @@ static NSString * const kUnwindRemoveSegue = @"unwindNewServiceToServiceVCREMOVE
     
     cell.cellTextField.keyboardType = UIKeyboardTypeNumberPad;
     
-    if (indexPath.row == 0 || indexPath.row == 1) {
-    
+//    if (indexPath.row == 0 || indexPath.row == 1) {
+
+    if (indexPath.row == 0) {
+        
         cell.cellTextField.enabled = NO;
-    
+        
+        if (self.serviceToEdit.serviceGroup.length > 0 && self.serviceToEdit.name.length > 0) {
+            cell.cellTextField.text = [NSString stringWithFormat:@"%@, %@", self.serviceToEdit.serviceGroup, self.serviceToEdit.name];
+        }
+        
     } else {
         
         cell.cellTextField.enabled = YES;
@@ -97,13 +103,13 @@ static NSString * const kUnwindRemoveSegue = @"unwindNewServiceToServiceVCREMOVE
         
         case 0: [self performSegueWithIdentifier:kGroupListSegue sender:nil]; break;
             
-        case 1: {
-     
-            if (self.serviceToEdit.serviceGroup.length > 0 && self.serviceToEdit.name.length > 0) {
-            
-                [self performSegueWithIdentifier:kServiceListSegue sender:nil]; break;
-            }
-        }
+//        case 1: {
+//     
+//            if (self.serviceToEdit.serviceGroup.length > 0 && self.serviceToEdit.name.length > 0) {
+//            
+//                [self performSegueWithIdentifier:kServiceListSegue sender:nil]; break;
+//            }
+//        }
             
         default: break;
     }
@@ -190,23 +196,23 @@ static NSString * const kUnwindRemoveSegue = @"unwindNewServiceToServiceVCREMOVE
 /// used to make populating and updating the tabelView values simple, with a backing data model and minimal code in tableView:cellForRow
 - (void)initializeDataSource {
     
-    if (self.serviceToEdit.name.length > 0) {
+//    if (self.serviceToEdit.name.length > 0) {
+//    
+//        _dataSourceArray = @[
+//                             @{@"Group" : self.serviceToEdit.serviceGroup},
+//                             @{@"Title" : self.serviceToEdit.name},
+//                             @{@"Price" : [NSString stringWithFormat:@"%f", self.serviceToEdit.servicePrice]},
+//                             @{@"Time for service" : [NSString stringWithFormat:@"%f", self.serviceToEdit.serviceLaborTime]}
+//                             ];
+//        
+//    } else {
     
         _dataSourceArray = @[
-                             @{@"Group" : self.serviceToEdit.serviceGroup},
-                             @{@"Title" : self.serviceToEdit.name},
+                             @{@"Service" : self.serviceToEdit.serviceGroup},
                              @{@"Price" : [NSString stringWithFormat:@"%f", self.serviceToEdit.servicePrice]},
                              @{@"Time for service" : [NSString stringWithFormat:@"%f", self.serviceToEdit.serviceLaborTime]}
                              ];
-        
-    } else {
-        
-        _dataSourceArray = @[
-                             @{@"Group" : self.serviceToEdit.serviceGroup},
-                             @{@"Price" : [NSString stringWithFormat:@"%f", self.serviceToEdit.servicePrice]},
-                             @{@"Time for service" : [NSString stringWithFormat:@"%f", self.serviceToEdit.serviceLaborTime]}
-                             ];
-    }
+//    }
 }
 
 @end

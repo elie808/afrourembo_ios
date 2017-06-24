@@ -18,7 +18,9 @@ static NSString * const kUnwindSegue    = @"selectedTitleUnwindSegue";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    _dataSourceArray = [NSMutableArray arrayWithArray:[self createStubs]];
+//    self.navigationBar.hidden = YES;
+    
+    _dataSourceArray = [NSMutableArray arrayWithArray:self.passedCategory.services];
 }
 
 #pragma mark - UITableViewDataSource
@@ -56,8 +58,9 @@ static NSString * const kUnwindSegue    = @"selectedTitleUnwindSegue";
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     
     if ([segue.identifier isEqualToString:kUnwindSegue]) {
-        
+
         EKAddNewServiceViewController *vc = segue.destinationViewController;
+        vc.serviceToEdit.serviceGroup = self.passedCategory.name;
         vc.serviceToEdit.name = ((Service *)sender).name;
     }
 }

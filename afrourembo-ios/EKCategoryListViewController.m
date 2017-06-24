@@ -9,22 +9,26 @@
 #import "EKCategoryListViewController.h"
 
 static NSString * const kCellID         = @"categoryListCellID";
+
+static NSString * const kServicesSegue  = @"categoryListToServiceListVC";
 static NSString * const kUnwindSegue    = @"selectedCategoryUnwindSegue";
 
 @implementation EKCategoryListViewController {
-    NSMutableArray *_dataSourceArray;
+    NSArray *_dataSourceArray;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-//    _dataSourceArray = [NSMutableArray arrayWithArray:[self createStubs]];
-    
+//    _dataSourceArray = [NSArray arrayWithArray:[self createStubs]];
+
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     [Category getCategoriesWithBlock:^(NSArray<Category *> *categoriesArray) {
     
         [MBProgressHUD hideHUDForView:self.view animated:YES];
-        _dataSourceArray = [NSMutableArray arrayWithArray:categoriesArray];
+        
+        _dataSourceArray = [NSArray arrayWithArray:categoriesArray];
+        [self.tableView reloadData];
         
     } withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
         
@@ -33,7 +37,6 @@ static NSString * const kUnwindSegue    = @"selectedCategoryUnwindSegue";
                 withTitle:@"Error"
           completionBlock:nil];
     }];
-    
 }
 
 #pragma mark - UITableViewDataSource
@@ -48,12 +51,11 @@ static NSString * const kUnwindSegue    = @"selectedCategoryUnwindSegue";
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    Service *catObj = [_dataSourceArray objectAtIndex:indexPath.row];
+    Category *catObj = [_dataSourceArray objectAtIndex:indexPath.row];
     
     EKTextFieldTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kCellID forIndexPath:indexPath];
-    
-    cell.cellTitleLabel.text = catObj.serviceGroup;
-    
+    cell.cellTitleLabel.text = [catObj.name uppercaseString];
+
     return cell;
 }
 
@@ -61,21 +63,27 @@ static NSString * const kUnwindSegue    = @"selectedCategoryUnwindSegue";
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 
-    Service *obj = [_dataSourceArray objectAtIndex:indexPath.row];
+    Category *obj = [_dataSourceArray objectAtIndex:indexPath.row];
     
-    [self performSegueWithIdentifier:kUnwindSegue sender:obj];
+    [self performSegueWithIdentifier:kServicesSegue sender:obj];
 }
 
 #pragma mark - Navigation
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     
+    if ([segue.identifier isEqualToString:kServicesSegue]) {
+
+        EKServiceListViewController *vc = segue.destinationViewController;
+        vc.passedCategory = (Category*)sender;
+    }
+
     if ([segue.identifier isEqualToString:kUnwindSegue]) {
      
-        EKAddNewServiceViewController *vc = segue.destinationViewController;
-        vc.serviceToEdit.serviceGroup = ((Service*)sender).serviceGroup;
-        
-        vc.serviceToEdit.name = @"TEST TITLE";
+//        EKAddNewServiceViewController *vc = segue.destinationViewController;
+//        vc.serviceToEdit.serviceGroup = ((Category*)sender).name;
+//        
+//        vc.serviceToEdit.name = @"TEST TITLE";
     }
 }
 

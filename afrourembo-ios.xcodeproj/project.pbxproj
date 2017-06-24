@@ -472,8 +472,7 @@
 			children = (
 				475FC37F1EB6BF5E00BB0731 /* EKAddNewServiceViewController.h */,
 				475FC3801EB6BF5E00BB0731 /* EKAddNewServiceViewController.m */,
-				475A4CF21EBF7EFC0089D477 /* EKAddNewServiceTableViewCell.h */,
-				475A4CF31EBF7EFC0089D477 /* EKAddNewServiceTableViewCell.m */,
+				47E301A11EFEA2DA00376AD7 /* Cells */,
 			);
 			name = "BP - Create New Service";
 			sourceTree = "<group>";
@@ -888,6 +887,15 @@
 				475A4CF11EBF74E20089D477 /* Categories */,
 			);
 			name = "Customer - Filter & Search ViewController";
+			sourceTree = "<group>";
+		};
+		47E301A11EFEA2DA00376AD7 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				475A4CF21EBF7EFC0089D477 /* EKAddNewServiceTableViewCell.h */,
+				475A4CF31EBF7EFC0089D477 /* EKAddNewServiceTableViewCell.m */,
+			);
+			name = Cells;
 			sourceTree = "<group>";
 		};
 		47F7140E1ED6FB320028FB65 /* BP - Business Model */ = {

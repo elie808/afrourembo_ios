@@ -9,11 +9,13 @@
 #import <UIKit/UIKit.h>
 #import "EKTextFieldTableViewCell.h"
 #import "EKAddNewServiceViewController.h"
+#import "Category.h"
 #import "Service.h"
 #import <MBProgressHUD/MBProgressHUD.h>
 
 @interface EKServiceListViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 
+@property (strong, nonatomic) Category *passedCategory;
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 
 @end
