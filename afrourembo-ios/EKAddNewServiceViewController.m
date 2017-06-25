@@ -34,7 +34,10 @@ static NSString * const kUnwindRemoveSegue = @"unwindNewServiceToServiceVCREMOVE
     
     if (!self.passedService) {
         
+        // initialize fields to avoid nil errors when inserting into the datasource dictionary
+        self.serviceToEdit.serviceId = @"";
         self.serviceToEdit.categoryId = @"";
+        self.serviceToEdit.categoryName = @"";
         self.serviceToEdit.name = @"";
         self.serviceToEdit.price = 0;
         self.serviceToEdit.time = 0;
@@ -44,6 +47,8 @@ static NSString * const kUnwindRemoveSegue = @"unwindNewServiceToServiceVCREMOVE
     } else {
     
         self.serviceToEdit.categoryId = self.passedService.categoryId;
+        self.serviceToEdit.categoryName = self.passedService.categoryName;
+        self.serviceToEdit.serviceId = self.passedService.serviceId;
         self.serviceToEdit.name = self.passedService.name;
         self.serviceToEdit.price = self.passedService.price;
         self.serviceToEdit.time = self.passedService.time;
@@ -84,7 +89,7 @@ static NSString * const kUnwindRemoveSegue = @"unwindNewServiceToServiceVCREMOVE
         cell.cellTextField.enabled = NO;
         
         if (self.serviceToEdit.categoryId.length > 0 && self.serviceToEdit.name.length > 0) {
-            cell.cellTextField.text = [NSString stringWithFormat:@"%@, %@", self.serviceToEdit.categoryId, self.serviceToEdit.name];
+            cell.cellTextField.text = [NSString stringWithFormat:@"%@, %@", self.serviceToEdit.categoryName, self.serviceToEdit.name];
         }
         
     } else {
@@ -208,7 +213,7 @@ static NSString * const kUnwindRemoveSegue = @"unwindNewServiceToServiceVCREMOVE
 //    } else {
     
         _dataSourceArray = @[
-                             @{@"Service" : self.serviceToEdit.categoryId},
+                             @{@"Service" : self.serviceToEdit.categoryName},
                              @{@"Price" : [NSString stringWithFormat:@"%f", self.serviceToEdit.price]},
                              @{@"Time for service" : [NSString stringWithFormat:@"%f", self.serviceToEdit.time]}
                              ];

@@ -10,12 +10,12 @@
 #import "EKAddServiceViewController.h"
 #import "EKAddNewServiceTableViewCell.h"
 #import "Service.h"
-#import "ServiceCategory.h"
+#import "Category.h"
 
 @interface EKAddNewServiceViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate>
 
 @property (strong, nonatomic) Service *passedService;
-@property (strong, nonatomic) Service *serviceToEdit; // to be passed down to presented segues, and edited by unwinding vc's
+@property (strong, nonatomic) Service *serviceToEdit; // to be passed down to presented segues, and updated by unwinding vc's
 
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) IBOutlet UIButton *removeServiceButton;

@@ -15,8 +15,10 @@
 + (RKObjectMapping *)map1 {
 
     RKObjectMapping *mapping = [RKObjectMapping mappingForClass:[Service class]];
-    [mapping addAttributeMappingsFromArray:@[@"name", @"price", @"time", @"serviceId", @"categoryId"]]; //TODO: Add icon
+    [mapping addAttributeMappingsFromArray:@[@"name", @"price", @"time", @"categoryId"]]; //TODO: Add icon
 
+    [mapping addAttributeMappingsFromDictionary:@{@"_id":@"serviceId"}];
+    
     return mapping;
 }
 

@@ -78,8 +78,8 @@ static NSString * const kUnwindFromNewService = @"unwindFromNewServiceToServiceV
     
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     [Service postServiceForVendor:self.passedProfessional.token
-                      forCategory:@"5941502e4c59bd6a64bb4def"//serviceObj.categoryId
-                          service:@"590f3fa827757f0c9cf5fc0d"
+                      forCategory:serviceObj.categoryId //@"5941502e4c59bd6a64bb4def"
+                          service:serviceObj.serviceId //@"590f3fa827757f0c9cf5fc0d"
                             price:serviceObj.price
                              time:serviceObj.time
                         withBlock:^(Service *servicenObj) {

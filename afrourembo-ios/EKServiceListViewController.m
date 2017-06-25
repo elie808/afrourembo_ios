@@ -60,8 +60,10 @@ static NSString * const kUnwindSegue    = @"selectedTitleUnwindSegue";
     if ([segue.identifier isEqualToString:kUnwindSegue]) {
 
         EKAddNewServiceViewController *vc = segue.destinationViewController;
-        vc.serviceToEdit.categoryId = self.passedCategory.name;
+        vc.serviceToEdit.categoryId = self.passedCategory.categoryId;
+        vc.serviceToEdit.categoryName = self.passedCategory.name;
         vc.serviceToEdit.name = ((Service *)sender).name;
+        vc.serviceToEdit.serviceId = ((Service *)sender).serviceId;
     }
 }
 
