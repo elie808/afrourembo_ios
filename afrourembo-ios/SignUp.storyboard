@@ -1104,7 +1104,7 @@
                         <outlet property="tableView" destination="Mod-NP-lO6" id="qVo-M7-e5V"/>
                         <segue destination="bDT-Qn-xWO" kind="show" identifier="serviceListToNewService" id="qBK-gk-z1I"/>
                         <segue destination="bDT-Qn-xWO" kind="show" identifier="serviceListToEditService" id="pcN-xV-EFc"/>
-                        <segue destination="rOK-4c-Dey" kind="show" identifier="addServiceToAvailabilityVC" id="bgs-K4-9iK"/>
+                        <segue destination="rOK-4c-Dey" kind="show" identifier="addServiceToAvailabilityVC" id="mPI-W1-jMh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lva-wj-oco" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1135,7 +1135,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Monday" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QOu-FC-qFM">
-                                                    <rect key="frame" x="15" y="8" width="288" height="27.5"/>
+                                                    <rect key="frame" x="15" y="8" width="288" height="28"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.8980392157" green="0.8980392157" blue="0.8980392157" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -1171,10 +1171,10 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="8wx-lp-Ojb">
-                                                    <rect key="frame" x="15" y="8" width="345" height="27.5"/>
+                                                    <rect key="frame" x="15" y="8" width="345" height="28"/>
                                                     <subviews>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6CR-N8-FKd">
-                                                            <rect key="frame" x="0.0" y="0.0" width="165" height="27.5"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="165" height="28"/>
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <state key="normal" title="9:00 AM">
@@ -1185,7 +1185,7 @@
                                                             </connections>
                                                         </button>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kd2-mj-BBQ">
-                                                            <rect key="frame" x="180" y="0.0" width="165" height="27.5"/>
+                                                            <rect key="frame" x="180" y="0.0" width="165" height="28"/>
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <state key="normal" title="7:00 PM">
@@ -1219,10 +1219,10 @@
                             </tableView>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="CFz-OH-1zY" firstAttribute="leading" secondItem="Ibv-ol-XYQ" secondAttribute="leading" id="Acf-VI-mOG"/>
-                            <constraint firstItem="jkZ-ZZ-Hc3" firstAttribute="top" secondItem="CFz-OH-1zY" secondAttribute="bottom" id="ZQG-wj-5Tx"/>
-                            <constraint firstAttribute="trailing" secondItem="CFz-OH-1zY" secondAttribute="trailing" id="l9Y-7d-CVt"/>
-                            <constraint firstItem="CFz-OH-1zY" firstAttribute="top" secondItem="Ibv-ol-XYQ" secondAttribute="top" constant="64" id="wog-ih-V8X"/>
+                            <constraint firstItem="CFz-OH-1zY" firstAttribute="top" secondItem="m3D-fu-Ks5" secondAttribute="bottom" id="1Vs-VB-TKU"/>
+                            <constraint firstAttribute="trailing" secondItem="CFz-OH-1zY" secondAttribute="trailing" id="WT4-6K-nHA"/>
+                            <constraint firstItem="CFz-OH-1zY" firstAttribute="bottom" secondItem="jkZ-ZZ-Hc3" secondAttribute="top" id="jE4-Qr-5Xq"/>
+                            <constraint firstItem="CFz-OH-1zY" firstAttribute="leading" secondItem="Ibv-ol-XYQ" secondAttribute="leading" id="kWR-AB-rxG"/>
                         </constraints>
                     </view>
                     <connections>
@@ -1232,7 +1232,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oC3-gb-AOf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6222" y="-428"/>
+            <point key="canvasLocation" x="6221.6000000000004" y="-428.63568215892059"/>
         </scene>
         <!--Vendor_Main-->
         <scene sceneID="1Xq-Y4-2YB">

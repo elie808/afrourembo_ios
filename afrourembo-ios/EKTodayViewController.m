@@ -77,7 +77,8 @@ static NSString * const kCollectionCell = @"todayCell";
     [super viewDidLoad];
 
     self.contentOffsetDictionary = [NSMutableDictionary new];
-    _dataSource = [NSMutableArray arrayWithArray:[self createStubs]];
+//    _dataSource = [NSMutableArray arrayWithArray:[self createStubs]];
+    _dataSource = [NSMutableArray new];
     
     //TODO: abstract to NSDate categories
     NSDate *date = [[NSCalendar currentCalendar] startOfDayForDate:[NSDate date]];
