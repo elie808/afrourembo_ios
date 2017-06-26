@@ -10,6 +10,7 @@
 #import "EKBusinessModelViewController.h"
 #import "EKSignInViewController.h"
 #import "EKAddServiceViewController.h"
+#import "EKSalonSelectViewController.h"
 #import "Professional.h"
 
 @interface EKRoleViewController : UIViewController

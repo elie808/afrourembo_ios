@@ -103,7 +103,7 @@ static NSString * const kWorkInSalonBP   =  @"salonRoleVCToBusinessModelVC";
 //        EKBusinessModelViewController *vc = segue.destinationViewController;
 //        vc.BusinessModelUser = BusinessModelUserWorksInSalonBP;
         
-        EKAddServiceViewController *vc = segue.destinationViewController;
+        EKSalonSelectViewController *vc = segue.destinationViewController;
         vc.passedProfessional = self.passedProfessional;
     }
 }

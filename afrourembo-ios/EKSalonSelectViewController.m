@@ -79,7 +79,12 @@ static NSString * const kServiceSegue = @"salonSelectToServiceVC";
 #pragma mark - Navigation
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    
+ 
+    if ([segue.identifier isEqualToString:kServiceSegue]) {
+        
+        EKAddServiceViewController *vc = segue.destinationViewController;
+        vc.passedProfessional = self.passedProfessional;
+    }
 }
 
 @end

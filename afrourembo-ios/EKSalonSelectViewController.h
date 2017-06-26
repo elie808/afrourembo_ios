@@ -8,10 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import "EKSalonSelectTableViewCell.h"
+#import "EKAddServiceViewController.h"
+#import "Professional.h"
 #import "Salon.h"
 
 @interface EKSalonSelectViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
+@property (strong, nonatomic) Professional *passedProfessional;
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 
 @end
