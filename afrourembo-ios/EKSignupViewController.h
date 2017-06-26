@@ -12,10 +12,13 @@
 #import "EKEditProfileInfoViewController.h"
 #import "UIViewController+Helpers.h"
 #import <MBProgressHUD/MBProgressHUD.h>
+#import <FBSDKCoreKit/FBSDKCoreKit.h>
+#import <FBSDKLoginKit/FBSDKLoginKit.h>
 
 @interface EKSignupViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
+@property (strong, nonatomic) IBOutlet FBSDKLoginButton *fbLoginButton;
 
 - (IBAction)didTapSignUpButton:(id)sender;
 
