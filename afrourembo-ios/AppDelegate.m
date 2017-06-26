@@ -16,6 +16,8 @@ static NSString * const kVendorMainStoryboard = @"Vendor_Main";
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
+    [[FBSDKApplicationDelegate sharedInstance] application:application didFinishLaunchingWithOptions:launchOptions];
+    
     [EKNetworkManager configureRestKit];
     
     // Start at Splash Screen

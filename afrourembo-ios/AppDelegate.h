@@ -7,9 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-
 #import "EKNetworkManager.h"
 #import "EKConstants.h"
+#import <FBSDKCoreKit/FBSDKCoreKit.h>
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
