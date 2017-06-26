@@ -13,8 +13,15 @@ static NSString * const kVendorDashSegue = @"availabilityVcToVendorDashboard";
 static NSString * const kSwitchCell = @"availabilitySwitchCell";
 static NSString * const kTimeCell   = @"availabilityTimeCell";
 
+static CGFloat const kDatePickerHeight = 180;
+
 @implementation EKAvailabilityViewController {
     NSMutableArray *_dataSourceArray;
+    
+    // used for record keeping of time buttons selected, and trigerring the proper delegates...
+    NSIndexPath *_selectedIndexPath;
+    BOOL _leftSideSelected;
+    BOOL _rightSideSelected;
 }
 
 - (void)viewDidLoad {
@@ -24,9 +31,13 @@ static NSString * const kTimeCell   = @"availabilityTimeCell";
     
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleDone
                                                                              target:self action:@selector(didTapDoneButton)];
-    self.navigationItem.rightBarButtonItem.tintColor = [UIColor colorWithRed:255./255. green:195./255. blue:0./255. alpha:1.0];
+//    self.navigationItem.rightBarButtonItem.tintColor = [UIColor colorWithRed:255./255. green:195./255. blue:0./255. alpha:1.0];
     
     _dataSourceArray = [NSMutableArray arrayWithArray:[self createDataSource]];
+    
+    self.datePickerView.frame = CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, kDatePickerHeight);
+    [self.view addSubview:self.datePickerView];
+    self.datePickerView.hidden = YES;
 }
 
 - (NSArray *)createDataSource {
@@ -154,33 +165,20 @@ static NSString * const kTimeCell   = @"availabilityTimeCell";
 
 - (void)didTapLeftButtonAtIndexPath:(NSIndexPath *)indexPath {
     
-    Day *dayModel = [_dataSourceArray objectAtIndex:indexPath.section];
+    _leftSideSelected   = YES;
+    _rightSideSelected  = NO;
+    _selectedIndexPath  = indexPath;
     
-    if (indexPath.row == 1) {
-        dayModel.serviceStartDate = @"YAS";
-    }
-    
-    if (indexPath.row == 3) {
-        dayModel.lunchStartDate = @"YAS-L";
-    }
-    
-    [self.tableView reloadData];
-    
+    [self showDatePicker];
 }
 
 - (void)didTapRightButtonAtIndexPath:(NSIndexPath *)indexPath {
     
-    Day *dayModel = [_dataSourceArray objectAtIndex:indexPath.section];
+    _leftSideSelected   = NO;
+    _rightSideSelected  = YES;
+    _selectedIndexPath  = indexPath;
     
-    if (indexPath.row == 1) {
-        dayModel.serviceEndDate = @"NAY";
-    }
-    
-    if (indexPath.row == 3) {
-        dayModel.lunchEndDate = @"NAY-L";
-    }
-    
-    [self.tableView reloadData];
+    [self showDatePicker];
 }
 
 #pragma mark - Actions
@@ -189,14 +187,111 @@ static NSString * const kTimeCell   = @"availabilityTimeCell";
     [self performSegueWithIdentifier:kVendorDashSegue sender:nil];
 }
 
+- (IBAction)didChangeDate:(UIDatePicker *)sender {
+    
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    dateFormatter.dateFormat = @"HH:mm";
+    NSString *strDate = [[dateFormatter stringFromDate:[sender date]] capitalizedString];
+    
+    // check which side of the cell is the selected button on
+    // perform the update at the corresponding data model indexPath
+    if (_leftSideSelected && !_rightSideSelected) {
+        [self updateStartDate:strDate atIndexPath:_selectedIndexPath];
+    }
+    
+    if (!_leftSideSelected && _rightSideSelected) {
+        [self updateEndDate:strDate atIndexPath:_selectedIndexPath];
+    }
+    
+    [self hideDatePicker];
+}
+
+- (IBAction)didTapCancelDatePicker:(id)sender {
+
+    [self hideDatePicker];
+}
+
+- (IBAction)didTapDummyButton:(id)sender {
+    
+    for (Day *day in _dataSourceArray) {
+        
+        if (day.daySelected) {
+            
+        }
+    }
+}
+
 /*
+ day        number
+ fromHours  number
+ fromMinutes number
+ toHours    number
+ toMinutes number
+ lbFromHours number
+ lbFromMinutes number
+ lbToHours  number
+ lbToMinutes number
+  */
+
 #pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    
 }
-*/
+
+#pragma mark - Helpers
+
+- (void)showDatePicker {
+    
+    self.datePickerView.hidden = NO;
+    
+    [UIView animateWithDuration:0.3
+                     animations:^{
+                         self.datePickerView.frame = CGRectMake(0, self.view.frame.size.height - kDatePickerHeight,
+                                                            self.view.frame.size.width, kDatePickerHeight);
+    }];
+}
+
+- (void)hideDatePicker {
+    
+    [UIView animateWithDuration:0.3
+                     animations:^{
+                         self.datePickerView.frame = CGRectMake(0, self.view.frame.size.height,
+                                                            self.view.frame.size.width, kDatePickerHeight);
+                     }
+                     completion:^(BOOL finished) {
+                         self.datePickerView.hidden = YES;
+                     }];
+}
+
+- (void)updateStartDate:(NSString *)date atIndexPath:(NSIndexPath *)indexPath {
+    
+    Day *dayModel = [_dataSourceArray objectAtIndex:indexPath.section];
+    
+    if (indexPath.row == 1) {
+        dayModel.serviceStartDate = date;
+    }
+    
+    if (indexPath.row == 3) {
+        dayModel.lunchStartDate = date;
+    }
+    
+    [self.tableView reloadData];
+}
+
+- (void)updateEndDate:(NSString *)date atIndexPath:(NSIndexPath *)indexPath {
+    
+    Day *dayModel = [_dataSourceArray objectAtIndex:indexPath.section];
+    
+    if (indexPath.row == 1) {
+        dayModel.serviceEndDate = date;
+    }
+    
+    if (indexPath.row == 3) {
+        dayModel.lunchEndDate = date;
+    }
+    
+    [self.tableView reloadData];
+}
 
 @end

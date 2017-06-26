@@ -15,4 +15,9 @@
 
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 
+@property (strong, nonatomic) IBOutlet UIView *datePickerView;
+
+- (IBAction)didChangeDate:(UIDatePicker *)sender;
+- (IBAction)didTapCancelDatePicker:(id)sender;
+
 @end

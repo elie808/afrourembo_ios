@@ -25,6 +25,11 @@ static NSString * const kVendorMainStoryboard = @"Vendor_Main";
 
     // Add Service
 //    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"SignUp" bundle:nil];
+//    UINavigationController *rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"Availability"];
+//    self.window.rootViewController = rootViewController;
+    
+    // Add Service
+//    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"SignUp" bundle:nil];
 //    UINavigationController *rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"addNewServiceVC"];
 //    self.window.rootViewController = rootViewController;
     
