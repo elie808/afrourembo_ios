@@ -1124,7 +1124,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="CFz-OH-1zY">
-                                <rect key="frame" x="0.0" y="110" width="375" height="557"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <color key="backgroundColor" red="0.92549019607843142" green="0.92549019607843142" blue="0.92549019607843142" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="availabilitySwitchCell" id="uIV-EW-o1d" customClass="EKSwitchTableViewCell">
@@ -1217,24 +1217,12 @@
                                     <outlet property="delegate" destination="rOK-4c-Dey" id="gZH-Jq-d3f"/>
                                 </connections>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rKq-Fd-8XL">
-                                <rect key="frame" x="16" y="72" width="343" height="30"/>
-                                <color key="backgroundColor" red="0.69019607839999997" green="0.13725490200000001" blue="0.1647058824" alpha="1" colorSpace="calibratedRGB"/>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <state key="normal" title="Button"/>
-                                <connections>
-                                    <action selector="didTapDummyButton:" destination="rOK-4c-Dey" eventType="touchDown" id="eUr-Nh-lVh"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="rKq-Fd-8XL" firstAttribute="top" secondItem="m3D-fu-Ks5" secondAttribute="bottom" constant="8" symbolic="YES" id="03X-Oz-30n"/>
-                            <constraint firstItem="CFz-OH-1zY" firstAttribute="leading" secondItem="Ibv-ol-XYQ" secondAttribute="leading" id="0cU-Vx-Uvk"/>
-                            <constraint firstItem="rKq-Fd-8XL" firstAttribute="centerX" secondItem="CFz-OH-1zY" secondAttribute="centerX" id="55D-dK-8kS"/>
-                            <constraint firstAttribute="trailing" secondItem="CFz-OH-1zY" secondAttribute="trailing" id="EXF-1S-i1e"/>
-                            <constraint firstItem="rKq-Fd-8XL" firstAttribute="leading" secondItem="Ibv-ol-XYQ" secondAttribute="leadingMargin" id="Gow-mT-v4e"/>
-                            <constraint firstItem="CFz-OH-1zY" firstAttribute="top" secondItem="rKq-Fd-8XL" secondAttribute="bottom" constant="8" symbolic="YES" id="N9h-3D-qid"/>
-                            <constraint firstItem="CFz-OH-1zY" firstAttribute="bottom" secondItem="jkZ-ZZ-Hc3" secondAttribute="top" id="pka-r3-DsD"/>
+                            <constraint firstItem="CFz-OH-1zY" firstAttribute="bottom" secondItem="jkZ-ZZ-Hc3" secondAttribute="top" id="Cfq-Rf-xRB"/>
+                            <constraint firstAttribute="trailing" secondItem="CFz-OH-1zY" secondAttribute="trailing" id="PG5-Rc-RYa"/>
+                            <constraint firstItem="CFz-OH-1zY" firstAttribute="top" secondItem="m3D-fu-Ks5" secondAttribute="bottom" id="UYs-IZ-fS2"/>
+                            <constraint firstItem="CFz-OH-1zY" firstAttribute="leading" secondItem="Ibv-ol-XYQ" secondAttribute="leading" id="b72-2Q-YXJ"/>
                         </constraints>
                     </view>
                     <connections>
