@@ -15,70 +15,11 @@ static NSString * const kCollectionCell = @"todayCell";
     NSMutableArray *_dataSource;
 }
 
-- (NSArray *)createAppointmentStubs {
-    
-    Appointment *appt1 = [Appointment new];
-    appt1.clientName = @"Fannie Ballard";
-    appt1.serviceDescription = @"Natural Hair";
-    appt1.serviceTime = @"9:00 AM";
-    appt1.serviceDuration = 15;
-    appt1.serviceStatus = 0;
-    
-    Appointment *appt2 = [Appointment new];
-    appt2.clientName = @"Victoria Barker";
-    appt2.serviceDescription = @"Extension & Weave";
-    appt2.serviceTime = @"1:00 PM";
-    appt2.serviceDuration = 30;
-    appt2.serviceStatus = 1;
-    
-    Appointment *appt3 = [Appointment new];
-    appt3.clientName = @"Violet Kelly";
-    appt3.serviceDescription = @"Natural Hair";
-    appt3.serviceTime = @"6:00 PM";
-    appt3.serviceDuration = 45;
-    appt3.serviceStatus = 0;
-    
-    Appointment *appt4 = [Appointment new];
-    appt4.clientName = @"Corey Barret";
-    appt4.serviceDescription = @"Some Other Service";
-    appt4.serviceTime = @"5:00 PM";
-    appt4.serviceDuration = 10;
-    appt4.serviceStatus = 2;
-    
-    return @[appt1, appt2, appt3, appt4, appt2];
-}
-
-- (NSArray *)createStubs {
-    
-    Today *today = [Today new];
-    today.appointmentsHour = @"10:00 AM";
-    today.appointmentsArray = [self createAppointmentStubs];
-    
-    Today *today1 = [Today new];
-    today1.appointmentsHour = @"11:00 AM";
-    today1.appointmentsArray = [self createAppointmentStubs];
-    
-    Today *today2 = [Today new];
-    today2.appointmentsHour = @"12:00 PM";
-    today2.appointmentsArray = [self createAppointmentStubs];
-    
-    Today *today3 = [Today new];
-    today3.appointmentsHour = @"01:00 PM";
-    today3.appointmentsArray = [self createAppointmentStubs];
-    
-    Today *today4 = [Today new];
-    today4.appointmentsHour = @"02:00 PM";
-    today4.appointmentsArray = [self createAppointmentStubs];
-    
-    return @[today, today1, today2, today3, today4];
-}
-
 - (void)viewDidLoad {
     [super viewDidLoad];
 
     self.contentOffsetDictionary = [NSMutableDictionary new];
-//    _dataSource = [NSMutableArray arrayWithArray:[self createStubs]];
-    _dataSource = [NSMutableArray new];
+    _dataSource = [NSMutableArray arrayWithArray:[self createEmptyCal]];
     
     //TODO: abstract to NSDate categories
     NSDate *date = [[NSCalendar currentCalendar] startOfDayForDate:[NSDate date]];
@@ -172,6 +113,91 @@ static NSString * const kCollectionCell = @"todayCell";
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     
+}
+
+#pragma mark - Helpers
+
+- (NSArray *)createAppointmentStubs {
+    
+    Appointment *appt1 = [Appointment new];
+    appt1.clientName = @"Fannie Ballard";
+    appt1.serviceDescription = @"Natural Hair";
+    appt1.serviceTime = @"9:00 AM";
+    appt1.serviceDuration = 15;
+    appt1.serviceStatus = 0;
+    
+    Appointment *appt2 = [Appointment new];
+    appt2.clientName = @"Victoria Barker";
+    appt2.serviceDescription = @"Extension & Weave";
+    appt2.serviceTime = @"1:00 PM";
+    appt2.serviceDuration = 30;
+    appt2.serviceStatus = 1;
+    
+    Appointment *appt3 = [Appointment new];
+    appt3.clientName = @"Violet Kelly";
+    appt3.serviceDescription = @"Natural Hair";
+    appt3.serviceTime = @"6:00 PM";
+    appt3.serviceDuration = 45;
+    appt3.serviceStatus = 0;
+    
+    Appointment *appt4 = [Appointment new];
+    appt4.clientName = @"Corey Barret";
+    appt4.serviceDescription = @"Some Other Service";
+    appt4.serviceTime = @"5:00 PM";
+    appt4.serviceDuration = 10;
+    appt4.serviceStatus = 2;
+    
+    return @[appt1, appt2, appt3, appt4, appt2];
+}
+
+- (NSArray *)createStubs {
+    
+    Today *today = [Today new];
+    today.appointmentsHour = @"10:00 AM";
+    today.appointmentsArray = [self createAppointmentStubs];
+    
+    Today *today1 = [Today new];
+    today1.appointmentsHour = @"11:00 AM";
+    today1.appointmentsArray = [self createAppointmentStubs];
+    
+    Today *today2 = [Today new];
+    today2.appointmentsHour = @"12:00 PM";
+    today2.appointmentsArray = [self createAppointmentStubs];
+    
+    Today *today3 = [Today new];
+    today3.appointmentsHour = @"01:00 PM";
+    today3.appointmentsArray = [self createAppointmentStubs];
+    
+    Today *today4 = [Today new];
+    today4.appointmentsHour = @"02:00 PM";
+    today4.appointmentsArray = [self createAppointmentStubs];
+    
+    return @[today, today1, today2, today3, today4];
+}
+
+- (NSArray *)createEmptyCal {
+    
+    Today *today = [Today new];
+    today.appointmentsHour = @"10:00 AM";
+    today.appointmentsArray = @[];
+    
+    Today *today1 = [Today new];
+    today1.appointmentsHour = @"11:00 AM";
+    today1.appointmentsArray = @[];
+    
+    Today *today2 = [Today new];
+    today2.appointmentsHour = @"12:00 PM";
+    today2.appointmentsArray = @[];
+    
+    Today *today3 = [Today new];
+    today3.appointmentsHour = @"01:00 PM";
+    today3.appointmentsArray = @[];
+    
+    Today *today4 = [Today new];
+    today4.appointmentsHour = @"02:00 PM";
+    today4.appointmentsArray = @[];
+    
+    return @[today, today1, today2, today3, today4];
 }
 
 /*
