@@ -13,6 +13,8 @@
 #import "Professional+API.h"
 #import "ProfessionalLogin+API.h"
 #import "UIViewController+Helpers.h"
+#import <FBSDKCoreKit/FBSDKCoreKit.h>
+#import <FBSDKLoginKit/FBSDKLoginKit.h>
 #import <MBProgressHUD/MBProgressHUD.h>
 
 typedef NS_ENUM(NSUInteger, SignInRole) {
@@ -25,7 +27,9 @@ typedef NS_ENUM(NSUInteger, SignInRole) {
 
 @property (assign, nonatomic) SignInRole signInRole;
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
+@property (strong, nonatomic) IBOutlet UIButton *facebookButton;
 
 - (IBAction)didTapSignInButton:(id)sender;
+- (IBAction)didTapFacebookSignInButton:(id)sender;
 
 @end

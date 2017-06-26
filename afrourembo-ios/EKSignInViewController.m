@@ -23,7 +23,20 @@ static NSString * const kBPDashSegue = @"signInToBPDashboardVC";
     [super viewDidLoad];
     
     self.title = @"Sign in";
-    _dataSourceArray = @[@"Email", @"Password"];
+    
+    _dataSourceArray = @[
+                         @{@"Email" : @"address@mail.com"},
+                         @{@"Password" : @"Your password"}
+                         ];
+    
+    // check if Facebook user logged in
+    //    if ([FBSDKAccessToken currentAccessToken]) {
+    //    
+    //        _dataSourceArray = @[
+    //                             @{@"Email" : @"address@mail.com"},
+    //                             @{@"Password" : [FBSDKAccessToken currentAccessToken].userID}
+    //                             ];
+    //    }
 }
 
 #pragma mark - TableView DataSource
@@ -38,10 +51,13 @@ static NSString * const kBPDashSegue = @"signInToBPDashboardVC";
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
+    NSString *labelValue = [[(NSDictionary *)[_dataSourceArray objectAtIndex:indexPath.row] allKeys] firstObject];
+    NSString *placeHolderValue = [[(NSDictionary *)[_dataSourceArray objectAtIndex:indexPath.row] allValues] firstObject];
+    
     EKTextFieldTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kSigninCell forIndexPath:indexPath];
     
-    cell.cellTitleLabel.text = _dataSourceArray[indexPath.row];;
-    cell.cellTextField.placeholder = @"address@mail";
+    cell.cellTitleLabel.text = labelValue;
+    cell.cellTextField.placeholder = placeHolderValue;
     
     return cell;
 }
@@ -62,13 +78,56 @@ static NSString * const kBPDashSegue = @"signInToBPDashboardVC";
     NSString *emailStr  = emailCell.cellTextField.text;
     NSString *passStr   = passCell.cellTextField.text;
     
+    [self signInEmail:emailStr andPass:passStr];
+}
+
+- (IBAction)didTapFacebookSignInButton:(id)sender {
+    
+    FBSDKLoginManager *login = [[FBSDKLoginManager alloc] init];
+    
+    // Login using Facebook account
+    [login logInWithReadPermissions:@[@"public_profile", @"email", @"user_friends"]
+                 fromViewController:self
+                            handler:^(FBSDKLoginManagerLoginResult *result, NSError *error) {
+                                
+                                if (error) {
+                                    
+                                    NSLog(@"Process error");
+                                    
+                                } else if (result.isCancelled) {
+                                    
+                                    NSLog(@"Cancelled");
+                                    
+                                } else {
+                                    
+                                    NSLog(@"Logged in");
+                                    NSLog(@"/n /n ~~~~~NAME: %@", [FBSDKProfile currentProfile].name);
+                                    
+                                    NSMutableDictionary* parameters = [NSMutableDictionary dictionary];
+                                    [parameters setValue:@"id,name,email,first_name,last_name" forKey:@"fields"];
+                                    
+                                    // Query Facebook graph to get user's email, and use userID as password to signup
+                                    [[[FBSDKGraphRequest alloc] initWithGraphPath:@"me"
+                                                                       parameters:parameters]
+                                     startWithCompletionHandler:^(FBSDKGraphRequestConnection *connection, id result, NSError *error) {
+                                         
+                                         [self signInEmail:[result valueForKey:@"email"] andPass:[result valueForKey:@"id"]];
+                                     }];
+                                }
+                            }];
+}
+
+#pragma mark - Helpers
+
+- (void)signInEmail:(NSString *)email andPass:(NSString *)password {
+ 
     if (self.signInRole == SignInRoleCustomer) {
         
         [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-        [Customer loginCustomer:emailStr
-                       password:passStr
+        [Customer loginCustomer:email
+                       password:password
                       withBlock:^(Customer *customerObj) {
-    
+                          
                           NSLog(@"USER LOGGED IN!!");
                           [MBProgressHUD hideHUDForView:self.view animated:YES];
                           [self performSegueWithIdentifier:kExploreSegue sender:customerObj];
@@ -80,20 +139,20 @@ static NSString * const kBPDashSegue = @"signInToBPDashboardVC";
                                  withTitle:@"There is something wrong"
                            completionBlock:nil];
                      }];
-
+        
     } else if (self.signInRole == SignInRoleBP) {
-    
+        
         [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-        [ProfessionalLogin loginProfessional:emailStr
-                                    password:passStr
+        [ProfessionalLogin loginProfessional:email
+                                    password:password
                                    withBlock:^(Professional *professionalObj) {
-                                     
+                                       
                                        NSLog(@"PROFESSIONAL LOGGED IN!!");
                                        [MBProgressHUD hideHUDForView:self.view animated:YES];
                                        [self performSegueWithIdentifier:kBPDashSegue sender:nil];
                                    }
                                   withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
-                                     
+                                      
                                       [MBProgressHUD hideHUDForView:self.view animated:YES];
                                       [self showMessage:errorMessage
                                               withTitle:@"There is something wrong"
@@ -104,7 +163,6 @@ static NSString * const kBPDashSegue = @"signInToBPDashboardVC";
         
     }
 }
-
 
 #pragma mark - Navigation
 
