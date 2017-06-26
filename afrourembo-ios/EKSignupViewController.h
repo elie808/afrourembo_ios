@@ -18,8 +18,9 @@
 @interface EKSignupViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
-@property (strong, nonatomic) IBOutlet FBSDKLoginButton *fbLoginButton;
+@property (strong, nonatomic) IBOutlet UIButton *fbLoginButton;
 
 - (IBAction)didTapSignUpButton:(id)sender;
+- (IBAction)didTapFBSignUpButton:(id)sender;
 
 @end

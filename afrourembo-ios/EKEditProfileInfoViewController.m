@@ -23,8 +23,8 @@ static NSString * const kExploreSegue = @"editVcToExploreVC";
     self.title = @"Profile information";
     
     _dataSourceArray = @[
-                         @{@"First name" : @"Your name"},
-                         @{@"Last name" : @"Your last name"},
+                         @{@"First name" : self.passedUser.fName.length > 0 ? self.passedUser.fName : @"Your name"},
+                         @{@"Last name" : self.passedUser.lName.length > 0 ? self.passedUser.lName : @"Your last name"},
                          @{@"Phone number" : @"(___) ___ - ___"}
                          ];
 }
@@ -47,7 +47,18 @@ static NSString * const kExploreSegue = @"editVcToExploreVC";
     NSString *placeHolderValue = [[(NSDictionary *)[_dataSourceArray objectAtIndex:indexPath.row] allValues] firstObject];
     
     cell.cellTitleLabel.text = labelValue;
-    cell.cellTextField.placeholder = placeHolderValue;
+    
+    if (indexPath.row == 0 && self.passedUser.fName.length > 0) {
+        cell.cellTextField.text = placeHolderValue;
+    } else {
+        cell.cellTextField.placeholder = placeHolderValue;
+    }
+    
+    if (indexPath.row == 1 && self.passedUser.lName.length > 0) {
+        cell.cellTextField.text = placeHolderValue;
+    } else {
+        cell.cellTextField.placeholder = placeHolderValue;
+    }
     
     return cell;
 }
