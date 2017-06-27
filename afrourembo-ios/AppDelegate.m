@@ -20,11 +20,23 @@ static NSString * const kVendorMainStoryboard = @"Vendor_Main";
     
     [EKNetworkManager configureRestKit];
     
-    // Start at Splash Screen
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:kWelcomeStoryboard bundle:nil];
-    UINavigationController *rootViewController = [storyboard instantiateViewControllerWithIdentifier:kSplashVC];
-    self.window.rootViewController = rootViewController;
-
+//    [EKSettings deleteSavedCustomer];
+    
+    if ([EKSettings getSavedCustomer]) {
+        
+        // Explore
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:kMainStoryboard bundle:nil];
+        UINavigationController *rootViewController = [storyboard instantiateViewControllerWithIdentifier:kExploreVC];
+        self.window.rootViewController = rootViewController;
+        
+    } else {
+    
+        // Start at Splash Screen
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:kWelcomeStoryboard bundle:nil];
+        UINavigationController *rootViewController = [storyboard instantiateViewControllerWithIdentifier:kSplashVC];
+        self.window.rootViewController = rootViewController;
+    }
+    
     // Add Service
 //    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"SignUp" bundle:nil];
 //    UINavigationController *rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"Availability"];
@@ -35,11 +47,6 @@ static NSString * const kVendorMainStoryboard = @"Vendor_Main";
 //    UINavigationController *rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"addNewServiceVC"];
 //    self.window.rootViewController = rootViewController;
     
-    // Explore
-//    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:kMainStoryboard bundle:nil];
-//    UINavigationController *rootViewController = [storyboard instantiateViewControllerWithIdentifier:kExploreVC];
-//    self.window.rootViewController = rootViewController;
-
     // Vendor
 //    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:kVendorMainStoryboard bundle:nil];
 //    UINavigationController *rootViewController = [storyboard instantiateViewControllerWithIdentifier:kVendorDashVC];

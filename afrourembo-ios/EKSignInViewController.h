@@ -16,6 +16,7 @@
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
 #import <MBProgressHUD/MBProgressHUD.h>
+#import "EKSettings.h"
 
 typedef NS_ENUM(NSUInteger, SignInRole) {
     SignInRoleCustomer,

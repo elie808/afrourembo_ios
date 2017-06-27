@@ -36,6 +36,8 @@
 		475FC37D1EB6B57900BB0731 /* EKAddServiceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 475FC37C1EB6B57900BB0731 /* EKAddServiceViewController.m */; };
 		475FC3811EB6BF5E00BB0731 /* EKAddNewServiceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 475FC3801EB6BF5E00BB0731 /* EKAddNewServiceViewController.m */; };
 		4760FC7C1EF88C8200099DFD /* EKSalonAddressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4760FC7B1EF88C8200099DFD /* EKSalonAddressViewController.m */; };
+		47652BF41F01DAA500796E04 /* Customer+Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 47652BF31F01DAA500796E04 /* Customer+Helpers.m */; };
+		47652BFA1F01DC8B00796E04 /* EKSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 47652BF91F01DC8B00796E04 /* EKSettings.m */; };
 		477256051EB958FF007CBD6B /* EKAvailabilityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 477256041EB958FF007CBD6B /* EKAvailabilityViewController.m */; };
 		477256091EB95EA4007CBD6B /* EKSwitchTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 477256081EB95EA4007CBD6B /* EKSwitchTableViewCell.m */; };
 		47800BC31EA3B2FA00F450DB /* EKBookingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47800BC21EA3B2FA00F450DB /* EKBookingViewController.m */; };
@@ -163,6 +165,10 @@
 		475FC3801EB6BF5E00BB0731 /* EKAddNewServiceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKAddNewServiceViewController.m; sourceTree = "<group>"; };
 		4760FC7A1EF88C8200099DFD /* EKSalonAddressViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKSalonAddressViewController.h; sourceTree = "<group>"; };
 		4760FC7B1EF88C8200099DFD /* EKSalonAddressViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKSalonAddressViewController.m; sourceTree = "<group>"; };
+		47652BF21F01DAA500796E04 /* Customer+Helpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Customer+Helpers.h"; sourceTree = "<group>"; };
+		47652BF31F01DAA500796E04 /* Customer+Helpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Customer+Helpers.m"; sourceTree = "<group>"; };
+		47652BF81F01DC8B00796E04 /* EKSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKSettings.h; sourceTree = "<group>"; };
+		47652BF91F01DC8B00796E04 /* EKSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKSettings.m; sourceTree = "<group>"; };
 		477256031EB958FF007CBD6B /* EKAvailabilityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKAvailabilityViewController.h; sourceTree = "<group>"; };
 		477256041EB958FF007CBD6B /* EKAvailabilityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKAvailabilityViewController.m; sourceTree = "<group>"; };
 		477256071EB95EA4007CBD6B /* EKSwitchTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKSwitchTableViewCell.h; sourceTree = "<group>"; };
@@ -673,6 +679,10 @@
 			children = (
 				474024411EDE23390089A6D2 /* afrourembo-ios-Bridging-Header.h */,
 				478BDF061E99D85500F74A5C /* EKConstants.h */,
+				47652BF21F01DAA500796E04 /* Customer+Helpers.h */,
+				47652BF31F01DAA500796E04 /* Customer+Helpers.m */,
+				47652BF81F01DC8B00796E04 /* EKSettings.h */,
+				47652BF91F01DC8B00796E04 /* EKSettings.m */,
 				471AA1891ED45DD0009B840A /* UIImage+Helpers.h */,
 				471AA18A1ED45DD0009B840A /* UIImage+Helpers.m */,
 				479F7D661EF00A1700EB445A /* UIViewController+Helpers.h */,
@@ -1103,6 +1113,7 @@
 				47FF4F681EB5520E0022A6ED /* Customer.m in Sources */,
 				4787C6DD1EB40D5500DF7B83 /* Booking.m in Sources */,
 				475FC37D1EB6B57900BB0731 /* EKAddServiceViewController.m in Sources */,
+				47652BFA1F01DC8B00796E04 /* EKSettings.m in Sources */,
 				478971941EA756F100917DB1 /* EKEditFacebookProfileInfoViewController.m in Sources */,
 				47822B091EDDC37C001E247F /* EKSalesSummaryTableViewCell.m in Sources */,
 				47FFF9751E99E81F008B6A31 /* EKImageTextTableViewCell.m in Sources */,
@@ -1116,6 +1127,7 @@
 				471AA18B1ED45DD0009B840A /* UIImage+Helpers.m in Sources */,
 				477256091EB95EA4007CBD6B /* EKSwitchTableViewCell.m in Sources */,
 				47AF51BA1E9B8561005FE6EB /* Salon.m in Sources */,
+				47652BF41F01DAA500796E04 /* Customer+Helpers.m in Sources */,
 				479F7D711EF16D6700EB445A /* ProfessionalLogin.m in Sources */,
 				47FE51CC1EFD5BE100A39BAE /* Service+API.m in Sources */,
 				47C7D4CC1EBB5EF000457E53 /* Day.m in Sources */,

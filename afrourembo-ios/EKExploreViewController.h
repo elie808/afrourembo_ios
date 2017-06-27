@@ -12,6 +12,7 @@
 #import "EKImageTextTableViewCell.h"
 #import "Service.h"
 #import "Customer.h"
+#import "EKSettings.h"
 
 @interface EKExploreViewController : UIViewController <UICollectionViewDelegate, UICollectionViewDataSource>
 

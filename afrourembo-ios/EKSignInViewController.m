@@ -172,6 +172,9 @@ static NSString * const kBPDashSegue = @"signInToBPDashboardVC";
 
         if (sender) {
             Customer *customerObj = (Customer *)sender;
+            
+            [EKSettings saveCustomer:customerObj];
+            
             UINavigationController *navController = [segue destinationViewController];
             EKExploreViewController *vc = (EKExploreViewController *)([navController viewControllers][0]);
             vc.passedCustomer = customerObj;
