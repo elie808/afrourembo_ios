@@ -464,7 +464,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="70"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ECN-4I-p1V" id="NB5-C3-heK">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="69.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="70"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total Sales YTD" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dhd-MU-vps">
@@ -624,7 +624,7 @@
         <!--Settings-->
         <scene sceneID="awo-OX-Dnr">
             <objects>
-                <viewController id="hfr-Df-9yH" sceneMemberID="viewController">
+                <viewController id="hfr-Df-9yH" customClass="EKSettingsBPViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Rac-BD-9OD"/>
                         <viewControllerLayoutGuide type="bottom" id="PTB-qn-Hb7"/>
@@ -647,7 +647,8 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <segue destination="Ydr-fK-oRR" kind="presentation" id="T0M-Sb-Qlr"/>
+                                    <action selector="didTapLogOutButton:" destination="hfr-Df-9yH" eventType="touchDown" id="kJY-Cq-Rnf"/>
+                                    <segue destination="Ydr-fK-oRR" kind="presentation" identifier="bpSettingsToWelcomeVC" id="T0M-Sb-Qlr"/>
                                 </connections>
                             </button>
                         </subviews>

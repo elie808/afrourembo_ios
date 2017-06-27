@@ -38,6 +38,7 @@
 		4760FC7C1EF88C8200099DFD /* EKSalonAddressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4760FC7B1EF88C8200099DFD /* EKSalonAddressViewController.m */; };
 		47652BF41F01DAA500796E04 /* Customer+Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 47652BF31F01DAA500796E04 /* Customer+Helpers.m */; };
 		47652BFA1F01DC8B00796E04 /* EKSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 47652BF91F01DC8B00796E04 /* EKSettings.m */; };
+		47652BFD1F01FB5700796E04 /* EKSettingsBPViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47652BFC1F01FB5700796E04 /* EKSettingsBPViewController.m */; };
 		477256051EB958FF007CBD6B /* EKAvailabilityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 477256041EB958FF007CBD6B /* EKAvailabilityViewController.m */; };
 		477256091EB95EA4007CBD6B /* EKSwitchTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 477256081EB95EA4007CBD6B /* EKSwitchTableViewCell.m */; };
 		47800BC31EA3B2FA00F450DB /* EKBookingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47800BC21EA3B2FA00F450DB /* EKBookingViewController.m */; };
@@ -169,6 +170,8 @@
 		47652BF31F01DAA500796E04 /* Customer+Helpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Customer+Helpers.m"; sourceTree = "<group>"; };
 		47652BF81F01DC8B00796E04 /* EKSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKSettings.h; sourceTree = "<group>"; };
 		47652BF91F01DC8B00796E04 /* EKSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKSettings.m; sourceTree = "<group>"; };
+		47652BFB1F01FB5700796E04 /* EKSettingsBPViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKSettingsBPViewController.h; sourceTree = "<group>"; };
+		47652BFC1F01FB5700796E04 /* EKSettingsBPViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKSettingsBPViewController.m; sourceTree = "<group>"; };
 		477256031EB958FF007CBD6B /* EKAvailabilityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKAvailabilityViewController.h; sourceTree = "<group>"; };
 		477256041EB958FF007CBD6B /* EKAvailabilityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKAvailabilityViewController.m; sourceTree = "<group>"; };
 		477256071EB95EA4007CBD6B /* EKSwitchTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKSwitchTableViewCell.h; sourceTree = "<group>"; };
@@ -478,6 +481,15 @@
 				47E301A11EFEA2DA00376AD7 /* Cells */,
 			);
 			name = "BP - Create New Service";
+			sourceTree = "<group>";
+		};
+		47652BFE1F01FB5D00796E04 /* BP - Settings */ = {
+			isa = PBXGroup;
+			children = (
+				47652BFB1F01FB5700796E04 /* EKSettingsBPViewController.h */,
+				47652BFC1F01FB5700796E04 /* EKSettingsBPViewController.m */,
+			);
+			name = "BP - Settings";
 			sourceTree = "<group>";
 		};
 		477256061EB95908007CBD6B /* BP - Availability */ = {
@@ -815,6 +827,7 @@
 				475FC3821EB6BF6100BB0731 /* BP - Create New Service */,
 				477256061EB95908007CBD6B /* BP - Availability */,
 				479520101EB3A40A00E377E5 /* BP - Monthly Schedule */,
+				47652BFE1F01FB5D00796E04 /* BP - Settings */,
 				479F7D781EF17C0100EB445A /* SALON - Info */,
 			);
 			name = "View Controllers";
@@ -1122,6 +1135,7 @@
 				47BFEA691EA4A9A30091522B /* EKBookingDayCollectionViewCell.m in Sources */,
 				474BD5731E97F8F3009410C4 /* EKTextFieldTableViewCell.m in Sources */,
 				47F7140D1ED6FB2D0028FB65 /* EKBusinessModelViewController.m in Sources */,
+				47652BFD1F01FB5700796E04 /* EKSettingsBPViewController.m in Sources */,
 				475A4CEF1EBF74D50089D477 /* EKFilterSearchTableViewCell.m in Sources */,
 				470CD74F1EA1C87D0086DEE4 /* EKCompanyProfileViewController+TableView.m in Sources */,
 				471AA18B1ED45DD0009B840A /* UIImage+Helpers.m in Sources */,

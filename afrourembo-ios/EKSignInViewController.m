@@ -183,6 +183,16 @@ static NSString * const kBPDashSegue = @"signInToBPDashboardVC";
     
     if ([segue.identifier isEqualToString:kBPDashSegue]) {
         
+        [EKSettings saveVendor];
+        
+//        if (self.signInRole == SignInRoleBP) {
+//            [EKSettings saveVendor];
+//        }
+//        
+//        if (self.signInRole == SignInRoleSalon) {
+//            
+//        }
+        
     }
 }
 

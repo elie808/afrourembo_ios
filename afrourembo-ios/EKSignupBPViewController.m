@@ -150,7 +150,7 @@ static NSString * const kRoleSegue = @"signupBPToRoleVC";
                                                                        [self showMessage:errorMessage
                                                                                withTitle:@"There is something wrong"
                                                                          completionBlock:nil];
-                                                                   }];        
+                                                                   }];
                                          }];
                                     }
                                 }];
@@ -162,6 +162,8 @@ static NSString * const kRoleSegue = @"signupBPToRoleVC";
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
 
     if ([segue.identifier isEqualToString:kRoleSegue]) {
+        
+        [EKSettings saveVendor];
         
         EKRoleViewController *vc = segue.destinationViewController;
         Professional *profObj = (Professional *)sender;

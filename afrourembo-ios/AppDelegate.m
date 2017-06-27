@@ -20,13 +20,21 @@ static NSString * const kVendorMainStoryboard = @"Vendor_Main";
     
     [EKNetworkManager configureRestKit];
     
-    [EKSettings deleteSavedCustomer];
+//    [EKSettings deleteSavedCustomer];
+//    [EKSettings deleteVendor];
     
     if ([EKSettings getSavedCustomer]) {
         
         // Explore
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:kMainStoryboard bundle:nil];
         UINavigationController *rootViewController = [storyboard instantiateViewControllerWithIdentifier:kExploreVC];
+        self.window.rootViewController = rootViewController;
+        
+    } else if ([EKSettings getVendor]) {
+    
+        // Vendor
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:kVendorMainStoryboard bundle:nil];
+        UINavigationController *rootViewController = [storyboard instantiateViewControllerWithIdentifier:kVendorDashVC];
         self.window.rootViewController = rootViewController;
         
     } else {
@@ -45,11 +53,6 @@ static NSString * const kVendorMainStoryboard = @"Vendor_Main";
     // Add Service
 //    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"SignUp" bundle:nil];
 //    UINavigationController *rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"addNewServiceVC"];
-//    self.window.rootViewController = rootViewController;
-    
-    // Vendor
-//    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:kVendorMainStoryboard bundle:nil];
-//    UINavigationController *rootViewController = [storyboard instantiateViewControllerWithIdentifier:kVendorDashVC];
 //    self.window.rootViewController = rootViewController;
     
     // role VC

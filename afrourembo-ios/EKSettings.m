@@ -9,6 +9,7 @@
 #import "EKSettings.h"
 
 static NSString * const kLoggedInCustomer   = @"afrourembo-loggedInCustomer";
+static NSString * const kLoggedInVendor     = @"afrourembo-loggedInVendor";
 
 @implementation EKSettings
 
@@ -84,6 +85,35 @@ static NSString * const kLoggedInCustomer   = @"afrourembo-loggedInCustomer";
     }
     
     return NO;
+}
+
+#pragma mark - Vendors
+
++ (BOOL)saveVendor {
+    
+    if ([JNKeychain saveValue:@1 forKey:kLoggedInVendor]) {
+        NSLog(@"VENDOR PERSISTED!!!!");
+        return YES;
+    } else {
+        NSLog(@"Failed to persist VENDOR");
+        return NO;
+    }
+}
+
++ (BOOL)getVendor {
+    
+    NSNumber *vendor = [JNKeychain loadValueForKey:kLoggedInVendor];
+
+    return [vendor isEqualToNumber:@1] ? YES : NO;
+}
+
++ (BOOL)deleteVendor {
+    
+    if ([JNKeychain saveValue:@0 forKey:kLoggedInVendor]) {
+        return YES;
+    } else {
+        return NO;
+    }
 }
 
 #pragma mark - Helpers

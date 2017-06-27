@@ -18,6 +18,11 @@
 + (BOOL)deleteSavedCustomer;
 + (BOOL)updateSavedCustomer:(Customer *)updatedCustomer;
 
+//TODO: Flesh out into grown up methods
++ (BOOL)saveVendor;
++ (BOOL)getVendor;
++ (BOOL)deleteVendor;
+
 + (void)saveToUserDefaultsValue:(id)value forKey:(NSString *)key;
 + (id)getFromUserDefaultsValueForKey:(NSString *)key;
 + (void)destroySessionCookies;
