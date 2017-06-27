@@ -20,7 +20,7 @@ static NSString * const kVendorMainStoryboard = @"Vendor_Main";
     
     [EKNetworkManager configureRestKit];
     
-//    [EKSettings deleteSavedCustomer];
+    [EKSettings deleteSavedCustomer];
     
     if ([EKSettings getSavedCustomer]) {
         

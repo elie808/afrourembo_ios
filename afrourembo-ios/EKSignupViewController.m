@@ -69,23 +69,8 @@ static NSString * const kEditProfileSegue = @"signUpToEditProfile";
     
     NSString *emailStr  = emailCell.cellTextField.text;
     NSString *passStr   = passCell.cellTextField.text;
-    
-    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    [Customer signUpCustomer:emailStr
-                    password:passStr
-                   withBlock:^(Customer *customerObj) {
-                       
-                       NSLog(@"USER SIGNED UP!!");
-                       [MBProgressHUD hideHUDForView:self.view animated:YES];
-                       [self performSegueWithIdentifier:kEditProfileSegue sender:customerObj];
-                   }
-                  withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
-                      
-                      [MBProgressHUD hideHUDForView:self.view animated:YES];
-                      [self showMessage:errorMessage
-                              withTitle:@"There is something wrong"
-                        completionBlock:nil];
-                  }];
+ 
+    [self signUpEmail:emailStr andPassword:passStr];
 }
 
 - (IBAction)didTapFBSignUpButton:(id)sender {
@@ -161,6 +146,28 @@ static NSString * const kEditProfileSegue = @"signUpToEditProfile";
         Customer *customerObj = (Customer *)sender;
         vc.passedUser = customerObj;
     }
+}
+
+#pragma mark - Helpers
+
+- (void)signUpEmail:(NSString *)email andPassword:(NSString *)password {
+    
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    [Customer signUpCustomer:email
+                    password:password
+                   withBlock:^(Customer *customerObj) {
+                       
+                       NSLog(@"USER SIGNED UP!!");
+                       [MBProgressHUD hideHUDForView:self.view animated:YES];
+                       [self performSegueWithIdentifier:kEditProfileSegue sender:customerObj];
+                   }
+                  withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
+                      
+                      [MBProgressHUD hideHUDForView:self.view animated:YES];
+                      [self showMessage:errorMessage
+                              withTitle:@"There is something wrong"
+                        completionBlock:nil];
+                  }];
 }
 
 @end

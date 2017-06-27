@@ -12,6 +12,8 @@
 #import "Professional+API.h"
 #import "EKRoleViewController.h"
 #import "UIViewController+Helpers.h"
+#import <FBSDKCoreKit/FBSDKCoreKit.h>
+#import <FBSDKLoginKit/FBSDKLoginKit.h>
 #import <MBProgressHUD/MBProgressHUD.h>
 
 @interface EKSignupBPViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
@@ -19,5 +21,6 @@
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 
 - (IBAction)didTapSignUpButton:(id)sender;
+- (IBAction)didTapFacebookSignUpButton:(id)sender;
 
 @end
