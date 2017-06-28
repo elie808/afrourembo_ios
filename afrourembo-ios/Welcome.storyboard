@@ -195,7 +195,7 @@
                                 <rect key="frame" x="0.0" y="190" width="320" height="378"/>
                             </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="QwR-cH-fnA">
-                                <rect key="frame" x="0.0" y="20" width="320" height="480"/>
+                                <rect key="frame" x="0.0" y="20" width="320" height="503"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <view key="tableFooterView" contentMode="scaleToFill" id="0Hz-4i-KDW">
                                     <rect key="frame" x="0.0" y="72" width="320" height="109"/>
@@ -288,11 +288,8 @@
                                 </connections>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YDs-IH-HfM" customClass="FBSDKLoginButton">
-                                <rect key="frame" x="16" y="504" width="288" height="44"/>
+                                <rect key="frame" x="16" y="531" width="288" height="22"/>
                                 <color key="backgroundColor" red="0.23137254901960785" green="0.34901960784313724" blue="0.59607843137254901" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="NyM-f3-APU"/>
-                                </constraints>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="10" maxY="0.0"/>
                                 <state key="normal" title="Sign in via Facebook" image="icFb">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -304,16 +301,16 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="YDs-IH-HfM" firstAttribute="leading" secondItem="4M9-93-ovc" secondAttribute="leadingMargin" id="2Pe-GO-Nnl"/>
-                            <constraint firstItem="YDs-IH-HfM" firstAttribute="trailing" secondItem="4M9-93-ovc" secondAttribute="trailingMargin" id="6JS-nO-G8f"/>
+                            <constraint firstItem="Hbq-KJ-KcR" firstAttribute="top" secondItem="YDs-IH-HfM" secondAttribute="bottom" constant="15" id="7iA-TM-1Xg"/>
                             <constraint firstItem="QwR-cH-fnA" firstAttribute="trailing" secondItem="E2U-KT-Fv1" secondAttribute="trailing" id="ARK-Mp-XPx"/>
                             <constraint firstItem="E2U-KT-Fv1" firstAttribute="top" secondItem="M7g-Tu-8yu" secondAttribute="bottom" constant="170" id="Bi8-Xj-d0u"/>
+                            <constraint firstItem="YDs-IH-HfM" firstAttribute="top" secondItem="QwR-cH-fnA" secondAttribute="bottom" constant="8" id="E2H-gH-yDa"/>
                             <constraint firstItem="QwR-cH-fnA" firstAttribute="leading" secondItem="E2U-KT-Fv1" secondAttribute="leading" id="NoN-Ca-Lmy"/>
                             <constraint firstItem="QwR-cH-fnA" firstAttribute="top" secondItem="M7g-Tu-8yu" secondAttribute="bottom" id="RXc-B7-ss7"/>
                             <constraint firstItem="Hbq-KJ-KcR" firstAttribute="top" secondItem="E2U-KT-Fv1" secondAttribute="bottom" id="UpW-9h-cfy"/>
-                            <constraint firstItem="YDs-IH-HfM" firstAttribute="top" secondItem="QwR-cH-fnA" secondAttribute="bottom" constant="4" id="b6S-Oo-kdh"/>
+                            <constraint firstItem="YDs-IH-HfM" firstAttribute="leading" secondItem="4M9-93-ovc" secondAttribute="leadingMargin" id="ZEt-an-GbF"/>
                             <constraint firstAttribute="trailing" secondItem="E2U-KT-Fv1" secondAttribute="trailing" id="cgq-fE-shj"/>
-                            <constraint firstItem="Hbq-KJ-KcR" firstAttribute="top" secondItem="YDs-IH-HfM" secondAttribute="bottom" constant="20" id="pY6-ek-d7e"/>
+                            <constraint firstItem="YDs-IH-HfM" firstAttribute="trailing" secondItem="4M9-93-ovc" secondAttribute="trailingMargin" id="mxs-rD-3AH"/>
                             <constraint firstItem="E2U-KT-Fv1" firstAttribute="leading" secondItem="4M9-93-ovc" secondAttribute="leading" id="wl3-FL-Siw"/>
                         </constraints>
                     </view>
@@ -326,7 +323,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="agK-r7-cmT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1939" y="132"/>
+            <point key="canvasLocation" x="-1940.625" y="130.98591549295776"/>
         </scene>
         <!--exploreVC-->
         <scene sceneID="QiG-zj-CiB">
