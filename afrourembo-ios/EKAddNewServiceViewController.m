@@ -82,8 +82,6 @@ static NSString * const kUnwindRemoveSegue = @"unwindNewServiceToServiceVCREMOVE
     
     cell.cellTextField.keyboardType = UIKeyboardTypeNumberPad;
     
-//    if (indexPath.row == 0 || indexPath.row == 1) {
-
     if (indexPath.row == 0) {
         
         cell.cellTextField.enabled = NO;
@@ -121,6 +119,20 @@ static NSString * const kUnwindRemoveSegue = @"unwindNewServiceToServiceVCREMOVE
 }
 
 #pragma mark - UITextFieldDelegate
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField {
+    
+    textField.text = @"";
+    
+    if (textField.tag == 1) {
+        
+        self.serviceToEdit.price = 0;
+        
+    } else if (textField.tag == 2) {
+        
+        self.serviceToEdit.time = 0;
+    }
+}
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     [textField resignFirstResponder];
