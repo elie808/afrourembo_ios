@@ -10,7 +10,9 @@
 
 @interface Day : NSObject
 
-@property NSString *dayName;
+//Use these properties for UI
+//@property NSString *dayName;
+@property NSNumber *day;
 @property (assign, nonatomic) BOOL daySelected;
 
 @property NSString *serviceStartDate;
@@ -21,9 +23,40 @@
 @property NSString *lunchStartDate;
 @property NSString *lunchEndDate;
 
-+ (Day *)defaultModelForDay:(NSString *)dayName;
+//Use these properties for server operations
+
+@property NSNumber *fromHours;
+@property NSNumber *fromMinutes;
+@property NSNumber *toHours;
+@property NSNumber *toMinutes;
+@property NSNumber *lbFromHours;
+@property NSNumber *lbFromMinutes;
+@property NSNumber *lbToHours;
+@property NSNumber *lbToMinutes;
+
++ (Day *)defaultModelForDay:(NSNumber *)day;
+//+ (Day *)defaultModelForDay:(NSString *)dayName;
++ (NSString *)dayStringFromNumber:(NSNumber *)dayNumber;
 - (void)resetModel;
 
 @end
 
+/*
+{
+    availabilities   Details [
+                              Any of:
+                              {
+                                  day number
+                                  fromHours number
+                                  fromMinutes number
+                                  toHours number
+                                  toMinutes number
+                                  lbFromHours number
+                                  lbFromMinutes number
+                                  lbToHours number
+                                  lbToMinutes number 
+                              }
+                              ]
+}
+*/
 
