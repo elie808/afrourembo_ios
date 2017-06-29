@@ -1121,7 +1121,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="CFz-OH-1zY">
-                                <rect key="frame" x="0.0" y="72" width="375" height="595"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <color key="backgroundColor" red="0.92549019607843142" green="0.92549019607843142" blue="0.92549019607843142" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="availabilitySwitchCell" id="uIV-EW-o1d" customClass="EKSwitchTableViewCell">
@@ -1214,30 +1214,14 @@
                                     <outlet property="delegate" destination="rOK-4c-Dey" id="gZH-Jq-d3f"/>
                                 </connections>
                             </tableView>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V5c-zn-aaZ">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
-                                <items>
-                                    <navigationItem title="Title" id="KrK-te-Gfh">
-                                        <barButtonItem key="rightBarButtonItem" title="DUMMY" id="eFv-tE-oPz">
-                                            <connections>
-                                                <action selector="didTapDummyButton:" destination="rOK-4c-Dey" id="Wlr-Db-IX2"/>
-                                            </connections>
-                                        </barButtonItem>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="V5c-zn-aaZ" firstAttribute="leading" secondItem="Ibv-ol-XYQ" secondAttribute="leading" id="0F0-Ga-aSv"/>
-                            <constraint firstItem="V5c-zn-aaZ" firstAttribute="leading" secondItem="CFz-OH-1zY" secondAttribute="leading" id="L2Y-gy-TrF"/>
-                            <constraint firstItem="CFz-OH-1zY" firstAttribute="bottom" secondItem="jkZ-ZZ-Hc3" secondAttribute="top" id="UxI-A5-Yy1"/>
-                            <constraint firstItem="CFz-OH-1zY" firstAttribute="top" secondItem="V5c-zn-aaZ" secondAttribute="bottom" id="fwM-Bx-jMa"/>
-                            <constraint firstAttribute="trailing" secondItem="V5c-zn-aaZ" secondAttribute="trailing" id="hzl-RY-w1g"/>
-                            <constraint firstItem="V5c-zn-aaZ" firstAttribute="trailing" secondItem="CFz-OH-1zY" secondAttribute="trailing" id="sWb-qM-Phy"/>
-                            <constraint firstItem="V5c-zn-aaZ" firstAttribute="top" secondItem="m3D-fu-Ks5" secondAttribute="bottom" constant="8" id="zye-zy-QFi"/>
+                            <constraint firstItem="CFz-OH-1zY" firstAttribute="leading" secondItem="Ibv-ol-XYQ" secondAttribute="leading" id="C4Y-0O-8wE"/>
+                            <constraint firstItem="CFz-OH-1zY" firstAttribute="bottom" secondItem="jkZ-ZZ-Hc3" secondAttribute="top" id="Gk3-yU-YT8"/>
+                            <constraint firstItem="CFz-OH-1zY" firstAttribute="top" secondItem="m3D-fu-Ks5" secondAttribute="bottom" id="clb-Gg-WFs"/>
+                            <constraint firstAttribute="trailing" secondItem="CFz-OH-1zY" secondAttribute="trailing" id="pzl-0l-dlT"/>
                         </constraints>
                     </view>
-                    <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="datePickerView" destination="fDq-py-cLN" id="dMr-NI-iB5"/>
                         <outlet property="tableView" destination="CFz-OH-1zY" id="zJJ-UT-h2g"/>
