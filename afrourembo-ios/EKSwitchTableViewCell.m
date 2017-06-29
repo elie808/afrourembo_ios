@@ -36,7 +36,7 @@
     self.cellIndexPath = indexPath;
     
     [self.cellSwitch setOn:dayModel.daySelected];
-    self.cellTitleLabel.text = dayModel.dayName;
+    self.cellTitleLabel.text = [Day dayStringFromNumber:dayModel.day];
     
     if (dayModel.daySelected) {
         

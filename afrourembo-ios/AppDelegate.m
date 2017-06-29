@@ -23,32 +23,32 @@ static NSString * const kVendorMainStoryboard = @"Vendor_Main";
 //    [EKSettings deleteSavedCustomer];
 //    [EKSettings deleteVendor];
     
-    if ([EKSettings getSavedCustomer]) {
-        
-        // Explore
-        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:kMainStoryboard bundle:nil];
-        UINavigationController *rootViewController = [storyboard instantiateViewControllerWithIdentifier:kExploreVC];
+//    if ([EKSettings getSavedCustomer]) {
+//        
+//        // Explore
+//        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:kMainStoryboard bundle:nil];
+//        UINavigationController *rootViewController = [storyboard instantiateViewControllerWithIdentifier:kExploreVC];
+//        self.window.rootViewController = rootViewController;
+//        
+//    } else if ([EKSettings getVendor]) {
+//    
+//        // Vendor
+//        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:kVendorMainStoryboard bundle:nil];
+//        UINavigationController *rootViewController = [storyboard instantiateViewControllerWithIdentifier:kVendorDashVC];
+//        self.window.rootViewController = rootViewController;
+//        
+//    } else {
+//    
+//        // Start at Splash Screen
+//        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:kWelcomeStoryboard bundle:nil];
+//        UINavigationController *rootViewController = [storyboard instantiateViewControllerWithIdentifier:kSplashVC];
+//        self.window.rootViewController = rootViewController;
+//    }
+
+    // Availability
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"SignUp" bundle:nil];
+        UINavigationController *rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"Availability"];
         self.window.rootViewController = rootViewController;
-        
-    } else if ([EKSettings getVendor]) {
-    
-        // Vendor
-        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:kVendorMainStoryboard bundle:nil];
-        UINavigationController *rootViewController = [storyboard instantiateViewControllerWithIdentifier:kVendorDashVC];
-        self.window.rootViewController = rootViewController;
-        
-    } else {
-    
-        // Start at Splash Screen
-        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:kWelcomeStoryboard bundle:nil];
-        UINavigationController *rootViewController = [storyboard instantiateViewControllerWithIdentifier:kSplashVC];
-        self.window.rootViewController = rootViewController;
-    }
-    
-    // Add Service
-//    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"SignUp" bundle:nil];
-//    UINavigationController *rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"Availability"];
-//    self.window.rootViewController = rootViewController;
     
     // Add Service
 //    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"SignUp" bundle:nil];

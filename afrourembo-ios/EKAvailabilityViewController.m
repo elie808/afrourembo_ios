@@ -22,6 +22,11 @@ static CGFloat const kDatePickerHeight = 180;
     NSIndexPath *_selectedIndexPath;
     BOOL _leftSideSelected;
     BOOL _rightSideSelected;
+    
+    NSNumberFormatter *_numberFormatter;
+    NSDateFormatter *_completeDateFormatter;
+    NSDateFormatter *_hoursDateFormatter;
+    NSDateFormatter *_minutesDateFormatter;
 }
 
 - (void)viewDidLoad {
@@ -33,6 +38,7 @@ static CGFloat const kDatePickerHeight = 180;
                                                                              target:self action:@selector(didTapDoneButton)];
 //    self.navigationItem.rightBarButtonItem.tintColor = [UIColor colorWithRed:255./255. green:195./255. blue:0./255. alpha:1.0];
     
+    [self initializeDataFormatters];
     _dataSourceArray = [NSMutableArray arrayWithArray:[self createDataSource]];
     
     self.datePickerView.frame = CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, kDatePickerHeight);
@@ -40,15 +46,30 @@ static CGFloat const kDatePickerHeight = 180;
     self.datePickerView.hidden = YES;
 }
 
+- (void)initializeDataFormatters {
+    
+    _numberFormatter = [[NSNumberFormatter alloc] init];
+    _numberFormatter.numberStyle = NSNumberFormatterDecimalStyle;
+    
+    _completeDateFormatter = [[NSDateFormatter alloc] init];
+    _completeDateFormatter.dateFormat = @"HH:mm";
+    
+    _hoursDateFormatter = [[NSDateFormatter alloc] init];
+    _hoursDateFormatter.dateFormat = @"HH";
+    
+    _minutesDateFormatter = [[NSDateFormatter alloc] init];
+    _minutesDateFormatter.dateFormat = @"mm";
+}
+
 - (NSArray *)createDataSource {
     
-    Day *monday     = [Day defaultModelForDay:@"Monday"];
-    Day *tuesday    = [Day defaultModelForDay:@"Tuesday"];
-    Day *wednesday  = [Day defaultModelForDay:@"Wednesday"];
-    Day *thursday   = [Day defaultModelForDay:@"Thursday"];
-    Day *friday     = [Day defaultModelForDay:@"Friday"];
-    Day *saturday   = [Day defaultModelForDay:@"Saturday"];
-    Day *sunday     = [Day defaultModelForDay:@"Sunday"];
+    Day *monday     = [Day defaultModelForDay:@0];
+    Day *tuesday    = [Day defaultModelForDay:@1];
+    Day *wednesday  = [Day defaultModelForDay:@2];
+    Day *thursday   = [Day defaultModelForDay:@3];
+    Day *friday     = [Day defaultModelForDay:@4];
+    Day *saturday   = [Day defaultModelForDay:@5];
+    Day *sunday     = [Day defaultModelForDay:@6];
     
     return @[monday, tuesday, wednesday, thursday, friday, saturday, sunday];
 }
@@ -189,18 +210,14 @@ static CGFloat const kDatePickerHeight = 180;
 
 - (IBAction)didChangeDate:(UIDatePicker *)sender {
     
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    dateFormatter.dateFormat = @"HH:mm";
-    NSString *strDate = [[dateFormatter stringFromDate:[sender date]] capitalizedString];
-    
     // check which side of the cell is the selected button on
     // perform the update at the corresponding data model indexPath
     if (_leftSideSelected && !_rightSideSelected) {
-        [self updateStartDate:strDate atIndexPath:_selectedIndexPath];
+        [self updateStartDate:[sender date] atIndexPath:_selectedIndexPath];
     }
     
     if (!_leftSideSelected && _rightSideSelected) {
-        [self updateEndDate:strDate atIndexPath:_selectedIndexPath];
+        [self updateEndDate:[sender date] atIndexPath:_selectedIndexPath];
     }
     
     [self hideDatePicker];
@@ -220,18 +237,6 @@ static CGFloat const kDatePickerHeight = 180;
         }
     }
 }
-
-/*
- day        number
- fromHours  number
- fromMinutes number
- toHours    number
- toMinutes number
- lbFromHours number
- lbFromMinutes number
- lbToHours  number
- lbToMinutes number
-  */
 
 #pragma mark - Navigation
 
@@ -264,31 +269,53 @@ static CGFloat const kDatePickerHeight = 180;
                      }];
 }
 
-- (void)updateStartDate:(NSString *)date atIndexPath:(NSIndexPath *)indexPath {
+- (void)updateStartDate:(NSDate *)date atIndexPath:(NSIndexPath *)indexPath {
+    
+    //convert NSDate to NSString with a complete, hours and minutes versions
+    NSString *hoursDateString = [[_hoursDateFormatter stringFromDate:date] capitalizedString];
+    NSString *minutesDateString = [[_minutesDateFormatter stringFromDate:date] capitalizedString];
+    NSString *completeDateString = [[_completeDateFormatter stringFromDate:date] capitalizedString];
     
     Day *dayModel = [_dataSourceArray objectAtIndex:indexPath.section];
     
+    //service start date
     if (indexPath.row == 1) {
-        dayModel.serviceStartDate = date;
+        dayModel.serviceStartDate = completeDateString;
+        dayModel.fromHours      = [_numberFormatter numberFromString:hoursDateString];
+        dayModel.fromMinutes    = [_numberFormatter numberFromString:minutesDateString];
     }
     
+    //lunch start date
     if (indexPath.row == 3) {
-        dayModel.lunchStartDate = date;
+        dayModel.lunchStartDate = completeDateString;
+        dayModel.lbFromHours    = [_numberFormatter numberFromString:hoursDateString];
+        dayModel.lbFromMinutes  = [_numberFormatter numberFromString:minutesDateString];
     }
     
     [self.tableView reloadData];
 }
 
-- (void)updateEndDate:(NSString *)date atIndexPath:(NSIndexPath *)indexPath {
+- (void)updateEndDate:(NSDate *)date atIndexPath:(NSIndexPath *)indexPath {
+    
+    //convert NSDate to NSString with a complete, hours and minutes versions
+    NSString *hoursDateString   = [[_hoursDateFormatter stringFromDate:date] capitalizedString];
+    NSString *minutesDateString = [[_minutesDateFormatter stringFromDate:date] capitalizedString];
+    NSString *completeDateString = [[_completeDateFormatter stringFromDate:date] capitalizedString];
     
     Day *dayModel = [_dataSourceArray objectAtIndex:indexPath.section];
     
+    //service end date
     if (indexPath.row == 1) {
-        dayModel.serviceEndDate = date;
+        dayModel.serviceEndDate = completeDateString;
+        dayModel.toHours    = [_numberFormatter numberFromString:hoursDateString];
+        dayModel.toMinutes  = [_numberFormatter numberFromString:minutesDateString];
     }
     
+    //lunch end date
     if (indexPath.row == 3) {
-        dayModel.lunchEndDate = date;
+        dayModel.lunchEndDate = completeDateString;
+        dayModel.lbToHours    = [_numberFormatter numberFromString:hoursDateString];
+        dayModel.lbToMinutes  = [_numberFormatter numberFromString:minutesDateString];
     }
     
     [self.tableView reloadData];
