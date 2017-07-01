@@ -13,22 +13,6 @@ static NSString * const kDefaultEndHour = @"5:00 PM";
 
 @implementation Day
 
-//+ (Day *)defaultModelForDay:(NSString *)dayName {
-//    
-//    Day *model = [Day new];
-//    
-//    model.dayName = dayName;
-//    
-//    model.daySelected = NO;
-//    model.serviceStartDate  = kDefaultStartHour;
-//    model.serviceEndDate    = kDefaultEndHour;
-//    model.lunchBreakSelected = NO;
-//    model.lunchStartDate    = kDefaultStartHour;
-//    model.lunchEndDate      = kDefaultEndHour;
-//    
-//    return model;
-//}
-
 + (Day *)defaultModelForDay:(NSNumber *)day {
     
     Day *model = [Day new];
@@ -42,6 +26,15 @@ static NSString * const kDefaultEndHour = @"5:00 PM";
     model.lunchStartDate    = kDefaultStartHour;
     model.lunchEndDate      = kDefaultEndHour;
     
+    model.fromHours     = @9;
+    model.fromMinutes   = @0;
+    model.toHours       = @17;
+    model.toMinutes     = @0;
+    model.lbFromHours   = @0;
+    model.lbFromMinutes = @0;
+    model.lbToHours     = @0;
+    model.lbToMinutes   = @0;
+    
     return model;
 }
 
@@ -53,6 +46,15 @@ static NSString * const kDefaultEndHour = @"5:00 PM";
     self.lunchBreakSelected = NO;
     self.lunchStartDate = kDefaultStartHour;
     self.lunchEndDate   = kDefaultEndHour;
+    
+    self.fromHours     = @9;
+    self.fromMinutes   = @0;
+    self.toHours       = @17;
+    self.toMinutes     = @0;
+    self.lbFromHours   = @0;
+    self.lbFromMinutes = @0;
+    self.lbToHours     = @0;
+    self.lbToMinutes   = @0;
 }
 
 + (NSString *)dayStringFromNumber:(NSNumber *)dayNumber {

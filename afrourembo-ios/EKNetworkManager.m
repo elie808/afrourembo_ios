@@ -34,6 +34,10 @@
 + (void)configureRequestDescriptors:(RKObjectManager *)objectManager {
     
     [objectManager addRequestDescriptorsFromArray:@[
+                                                    [Day availabilityRequestDescriptor]
+                                                    ]];
+    
+    [objectManager addRequestDescriptorsFromArray:@[
                                                     [Customer userRegistrationRequestDescriptor],
                                                     ]];
     
@@ -51,6 +55,10 @@
 #pragma mark - Response
 
 + (void)configureResponseDescriptors:(RKObjectManager *)objectManager {
+    
+    [objectManager addResponseDescriptorsFromArray:@[
+                                                     [Day availabilityResponseDescriptor]
+                                                     ]];
     
     [objectManager addResponseDescriptor:[Category categoryResponseDescriptor]];
     

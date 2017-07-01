@@ -46,6 +46,7 @@ static CGFloat const kDatePickerHeight = 180;
     self.datePickerView.hidden = YES;
 }
 
+/// Used to manipulate dates from strings and numbers and vice versa
 - (void)initializeDataFormatters {
     
     _numberFormatter = [[NSNumberFormatter alloc] init];
@@ -205,7 +206,47 @@ static CGFloat const kDatePickerHeight = 180;
 #pragma mark - Actions
 
 - (void)didTapDoneButton {
-    [self performSegueWithIdentifier:kVendorDashSegue sender:nil];
+    
+    NSMutableArray *daysArray = [NSMutableArray new];
+    
+    for (Day *day in _dataSourceArray) {
+        
+        if (day.daySelected) {
+            [daysArray addObject:day];
+        }
+    }
+    
+    if (daysArray.count > 0) {
+        
+        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        [Day postAvailabilityDays:[NSArray arrayWithArray:daysArray]
+                professionalToken:self.passedProfessional.token
+                        withBlock:^(NSArray *daysArray) {
+                            
+                            [MBProgressHUD hideHUDForView:self.view animated:YES];
+                            
+                            [self showMessage:@"You have succesfully created your AfroUrembo account!"
+                                    withTitle:@"Success"
+                              completionBlock:^(UIAlertAction *action) {
+                                  
+                                  [self performSegueWithIdentifier:kVendorDashSegue sender:nil];
+                              }];
+                            
+                            
+                        } withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
+                            
+                            [MBProgressHUD hideHUDForView:self.view animated:YES];
+                            [self showMessage:errorMessage
+                                    withTitle:@"There is something wrong"
+                              completionBlock:nil];
+                        }];
+        
+    } else {
+     
+        [self showMessage:@"You need to add the schedule of 1 day at least in order to proceed"
+                withTitle:@"There is something wrong"
+          completionBlock:nil];
+    }
 }
 
 - (IBAction)didChangeDate:(UIDatePicker *)sender {
@@ -230,12 +271,22 @@ static CGFloat const kDatePickerHeight = 180;
 
 - (IBAction)didTapDummyButton:(id)sender {
     
+    NSMutableArray *daysArray = [NSMutableArray new];
+    
     for (Day *day in _dataSourceArray) {
         
         if (day.daySelected) {
-            
+            [daysArray addObject:day];
         }
     }
+    
+    [Day postAvailabilityDays:[NSArray arrayWithArray:daysArray]
+            professionalToken:self.passedProfessional.token
+                    withBlock:^(NSArray *daysArray) {
+                        
+                    } withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
+                        
+                    }];
 }
 
 #pragma mark - Navigation

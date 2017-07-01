@@ -116,6 +116,8 @@ static NSString * const kUnwindFromNewService = @"unwindFromNewServiceToServiceV
     
     if ([segue.identifier isEqualToString:kAvailabilitySegue]) {
         
+        EKAvailabilityViewController *vc = segue.destinationViewController;
+        vc.passedProfessional = self.passedProfessional;
     }
 }
 

@@ -10,9 +10,14 @@
 #import "EKSwitchTableViewCell.h"
 #import "EKDualButtonTableViewCell.h"
 #import "Day.h"
+#import "Day+API.h"
+#import "Professional.h"
+#import "UIViewController+Helpers.h"
+#import <MBProgressHUD/MBProgressHUD.h>
 
 @interface EKAvailabilityViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, EKSwitchCellDelegate, EKDualButtonCellDelegate>
 
+@property (strong, nonatomic) Professional *passedProfessional;
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 
 @property (strong, nonatomic) IBOutlet UIView *datePickerView;

@@ -21,6 +21,7 @@ static NSString * const kUserRegisterAPIPath = @"user/register";
 static NSString * const kUserLoginAPIPath    = @"user/login";
 static NSString * const kUserProfileAPIPath  = @"user/profile";
 
+static NSString * const kProfessionalAvailabilityAPIPath = @"professional/availability";
 static NSString * const kProfessionalRegisterAPIPath = @"professional/register";
 static NSString * const kProfessionalLoginAPIPath    = @"professional/login";
 static NSString * const kProfessionalServiceAPIPath  = @"professional/services";

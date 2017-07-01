@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "EKAddNewServiceViewController.h"
 #import "EKAccessoryTableViewCell.h"
+#import "EKAvailabilityViewController.h"
 #import "Professional.h"
 #import "Service.h"
 #import "Service+API.h"

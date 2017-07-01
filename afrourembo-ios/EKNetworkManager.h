@@ -14,6 +14,7 @@
 #import "Professional+API.h"
 #import "ProfessionalLogin+API.h"
 #import "Service+API.h"
+#import "Day+API.h"
 
 #import "EKNetworkingConstants.h"
 
