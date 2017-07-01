@@ -41,6 +41,7 @@
                                                     [Customer userRegistrationRequestDescriptor],
                                                     ]];
     
+    [objectManager addRequestDescriptor:[SalonLogin salonLoginRequestDescriptor]];
     [objectManager addRequestDescriptor:[ProfessionalLogin professionalLoginRequestDescriptor]];
     
     [objectManager addRequestDescriptorsFromArray:@[
@@ -73,6 +74,8 @@
     [objectManager addResponseDescriptorsFromArray:@[
                                                      [Professional professionalRegistrationResponseDescriptor]
                                                      ]];
+    
+    [objectManager addResponseDescriptor:[SalonLogin salonLoginResponseDescriptor]];
     
     [objectManager addResponseDescriptorsFromArray:@[
                                                      [Service postServicesResponseDescriptor]

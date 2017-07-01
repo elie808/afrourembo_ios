@@ -13,6 +13,7 @@
 #import "Customer+API.h"
 #import "Professional+API.h"
 #import "ProfessionalLogin+API.h"
+#import "SalonLogin+API.h"
 #import "Service+API.h"
 #import "Day+API.h"
 

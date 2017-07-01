@@ -39,6 +39,9 @@
 		47652BF41F01DAA500796E04 /* Customer+Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 47652BF31F01DAA500796E04 /* Customer+Helpers.m */; };
 		47652BFA1F01DC8B00796E04 /* EKSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 47652BF91F01DC8B00796E04 /* EKSettings.m */; };
 		47652BFD1F01FB5700796E04 /* EKSettingsBPViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47652BFC1F01FB5700796E04 /* EKSettingsBPViewController.m */; };
+		476F63721F075ECD00C27A92 /* SalonLogin.m in Sources */ = {isa = PBXBuildFile; fileRef = 476F63711F075ECD00C27A92 /* SalonLogin.m */; };
+		476F63751F075EF000C27A92 /* SalonLogin+API.m in Sources */ = {isa = PBXBuildFile; fileRef = 476F63741F075EF000C27A92 /* SalonLogin+API.m */; };
+		476F63781F0760C600C27A92 /* Salon+API.m in Sources */ = {isa = PBXBuildFile; fileRef = 476F63771F0760C600C27A92 /* Salon+API.m */; };
 		477256051EB958FF007CBD6B /* EKAvailabilityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 477256041EB958FF007CBD6B /* EKAvailabilityViewController.m */; };
 		477256091EB95EA4007CBD6B /* EKSwitchTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 477256081EB95EA4007CBD6B /* EKSwitchTableViewCell.m */; };
 		47800BC31EA3B2FA00F450DB /* EKBookingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47800BC21EA3B2FA00F450DB /* EKBookingViewController.m */; };
@@ -174,6 +177,12 @@
 		47652BF91F01DC8B00796E04 /* EKSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKSettings.m; sourceTree = "<group>"; };
 		47652BFB1F01FB5700796E04 /* EKSettingsBPViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKSettingsBPViewController.h; sourceTree = "<group>"; };
 		47652BFC1F01FB5700796E04 /* EKSettingsBPViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKSettingsBPViewController.m; sourceTree = "<group>"; };
+		476F63701F075ECD00C27A92 /* SalonLogin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SalonLogin.h; sourceTree = "<group>"; };
+		476F63711F075ECD00C27A92 /* SalonLogin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SalonLogin.m; sourceTree = "<group>"; };
+		476F63731F075EF000C27A92 /* SalonLogin+API.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SalonLogin+API.h"; sourceTree = "<group>"; };
+		476F63741F075EF000C27A92 /* SalonLogin+API.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SalonLogin+API.m"; sourceTree = "<group>"; };
+		476F63761F0760C600C27A92 /* Salon+API.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Salon+API.h"; sourceTree = "<group>"; };
+		476F63771F0760C600C27A92 /* Salon+API.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Salon+API.m"; sourceTree = "<group>"; };
 		477256031EB958FF007CBD6B /* EKAvailabilityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKAvailabilityViewController.h; sourceTree = "<group>"; };
 		477256041EB958FF007CBD6B /* EKAvailabilityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKAvailabilityViewController.m; sourceTree = "<group>"; };
 		477256071EB95EA4007CBD6B /* EKSwitchTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKSwitchTableViewCell.h; sourceTree = "<group>"; };
@@ -684,6 +693,8 @@
 				471AA1871ED44A0E009B840A /* Review.m */,
 				47AF51B81E9B8561005FE6EB /* Salon.h */,
 				47AF51B91E9B8561005FE6EB /* Salon.m */,
+				476F63701F075ECD00C27A92 /* SalonLogin.h */,
+				476F63711F075ECD00C27A92 /* SalonLogin.m */,
 				478BDEF71E99C5FC00F74A5C /* Service.h */,
 				478BDEF81E99C5FC00F74A5C /* Service.m */,
 				47EF0E2E1EDA23B3000B07BB /* Today.h */,
@@ -957,6 +968,10 @@
 				479F7D6D1EF0C17E00EB445A /* Professional+API.m */,
 				479F7D721EF16D8600EB445A /* ProfessionalLogin+API.h */,
 				479F7D731EF16D8600EB445A /* ProfessionalLogin+API.m */,
+				476F63761F0760C600C27A92 /* Salon+API.h */,
+				476F63771F0760C600C27A92 /* Salon+API.m */,
+				476F63731F075EF000C27A92 /* SalonLogin+API.h */,
+				476F63741F075EF000C27A92 /* SalonLogin+API.m */,
 				47FE51CA1EFD5BE100A39BAE /* Service+API.h */,
 				47FE51CB1EFD5BE100A39BAE /* Service+API.m */,
 			);
@@ -1148,6 +1163,7 @@
 				47F7140D1ED6FB2D0028FB65 /* EKBusinessModelViewController.m in Sources */,
 				47652BFD1F01FB5700796E04 /* EKSettingsBPViewController.m in Sources */,
 				475A4CEF1EBF74D50089D477 /* EKFilterSearchTableViewCell.m in Sources */,
+				476F63721F075ECD00C27A92 /* SalonLogin.m in Sources */,
 				470CD74F1EA1C87D0086DEE4 /* EKCompanyProfileViewController+TableView.m in Sources */,
 				471AA18B1ED45DD0009B840A /* UIImage+Helpers.m in Sources */,
 				477256091EB95EA4007CBD6B /* EKSwitchTableViewCell.m in Sources */,
@@ -1199,9 +1215,11 @@
 				479B30AC1EF75B7F00DE2121 /* EKServiceListViewController.m in Sources */,
 				475A4CF71EC0041F0089D477 /* EKCheckoutSuccessViewController.m in Sources */,
 				479F7D741EF16D8600EB445A /* ProfessionalLogin+API.m in Sources */,
+				476F63751F075EF000C27A92 /* SalonLogin+API.m in Sources */,
 				47919E5A1E795664001C5600 /* EKOnboardingViewController.m in Sources */,
 				475A4CFB1EC01EAB0089D477 /* EKExploreViewController+SideMenuTableView.m in Sources */,
 				478278CE1E7923D000FB2FD2 /* main.m in Sources */,
+				476F63781F0760C600C27A92 /* Salon+API.m in Sources */,
 				47871AE51EBA17A3003B9BEB /* EKDualButtonTableViewCell.m in Sources */,
 				479F7D681EF00A1700EB445A /* UIViewController+Helpers.m in Sources */,
 				47448AE01EAE462F0098CED3 /* EKEditProfileInfoViewController.m in Sources */,

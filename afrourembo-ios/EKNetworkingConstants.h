@@ -26,6 +26,8 @@ static NSString * const kProfessionalRegisterAPIPath = @"professional/register";
 static NSString * const kProfessionalLoginAPIPath    = @"professional/login";
 static NSString * const kProfessionalServiceAPIPath  = @"professional/services";
 
+static NSString * const kSalonLoginAPIPath    = @"salon/login";
+
 #pragma mark - Status Codes
 
 static NSInteger const kStatusTeaPot = 418;

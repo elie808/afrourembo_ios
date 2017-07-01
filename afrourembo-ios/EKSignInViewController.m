@@ -165,6 +165,22 @@ static NSString * const kBPDashSegue = @"signInToBPDashboardVC";
         
     } else if (self.signInRole == SignInRoleSalon) {
         
+        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        [SalonLogin loginSalon:email
+                      password:password
+                     withBlock:^(Salon *salonObj) {
+                         
+                         NSLog(@"SALon LOGGED IN!!");
+                         [MBProgressHUD hideHUDForView:self.view animated:YES];
+                         [self performSegueWithIdentifier:kBPDashSegue sender:nil];
+                     }
+                    withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
+                        
+                        [MBProgressHUD hideHUDForView:self.view animated:YES];
+                        [self showMessage:errorMessage
+                                withTitle:@"There is something wrong"
+                          completionBlock:nil];
+                    }];
     }
 }
 

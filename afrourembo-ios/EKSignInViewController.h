@@ -12,11 +12,12 @@
 #import "Customer+API.h"
 #import "Professional+API.h"
 #import "ProfessionalLogin+API.h"
+#import "SalonLogin+API.h"
 #import "UIViewController+Helpers.h"
+#import "EKSettings.h"
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
 #import <MBProgressHUD/MBProgressHUD.h>
-#import "EKSettings.h"
 
 typedef NS_ENUM(NSUInteger, SignInRole) {
     SignInRoleCustomer,

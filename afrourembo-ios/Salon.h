@@ -20,6 +20,7 @@
 @property NSString *userImageName;
 @property NSString *userName;
 @property NSString *address;
+@property NSString *token;
 
 //TODO: Encapsulate into object ?
 @property CGFloat longitude;
