@@ -51,6 +51,10 @@ static NSString * const kEditProfileSegue = @"signUpToEditProfile";
     
     cell.cellIndexPath = indexPath;
     
+    if (indexPath.row == 0) {
+        cell.cellTextField.keyboardType = UIKeyboardTypeEmailAddress;
+    }
+    
     return cell;
 }
 

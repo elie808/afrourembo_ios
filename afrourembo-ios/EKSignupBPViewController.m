@@ -49,6 +49,10 @@ static NSString * const kRoleSegue = @"signupBPToRoleVC";
     cell.cellTitleLabel.text = labelValue;
     cell.cellTextField.placeholder = placeHolderValue;
     
+    if (indexPath.row == 2) {
+        cell.cellTextField.keyboardType = UIKeyboardTypeEmailAddress;
+    }
+    
     return cell;
 }
 

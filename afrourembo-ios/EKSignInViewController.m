@@ -59,6 +59,10 @@ static NSString * const kBPDashSegue = @"signInToBPDashboardVC";
     cell.cellTitleLabel.text = labelValue;
     cell.cellTextField.placeholder = placeHolderValue;
     
+    if (indexPath.row == 0) {
+        cell.cellTextField.keyboardType = UIKeyboardTypeEmailAddress;
+    }
+    
     return cell;
 }
 
