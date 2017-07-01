@@ -89,7 +89,13 @@ static NSString * const kExploreSegue = @"editVcToExploreVC";
                     withBlock:^(Customer *customerObj) {
                      
                         [MBProgressHUD hideHUDForView:self.view animated:YES];
-                        [self performSegueWithIdentifier:kExploreSegue sender:nil];
+                        
+                        [self showMessage:@"You have succesfully created your AfroUrembo account!"
+                                withTitle:@"Success"
+                          completionBlock:^(UIAlertAction *action) {
+                              
+                              [self performSegueWithIdentifier:kExploreSegue sender:nil];
+                          }];
                     }
                    withErrors:^(NSError *error, NSString *errorMessage) {
                        
