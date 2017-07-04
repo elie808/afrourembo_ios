@@ -17,6 +17,8 @@
 		470F0B951EDB7DF2002FDE96 /* EKDashboardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 470F0B941EDB7DF2002FDE96 /* EKDashboardViewController.m */; };
 		471AA1881ED44A0E009B840A /* Review.m in Sources */ = {isa = PBXBuildFile; fileRef = 471AA1871ED44A0E009B840A /* Review.m */; };
 		471AA18B1ED45DD0009B840A /* UIImage+Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 471AA18A1ED45DD0009B840A /* UIImage+Helpers.m */; };
+		47329CA21F0BC06D00E5DF13 /* EKProfessionalInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47329CA11F0BC06D00E5DF13 /* EKProfessionalInfoViewController.m */; };
+		47329CA71F0BE77700E5DF13 /* EKProfessionalAddressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47329CA61F0BE77700E5DF13 /* EKProfessionalAddressViewController.m */; };
 		473535331F0B1E71009FCE41 /* Explore.m in Sources */ = {isa = PBXBuildFile; fileRef = 473535321F0B1E71009FCE41 /* Explore.m */; };
 		473535361F0B1EE6009FCE41 /* Explore+API.m in Sources */ = {isa = PBXBuildFile; fileRef = 473535351F0B1EE6009FCE41 /* Explore+API.m */; };
 		4740243D1EDE1DB30089A6D2 /* EKChartSummaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4740243C1EDE1DB30089A6D2 /* EKChartSummaryViewController.m */; };
@@ -135,6 +137,10 @@
 		471AA1871ED44A0E009B840A /* Review.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Review.m; sourceTree = "<group>"; };
 		471AA1891ED45DD0009B840A /* UIImage+Helpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Helpers.h"; sourceTree = "<group>"; };
 		471AA18A1ED45DD0009B840A /* UIImage+Helpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Helpers.m"; sourceTree = "<group>"; };
+		47329CA01F0BC06D00E5DF13 /* EKProfessionalInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKProfessionalInfoViewController.h; sourceTree = "<group>"; };
+		47329CA11F0BC06D00E5DF13 /* EKProfessionalInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKProfessionalInfoViewController.m; sourceTree = "<group>"; };
+		47329CA51F0BE77700E5DF13 /* EKProfessionalAddressViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKProfessionalAddressViewController.h; sourceTree = "<group>"; };
+		47329CA61F0BE77700E5DF13 /* EKProfessionalAddressViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKProfessionalAddressViewController.m; sourceTree = "<group>"; };
 		473535311F0B1E71009FCE41 /* Explore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Explore.h; sourceTree = "<group>"; };
 		473535321F0B1E71009FCE41 /* Explore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Explore.m; sourceTree = "<group>"; };
 		473535341F0B1EE6009FCE41 /* Explore+API.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Explore+API.h"; sourceTree = "<group>"; };
@@ -384,6 +390,24 @@
 				4740243C1EDE1DB30089A6D2 /* EKChartSummaryViewController.m */,
 			);
 			name = "view2 - Chart";
+			sourceTree = "<group>";
+		};
+		47329CA31F0BE74800E5DF13 /* SALON - Role */ = {
+			isa = PBXGroup;
+			children = (
+				47428CFC1EFB5E70001C193F /* EKSalonRoleViewController.h */,
+				47428CFD1EFB5E70001C193F /* EKSalonRoleViewController.m */,
+			);
+			name = "SALON - Role";
+			sourceTree = "<group>";
+		};
+		47329CA41F0BE75600E5DF13 /* SALON - Address */ = {
+			isa = PBXGroup;
+			children = (
+				4760FC7A1EF88C8200099DFD /* EKSalonAddressViewController.h */,
+				4760FC7B1EF88C8200099DFD /* EKSalonAddressViewController.m */,
+			);
+			name = "SALON - Address";
 			sourceTree = "<group>";
 		};
 		47448ADB1EAE16580098CED3 /* Customer - Sign up ViewController */ = {
@@ -790,10 +814,6 @@
 			children = (
 				479F7D751EF17BF900EB445A /* EKSalonInfoViewController.h */,
 				479F7D761EF17BF900EB445A /* EKSalonInfoViewController.m */,
-				4760FC7A1EF88C8200099DFD /* EKSalonAddressViewController.h */,
-				4760FC7B1EF88C8200099DFD /* EKSalonAddressViewController.m */,
-				47428CFC1EFB5E70001C193F /* EKSalonRoleViewController.h */,
-				47428CFD1EFB5E70001C193F /* EKSalonRoleViewController.m */,
 			);
 			name = "SALON - Info";
 			sourceTree = "<group>";
@@ -856,6 +876,8 @@
 				479520101EB3A40A00E377E5 /* BP - Monthly Schedule */,
 				47652BFE1F01FB5D00796E04 /* BP - Settings */,
 				479F7D781EF17C0100EB445A /* SALON - Info */,
+				47329CA41F0BE75600E5DF13 /* SALON - Address */,
+				47329CA31F0BE74800E5DF13 /* SALON - Role */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -948,6 +970,10 @@
 			children = (
 				47F7140B1ED6FB2D0028FB65 /* EKBusinessModelViewController.h */,
 				47F7140C1ED6FB2D0028FB65 /* EKBusinessModelViewController.m */,
+				47329CA01F0BC06D00E5DF13 /* EKProfessionalInfoViewController.h */,
+				47329CA11F0BC06D00E5DF13 /* EKProfessionalInfoViewController.m */,
+				47329CA51F0BE77700E5DF13 /* EKProfessionalAddressViewController.h */,
+				47329CA61F0BE77700E5DF13 /* EKProfessionalAddressViewController.m */,
 			);
 			name = "BP - Business Model";
 			sourceTree = "<group>";
@@ -1171,6 +1197,7 @@
 				47BFEA691EA4A9A30091522B /* EKBookingDayCollectionViewCell.m in Sources */,
 				474BD5731E97F8F3009410C4 /* EKTextFieldTableViewCell.m in Sources */,
 				47F7140D1ED6FB2D0028FB65 /* EKBusinessModelViewController.m in Sources */,
+				47329CA71F0BE77700E5DF13 /* EKProfessionalAddressViewController.m in Sources */,
 				47652BFD1F01FB5700796E04 /* EKSettingsBPViewController.m in Sources */,
 				475A4CEF1EBF74D50089D477 /* EKFilterSearchTableViewCell.m in Sources */,
 				476F63721F075ECD00C27A92 /* SalonLogin.m in Sources */,
@@ -1230,6 +1257,7 @@
 				47919E5A1E795664001C5600 /* EKOnboardingViewController.m in Sources */,
 				475A4CFB1EC01EAB0089D477 /* EKExploreViewController+SideMenuTableView.m in Sources */,
 				478278CE1E7923D000FB2FD2 /* main.m in Sources */,
+				47329CA21F0BC06D00E5DF13 /* EKProfessionalInfoViewController.m in Sources */,
 				476F63781F0760C600C27A92 /* Salon+API.m in Sources */,
 				47871AE51EBA17A3003B9BEB /* EKDualButtonTableViewCell.m in Sources */,
 				479F7D681EF00A1700EB445A /* UIViewController+Helpers.m in Sources */,

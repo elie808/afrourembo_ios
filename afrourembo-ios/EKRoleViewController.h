@@ -11,6 +11,7 @@
 #import "EKSignInViewController.h"
 #import "EKAddServiceViewController.h"
 #import "EKSalonSelectViewController.h"
+#import "EKProfessionalInfoViewController.h"
 #import "Professional.h"
 
 @interface EKRoleViewController : UIViewController

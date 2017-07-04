@@ -34,7 +34,7 @@
                                       _listViewVisible = NO;
                                       
                                       self.contentOffsetDictionary = [NSMutableDictionary new];
-                                      self.venuesList = exploreObj.professionals; //[self createStubs];
+                                      self.venuesList = [self createStubs];//exploreObj.professionals;
                                       self.dataSourceArray = [NSMutableArray arrayWithArray:self.venuesList];
                                       [self placeVenuePins:self.dataSourceArray];
                                       
@@ -45,7 +45,7 @@
     
     [self initLayout];
     
-//    [self initDataSources];
+    [self initDataSources];
 }
 
 /*
@@ -117,15 +117,15 @@
                      }];
 }
 
-//- (void)initDataSources {
-//
-//    _listViewVisible = NO;
-//    
-//    self.contentOffsetDictionary = [NSMutableDictionary new];
-//    self.venuesList = [self createStubs];
-//    self.dataSourceArray = [NSMutableArray arrayWithArray:self.venuesList];
-//    [self placeVenuePins:self.dataSourceArray];
-//}
+- (void)initDataSources {
+
+    _listViewVisible = NO;
+    
+    self.contentOffsetDictionary = [NSMutableDictionary new];
+    self.venuesList = [self createStubs];
+    self.dataSourceArray = [NSMutableArray arrayWithArray:self.venuesList];
+    [self placeVenuePins:self.dataSourceArray];
+}
 
 - (void)initLayout {
     

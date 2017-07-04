@@ -94,8 +94,8 @@ static NSString * const kWorkInSalonBP   =  @"salonRoleVCToBusinessModelVC";
     if ([segue.identifier isEqualToString:kWorkAloneBP]) {
 //        EKBusinessModelViewController *vc = segue.destinationViewController;
 //        vc.BusinessModelUser = BusinessModelUserIndependentBP;
-        
-        EKAddServiceViewController *vc = segue.destinationViewController;
+
+        EKProfessionalInfoViewController *vc = segue.destinationViewController;
         vc.passedProfessional = self.passedProfessional;
     }
     

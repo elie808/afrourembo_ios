@@ -1,21 +1,20 @@
 //
-//  EKSalonAddressViewController.m
+//  EKProfessionalAddressViewController.m
 //  afrourembo-ios
 //
-//  Created by Elie El Khoury on 6/20/17.
+//  Created by Elie El Khoury on 7/4/17.
 //  Copyright © 2017 Elie El Khoury. All rights reserved.
 //
 
-#import "EKSalonAddressViewController.h"
+#import "EKProfessionalAddressViewController.h"
 
-static NSString * const kUnwindSegue = @"salonAddressToSalonInfoVCSegue";
+static NSString * const kUnwindSegue =@"unwindToProfessionalInfo";
 static CLLocationDistance const kZoomDistance = 500;
 
-@implementation EKSalonAddressViewController
+@implementation EKProfessionalAddressViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     self.pinImageView.frame = CGRectMake(0,0, 26, 39);
     self.pinImageView.center = self.mapView.center;
     [self.view addSubview:self.pinImageView];
@@ -29,8 +28,8 @@ static CLLocationDistance const kZoomDistance = 500;
 
 // REVERSE LOOKUP FROM STRING
 /*
-
-*/
+ 
+ */
 
 #pragma mark - MKMapViewDelegate
 
@@ -57,22 +56,22 @@ static CLLocationDistance const kZoomDistance = 500;
                                   completionHandler:^(NSArray* placemarks, NSError* error) {
                                       
                                       if (placemarks && placemarks.count > 0) {
-
+                                          
                                           [MBProgressHUD hideHUDForView:self.view animated:YES];
                                           
                                           CLPlacemark *topResult = [placemarks objectAtIndex:0];
                                           MKPlacemark *placemark = [[MKPlacemark alloc] initWithPlacemark:topResult];
-                         
+                                          
                                           MKCoordinateRegion region = self.mapView.region;
-//                                          region.center = placemark.region.center;
-//                                          region.span.longitudeDelta /= 8.0;
-//                                          region.span.latitudeDelta /= 8.0;
-//                         
-//                                          [self.mapView setRegion:region animated:YES];
-//                                          [self.mapView addAnnotation:placemark];
-                                      
+                                          //                                          region.center = placemark.region.center;
+                                          //                                          region.span.longitudeDelta /= 8.0;
+                                          //                                          region.span.latitudeDelta /= 8.0;
+                                          //
+                                          //                                          [self.mapView setRegion:region animated:YES];
+                                          //                                          [self.mapView addAnnotation:placemark];
+                                          
                                       } else {
-                                      
+                                          
                                           [MBProgressHUD hideHUDForView:self.view animated:YES];
                                       }
                                   }
@@ -86,10 +85,10 @@ static CLLocationDistance const kZoomDistance = 500;
 #pragma mark - Actions
 
 - (IBAction)didTapDone:(id)sender {
-
+    
     CLLocation *loc = [[CLLocation alloc]initWithLatitude:[self.mapView centerCoordinate].latitude
                                                 longitude:[self.mapView centerCoordinate].longitude];
-
+    
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     [[[CLGeocoder alloc]init] reverseGeocodeLocation:loc
                                    completionHandler:^(NSArray *placemarks, NSError *error) {
@@ -100,27 +99,27 @@ static CLLocationDistance const kZoomDistance = 500;
                                            
                                            [MBProgressHUD hideHUDForView:self.view animated:YES];
                                            NSLog(@"placemark %@",placemark);
-
+                                           
                                            //String to hold address
                                            NSString *completeAddress = [[placemark.addressDictionary valueForKey:@"FormattedAddressLines"] componentsJoinedByString:@", "];
                                            
                                            NSLog(@"addressDictionary %@", placemark.addressDictionary);
                                            
-//                                           NSLog(@"placemark %@",placemark.region);
-//                                           NSLog(@"placemark %@",placemark.country);  // Give Country Name
-//                                           NSLog(@"placemark %@",placemark.locality); // Extract the city name
-//                                           
-//                                           NSLog(@"location %@",placemark.name);
-//                                           NSLog(@"location %@",placemark.postalCode);
-//                                           NSLog(@"location %@",placemark.subLocality);
-//                                           NSLog(@"location %@",placemark.location);
+                                           //                                           NSLog(@"placemark %@",placemark.region);
+                                           //                                           NSLog(@"placemark %@",placemark.country);  // Give Country Name
+                                           //                                           NSLog(@"placemark %@",placemark.locality); // Extract the city name
+                                           //
+                                           //                                           NSLog(@"location %@",placemark.name);
+                                           //                                           NSLog(@"location %@",placemark.postalCode);
+                                           //                                           NSLog(@"location %@",placemark.subLocality);
+                                           //                                           NSLog(@"location %@",placemark.location);
                                            
                                            // Print the complete location
                                            NSLog(@"I am currently at %@", completeAddress);
                                            
                                            Address *addressObj = [Address new];
-//                                           addressObj.addressCoords = CLLocationCoordinate2DMake(placemark.location.coordinate.latitude,
-//                                                                                                 placemark.location.coordinate.longitude);
+                                           //                                           addressObj.addressCoords = CLLocationCoordinate2DMake(placemark.location.coordinate.latitude,
+                                           //                                                                                                 placemark.location.coordinate.longitude);
                                            addressObj.addressCoords = CLLocationCoordinate2DMake([self.mapView centerCoordinate].latitude,
                                                                                                  [self.mapView centerCoordinate].longitude);
                                            addressObj.addressString = completeAddress;
@@ -145,13 +144,9 @@ static CLLocationDistance const kZoomDistance = 500;
         Address *addressObj = [Address new];
         addressObj = (Address *)sender;
         
-        EKSalonInfoViewController *vc = segue.destinationViewController;
+        EKProfessionalInfoViewController *vc = segue.destinationViewController;
         vc.address = addressObj.addressString;
         vc.addressCoords = CLLocationCoordinate2DMake(addressObj.addressCoords.latitude, addressObj.addressCoords.longitude);
-    }
-    
-    if ([segue.identifier isEqualToString:@"unwindToProfessionalInfo"]) {
-        
     }
 }
 
