@@ -11,6 +11,7 @@
 
 #import "Category+API.h"
 #import "Customer+API.h"
+#import "Explore+API.h"
 #import "Professional+API.h"
 #import "ProfessionalLogin+API.h"
 #import "SalonLogin+API.h"

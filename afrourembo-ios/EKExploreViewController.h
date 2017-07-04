@@ -10,9 +10,13 @@
 #import "EKDiscoverMapViewController.h"
 #import "EKExploreCollectionViewCell.h"
 #import "EKImageTextTableViewCell.h"
+#import "Category.h"
+#import "Category+API.h"
 #import "Service.h"
 #import "Customer.h"
 #import "EKSettings.h"
+#import <MBProgressHUD/MBProgressHUD.h>
+#import <YYWebImage/YYWebImage.h>
 
 @interface EKExploreViewController : UIViewController <UICollectionViewDelegate, UICollectionViewDataSource>
 

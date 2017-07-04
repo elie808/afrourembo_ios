@@ -11,13 +11,16 @@
 #import "EKSalonListTableViewCell.h"
 #import "EKSalonListCollectionViewCell.h"
 #import "EKAnnotation.h"
+#import "Customer.h"
 #import "Service.h"
 #import "Salon.h"
+#import "Explore+API.h"
 
 static NSString * const kCompanyProfile = @"discoverMapToCompanyProfileVC";
 
 @interface EKDiscoverMapViewController : UIViewController <UISearchControllerDelegate, UISearchBarDelegate, MKMapViewDelegate>
 
+@property (strong, nonatomic) Customer *passedCustomer;
 @property (strong, nonatomic) Service *passedService;
 @property (strong, nonatomic) NSArray *venuesList; // store Salon list, to enable filtering tableView dataSource for oneCell display
 

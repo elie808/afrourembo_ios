@@ -7,6 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Day+API.h"
+#import "Service+API.h"
 
 @interface Professional : NSObject
 
@@ -17,7 +19,7 @@
 
 @property NSString *token;
 
-@property NSArray *schedule;
-@property NSArray *services;
+@property NSArray<Day *> *schedule;
+@property NSArray<Service *> *services;
 
 @end

@@ -15,6 +15,6 @@
 @property NSString *name;
 @property NSString *gender;
 @property NSArray<Service*> *services;
-//@property NSString *icon;
+@property NSArray<NSString*> *icon;
 
 @end

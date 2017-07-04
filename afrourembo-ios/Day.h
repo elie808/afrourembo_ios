@@ -34,6 +34,12 @@
 @property NSNumber *lbToHours;
 @property NSNumber *lbToMinutes;
 
+//TODO: Need to make unifrom response from server to avoid multiple mappings
+@property NSNumber *lunchBreakFromHours;
+@property NSNumber *lunchBreakFromMinutes;
+@property NSNumber *lunchBreakToHours;
+@property NSNumber *lunchBreakToMinutes;
+
 + (Day *)defaultModelForDay:(NSNumber *)day;
 //+ (Day *)defaultModelForDay:(NSString *)dayName;
 + (NSString *)dayStringFromNumber:(NSNumber *)dayNumber;

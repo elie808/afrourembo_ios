@@ -19,7 +19,10 @@ static NSString * const kService4 = @"SPECIAL OCCASIONS PROS";
 
 @property NSString *serviceId;
 @property NSString *categoryId; //category to which the service belongs.
+
 @property NSString *categoryName;
+@property NSString *serviceName;
+@property NSString *currency;
 
 @property NSString *name;
 @property NSString *icon;

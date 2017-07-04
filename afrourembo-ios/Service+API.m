@@ -15,10 +15,13 @@
 + (RKObjectMapping *)map1 {
 
     RKObjectMapping *mapping = [RKObjectMapping mappingForClass:[Service class]];
-    [mapping addAttributeMappingsFromArray:@[@"name", @"price", @"time", @"categoryId"]]; //TODO: Add icon
+    [mapping addAttributeMappingsFromArray:@[@"name", @"price", @"time", @"categoryId", @"serviceId", @"currency"]]; //TODO: Add icon
 
-    [mapping addAttributeMappingsFromDictionary:@{@"_id":@"serviceId"}];
-    
+//    [mapping addAttributeMappingsFromDictionary:@{@"_id":@"serviceId"}];
+
+    [mapping addAttributeMappingsFromDictionary:@{@"category":@"categoryName"}];
+    [mapping addAttributeMappingsFromDictionary:@{@"service":@"serviceName"}];
+
     return mapping;
 }
 
@@ -41,6 +44,8 @@
                                     method:RKRequestMethodPOST];
     return request;
 }
+
+#pragma mark - Responses
 
 + (RKResponseDescriptor *)postServicesResponseDescriptor {
     

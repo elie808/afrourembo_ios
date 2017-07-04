@@ -16,10 +16,10 @@ typedef void (^ProfessionalEditErrorBlock)(NSError *error, NSString *errorMessag
 
 @interface Professional (API)
 
-/// fName, lName, token, email, password, phone
+/// fName, lName, token, email, password, phone - Used for generic mapping
 + (RKObjectMapping *)map1;
 
-/// fName, lName, email, password
+/// fName, lName, email, password - Used for Sign UP
 + (RKObjectMapping *)map2;
 
 + (RKRequestDescriptor *)professionalRegistrationRequestDescriptor;

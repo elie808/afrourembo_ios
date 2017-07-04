@@ -17,8 +17,14 @@
     RKObjectMapping *mapping = [RKObjectMapping mappingForClass:[Professional class]];
     [mapping addAttributeMappingsFromArray:@[@"email", @"password", @"token", @"fName", @"lName", @"phone"]];
     
-    //TODO: add mapping for schedule and services
+    [mapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"schedule"
+                                                                            toKeyPath:@"schedule"
+                                                                          withMapping:[Day map2]]];
     
+    [mapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"services"
+                                                                            toKeyPath:@"services"
+                                                                          withMapping:[Service map1]]];
+
     return mapping;
 }
 

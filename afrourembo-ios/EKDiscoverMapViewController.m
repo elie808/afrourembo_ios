@@ -18,15 +18,34 @@
     [super viewDidLoad];
  
     NSLog(@"SERVICE %@", self.passedService.name);
+    
     if (!self.passedService) {
-        //TODO: Regular Search
+        
+        //TODO: Regular Search - Fetch all
+        
     } else {
+        
         //TODO: Service specific
+        [Explore getExploreLocationsForUser:self.passedCustomer.token
+                                  WithBlock:^(Explore *exploreObj) {
+                                    
+                                      NSLog(@"EXPLORE: %@", exploreObj);
+                                      
+                                      _listViewVisible = NO;
+                                      
+                                      self.contentOffsetDictionary = [NSMutableDictionary new];
+                                      self.venuesList = exploreObj.professionals; //[self createStubs];
+                                      self.dataSourceArray = [NSMutableArray arrayWithArray:self.venuesList];
+                                      [self placeVenuePins:self.dataSourceArray];
+                                      
+                                  } withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
+                                     
+                                 }];
     }
     
     [self initLayout];
     
-    [self initDataSources];
+//    [self initDataSources];
 }
 
 /*
@@ -98,15 +117,15 @@
                      }];
 }
 
-- (void)initDataSources {
-
-    _listViewVisible = NO;
-    
-    self.contentOffsetDictionary = [NSMutableDictionary new];
-    self.venuesList = [self createStubs];
-    self.dataSourceArray = [NSMutableArray arrayWithArray:self.venuesList];
-    [self placeVenuePins:self.dataSourceArray];
-}
+//- (void)initDataSources {
+//
+//    _listViewVisible = NO;
+//    
+//    self.contentOffsetDictionary = [NSMutableDictionary new];
+//    self.venuesList = [self createStubs];
+//    self.dataSourceArray = [NSMutableArray arrayWithArray:self.venuesList];
+//    [self placeVenuePins:self.dataSourceArray];
+//}
 
 - (void)initLayout {
     

@@ -18,6 +18,9 @@ typedef void (^AvailabilityErrorBlock)(NSError *error, NSString *errorMessage, N
 ///
 + (RKObjectMapping *)map1;
 
+/// Used for mapping schedules of professionals returned on user/explore
++ (RKObjectMapping *)map2;
+
 + (RKRequestDescriptor *)availabilityRequestDescriptor;
 
 + (RKResponseDescriptor *)availabilityResponseDescriptor;

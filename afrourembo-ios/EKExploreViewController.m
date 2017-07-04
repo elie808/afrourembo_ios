@@ -15,7 +15,7 @@ static NSString * const kSearchSegue    = @"exploreToDiscoverSearch";
 static NSString * const kDiscoverSegue  = @"exploreToDiscover";
 
 @implementation EKExploreViewController {
-    NSArray *_dataSourceArray;
+    NSMutableArray *_dataSourceArray;
     BOOL _sideMenuOpen;
 }
 
@@ -41,15 +41,24 @@ static NSString * const kDiscoverSegue  = @"exploreToDiscover";
     [self.sideMenuTableView.layer setShadowOffset:CGSizeMake(-10, 10)];
     [self.sideMenuTableView.layer setShadowRadius:10.0];
     [self.sideMenuTableView.layer setShadowOpacity:0.6];
-
     
-    //TODO: REMOVE AFTER TESTING
-    _dataSourceArray = [self createStubs];
-    [self.collectionView reloadData];
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    [Category getCategoriesWithBlock:^(NSArray *categoriesArray) {
+        
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+        
+        _dataSourceArray = [NSMutableArray arrayWithArray:categoriesArray];
+        [self.collectionView reloadData];
+
+    } withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
+        
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+    }];
 }
 
 - (NSArray *)createStubs {
     
+    /*
     Service *service1 = [Service new];
     service1.name = kService1;
     service1.icon = @"dummy_portrait1";
@@ -67,6 +76,17 @@ static NSString * const kDiscoverSegue  = @"exploreToDiscover";
     service4.icon = @"dummy_portrait4";
     
     return @[service1, service2, service3, service4, service1, service2, service3, service4, service1, service2, service3, service4];
+    */
+    
+    Category *cat = [Category new];
+    cat.name = kService1;
+    cat.icon = @[@"dummy_portrait4"];
+    
+    Category *cat1 = [Category new];
+    cat1.name = kService2;
+    cat1.icon = @[@"dummy_portrait3"];
+    
+    return @[cat, cat1 ,cat];
 }
 
 #pragma mark - UICollectionViewLayout
@@ -100,13 +120,18 @@ static NSString * const kDiscoverSegue  = @"exploreToDiscover";
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    
-    Service *service = [_dataSourceArray objectAtIndex:indexPath.row];
+
+    Category *category = [_dataSourceArray objectAtIndex:indexPath.row];
     
     EKExploreCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kExploreCell forIndexPath:indexPath];
-    cell.cellTitleLabel.text = service.name;
-    cell.cellImageView.image = [UIImage imageNamed:service.icon];
+    
+    cell.cellTitleLabel.text = category.name;
 
+    NSString *imageStr = category.icon.count > 0 ? category.icon[0] : @"";
+    
+    [cell.cellImageView yy_setImageWithURL:[NSURL URLWithString:imageStr]
+                                   options:YYWebImageOptionProgressiveBlur|YYWebImageOptionSetImageWithFadeAnimation];
+    
     return cell;
 }
 
@@ -156,6 +181,7 @@ static NSString * const kDiscoverSegue  = @"exploreToDiscover";
         
         EKDiscoverMapViewController *vc = segue.destinationViewController;
         vc.title = ((Service*)sender).name;
+        vc.passedCustomer = (Customer *)[EKSettings getSavedCustomer];
         vc.passedService = (Service*)sender;
     }
     

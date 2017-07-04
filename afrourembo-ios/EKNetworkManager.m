@@ -57,10 +57,6 @@
 
 + (void)configureResponseDescriptors:(RKObjectManager *)objectManager {
     
-    [objectManager addResponseDescriptorsFromArray:@[
-                                                     [Day availabilityResponseDescriptor]
-                                                     ]];
-    
     [objectManager addResponseDescriptor:[Category categoryResponseDescriptor]];
     
     [objectManager addResponseDescriptorsFromArray:@[
@@ -69,11 +65,13 @@
                                                      [Customer putUserProfileResponseDescriptor]
                                                      ]];
     
+    [objectManager addResponseDescriptorsFromArray:@[ [Day availabilityResponseDescriptor] ]];
+    
+    [objectManager addResponseDescriptorsFromArray:@[ [Explore exploreResponseDescriptor] ]];
+    
     [objectManager addResponseDescriptor:[ProfessionalLogin professionalLoginResponseDescriptor]];
     
-    [objectManager addResponseDescriptorsFromArray:@[
-                                                     [Professional professionalRegistrationResponseDescriptor]
-                                                     ]];
+    [objectManager addResponseDescriptorsFromArray:@[ [Professional professionalRegistrationResponseDescriptor] ]];
     
     [objectManager addResponseDescriptor:[SalonLogin salonLoginResponseDescriptor]];
     

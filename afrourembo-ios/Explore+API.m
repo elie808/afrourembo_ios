@@ -1,49 +1,52 @@
 //
-//  Category+API.m
+//  Explore+API.m
 //  afrourembo-ios
 //
-//  Created by Elie El Khoury on 6/23/17.
+//  Created by Elie El Khoury on 7/4/17.
 //  Copyright © 2017 Elie El Khoury. All rights reserved.
 //
 
-#import "Category+API.h"
+#import "Explore+API.h"
 
-@implementation Category (API)
+@implementation Explore (API)
+
+#pragma mark - Mapping
 
 + (RKObjectMapping *)map1 {
     
-    RKObjectMapping *mapping = [RKObjectMapping mappingForClass:[Category class]];
-    [mapping addAttributeMappingsFromArray:@[@"name", @"gender", @"icon"]];
-    
-    [mapping addAttributeMappingsFromDictionary:@{@"_id":@"categoryId"}];
-    
-    [mapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"services"
-                                                                            toKeyPath:@"services"
-                                                                          withMapping:[Service map1]]];
+    RKObjectMapping *mapping = [RKObjectMapping mappingForClass:[Explore class]];
+    [mapping addAttributeMappingsFromArray:@[@"professionals", @"salons"]];
     
     return mapping;
 }
 
-+ (RKResponseDescriptor *)categoryResponseDescriptor {
+#pragma mark - Requests
+
+#pragma mark - Responses
+
++ (RKResponseDescriptor *)exploreResponseDescriptor {
     
     RKResponseDescriptor *response = [RKResponseDescriptor
-                                      responseDescriptorWithMapping:[Category map1]
+                                      responseDescriptorWithMapping:[Explore map1]
                                       method:RKRequestMethodGET
-                                      pathPattern:kCategoriesAPIPath
+                                      pathPattern:kUserExploreAPIPath
                                       keyPath:nil
                                       statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     return response;
-    
 }
 
-+ (void)getCategoriesWithBlock:(CategoriesSuccessBlock)successBlock withErrors:(CategoriesErrorBlock)errorBlock {
+#pragma mark - APIs
+
++ (void)getExploreLocationsForUser:(NSString *)userToken WithBlock:(ExploreSuccessBlock)successBlock withErrors:(ExploreErrorBlock)errorBlock {
     
-    [[RKObjectManager sharedManager] getObjectsAtPath:kCategoriesAPIPath
+    [[[RKObjectManager sharedManager] HTTPClient] setDefaultHeader:@"Authorization" value:userToken];
+    
+    [[RKObjectManager sharedManager] getObjectsAtPath:kUserExploreAPIPath
                                            parameters:nil
                                               success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
                                                   
-                                                  NSLog(@"Success Fetching Categories!!");
-                                                  successBlock(mappingResult.array);
+                                                  NSLog(@"Success Fetching Explore!!");
+                                                  successBlock([mappingResult.array firstObject]);
                                                   
                                               } failure:^(RKObjectRequestOperation *operation, NSError *error) {
                                                   
@@ -61,5 +64,6 @@
                                                   errorBlock(error, errorMessage, [statusCode integerValue]);
                                               }];
 }
+
 
 @end

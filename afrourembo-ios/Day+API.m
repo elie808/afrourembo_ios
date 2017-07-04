@@ -18,6 +18,14 @@
     return mapping;
 }
 
++ (RKObjectMapping *)map2 {
+    
+    RKObjectMapping *mapping = [RKObjectMapping mappingForClass:[Day class]];
+    [mapping addAttributeMappingsFromArray:@[@"day", @"fromHours", @"fromMinutes", @"toHours", @"toMinutes", @"lunchBreakFromHours", @"lunchBreakFromMinutes", @"lunchBreakToHours", @"lunchBreakToMinutes"]];
+    
+    return mapping;
+}
+
 #pragma mark - Requests
 
 + (RKRequestDescriptor *)availabilityRequestDescriptor {
