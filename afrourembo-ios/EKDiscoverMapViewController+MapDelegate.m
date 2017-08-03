@@ -47,7 +47,8 @@ static NSString *kSalonAnnotation = @"salonLocations";
     
     if ([view.annotation isKindOfClass:[EKAnnotation class]]) {
 
-        Salon *salonObj = ((EKAnnotation*)view.annotation).salonObj;
+//        Salon *salonObj = ((EKAnnotation*)view.annotation).salonObj;
+        Professional *salonObj = ((EKAnnotation*)view.annotation).profObj;
 
         [self.dataSourceArray removeAllObjects];
         [self.dataSourceArray addObject:salonObj];
@@ -86,20 +87,20 @@ static NSString *kSalonAnnotation = @"salonLocations";
     NSMutableArray *pinsArray = [NSMutableArray array];
     CLLocationCoordinate2D coords = CLLocationCoordinate2DMake(0, 0);
     
-    for (Salon *salonObj in dataSource) {
-//    for (Professional *profObj in dataSource) {
+//    for (Salon *salonObj in dataSource) {
+    for (Professional *profObj in dataSource) {
     
         // Create Pin object
         EKAnnotation *annotation = [[EKAnnotation alloc] init];
-        coords = CLLocationCoordinate2DMake(salonObj.latitude, salonObj.longitude);
+        annotation.title = profObj.business.name;
+        annotation.profObj = profObj;
+        
+        NSArray <NSNumber *> *coordArray = profObj.business.location[@"coordinates"];
+        NSNumber *longitude= coordArray[0];
+        NSNumber *latitude = coordArray[1];
+        
+        coords = CLLocationCoordinate2DMake([latitude floatValue], [longitude floatValue]);
         annotation.coordinate = coords;
-        annotation.title = salonObj.userName;
-        annotation.salonObj = salonObj;
-
-//        coords = CLLocationCoordinate2DMake(profObj.latitude, profObj.longitude);
-//        annotation.coordinate = coords;
-//        annotation.title = [NSString stringWithFormat:@"%@ %@", profObj.fName, profObj.lName];
-//        annotation.profObj = profObj;
         
         [pinsArray addObject:annotation];
     }

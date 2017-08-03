@@ -15,14 +15,24 @@
 #import "EKInCellCollectionView.h"
 #import "EKCompanyProfessionalCollectionViewCell.h"
 
+#import "Professional.h"
+#import "Review.h"
 #import "Salon.h"
 #import "Service.h"
-#import "Review.h"
+
+#import "Review+API.h"
+
+#import <YYWebImage/YYWebImage.h>
 
 @interface EKCompanyProfileViewController : UIViewController
 
-@property (strong, nonatomic) Salon *salon;
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
+@property (strong, nonatomic) IBOutlet UIImageView *headerImageView;
+
+@property (strong, nonatomic) Salon *salon;
+@property (strong, nonatomic) Professional *professional;
+
+@property (strong, nonatomic) NSMutableArray *reviewsArray;
 
 - (IBAction)didTapInstagramButton:(id)sender;
 - (IBAction)didTapFacebookButton:(id)sender;

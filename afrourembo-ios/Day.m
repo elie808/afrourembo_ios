@@ -90,4 +90,53 @@ static NSString * const kDefaultEndHour = @"5:00 PM";
     return @"";
 }
 
++ (NSString *)dayInitialsStringFromNumber:(NSNumber *)dayNumber {
+    
+    if ([dayNumber isEqualToNumber:@0]) {
+        return @"M";
+    }
+    
+    if ([dayNumber isEqualToNumber:@1]) {
+        return @"T";
+    }
+    
+    if ([dayNumber isEqualToNumber:@2]) {
+        return @"W";
+    }
+    
+    if ([dayNumber isEqualToNumber:@3]) {
+        return @"TH";
+    }
+    
+    if ([dayNumber isEqualToNumber:@4]) {
+        return @"F";
+    }
+    
+    if ([dayNumber isEqualToNumber:@5]) {
+        return @"SAT";
+    }
+    
+    if ([dayNumber isEqualToNumber:@6]) {
+        return @"SUN";
+    }
+    
+    return @"";
+}
+
++ (NSString *)fromTimeString:(Day *)day {
+    
+    NSString *hours = [NSString stringWithFormat:@"%02ld", (long)[day.fromHours integerValue]];
+    NSString *minutes = [NSString stringWithFormat:@"%02ld", (long)[day.fromMinutes integerValue]];
+    
+    return [NSString stringWithFormat:@"%@:%@", hours, minutes];
+}
+
++ (NSString *)toTimeString:(Day *)day {
+    
+    NSString *hours = [NSString stringWithFormat:@"%02ld", (long)[day.toHours integerValue]];
+    NSString *minutes = [NSString stringWithFormat:@"%02ld", (long)[day.toMinutes integerValue]];
+    
+    return [NSString stringWithFormat:@"%@:%@", hours, minutes];
+}
+
 @end

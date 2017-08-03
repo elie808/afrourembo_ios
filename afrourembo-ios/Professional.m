@@ -8,6 +8,15 @@
 
 #import "Professional.h"
 
+@implementation Location : NSObject
+@end
+
+@implementation Business : NSObject
+@end
+
+@implementation Pictures
+@end
+
 @implementation Professional
 
 @end

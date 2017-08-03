@@ -13,47 +13,22 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    /*
-     @property NSString *mainImageName;
-     @property NSNumber *stars;
-     @property NSNumber *price;
-     @property NSNumber *photoCount;
-     @property NSString *userImageName;
-     @property NSString *userName;
-     @property NSString *address;
-     
-     //TODO: Encapsulate into object ?
-     @property CGFloat longitude;
-     @property CGFloat latitude;
-     
-     //TODO: CHANGE STRUCTURE. POSSIBLY HAVE A SEPARATE TIME OBJECT
-     @property NSArray *timesArray;
-     
-     @property NSArray<Service*> *servicesArray;
-     */
     
-    /*
-     @property NSString *reviewTitle;
-     @property NSNumber *reviewStars;
-     @property NSString *reviewAuthor;
-     @property NSString *reviewText;
-     @property NSDate *reviewDate;
-     
-     //TODO: Replace with professional NSObject
-     @property NSString *reviewProfessional; // reviewed professional
-     @property NSString *reviewProfessionalImage; // reviewed professional profile image
-     */
-
+    self.reviewsArray = [NSMutableArray new];
+    
     Service *service1 = [Service new];
-    service1.name = @"Service 1 title";
+    service1.serviceName = @"Service 1 title";
     service1.price = 40;
     service1.time = 69;
+    service1.currency = @"USD";
     
     Service *service2 = [Service new];
-    service2.name = @"Service 2 title";
+    service2.serviceName = @"Service 2 title";
     service2.price = 10;
     service2.time = 20;
+    service2.currency = @"KSH";
     
+    /*
     Review *review1 = [Review new];
     review1.reviewTitle = @"Review 1 title";
     review1.reviewStars = @3;
@@ -63,14 +38,26 @@
     review1.reviewDate = @"Friday 13, 2017";
     review1.reviewProfessional = @"Mathew McCormick";
     review1.reviewProfessionalImage = @"dummy_male2";
+    */
+    
+    [Review getReviewsForVendor:@"594a5f2ba191f90ead511ba9"
+                         ofType:@"professional"
+                withToken:@"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1OTU2NmQ4ZjU2MzcxMzEyNmZjNWFkZjIiLCJzZXNzaW9uS2V5IjoiZjNhMjBhMTAtNjBhNi0xMWU3LTkxMWYtMTE3ZWEzZDQ0NTNiIiwiY29udGV4dCI6InVzZXIiLCJpYXQiOjE0OTkxNjU1ODIsImV4cCI6MTQ5OTI1MTk4Mn0.XyyxSFLa1PP7tx2HQxMhY2r98ra0KfwPrIj5SuSGnkM"
+                      withBlock:^(NSArray<Review *> *reviewsArray) {
+                          
+                          self.reviewsArray = [NSMutableArray arrayWithArray:reviewsArray];
+                          [self.tableView reloadData];
+                      }
+                     withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
+                         
+                     }];
     
     //------
-    
-    self.salon = [Salon new];
-    self.salon.userName = @"LE SALON";
-    self.salon.servicesArray = @[service1, service2];
-    
-    self.salon.reviewsArray = @[review1];
+    if (self.professional) {
+        
+        [self.headerImageView yy_setImageWithURL:[NSURL URLWithString:self.professional.profilePicture]
+                                         options:YYWebImageOptionProgressiveBlur|YYWebImageOptionSetImageWithFadeAnimation];
+    }
 }
 
 #pragma mark - Actions

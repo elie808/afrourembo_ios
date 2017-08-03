@@ -17,6 +17,8 @@
     RKObjectMapping *mapping = [RKObjectMapping mappingForClass:[Professional class]];
     [mapping addAttributeMappingsFromArray:@[@"email", @"password", @"token", @"fName", @"lName", @"phone"]];
     
+    [mapping addAttributeMappingsFromArray:@[@"ratingBasedOn", @"profilePicture"]];
+
     [mapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"schedule"
                                                                             toKeyPath:@"schedule"
                                                                           withMapping:[Day map2]]];
@@ -25,6 +27,22 @@
                                                                             toKeyPath:@"services"
                                                                           withMapping:[Service map1]]];
 
+    //FUCK THIS SHIT!!!!! :(
+    RKObjectMapping *portfolioMapping = [RKObjectMapping mappingForClass:[Pictures class]];
+    [portfolioMapping addAttributeMappingsFromArray:@[@"picture"]];
+    
+    [mapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"portfolio"
+                                                                            toKeyPath:@"portfolio"
+                                                                          withMapping:portfolioMapping]];
+    
+    //FUCK THIS SHIT!!!!! :(
+    RKObjectMapping *businessMapping = [RKObjectMapping mappingForClass:[Business class]];
+    [businessMapping addAttributeMappingsFromArray:@[@"address", @"name", @"location"]];
+    
+    [mapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"business"
+                                                                            toKeyPath:@"business"
+                                                                          withMapping:businessMapping]];
+    
     return mapping;
 }
 

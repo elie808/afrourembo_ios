@@ -8,8 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "EKInCellCollectionView.h"
+#import "Professional.h"
 #import "Salon.h"
 #import "UIImage+Helpers.h"
+#import <YYWebImage/YYWebImage.h>
 
 @interface EKSalonListTableViewCell : UITableViewCell
 
@@ -24,5 +26,6 @@
 @property (strong, nonatomic) IBOutlet EKInCellCollectionView *collectionView;
 
 - (void)configureCellWithSalon:(Salon *)salon;
+- (void)configureCellWithProfessional:(Professional *)profObj;
 
 @end

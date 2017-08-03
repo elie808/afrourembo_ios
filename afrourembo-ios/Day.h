@@ -45,24 +45,8 @@
 + (NSString *)dayStringFromNumber:(NSNumber *)dayNumber;
 - (void)resetModel;
 
++ (NSString *)dayInitialsStringFromNumber:(NSNumber *)dayNumber;
++ (NSString *)fromTimeString:(Day *)day;
++ (NSString *)toTimeString:(Day *)day;
+
 @end
-
-/*
-{
-    availabilities   Details [
-                              Any of:
-                              {
-                                  day number
-                                  fromHours number
-                                  fromMinutes number
-                                  toHours number
-                                  toMinutes number
-                                  lbFromHours number
-                                  lbFromMinutes number
-                                  lbToHours number
-                                  lbToMinutes number 
-                              }
-                              ]
-}
-*/
-

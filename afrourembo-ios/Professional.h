@@ -10,6 +10,16 @@
 #import "Day+API.h"
 #import "Service+API.h"
 
+@interface Business : NSObject
+@property NSString *address;
+@property NSString *name;
+@property NSDictionary *location;
+@end
+
+@interface Pictures : NSObject
+@property NSString *picture;
+@end
+
 @interface Professional : NSObject
 
 @property NSString *fName;
@@ -18,6 +28,11 @@
 @property NSString *password;
 
 @property NSString *token;
+
+@property NSNumber *ratingBasedOn;
+@property NSString *profilePicture;
+@property NSArray<Pictures*> *portfolio;
+@property Business *business;
 
 @property NSArray<Day *> *schedule;
 @property NSArray<Service *> *services;

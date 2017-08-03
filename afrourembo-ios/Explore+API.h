@@ -8,6 +8,8 @@
 
 #import "Explore.h"
 #import <RestKit/RestKit.h>
+#import "Professional+API.h"
+#import "Salon+API.h"
 #import "EKNetworkingConstants.h"
 
 typedef void (^ExploreSuccessBlock)(Explore *exploreObj);

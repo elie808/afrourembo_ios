@@ -34,10 +34,13 @@
                                       _listViewVisible = NO;
                                       
                                       self.contentOffsetDictionary = [NSMutableDictionary new];
-                                      self.venuesList = [self createStubs];//exploreObj.professionals;
-                                      self.dataSourceArray = [NSMutableArray arrayWithArray:self.venuesList];
-                                      [self placeVenuePins:self.dataSourceArray];
+                                      self.venuesList = exploreObj.professionals;
                                       
+//                                      self.venuesList = [self createStubs];//exploreObj.professionals;
+                                      self.dataSourceArray = [NSMutableArray arrayWithArray:self.venuesList];
+                                      [self.tableView reloadData];
+                                      [self placeVenuePins:self.dataSourceArray];
+
                                   } withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
                                      
                                  }];
@@ -45,18 +48,8 @@
     
     [self initLayout];
     
-    [self initDataSources];
+//    [self initDataSources];
 }
-
-/*
- #pragma mark - Navigation
- 
- // In a storyboard-based application, you will often want to do a little preparation before navigation
- - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
- // Get the new view controller using [segue destinationViewController].
- // Pass the selected object to the new view controller.
- }
- */
 
 #pragma mark - Actions
 
@@ -92,6 +85,24 @@
                          [self.toggleButton setImage:[UIImage imageNamed:@"icXListView"] forState:UIControlStateNormal] :
                          [self.toggleButton setImage:[UIImage imageNamed:@"icListView"] forState:UIControlStateNormal];
                      }];
+}
+
+#pragma mark - Navigation
+
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+
+     if ([segue.identifier isEqualToString:kCompanyProfile]) {
+         
+         EKCompanyProfileViewController *vc = segue.destinationViewController;
+         
+         if ([sender isKindOfClass:[Professional class]]) {
+             vc.professional = (Professional *)sender;
+         }
+         
+         if ([sender isKindOfClass:[Salon class]]) {
+             vc.salon = (Salon *)sender;
+         }
+     }
 }
 
 #pragma mark - Helpers

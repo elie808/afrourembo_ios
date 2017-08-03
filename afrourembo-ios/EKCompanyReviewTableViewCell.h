@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "Review.h"
 #import "UIImage+Helpers.h"
+#import <YYWebImage/YYWebImage.h>
 
 @interface EKCompanyReviewTableViewCell : UITableViewCell
 

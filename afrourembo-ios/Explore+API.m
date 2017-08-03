@@ -15,8 +15,15 @@
 + (RKObjectMapping *)map1 {
     
     RKObjectMapping *mapping = [RKObjectMapping mappingForClass:[Explore class]];
-    [mapping addAttributeMappingsFromArray:@[@"professionals", @"salons"]];
-    
+
+    [mapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"professionals"
+                                                                            toKeyPath:@"professionals"
+                                                                          withMapping:[Professional map1]]];
+    //TODO: Add salon mapping
+    [mapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"salons"
+                                                                            toKeyPath:@"salons"
+                                                                          withMapping:[Salon map1]]];
+
     return mapping;
 }
 

@@ -28,8 +28,11 @@ static NSString * const  kDayCollectionViewCell = @"whiteSalonListInCellCollecti
     
     EKSalonListTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kTableViewCell forIndexPath:indexPath];
     
-    Salon *salon = [self.dataSourceArray objectAtIndex:indexPath.row];
-    [cell configureCellWithSalon:salon];
+    Professional *profObj = [self.dataSourceArray objectAtIndex:indexPath.row];
+
+    [cell configureCellWithProfessional:profObj];
+    
+//  [cell configureCellWithSalon:salon];
     
     return cell;
 }
@@ -57,7 +60,9 @@ static NSString * const  kDayCollectionViewCell = @"whiteSalonListInCellCollecti
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    [self performSegueWithIdentifier:kCompanyProfile sender:nil];
+    Professional *profObj = [self.dataSourceArray objectAtIndex:indexPath.row];
+    
+    [self performSegueWithIdentifier:kCompanyProfile sender:profObj];
 }
 
 #pragma mark - UICollectionViewDataSource
@@ -69,32 +74,56 @@ static NSString * const  kDayCollectionViewCell = @"whiteSalonListInCellCollecti
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     
     NSInteger index = ((EKInCellCollectionView*)collectionView).collectionIndexPath.row;
-    Salon *salon = [self.dataSourceArray objectAtIndex:index];
+
+    Professional *profObj = [self.dataSourceArray objectAtIndex:index];
     
-    return salon.timesArray.count;
+    return profObj.schedule.count * 3;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     
-    if (indexPath.row % 4 == 0) {
-        
-        EKSalonListCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kDayCollectionViewCell forIndexPath:indexPath];
-        
-        NSInteger index = ((EKInCellCollectionView*)collectionView).collectionIndexPath.row;
-        Salon *salon = [self.dataSourceArray objectAtIndex:index];
-        cell.cellTextLabel.text = [salon.timesArray objectAtIndex:indexPath.row];
-        
+    NSInteger index = ((EKInCellCollectionView*)collectionView).collectionIndexPath.row;
+    Professional *profObj = [self.dataSourceArray objectAtIndex:index];
+    
+    Day *schedule = profObj.schedule[0];
+    
+    NSString *dayOfTheWeek = [Day dayInitialsStringFromNumber:schedule.day];
+    
+    NSString *fromTime = [Day fromTimeString:schedule];
+    NSString *toTime   = [Day toTimeString:schedule];
+
+    if (indexPath.row % 3 == 0) {
+    
+        EKSalonListCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kDayCollectionViewCell
+                                                                                        forIndexPath:indexPath];
+
+        cell.cellTextLabel.text = dayOfTheWeek;
+    
         return cell;
         
-    } else {
+    } else if (indexPath.row % 3 == 1) {
+        
+        NSLog(@"INDEX PATH ROW: %ld, FROM TIME: %@", (long)indexPath.row, fromTime);
         
         EKSalonListCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kCollectionViewCell forIndexPath:indexPath];
-        
-        NSInteger index = ((EKInCellCollectionView*)collectionView).collectionIndexPath.row;
-        Salon *salon = [self.dataSourceArray objectAtIndex:index];
-        cell.cellTextLabel.text = [salon.timesArray objectAtIndex:indexPath.row];
+
+        cell.cellTextLabel.text = fromTime;
         
         return cell;
+    
+    } else if (indexPath.row % 3 == 2) {
+        
+        NSLog(@"INDEX PATH ROW: %ld, TO TIME: %@", (long)indexPath.row, toTime);
+        
+        EKSalonListCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kCollectionViewCell forIndexPath:indexPath];
+    
+        cell.cellTextLabel.text = toTime;
+        
+        return cell;
+    
+    } else {
+    
+        return nil;
     }
 }
 

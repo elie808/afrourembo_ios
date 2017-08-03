@@ -26,13 +26,14 @@
 
 - (void)configureCellForReview:(Review *)reviewObj {
     
-    self.cellServiceLabel.text = reviewObj.reviewTitle;
-    self.cellProfessionalLabel.text = reviewObj.reviewProfessional;
-    self.cellCustomerNameLabel.text = reviewObj.reviewAuthor;
-    self.cellDateLabel.text = reviewObj.reviewDate;
-    self.cellTextView.text = reviewObj.reviewText;
-    self.cellStarsImageView.image = [UIImage imageForStars:reviewObj.reviewStars];
-    self.cellCustomerImageView.image = [UIImage imageNamed:reviewObj.reviewProfessionalImage];
+    self.cellServiceLabel.text = reviewObj.serviceName;
+    self.cellProfessionalLabel.text = @"";
+    self.cellCustomerNameLabel.text = [NSString stringWithFormat:@"%@ %@", reviewObj.reviewerFirstName, reviewObj.reviewerLastName];
+    self.cellDateLabel.text = @"09-09-1989";
+    self.cellTextView.text = reviewObj.review;
+    self.cellStarsImageView.image = [UIImage imageForStars:reviewObj.rating];
+    [self.cellCustomerImageView yy_setImageWithURL:[NSURL URLWithString:reviewObj.reviewerProfilePicture]
+                                           options:YYWebImageOptionProgressiveBlur|YYWebImageOptionSetImageWithFadeAnimation];
 }
 
 @end

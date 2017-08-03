@@ -31,4 +31,35 @@
     self.cellAddressLabel.text = salon.address;
 }
 
+- (void)configureCellWithProfessional:(Professional *)profObj {
+    
+    self.cellUserNameLabel.text = [NSString stringWithFormat:@"%@ %@",profObj.fName, profObj.lName];
+    self.cellStarImageView.image = [UIImage imageForStars:profObj.ratingBasedOn];
+    
+    [self.cellUserImageView yy_setImageWithURL:[NSURL URLWithString:profObj.profilePicture]
+                                       options:YYWebImageOptionProgressiveBlur|YYWebImageOptionSetImageWithFadeAnimation];
+    
+    if (profObj.services && profObj.services.count > 0 ) {
+        
+        Service *serviceObj = profObj.services[0];
+        self.cellPriceLabel.text = [NSString stringWithFormat:@"%.0f %@", serviceObj.price, serviceObj.currency];
+        
+    } else {
+        
+        self.cellPriceLabel.text = @"N/A";
+    }
+    
+    if (profObj.portfolio && profObj.portfolio.count > 0) {
+        
+        self.cellPhotoCountLabel.text = [NSString stringWithFormat:@"%lu Photo(s)", (unsigned long)profObj.portfolio.count];
+        
+        Pictures *picObj = profObj.portfolio[0];
+        [self.cellMainImageView yy_setImageWithURL:[NSURL URLWithString:picObj.picture]
+                                           options:YYWebImageOptionProgressiveBlur|YYWebImageOptionSetImageWithFadeAnimation];
+    } else {
+        
+        self.cellPhotoCountLabel.text = @"0 Photos";
+    }
+}
+
 @end

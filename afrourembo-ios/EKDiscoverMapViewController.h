@@ -8,13 +8,16 @@
 
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
+#import "EKCompanyProfileViewController.h"
 #import "EKSalonListTableViewCell.h"
 #import "EKSalonListCollectionViewCell.h"
 #import "EKAnnotation.h"
 #import "Customer.h"
+#import "Day.h"
 #import "Service.h"
 #import "Salon.h"
 #import "Explore+API.h"
+#import <YYWebImage/YYWebImage.h>
 
 static NSString * const kCompanyProfile = @"discoverMapToCompanyProfileVC";
 
