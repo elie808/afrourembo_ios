@@ -13,6 +13,8 @@
 
 @interface Salon : NSObject
 
+@property NSString *salonID;
+
 @property NSString *mainImageName;
 @property NSNumber *stars;
 @property NSNumber *price;

@@ -22,6 +22,8 @@
 
 @interface Professional : NSObject
 
+@property NSString *professionalID;
+
 @property NSString *fName;
 @property NSString *lName;
 @property NSString *email;

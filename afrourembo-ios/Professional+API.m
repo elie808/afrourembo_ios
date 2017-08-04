@@ -18,6 +18,8 @@
     [mapping addAttributeMappingsFromArray:@[@"email", @"password", @"token", @"fName", @"lName", @"phone"]];
     
     [mapping addAttributeMappingsFromArray:@[@"ratingBasedOn", @"profilePicture"]];
+    
+    [mapping addAttributeMappingsFromDictionary:@{@"_id" : @"professionalID"}];
 
     [mapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"schedule"
                                                                             toKeyPath:@"schedule"

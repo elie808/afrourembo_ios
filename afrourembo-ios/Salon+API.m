@@ -17,6 +17,8 @@
     RKObjectMapping *mapping = [RKObjectMapping mappingForClass:[Salon class]];
     [mapping addAttributeMappingsFromArray:@[@"token"]];
     
+    [mapping addAttributeMappingsFromDictionary:@{@"_id" : @"salonID"}];
+    
     //TODO: add mapping for remaining fields
     
     return mapping;
