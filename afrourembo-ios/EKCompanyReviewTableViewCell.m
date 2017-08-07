@@ -20,8 +20,14 @@
 
 - (void)configureEmptyCell {
 
+    self.cellServiceLabel.text = @"";
+    self.cellProfessionalLabel.text = @"";
+    self.cellCustomerNameLabel.text = @"";
+    self.cellDateLabel.text = @"";
+    self.cellTextView.text = @"No Reviews";
     self.cellTextView.textColor = [UIColor colorWithRed:255./255. green:195./255. blue:0./255. alpha:1.0];
-    self.cellTextView.text = @"There are no services yet.";    
+    self.cellStarsImageView.hidden = YES;
+    self.cellCustomerImageView.hidden = YES;
 }
 
 - (void)configureCellForReview:(Review *)reviewObj {
@@ -29,8 +35,9 @@
     self.cellServiceLabel.text = reviewObj.serviceName;
     self.cellProfessionalLabel.text = @"";
     self.cellCustomerNameLabel.text = [NSString stringWithFormat:@"%@ %@", reviewObj.reviewerFirstName, reviewObj.reviewerLastName];
-    self.cellDateLabel.text = @"09-09-1989";
+    self.cellDateLabel.text = [NSDate stringFromDate:reviewObj.date withFormat:DateFormatLetterDayMonthYear];
     self.cellTextView.text = reviewObj.review;
+    self.cellTextView.textColor = [UIColor colorWithRed:72./255. green:72./255. blue:72./255. alpha:1.0];
     self.cellStarsImageView.image = [UIImage imageForStars:reviewObj.rating];
     [self.cellCustomerImageView yy_setImageWithURL:[NSURL URLWithString:reviewObj.reviewerProfilePicture]
                                            options:YYWebImageOptionProgressiveBlur|YYWebImageOptionSetImageWithFadeAnimation];
