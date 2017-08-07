@@ -12,6 +12,7 @@ static NSString * const kServicesCell       = @"companyServicesCell";
 static NSString * const kReviewsCell        = @"companyReviewsCell";
 static NSString * const kProfessionalsCell  = @"companyProfessionalsCell";
 static NSString * const kContactsCell       = @"companyContactsCell";
+//static NSString * const kLoadingCell        = @"companyProfileLoadingCell";
 
 static NSString * const kProfessionalsCollectionCell = @"companyProfessionalsCollectionCell";
 
@@ -20,20 +21,41 @@ static NSString * const kProfessionalsCollectionCell = @"companyProfessionalsCol
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 3; //for professionals, 4 for salons
+    
+    if (self.professional) { return 3; }
+    
+    if (self.salon) { return 4; }
+    
+    return 0;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
+    // Professionals config
+    if (self.professional) {
+        
+        switch (section) {
+                
+            case 0: return self.professional.services.count > 0 ? self.professional.services.count : 1; break; // Services
+                
+            case 1: return self.reviewsArray.count > 0 ? self.reviewsArray.count : 1; break; // Reviews
+
+            case 2: return 2; break; // Contacts
+                
+            default: return 0; break;
+        }
+    }
+    
+    // Salon config
     if (self.salon) {
 
         switch (section) {
                 
             case 0: return self.salon.servicesArray.count > 0 ? self.salon.servicesArray.count : 1; break; // Services
                 
-//            case 1: return self.salon.reviewsArray.count > 0 ? self.salon.reviewsArray.count : 1; break; // Reviews
-            case 1: return self.reviewsArray.count > 0 ? self.reviewsArray.count : 0; break; // Reviews
+            case 1: return self.reviewsArray.count > 0 ? self.reviewsArray.count : 1; break; // Reviews
                 
+            //TODO: Update from count of professionals in the salon
             case 2: return 0; break; // Professionals
                 
             case 3: return 2; break; // Contacts
@@ -42,154 +64,283 @@ static NSString * const kProfessionalsCollectionCell = @"companyProfessionalsCol
         }
     }
     
-    if (self.professional) {
-        
-        switch (section) {
-                
-            case 0: return self.professional.services.count > 0 ? self.professional.services.count : 1; break; // Services
-                
-//            case 1: return self.salon.reviewsArray.count > 0 ? self.salon.reviewsArray.count : 1; break; // Reviews
-            case 1: return self.reviewsArray.count > 0 ? self.reviewsArray.count : 0; break; // Reviews
-                
-//            case 2: return 0; break; // Professionals
-                
-            case 2: return 2; break; // Contacts
-                
-            default: return 0; break;
-        }
-    }
-
     return 0;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    switch (indexPath.section) {
-            
-        case 0: { // Services
-
-            EKCompanyServiceTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kServicesCell forIndexPath:indexPath];
-            
-            if (self.professional.services.count > 0) {
-            
-                Service *serviceObj = [self.professional.services objectAtIndex:indexPath.row];
-             
-                cell.cellDelegate = self;
-                [cell configureCellForService:serviceObj];
-            
-            } else {
-            
-                [cell configureEmptyCell];
-            }
-            
-            return cell;
-            
-        } break;
-            
-        case 1: { // Reviews
-            
-            EKCompanyReviewTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kReviewsCell forIndexPath:indexPath];
-
-            if (self.reviewsArray.count > 0) {
-             
-                Review *reviewObj = [self.reviewsArray objectAtIndex:indexPath.row];
+    // Professionals config
+    if (self.professional) {
+     
+        switch (indexPath.section) {
                 
-                [cell configureCellForReview:reviewObj];
+            case 0: { // Services
                 
-            } else {
+                EKCompanyServiceTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kServicesCell forIndexPath:indexPath];
                 
-                [cell configureEmptyCell];
-            }
-            
-            return cell;
-            
-        } break;
-            
-//        case 2: { // Professionals
-//            
-//            EKCompanyProfessionalTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kProfessionalsCell forIndexPath:indexPath];
-//            
-//            return cell;
-//            
-//        } break;
-            
-        case 2: { // Contacts
-            
-            EKCompanyContactTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kContactsCell forIndexPath:indexPath];
-            
-            if (self.professional) {
-                
-                if (indexPath.row == 0) {
-                    cell.cellContactTypeLabel.text = @"Name";
-                    cell.cellContactValueLabel.text = self.professional.business.name;
+                if (self.professional.services.count > 0) {
+                    
+                    Service *serviceObj = [self.professional.services objectAtIndex:indexPath.row];
+                    
+                    cell.cellDelegate = self;
+                    [cell configureCellForService:serviceObj];
+                    
+                } else {
+                    
+                    [cell configureEmptyCell];
                 }
                 
-                if (indexPath.row == 1) {
-                    cell.cellContactTypeLabel.text = @"Address";
-                    cell.cellContactValueLabel.text = self.professional.business.address;
+                return cell;
+                
+            } break;
+                
+            case 1: { // Reviews
+                
+                EKCompanyReviewTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kReviewsCell forIndexPath:indexPath];
+                
+                if (self.reviewsArray.count > 0) {
+                    
+                    Review *reviewObj = [self.reviewsArray objectAtIndex:indexPath.row];
+                    
+                    [cell configureCellForReview:reviewObj];
+                    
+                } else {
+                    
+                    [cell configureEmptyCell];
                 }
-            }
-            
-            return cell;
-            
-        } break;
-            
-        default: return nil; break;
+                
+                return cell;
+                
+            } break;
+                
+            case 2: { // Contacts
+                
+                EKCompanyContactTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kContactsCell forIndexPath:indexPath];
+                
+                if (self.professional) {
+                    
+                    if (indexPath.row == 0) {
+                        cell.cellContactTypeLabel.text = @"Name";
+                        cell.cellContactValueLabel.text = self.professional.business.name;
+                    }
+                    
+                    if (indexPath.row == 1) {
+                        cell.cellContactTypeLabel.text = @"Address";
+                        cell.cellContactValueLabel.text = self.professional.business.address;
+                    }
+                }
+                
+                return cell;
+                
+            } break;
+                
+            default: return nil; break;
+        }
     }
+    
+    // Salon config
+    if (self.salon) {
+        
+        switch (indexPath.section) {
+                
+            case 0: { // Services
+                
+                EKCompanyServiceTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kServicesCell forIndexPath:indexPath];
+                
+                if (self.professional.services.count > 0) {
+                    
+                    Service *serviceObj = [self.professional.services objectAtIndex:indexPath.row];
+                    
+                    cell.cellDelegate = self;
+                    [cell configureCellForService:serviceObj];
+                    
+                } else {
+                    
+                    [cell configureEmptyCell];
+                }
+                
+                return cell;
+                
+            } break;
+                
+            case 1: { // Reviews
+                
+                EKCompanyReviewTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kReviewsCell forIndexPath:indexPath];
+                
+                if (self.reviewsArray.count > 0) {
+                    
+                    Review *reviewObj = [self.reviewsArray objectAtIndex:indexPath.row];
+                    
+                    [cell configureCellForReview:reviewObj];
+                    
+                } else {
+                    
+                    [cell configureEmptyCell];
+                }
+                
+                return cell;
+                
+            } break;
+                
+            case 2: { // Professionals
+    
+                EKCompanyProfessionalTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kProfessionalsCell forIndexPath:indexPath];
+    
+                return cell;
+    
+            } break;
+                
+            case 3: { // Contacts
+                
+                EKCompanyContactTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kContactsCell forIndexPath:indexPath];
+                
+                //TODO: Config with proper salon name
+                if (self.salon) {
+                    
+                    if (indexPath.row == 0) {
+//                        cell.cellContactTypeLabel.text = @"Name";
+//                        cell.cellContactValueLabel.text = self.professional.business.name;
+                    }
+                    
+                    if (indexPath.row == 1) {
+//                        cell.cellContactTypeLabel.text = @"Address";
+//                        cell.cellContactValueLabel.text = self.professional.business.address;
+                    }
+                }
+                
+                return cell;
+                
+            } break;
+                
+            default: return nil; break;
+        }
+    }
+
+    return nil;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    switch (indexPath.section) {
-            
+    if (self.professional) {
+        switch (indexPath.section) {
+                
             // Services
-        case 0: return 82.0; break;
-            
+            case 0: return 82.0; break;
+                
             // Reviews
-        case 1: {
-            
-            if (self.reviewsArray.count > 0) {
+            case 1: {
                 
-                Review *reviewObj = [self.reviewsArray objectAtIndex:indexPath.row];
+                if (self.reviewsArray.count > 0) {
+                    
+                    Review *reviewObj = [self.reviewsArray objectAtIndex:indexPath.row];
+                    
+                    CGRect textLabelRect = [reviewObj.review
+                                            boundingRectWithSize:CGSizeMake(self.tableView.frame.size.width, CGFLOAT_MAX)
+                                            options:NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading
+                                            attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:14]}
+                                            context:nil];
+                    
+                    return textLabelRect.size.height + 126.; //computed text label height + height of other UI elements
+                    
+                } else {
+                    
+                    CGRect textLabelRect = [@"No Reviews"
+                                            boundingRectWithSize:CGSizeMake(self.tableView.frame.size.width, CGFLOAT_MAX)
+                                            options:NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading
+                                            attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:14]}
+                                            context:nil];
+                    
+                    return textLabelRect.size.height + 126.; //computed text label height + height of other UI elements
+                }
+            } break;
                 
-                CGRect textLabelRect = [reviewObj.review
-                                        boundingRectWithSize:CGSizeMake(self.tableView.frame.size.width, CGFLOAT_MAX)
-                                        options:NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading
-                                        attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:14]}
-                                        context:nil];
-
-                return textLabelRect.size.height + 126.; //computed text label height + height of other UI elements
-
-            } else {
-                
-                return 0;
-            }
-        } break;
-            
-            // Professionals
-//        case 2: return 110.0; break;
-            
             // Contacts
-        case 2: return 72.0; break;
-            
-        default: return 44.0; break;
+            case 2: return 72.0; break;
+                
+            default: return 44.0; break;
+        }
     }
+    
+    if (self.salon) {
+    
+        switch (indexPath.section) {
+                
+            // Services
+            case 0: return 82.0; break;
+                
+            // Reviews
+            case 1: {
+                
+                if (self.reviewsArray.count > 0) {
+                    
+                    Review *reviewObj = [self.reviewsArray objectAtIndex:indexPath.row];
+                    
+                    CGRect textLabelRect = [reviewObj.review
+                                            boundingRectWithSize:CGSizeMake(self.tableView.frame.size.width, CGFLOAT_MAX)
+                                            options:NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading
+                                            attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:14]}
+                                            context:nil];
+                    
+                    return textLabelRect.size.height + 126.; //computed text label height + height of other UI elements
+                    
+                } else {
+                    
+                    CGRect textLabelRect = [@"No Reviews"
+                                            boundingRectWithSize:CGSizeMake(self.tableView.frame.size.width, CGFLOAT_MAX)
+                                            options:NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading
+                                            attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:14]}
+                                            context:nil];
+                    
+                    return textLabelRect.size.height + 126.; //computed text label height + height of other UI elements
+                }
+            } break;
+                
+            // Professionals
+            case 2: return 110.0; break;
+                
+            // Contacts
+            case 3: return 72.0; break;
+                
+            default: return 44.0; break;
+        }
+    }
+    
+    return 44.0;
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
     
-    switch (section) {
-            
-        case 0: return @"SERVICES"; break; // Services
-            
-        case 1: return @"REVIEWS"; break; // Reviews
-            
-//        case 2: return @"BEAUTY PROFESSIONALS"; break; // Professionals
-            
-        case 2: return @"CONTACT INFO"; break; // Contacts
-            
-        default: return @""; break;
+    if (self.professional) {
+        
+        switch (section) {
+                
+            case 0: return @"SERVICES"; break; // Services
+                
+            case 1: return @"REVIEWS"; break; // Reviews
+
+            case 2: return @"CONTACT INFO"; break; // Contacts
+                
+            default: return @""; break;
+        }
     }
+    
+    if (self.salon) {
+        
+        switch (section) {
+                
+            case 0: return @"SERVICES"; break; // Services
+                
+            case 1: return @"REVIEWS"; break; // Reviews
+                
+            case 2: return @"BEAUTY PROFESSIONALS"; break; // Professionals
+                
+            case 3: return @"CONTACT INFO"; break; // Contacts
+                
+            default: return @""; break;
+        }
+    }
+    
+    return @"";
 }
 
 - (void)tableView:(UITableView *)tableView willDisplayHeaderView:(UIView *)view forSection:(NSInteger)section {
@@ -206,24 +357,6 @@ static NSString * const kProfessionalsCollectionCell = @"companyProfessionalsCol
     }
 }
 
-- (void)tableView:(UITableView *)tableView willDisplayCell:(EKCompanyProfessionalTableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    // keep track in which cell the collectionView is, to properly manage it's dataSource and display correctly
-//    cell.cellCollectionView.collectionIndexPath = indexPath;
-    //    [cell.cellCollectionView reloadData];
-    
-    //    NSInteger index = cell.cellCollectionView.collectionIndexPath.row;
-    //    CGFloat horizontalOffset = [self.contentOffsetDictionary[[@(index) stringValue]] floatValue];
-    //    [cell.cellCollectionView setContentOffset:CGPointMake(horizontalOffset, 0)];
-}
-
-- (void)tableView:(UITableView *)tableView didEndDisplayingCell:(EKCompanyProfessionalTableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    //    CGFloat horizontalOffset = cell.collectionView.contentOffset.x;
-    //    NSInteger index = cell.collectionView.collectionIndexPath.row;
-    //    self.contentOffsetDictionary[[@(index) stringValue]] = @(horizontalOffset);
-}
-
 #pragma mark - UITableViewDelegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -236,6 +369,7 @@ static NSString * const kProfessionalsCollectionCell = @"companyProfessionalsCol
     return 1;
 }
 
+//TODO: Config from Salon
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     
     //    NSInteger index = ((EKInCellCollectionView*)collectionView).collectionIndexPath.row;
@@ -258,6 +392,12 @@ static NSString * const kProfessionalsCollectionCell = @"companyProfessionalsCol
 #pragma mark - UICollectionViewDelegate
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    
+}
+
+#pragma mark - EKCompanyServiceCellDelegate
+
+- (void)didTapBookButtonAtIndexPath:(NSIndexPath *)indexPath {
     
 }
 

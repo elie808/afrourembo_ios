@@ -9,55 +9,67 @@
 #import "EKCompanyProfileViewController.h"
 #import "EKCompanyProfileViewController+TableView.h"
 
+static NSString * const kSalonType        = @"salon";
+static NSString * const kProfessionalType = @"professional";
+
 @implementation EKCompanyProfileViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     self.reviewsArray = [NSMutableArray new];
+
+    [self configureCarousel];
     
-    Service *service1 = [Service new];
-    service1.serviceName = @"Service 1 title";
-    service1.price = 40;
-    service1.time = 69;
-    service1.currency = @"USD";
+    [self getReviews];
+}
+
+#pragma mark - Helpers
+
+- (void)configureCarousel {
     
-    Service *service2 = [Service new];
-    service2.serviceName = @"Service 2 title";
-    service2.price = 10;
-    service2.time = 20;
-    service2.currency = @"KSH";
+    if (self.professional) {
+        
+        NSMutableArray *picLinksArray = [NSMutableArray new];
+        for (Pictures *pic in self.professional.portfolio) { [picLinksArray addObject:pic.picture]; }
+        
+        [self.carousel configureWithVenueImages:picLinksArray];
+        
+    } else if (self.salon) {
+        
+    }
+}
+
+- (void)getReviews {
     
-    /*
-    Review *review1 = [Review new];
-    review1.reviewTitle = @"Review 1 title";
-    review1.reviewStars = @3;
-    review1.reviewAuthor = @"James Bond";
-    review1.reviewText = @"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla convallis posuere viverra. Donec in efficitur nisi, ut faucibus ante. Duis sed facilisis orci. Phasellus sit amet leo iaculis, efficitur metus ut, fermentum ex.";
-    review1.reviewTitle = @"Review 1 title";
-    review1.reviewDate = @"Friday 13, 2017";
-    review1.reviewProfessional = @"Mathew McCormick";
-    review1.reviewProfessionalImage = @"dummy_male2";
-    */
+    NSString *vendorID;
+    NSString *vendorType;
     
-    [Review getReviewsForVendor:@"594a5f2ba191f90ead511ba9"
-                         ofType:@"professional"
-                withToken:@"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1OTU2NmQ4ZjU2MzcxMzEyNmZjNWFkZjIiLCJzZXNzaW9uS2V5IjoiZjNhMjBhMTAtNjBhNi0xMWU3LTkxMWYtMTE3ZWEzZDQ0NTNiIiwiY29udGV4dCI6InVzZXIiLCJpYXQiOjE0OTkxNjU1ODIsImV4cCI6MTQ5OTI1MTk4Mn0.XyyxSFLa1PP7tx2HQxMhY2r98ra0KfwPrIj5SuSGnkM"
+    if (self.professional) {
+        
+        vendorID = self.professional.professionalID;
+        vendorType = kProfessionalType;
+        
+    } else if (self.salon) {
+        
+        vendorID = self.salon.salonID;
+        vendorType = kSalonType;
+    }
+
+    [Review getReviewsForVendor:vendorID
+                         ofType:vendorType
+                      withToken:self.passedCustomer.token
                       withBlock:^(NSArray<Review *> *reviewsArray) {
                           
-                          self.reviewsArray = [NSMutableArray arrayWithArray:reviewsArray];
-                          [self.tableView reloadData];
+                          if (reviewsArray.count > 0) {
+                              self.reviewsArray = [NSMutableArray arrayWithArray:reviewsArray];
+                              [self.tableView reloadData];
+                          }
                       }
                      withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
                          
+                         [self showMessage:errorMessage withTitle:@"Error" completionBlock:nil];
                      }];
-    
-    //------
-    if (self.professional) {
-        
-        [self.headerImageView yy_setImageWithURL:[NSURL URLWithString:self.professional.profilePicture]
-                                         options:YYWebImageOptionProgressiveBlur|YYWebImageOptionSetImageWithFadeAnimation];
-    }
 }
 
 #pragma mark - Actions
