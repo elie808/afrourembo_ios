@@ -21,7 +21,7 @@
     if (venueImagesURLs && venueImagesURLs.count > 0) {
         
         // Set correct scrollView width
-        self.contentSize = CGSizeMake(self.frame.size.width * (venueImagesURLs.count+1), self.frame.size.height);
+        self.contentSize = CGSizeMake(self.frame.size.width * (venueImagesURLs.count), self.frame.size.height);
         
         // Populate with images
         for (int i = 0; i < venueImagesURLs.count; i++) {

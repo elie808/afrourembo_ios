@@ -824,16 +824,19 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="173"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="PS5-tp-Ubd">
+                                        <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" directionalLockEnabled="YES" alwaysBounceHorizontal="YES" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EHU-HD-AFQ" customClass="EKCarousel">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="173"/>
-                                        </imageView>
+                                            <connections>
+                                                <outlet property="delegate" destination="q3N-QV-x45" id="Isk-WK-rky"/>
+                                            </connections>
+                                        </scrollView>
                                     </subviews>
-                                    <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <constraints>
-                                        <constraint firstItem="PS5-tp-Ubd" firstAttribute="top" secondItem="gpH-m2-Y1a" secondAttribute="top" id="2VT-bW-4IR"/>
-                                        <constraint firstItem="PS5-tp-Ubd" firstAttribute="leading" secondItem="gpH-m2-Y1a" secondAttribute="leading" id="NpW-4h-bvH"/>
-                                        <constraint firstAttribute="trailing" secondItem="PS5-tp-Ubd" secondAttribute="trailing" id="TV9-xn-f4t"/>
-                                        <constraint firstAttribute="bottom" secondItem="PS5-tp-Ubd" secondAttribute="bottom" id="eR3-sL-98K"/>
+                                        <constraint firstItem="EHU-HD-AFQ" firstAttribute="top" secondItem="gpH-m2-Y1a" secondAttribute="top" id="FTr-62-bWd"/>
+                                        <constraint firstAttribute="bottom" secondItem="EHU-HD-AFQ" secondAttribute="bottom" id="NHW-jI-QmI"/>
+                                        <constraint firstAttribute="trailing" secondItem="EHU-HD-AFQ" secondAttribute="trailing" id="U8p-Ml-LQk"/>
+                                        <constraint firstItem="EHU-HD-AFQ" firstAttribute="leading" secondItem="gpH-m2-Y1a" secondAttribute="leading" id="Vk9-Uh-YmJ"/>
                                     </constraints>
                                 </view>
                                 <view key="tableFooterView" contentMode="scaleToFill" id="0GJ-7f-p0R">
@@ -1185,7 +1188,7 @@
                     <navigationItem key="navigationItem" id="bTI-2M-g4x"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
-                        <outlet property="headerImageView" destination="PS5-tp-Ubd" id="NKa-gB-VJd"/>
+                        <outlet property="carousel" destination="EHU-HD-AFQ" id="mUO-kx-Tjx"/>
                         <outlet property="tableView" destination="eqU-Vo-25N" id="D4C-L2-csJ"/>
                     </connections>
                 </viewController>
