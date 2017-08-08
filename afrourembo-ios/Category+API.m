@@ -48,17 +48,17 @@
                                               } failure:^(RKObjectRequestOperation *operation, NSError *error) {
                                                   
                                                   // exctract error message
-                                                  NSDictionary *myDic = [NSJSONSerialization
-                                                                         JSONObjectWithData:operation.HTTPRequestOperation.responseData
-                                                                         options:NSJSONReadingMutableLeaves
-                                                                         error:nil];
+//                                                  NSDictionary *myDic = [NSJSONSerialization
+//                                                                         JSONObjectWithData:operation.HTTPRequestOperation.responseData
+//                                                                         options:NSJSONReadingMutableLeaves
+//                                                                         error:nil];
+//                                                  
+//                                                  NSString *errorMessage = [myDic valueForKey:@"message"];
+//                                                  
+//                                                  NSNumber *statusCode = [myDic valueForKey:@"statusCode"];
                                                   
-                                                  NSString *errorMessage = [myDic valueForKey:@"message"];
-                                                  
-                                                  NSNumber *statusCode = [myDic valueForKey:@"statusCode"];
-                                                  
-                                                  NSLog(@"-------ERROR MESSAGE: %@", errorMessage);
-                                                  errorBlock(error, errorMessage, [statusCode integerValue]);
+//                                                  NSLog(@"-------ERROR MESSAGE: %@", errorMessage);
+                                                  errorBlock(error, @"Error", 500);
                                               }];
 }
 
