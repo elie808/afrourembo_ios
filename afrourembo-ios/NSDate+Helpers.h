@@ -19,10 +19,13 @@ typedef NS_ENUM(NSUInteger, DateFormat) {
 
 @property (assign, nonatomic) DateFormat dateFormat;
 
++ (NSDate *)todayAtTime:(NSNumber *)hour minutes:(NSNumber *)minute;
+
 + (NSDate *)todayDate;
 + (NSDate *)tomorrowDate;
 + (NSDate *)nextDay:(NSDate *)date;
 + (NSDate *)monthsAdvance:(NSDate *)today numberOfMonths:(int)months;
++ (NSDate *)addDays:(NSInteger)daysToAdd after:(NSDate *)startingDate;
 
 + (NSString *)stringFromDate:(NSDate *)date withFormat:(DateFormat)dateFormat;
 + (NSDate *)dateFromString:(NSString *)dateString withFormat:(DateFormat)dateFormat;
