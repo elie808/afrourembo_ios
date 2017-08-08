@@ -9,14 +9,20 @@
 #import <UIKit/UIKit.h>
 #import <STPopup/STPopup.h>
 #import "Booking.h"
+#import "Service.h"
 #import "EKBookingProCollectionViewCell.h"
 #import "EKBookingDayCollectionViewCell.h"
 #import "EKBookingTimeCollectionViewCell.h"
 #import "EKCartViewController.h"
+#import "TimeSlot.h"
+#import "Professional.h"
+#import "NSDate+Helpers.h"
 
 @interface EKBookingViewController : UIViewController <UICollectionViewDataSource, UICollectionViewDelegate, UIGestureRecognizerDelegate, UITextViewDelegate>
 
 @property (strong, nonatomic) Booking *booking;
+@property (strong, nonatomic) Service *passedService;
+@property (strong, nonatomic) NSArray *professionalsDataSource;
 
 @property (strong, nonatomic) IBOutlet UIView *containerView;
 @property (strong, nonatomic) IBOutlet UITextView *textView;

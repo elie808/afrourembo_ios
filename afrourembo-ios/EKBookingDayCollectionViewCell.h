@@ -10,6 +10,8 @@
 
 @interface EKBookingDayCollectionViewCell : UICollectionViewCell
 
+@property (strong, nonatomic) IBOutlet UILabel *cellDayLabel;
+
 - (void)animateCell;
 
 @end

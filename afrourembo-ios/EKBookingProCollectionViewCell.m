@@ -16,4 +16,10 @@
     self.cellImageBorder.backgroundColor = selected ? [UIColor orangeColor] : [UIColor clearColor];
 }
 
+- (void)configureCellWithPro:(Professional *)proObj {
+    
+    self.cellNameLabel.text = [NSString stringWithFormat:@"%@ %@", proObj.fName, proObj.lName];
+    [self.cellImageView yy_setImageWithURL:[NSURL URLWithString:proObj.profilePicture] options:YYWebImageOptionProgressive];
+}
+
 @end

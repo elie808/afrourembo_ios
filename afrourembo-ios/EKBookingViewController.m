@@ -18,7 +18,6 @@ static NSString * const kCartSegue = @"bookingTimeToCartVC";
     BOOL _keyboardShowing;
     CGFloat _containerViewHeight;
     
-    NSMutableArray *_prosDataSource;
     NSMutableArray *_daysDataSource;
     NSMutableArray *_timesDataSource;
 }
@@ -28,15 +27,46 @@ static NSString * const kCartSegue = @"bookingTimeToCartVC";
 
     self.booking = [Booking new];
     
-//    _prosDataSource;
-//    _daysDataSource;
-//    _timesDataSource
+    _daysDataSource = [NSMutableArray new];
+    _timesDataSource = [NSMutableArray new];
     
     _containerViewHeight = 200;
     self.containerView.frame = CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, _containerViewHeight);
     [self.view addSubview:self.containerView];
     
     self.containerView.hidden = YES;
+    
+    [self populateDays];
+    [self populateDayWithTimes:@9 endingHour:@18 inMinuteIncrements:@15];
+}
+
+- (void)populateDays {
+
+    for (int i = 0; i < 30; i++) {
+    
+        [_daysDataSource addObject:[NSDate stringFromDate:[NSDate addDays:i after:[NSDate todayDate]]
+                                               withFormat:DateFormatLetterDayMonthYear]];
+    }
+}
+
+//TODO: Add support to many unavailable hours, and include minutes
+- (void)populateDayWithTimes:(NSNumber *)startHour endingHour:(NSNumber *)endHour inMinuteIncrements:(NSNumber *)minIncrements {
+    
+    for (int hour = [startHour intValue]; hour < [endHour intValue]; hour++) {
+    
+        for (int startingMin = 0; startingMin < 60; startingMin += [minIncrements intValue]) {
+
+            BOOL isAvailable;
+            
+            if ( hour > 13 && hour < 15 ) { isAvailable = NO; } else { isAvailable = YES; }
+            
+            TimeSlot *slot = [[TimeSlot alloc] initWithDate:[NSDate todayAtTime:[NSNumber numberWithInt:hour]
+                                                                       minutes:[NSNumber numberWithInt:startingMin]]
+                                           andAvailability:isAvailable];
+
+            [_timesDataSource addObject:slot];
+        }
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -62,33 +92,21 @@ static NSString * const kCartSegue = @"bookingTimeToCartVC";
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
     
-    if (collectionView == self.proCollectionView) {
-        return 1;
-    }
-    
-    if (collectionView == self.dayCollectionView) {
-        return 1;
-    }
-    
-    if (collectionView == self.timeCollectionView) {
-        return 1;
-    }
-    
-    return 0;
+    return 1;
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     
     if (collectionView == self.proCollectionView) {
-        return 9;
+        return self.professionalsDataSource.count;
     }
     
     if (collectionView == self.dayCollectionView) {
-        return 30;
+        return _daysDataSource.count;
     }
     
     if (collectionView == self.timeCollectionView) {
-        return 30;
+        return _timesDataSource.count;
     }
     
     return 0;
@@ -99,6 +117,10 @@ static NSString * const kCartSegue = @"bookingTimeToCartVC";
     if (collectionView == self.proCollectionView) {
 
         EKBookingProCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kProCell forIndexPath:indexPath];
+
+        Professional *pro = self.professionalsDataSource[indexPath.row];
+        
+        [cell configureCellWithPro:pro];
         
         return cell;
     }
@@ -107,12 +129,18 @@ static NSString * const kCartSegue = @"bookingTimeToCartVC";
      
         EKBookingDayCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kDayCell forIndexPath:indexPath];
         
+        cell.cellDayLabel.text = _daysDataSource[indexPath.row];
+        
         return cell;
     }
     
     if (collectionView == self.timeCollectionView) {
         
         EKBookingTimeCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kTimeCell forIndexPath:indexPath];
+        
+        TimeSlot *timeSlot = _timesDataSource[indexPath.row];
+        
+        [cell configureCell:timeSlot];
         
         return cell;
     }
@@ -140,6 +168,15 @@ static NSString * const kCartSegue = @"bookingTimeToCartVC";
     
     if (collectionView == self.timeCollectionView) {
      
+        TimeSlot *timeSlot = _timesDataSource[indexPath.row];
+        
+        if (timeSlot.isAvailable) {
+            timeSlot.isSelected = !timeSlot.isSelected;
+            [self.timeCollectionView reloadData];
+        }
+        
+//        timeSlot.isSelected = !timeSlot.isSelected;
+//        [self.timeCollectionView reloadData];
     }
 }
 

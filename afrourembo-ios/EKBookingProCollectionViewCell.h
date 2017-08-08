@@ -7,11 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Professional.h"
+#import <YYWebImage/YYWebImage.h>
 
 @interface EKBookingProCollectionViewCell : UICollectionViewCell
 
 @property (strong, nonatomic) IBOutlet UIImageView *cellImageView;
 @property (strong, nonatomic) IBOutlet UIView *cellImageBorder;
 @property (strong, nonatomic) IBOutlet UILabel *cellNameLabel;
+
+- (void)configureCellWithPro:(Professional *)proObj;
 
 @end

@@ -889,7 +889,6 @@
                                                     </userDefinedRuntimeAttributes>
                                                     <connections>
                                                         <action selector="didTapBookButton:" destination="gBY-cw-kgc" eventType="touchDown" id="EAB-WJ-7aU"/>
-                                                        <segue destination="lyj-pg-PLO" kind="show" id="mv9-Ep-yy5"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -1190,6 +1189,7 @@
                     <connections>
                         <outlet property="carousel" destination="EHU-HD-AFQ" id="mUO-kx-Tjx"/>
                         <outlet property="tableView" destination="eqU-Vo-25N" id="D4C-L2-csJ"/>
+                        <segue destination="lyj-pg-PLO" kind="show" identifier="companyProfileVCToBookingVC" id="iva-nY-mfi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Y2w-Xy-4O0" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1307,29 +1307,24 @@
                                             <rect key="frame" x="0.0" y="0.0" width="74" height="48"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TUE" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tf7-az-Q3z">
-                                                    <rect key="frame" x="0.0" y="8" width="74" height="17"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TUE 24 FEB" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tf7-az-Q3z">
+                                                    <rect key="frame" x="0.0" y="5" width="74" height="37"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                                                     <color key="textColor" red="0.43529411764705883" green="0.43529411764705883" blue="0.43529411764705883" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FEB 24" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dj7-iT-iAC">
-                                                    <rect key="frame" x="0.0" y="25" width="74" height="15"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                    <color key="textColor" red="0.43529411759999997" green="0.43529411759999997" blue="0.43529411759999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                         </view>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstItem="tf7-az-Q3z" firstAttribute="leading" secondItem="I1O-qr-8w8" secondAttribute="leading" id="3Bp-A4-0W7"/>
-                                            <constraint firstItem="tf7-az-Q3z" firstAttribute="leading" secondItem="dj7-iT-iAC" secondAttribute="leading" id="7zp-RG-9b2"/>
-                                            <constraint firstItem="tf7-az-Q3z" firstAttribute="trailing" secondItem="dj7-iT-iAC" secondAttribute="trailing" id="H9V-e4-csJ"/>
-                                            <constraint firstAttribute="trailing" secondItem="tf7-az-Q3z" secondAttribute="trailing" id="JHI-e1-PSO"/>
-                                            <constraint firstItem="dj7-iT-iAC" firstAttribute="top" secondItem="tf7-az-Q3z" secondAttribute="bottom" id="SKG-Vy-39q"/>
-                                            <constraint firstItem="tf7-az-Q3z" firstAttribute="top" secondItem="I1O-qr-8w8" secondAttribute="topMargin" id="d4L-Ar-82f"/>
+                                            <constraint firstItem="tf7-az-Q3z" firstAttribute="top" secondItem="I1O-qr-8w8" secondAttribute="topMargin" constant="-3" id="eVf-jj-L5I"/>
+                                            <constraint firstAttribute="trailing" secondItem="tf7-az-Q3z" secondAttribute="trailing" id="gHa-uF-JT8"/>
+                                            <constraint firstItem="tf7-az-Q3z" firstAttribute="centerY" secondItem="I1O-qr-8w8" secondAttribute="centerY" id="gv6-gg-RCS"/>
+                                            <constraint firstItem="tf7-az-Q3z" firstAttribute="leading" secondItem="I1O-qr-8w8" secondAttribute="leading" id="jTv-sk-goT"/>
                                         </constraints>
+                                        <connections>
+                                            <outlet property="cellDayLabel" destination="tf7-az-Q3z" id="FjS-MH-maf"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                                 <connections>
@@ -1355,9 +1350,9 @@
                                             <rect key="frame" x="0.0" y="0.0" width="80" height="48"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="11:30 AM" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f3w-eH-BBA">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="09:10" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f3w-eH-BBA">
                                                     <rect key="frame" x="0.0" y="13" width="80" height="22"/>
-                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -1370,6 +1365,9 @@
                                             <constraint firstAttribute="bottom" secondItem="f3w-eH-BBA" secondAttribute="bottom" constant="13" id="q1z-1E-EY7"/>
                                             <constraint firstAttribute="trailing" secondItem="f3w-eH-BBA" secondAttribute="trailing" id="xpz-m9-VU4"/>
                                         </constraints>
+                                        <connections>
+                                            <outlet property="cellTimeLabel" destination="f3w-eH-BBA" id="N72-7X-yB9"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                                 <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="v6J-3p-u8K">
@@ -1847,7 +1845,7 @@
         <image name="icTwitterActive" width="24" height="21"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="oT6-4C-Llh"/>
+        <segue reference="xaI-bI-zkP"/>
         <segue reference="U39-u0-bPg"/>
     </inferredMetricsTieBreakers>
 </document>

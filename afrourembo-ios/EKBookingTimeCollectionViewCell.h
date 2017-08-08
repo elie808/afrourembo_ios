@@ -7,7 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TimeSlot.h"
 
 @interface EKBookingTimeCollectionViewCell : UICollectionViewCell
+
+@property (strong, nonatomic) IBOutlet UILabel *cellTimeLabel;
+
+- (void)configureCell:(TimeSlot *)slot;
 
 @end
