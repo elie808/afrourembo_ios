@@ -399,6 +399,14 @@ static NSString * const kProfessionalsCollectionCell = @"companyProfessionalsCol
 
 - (void)didTapBookButtonAtIndexPath:(NSIndexPath *)indexPath {
     
+    if (self.professional) {
+        
+        Service *serviceObj = [self.professional.services objectAtIndex:indexPath.row];
+        
+        [self performSegueWithIdentifier:kBookingSegue sender:serviceObj];
+    }
+    
+    if (self.salon) { }
 }
 
 @end

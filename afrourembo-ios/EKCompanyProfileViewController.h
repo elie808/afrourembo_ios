@@ -15,6 +15,8 @@
 #import "EKInCellCollectionView.h"
 #import "EKCompanyProfessionalCollectionViewCell.h"
 
+#import "EKBookingViewController.h"
+
 #import "Customer.h"
 #import "Professional.h"
 #import "Review.h"
@@ -26,6 +28,8 @@
 #import "UIViewController+Helpers.h"
 
 #import <YYWebImage/YYWebImage.h>
+
+static NSString * const kBookingSegue     = @"companyProfileVCToBookingVC";
 
 @interface EKCompanyProfileViewController : UIViewController
 

@@ -90,6 +90,23 @@ static NSString * const kProfessionalType = @"professional";
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     
+    if ([segue.identifier isEqualToString:kBookingSegue]) {
+        
+        EKBookingViewController *vc = [segue destinationViewController];
+        
+        if (sender && [sender isKindOfClass:[Service class]]) {
+            vc.passedService = (Service *)sender;
+        }
+        
+        if (self.professional) {
+        
+            vc.professionalsDataSource = @[self.professional];
+            
+        } else if (self.salon) {
+            
+            //TODO: pass all professionals from salon
+        }
+    }
 }
 
 @end
