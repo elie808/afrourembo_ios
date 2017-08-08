@@ -31,6 +31,7 @@
 		474ED7B91E9C471F0099CA0A /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 474ED7B81E9C471F0099CA0A /* MapKit.framework */; };
 		474ED7BC1E9C68940099CA0A /* EKDiscoverMapViewController+MapDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 474ED7BB1E9C68940099CA0A /* EKDiscoverMapViewController+MapDelegate.m */; };
 		474ED7C01E9C6BD90099CA0A /* EKDiscoverMapViewController+TableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 474ED7BF1E9C6BD90099CA0A /* EKDiscoverMapViewController+TableView.m */; };
+		474FAE921F38E0A900970A1F /* TimeSlot.m in Sources */ = {isa = PBXBuildFile; fileRef = 474FAE911F38E0A900970A1F /* TimeSlot.m */; };
 		4757C6491ED879FB00C2B52F /* EKTodayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4757C6481ED879FB00C2B52F /* EKTodayViewController.m */; };
 		4757C64D1ED973FD00C2B52F /* EKTodayTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4757C64C1ED973FD00C2B52F /* EKTodayTableViewCell.m */; };
 		4757C6501ED9862800C2B52F /* EKTodayCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4757C64F1ED9862800C2B52F /* EKTodayCollectionViewCell.m */; };
@@ -168,6 +169,8 @@
 		474ED7BB1E9C68940099CA0A /* EKDiscoverMapViewController+MapDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "EKDiscoverMapViewController+MapDelegate.m"; sourceTree = "<group>"; };
 		474ED7BE1E9C6BD90099CA0A /* EKDiscoverMapViewController+TableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "EKDiscoverMapViewController+TableView.h"; sourceTree = "<group>"; };
 		474ED7BF1E9C6BD90099CA0A /* EKDiscoverMapViewController+TableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "EKDiscoverMapViewController+TableView.m"; sourceTree = "<group>"; };
+		474FAE901F38E0A900970A1F /* TimeSlot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeSlot.h; sourceTree = "<group>"; };
+		474FAE911F38E0A900970A1F /* TimeSlot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimeSlot.m; sourceTree = "<group>"; };
 		4757C6471ED879FB00C2B52F /* EKTodayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKTodayViewController.h; sourceTree = "<group>"; };
 		4757C6481ED879FB00C2B52F /* EKTodayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKTodayViewController.m; sourceTree = "<group>"; };
 		4757C64B1ED973FD00C2B52F /* EKTodayTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKTodayTableViewCell.h; sourceTree = "<group>"; };
@@ -745,6 +748,8 @@
 				47AF51B91E9B8561005FE6EB /* Salon.m */,
 				476F63701F075ECD00C27A92 /* SalonLogin.h */,
 				476F63711F075ECD00C27A92 /* SalonLogin.m */,
+				474FAE901F38E0A900970A1F /* TimeSlot.h */,
+				474FAE911F38E0A900970A1F /* TimeSlot.m */,
 				478BDEF71E99C5FC00F74A5C /* Service.h */,
 				478BDEF81E99C5FC00F74A5C /* Service.m */,
 				47EF0E2E1EDA23B3000B07BB /* Today.h */,
@@ -1240,6 +1245,7 @@
 				47FE51C61EFD59F500A39BAE /* Category.m in Sources */,
 				4783DF8D1EA4CDAD00C87C60 /* EKBookingTimeCollectionViewCell.m in Sources */,
 				4760FC7C1EF88C8200099DFD /* EKSalonAddressViewController.m in Sources */,
+				474FAE921F38E0A900970A1F /* TimeSlot.m in Sources */,
 				4757C64D1ED973FD00C2B52F /* EKTodayTableViewCell.m in Sources */,
 				477256051EB958FF007CBD6B /* EKAvailabilityViewController.m in Sources */,
 				47AF51BD1E9C4001005FE6EB /* EKDiscoverMapViewController.m in Sources */,
