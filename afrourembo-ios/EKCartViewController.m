@@ -18,7 +18,8 @@ static NSString * const kCartCell = @"cartCollectionCellID";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    _dataSourceArray = [NSMutableArray arrayWithArray:[self createStubs]];
+//    _dataSourceArray = [NSMutableArray arrayWithArray:[self createStubs]];
+    _dataSourceArray = [NSMutableArray new];
     
     self.bottomBar.layer.shadowColor = [UIColor blackColor].CGColor;
     self.bottomBar.layer.shadowOpacity = 0.3;
