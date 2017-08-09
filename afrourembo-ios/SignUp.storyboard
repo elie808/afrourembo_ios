@@ -850,7 +850,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <view key="tableFooterView" contentMode="scaleToFill" id="xBo-3P-2rD">
-                                    <rect key="frame" x="0.0" y="116" width="375" height="44"/>
+                                    <rect key="frame" x="0.0" y="160" width="375" height="44"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </view>
@@ -916,6 +916,40 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="professionalMobileCell" id="ZYL-HG-0vq" customClass="EKProfessionalInfoTableViewCell">
+                                        <rect key="frame" x="0.0" y="116" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ZYL-HG-0vq" id="LBa-XL-1bs">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="R9D-gt-qxq">
+                                                    <rect key="frame" x="318" y="6" width="51" height="31"/>
+                                                    <color key="onTintColor" red="1" green="0.76470588240000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <connections>
+                                                        <action selector="didChangeSwitch:" destination="kAy-4g-950" eventType="valueChanged" id="VC6-LF-DKj"/>
+                                                    </connections>
+                                                </switch>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="I am mobile" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z1n-hG-LHc">
+                                                    <rect key="frame" x="16" y="12" width="294" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="R9D-gt-qxq" firstAttribute="top" secondItem="LBa-XL-1bs" secondAttribute="top" constant="6" id="0zL-t9-5NP"/>
+                                                <constraint firstItem="Z1n-hG-LHc" firstAttribute="leading" secondItem="LBa-XL-1bs" secondAttribute="leadingMargin" constant="8" id="3nx-p9-Gfo"/>
+                                                <constraint firstAttribute="trailing" secondItem="R9D-gt-qxq" secondAttribute="trailing" constant="8" id="8sz-b9-GrQ"/>
+                                                <constraint firstItem="Z1n-hG-LHc" firstAttribute="top" secondItem="LBa-XL-1bs" secondAttribute="topMargin" constant="4" id="aW7-oK-cwa"/>
+                                                <constraint firstItem="R9D-gt-qxq" firstAttribute="leading" secondItem="Z1n-hG-LHc" secondAttribute="trailing" constant="8" id="eBs-0q-tST"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="cellLabel" destination="Z1n-hG-LHc" id="f7w-uU-v2f"/>
+                                            <outlet property="cellSwitch" destination="R9D-gt-qxq" id="bJt-hg-ugR"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
