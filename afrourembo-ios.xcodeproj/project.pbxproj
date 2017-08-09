@@ -86,6 +86,7 @@
 		479F7D711EF16D6700EB445A /* ProfessionalLogin.m in Sources */ = {isa = PBXBuildFile; fileRef = 479F7D701EF16D6700EB445A /* ProfessionalLogin.m */; };
 		479F7D741EF16D8600EB445A /* ProfessionalLogin+API.m in Sources */ = {isa = PBXBuildFile; fileRef = 479F7D731EF16D8600EB445A /* ProfessionalLogin+API.m */; };
 		479F7D771EF17BF900EB445A /* EKSalonInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 479F7D761EF17BF900EB445A /* EKSalonInfoViewController.m */; };
+		47A2DE0D1F3AFAAA0063ADF8 /* EKProfessionalInfoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 47A2DE0C1F3AFAAA0063ADF8 /* EKProfessionalInfoTableViewCell.m */; };
 		47A3BB881E7A8C0B00963F27 /* EKRoleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47A3BB871E7A8C0B00963F27 /* EKRoleViewController.m */; };
 		47A3BB8C1E7A9F3500963F27 /* EKSignInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47A3BB8B1E7A9F3500963F27 /* EKSignInViewController.m */; };
 		47AF51AF1E9B686F005FE6EB /* EKInCellCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 47AF51AE1E9B686F005FE6EB /* EKInCellCollectionView.m */; };
@@ -279,6 +280,8 @@
 		479F7D731EF16D8600EB445A /* ProfessionalLogin+API.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ProfessionalLogin+API.m"; sourceTree = "<group>"; };
 		479F7D751EF17BF900EB445A /* EKSalonInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKSalonInfoViewController.h; sourceTree = "<group>"; };
 		479F7D761EF17BF900EB445A /* EKSalonInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKSalonInfoViewController.m; sourceTree = "<group>"; };
+		47A2DE0B1F3AFAAA0063ADF8 /* EKProfessionalInfoTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKProfessionalInfoTableViewCell.h; sourceTree = "<group>"; };
+		47A2DE0C1F3AFAAA0063ADF8 /* EKProfessionalInfoTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKProfessionalInfoTableViewCell.m; sourceTree = "<group>"; };
 		47A3BB861E7A8C0B00963F27 /* EKRoleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKRoleViewController.h; sourceTree = "<group>"; };
 		47A3BB871E7A8C0B00963F27 /* EKRoleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKRoleViewController.m; sourceTree = "<group>"; };
 		47A3BB8A1E7A9F3500963F27 /* EKSignInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKSignInViewController.h; sourceTree = "<group>"; };
@@ -844,6 +847,15 @@
 			name = "SALON - Info";
 			sourceTree = "<group>";
 		};
+		47A2DE0E1F3AFAB10063ADF8 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				47A2DE0B1F3AFAAA0063ADF8 /* EKProfessionalInfoTableViewCell.h */,
+				47A2DE0C1F3AFAAA0063ADF8 /* EKProfessionalInfoTableViewCell.m */,
+			);
+			name = Cells;
+			sourceTree = "<group>";
+		};
 		47A3BB821E7A8BA200963F27 /* Onboarding ViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -1000,6 +1012,7 @@
 				47329CA11F0BC06D00E5DF13 /* EKProfessionalInfoViewController.m */,
 				47329CA51F0BE77700E5DF13 /* EKProfessionalAddressViewController.h */,
 				47329CA61F0BE77700E5DF13 /* EKProfessionalAddressViewController.m */,
+				47A2DE0E1F3AFAB10063ADF8 /* Cells */,
 			);
 			name = "BP - Business Model";
 			sourceTree = "<group>";
@@ -1231,6 +1244,7 @@
 				476F63721F075ECD00C27A92 /* SalonLogin.m in Sources */,
 				470CD74F1EA1C87D0086DEE4 /* EKCompanyProfileViewController+TableView.m in Sources */,
 				4734F5EE1F33FD2600982D94 /* NSDate+Helpers.m in Sources */,
+				47A2DE0D1F3AFAAA0063ADF8 /* EKProfessionalInfoTableViewCell.m in Sources */,
 				471AA18B1ED45DD0009B840A /* UIImage+Helpers.m in Sources */,
 				477256091EB95EA4007CBD6B /* EKSwitchTableViewCell.m in Sources */,
 				47AF51BA1E9B8561005FE6EB /* Salon.m in Sources */,
