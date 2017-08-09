@@ -52,6 +52,8 @@ static NSString * const kWelcomeSegue  = @"sideMenuToWelcomeVC";
     
     switch (indexPath.row) {
             
+        case 0: [self animateSideMenu]; break; // Explore
+            
         case 1: [self performSegueWithIdentifier:kCartSegue sender:nil]; break; // Cart
             
         case 2:  break; // Orders

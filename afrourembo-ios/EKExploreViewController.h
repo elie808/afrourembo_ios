@@ -27,6 +27,8 @@
 @property (strong, nonatomic) IBOutlet UITableView *sideMenuTableView;
 @property (strong, nonatomic) IBOutlet UICollectionView *collectionView;
 
+- (void)animateSideMenu;
+
 - (IBAction)didTapSideMenuButton:(UIBarButtonItem *)sender;
 - (IBAction)unwindToExploreVC:(UIStoryboardSegue *)segue;
 

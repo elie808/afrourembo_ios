@@ -10,6 +10,14 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--cartVC-->
+        <scene sceneID="DXl-kB-qgs">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Main" referencedIdentifier="cartVC" id="N9i-rG-WUA" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4eF-wq-Dew" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1230" y="-71"/>
+        </scene>
         <!--Explore-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -99,8 +107,8 @@
                         <outlet property="sideMenuButton" destination="sk3-lC-cna" id="8gH-7o-CB1"/>
                         <outlet property="sideMenuTableView" destination="T0y-Fx-VWk" id="2RM-JF-Ho8"/>
                         <segue destination="ITR-70-tiW" kind="show" identifier="exploreToDiscover" id="0Iw-2o-UQu"/>
-                        <segue destination="Hb4-MP-4d0" kind="show" identifier="sideMenuToCartVC" id="FFu-FQ-rc9"/>
                         <segue destination="kLq-Hf-7Zv" kind="presentation" identifier="sideMenuToWelcomeVC" id="JXs-69-ShI"/>
+                        <segue destination="N9i-rG-WUA" kind="show" identifier="sideMenuToCartVC" id="Wy4-aF-vQM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -172,14 +180,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wwV-0C-fuU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="870" y="-71"/>
-        </scene>
-        <!--cartVC-->
-        <scene sceneID="LAu-hv-S7Z">
-            <objects>
-                <viewControllerPlaceholder storyboardIdentifier="customerCartVC" storyboardName="Main" referencedIdentifier="cartVC" id="Hb4-MP-4d0" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="h7W-z8-RHc" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1452" y="-194"/>
         </scene>
         <!--Filters & search-->
         <scene sceneID="QfZ-YZ-irF">
@@ -1308,8 +1308,8 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TUE 24 FEB" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tf7-az-Q3z">
-                                                    <rect key="frame" x="0.0" y="5" width="74" height="37"/>
-                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                                                    <rect key="frame" x="4" y="5" width="67" height="37"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
                                                     <color key="textColor" red="0.43529411764705883" green="0.43529411764705883" blue="0.43529411764705883" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -1317,10 +1317,10 @@
                                         </view>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstItem="tf7-az-Q3z" firstAttribute="top" secondItem="I1O-qr-8w8" secondAttribute="topMargin" constant="-3" id="eVf-jj-L5I"/>
-                                            <constraint firstAttribute="trailing" secondItem="tf7-az-Q3z" secondAttribute="trailing" id="gHa-uF-JT8"/>
-                                            <constraint firstItem="tf7-az-Q3z" firstAttribute="centerY" secondItem="I1O-qr-8w8" secondAttribute="centerY" id="gv6-gg-RCS"/>
-                                            <constraint firstItem="tf7-az-Q3z" firstAttribute="leading" secondItem="I1O-qr-8w8" secondAttribute="leading" id="jTv-sk-goT"/>
+                                            <constraint firstItem="tf7-az-Q3z" firstAttribute="centerX" secondItem="I1O-qr-8w8" secondAttribute="centerX" id="2hP-6e-Mmu"/>
+                                            <constraint firstItem="tf7-az-Q3z" firstAttribute="top" secondItem="I1O-qr-8w8" secondAttribute="topMargin" constant="-3" id="3Hd-Ms-xSy"/>
+                                            <constraint firstItem="tf7-az-Q3z" firstAttribute="centerY" secondItem="I1O-qr-8w8" secondAttribute="centerY" id="Sb1-hX-yrM"/>
+                                            <constraint firstItem="tf7-az-Q3z" firstAttribute="leading" secondItem="I1O-qr-8w8" secondAttribute="leadingMargin" constant="-4" id="vfy-Lg-R8o"/>
                                         </constraints>
                                         <connections>
                                             <outlet property="cellDayLabel" destination="tf7-az-Q3z" id="FjS-MH-maf"/>
