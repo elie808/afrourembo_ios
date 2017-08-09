@@ -22,6 +22,7 @@
 @property (strong, nonatomic) IBOutlet UIImageView *cellUserImageView;
 @property (strong, nonatomic) IBOutlet UILabel *cellUserNameLabel;
 @property (strong, nonatomic) IBOutlet UILabel *cellAddressLabel;
+@property (strong, nonatomic) IBOutlet UIImageView *cellIsMobileImageView;
 
 @property (strong, nonatomic) IBOutlet EKInCellCollectionView *collectionView;
 

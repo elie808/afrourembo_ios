@@ -133,7 +133,7 @@
                             <rect key="frame" x="0.0" y="28" width="388" height="52"/>
                             <autoresizingMask key="autoresizingMask"/>
                             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="1Ij-9X-UlQ" id="YTh-4S-Iu2">
-                                <rect key="frame" x="0.0" y="0.0" width="388" height="52"/>
+                                <rect key="frame" x="0.0" y="0.0" width="388" height="51.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Egp-PP-CrF">
@@ -359,6 +359,13 @@
                                                         <constraint firstAttribute="width" constant="100" id="oV6-mh-Zno"/>
                                                     </constraints>
                                                 </imageView>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3DP-oA-lt2">
+                                                    <rect key="frame" x="339" y="112" width="28" height="28"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="28" id="AdC-ks-tbg"/>
+                                                        <constraint firstAttribute="height" constant="28" id="QTf-Cw-r7c"/>
+                                                    </constraints>
+                                                </imageView>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="ckG-ea-QhO" firstAttribute="leading" secondItem="caF-Bf-Let" secondAttribute="leadingMargin" constant="3" id="5nB-Sj-Rlb"/>
@@ -372,6 +379,7 @@
                                                 <constraint firstItem="0TA-zS-uf8" firstAttribute="top" secondItem="caF-Bf-Let" secondAttribute="top" id="Scm-Rl-M0I"/>
                                                 <constraint firstItem="6oS-aF-jZl" firstAttribute="trailing" secondItem="caF-Bf-Let" secondAttribute="trailingMargin" id="TDp-aN-Pd2"/>
                                                 <constraint firstItem="fKD-xI-1U8" firstAttribute="leading" secondItem="caF-Bf-Let" secondAttribute="leadingMargin" constant="3" id="TnB-pj-ykJ"/>
+                                                <constraint firstItem="3DP-oA-lt2" firstAttribute="trailing" secondItem="caF-Bf-Let" secondAttribute="trailingMargin" id="XnA-2T-iuZ"/>
                                                 <constraint firstAttribute="trailing" secondItem="0TA-zS-uf8" secondAttribute="trailing" id="YIG-0j-PPB"/>
                                                 <constraint firstItem="fcl-iF-oYq" firstAttribute="leading" secondItem="caF-Bf-Let" secondAttribute="leading" id="aan-qx-MXq"/>
                                                 <constraint firstItem="0TA-zS-uf8" firstAttribute="leading" secondItem="caF-Bf-Let" secondAttribute="leading" id="eHI-3h-G0N"/>
@@ -380,6 +388,7 @@
                                                 <constraint firstItem="ovg-SI-VCJ" firstAttribute="trailing" secondItem="0TA-zS-uf8" secondAttribute="trailing" id="ifY-Tz-Jdn"/>
                                                 <constraint firstAttribute="bottom" secondItem="fcl-iF-oYq" secondAttribute="bottom" id="mCX-WW-U3v"/>
                                                 <constraint firstItem="nde-2l-jta" firstAttribute="leading" secondItem="ckG-ea-QhO" secondAttribute="trailing" constant="8" id="s4J-zD-JgG"/>
+                                                <constraint firstItem="6oS-aF-jZl" firstAttribute="top" secondItem="3DP-oA-lt2" secondAttribute="bottom" constant="8" id="sCR-oT-SwI"/>
                                                 <constraint firstItem="Zuk-YN-ZZ0" firstAttribute="leading" secondItem="caF-Bf-Let" secondAttribute="leadingMargin" constant="3" id="uJv-Jg-crn"/>
                                                 <constraint firstItem="6oS-aF-jZl" firstAttribute="leading" secondItem="nde-2l-jta" secondAttribute="trailing" constant="8" id="zhx-KW-HmO"/>
                                             </constraints>
@@ -387,6 +396,7 @@
                                         <color key="backgroundColor" red="0.8980392157" green="0.8980392157" blue="0.8980392157" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>
                                             <outlet property="cellAddressLabel" destination="6oS-aF-jZl" id="rvH-WF-oEi"/>
+                                            <outlet property="cellIsMobileImageView" destination="3DP-oA-lt2" id="vGm-gv-MrB"/>
                                             <outlet property="cellMainImageView" destination="0TA-zS-uf8" id="COO-ug-nGW"/>
                                             <outlet property="cellPhotoCountLabel" destination="fKD-xI-1U8" id="j0d-ew-8Px"/>
                                             <outlet property="cellPriceLabel" destination="ovg-SI-VCJ" id="0qm-hv-5nh"/>
@@ -531,7 +541,7 @@
                     </connections>
                 </tableView>
             </objects>
-            <point key="canvasLocation" x="1670" y="-1406"/>
+            <point key="canvasLocation" x="1686" y="-1406"/>
         </scene>
         <!--Discover Map View Controller-->
         <scene sceneID="ImL-uB-trZ">
@@ -758,6 +768,13 @@
                                             <constraint firstAttribute="width" constant="100" id="q3z-wh-USr"/>
                                         </constraints>
                                     </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4qZ-ee-hft">
+                                        <rect key="frame" x="339" y="112" width="28" height="28"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="28" id="AnT-k7-Z1Y"/>
+                                            <constraint firstAttribute="height" constant="28" id="uaU-BV-pcu"/>
+                                        </constraints>
+                                    </imageView>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="Sx5-jS-Vaq" firstAttribute="leading" secondItem="f8s-GF-DTw" secondAttribute="trailing" constant="8" id="5Fr-Vx-R0o"/>
@@ -774,10 +791,12 @@
                                     <constraint firstItem="P2E-en-Jcn" firstAttribute="leading" secondItem="rKQ-Bg-kks" secondAttribute="leading" id="fXP-O3-tHh"/>
                                     <constraint firstItem="EdU-W5-9l8" firstAttribute="top" secondItem="rKQ-Bg-kks" secondAttribute="topMargin" constant="13" id="gbs-g7-drZ"/>
                                     <constraint firstItem="AMY-dc-u1b" firstAttribute="trailing" secondItem="MPr-Px-M5P" secondAttribute="trailing" id="k2f-4n-BgM"/>
+                                    <constraint firstItem="4qZ-ee-hft" firstAttribute="trailing" secondItem="rKQ-Bg-kks" secondAttribute="trailingMargin" id="lbS-dS-MQ5"/>
                                     <constraint firstItem="hSu-Bq-YXp" firstAttribute="top" secondItem="EdU-W5-9l8" secondAttribute="bottom" constant="10" id="mxN-Hf-fTZ"/>
                                     <constraint firstAttribute="bottom" secondItem="P2E-en-Jcn" secondAttribute="bottom" id="oZB-q8-H3m"/>
                                     <constraint firstItem="P2E-en-Jcn" firstAttribute="top" secondItem="MPr-Px-M5P" secondAttribute="bottom" id="qFF-i2-Ell"/>
                                     <constraint firstItem="MPr-Px-M5P" firstAttribute="top" secondItem="rKQ-Bg-kks" secondAttribute="top" id="s2f-JB-XGc"/>
+                                    <constraint firstItem="HGP-CY-LOa" firstAttribute="top" secondItem="4qZ-ee-hft" secondAttribute="bottom" constant="8" id="t7f-mP-S7S"/>
                                     <constraint firstItem="HGP-CY-LOa" firstAttribute="trailing" secondItem="rKQ-Bg-kks" secondAttribute="trailingMargin" id="uLi-tM-bc8"/>
                                     <constraint firstAttribute="trailing" secondItem="P2E-en-Jcn" secondAttribute="trailing" id="wYn-Ku-c50"/>
                                     <constraint firstItem="AMY-dc-u1b" firstAttribute="top" secondItem="rKQ-Bg-kks" secondAttribute="topMargin" constant="9" id="ybn-Bq-jcH"/>
@@ -786,6 +805,7 @@
                             <color key="backgroundColor" red="0.8980392157" green="0.8980392157" blue="0.8980392157" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <outlet property="cellAddressLabel" destination="HGP-CY-LOa" id="Swo-x0-mhU"/>
+                                <outlet property="cellIsMobileImageView" destination="4qZ-ee-hft" id="9S8-D0-mL8"/>
                                 <outlet property="cellMainImageView" destination="MPr-Px-M5P" id="ghm-ea-pRj"/>
                                 <outlet property="cellPhotoCountLabel" destination="hSu-Bq-YXp" id="3Xu-N7-9kN"/>
                                 <outlet property="cellPriceLabel" destination="AMY-dc-u1b" id="hPs-dL-4aK"/>

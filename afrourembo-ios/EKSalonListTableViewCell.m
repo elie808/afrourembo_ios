@@ -60,6 +60,12 @@
         
         self.cellPhotoCountLabel.text = @"0 Photos";
     }
+    
+    if (profObj.isMobile) {
+        self.cellIsMobileImageView.image = [UIImage imageNamed:@"isMobile"];
+    } else {
+        self.cellIsMobileImageView.image = nil;
+    }
 }
 
 @end
