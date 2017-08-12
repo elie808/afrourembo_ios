@@ -18,6 +18,8 @@
 #import "Service+API.h"
 #import "Day+API.h"
 #import "Review+API.h"
+#import "Booking+API.h"
+#import "Reservation+API.h"
 
 #import "EKNetworkingConstants.h"
 

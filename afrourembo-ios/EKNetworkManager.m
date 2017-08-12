@@ -58,6 +58,14 @@
 
 + (void)configureResponseDescriptors:(RKObjectManager *)objectManager {
     
+    [objectManager addResponseDescriptorsFromArray:@[
+                                                     [Booking getBookingsForVendorResponseDescriptor]
+                                                     ]];
+    
+    [objectManager addResponseDescriptorsFromArray:@[
+                                                     [Reservation reservationsResponseDescriptor]
+                                                     ]];
+    
     [objectManager addResponseDescriptor:[Category categoryResponseDescriptor]];
     
     [objectManager addResponseDescriptorsFromArray:@[

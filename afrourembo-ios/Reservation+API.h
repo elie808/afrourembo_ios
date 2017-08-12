@@ -7,7 +7,18 @@
 //
 
 #import "Reservation.h"
+#import <RestKit/RestKit.h>
+#import "EKNetworkingConstants.h"
+
+typedef void (^UserReservationSuccessBlock)(NSArray <Reservation*> *reservationsArray);
+typedef void (^UserReservationErrorBlock)(NSError *error, NSString *errorMessage, NSInteger statusCode);
 
 @interface Reservation (API)
+
++ (RKObjectMapping *)map1;
+
++ (RKResponseDescriptor *)reservationsResponseDescriptor;
+
++ (void)getUserReservations:(NSString *)userToken withBlock:(UserReservationSuccessBlock)successBlock withErrors:(UserReservationErrorBlock)errorBlock;
 
 @end

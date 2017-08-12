@@ -10,4 +10,11 @@
 
 @interface Reservation : NSObject
 
+@property NSString *actorId;
+@property NSString *serviceId;
+@property NSDate *fromDateTime;
+@property NSDate *toDateTime;
+@property NSString *type;
+@property NSString *note;
+
 @end
