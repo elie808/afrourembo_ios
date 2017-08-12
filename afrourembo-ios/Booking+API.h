@@ -22,9 +22,9 @@ typedef void (^VendorBookingsErrorBlock)(NSError *error, NSString *errorMessage,
 + (RKResponseDescriptor *)getBookingsForVendorResponseDescriptor;
 
 /**
- Returns all the available Categories in an array. No authentication needed.
+ Returns all the booked time slots of a professional
  
- @param successBlock Server will return the categories and their corresponding services
+ @param successBlock Server will return the booked time slots
  @param errorBlock Server error logging
  */
 + (void)getBookingsForVendor:(NSString *)vendorID ofType:(NSString *)vendorType withToken:(NSString *)userToken withBlock:(VendorBookingsSuccessBlock)successBlock withErrors:(VendorBookingsErrorBlock)errorBlock;
