@@ -14,10 +14,12 @@ static NSString * const kTimeCell = @"bookingTimeCell";
 
 static NSString * const kCartSegue = @"bookingTimeToCartVC";
 
+//static NSString * const kPlaceHolderText = @"What do you like about this place?";
+static CGFloat const kContainerViewHeight = 128;
+
 @implementation EKBookingViewController {
     BOOL _keyboardShowing;
-    CGFloat _containerViewHeight;
-    
+
     NSMutableArray *_daysDataSource;
     NSMutableArray *_timesDataSource;
 }
@@ -30,10 +32,9 @@ static NSString * const kCartSegue = @"bookingTimeToCartVC";
     _daysDataSource = [NSMutableArray new];
     _timesDataSource = [NSMutableArray new];
     
-    _containerViewHeight = 200;
-    self.containerView.frame = CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, _containerViewHeight);
+    self.containerView.frame = CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, kContainerViewHeight);
     [self.view addSubview:self.containerView];
-    
+//    self.textView.text = kPlaceHolderText;
     self.containerView.hidden = YES;
     
     [self populateDays];
@@ -60,11 +61,11 @@ static NSString * const kCartSegue = @"bookingTimeToCartVC";
             
             if ( hour > 13 && hour < 15 ) { isAvailable = NO; } else { isAvailable = YES; }
             
-            TimeSlot *slot = [[TimeSlot alloc] initWithDate:[NSDate todayAtTime:[NSNumber numberWithInt:hour]
-                                                                       minutes:[NSNumber numberWithInt:startingMin]]
-                                           andAvailability:isAvailable];
+                TimeSlot *slot = [[TimeSlot alloc] initWithDate:[NSDate todayAtTime:[NSNumber numberWithInt:hour]
+                                                                           minutes:[NSNumber numberWithInt:startingMin]]
+                                               andAvailability:isAvailable];
 
-            [_timesDataSource addObject:slot];
+                [_timesDataSource addObject:slot];
         }
     }
 }
@@ -81,11 +82,6 @@ static NSString * const kCartSegue = @"bookingTimeToCartVC";
     
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillHideNotification object:nil];
-}
-
-- (void)textViewDidChange:(UITextView *)textView {
-
-    self.booking.bookingDescription = textView.text;
 }
 
 #pragma mark - UICollectionViewDataSource
@@ -180,6 +176,35 @@ static NSString * const kCartSegue = @"bookingTimeToCartVC";
     }
 }
 
+#pragma mark - UITextViewDelegate
+
+- (void)textViewDidChange:(UITextView *)textView {
+    
+    self.booking.bookingDescription = textView.text;
+}
+
+- (void)textViewDidBeginEditing:(UITextView *)textView {
+    
+//    if ( [textView.text isEqualToString:kPlaceHolderText] ) {
+//        
+//        textView.text = @"";
+//        textView.textColor = [UIColor blackColor];
+//    }
+//    
+//    [textView becomeFirstResponder];
+}
+
+- (void)textViewDidEndEditing:(UITextView *)textView {
+    
+//    if ([textView.text isEqualToString:@""] || textView.text.length == 0) {
+//        
+//        textView.text = kPlaceHolderText;
+//        textView.textColor = [UIColor lightGrayColor];
+//    }
+//    
+//    [textView resignFirstResponder];
+}
+
 #pragma mark - UIGestureRecognizerDelegate
 
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
@@ -229,9 +254,11 @@ static NSString * const kCartSegue = @"bookingTimeToCartVC";
             
             self.containerView.hidden = NO;
             
-            self.containerView.frame = CGRectMake(0, keyboardSize.height,
+            self.containerView.frame = CGRectMake(0,
+                                                  self.view.frame.size.height - (keyboardSize.height + kContainerViewHeight),
                                                   self.view.frame.size.width,
-                                                  self.textView.frame.size.height);
+                                                  kContainerViewHeight);
+            
             _keyboardShowing = YES;
         }];
     }
@@ -243,7 +270,7 @@ static NSString * const kCartSegue = @"bookingTimeToCartVC";
         
         [UIView animateWithDuration:0.5 animations:^{
             
-            self.containerView.frame = CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, _containerViewHeight);;
+            self.containerView.frame = CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, kContainerViewHeight);;
             self.containerView.hidden = YES;
             _keyboardShowing = NO;
         }];
