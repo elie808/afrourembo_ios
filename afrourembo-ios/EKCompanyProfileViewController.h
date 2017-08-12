@@ -11,10 +11,9 @@
 #import "EKCompanyReviewTableViewCell.h"
 #import "EKCompanyProfessionalTableViewCell.h"
 #import "EKCompanyContactTableViewCell.h"
-
-#import "EKInCellCollectionView.h"
 #import "EKCompanyProfessionalCollectionViewCell.h"
 
+#import "EKInCellCollectionView.h"
 #import "EKBookingViewController.h"
 
 #import "Customer.h"
@@ -23,6 +22,7 @@
 #import "Salon.h"
 #import "Service.h"
 
+#import "EKConstants.h"
 #import "EKCarousel.h"
 #import "Review+API.h"
 #import "UIViewController+Helpers.h"
