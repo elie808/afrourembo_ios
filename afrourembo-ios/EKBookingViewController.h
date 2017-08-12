@@ -16,7 +16,11 @@
 #import "EKCartViewController.h"
 #import "TimeSlot.h"
 #import "Professional.h"
+#import "Booking+API.h"
 #import "NSDate+Helpers.h"
+#import "UIViewController+Helpers.h"
+#import "EKSettings.h"
+#import "EKConstants.h"
 
 @interface EKBookingViewController : UIViewController <UICollectionViewDataSource, UICollectionViewDelegate, UIGestureRecognizerDelegate, UITextViewDelegate>
 

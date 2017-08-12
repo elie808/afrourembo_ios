@@ -22,11 +22,15 @@ static CGFloat const kContainerViewHeight = 128;
 
     NSMutableArray *_daysDataSource;
     NSMutableArray *_timesDataSource;
+    NSString *_vendorType;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+    //TODO: ADD IF STATEMENT AND CHANGE TYPE ACCORDING TO VIEW MODE
+    _vendorType = kProfessionalType;
+    
     self.booking = [Booking new];
     
     _daysDataSource = [NSMutableArray new];
@@ -34,8 +38,8 @@ static CGFloat const kContainerViewHeight = 128;
     
     self.containerView.frame = CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, kContainerViewHeight);
     [self.view addSubview:self.containerView];
-//    self.textView.text = kPlaceHolderText;
     self.containerView.hidden = YES;
+    //    self.textView.text = kPlaceHolderText;
     
     [self populateDays];
     [self populateDayWithTimes:@9 endingHour:@18 inMinuteIncrements:@15];
@@ -150,6 +154,18 @@ static CGFloat const kContainerViewHeight = 128;
  
     if (collectionView == self.proCollectionView) {
      
+        Professional *pro = self.professionalsDataSource[indexPath.row];
+        
+        [Booking getBookingsForVendor:pro.professionalID
+                               ofType:_vendorType
+                            withToken:[EKSettings getSavedCustomer].token
+                            withBlock:^(NSArray *array) {
+                                
+                            }
+                           withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
+                               
+                               [self showMessage:errorMessage withTitle:@"Error" completionBlock:nil];
+                           }];
     }
     
     if (collectionView == self.dayCollectionView) {

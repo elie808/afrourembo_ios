@@ -9,9 +9,6 @@
 #import "EKCompanyProfileViewController.h"
 #import "EKCompanyProfileViewController+TableView.h"
 
-static NSString * const kSalonType        = @"salon";
-static NSString * const kProfessionalType = @"professional";
-
 @implementation EKCompanyProfileViewController
 
 - (void)viewDidLoad {
