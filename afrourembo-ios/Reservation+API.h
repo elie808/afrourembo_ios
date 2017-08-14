@@ -11,14 +11,27 @@
 #import "EKNetworkingConstants.h"
 
 typedef void (^UserReservationSuccessBlock)(NSArray <Reservation*> *reservationsArray);
+typedef void (^MakeUserReservationSuccessBlock)(Reservation *reservation);
+
 typedef void (^UserReservationErrorBlock)(NSError *error, NSString *errorMessage, NSInteger statusCode);
 
 @interface Reservation (API)
 
+/// actorId, serviceId, fromDateTime, toDateTime, type, note,
 + (RKObjectMapping *)map1;
 
-+ (RKResponseDescriptor *)reservationsResponseDescriptor;
+/// bookingId
++ (RKObjectMapping *)map2;
+
++ (RKRequestDescriptor *)reservationsRequestDescriptor;
+
++ (RKResponseDescriptor *)getReservationsResponseDescriptor;
++ (RKResponseDescriptor *)postReservationsResponseDescriptor;
 
 + (void)getUserReservations:(NSString *)userToken withBlock:(UserReservationSuccessBlock)successBlock withErrors:(UserReservationErrorBlock)errorBlock;
+
+//+ (void)postUserReservationForVendor:(NSString *)actorID vendorType:(NSString *)vendorType vendorService:(NSString*)serviceID fromDate:(NSDate *)fromDate toDate:(NSDate *)toDate withNote:(NSString *)note userToken:(NSString *)token withBlock:(MakeUserReservationSuccessBlock)successBlock withErrors:(UserReservationErrorBlock)errorBlock;
+
++ (void)postUserReservations:(NSArray <Reservation*> *)reservationsArray forUser:(NSString *)token withBlock:(MakeUserReservationSuccessBlock)successBlock withErrors:(UserReservationErrorBlock)errorBlock;
 
 @end

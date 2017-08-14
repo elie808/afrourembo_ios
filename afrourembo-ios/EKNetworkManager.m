@@ -47,6 +47,8 @@
                                                     [Professional professionalRegistrationRequestDescriptor]
                                                     ]];
     
+    [objectManager addRequestDescriptor:[Reservation reservationsRequestDescriptor]];
+    
     [objectManager addRequestDescriptor:[SalonLogin salonLoginRequestDescriptor]];
     
     [objectManager addRequestDescriptorsFromArray:@[
@@ -63,7 +65,8 @@
                                                      ]];
     
     [objectManager addResponseDescriptorsFromArray:@[
-                                                     [Reservation reservationsResponseDescriptor]
+                                                     [Reservation getReservationsResponseDescriptor],
+                                                     [Reservation postReservationsResponseDescriptor]
                                                      ]];
     
     [objectManager addResponseDescriptor:[Category categoryResponseDescriptor]];
