@@ -34,7 +34,8 @@
     
     self.layer.borderWidth = 2.0f;
     self.layer.cornerRadius = 6.0f;
-    self.layer.borderColor = [UIColor clearColor].CGColor;
+//    self.layer.borderColor = [UIColor clearColor].CGColor;
+    self.layer.borderColor = [UIColor whiteColor].CGColor;
     
     self.cellTimeLabel.alpha = 1.0;
     self.cellTimeLabel.textColor = [UIColor whiteColor];
@@ -46,12 +47,14 @@
     
     self.layer.borderWidth = 2.0f;
     self.layer.cornerRadius = 6.0f;
-    self.layer.borderColor = [UIColor whiteColor].CGColor;
+//    self.layer.borderColor = [UIColor whiteColor].CGColor;
+    self.layer.borderColor = [UIColor clearColor].CGColor;
     
     self.cellTimeLabel.alpha = 1;
     self.cellTimeLabel.textColor = [UIColor whiteColor];
     self.cellTimeLabel.font = [UIFont systemFontOfSize:17.0];
-    self.backgroundColor = [UIColor colorWithRed:255./255. green:195./255. blue:50./255. alpha:1.0];
+//    self.backgroundColor = [UIColor colorWithRed:255./255. green:195./255. blue:50./255. alpha:1.0];
+    self.backgroundColor = [UIColor colorWithRed:255./255. green:203./255. blue:66./255. alpha:1.0];
 }
 
 - (void)cellUnavailable {
