@@ -17,4 +17,6 @@
 @property NSString *type;
 @property NSString *note;
 
+@property NSString *bookingId;
+
 @end
