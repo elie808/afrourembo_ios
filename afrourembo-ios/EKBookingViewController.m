@@ -23,6 +23,9 @@ static CGFloat const kContainerViewHeight = 128;
     NSMutableArray *_daysDataSource;
     NSMutableArray *_timesDataSource;
     NSString *_vendorType;
+    NSString *_bookingNote;
+    NSDate *_selectedFromDate;
+    NSDate *_selectedToDate;
 }
 
 - (void)viewDidLoad {
@@ -31,23 +34,27 @@ static CGFloat const kContainerViewHeight = 128;
     //TODO: ADD IF STATEMENT AND CHANGE TYPE ACCORDING TO VIEW MODE
     _vendorType = kProfessionalType;
     
-    self.booking = [Booking new];
-    
-    _daysDataSource = [NSMutableArray new];
-    _timesDataSource = [NSMutableArray new];
+    // init data source
+    _daysDataSource     = [NSMutableArray new];
+    _timesDataSource    = [NSMutableArray new];
+    _selectedFromDate   = nil;
+    _selectedToDate     = nil;
+    _bookingNote        = @"No notes";
     
     self.containerView.frame = CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, kContainerViewHeight);
     [self.view addSubview:self.containerView];
     self.containerView.hidden = YES;
     //    self.textView.text = kPlaceHolderText;
     
-    [self populateDays];
-    [self populateDayWithTimes:@9 endingHour:@18 inMinuteIncrements:@15];
+    self.emptyTimeDataView.frame = CGRectMake(self.timeCollectionView.frame.origin.x, self.timeCollectionView.frame.origin.y,
+                                              self.timeCollectionView.frame.size.width, self.timeCollectionView.frame.size.height);
+    self.emptyTimeDataView.hidden = NO;
+    [self.view addSubview:self.emptyTimeDataView];
 }
 
 - (void)populateDays {
 
-    for (int i = 0; i < 30; i++) {
+    for (int i = 0; i < 10; i++) {
     
         [_daysDataSource addObject:[NSDate stringFromDate:[NSDate addDays:i after:[NSDate todayDate]]
                                                withFormat:DateFormatLetterDayMonthYear]];
@@ -57,6 +64,8 @@ static CGFloat const kContainerViewHeight = 128;
 //TODO: Add support to many unavailable hours, and include minutes
 - (void)populateDayWithTimes:(NSNumber *)startHour endingHour:(NSNumber *)endHour inMinuteIncrements:(NSNumber *)minIncrements {
     
+    //TODO: mark hours up to now as unavailable
+
     for (int hour = [startHour intValue]; hour < [endHour intValue]; hour++) {
     
         for (int startingMin = 0; startingMin < 60; startingMin += [minIncrements intValue]) {
@@ -76,7 +85,7 @@ static CGFloat const kContainerViewHeight = 128;
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    
+
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
 }
@@ -155,40 +164,93 @@ static CGFloat const kContainerViewHeight = 128;
     if (collectionView == self.proCollectionView) {
      
         Professional *pro = self.professionalsDataSource[indexPath.row];
-        
-        [Booking getBookingsForVendor:pro.professionalID
-                               ofType:_vendorType
-                            withToken:[EKSettings getSavedCustomer].token
-                            withBlock:^(NSArray *array) {
-                                
-                            }
-                           withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
+
+        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        [Day getAvailabilityOfVendor:pro.professionalID
+                              ofType:_vendorType
+                           withToken:[EKSettings getSavedCustomer].token
+                           withBlock:^(NSArray *daysArray) {
+                               [MBProgressHUD hideHUDForView:self.view animated:YES];
                                
-                               [self showMessage:errorMessage withTitle:@"Error" completionBlock:nil];
-                           }];
+                                self.emptyTimeDataView.hidden = YES;
+                               
+                                [self populateDays];
+                                [self populateDayWithTimes:@9 endingHour:@18 inMinuteIncrements:@15];
+                                [self.dayCollectionView reloadData];
+                                [self.timeCollectionView reloadData];
+                               //TODO: Update available days datasource
+                               // modify populateDays method to take in day numbers and unavailable days
+                           }
+                          withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
+                              
+                              [MBProgressHUD hideHUDForView:self.view animated:YES];
+                              [self showMessage:errorMessage withTitle:@"Error" completionBlock:nil];
+                              
+                              self.emptyTimeDataView.hidden = NO;
+                          }];
     }
     
     if (collectionView == self.dayCollectionView) {
-     
-        // ANIMATE CELL TO GROW
-        // Prepare for animation
-//        [collectionView.collectionViewLayout invalidateLayout];
-//        EKBookingDayCollectionViewCell *__weak cell = (EKBookingDayCollectionViewCell*)[collectionView cellForItemAtIndexPath:indexPath]; // Avoid retain cycles
-
-//        [cell animateCell];
+        
     }
     
     if (collectionView == self.timeCollectionView) {
-     
+
         TimeSlot *timeSlot = _timesDataSource[indexPath.row];
         
-        if (timeSlot.isAvailable) {
-            timeSlot.isSelected = !timeSlot.isSelected;
-            [self.timeCollectionView reloadData];
-        }
+        // compute how many days ahead to highlight
+        int daysAhead = self.passedService.time / 15;
         
-//        timeSlot.isSelected = !timeSlot.isSelected;
-//        [self.timeCollectionView reloadData];
+        if (timeSlot.isAvailable && (indexPath.row + daysAhead) < _timesDataSource.count) {
+
+            // check if slots to be selected, don't overlap with unavailable slots
+            BOOL allSlotsAheadAvailable = YES;
+            for (int i = 0; i <= daysAhead; i++) {
+                
+                TimeSlot *nextSlot = _timesDataSource[indexPath.row+i];
+                if (!nextSlot.isAvailable) {
+                    allSlotsAheadAvailable = NO;
+                    i = daysAhead;
+                }
+            }
+
+            // deselect all slots
+            for (int j = 0; j < _timesDataSource.count; j++) {
+                TimeSlot *timeSlot = _timesDataSource[j];
+                timeSlot.isSelected = NO;
+            }
+            
+            // highlight needed cells
+            if (allSlotsAheadAvailable) {
+                
+                // nullify selected dates from before
+                _selectedFromDate   = nil;
+                _selectedToDate     = nil;
+                
+                for (int i = 0; i <= daysAhead; i++) {
+                    TimeSlot *nextSlot = _timesDataSource[indexPath.row+i];
+                    nextSlot.isSelected = YES;
+                }
+                
+                _selectedFromDate   = ((TimeSlot *)(_timesDataSource[indexPath.row])).date;
+                _selectedToDate     = ((TimeSlot *)(_timesDataSource[indexPath.row+daysAhead])).date;
+            }
+        }
+
+        [self.timeCollectionView reloadData];
+    }
+}
+
+// center solo cells
+- (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
+    
+    if (collectionView == self.proCollectionView && self.professionalsDataSource.count <= 1) {
+        
+        return UIEdgeInsetsMake(0, (self.view.frame.size.width/2) - 55., 0, 0);
+        
+    } else {
+        
+        return UIEdgeInsetsMake(0, 0, 0, 0);
     }
 }
 
@@ -196,7 +258,7 @@ static CGFloat const kContainerViewHeight = 128;
 
 - (void)textViewDidChange:(UITextView *)textView {
     
-    self.booking.bookingDescription = textView.text;
+    _bookingNote = textView.text;
 }
 
 - (void)textViewDidBeginEditing:(UITextView *)textView {
@@ -232,7 +294,30 @@ static CGFloat const kContainerViewHeight = 128;
 
 - (IBAction)didTapNextButton:(UIBarButtonItem *)sender {
 
-    [self performSegueWithIdentifier:kCartSegue sender:nil];
+    Professional *pro = self.professionalsDataSource[0];
+    
+    Reservation *reservationObj = [Reservation new];
+    reservationObj.actorId      = pro.professionalID;
+    reservationObj.serviceId    = self.passedService.serverServiceId;
+    reservationObj.fromDateTime = _selectedFromDate;
+    reservationObj.toDateTime   = _selectedToDate;
+    reservationObj.type = _vendorType;
+    reservationObj.note = _bookingNote;
+    
+    Booking *booking1 = [Booking new];
+    booking1.bookingTitle = self.passedService.serviceName;
+    booking1.bookingCost = [NSString stringWithFormat:@"%.0f %@", self.passedService.price, self.passedService.currency];
+    booking1.bookingVendor = [NSString stringWithFormat:@"%@ %@", pro.fName, pro.lName]; //TODO: or salon name
+    booking1.practionner = [NSString stringWithFormat:@"%@ %@", pro.fName, pro.lName];
+    booking1.bookingDate = [NSDate stringFromDate:reservationObj.fromDateTime withFormat:DateFormatDigitYearMonthDay];
+    booking1.bookingTime = [NSDate stringFromDate:reservationObj.fromDateTime withFormat:DateFormatDigitHourMinute];
+    booking1.bookingDescription = reservationObj.note;
+    
+    booking1.reservation = reservationObj;
+    
+    [self performSegueWithIdentifier:kCartSegue sender:booking1];
+    
+    //TODO: persist booking to Cart cache
 }
 
 - (IBAction)didTapAddNoteButton:(id)sender {
@@ -254,7 +339,7 @@ static CGFloat const kContainerViewHeight = 128;
     if ([segue.identifier isEqualToString:kCartSegue]) {
         
         EKCartViewController *vc = segue.destinationViewController;
-        vc.passedBooking = self.booking;
+        vc.passedBooking = (Booking *)sender;
     }
 }
 
