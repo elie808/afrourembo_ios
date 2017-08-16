@@ -77,7 +77,10 @@
                                                      [Customer putUserProfileResponseDescriptor]
                                                      ]];
     
-    [objectManager addResponseDescriptorsFromArray:@[ [Day availabilityResponseDescriptor] ]];
+    [objectManager addResponseDescriptorsFromArray:@[
+                                                     [Day availabilityResponseDescriptor],
+                                                     [Day vendorAvailabilityResponseDescriptor]
+                                                     ]];
     
     [objectManager addResponseDescriptorsFromArray:@[ [Explore exploreResponseDescriptor] ]];
     
