@@ -51,6 +51,17 @@
     return response;
 }
 
++ (RKResponseDescriptor *)vendorAvailabilityResponseDescriptor {
+    
+    RKResponseDescriptor *response = [RKResponseDescriptor
+                                      responseDescriptorWithMapping:[Day map2]
+                                      method:RKRequestMethodGET
+                                      pathPattern:kVendorAvailabilityAPIPath
+                                      keyPath:nil
+                                      statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+    return response;
+}
+
 #pragma mark - API
 
 + (void)postAvailabilityDays:(NSArray *)availableDays professionalToken:(NSString*)token withBlock:(AvailabilitySuccessBlock)successBlock withErrors:(AvailabilityErrorBlock)errorBlock {
@@ -67,18 +78,61 @@
                                             
                                         } failure:^(RKObjectRequestOperation *operation, NSError *error) {
                                             
-                                            // exctract error message
-                                            NSDictionary *myDic = [NSJSONSerialization
-                                                                   JSONObjectWithData:operation.HTTPRequestOperation.responseData
-                                                                   options:NSJSONReadingMutableLeaves
-                                                                   error:nil];
-                                            
-                                            NSString *errorMessage = [myDic valueForKey:@"message"];
-                                            
-                                            NSNumber *statusCodeNumber = [myDic valueForKey:@"statusCode"];
-                                            
-                                            errorBlock(error, errorMessage, [statusCodeNumber integerValue]);
+                                            if (operation.HTTPRequestOperation.responseData) {
+                                                
+                                                // exctract error message
+                                                NSDictionary *myDic = [NSJSONSerialization
+                                                                       JSONObjectWithData:operation.HTTPRequestOperation.responseData
+                                                                       options:NSJSONReadingMutableLeaves
+                                                                       error:nil];
+                                                
+                                                NSString *errorMessage = [myDic valueForKey:@"message"];
+                                                
+                                                NSNumber *statusCode = [myDic valueForKey:@"statusCode"];
+                                                
+                                                NSLog(@"-------ERROR MESSAGE: %@", errorMessage);
+                                                errorBlock(error, errorMessage, [statusCode integerValue]);
+                                                
+                                            } else {
+                                                
+                                                errorBlock(error, @"You are not connected to the internet.", 0);
+                                            }
                                         }];
+}
+
++ (void)getAvailabilityOfVendor:(NSString *)vendorID ofType:(NSString *)vendorType withToken:(NSString *)userToken withBlock:(AvailabilitySuccessBlock)successBlock withErrors:(AvailabilityErrorBlock)errorBlock {
+    
+    [[[RKObjectManager sharedManager] HTTPClient] setDefaultHeader:@"Authorization" value:userToken];
+    
+    [[RKObjectManager sharedManager] getObjectsAtPath:[NSString stringWithFormat:@"user/professional/%@/availability?type=%@", vendorID, vendorType]
+                                           parameters:nil
+                                              success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+                                                  
+                                                  NSLog(@"Success Fetching Vendor Bookings!!");
+                                                  successBlock(mappingResult.array);
+                                                  
+                                              } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                                                  
+                                                  if (operation.HTTPRequestOperation.responseData) {
+                                                      
+                                                      // exctract error message
+                                                      NSDictionary *myDic = [NSJSONSerialization
+                                                                             JSONObjectWithData:operation.HTTPRequestOperation.responseData
+                                                                             options:NSJSONReadingMutableLeaves
+                                                                             error:nil];
+                                                      
+                                                      NSString *errorMessage = [myDic valueForKey:@"message"];
+                                                      
+                                                      NSNumber *statusCode = [myDic valueForKey:@"statusCode"];
+                                                      
+                                                      NSLog(@"-------ERROR MESSAGE: %@", errorMessage);
+                                                      errorBlock(error, errorMessage, [statusCode integerValue]);
+                                                      
+                                                  } else {
+                                                      
+                                                      errorBlock(error, @"You are not connected to the internet.", 0);
+                                                  }
+                                              }];
 }
 
 @end
