@@ -7,10 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Realm/Realm.h>
+#import <FBSDKCoreKit/FBSDKCoreKit.h>
+
 #import "EKConstants.h"
 #import "EKNetworkManager.h"
 #import "EKSettings.h"
-#import <FBSDKCoreKit/FBSDKCoreKit.h>
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
