@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import <STPopup/STPopup.h>
+#import <Realm/Realm.h>
+#import <MBProgressHUD/MBProgressHUD.h>
+
 #import "EKCartViewController.h"
 
 #import "EKBookingProCollectionViewCell.h"
@@ -26,7 +29,6 @@
 #import "Reservation+API.h"
 #import "NSDate+Helpers.h"
 #import "UIViewController+Helpers.h"
-#import <MBProgressHUD/MBProgressHUD.h>
 
 @interface EKBookingViewController : UIViewController <UICollectionViewDataSource, UICollectionViewDelegate, UIGestureRecognizerDelegate, UITextViewDelegate>
 

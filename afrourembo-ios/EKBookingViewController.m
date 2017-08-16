@@ -305,19 +305,32 @@ static CGFloat const kContainerViewHeight = 128;
     reservationObj.note = _bookingNote;
     
     Booking *booking1 = [Booking new];
+    
+    booking1.reservation = reservationObj;
+    
     booking1.bookingTitle = self.passedService.serviceName;
     booking1.bookingCost = [NSString stringWithFormat:@"%.0f %@", self.passedService.price, self.passedService.currency];
     booking1.bookingVendor = [NSString stringWithFormat:@"%@ %@", pro.fName, pro.lName]; //TODO: or salon name
     booking1.practionner = [NSString stringWithFormat:@"%@ %@", pro.fName, pro.lName];
-    booking1.bookingDate = [NSDate stringFromDate:reservationObj.fromDateTime withFormat:DateFormatDigitYearMonthDay];
-    booking1.bookingTime = [NSDate stringFromDate:reservationObj.fromDateTime withFormat:DateFormatDigitHourMinute];
+    booking1.bookingDate = reservationObj.fromDateTime;
     booking1.bookingDescription = reservationObj.note;
     
-    booking1.reservation = reservationObj;
-    
-    [self performSegueWithIdentifier:kCartSegue sender:booking1];
-    
+    booking1.bookingOwner = [EKSettings getSavedCustomer].email;
+    booking1.bookingHash = [NSString stringWithFormat:@"%@%@%@%@", booking1.bookingOwner, booking1.reservation.serviceId, booking1.reservation.actorId, booking1.bookingDate ];
+
+    //TODO: check if user is signed in
     //TODO: persist booking to Cart cache
+    
+    // Get the default Realm
+    RLMRealm *realm = [RLMRealm defaultRealm];
+    // You only need to do this once (per thread)
+    
+    // Add to Realm with transaction
+    [realm beginWriteTransaction];
+    [realm addOrUpdateObject:booking1];
+    [realm commitWriteTransaction];
+    
+    [self performSegueWithIdentifier:kCartSegue sender:nil];
 }
 
 - (IBAction)didTapAddNoteButton:(id)sender {
@@ -339,7 +352,7 @@ static CGFloat const kContainerViewHeight = 128;
     if ([segue.identifier isEqualToString:kCartSegue]) {
         
         EKCartViewController *vc = segue.destinationViewController;
-        vc.passedBooking = (Booking *)sender;
+//        vc.passedBooking = (Booking *)sender;
     }
 }
 
