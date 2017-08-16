@@ -30,6 +30,7 @@
     
     Customer *delta = [Customer new];
     
+    delta.email = newCustomer.email.length > 0 ? newCustomer.email : existingCustomer.email;
     delta.token = newCustomer.token.length > 0 ? newCustomer.token : existingCustomer.token;
     
     return delta;
@@ -40,6 +41,7 @@
 - (NSString *)convertToJSON {
     
     NSDictionary *details = @{
+                              @"email" : self.email.length > 0 ? self.email : @"",
                               @"token" : self.token.length > 0 ? self.token : @""
                               };
     
