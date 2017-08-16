@@ -7,8 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <Realm/Realm.h>
 
-@interface Reservation : NSObject
+@interface Reservation : RLMObject
 
 @property NSString *actorId;
 @property NSString *serviceId;
