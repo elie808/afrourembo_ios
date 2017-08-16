@@ -75,6 +75,7 @@ static NSString * const kLoggedInVendor     = @"afrourembo-loggedInVendor";
         [[RLMRealm defaultRealm] beginWriteTransaction];
         for (Booking *bookingObj in bookings) {
             
+            [[RLMRealm defaultRealm] deleteObject:bookingObj.reservation];
             [[RLMRealm defaultRealm] deleteObject:bookingObj];
         }
         
