@@ -7,15 +7,23 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <Realm/Realm.h>
 
-@interface Booking : NSObject
+#import "Reservation.h"
 
+@interface Booking : RLMObject
+
+// This is a class used for the EKCartViewController UI
 @property NSString *bookingTitle;   //Service Type
 @property NSString *bookingCost;    //cost
 @property NSString *bookingVendor;  //Salon
 @property NSString *practionner;    // Beauty Professional
-@property NSString *bookingDate;    // day/month/year
-@property NSString *bookingTime;    // Time of the day
+@property NSDate *bookingDate;    // day/month/year
 @property NSString *bookingDescription; // Free text ("Note" in the design), restricted to 300 chars
+
+@property NSString *bookingOwner;
+@property NSString *bookingHash;    // used as a primary key for storing and managing bookings in RLM
+
+@property Reservation *reservation; // This property will be used to send to the server and make the booking from the cart
 
 @end
