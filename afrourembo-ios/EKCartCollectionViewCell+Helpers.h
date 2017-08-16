@@ -8,6 +8,7 @@
 
 #import "EKCartCollectionViewCell.h"
 #import "Booking.h"
+#import "NSDate+Helpers.h"
 
 @interface EKCartCollectionViewCell (Helpers)
 

@@ -16,8 +16,8 @@
     self.bookingCostLabel.text = booking.bookingCost;
     self.bookingVendorLabel.text = booking.bookingVendor;
     self.practionnerLabel.text = booking.practionner;
-    self.bookingDateLabel.text = booking.bookingDate;
-    self.bookingTimeLabel.text = booking.bookingTime;
+    self.bookingDateLabel.text = [NSDate stringFromDate:booking.bookingDate withFormat:DateFormatLetterDayMonthYear];
+    self.bookingTimeLabel.text = [NSDate stringFromDate:booking.bookingDate withFormat:DateFormatDigitHourMinute];
     self.bookingDescriptionLabel.text = booking.bookingDescription;
 }
 
