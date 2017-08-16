@@ -14,8 +14,9 @@ target 'afrourembo-ios' do
   pod 'STPopup'
   pod 'Charts'
   pod 'MBProgressHUD'
-  pod ‘FBSDKCoreKit' 
-  pod ’FBSDKLoginKit' 
+  pod ‘FBSDKCoreKit'
+  pod ’FBSDKLoginKit'
   pod 'FBSDKShareKit'
+  pod 'Realm'
 
 end
