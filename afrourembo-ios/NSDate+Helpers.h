@@ -12,6 +12,7 @@ typedef NS_ENUM(NSUInteger, DateFormat) {
     DateFormatLetterDayMonthYear,
     DateFormatDigitYearMonthDay,
     DateFormatDigitYearMonth,
+    DateFormatDigitMonthYear,
     DateFormatDigitHourMinute,
     DateFormatDigitYearMonthDayHourMinute
 };
@@ -30,5 +31,8 @@ typedef NS_ENUM(NSUInteger, DateFormat) {
 
 + (NSString *)stringFromDate:(NSDate *)date withFormat:(DateFormat)dateFormat;
 + (NSDate *)dateFromString:(NSString *)dateString withFormat:(DateFormat)dateFormat;
++ (NSDate *)date:(NSDate *)date withFormat:(DateFormat)dateFormat;
+
++ (NSDateFormatter *)dateFormatter:(DateFormat)dateFormat;
 
 @end

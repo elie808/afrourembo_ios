@@ -12,6 +12,8 @@
 
 @dynamic dateFormat;
 
+#pragma mark - Day manipulation
+
 + (NSDate *)todayAtTime:(NSNumber *)hour minutes:(NSNumber *)minute {
     
     NSCalendar *calendar = [NSCalendar currentCalendar];
@@ -63,68 +65,55 @@
     return monthsAfter;
 }
 
+#pragma mark - Date Formatting
+
 + (NSString *)stringFromDate:(NSDate *)date withFormat:(DateFormat)dateFormat {
     
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    
-    switch (dateFormat) {
-            
-        case DateFormatLetterDayMonthYear:
-            dateFormatter.dateFormat = @"EEEE MMMM dd";
-            break;
-            
-        case DateFormatDigitYearMonthDay:
-            dateFormatter.dateFormat = @"YYYY-MM-dd";
-            break;
-            
-        case DateFormatDigitHourMinute:
-            dateFormatter.dateFormat = @"HH:mm";
-            break;
-            
-        case DateFormatDigitYearMonthDayHourMinute:
-            dateFormatter.dateFormat = @"YYYY-MM-dd HH:mm";
-            break;
-            
-        default:
-            break;
-    }
+    NSDateFormatter *dateFormatter = [NSDate dateFormatter:dateFormat];
     
     return [[dateFormatter stringFromDate:date] capitalizedString];
 }
 
 + (NSDate *)dateFromString:(NSString *)dateString withFormat:(DateFormat)dateFormat {
     
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    
-    switch (dateFormat) {
-            
-        case DateFormatLetterDayMonthYear:
-            dateFormatter.dateFormat = @"EEEE MMMM dd";
-            break;
-            
-        case DateFormatDigitYearMonthDay:
-            dateFormatter.dateFormat = @"yyyy-MM-dd";//@"yyyy-MM-dd";
-            break;
-            
-        case DateFormatDigitYearMonth:
-            dateFormatter.dateFormat = @"yyyy-MM";
-            break;
-            
-        case DateFormatDigitHourMinute:
-            dateFormatter.dateFormat = @"HH:mm";
-            break;
-            
-        case DateFormatDigitYearMonthDayHourMinute:
-            dateFormatter.dateFormat = @"YYYY-MM-dd HH:mm";
-            break;
-            
-        default:
-            break;
-    }
+    NSDateFormatter *dateFormatter = [NSDate dateFormatter:dateFormat];
     
     NSDate *date =  [dateFormatter dateFromString:dateString];
     
     return date;
+}
+
++ (NSDate *)date:(NSDate *)date withFormat:(DateFormat)dateFormat {
+    
+    NSDateFormatter *dateFormatter = [NSDate dateFormatter:dateFormat];
+    
+    return [dateFormatter dateFromString:[dateFormatter stringFromDate:date]];
+}
+
+#pragma mark - Helpers
+
++ (NSDateFormatter *)dateFormatter:(DateFormat)dateFormat {
+    
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+ 
+    switch (dateFormat) {
+            
+        case DateFormatLetterDayMonthYear: dateFormatter.dateFormat = @"EEEE MMMM dd"; break;
+            
+        case DateFormatDigitYearMonthDay: dateFormatter.dateFormat = @"yyyy-MM-dd"; break;
+            
+        case DateFormatDigitYearMonth: dateFormatter.dateFormat = @"yyyy-MM"; break;
+
+        case DateFormatDigitMonthYear: dateFormatter.dateFormat = @"MM-yyyy"; break;
+            
+        case DateFormatDigitHourMinute: dateFormatter.dateFormat = @"HH:mm"; break;
+            
+        case DateFormatDigitYearMonthDayHourMinute: dateFormatter.dateFormat = @"YYYY-MM-dd HH:mm"; break;
+            
+        default: break;
+    }
+    
+    return dateFormatter;
 }
 
 @end
