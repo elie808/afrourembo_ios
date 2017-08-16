@@ -12,53 +12,23 @@ static NSString * const kSuccessSegue = @"cartToSuccessVC";
 static NSString * const kCartCell = @"cartCollectionCellID";
 
 @implementation EKCartViewController {
-    NSMutableArray *_dataSourceArray;
+//    NSMutableArray *_dataSourceArray;
+    RLMResults<Booking *> *_bookings;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-//    _dataSourceArray = [NSMutableArray arrayWithArray:[self createStubs]];
-    _dataSourceArray = [NSMutableArray new];
+    if ([EKSettings getSavedCustomer].email.length > 0) {
+        
+        NSPredicate *pred = [NSPredicate predicateWithFormat:@"bookingOwner = %@", [EKSettings getSavedCustomer].email];
+        _bookings = [Booking objectsWithPredicate:pred];
+    }
     
     self.bottomBar.layer.shadowColor = [UIColor blackColor].CGColor;
     self.bottomBar.layer.shadowOpacity = 0.3;
     self.bottomBar.layer.shadowRadius = 1;
     self.bottomBar.layer.shadowOffset = CGSizeMake(0, -3.5f);
-}
-
-- (NSArray *)createStubs {
-    
-    Booking *booking1 = [Booking new];
-    booking1.bookingTitle = @"Haircut & Beard Trim";
-    booking1.bookingCost = @"$250";
-    booking1.bookingVendor = @"McLaren Barbershop";
-    booking1.practionner = @"Johanna Mullins";
-    booking1.bookingDate = @"Tue, 23 Nov, 2017";
-    booking1.bookingTime = @"12:30 PM";
-    booking1.bookingDescription = @"The virtual realm is uncharted territory for many designers. In the last few years, we’ve witnessed an explosion in virtual reality (VR) hardware and.";
-    
-    Booking *booking2 = [Booking new];
-    booking2.bookingTitle = @"Nail Polish";
-    booking2.bookingCost = @"$120";
-    booking2.bookingVendor = @"Very Hip Barbershop";
-    booking2.practionner = @"Mansa Musa";
-    booking2.bookingDate = @"Mon, 23 Jan, 2017";
-    booking2.bookingTime = @"09:05 AM";
-    booking2.bookingDescription = @"";
-//    booking2.bookingDescription = @"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla convallis posuere viverra. Donec in efficitur nisi, ut faucibus ante. Duis sed facilisis orci. Phasellus sit amet leo iaculis, efficitur metus ut, fermentum ex.";
-    
-    Booking *booking3 = [Booking new];
-    booking3.bookingTitle = @"Skin Care";
-    booking3.bookingCost = @"$1000";
-    booking3.bookingVendor = @"McLaren Barbershop";
-    booking3.practionner = @"Bob Muller";
-    booking3.bookingDate = @"Tue, 24 Dec, 2017";
-    booking3.bookingTime = @"06:23 PM";
-    booking3.bookingDescription = @"";
-//    booking3.bookingDescription = @"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla convallis posuere viverra. Donec in efficitur nisi, ut faucibus ante. Duis sed facilisis orci. Phasellus sit amet leo iaculis, efficitur metus ut, fermentum ex.";
-    
-    return @[booking1, booking2, booking3];
 }
 
 #pragma mark - UICollectionViewDataSource
@@ -68,12 +38,12 @@ static NSString * const kCartCell = @"cartCollectionCellID";
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return _dataSourceArray.count;
+    return _bookings.count;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     
-    Booking *booking = [_dataSourceArray objectAtIndex:indexPath.row];
+    Booking *booking = [_bookings objectAtIndex:indexPath.row];
     
     EKCartCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kCartCell forIndexPath:indexPath];
     cell.delegate = self;
@@ -92,14 +62,54 @@ static NSString * const kCartCell = @"cartCollectionCellID";
 #pragma mark - EKCartCollectionViewCellDelegate
 
 - (void)didTapEditButtonAtIndex:(NSIndexPath *)indexPath {
-    NSLog(@"TAPPING CELL AT ROW: %@", indexPath);
+    
+    Booking *booking = [_bookings objectAtIndex:indexPath.row];
+    
+    [[RLMRealm defaultRealm] beginWriteTransaction];
+    [[RLMRealm defaultRealm] deleteObject:booking.reservation];
+    [[RLMRealm defaultRealm] deleteObject:booking];
+    [[RLMRealm defaultRealm] commitWriteTransaction];
+    
+    [self.collectionView reloadData];
 }
 
 #pragma mark - Actions
 
 - (IBAction)didTapCheckoutButton:(UIButton *)button {
- 
-    [self performSegueWithIdentifier:kSuccessSegue sender:nil];
+    
+    if ([EKSettings getSavedCustomer].token.length > 0) {
+        
+        // filter Reservation objects out of Booking objects in the dataSource
+        NSMutableArray *reservationsArray = [NSMutableArray new];
+        for (Booking *bookingObj in _bookings) {
+            [reservationsArray addObject:bookingObj.reservation];
+        }
+        
+        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        [Reservation postUserReservations:reservationsArray
+                                  forUser:[EKSettings getSavedCustomer].token
+                                withBlock:^(Reservation *reservation) {
+                                    
+                                    for (Booking *bookingObj in _bookings) {
+                                        [[RLMRealm defaultRealm] beginWriteTransaction];
+                                        [[RLMRealm defaultRealm] deleteObject:bookingObj.reservation];
+                                        [[RLMRealm defaultRealm] deleteObject:bookingObj];
+                                        [[RLMRealm defaultRealm] commitWriteTransaction];
+                                    }
+                                    
+                                    [MBProgressHUD hideHUDForView:self.view animated:YES];
+                                    [self performSegueWithIdentifier:kSuccessSegue sender:nil];
+                                }
+                               withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
+                                   
+                                   [MBProgressHUD hideHUDForView:self.view animated:YES];
+                                   [self showMessage:errorMessage withTitle:@"Error" completionBlock:nil];
+                               }];
+        
+    } else {
+        
+        //TODO: Sign in popup
+    }
 }
 
 #pragma mark - Navigation
