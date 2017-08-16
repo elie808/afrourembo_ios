@@ -110,17 +110,25 @@
                                             
                                         } failure:^(RKObjectRequestOperation *operation, NSError *error) {
                                             
-                                            // exctract error message
-                                            NSDictionary *myDic = [NSJSONSerialization
-                                                                   JSONObjectWithData:operation.HTTPRequestOperation.responseData
-                                                                   options:NSJSONReadingMutableLeaves
-                                                                   error:nil];
-                                            
-                                            NSString *errorMessage = [myDic valueForKey:@"message"];
-                                            
-                                            NSNumber* statusCodeNumber = [myDic valueForKey:@"statusCode"];
-                                            
-                                            errorBlock(error, errorMessage, [statusCodeNumber integerValue]);
+                                            if (operation.HTTPRequestOperation.responseData) {
+                                                
+                                                // exctract error message
+                                                NSDictionary *myDic = [NSJSONSerialization
+                                                                       JSONObjectWithData:operation.HTTPRequestOperation.responseData
+                                                                       options:NSJSONReadingMutableLeaves
+                                                                       error:nil];
+                                                
+                                                NSString *errorMessage = [myDic valueForKey:@"message"];
+                                                
+                                                NSNumber *statusCode = [myDic valueForKey:@"statusCode"];
+                                                
+                                                NSLog(@"-------ERROR MESSAGE: %@", errorMessage);
+                                                errorBlock(error, errorMessage, [statusCode integerValue]);
+                                                
+                                            } else {
+                                                
+                                                errorBlock(error, @"You are not connected to the internet.", 0);
+                                            }
                                         }];
 }
 
