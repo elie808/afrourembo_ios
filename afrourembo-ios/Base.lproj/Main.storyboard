@@ -179,7 +179,7 @@
                 <viewControllerPlaceholder storyboardIdentifier="welcomeVC" storyboardName="Welcome" referencedIdentifier="welcomeVC" id="kLq-Hf-7Zv" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wwV-0C-fuU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="870" y="-71"/>
+            <point key="canvasLocation" x="519" y="-71"/>
         </scene>
         <!--Filters & search-->
         <scene sceneID="QfZ-YZ-irF">
@@ -1216,6 +1216,14 @@
             </objects>
             <point key="canvasLocation" x="2584.8000000000002" y="-645.42728635682158"/>
         </scene>
+        <!--signUpCustomer-->
+        <scene sceneID="DV9-tP-1K2">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="signUpCustomer" storyboardName="SignUp" referencedIdentifier="signUpCustomer" id="YvI-IW-TIn" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qXr-dA-niO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4113" y="-1146"/>
+        </scene>
         <!--Booking View Controller-->
         <scene sceneID="RwZ-ak-q4H">
             <objects>
@@ -1452,6 +1460,7 @@
                         <outlet property="textView" destination="s4H-aZ-bW4" id="lrY-YH-yRm"/>
                         <outlet property="timeCollectionView" destination="oDu-xr-RGM" id="rxs-Us-Us7"/>
                         <segue destination="p8b-NN-oDW" kind="show" identifier="bookingTimeToCartVC" id="Hlm-Ed-ecJ"/>
+                        <segue destination="YvI-IW-TIn" kind="presentation" identifier="bookingVCToSignUpVC" id="xaI-gU-dNR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="osc-ZQ-HbO" userLabel="First Responder" sceneMemberID="firstResponder"/>

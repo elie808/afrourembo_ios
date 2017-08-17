@@ -26,6 +26,7 @@
 #import "EKConstants.h"
 
 #import "Booking+API.h"
+#import "Customer+API.h"
 #import "Reservation+API.h"
 #import "NSDate+Helpers.h"
 #import "UIViewController+Helpers.h"
