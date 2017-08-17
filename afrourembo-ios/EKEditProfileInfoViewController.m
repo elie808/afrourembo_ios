@@ -90,6 +90,8 @@ static NSString * const kExploreSegue = @"editVcToExploreVC";
                      
                         [MBProgressHUD hideHUDForView:self.view animated:YES];
                         
+                        [EKSettings saveCustomer:customerObj];
+                        
                         [self showMessage:@"You have succesfully created your AfroUrembo account!"
                                 withTitle:@"Success"
                           completionBlock:^(UIAlertAction *action) {
