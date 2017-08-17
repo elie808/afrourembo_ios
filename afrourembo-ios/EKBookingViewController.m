@@ -75,7 +75,6 @@ static CGFloat const kContainerViewHeight = 128;
 #pragma mark - UICollectionViewDataSource
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
-    
     return 1;
 }
 
@@ -136,63 +135,6 @@ static CGFloat const kContainerViewHeight = 128;
 
 #pragma mark - UICollectionViewDelegate
 
-- (void)showLoginSignUpDialog {
-    
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"You are not signed in"
-                                                                   message:@"Sign in or create a new account"
-                                                            preferredStyle:UIAlertControllerStyleAlert];
-    
-    [alert addTextFieldWithConfigurationHandler:^(UITextField *textField) {
-        textField.placeholder = @"email";
-    }];
-    
-    [alert addTextFieldWithConfigurationHandler:^(UITextField *textField) {
-        textField.placeholder = @"password";
-    }];
-    
-    UIAlertAction *signInAction = [UIAlertAction actionWithTitle:@"Sign in" style:UIAlertActionStyleDefault
-                                                         handler:^(UIAlertAction * action) {
-
-                                                             if (alert.textFields.count > 0) {
-                                                           
-                                                           
-                                                                 UITextField *emailTextField = [alert.textFields firstObject];
-                                                                 UITextField *passwordTextField = [alert.textFields objectAtIndex:1];
-
-                                                                 [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-                                                                 [Customer loginCustomer:emailTextField.text
-                                                                                password:passwordTextField.text
-                                                                               withBlock:^(Customer *customerObj) {
-                                                                                   
-                                                                                   [MBProgressHUD hideHUDForView:self.view animated:YES];
-                                                                                   [EKSettings saveCustomer:customerObj];
-                                                                               }
-                                                                              withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
-                                                                                  
-                                                                                  [MBProgressHUD hideHUDForView:self.view animated:YES];
-                                                                                  [self showMessage:errorMessage
-                                                                                          withTitle:@"There is something wrong"
-                                                                                    completionBlock:nil];
-                                                                              }];
-                                                       }
-                                                   }];
-    
-    [alert addAction:signInAction];
-    
-    [alert addAction:[UIAlertAction actionWithTitle:@"Sign up" style:UIAlertActionStyleDefault
-                                            handler:^(UIAlertAction * _Nonnull action) {
-                                                
-                                                [EKSettings deleteBookingsForCustomer:[EKSettings getSavedCustomer]];
-                                                [EKSettings deleteSavedCustomer];
-                                                [self performSegueWithIdentifier:kSignUpSegue sender:nil];
-    }]];
-    
-    [alert addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil]];
-    
-    
-    [self presentViewController:alert animated:YES completion:nil];
-}
-
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
  
     if (collectionView == self.proCollectionView) {
@@ -208,25 +150,16 @@ static CGFloat const kContainerViewHeight = 128;
                            withBlock:^(NSArray *daysArray) {
                                
                                [MBProgressHUD hideHUDForView:self.view animated:YES];
-                               
                                 self.emptyTimeDataView.hidden = YES;
-                               
                                [self populateDataSourcesFrom:daysArray];
-  
                                [self.dayCollectionView reloadData];
-//                                [self.timeCollectionView reloadData];
-                           }
-                          withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
+                           
+                           } withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
                               
                               [MBProgressHUD hideHUDForView:self.view animated:YES];
-                              
-                              if (statusCode == 401) { //invalid token
-                                  [self showLoginSignUpDialog];
-                              } else {
-                                  [self showMessage:errorMessage withTitle:@"Error" completionBlock:nil];
-                              }
-                              
                               self.emptyTimeDataView.hidden = NO;
+                               
+                               [self handleVendorAvailabilityErrors:error errorMessage:errorMessage statusCode:statusCode];
                           }];
     }
     
@@ -241,48 +174,9 @@ static CGFloat const kContainerViewHeight = 128;
     }
     
     if (collectionView == self.timeCollectionView) {
-
-        TimeSlot *timeSlot = _timesDataSource[indexPath.row];
         
-        // compute how many time slots ahead to highlight
-        int timeSlotsAhead = self.passedService.time / 15;
+        [self highlightCellsForTimeSlotAtIndexPath:indexPath];
         
-        if (timeSlot.isAvailable && (indexPath.row + timeSlotsAhead) < _timesDataSource.count) {
-
-            // check if slots to be selected, don't overlap with unavailable slots
-            BOOL allSlotsAheadAvailable = YES;
-            for (int i = 0; i <= timeSlotsAhead; i++) {
-                
-                TimeSlot *nextSlot = _timesDataSource[indexPath.row+i];
-                if (!nextSlot.isAvailable) {
-                    allSlotsAheadAvailable = NO;
-                    i = timeSlotsAhead;
-                }
-            }
-
-            // deselect all slots
-            for (int j = 0; j < _timesDataSource.count; j++) {
-                TimeSlot *timeSlot = _timesDataSource[j];
-                timeSlot.isSelected = NO;
-            }
-            
-            // highlight needed cells
-            if (allSlotsAheadAvailable) {
-                
-                // nullify selected dates from before
-                _selectedFromDate   = nil;
-                _selectedToDate     = nil;
-                
-                for (int i = 0; i <= timeSlotsAhead; i++) {
-                    TimeSlot *nextSlot = _timesDataSource[indexPath.row+i];
-                    nextSlot.isSelected = YES;
-                }
-                
-                _selectedFromDate   = ((TimeSlot *)(_timesDataSource[indexPath.row])).date;
-                _selectedToDate     = ((TimeSlot *)(_timesDataSource[indexPath.row + timeSlotsAhead])).date;
-            }
-        }
-
         [self.timeCollectionView reloadData];
     }
 }
@@ -450,6 +344,85 @@ static CGFloat const kContainerViewHeight = 128;
     }
     
     return [NSArray arrayWithArray:timeSlotsArray];
+}
+
+- (void)highlightCellsForTimeSlotAtIndexPath:(NSIndexPath *)indexPath {
+    
+    TimeSlot *timeSlot = _timesDataSource[indexPath.row];
+    
+    // compute how many time slots ahead to highlight
+    int timeSlotsAhead = self.passedService.time / 15;
+    
+    if (timeSlot.isAvailable && (indexPath.row + timeSlotsAhead) < _timesDataSource.count) {
+        
+        // check if slots to be selected, don't overlap with unavailable slots
+        BOOL allSlotsAheadAvailable = YES;
+        for (int i = 0; i <= timeSlotsAhead; i++) {
+            
+            TimeSlot *nextSlot = _timesDataSource[indexPath.row+i];
+            if (!nextSlot.isAvailable) {
+                allSlotsAheadAvailable = NO;
+                i = timeSlotsAhead;
+            }
+        }
+        
+        // deselect all slots
+        for (int j = 0; j < _timesDataSource.count; j++) {
+            TimeSlot *timeSlot = _timesDataSource[j];
+            timeSlot.isSelected = NO;
+        }
+        
+        // highlight needed cells
+        if (allSlotsAheadAvailable) {
+            
+            // nullify selected dates from before
+            _selectedFromDate   = nil;
+            _selectedToDate     = nil;
+            
+            for (int i = 0; i <= timeSlotsAhead; i++) {
+                TimeSlot *nextSlot = _timesDataSource[indexPath.row+i];
+                nextSlot.isSelected = YES;
+            }
+            
+            // update view model
+            _selectedFromDate   = ((TimeSlot *)(_timesDataSource[indexPath.row])).date;
+            _selectedToDate     = ((TimeSlot *)(_timesDataSource[indexPath.row + timeSlotsAhead])).date;
+        }
+    }
+}
+
+- (void)handleVendorAvailabilityErrors:(NSError *)error errorMessage:(NSString *)errorMessage statusCode:(NSInteger) statusCode {
+    
+    if (statusCode == 401) { // invalid token
+        
+        [self showLoginDialog:^(UIAlertAction *action, NSString *emailString, NSString *passString) {
+            
+            [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+            [Customer loginCustomer:emailString
+                           password:passString
+                          withBlock:^(Customer *customerObj) {
+                              
+                              [MBProgressHUD hideHUDForView:self.view animated:YES];
+                              [EKSettings saveCustomer:customerObj];
+                          }
+                         withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
+                             
+                             [MBProgressHUD hideHUDForView:self.view animated:YES];
+                             [self showMessage:errorMessage withTitle:@"There is something wrong"
+                               completionBlock:nil];
+                         }];
+            
+        } andSignUpBlock:^(UIAlertAction *action) {
+            
+            [EKSettings deleteBookingsForCustomer:[EKSettings getSavedCustomer]];
+            [EKSettings deleteSavedCustomer];
+            [self performSegueWithIdentifier:kSignUpSegue sender:nil];
+        }];
+        
+    } else {
+        
+        [self showMessage:errorMessage withTitle:@"Error" completionBlock:nil];
+    }
 }
 
 - (void)keyboardWillShow:(NSNotification *)notification {
