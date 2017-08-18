@@ -41,8 +41,8 @@ static CGFloat const kTimePickerHeight = 230.;
         self.serviceToEdit.categoryId = @"";
         self.serviceToEdit.categoryName = @"";
         self.serviceToEdit.name = @"";
-        self.serviceToEdit.price = 0;
-        self.serviceToEdit.time = 0;
+        self.serviceToEdit.price = 0.0;
+        self.serviceToEdit.time = 0.0;
         self.serviceToEdit.currency = @"";
         
         self.removeServiceButton.hidden = YES;
@@ -113,14 +113,14 @@ static CGFloat const kTimePickerHeight = 230.;
         cell.cellTextField.inputAccessoryView = self.keyboardToolbar;
         
         if (self.serviceToEdit.price && self.serviceToEdit.price > 0) {
-            cell.cellTextField.text = [NSString stringWithFormat:@"%f %@", self.serviceToEdit.price, self.serviceToEdit.currency];
+            cell.cellTextField.text = [NSString stringWithFormat:@"%.1f %@", self.serviceToEdit.price, self.serviceToEdit.currency];
         }
     }
     
     if (indexPath.row == 2) {
 
         if (self.serviceToEdit.time && self.serviceToEdit.time > 0) {
-            cell.cellTextField.text = [NSString stringWithFormat:@"%f minutes", self.serviceToEdit.time];
+            cell.cellTextField.text = [NSString stringWithFormat:@"%.f minutes", self.serviceToEdit.time];
         }
     }
     
