@@ -13,7 +13,9 @@
 + (RKObjectMapping *)map1 {
     
     RKObjectMapping *mapping = [RKObjectMapping mappingForClass:[Day class]];
-    [mapping addAttributeMappingsFromArray:@[@"day", @"fromHours", @"fromMinutes", @"toHours", @"toMinutes", @"lbFromHours", @"lbFromMinutes", @"lbToHours", @"lbToMinutes"]];
+    [mapping addAttributeMappingsFromArray:@[@"fromHours", @"fromMinutes", @"toHours", @"toMinutes", @"lbFromHours", @"lbFromMinutes", @"lbToHours", @"lbToMinutes"]];
+    
+    [mapping addAttributeMappingsFromDictionary:@{@"day" : @"dayNumber"}];
     
     return mapping;
 }
@@ -21,7 +23,9 @@
 + (RKObjectMapping *)map2 {
     
     RKObjectMapping *mapping = [RKObjectMapping mappingForClass:[Day class]];
-    [mapping addAttributeMappingsFromArray:@[@"day", @"fromHours", @"fromMinutes", @"toHours", @"toMinutes", @"lunchBreakFromHours", @"lunchBreakFromMinutes", @"lunchBreakToHours", @"lunchBreakToMinutes"]];
+    [mapping addAttributeMappingsFromArray:@[@"fromHours", @"fromMinutes", @"toHours", @"toMinutes", @"lunchBreakFromHours", @"lunchBreakFromMinutes", @"lunchBreakToHours", @"lunchBreakToMinutes"]];
+    
+    [mapping addAttributeMappingsFromDictionary:@{@"day" : @"dayNumber"}];
     
     return mapping;
 }

@@ -87,7 +87,7 @@ static NSString * const  kDayCollectionViewCell = @"whiteSalonListInCellCollecti
     
     Day *schedule = profObj.schedule[0];
     
-    NSString *dayOfTheWeek = [Day dayInitialsStringFromNumber:schedule.day];
+    NSString *dayOfTheWeek = [Day dayInitialsStringFromNumber:schedule.dayNumber];
     
     NSString *fromTime = [Day fromTimeString:schedule];
     NSString *toTime   = [Day toTimeString:schedule];

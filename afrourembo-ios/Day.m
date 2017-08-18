@@ -17,7 +17,8 @@ static NSString * const kDefaultEndHour = @"5:00 PM";
     
     Day *model = [Day new];
     
-    model.day = day;
+//    model.day = day;
+    model.dayNumber = day;
     
     model.daySelected = NO;
     model.serviceStartDate  = kDefaultStartHour;
@@ -55,6 +56,20 @@ static NSString * const kDefaultEndHour = @"5:00 PM";
     self.lbFromMinutes = @0;
     self.lbToHours     = @0;
     self.lbToMinutes   = @0;
+}
+
++ (NSNumber *)dayNumberFromDay:(NSDate *)aDay {
+
+    NSDateFormatter *dateFormatter = [NSDate dateFormatter:DateFormatLetterDayMonthYear];
+    NSDate *date =  [dateFormatter dateFromString:[NSDate stringFromDate:aDay withFormat:DateFormatLetterDayMonthYear]];
+
+    NSCalendar *cal = [NSCalendar calendarWithIdentifier:NSCalendarIdentifierGregorian];
+    NSDateComponents *components = [cal components:NSCalendarUnitDay | NSCalendarUnitWeekday fromDate:date];
+    
+    // substract 1, to correct for the fact that iOS counts days 1-7, and we need 0-6
+    NSInteger dayNumber = [components weekday]-1;
+    
+    return [NSNumber numberWithInteger:dayNumber];
 }
 
 + (NSString *)dayStringFromNumber:(NSNumber *)dayNumber {
