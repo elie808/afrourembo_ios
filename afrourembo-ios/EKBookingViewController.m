@@ -141,8 +141,6 @@ static CGFloat const kContainerViewHeight = 128;
      
         Professional *pro = self.professionalsDataSource[indexPath.row];
 
-        _selectedPro = pro;
-        
         [MBProgressHUD showHUDAddedTo:self.view animated:YES];
         [Day getAvailabilityOfVendor:pro.professionalID
                               ofType:_vendorType
@@ -150,6 +148,8 @@ static CGFloat const kContainerViewHeight = 128;
                            withBlock:^(NSArray *daysArray) {
                                
                                [MBProgressHUD hideHUDForView:self.view animated:YES];
+                               
+                               _selectedPro = pro;
                                 self.emptyTimeDataView.hidden = YES;
                                [self populateDataSourcesFrom:daysArray];
                                [self.dayCollectionView reloadData];
@@ -298,29 +298,47 @@ static CGFloat const kContainerViewHeight = 128;
 
 - (void)populateDataSourcesFrom:(NSArray<Day*> *)daysArray {
 
-    // get all day numbers from daysArray
-    // generate days
+    // create 10 days from today
+    for (int i = 0; i < 10; i++) {
     
-    for (Day *day in daysArray) {
-    
-        day.dayName = @"Day name";
-        day.timeSlotsArray = [NSArray arrayWithArray:[self populateDayWithTimes:day.fromHours
-                                                                     endingHour:day.toHours
-                                                            lunchBreakStartHour:day.lbFromHours
-                                                              lunchBreakEndHour:day.lbToHours
-                                                             inMinuteIncrements:@15] ];
+        Day *day = [Day new];
+        
+        day.dayName = [NSDate stringFromDate:[NSDate addDays:i after:[NSDate todayDate]] withFormat:DateFormatLetterDayMonthYear];
+        
+        day.dayNumber = [Day dayNumberFromDay:[NSDate addDays:i after:[NSDate todayDate]]];
         
         [_daysDataSource addObject:day];
     }
-}
-
-- (void)populateDays {
     
-    for (int i = 0; i < 10; i++) {
+    // check if day number matches anything in the passed daysArray
+//    for (Day *profAvailableDay in daysArray) {
+    
+        // go over the newly created days
+        for (Day *dataSourceDay in _daysDataSource) {
+            
+            if (dataSourceDay.dayNumber &&
+                [[daysArray valueForKey:@"dayNumber"] containsObject:dataSourceDay.dayNumber] ) {
         
-        [_daysDataSource addObject:[NSDate stringFromDate:[NSDate addDays:i after:[NSDate todayDate]]
-                                               withFormat:DateFormatLetterDayMonthYear]];
-    }
+                NSString *predStr = [NSString stringWithFormat:@"dayNumber = %@", dataSourceDay.dayNumber];
+                
+                NSPredicate *pred = [NSPredicate predicateWithFormat:predStr];
+                Day *profAvailableDay = [[daysArray filteredArrayUsingPredicate:pred] firstObject];
+                
+                dataSourceDay.timeSlotsArray = [NSArray arrayWithArray:[self populateDayWithTimes:profAvailableDay.fromHours
+                                                                                       endingHour:profAvailableDay.toHours
+                                                                              lunchBreakStartHour:profAvailableDay.lunchBreakFromHours
+                                                                                lunchBreakEndHour:profAvailableDay.lunchBreakToHours
+                                                                               inMinuteIncrements:@15]];
+            } else {
+                
+                NSLog(@"dataSourceDay.dayNumber: %@", dataSourceDay.dayNumber);
+                
+                dataSourceDay.timeSlotsArray = [self markDayUnavailableFrom:@9
+                                                                 endingHour:@17
+                                                         inMinuteIncrements:@15];
+            }
+        }
+//    }
 }
 
 - (NSArray *)populateDayWithTimes:(NSNumber *)startHour endingHour:(NSNumber *)toHour lunchBreakStartHour:(NSNumber *)lbFromHour lunchBreakEndHour:(NSNumber *)lbToHour inMinuteIncrements:(NSNumber *)minIncrements {
@@ -332,12 +350,41 @@ static CGFloat const kContainerViewHeight = 128;
         
         for (int startingMin = 0; startingMin < 60; startingMin += [minIncrements intValue]) {
             
-            // lunch break hours
-            if ( hour > 13 && hour < 15 ) { isAvailable = NO; } else { isAvailable = YES; }
+            if (lbFromHour > 0 && lbToHour > 0) {
+                
+                // block out lunch break hours
+                if ( hour >= [lbFromHour intValue] && hour < [lbToHour intValue] ) {
+                    
+                    isAvailable = NO;
+                    
+                } else {
+                    
+                    isAvailable = YES;
+                }
+                
+                TimeSlot *slot = [[TimeSlot alloc] initWithDate:[NSDate todayAtTime:[NSNumber numberWithInt:hour]
+                                                                            minutes:[NSNumber numberWithInt:startingMin]]
+                                                andAvailability:isAvailable];
+                
+                [timeSlotsArray addObject:slot];
+            }
+        }
+    }
+    
+    return [NSArray arrayWithArray:timeSlotsArray];
+}
+
+- (NSArray *)markDayUnavailableFrom:(NSNumber *)startHour endingHour:(NSNumber *)toHour inMinuteIncrements:(NSNumber *)minIncrements {
+    
+    NSMutableArray *timeSlotsArray = [NSMutableArray new];
+    
+    for (int hour = [startHour intValue]; hour < [toHour intValue]; hour++) {
+        
+        for (int startingMin = 0; startingMin < 60; startingMin += [minIncrements intValue]) {
             
             TimeSlot *slot = [[TimeSlot alloc] initWithDate:[NSDate todayAtTime:[NSNumber numberWithInt:hour]
                                                                         minutes:[NSNumber numberWithInt:startingMin]]
-                                            andAvailability:isAvailable];
+                                            andAvailability:NO];
             
             [timeSlotsArray addObject:slot];
         }

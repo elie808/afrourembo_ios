@@ -17,10 +17,11 @@
 #import "EKBookingDayCollectionViewCell.h"
 #import "EKBookingTimeCollectionViewCell.h"
 
-#import "TimeSlot.h"
 #import "Booking.h"
-#import "Service.h"
+#import "Day.h"
 #import "Professional.h"
+#import "Service.h"
+#import "TimeSlot.h"
 
 #import "EKSettings.h"
 #import "EKConstants.h"
