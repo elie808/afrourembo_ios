@@ -42,6 +42,9 @@
 		475A4CFB1EC01EAB0089D477 /* EKExploreViewController+SideMenuTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 475A4CFA1EC01EAB0089D477 /* EKExploreViewController+SideMenuTableView.m */; };
 		475FC37D1EB6B57900BB0731 /* EKAddServiceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 475FC37C1EB6B57900BB0731 /* EKAddServiceViewController.m */; };
 		475FC3811EB6BF5E00BB0731 /* EKAddNewServiceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 475FC3801EB6BF5E00BB0731 /* EKAddNewServiceViewController.m */; };
+		47605F151F3F211D00991C3A /* Booking+API.m in Sources */ = {isa = PBXBuildFile; fileRef = 47605F141F3F211D00991C3A /* Booking+API.m */; };
+		47605F181F3F5ABA00991C3A /* Reservation.m in Sources */ = {isa = PBXBuildFile; fileRef = 47605F171F3F5ABA00991C3A /* Reservation.m */; };
+		47605F1B1F3F5B0600991C3A /* Reservation+API.m in Sources */ = {isa = PBXBuildFile; fileRef = 47605F1A1F3F5B0600991C3A /* Reservation+API.m */; };
 		4760FC7C1EF88C8200099DFD /* EKSalonAddressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4760FC7B1EF88C8200099DFD /* EKSalonAddressViewController.m */; };
 		47652BF41F01DAA500796E04 /* Customer+Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 47652BF31F01DAA500796E04 /* Customer+Helpers.m */; };
 		47652BFA1F01DC8B00796E04 /* EKSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 47652BF91F01DC8B00796E04 /* EKSettings.m */; };
@@ -86,6 +89,7 @@
 		479F7D711EF16D6700EB445A /* ProfessionalLogin.m in Sources */ = {isa = PBXBuildFile; fileRef = 479F7D701EF16D6700EB445A /* ProfessionalLogin.m */; };
 		479F7D741EF16D8600EB445A /* ProfessionalLogin+API.m in Sources */ = {isa = PBXBuildFile; fileRef = 479F7D731EF16D8600EB445A /* ProfessionalLogin+API.m */; };
 		479F7D771EF17BF900EB445A /* EKSalonInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 479F7D761EF17BF900EB445A /* EKSalonInfoViewController.m */; };
+		47A2DE0D1F3AFAAA0063ADF8 /* EKProfessionalInfoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 47A2DE0C1F3AFAAA0063ADF8 /* EKProfessionalInfoTableViewCell.m */; };
 		47A3BB881E7A8C0B00963F27 /* EKRoleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47A3BB871E7A8C0B00963F27 /* EKRoleViewController.m */; };
 		47A3BB8C1E7A9F3500963F27 /* EKSignInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47A3BB8B1E7A9F3500963F27 /* EKSignInViewController.m */; };
 		47AF51AF1E9B686F005FE6EB /* EKInCellCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 47AF51AE1E9B686F005FE6EB /* EKInCellCollectionView.m */; };
@@ -191,6 +195,12 @@
 		475FC37C1EB6B57900BB0731 /* EKAddServiceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKAddServiceViewController.m; sourceTree = "<group>"; };
 		475FC37F1EB6BF5E00BB0731 /* EKAddNewServiceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKAddNewServiceViewController.h; sourceTree = "<group>"; };
 		475FC3801EB6BF5E00BB0731 /* EKAddNewServiceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKAddNewServiceViewController.m; sourceTree = "<group>"; };
+		47605F131F3F211D00991C3A /* Booking+API.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Booking+API.h"; sourceTree = "<group>"; };
+		47605F141F3F211D00991C3A /* Booking+API.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Booking+API.m"; sourceTree = "<group>"; };
+		47605F161F3F5ABA00991C3A /* Reservation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reservation.h; sourceTree = "<group>"; };
+		47605F171F3F5ABA00991C3A /* Reservation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reservation.m; sourceTree = "<group>"; };
+		47605F191F3F5B0600991C3A /* Reservation+API.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Reservation+API.h"; sourceTree = "<group>"; };
+		47605F1A1F3F5B0600991C3A /* Reservation+API.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Reservation+API.m"; sourceTree = "<group>"; };
 		4760FC7A1EF88C8200099DFD /* EKSalonAddressViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKSalonAddressViewController.h; sourceTree = "<group>"; };
 		4760FC7B1EF88C8200099DFD /* EKSalonAddressViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKSalonAddressViewController.m; sourceTree = "<group>"; };
 		47652BF21F01DAA500796E04 /* Customer+Helpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Customer+Helpers.h"; sourceTree = "<group>"; };
@@ -279,6 +289,8 @@
 		479F7D731EF16D8600EB445A /* ProfessionalLogin+API.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ProfessionalLogin+API.m"; sourceTree = "<group>"; };
 		479F7D751EF17BF900EB445A /* EKSalonInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKSalonInfoViewController.h; sourceTree = "<group>"; };
 		479F7D761EF17BF900EB445A /* EKSalonInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKSalonInfoViewController.m; sourceTree = "<group>"; };
+		47A2DE0B1F3AFAAA0063ADF8 /* EKProfessionalInfoTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKProfessionalInfoTableViewCell.h; sourceTree = "<group>"; };
+		47A2DE0C1F3AFAAA0063ADF8 /* EKProfessionalInfoTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKProfessionalInfoTableViewCell.m; sourceTree = "<group>"; };
 		47A3BB861E7A8C0B00963F27 /* EKRoleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKRoleViewController.h; sourceTree = "<group>"; };
 		47A3BB871E7A8C0B00963F27 /* EKRoleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKRoleViewController.m; sourceTree = "<group>"; };
 		47A3BB8A1E7A9F3500963F27 /* EKSignInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKSignInViewController.h; sourceTree = "<group>"; };
@@ -742,6 +754,8 @@
 				479F7D6A1EF0C09600EB445A /* Professional.m */,
 				479F7D6F1EF16D6700EB445A /* ProfessionalLogin.h */,
 				479F7D701EF16D6700EB445A /* ProfessionalLogin.m */,
+				47605F161F3F5ABA00991C3A /* Reservation.h */,
+				47605F171F3F5ABA00991C3A /* Reservation.m */,
 				471AA1861ED44A0E009B840A /* Review.h */,
 				471AA1871ED44A0E009B840A /* Review.m */,
 				47AF51B81E9B8561005FE6EB /* Salon.h */,
@@ -842,6 +856,15 @@
 				479F7D761EF17BF900EB445A /* EKSalonInfoViewController.m */,
 			);
 			name = "SALON - Info";
+			sourceTree = "<group>";
+		};
+		47A2DE0E1F3AFAB10063ADF8 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				47A2DE0B1F3AFAAA0063ADF8 /* EKProfessionalInfoTableViewCell.h */,
+				47A2DE0C1F3AFAAA0063ADF8 /* EKProfessionalInfoTableViewCell.m */,
+			);
+			name = Cells;
 			sourceTree = "<group>";
 		};
 		47A3BB821E7A8BA200963F27 /* Onboarding ViewController */ = {
@@ -1000,6 +1023,7 @@
 				47329CA11F0BC06D00E5DF13 /* EKProfessionalInfoViewController.m */,
 				47329CA51F0BE77700E5DF13 /* EKProfessionalAddressViewController.h */,
 				47329CA61F0BE77700E5DF13 /* EKProfessionalAddressViewController.m */,
+				47A2DE0E1F3AFAB10063ADF8 /* Cells */,
 			);
 			name = "BP - Business Model";
 			sourceTree = "<group>";
@@ -1018,6 +1042,8 @@
 		47FF4F6C1EB557660022A6ED /* API */ = {
 			isa = PBXGroup;
 			children = (
+				47605F131F3F211D00991C3A /* Booking+API.h */,
+				47605F141F3F211D00991C3A /* Booking+API.m */,
 				47FE51C71EFD5BD400A39BAE /* Category+API.h */,
 				47FE51C81EFD5BD400A39BAE /* Category+API.m */,
 				47FF4F691EB557620022A6ED /* Customer+API.h */,
@@ -1030,6 +1056,8 @@
 				479F7D6D1EF0C17E00EB445A /* Professional+API.m */,
 				479F7D721EF16D8600EB445A /* ProfessionalLogin+API.h */,
 				479F7D731EF16D8600EB445A /* ProfessionalLogin+API.m */,
+				47605F191F3F5B0600991C3A /* Reservation+API.h */,
+				47605F1A1F3F5B0600991C3A /* Reservation+API.m */,
 				4797AF301F30D15700AC1140 /* Review+API.h */,
 				4797AF311F30D15700AC1140 /* Review+API.m */,
 				476F63761F0760C600C27A92 /* Salon+API.h */,
@@ -1221,7 +1249,9 @@
 				47843A581F048CD000686CDD /* Day+API.m in Sources */,
 				47FFF9751E99E81F008B6A31 /* EKImageTextTableViewCell.m in Sources */,
 				479F7D6E1EF0C17E00EB445A /* Professional+API.m in Sources */,
+				47605F151F3F211D00991C3A /* Booking+API.m in Sources */,
 				4787C6E41EB4212F00DF7B83 /* EKNetworkManager.m in Sources */,
+				47605F181F3F5ABA00991C3A /* Reservation.m in Sources */,
 				47BFEA691EA4A9A30091522B /* EKBookingDayCollectionViewCell.m in Sources */,
 				474BD5731E97F8F3009410C4 /* EKTextFieldTableViewCell.m in Sources */,
 				47F7140D1ED6FB2D0028FB65 /* EKBusinessModelViewController.m in Sources */,
@@ -1231,6 +1261,7 @@
 				476F63721F075ECD00C27A92 /* SalonLogin.m in Sources */,
 				470CD74F1EA1C87D0086DEE4 /* EKCompanyProfileViewController+TableView.m in Sources */,
 				4734F5EE1F33FD2600982D94 /* NSDate+Helpers.m in Sources */,
+				47A2DE0D1F3AFAAA0063ADF8 /* EKProfessionalInfoTableViewCell.m in Sources */,
 				471AA18B1ED45DD0009B840A /* UIImage+Helpers.m in Sources */,
 				477256091EB95EA4007CBD6B /* EKSwitchTableViewCell.m in Sources */,
 				47AF51BA1E9B8561005FE6EB /* Salon.m in Sources */,
@@ -1238,6 +1269,7 @@
 				47652BF41F01DAA500796E04 /* Customer+Helpers.m in Sources */,
 				473535331F0B1E71009FCE41 /* Explore.m in Sources */,
 				479F7D711EF16D6700EB445A /* ProfessionalLogin.m in Sources */,
+				47605F1B1F3F5B0600991C3A /* Reservation+API.m in Sources */,
 				47FE51CC1EFD5BE100A39BAE /* Service+API.m in Sources */,
 				47C7D4CC1EBB5EF000457E53 /* Day.m in Sources */,
 				4757C6531ED98D8000C2B52F /* Appointment.m in Sources */,

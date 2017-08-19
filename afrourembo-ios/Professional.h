@@ -29,6 +29,8 @@
 @property NSString *email;
 @property NSString *password;
 
+@property (assign, nonatomic) BOOL isMobile;
+
 @property NSString *token;
 
 @property NSNumber *ratingBasedOn;

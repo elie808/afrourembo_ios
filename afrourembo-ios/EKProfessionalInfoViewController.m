@@ -10,6 +10,7 @@
 
 static NSString * const kProfInfoCell       = @"textFieldProfessionalInfoCell";
 static NSString * const kAdressCell         = @"professionalAddressCell";
+static NSString * const kSwitchCell         = @"professionalMobileCell";
 
 static NSString * const kAddServiceSegue    = @"profInfoToAddServiceVC";
 static NSString * const kAddressSegue       = @"professionalInfoToProfessionalAdressVC";
@@ -24,6 +25,7 @@ static NSString * const kAddressSegue       = @"professionalInfoToProfessionalAd
     self.businessName = @"";
     self.address = @"";
     self.addressCoords = CLLocationCoordinate2DMake(0, 0);
+    self.isMobile = NO;
     
     [self initializeDataSource];
 }
@@ -57,6 +59,15 @@ static NSString * const kAddressSegue       = @"professionalInfoToProfessionalAd
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kAdressCell forIndexPath:indexPath];
         cell.textLabel.text = labelValue;
         cell.detailTextLabel.text = placeHolderValue;
+        
+        return cell;
+    }
+    
+    if (indexPath.row == 2) {
+        
+        EKProfessionalInfoTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kSwitchCell forIndexPath:indexPath];
+        cell.cellLabel.text = labelValue;
+        [cell.cellSwitch setOn:self.isMobile];
         
         return cell;
     }
@@ -99,6 +110,13 @@ static NSString * const kAddressSegue       = @"professionalInfoToProfessionalAd
     [self performSegueWithIdentifier:kAddServiceSegue sender:nil];
 }
 
+- (IBAction)didChangeSwitch:(UISwitch*)sender {
+    
+    NSLog(@"IS MOBILE? %@", sender.isOn ? @"YES" : @"NO");
+    
+    self.isMobile = sender.isOn;
+}
+
 #pragma mark - Navigation
 
 - (IBAction)unwindToProfessionalInfoVC:(UIStoryboardSegue *)segue {
@@ -113,6 +131,16 @@ static NSString * const kAddressSegue       = @"professionalInfoToProfessionalAd
         
         EKAddServiceViewController *vc = segue.destinationViewController;
         vc.passedProfessional = self.passedProfessional;
+
+        Business *selectedBusinessAdress = [Business new];
+        selectedBusinessAdress.name = self.businessName;
+        selectedBusinessAdress.address = self.address;
+        selectedBusinessAdress.location = @{@"longitude" : [NSNumber numberWithFloat:self.addressCoords.longitude],
+                                            @"latitude" : [NSNumber numberWithFloat:self.addressCoords.latitude]};
+        
+        vc.passedProfessional.business = selectedBusinessAdress;
+        
+        vc.passedProfessional.isMobile = self.isMobile;
     }
     
     if ([segue.identifier isEqualToString:kAddressSegue]) {
@@ -127,7 +155,8 @@ static NSString * const kAddressSegue       = @"professionalInfoToProfessionalAd
     
     _dataSourceArray = @[
                          @{@"Company Name" : self.businessName},
-                         @{@"Address" : self.address}
+                         @{@"Address" : self.address},
+                         @{@"I am mobile" : @""}
                          ];
 }
 

@@ -10,6 +10,7 @@
 #import "Professional.h"
 #import "EKAddServiceViewController.h"
 #import "EKTextFieldTableViewCell.h"
+#import "EKProfessionalInfoTableViewCell.h"
 #import "EKProfessionalAddressViewController.h"
 #import <MapKit/MapKit.h>
 
@@ -21,6 +22,7 @@
 @property NSString *businessName;
 @property NSString *address;
 @property CLLocationCoordinate2D addressCoords;
+@property (assign, nonatomic) BOOL isMobile;
 
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 

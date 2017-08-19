@@ -17,8 +17,8 @@ static NSString * const kService4 = @"SPECIAL OCCASIONS PROS";
 
 @interface Service : NSObject
 
-@property NSString *serviceId;
-@property NSString *categoryId; //category to which the service belongs.
+@property NSString *serviceId;  // used to map the _id property
+@property NSString *categoryId; // category to which the service belongs.
 
 @property NSString *serverServiceId; //temporary property to avoid blow ups... We'll need to make serviceID uniform later
 

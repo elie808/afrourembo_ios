@@ -10,7 +10,10 @@
 
 @interface Customer (Helpers)
 
+/// email, token
 + (Customer *)customerFromJSON:(NSString *)customerJSONString;
+
+/// email, token
 + (Customer *)updateCustomer:(Customer *)existingCustomer from:(Customer *)newCustomer;
 
 - (NSString *)convertToJSON;

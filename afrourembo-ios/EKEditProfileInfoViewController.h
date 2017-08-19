@@ -7,10 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Customer.h"
-#import "Customer+API.h"
+
 #import "EKTextFieldTableViewCell.h"
+#import "Customer.h"
+#import "EKSettings.h"
+
+#import "Customer+API.h"
 #import "UIViewController+Helpers.h"
+
 #import <MBProgressHUD/MBProgressHUD.h>
 
 @interface EKEditProfileInfoViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>

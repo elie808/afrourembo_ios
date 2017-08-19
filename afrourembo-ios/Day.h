@@ -7,13 +7,15 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "NSDate+Helpers.h"
 
 @interface Day : NSObject
 
 //Use these properties for UI
-//@property NSString *dayName;
-@property NSNumber *day;
-@property (assign, nonatomic) BOOL daySelected;
+@property NSString *dayName;    // day name and date as strings. Used to display inside day cell in collectionview on bookingVC
+@property NSNumber *dayNumber;  // day number 0-6, used to determine Mon-Sun and handle availability in UI
+@property (assign, nonatomic) BOOL daySelected; // to highlight selected day cell in collectionview
+@property NSArray *timeSlotsArray;  // hold all time slots of the day. Use as data source for time slots collection view in bookingVC
 
 @property NSString *serviceStartDate;
 @property NSString *serviceEndDate;
@@ -41,11 +43,12 @@
 @property NSNumber *lunchBreakToMinutes;
 
 + (Day *)defaultModelForDay:(NSNumber *)day;
-//+ (Day *)defaultModelForDay:(NSString *)dayName;
-+ (NSString *)dayStringFromNumber:(NSNumber *)dayNumber;
 - (void)resetModel;
 
++ (NSString *)dayStringFromNumber:(NSNumber *)dayNumber;
 + (NSString *)dayInitialsStringFromNumber:(NSNumber *)dayNumber;
++ (NSNumber *)dayNumberFromDay:(NSDate *)aDay;
+
 + (NSString *)fromTimeString:(Day *)day;
 + (NSString *)toTimeString:(Day *)day;
 

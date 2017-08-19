@@ -7,13 +7,21 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Booking.h"
+#import "EKSettings.h"
 #import "EKCartCollectionViewCell.h"
+
+#import "Reservation+API.h"
+#import "Booking.h"
+
 #import "EKCartCollectionViewCell+Helpers.h"
+#import "UIViewController+Helpers.h"
+
+#import <Realm/Realm.h>
+#import <MBProgressHUD/MBProgressHUD.h>
 
 @interface EKCartViewController : UIViewController <UICollectionViewDelegate, UICollectionViewDataSource, EKCartCollectionViewCellDelegate>
 
-@property (strong, nonatomic) Booking *passedBooking;
+//@property (strong, nonatomic) Booking *passedBooking;
 
 @property (strong, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (strong, nonatomic) IBOutlet UIView *bottomBar;

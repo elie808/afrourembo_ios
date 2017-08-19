@@ -65,6 +65,24 @@ static NSString * const kLoggedInVendor     = @"afrourembo-loggedInVendor";
     }
 }
 
++ (void)deleteBookingsForCustomer:(Customer *)savedCustomer {
+    
+    if ([EKSettings getSavedCustomer] && [EKSettings getSavedCustomer].email.length > 0) {
+     
+        NSPredicate *pred = [NSPredicate predicateWithFormat:@"bookingOwner = %@", [EKSettings getSavedCustomer].email];
+        RLMResults<Booking*> *bookings = [Booking objectsWithPredicate:pred];
+        
+        [[RLMRealm defaultRealm] beginWriteTransaction];
+        for (Booking *bookingObj in bookings) {
+            
+            [[RLMRealm defaultRealm] deleteObject:bookingObj.reservation];
+            [[RLMRealm defaultRealm] deleteObject:bookingObj];
+        }
+        
+        [[RLMRealm defaultRealm] commitWriteTransaction];
+    }
+}
+
 + (BOOL)updateSavedCustomer:(Customer *)updatedCustomer {
     
     Customer *oldUser = [EKSettings getSavedCustomer];

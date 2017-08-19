@@ -10,4 +10,8 @@
 
 @implementation Booking
 
++ (NSString *)primaryKey {
+    return @"bookingHash";
+}
+
 @end

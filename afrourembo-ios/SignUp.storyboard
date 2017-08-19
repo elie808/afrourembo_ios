@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16G12b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -850,7 +850,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <view key="tableFooterView" contentMode="scaleToFill" id="xBo-3P-2rD">
-                                    <rect key="frame" x="0.0" y="116" width="375" height="44"/>
+                                    <rect key="frame" x="0.0" y="160" width="375" height="44"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </view>
@@ -916,6 +916,40 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="professionalMobileCell" id="ZYL-HG-0vq" customClass="EKProfessionalInfoTableViewCell">
+                                        <rect key="frame" x="0.0" y="116" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ZYL-HG-0vq" id="LBa-XL-1bs">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="R9D-gt-qxq">
+                                                    <rect key="frame" x="318" y="6" width="51" height="31"/>
+                                                    <color key="onTintColor" red="1" green="0.76470588240000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <connections>
+                                                        <action selector="didChangeSwitch:" destination="kAy-4g-950" eventType="valueChanged" id="VC6-LF-DKj"/>
+                                                    </connections>
+                                                </switch>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="I am mobile" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z1n-hG-LHc">
+                                                    <rect key="frame" x="16" y="12" width="294" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="R9D-gt-qxq" firstAttribute="top" secondItem="LBa-XL-1bs" secondAttribute="top" constant="6" id="0zL-t9-5NP"/>
+                                                <constraint firstItem="Z1n-hG-LHc" firstAttribute="leading" secondItem="LBa-XL-1bs" secondAttribute="leadingMargin" constant="8" id="3nx-p9-Gfo"/>
+                                                <constraint firstAttribute="trailing" secondItem="R9D-gt-qxq" secondAttribute="trailing" constant="8" id="8sz-b9-GrQ"/>
+                                                <constraint firstItem="Z1n-hG-LHc" firstAttribute="top" secondItem="LBa-XL-1bs" secondAttribute="topMargin" constant="4" id="aW7-oK-cwa"/>
+                                                <constraint firstItem="R9D-gt-qxq" firstAttribute="leading" secondItem="Z1n-hG-LHc" secondAttribute="trailing" constant="8" id="eBs-0q-tST"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="cellLabel" destination="Z1n-hG-LHc" id="f7w-uU-v2f"/>
+                                            <outlet property="cellSwitch" destination="R9D-gt-qxq" id="bJt-hg-ugR"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -1503,6 +1537,7 @@
                     <connections>
                         <outlet property="removeServiceButton" destination="xVm-gD-OA7" id="KVV-gX-YQi"/>
                         <outlet property="tableView" destination="0fY-Jg-TSi" id="s4y-Ho-Iy6"/>
+                        <outlet property="timePickerView" destination="x1Z-FL-Pmk" id="SsZ-qr-QYI"/>
                         <segue destination="3yg-LA-sOH" kind="unwind" identifier="unwindFromNewServiceToServiceVC" unwindAction="unwindToAddServiceVC:" id="xei-Ey-lJu"/>
                         <segue destination="3yg-LA-sOH" kind="unwind" identifier="unwindNewServiceToServiceVCREMOVE" unwindAction="unwindToAddServiceVC:" id="c2Z-6x-l5W"/>
                         <segue destination="vRy-a2-PkH" kind="presentation" identifier="newServiceToCategoryList" id="pGD-4N-J4W"/>
@@ -1510,6 +1545,28 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2rD-rY-KOn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <view contentMode="scaleToFill" id="x1Z-FL-Pmk">
+                    <rect key="frame" x="0.0" y="0.0" width="377" height="230"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="countDownTimer" countDownDuration="900" minuteInterval="15" translatesAutoresizingMaskIntoConstraints="NO" id="Qlo-jK-I5L">
+                            <rect key="frame" x="0.0" y="7" width="377" height="216"/>
+                            <date key="date" timeIntervalSinceReferenceDate="523964423.15925598">
+                                <!--2017-08-09 09:40:23 +0000-->
+                            </date>
+                            <connections>
+                                <action selector="didChangeTimePicker:" destination="bDT-Qn-xWO" eventType="valueChanged" id="axk-5c-36R"/>
+                            </connections>
+                        </datePicker>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="Qlo-jK-I5L" secondAttribute="bottom" constant="7" id="4f7-aA-sEq"/>
+                        <constraint firstItem="Qlo-jK-I5L" firstAttribute="leading" secondItem="x1Z-FL-Pmk" secondAttribute="leading" id="4mJ-4t-79c"/>
+                        <constraint firstItem="Qlo-jK-I5L" firstAttribute="top" secondItem="x1Z-FL-Pmk" secondAttribute="top" constant="7" id="I0I-zI-Qp4"/>
+                        <constraint firstAttribute="trailing" secondItem="Qlo-jK-I5L" secondAttribute="trailing" id="YJh-Pj-kea"/>
+                    </constraints>
+                </view>
                 <exit id="3yg-LA-sOH" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="6626" y="431"/>
@@ -2686,7 +2743,7 @@
     <inferredMetricsTieBreakers>
         <segue reference="WR4-wb-Am0"/>
         <segue reference="pcN-xV-EFc"/>
-        <segue reference="zqt-Ee-Ez4"/>
+        <segue reference="z4e-2X-Leh"/>
         <segue reference="hg1-H8-gAt"/>
     </inferredMetricsTieBreakers>
 </document>

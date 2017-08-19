@@ -10,8 +10,12 @@
 
 typedef void (^ActionSheetUnwindBlock)(UIAlertAction *action);
 
+typedef void (^ActionSheetLogin)(UIAlertAction *action, NSString *emailString, NSString *passString);
+typedef void (^ActionSheetSignUp)(UIAlertAction *action);
+
 @interface UIViewController (Helpers)
 
 - (void)showMessage:(NSString *)message withTitle:(NSString *)title completionBlock:(ActionSheetUnwindBlock)block;
+- (void)showLoginDialog:(ActionSheetLogin)signInBlock andSignUpBlock:(ActionSheetSignUp)signUpBlock;
 
 @end

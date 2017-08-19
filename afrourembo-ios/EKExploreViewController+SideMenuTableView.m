@@ -75,7 +75,9 @@ static NSString * const kWelcomeSegue  = @"sideMenuToWelcomeVC";
 
 - (IBAction)didTapLogoutButton:(id)sender {
     
+    [EKSettings deleteBookingsForCustomer:[EKSettings getSavedCustomer]]; //has to be called before deleteSavedCustomer
     [EKSettings deleteSavedCustomer];
+    
     [self performSegueWithIdentifier:kWelcomeSegue sender:nil];
 }
 

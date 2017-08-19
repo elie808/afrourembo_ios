@@ -7,9 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "Customer+Helpers.h"
+
+#import <Realm/Realm.h>
 #import <RestKit/RestKit.h>
 #import <JNKeychain/JNKeychain.h>
+
+#import "Booking.h"
+#import "Customer+Helpers.h"
 
 @interface EKSettings : NSObject
 
@@ -17,6 +21,7 @@
 + (Customer *)getSavedCustomer;
 + (BOOL)deleteSavedCustomer;
 + (BOOL)updateSavedCustomer:(Customer *)updatedCustomer;
++ (void)deleteBookingsForCustomer:(Customer *)savedCustomer;
 
 //TODO: Flesh out into grown up methods
 + (BOOL)saveVendor;

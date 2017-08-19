@@ -47,6 +47,8 @@
                                                     [Professional professionalRegistrationRequestDescriptor]
                                                     ]];
     
+    [objectManager addRequestDescriptor:[Reservation reservationsRequestDescriptor]];
+    
     [objectManager addRequestDescriptor:[SalonLogin salonLoginRequestDescriptor]];
     
     [objectManager addRequestDescriptorsFromArray:@[
@@ -58,6 +60,15 @@
 
 + (void)configureResponseDescriptors:(RKObjectManager *)objectManager {
     
+    [objectManager addResponseDescriptorsFromArray:@[
+                                                     [Booking getBookingsForVendorResponseDescriptor]
+                                                     ]];
+    
+    [objectManager addResponseDescriptorsFromArray:@[
+                                                     [Reservation getReservationsResponseDescriptor],
+                                                     [Reservation postReservationsResponseDescriptor]
+                                                     ]];
+    
     [objectManager addResponseDescriptor:[Category categoryResponseDescriptor]];
     
     [objectManager addResponseDescriptorsFromArray:@[
@@ -66,7 +77,10 @@
                                                      [Customer putUserProfileResponseDescriptor]
                                                      ]];
     
-    [objectManager addResponseDescriptorsFromArray:@[ [Day availabilityResponseDescriptor] ]];
+    [objectManager addResponseDescriptorsFromArray:@[
+                                                     [Day availabilityResponseDescriptor],
+                                                     [Day vendorAvailabilityResponseDescriptor]
+                                                     ]];
     
     [objectManager addResponseDescriptorsFromArray:@[ [Explore exploreResponseDescriptor] ]];
     
