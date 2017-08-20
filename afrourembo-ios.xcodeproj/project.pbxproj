@@ -17,6 +17,8 @@
 		470F0B951EDB7DF2002FDE96 /* EKDashboardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 470F0B941EDB7DF2002FDE96 /* EKDashboardViewController.m */; };
 		471AA1881ED44A0E009B840A /* Review.m in Sources */ = {isa = PBXBuildFile; fileRef = 471AA1871ED44A0E009B840A /* Review.m */; };
 		471AA18B1ED45DD0009B840A /* UIImage+Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 471AA18A1ED45DD0009B840A /* UIImage+Helpers.m */; };
+		471F5FBB1F4870550097817E /* ProfilePicture.m in Sources */ = {isa = PBXBuildFile; fileRef = 471F5FBA1F4870550097817E /* ProfilePicture.m */; };
+		471F5FBE1F48707C0097817E /* ProfilePicture+API.m in Sources */ = {isa = PBXBuildFile; fileRef = 471F5FBD1F48707C0097817E /* ProfilePicture+API.m */; };
 		47329CA21F0BC06D00E5DF13 /* EKProfessionalInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47329CA11F0BC06D00E5DF13 /* EKProfessionalInfoViewController.m */; };
 		47329CA71F0BE77700E5DF13 /* EKProfessionalAddressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47329CA61F0BE77700E5DF13 /* EKProfessionalAddressViewController.m */; };
 		4734F5EE1F33FD2600982D94 /* NSDate+Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 4734F5ED1F33FD2600982D94 /* NSDate+Helpers.m */; };
@@ -145,6 +147,10 @@
 		471AA1871ED44A0E009B840A /* Review.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Review.m; sourceTree = "<group>"; };
 		471AA1891ED45DD0009B840A /* UIImage+Helpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Helpers.h"; sourceTree = "<group>"; };
 		471AA18A1ED45DD0009B840A /* UIImage+Helpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Helpers.m"; sourceTree = "<group>"; };
+		471F5FB91F4870550097817E /* ProfilePicture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfilePicture.h; sourceTree = "<group>"; };
+		471F5FBA1F4870550097817E /* ProfilePicture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfilePicture.m; sourceTree = "<group>"; };
+		471F5FBC1F48707C0097817E /* ProfilePicture+API.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ProfilePicture+API.h"; sourceTree = "<group>"; };
+		471F5FBD1F48707C0097817E /* ProfilePicture+API.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ProfilePicture+API.m"; sourceTree = "<group>"; };
 		47329CA01F0BC06D00E5DF13 /* EKProfessionalInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKProfessionalInfoViewController.h; sourceTree = "<group>"; };
 		47329CA11F0BC06D00E5DF13 /* EKProfessionalInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKProfessionalInfoViewController.m; sourceTree = "<group>"; };
 		47329CA51F0BE77700E5DF13 /* EKProfessionalAddressViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKProfessionalAddressViewController.h; sourceTree = "<group>"; };
@@ -752,6 +758,8 @@
 				473535321F0B1E71009FCE41 /* Explore.m */,
 				479F7D691EF0C09600EB445A /* Professional.h */,
 				479F7D6A1EF0C09600EB445A /* Professional.m */,
+				471F5FB91F4870550097817E /* ProfilePicture.h */,
+				471F5FBA1F4870550097817E /* ProfilePicture.m */,
 				479F7D6F1EF16D6700EB445A /* ProfessionalLogin.h */,
 				479F7D701EF16D6700EB445A /* ProfessionalLogin.m */,
 				47605F161F3F5ABA00991C3A /* Reservation.h */,
@@ -1056,6 +1064,8 @@
 				479F7D6D1EF0C17E00EB445A /* Professional+API.m */,
 				479F7D721EF16D8600EB445A /* ProfessionalLogin+API.h */,
 				479F7D731EF16D8600EB445A /* ProfessionalLogin+API.m */,
+				471F5FBC1F48707C0097817E /* ProfilePicture+API.h */,
+				471F5FBD1F48707C0097817E /* ProfilePicture+API.m */,
 				47605F191F3F5B0600991C3A /* Reservation+API.h */,
 				47605F1A1F3F5B0600991C3A /* Reservation+API.m */,
 				4797AF301F30D15700AC1140 /* Review+API.h */,
@@ -1253,6 +1263,7 @@
 				4787C6E41EB4212F00DF7B83 /* EKNetworkManager.m in Sources */,
 				47605F181F3F5ABA00991C3A /* Reservation.m in Sources */,
 				47BFEA691EA4A9A30091522B /* EKBookingDayCollectionViewCell.m in Sources */,
+				471F5FBE1F48707C0097817E /* ProfilePicture+API.m in Sources */,
 				474BD5731E97F8F3009410C4 /* EKTextFieldTableViewCell.m in Sources */,
 				47F7140D1ED6FB2D0028FB65 /* EKBusinessModelViewController.m in Sources */,
 				47329CA71F0BE77700E5DF13 /* EKProfessionalAddressViewController.m in Sources */,
@@ -1299,6 +1310,7 @@
 				47FE51C31EFD26F900A39BAE /* Address.m in Sources */,
 				4734F5F11F3401D200982D94 /* EKCarousel.m in Sources */,
 				475FC3811EB6BF5E00BB0731 /* EKAddNewServiceViewController.m in Sources */,
+				471F5FBB1F4870550097817E /* ProfilePicture.m in Sources */,
 				474ED7BC1E9C68940099CA0A /* EKDiscoverMapViewController+MapDelegate.m in Sources */,
 				47EF0E301EDA23B3000B07BB /* Today.m in Sources */,
 				470CD7461EA10B920086DEE4 /* EKCompanyReviewTableViewCell.m in Sources */,

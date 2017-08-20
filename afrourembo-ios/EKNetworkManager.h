@@ -9,17 +9,18 @@
 #import <Foundation/Foundation.h>
 #import <RestKit/RestKit.h>
 
+#import "Booking+API.h"
 #import "Category+API.h"
 #import "Customer+API.h"
+#import "Day+API.h"
 #import "Explore+API.h"
 #import "Professional+API.h"
 #import "ProfessionalLogin+API.h"
+#import "ProfilePicture+API.h"
+#import "Reservation+API.h"
+#import "Review+API.h"
 #import "SalonLogin+API.h"
 #import "Service+API.h"
-#import "Day+API.h"
-#import "Review+API.h"
-#import "Booking+API.h"
-#import "Reservation+API.h"
 
 #import "EKNetworkingConstants.h"
 

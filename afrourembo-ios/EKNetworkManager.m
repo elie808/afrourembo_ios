@@ -13,8 +13,8 @@
 + (void)configureRestKit {
     
     //---- Restkit Logging
-    //    RKLogConfigureByName("RestKit/Network", RKLogLevelTrace);
-    //    RKLogConfigureByName("Restkit/Network", RKLogLevelDebug);
+        RKLogConfigureByName("RestKit/Network", RKLogLevelTrace);
+        RKLogConfigureByName("Restkit/Network", RKLogLevelDebug);
     
     //---- initialize AFNetworking HTTPClient
     AFRKHTTPClient *client = [[AFRKHTTPClient alloc] initWithBaseURL:[NSURL URLWithString:kBaseURL]];
@@ -83,6 +83,10 @@
                                                      ]];
     
     [objectManager addResponseDescriptorsFromArray:@[ [Explore exploreResponseDescriptor] ]];
+    
+    [objectManager addResponseDescriptorsFromArray:@[
+                                                     [ProfilePicture putUserProfilePictureResponseDescriptor]
+                                                     ]];
     
     [objectManager addResponseDescriptor:[ProfessionalLogin professionalLoginResponseDescriptor]];
     
