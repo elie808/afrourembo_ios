@@ -68,6 +68,10 @@
 		<string>MKDirectionsModeTaxi</string>
 		<string>MKDirectionsModeTrain</string>
 	</array>
+	<key>NSCameraUsageDescription</key>
+	<string>AfroUrembo would like to access your camera to allow you to upload a personal profile picture</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>AfroUrembo would like to access your photo gallery to allow you to upload a personal profile picture</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
