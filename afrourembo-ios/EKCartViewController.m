@@ -23,12 +23,16 @@ static NSString * const kCartCell = @"cartCollectionCellID";
         
         NSPredicate *pred = [NSPredicate predicateWithFormat:@"bookingOwner = %@", [EKSettings getSavedCustomer].email];
         _bookings = [Booking objectsWithPredicate:pred];
+        
+        [self.collectionView reloadData];
     }
     
     self.bottomBar.layer.shadowColor = [UIColor blackColor].CGColor;
     self.bottomBar.layer.shadowOpacity = 0.3;
     self.bottomBar.layer.shadowRadius = 1;
     self.bottomBar.layer.shadowOffset = CGSizeMake(0, -3.5f);
+    
+    if (_bookings.count > 0) { self.bottomBar.hidden = NO; } else { self.bottomBar.hidden = YES; }
 }
 
 #pragma mark - UICollectionViewDataSource
@@ -71,6 +75,8 @@ static NSString * const kCartCell = @"cartCollectionCellID";
     [[RLMRealm defaultRealm] commitWriteTransaction];
     
     [self.collectionView reloadData];
+    
+    if (_bookings.count > 0) { self.bottomBar.hidden = NO; } else { self.bottomBar.hidden = YES; }
 }
 
 #pragma mark - Actions
