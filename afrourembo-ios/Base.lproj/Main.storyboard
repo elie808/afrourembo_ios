@@ -1763,10 +1763,49 @@
                     <connections>
                         <outlet property="bottomBar" destination="af3-h4-gbz" id="i0e-8J-cx2"/>
                         <outlet property="collectionView" destination="QQA-0P-dZT" id="yhW-fw-GNI"/>
+                        <outlet property="emptyCartView" destination="29O-h3-vuq" id="3cC-Cv-hb5"/>
                         <segue destination="rtY-H3-YQr" kind="show" identifier="cartToSuccessVC" id="Tgh-kR-Ldd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KLN-9k-UYM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <view contentMode="scaleToFill" id="29O-h3-vuq">
+                    <rect key="frame" x="0.0" y="0.0" width="370" height="180"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icCartActive" translatesAutoresizingMaskIntoConstraints="NO" id="KGL-UV-ssd">
+                            <rect key="frame" x="158" y="20" width="54" height="54"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="54" id="2Jv-h4-4ni"/>
+                                <constraint firstAttribute="width" constant="54" id="3Qc-l9-nYc"/>
+                            </constraints>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="There are no bookings in your cart yet." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TmH-Fy-oA4">
+                            <rect key="frame" x="37" y="98" width="296" height="16"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                            <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You can explore services and make bookings from the Explore screen." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gYG-wP-Shi">
+                            <rect key="frame" x="16" y="128.5" width="338" height="31.5"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                            <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="TmH-Fy-oA4" firstAttribute="leading" secondItem="29O-h3-vuq" secondAttribute="leading" constant="37" id="4df-i9-kMQ"/>
+                        <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="gYG-wP-Shi" secondAttribute="bottom" priority="750" constant="20" id="F1m-Tf-mZW"/>
+                        <constraint firstAttribute="trailing" secondItem="gYG-wP-Shi" secondAttribute="trailing" constant="16" id="Fh6-UA-aAE"/>
+                        <constraint firstItem="KGL-UV-ssd" firstAttribute="leading" secondItem="29O-h3-vuq" secondAttribute="leading" constant="158" id="GAO-aW-xkv"/>
+                        <constraint firstItem="gYG-wP-Shi" firstAttribute="top" secondItem="TmH-Fy-oA4" secondAttribute="bottom" constant="14" id="I6S-0n-vIr"/>
+                        <constraint firstAttribute="trailing" secondItem="KGL-UV-ssd" secondAttribute="trailing" constant="158" id="MGb-R3-Kcb"/>
+                        <constraint firstAttribute="trailing" secondItem="TmH-Fy-oA4" secondAttribute="trailing" constant="37" id="TZM-Ic-mSb"/>
+                        <constraint firstItem="gYG-wP-Shi" firstAttribute="leading" secondItem="29O-h3-vuq" secondAttribute="leading" constant="16" id="TmK-GB-ekZ"/>
+                        <constraint firstItem="TmH-Fy-oA4" firstAttribute="top" secondItem="KGL-UV-ssd" secondAttribute="bottom" constant="24" id="fpy-hM-j8w"/>
+                        <constraint firstItem="KGL-UV-ssd" firstAttribute="top" relation="greaterThanOrEqual" secondItem="29O-h3-vuq" secondAttribute="top" constant="20" id="yYH-92-lRq"/>
+                    </constraints>
+                </view>
             </objects>
             <point key="canvasLocation" x="4488.8000000000002" y="-645.42728635682158"/>
         </scene>
@@ -1885,6 +1924,7 @@
         <image name="brush_tableview" width="320" height="285"/>
         <image name="dummy_male1" width="118" height="118"/>
         <image name="dummy_male2" width="153" height="151"/>
+        <image name="icCartActive" width="20" height="18"/>
         <image name="icFbActive" width="24" height="24"/>
         <image name="icFilter" width="18" height="16"/>
         <image name="icInstagramActive" width="24" height="24"/>
