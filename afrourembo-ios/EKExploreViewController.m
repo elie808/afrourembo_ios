@@ -22,8 +22,8 @@ static NSString * const kDiscoverSegue  = @"exploreToDiscover";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.sideMenuDataSource = @[ @{@"icExploreNormal"  : @"Explore"},
-                                 @{@"icCartNormal"     : @"Cart"},
+    self.sideMenuDataSource = @[ @{@"icExploreActive"  : @"Explore"},
+                                 @{@"icCartActive"     : @"Cart"},
                                  @{@"icPaymentsNormal" : @"Orders"},
                                  @{@"icGiftNormal"     : @"Gifts"},
                                  @{@"icSettingsNormal" : @"Settings"}
