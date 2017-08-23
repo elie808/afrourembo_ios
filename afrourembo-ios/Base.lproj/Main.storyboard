@@ -133,7 +133,7 @@
                             <rect key="frame" x="0.0" y="28" width="388" height="52"/>
                             <autoresizingMask key="autoresizingMask"/>
                             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="1Ij-9X-UlQ" id="YTh-4S-Iu2">
-                                <rect key="frame" x="0.0" y="0.0" width="388" height="52"/>
+                                <rect key="frame" x="0.0" y="0.0" width="388" height="51.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Egp-PP-CrF">
@@ -1222,7 +1222,7 @@
                 <viewControllerPlaceholder storyboardIdentifier="signUpCustomer" storyboardName="SignUp" referencedIdentifier="signUpCustomer" id="YvI-IW-TIn" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qXr-dA-niO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4113" y="-1146"/>
+            <point key="canvasLocation" x="4067" y="-194"/>
         </scene>
         <!--Booking View Controller-->
         <scene sceneID="RwZ-ak-q4H">
@@ -1765,6 +1765,7 @@
                         <outlet property="collectionView" destination="QQA-0P-dZT" id="yhW-fw-GNI"/>
                         <outlet property="emptyCartView" destination="29O-h3-vuq" id="3cC-Cv-hb5"/>
                         <segue destination="rtY-H3-YQr" kind="show" identifier="cartToSuccessVC" id="Tgh-kR-Ldd"/>
+                        <segue destination="YvI-IW-TIn" kind="presentation" identifier="cartVCToSignUpVC" id="yqX-hc-pNV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KLN-9k-UYM" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1935,6 +1936,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="xaI-bI-zkP"/>
+        <segue reference="yqX-hc-pNV"/>
         <segue reference="U39-u0-bPg"/>
     </inferredMetricsTieBreakers>
 </document>

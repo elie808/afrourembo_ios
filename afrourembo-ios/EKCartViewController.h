@@ -7,11 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "EKSettings.h"
+
 #import "EKCartCollectionViewCell.h"
 
-#import "Reservation+API.h"
+#import "EKSettings.h"
 #import "Booking.h"
+
+#import "Customer+API.h"
+#import "Reservation+API.h"
 
 #import "EKCartCollectionViewCell+Helpers.h"
 #import "UIViewController+Helpers.h"

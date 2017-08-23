@@ -11,6 +11,8 @@
 static NSString * const kSuccessSegue = @"cartToSuccessVC";
 static NSString * const kCartCell = @"cartCollectionCellID";
 
+static NSString * const kSignUpSegue = @"cartVCToSignUpVC";
+
 @implementation EKCartViewController {
 //    NSMutableArray *_dataSourceArray;
     RLMResults<Booking *> *_bookings;
@@ -27,22 +29,7 @@ static NSString * const kCartCell = @"cartCollectionCellID";
         [self.collectionView reloadData];
     }
     
-    self.emptyCartView.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
-    [self.view addSubview:self.emptyCartView];
-    self.emptyCartView.hidden = YES;
-    
-    self.bottomBar.layer.shadowColor = [UIColor blackColor].CGColor;
-    self.bottomBar.layer.shadowOpacity = 0.3;
-    self.bottomBar.layer.shadowRadius = 1;
-    self.bottomBar.layer.shadowOffset = CGSizeMake(0, -3.5f);
-    
-    if (_bookings.count > 0) {
-        self.bottomBar.hidden = NO;
-        self.emptyCartView.hidden = YES;
-    } else {
-        self.bottomBar.hidden = YES;
-        self.emptyCartView.hidden = NO;
-    }
+    [self initializeLayout];
 }
 
 #pragma mark - UICollectionViewDataSource
@@ -101,40 +88,33 @@ static NSString * const kCartCell = @"cartCollectionCellID";
 #pragma mark - Actions
 
 - (IBAction)didTapCheckoutButton:(UIButton *)button {
-    
-    if ([EKSettings getSavedCustomer].token.length > 0) {
-        
-        // filter Reservation objects out of Booking objects in the dataSource
-        NSMutableArray *reservationsArray = [NSMutableArray new];
-        for (Booking *bookingObj in _bookings) {
-            [reservationsArray addObject:bookingObj.reservation];
-        }
-        
-        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-        [Reservation postUserReservations:reservationsArray
-                                  forUser:[EKSettings getSavedCustomer].token
-                                withBlock:^(Reservation *reservation) {
-                                    
-                                    for (Booking *bookingObj in _bookings) {
-                                        [[RLMRealm defaultRealm] beginWriteTransaction];
-                                        [[RLMRealm defaultRealm] deleteObject:bookingObj.reservation];
-                                        [[RLMRealm defaultRealm] deleteObject:bookingObj];
-                                        [[RLMRealm defaultRealm] commitWriteTransaction];
-                                    }
-                                    
-                                    [MBProgressHUD hideHUDForView:self.view animated:YES];
-                                    [self performSegueWithIdentifier:kSuccessSegue sender:nil];
-                                }
-                               withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
-                                   
-                                   [MBProgressHUD hideHUDForView:self.view animated:YES];
-                                   [self showMessage:errorMessage withTitle:@"Error" completionBlock:nil];
-                               }];
-        
-    } else {
-        
-        //TODO: Sign in popup
+
+    // filter Reservation objects out of Booking objects in the dataSource
+    NSMutableArray *reservationsArray = [NSMutableArray new];
+    for (Booking *bookingObj in _bookings) {
+        [reservationsArray addObject:bookingObj.reservation];
     }
+    
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    [Reservation postUserReservations:reservationsArray
+                              forUser:[EKSettings getSavedCustomer].token
+                            withBlock:^(Reservation *reservation) {
+                                
+                                for (Booking *bookingObj in _bookings) {
+                                    [[RLMRealm defaultRealm] beginWriteTransaction];
+                                    [[RLMRealm defaultRealm] deleteObject:bookingObj.reservation];
+                                    [[RLMRealm defaultRealm] deleteObject:bookingObj];
+                                    [[RLMRealm defaultRealm] commitWriteTransaction];
+                                }
+                                
+                                [MBProgressHUD hideHUDForView:self.view animated:YES];
+                                [self performSegueWithIdentifier:kSuccessSegue sender:nil];
+                            }
+                           withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
+                               
+                               [MBProgressHUD hideHUDForView:self.view animated:YES];
+                               [self handleVendorAvailabilityErrors:error errorMessage:errorMessage statusCode:statusCode];
+                           }];
 }
 
 #pragma mark - Navigation
@@ -143,6 +123,63 @@ static NSString * const kCartCell = @"cartCollectionCellID";
     
     if ([segue.identifier isEqualToString:kSuccessSegue]) {
         
+    }
+}
+
+#pragma mark - Helpers
+
+- (void)initializeLayout {
+    
+    self.emptyCartView.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
+    [self.view addSubview:self.emptyCartView];
+    self.emptyCartView.hidden = YES;
+    
+    self.bottomBar.layer.shadowColor = [UIColor blackColor].CGColor;
+    self.bottomBar.layer.shadowOpacity = 0.3;
+    self.bottomBar.layer.shadowRadius = 1;
+    self.bottomBar.layer.shadowOffset = CGSizeMake(0, -3.5f);
+    
+    if (_bookings.count > 0) {
+        self.bottomBar.hidden = NO;
+        self.emptyCartView.hidden = YES;
+    } else {
+        self.bottomBar.hidden = YES;
+        self.emptyCartView.hidden = NO;
+    }
+}
+
+- (void)handleVendorAvailabilityErrors:(NSError *)error errorMessage:(NSString *)errorMessage statusCode:(NSInteger) statusCode {
+    
+    if (statusCode == 401) { // invalid token
+        
+        [self showLoginDialog:^(UIAlertAction *action, NSString *emailString, NSString *passString) {
+            
+            [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+            
+            [Customer loginCustomer:emailString
+                           password:passString
+                          withBlock:^(Customer *customerObj) {
+                              
+                              [MBProgressHUD hideHUDForView:self.view animated:YES];
+                              [EKSettings saveCustomer:customerObj];
+                          }
+                         withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
+                             
+                             [MBProgressHUD hideHUDForView:self.view animated:YES];
+                             [self showMessage:errorMessage withTitle:@"There is something wrong"
+                               completionBlock:nil];
+                         }];
+            
+        } andSignUpBlock:^(UIAlertAction *action) {
+            
+            [EKSettings deleteBookingsForCustomer:[EKSettings getSavedCustomer]];
+            [EKSettings deleteSavedCustomer];
+            [self performSegueWithIdentifier:kSignUpSegue sender:nil];
+        }];
+        
+    } else {
+        
+        [self showMessage:errorMessage withTitle:@"Error" completionBlock:nil];
     }
 }
 
