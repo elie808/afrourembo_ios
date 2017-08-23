@@ -27,16 +27,27 @@
 #import "EKConstants.h"
 
 #import "Booking+API.h"
+#import "Day+API.h"
 #import "Customer+API.h"
 #import "Reservation+API.h"
 #import "NSDate+Helpers.h"
 #import "UIViewController+Helpers.h"
 
+static NSString * const kSignUpSegue = @"bookingVCToSignUpVC";
+
 @interface EKBookingViewController : UIViewController <UICollectionViewDataSource, UICollectionViewDelegate, UIGestureRecognizerDelegate, UITextViewDelegate>
 
-//@property (strong, nonatomic) Booking *booking;
 @property (strong, nonatomic) Service *passedService;
+
 @property (strong, nonatomic) NSArray *professionalsDataSource;
+@property (strong, nonatomic) NSMutableArray *daysDataSource;
+@property (strong, nonatomic) NSMutableArray *timesDataSource;
+
+@property (strong, nonatomic) NSString *vendorType;
+@property (strong, nonatomic) NSString *bookingNote;
+@property (strong, nonatomic) NSDate *selectedFromDate;
+@property (strong, nonatomic) NSDate *selectedToDate;
+@property (strong, nonatomic) Professional *selectedPro;
 
 @property (strong, nonatomic) IBOutlet UIView *emptyTimeDataView;
 

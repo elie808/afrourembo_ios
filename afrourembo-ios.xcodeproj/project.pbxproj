@@ -104,6 +104,8 @@
 		47BFEA691EA4A9A30091522B /* EKBookingDayCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 47BFEA681EA4A9A30091522B /* EKBookingDayCollectionViewCell.m */; };
 		47C42DDC1E7D6509008CBF51 /* Welcome.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 47C42DDB1E7D6509008CBF51 /* Welcome.storyboard */; };
 		47C42DDE1E7D65D1008CBF51 /* SignUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 47C42DDD1E7D65D1008CBF51 /* SignUp.storyboard */; };
+		47C4804D1F4DBC3B00493E0B /* EKBookingViewController+CollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 47C4804C1F4DBC3B00493E0B /* EKBookingViewController+CollectionView.m */; };
+		47C480511F4DBF0C00493E0B /* EKBookingViewController+Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 47C480501F4DBF0C00493E0B /* EKBookingViewController+Helpers.m */; };
 		47C7D4CC1EBB5EF000457E53 /* Day.m in Sources */ = {isa = PBXBuildFile; fileRef = 47C7D4CB1EBB5EF000457E53 /* Day.m */; };
 		47D44C2D1EBEBB25007ACFAA /* EKFilterSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47D44C2C1EBEBB25007ACFAA /* EKFilterSearchViewController.m */; };
 		47D44C311EBEBD1A007ACFAA /* EKFilterSearchViewController+TableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 47D44C301EBEBD1A007ACFAA /* EKFilterSearchViewController+TableView.m */; };
@@ -320,6 +322,10 @@
 		47C30CAD1EC11F8B00CE66DD /* afrourembo-ios.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "afrourembo-ios.entitlements"; sourceTree = "<group>"; };
 		47C42DDB1E7D6509008CBF51 /* Welcome.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Welcome.storyboard; sourceTree = "<group>"; };
 		47C42DDD1E7D65D1008CBF51 /* SignUp.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SignUp.storyboard; sourceTree = "<group>"; };
+		47C4804B1F4DBC3B00493E0B /* EKBookingViewController+CollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "EKBookingViewController+CollectionView.h"; sourceTree = "<group>"; };
+		47C4804C1F4DBC3B00493E0B /* EKBookingViewController+CollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "EKBookingViewController+CollectionView.m"; sourceTree = "<group>"; };
+		47C4804F1F4DBF0C00493E0B /* EKBookingViewController+Helpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "EKBookingViewController+Helpers.h"; sourceTree = "<group>"; };
+		47C480501F4DBF0C00493E0B /* EKBookingViewController+Helpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "EKBookingViewController+Helpers.m"; sourceTree = "<group>"; };
 		47C7D4CA1EBB5EF000457E53 /* Day.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Day.h; sourceTree = "<group>"; };
 		47C7D4CB1EBB5EF000457E53 /* Day.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Day.m; sourceTree = "<group>"; };
 		47D44C2B1EBEBB25007ACFAA /* EKFilterSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKFilterSearchViewController.h; sourceTree = "<group>"; };
@@ -602,6 +608,7 @@
 			children = (
 				47800BC11EA3B2FA00F450DB /* EKBookingViewController.h */,
 				47800BC21EA3B2FA00F450DB /* EKBookingViewController.m */,
+				47C4804E1F4DBD3B00493E0B /* Categories */,
 				47BFEA661EA49D3B0091522B /* Cells */,
 			);
 			name = "Customer - Booking ViewController";
@@ -1002,6 +1009,17 @@
 			name = Cells;
 			sourceTree = "<group>";
 		};
+		47C4804E1F4DBD3B00493E0B /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				47C4804F1F4DBF0C00493E0B /* EKBookingViewController+Helpers.h */,
+				47C480501F4DBF0C00493E0B /* EKBookingViewController+Helpers.m */,
+				47C4804B1F4DBC3B00493E0B /* EKBookingViewController+CollectionView.h */,
+				47C4804C1F4DBC3B00493E0B /* EKBookingViewController+CollectionView.m */,
+			);
+			name = Categories;
+			sourceTree = "<group>";
+		};
 		47D44C2E1EBEBB2A007ACFAA /* Customer - Filter & Search ViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -1322,6 +1340,7 @@
 				4757C6501ED9862800C2B52F /* EKTodayCollectionViewCell.m in Sources */,
 				479AB2681EA0B9E300A74659 /* EKCompanyProfileViewController.m in Sources */,
 				47BD3CEC1EC2A7680062AA97 /* EKAnnotation.m in Sources */,
+				47C480511F4DBF0C00493E0B /* EKBookingViewController+Helpers.m in Sources */,
 				475A4CF41EBF7EFC0089D477 /* EKAddNewServiceTableViewCell.m in Sources */,
 				47D44C2D1EBEBB25007ACFAA /* EKFilterSearchViewController.m in Sources */,
 				4787C6D91EB402A500DF7B83 /* EKCartCollectionViewCell.m in Sources */,
@@ -1344,6 +1363,7 @@
 				47FE51C91EFD5BD400A39BAE /* Category+API.m in Sources */,
 				47D88E6E1E793893001B88D0 /* EKWelcomeViewController.m in Sources */,
 				470CD7531EA1CB930086DEE4 /* EKCompanyProfessionalCollectionViewCell.m in Sources */,
+				47C4804D1F4DBC3B00493E0B /* EKBookingViewController+CollectionView.m in Sources */,
 				47822B051EDDAE49001E247F /* EKSalesSummaryViewController.m in Sources */,
 				473535361F0B1EE6009FCE41 /* Explore+API.m in Sources */,
 			);
