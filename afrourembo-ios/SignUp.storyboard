@@ -352,6 +352,12 @@
                                                 <constraint firstAttribute="height" constant="62" id="MfE-q2-JgZ"/>
                                                 <constraint firstAttribute="width" constant="62" id="PIY-2B-p9r"/>
                                             </constraints>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                    <integer key="value" value="31"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                            </userDefinedRuntimeAttributes>
                                         </imageView>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BFp-1s-e84">
                                             <rect key="frame" x="8" y="96" width="359" height="44"/>
@@ -485,8 +491,47 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="eHc-OI-LiC">
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <view key="tableHeaderView" contentMode="scaleToFill" id="aCg-RG-1OI">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="142"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icPlaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="4Zz-8U-nGQ">
+                                            <rect key="frame" x="156" y="8" width="62" height="62"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="62" id="1VN-SG-m51"/>
+                                                <constraint firstAttribute="height" constant="62" id="2sQ-cT-MDy"/>
+                                            </constraints>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                    <integer key="value" value="31"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                            </userDefinedRuntimeAttributes>
+                                        </imageView>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ioy-dv-lYn">
+                                            <rect key="frame" x="8" y="78" width="359" height="44"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="44" id="LRQ-L9-7q9"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <state key="normal" title="Change photo">
+                                                <color key="titleColor" red="1" green="0.76470588240000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="didTapChageProfilePicture:" destination="IDC-sk-XPJ" eventType="touchDown" id="CqM-zR-S01"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="bottom" secondItem="Ioy-dv-lYn" secondAttribute="bottom" constant="20" id="7CN-F5-F6T"/>
+                                        <constraint firstItem="Ioy-dv-lYn" firstAttribute="top" secondItem="4Zz-8U-nGQ" secondAttribute="bottom" constant="8" symbolic="YES" id="Zaz-ib-kas"/>
+                                        <constraint firstItem="4Zz-8U-nGQ" firstAttribute="centerX" secondItem="Ioy-dv-lYn" secondAttribute="centerX" id="cFM-Fp-Z0j"/>
+                                        <constraint firstAttribute="trailing" secondItem="Ioy-dv-lYn" secondAttribute="trailing" constant="8" id="o5J-Je-Ws3"/>
+                                        <constraint firstItem="Ioy-dv-lYn" firstAttribute="leading" secondItem="aCg-RG-1OI" secondAttribute="leading" constant="8" id="ySE-4q-von"/>
+                                    </constraints>
+                                </view>
                                 <view key="tableFooterView" contentMode="scaleToFill" id="Vps-pt-d7h">
-                                    <rect key="frame" x="0.0" y="72" width="375" height="84"/>
+                                    <rect key="frame" x="0.0" y="214" width="375" height="84"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RnP-J0-DRM">
@@ -519,7 +564,7 @@
                                 </view>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="editProfileInfoCell" id="2RZ-La-odm" customClass="EKTextFieldTableViewCell">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="170" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2RZ-La-odm" id="YHR-F8-TiX">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -576,6 +621,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="profilePicImageView" destination="4Zz-8U-nGQ" id="WOn-ws-bUk"/>
                         <outlet property="tableView" destination="eHc-OI-LiC" id="c1D-bU-pu1"/>
                         <segue destination="WIc-6j-gwA" kind="show" identifier="editVcToExploreVC" action="showDetailViewController:sender:" id="w0H-6g-W5f"/>
                     </connections>
@@ -2175,7 +2221,7 @@
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icPlaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="c3i-mM-Kvu">
-                                            <rect key="frame" x="156" y="10" width="62" height="62"/>
+                                            <rect key="frame" x="269" y="10" width="62" height="62"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="62" id="2lw-sm-Y1u"/>
                                                 <constraint firstAttribute="width" constant="62" id="fcN-lU-hdX"/>
@@ -2187,7 +2233,7 @@
                                             </userDefinedRuntimeAttributes>
                                         </imageView>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aZP-LD-jaM">
-                                            <rect key="frame" x="346" y="18" width="21" height="21"/>
+                                            <rect key="frame" x="571" y="18" width="21" height="21"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="21" id="Ex5-en-CNj"/>
                                                 <constraint firstAttribute="width" constant="21" id="RxJ-LQ-oYA"/>
@@ -2208,7 +2254,7 @@
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jeJ-fc-RgN">
-                                            <rect key="frame" x="8" y="8" width="359" height="44"/>
+                                            <rect key="frame" x="8" y="8" width="584" height="44"/>
                                             <color key="backgroundColor" red="1" green="0.76470588240000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="44" id="aKe-eB-etS"/>
@@ -2228,7 +2274,7 @@
                                             </connections>
                                         </button>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gTr-71-tjS">
-                                            <rect key="frame" x="8" y="72" width="359" height="48"/>
+                                            <rect key="frame" x="8" y="72" width="584" height="48"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="48" id="4jd-Eg-hdd"/>
@@ -2744,6 +2790,6 @@
         <segue reference="WR4-wb-Am0"/>
         <segue reference="pcN-xV-EFc"/>
         <segue reference="z4e-2X-Leh"/>
-        <segue reference="hg1-H8-gAt"/>
+        <segue reference="w0H-6g-W5f"/>
     </inferredMetricsTieBreakers>
 </document>

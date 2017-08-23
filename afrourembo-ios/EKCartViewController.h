@@ -24,6 +24,7 @@
 //@property (strong, nonatomic) Booking *passedBooking;
 
 @property (strong, nonatomic) IBOutlet UICollectionView *collectionView;
+@property (strong, nonatomic) IBOutlet UIView *emptyCartView;
 @property (strong, nonatomic) IBOutlet UIView *bottomBar;
 
 - (IBAction)didTapCheckoutButton:(UIButton *)button;

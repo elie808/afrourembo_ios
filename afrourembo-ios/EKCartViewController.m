@@ -23,12 +23,26 @@ static NSString * const kCartCell = @"cartCollectionCellID";
         
         NSPredicate *pred = [NSPredicate predicateWithFormat:@"bookingOwner = %@", [EKSettings getSavedCustomer].email];
         _bookings = [Booking objectsWithPredicate:pred];
+        
+        [self.collectionView reloadData];
     }
+    
+    self.emptyCartView.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
+    [self.view addSubview:self.emptyCartView];
+    self.emptyCartView.hidden = YES;
     
     self.bottomBar.layer.shadowColor = [UIColor blackColor].CGColor;
     self.bottomBar.layer.shadowOpacity = 0.3;
     self.bottomBar.layer.shadowRadius = 1;
     self.bottomBar.layer.shadowOffset = CGSizeMake(0, -3.5f);
+    
+    if (_bookings.count > 0) {
+        self.bottomBar.hidden = NO;
+        self.emptyCartView.hidden = YES;
+    } else {
+        self.bottomBar.hidden = YES;
+        self.emptyCartView.hidden = NO;
+    }
 }
 
 #pragma mark - UICollectionViewDataSource
@@ -69,6 +83,17 @@ static NSString * const kCartCell = @"cartCollectionCellID";
     [[RLMRealm defaultRealm] deleteObject:booking.reservation];
     [[RLMRealm defaultRealm] deleteObject:booking];
     [[RLMRealm defaultRealm] commitWriteTransaction];
+    
+    if (_bookings.count > 0) {
+        
+        self.bottomBar.hidden = NO;
+        self.emptyCartView.hidden = YES;
+        
+    } else {
+        
+        self.bottomBar.hidden = YES;
+        self.emptyCartView.hidden = NO;
+    }
     
     [self.collectionView reloadData];
 }

@@ -10,6 +10,29 @@
 
 @implementation UIImage (Helpers)
 
++ (NSData *)compressImage:(UIImage *)myImage toSize:(int)fileSizeInMBs {
+    
+    CGFloat compression = 0.9f;
+    CGFloat maxCompression = 0.1f;
+    int maxFileSize = fileSizeInMBs * 1024 * 1024; // size in bytes
+    
+    NSData *imageData = UIImageJPEGRepresentation(myImage, compression);
+    
+    NSLog(@"Original image size: %@",[NSByteCountFormatter stringFromByteCount:imageData.length
+                                                                    countStyle:NSByteCountFormatterCountStyleFile]);
+    
+    while ([imageData length] > maxFileSize && compression > maxCompression)
+    {
+        compression -= 0.1;
+        imageData = UIImageJPEGRepresentation(myImage, compression);
+    }
+    
+    NSLog(@"Resized image size: %@",[NSByteCountFormatter stringFromByteCount:imageData.length
+                                                                   countStyle:NSByteCountFormatterCountStyleFile]);
+    
+    return imageData;
+}
+
 + (UIImage *)imageForStars:(NSNumber *)numberOfStars {
     
     switch ([numberOfStars integerValue]) {

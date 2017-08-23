@@ -16,7 +16,7 @@ static NSString * const kCartSegue   = @"bookingTimeToCartVC";
 static NSString * const kSignUpSegue = @"bookingVCToSignUpVC";
 
 //static NSString * const kPlaceHolderText = @"What do you like about this place?";
-static CGFloat const kContainerViewHeight = 128;
+static CGFloat const kContainerViewHeight = 100;
 
 @implementation EKBookingViewController {
     BOOL _keyboardShowing;

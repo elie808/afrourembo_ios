@@ -10,6 +10,7 @@
 
 @interface UIImage (Helpers)
 
++ (NSData *)compressImage:(UIImage *)myImage toSize:(int)maxFileSize;
 + (UIImage *)imageForStars:(NSNumber *)numberOfStars;
 
 @end
