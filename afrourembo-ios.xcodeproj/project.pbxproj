@@ -106,6 +106,9 @@
 		47C42DDE1E7D65D1008CBF51 /* SignUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 47C42DDD1E7D65D1008CBF51 /* SignUp.storyboard */; };
 		47C4804D1F4DBC3B00493E0B /* EKBookingViewController+CollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 47C4804C1F4DBC3B00493E0B /* EKBookingViewController+CollectionView.m */; };
 		47C480511F4DBF0C00493E0B /* EKBookingViewController+Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 47C480501F4DBF0C00493E0B /* EKBookingViewController+Helpers.m */; };
+		47C480561F4DCFBD00493E0B /* EKPaymentGatewayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47C480551F4DCFBD00493E0B /* EKPaymentGatewayViewController.m */; };
+		47C480581F4DD34F00493E0B /* payment_gateway in Resources */ = {isa = PBXBuildFile; fileRef = 47C480571F4DD34F00493E0B /* payment_gateway */; };
+		47C4805A1F4E312600493E0B /* payment_gateway.html in Resources */ = {isa = PBXBuildFile; fileRef = 47C480591F4E312600493E0B /* payment_gateway.html */; };
 		47C7D4CC1EBB5EF000457E53 /* Day.m in Sources */ = {isa = PBXBuildFile; fileRef = 47C7D4CB1EBB5EF000457E53 /* Day.m */; };
 		47D44C2D1EBEBB25007ACFAA /* EKFilterSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47D44C2C1EBEBB25007ACFAA /* EKFilterSearchViewController.m */; };
 		47D44C311EBEBD1A007ACFAA /* EKFilterSearchViewController+TableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 47D44C301EBEBD1A007ACFAA /* EKFilterSearchViewController+TableView.m */; };
@@ -326,6 +329,10 @@
 		47C4804C1F4DBC3B00493E0B /* EKBookingViewController+CollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "EKBookingViewController+CollectionView.m"; sourceTree = "<group>"; };
 		47C4804F1F4DBF0C00493E0B /* EKBookingViewController+Helpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "EKBookingViewController+Helpers.h"; sourceTree = "<group>"; };
 		47C480501F4DBF0C00493E0B /* EKBookingViewController+Helpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "EKBookingViewController+Helpers.m"; sourceTree = "<group>"; };
+		47C480541F4DCFBD00493E0B /* EKPaymentGatewayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKPaymentGatewayViewController.h; sourceTree = "<group>"; };
+		47C480551F4DCFBD00493E0B /* EKPaymentGatewayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKPaymentGatewayViewController.m; sourceTree = "<group>"; };
+		47C480571F4DD34F00493E0B /* payment_gateway */ = {isa = PBXFileReference; lastKnownFileType = text; path = payment_gateway; sourceTree = "<group>"; };
+		47C480591F4E312600493E0B /* payment_gateway.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = payment_gateway.html; sourceTree = "<group>"; };
 		47C7D4CA1EBB5EF000457E53 /* Day.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Day.h; sourceTree = "<group>"; };
 		47C7D4CB1EBB5EF000457E53 /* Day.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Day.m; sourceTree = "<group>"; };
 		47D44C2B1EBEBB25007ACFAA /* EKFilterSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKFilterSearchViewController.h; sourceTree = "<group>"; };
@@ -628,6 +635,7 @@
 		478278C01E7923D000FB2FD2 = {
 			isa = PBXGroup;
 			children = (
+				47C480571F4DD34F00493E0B /* payment_gateway */,
 				478278CB1E7923D000FB2FD2 /* afrourembo-ios */,
 				478278CA1E7923D000FB2FD2 /* Products */,
 				A377625E4420D4B718A46A25 /* Pods */,
@@ -661,6 +669,7 @@
 				478278E31E79240C00FB2FD2 /* Storyboards */,
 				478278D81E7923D000FB2FD2 /* Assets.xcassets */,
 				478278DD1E7923D000FB2FD2 /* Info.plist */,
+				47C480591F4E312600493E0B /* payment_gateway.html */,
 				478278CC1E7923D000FB2FD2 /* Supporting Files */,
 			);
 			path = "afrourembo-ios";
@@ -711,6 +720,8 @@
 			children = (
 				4787C6DE1EB40DD200DF7B83 /* EKCartCollectionViewCell+Helpers.h */,
 				4787C6DF1EB40DD200DF7B83 /* EKCartCollectionViewCell+Helpers.m */,
+				47C480541F4DCFBD00493E0B /* EKPaymentGatewayViewController.h */,
+				47C480551F4DCFBD00493E0B /* EKPaymentGatewayViewController.m */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -1194,8 +1205,10 @@
 				478278DC1E7923D000FB2FD2 /* LaunchScreen.storyboard in Resources */,
 				47C42DDC1E7D6509008CBF51 /* Welcome.storyboard in Resources */,
 				478278D91E7923D000FB2FD2 /* Assets.xcassets in Resources */,
+				47C480581F4DD34F00493E0B /* payment_gateway in Resources */,
 				47DD4CCA1EB2149A009AA482 /* Vendor_Main.storyboard in Resources */,
 				478278D71E7923D000FB2FD2 /* Main.storyboard in Resources */,
+				47C4805A1F4E312600493E0B /* payment_gateway.html in Resources */,
 				47C42DDE1E7D65D1008CBF51 /* SignUp.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1339,6 +1352,7 @@
 				47A3BB8C1E7A9F3500963F27 /* EKSignInViewController.m in Sources */,
 				4757C6501ED9862800C2B52F /* EKTodayCollectionViewCell.m in Sources */,
 				479AB2681EA0B9E300A74659 /* EKCompanyProfileViewController.m in Sources */,
+				47C480561F4DCFBD00493E0B /* EKPaymentGatewayViewController.m in Sources */,
 				47BD3CEC1EC2A7680062AA97 /* EKAnnotation.m in Sources */,
 				47C480511F4DBF0C00493E0B /* EKBookingViewController+Helpers.m in Sources */,
 				475A4CF41EBF7EFC0089D477 /* EKAddNewServiceTableViewCell.m in Sources */,
