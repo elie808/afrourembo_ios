@@ -100,6 +100,8 @@
             
         case DateFormatLetterDayMonthYear: dateFormatter.dateFormat = @"EEEE MMMM dd"; break;
             
+        case DateFormatLetterDayMonthYearAbbreviated: dateFormatter.dateFormat = @"EEE MMM d"; break;
+            
         case DateFormatDigitYearMonthDay: dateFormatter.dateFormat = @"yyyy-MM-dd"; break;
             
         case DateFormatDigitYearMonth: dateFormatter.dateFormat = @"yyyy-MM"; break;

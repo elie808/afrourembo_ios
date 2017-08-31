@@ -10,6 +10,7 @@
 
 typedef NS_ENUM(NSUInteger, DateFormat) {
     DateFormatLetterDayMonthYear,
+    DateFormatLetterDayMonthYearAbbreviated,
     DateFormatDigitYearMonthDay,
     DateFormatDigitYearMonth,
     DateFormatDigitMonthYear,
