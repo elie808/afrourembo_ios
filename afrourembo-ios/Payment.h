@@ -10,7 +10,7 @@
 
 @interface Payment : NSObject
 
-@property NSString *description;
+@property NSString *descriptionText;
 @property NSString *currency;
 @property NSNumber *orderTotal;
 @property NSString *fName;

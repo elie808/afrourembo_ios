@@ -22,7 +22,7 @@ static const NSTimeInterval kTimer = 0.01667;
     NSURL *htmlFileURL = [[NSBundle mainBundle] URLForResource:@"payment_gateway" withExtension:@"html"];
     NSString *htmlString = [NSString stringWithContentsOfFile:htmlFileURL.path encoding:NSUTF8StringEncoding error:nil];
 
-    htmlString = [htmlString stringByReplacingOccurrencesOfString:@"itemDescriptionVAR" withString:self.paymentObj.description];
+    htmlString = [htmlString stringByReplacingOccurrencesOfString:@"itemDescriptionVAR" withString:self.paymentObj.descriptionText];
     htmlString = [htmlString stringByReplacingOccurrencesOfString:@"currencyVAR" withString:self.paymentObj.currency];
     htmlString = [htmlString stringByReplacingOccurrencesOfString:@"orderAmountVAR"
                                                        withString:[NSString stringWithFormat:@"%@", self.paymentObj.orderTotal]];

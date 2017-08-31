@@ -17,7 +17,8 @@
         
         Day *day = [Day new];
         
-        day.dayName = [NSDate stringFromDate:[NSDate addDays:i after:[NSDate todayDate]] withFormat:DateFormatLetterDayMonthYear];
+        day.dayName = [NSDate stringFromDate:[NSDate addDays:i after:[NSDate todayDate]]
+                                  withFormat:DateFormatLetterDayMonthYearAbbreviated];
         
         day.dayNumber = [Day dayNumberFromDay:[NSDate addDays:i after:[NSDate todayDate]]];
         
