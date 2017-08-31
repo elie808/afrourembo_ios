@@ -11,8 +11,8 @@
 #import "Service+API.h"
 
 @interface Business : NSObject
-@property NSString *address;
 @property NSString *name;
+@property NSString *address;
 @property NSDictionary *location;
 @end
 
@@ -27,6 +27,7 @@
 @property NSString *fName;
 @property NSString *lName;
 @property NSString *email;
+@property NSString *phoneNumber;
 @property NSString *password;
 
 @property (assign, nonatomic) BOOL isMobile;
