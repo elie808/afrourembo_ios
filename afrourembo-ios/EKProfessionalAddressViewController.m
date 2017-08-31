@@ -19,8 +19,16 @@ static CLLocationDistance const kZoomDistance = 500;
     self.pinImageView.center = self.mapView.center;
     [self.view addSubview:self.pinImageView];
     
-    // Set to Nairobi coordinates
-    CLLocationCoordinate2D noLocation = CLLocationCoordinate2DMake(-1.280424, 36.816311);
+    // set to Nairobi coordinates by default
+    CGFloat latitude = -1.280424;
+    CGFloat longitude = 36.816311;
+    
+    if (self.passedCoords.latitude && self.passedCoords.longitude) {
+        latitude = self.passedCoords.latitude;
+        longitude = self.passedCoords.longitude;
+    }
+    
+    CLLocationCoordinate2D noLocation = CLLocationCoordinate2DMake(latitude, longitude);
     MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(noLocation, kZoomDistance, kZoomDistance);
     MKCoordinateRegion adjustedRegion = [self.mapView regionThatFits:viewRegion];
     [self.mapView setRegion:adjustedRegion animated:YES];
@@ -28,8 +36,7 @@ static CLLocationDistance const kZoomDistance = 500;
 
 // REVERSE LOOKUP FROM STRING
 /*
- 
- */
+*/
 
 #pragma mark - MKMapViewDelegate
 
