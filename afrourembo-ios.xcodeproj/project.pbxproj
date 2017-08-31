@@ -34,6 +34,7 @@
 		474ED7BC1E9C68940099CA0A /* EKDiscoverMapViewController+MapDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 474ED7BB1E9C68940099CA0A /* EKDiscoverMapViewController+MapDelegate.m */; };
 		474ED7C01E9C6BD90099CA0A /* EKDiscoverMapViewController+TableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 474ED7BF1E9C6BD90099CA0A /* EKDiscoverMapViewController+TableView.m */; };
 		474FAE921F38E0A900970A1F /* TimeSlot.m in Sources */ = {isa = PBXBuildFile; fileRef = 474FAE911F38E0A900970A1F /* TimeSlot.m */; };
+		475572111F519A1D00741CA9 /* Payment.m in Sources */ = {isa = PBXBuildFile; fileRef = 475572101F519A1D00741CA9 /* Payment.m */; };
 		4757C6491ED879FB00C2B52F /* EKTodayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4757C6481ED879FB00C2B52F /* EKTodayViewController.m */; };
 		4757C64D1ED973FD00C2B52F /* EKTodayTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4757C64C1ED973FD00C2B52F /* EKTodayTableViewCell.m */; };
 		4757C6501ED9862800C2B52F /* EKTodayCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4757C64F1ED9862800C2B52F /* EKTodayCollectionViewCell.m */; };
@@ -186,6 +187,8 @@
 		474ED7BF1E9C6BD90099CA0A /* EKDiscoverMapViewController+TableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "EKDiscoverMapViewController+TableView.m"; sourceTree = "<group>"; };
 		474FAE901F38E0A900970A1F /* TimeSlot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeSlot.h; sourceTree = "<group>"; };
 		474FAE911F38E0A900970A1F /* TimeSlot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimeSlot.m; sourceTree = "<group>"; };
+		4755720F1F519A1D00741CA9 /* Payment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Payment.h; sourceTree = "<group>"; };
+		475572101F519A1D00741CA9 /* Payment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Payment.m; sourceTree = "<group>"; };
 		4757C6471ED879FB00C2B52F /* EKTodayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKTodayViewController.h; sourceTree = "<group>"; };
 		4757C6481ED879FB00C2B52F /* EKTodayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKTodayViewController.m; sourceTree = "<group>"; };
 		4757C64B1ED973FD00C2B52F /* EKTodayTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKTodayTableViewCell.h; sourceTree = "<group>"; };
@@ -774,6 +777,8 @@
 				47C7D4CB1EBB5EF000457E53 /* Day.m */,
 				473535311F0B1E71009FCE41 /* Explore.h */,
 				473535321F0B1E71009FCE41 /* Explore.m */,
+				4755720F1F519A1D00741CA9 /* Payment.h */,
+				475572101F519A1D00741CA9 /* Payment.m */,
 				479F7D691EF0C09600EB445A /* Professional.h */,
 				479F7D6A1EF0C09600EB445A /* Professional.m */,
 				471F5FB91F4870550097817E /* ProfilePicture.h */,
@@ -1287,6 +1292,7 @@
 				47652BFA1F01DC8B00796E04 /* EKSettings.m in Sources */,
 				478971941EA756F100917DB1 /* EKEditFacebookProfileInfoViewController.m in Sources */,
 				47822B091EDDC37C001E247F /* EKSalesSummaryTableViewCell.m in Sources */,
+				475572111F519A1D00741CA9 /* Payment.m in Sources */,
 				47843A581F048CD000686CDD /* Day+API.m in Sources */,
 				47FFF9751E99E81F008B6A31 /* EKImageTextTableViewCell.m in Sources */,
 				479F7D6E1EF0C17E00EB445A /* Professional+API.m in Sources */,

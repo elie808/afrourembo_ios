@@ -8,7 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
+#import "Payment.h"
+
+#import "EKSettings.h"
+
 @interface EKPaymentGatewayViewController : UIViewController <UIWebViewDelegate>
+
+@property (strong, nonatomic) Payment *paymentObj;
 
 @property (strong, nonatomic) IBOutlet UIProgressView *progressView;
 @property (strong, nonatomic) IBOutlet UIWebView *webView;

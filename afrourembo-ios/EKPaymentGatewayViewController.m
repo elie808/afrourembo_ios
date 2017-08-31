@@ -21,22 +21,18 @@ static const NSTimeInterval kTimer = 0.01667;
     
     NSURL *htmlFileURL = [[NSBundle mainBundle] URLForResource:@"payment_gateway" withExtension:@"html"];
     NSString *htmlString = [NSString stringWithContentsOfFile:htmlFileURL.path encoding:NSUTF8StringEncoding error:nil];
+
+    htmlString = [htmlString stringByReplacingOccurrencesOfString:@"itemDescriptionVAR" withString:self.paymentObj.description];
+    htmlString = [htmlString stringByReplacingOccurrencesOfString:@"currencyVAR" withString:self.paymentObj.currency];
+    htmlString = [htmlString stringByReplacingOccurrencesOfString:@"orderAmountVAR"
+                                                       withString:[NSString stringWithFormat:@"%@", self.paymentObj.orderTotal]];
+    htmlString = [htmlString stringByReplacingOccurrencesOfString:@"fNameVAR" withString:self.paymentObj.fName];
+    htmlString = [htmlString stringByReplacingOccurrencesOfString:@"lNameVAR" withString:self.paymentObj.lName];
+    htmlString = [htmlString stringByReplacingOccurrencesOfString:@"emailVAR" withString:self.paymentObj.email];
+    htmlString = [htmlString stringByReplacingOccurrencesOfString:@"mobileVAR" withString:self.paymentObj.mobile];
     
-    NSLog(@"\n \n \n HTML: %@", htmlString);
-    
-    htmlString = [htmlString stringByReplacingOccurrencesOfString:@"itemDescriptionVAR" withString:@"ZUBARA"];
-    htmlString = [htmlString stringByReplacingOccurrencesOfString:@"currencyVAR" withString:@"ZUBARA"];
-    htmlString = [htmlString stringByReplacingOccurrencesOfString:@"orderAmountVAR" withString:@"ZUBARA"];
-    htmlString = [htmlString stringByReplacingOccurrencesOfString:@"orderAmountVAR" withString:@"ZUBARA"];
-    htmlString = [htmlString stringByReplacingOccurrencesOfString:@"fNameVAR" withString:@"ZUBARA"];
-    htmlString = [htmlString stringByReplacingOccurrencesOfString:@"lNameVAR" withString:@"ZUBARA"];
-    htmlString = [htmlString stringByReplacingOccurrencesOfString:@"emailVAR" withString:@"ZUBARA"];
-    htmlString = [htmlString stringByReplacingOccurrencesOfString:@"mobileVAR" withString:@"ZUBARA"];
-    
-    htmlString = [htmlString stringByReplacingOccurrencesOfString:@"bookingID" withString:@"ZUBARA"];
-    
-    NSLog(@"\n \n \n NEW NEW: %@", htmlString);
-    
+    htmlString = [htmlString stringByReplacingOccurrencesOfString:@"bookingID" withString:self.paymentObj.bookingID];
+
     [self.webView loadHTMLString:htmlString baseURL:nil];
 }
 
