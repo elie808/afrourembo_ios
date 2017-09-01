@@ -120,7 +120,11 @@ static CGFloat const kTimePickerHeight = 230.;
     if (indexPath.row == 2) {
 
         if (self.serviceToEdit.time && self.serviceToEdit.time > 0) {
-            cell.cellTextField.text = [NSString stringWithFormat:@"%.f minutes", self.serviceToEdit.time];
+            
+            CGFloat minutes = fmod(self.serviceToEdit.time, 60);
+            CGFloat hours = (self.serviceToEdit.time - minutes)/60;
+            
+            cell.cellTextField.text = [NSString stringWithFormat:@"%.0f h %.0f m", hours, minutes];
         }
     }
     
