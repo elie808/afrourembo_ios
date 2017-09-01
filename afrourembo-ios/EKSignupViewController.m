@@ -127,6 +127,8 @@ static NSString * const kEditProfileSegue = @"signUpToEditProfile";
                                                                 customerObj.fName = [result valueForKey:@"first_name"];
                                                                 customerObj.lName = [result valueForKey:@"last_name"];
 
+                                                                [EKSettings saveCustomer:customerObj];
+                                                                
                                                                 [self performSegueWithIdentifier:kEditProfileSegue sender:customerObj];
                                                             }
                                                            withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
@@ -162,7 +164,10 @@ static NSString * const kEditProfileSegue = @"signUpToEditProfile";
                    withBlock:^(Customer *customerObj) {
                        
                        NSLog(@"USER SIGNED UP!!");
+                       
                        [MBProgressHUD hideHUDForView:self.view animated:YES];
+                       
+                       [EKSettings saveCustomer:customerObj];
                        [self performSegueWithIdentifier:kEditProfileSegue sender:customerObj];
                    }
                   withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {

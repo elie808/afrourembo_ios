@@ -121,7 +121,7 @@ static NSString * const kExploreSegue = @"editVcToExploreVC";
                      
                         [MBProgressHUD hideHUDForView:self.view animated:YES];
                         
-                        [EKSettings saveCustomer:customerObj];
+                        [EKSettings updateSavedCustomer:customerObj];
                         
                         [self showMessage:@"You have succesfully created your AfroUrembo account!"
                                 withTitle:@"Success"
