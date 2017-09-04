@@ -12,6 +12,7 @@ static NSString * const kSuccessSegue = @"cartToSuccessVC";
 static NSString * const kCartCell = @"cartCollectionCellID";
 
 static NSString * const kSignUpSegue = @"cartVCToSignUpVC";
+static NSString * const kWebViewSegue = @"cartVCtoWebVC";
 
 @implementation EKCartViewController {
 //    NSMutableArray *_dataSourceArray;
@@ -88,11 +89,34 @@ static NSString * const kSignUpSegue = @"cartVCToSignUpVC";
 #pragma mark - Actions
 
 - (IBAction)didTapCheckoutButton:(UIButton *)button {
-
+    
+    Payment *paymentObj = [Payment new];
+    paymentObj.descriptionText = @"Some Booking description here";
+    paymentObj.currency = @"KSH";
+    paymentObj.orderTotal = @10;
+    paymentObj.fName = [EKSettings getSavedCustomer].fName;
+    paymentObj.lName = [EKSettings getSavedCustomer].lName;
+    paymentObj.email = [EKSettings getSavedCustomer].email;
+    paymentObj.mobile = [EKSettings getSavedCustomer].phone;
+    paymentObj.bookingID = @"";
+    
+//    [self performSegueWithIdentifier:kWebViewSegue sender:paymentObj];
+    
     // filter Reservation objects out of Booking objects in the dataSource
     NSMutableArray *reservationsArray = [NSMutableArray new];
     for (Booking *bookingObj in _bookings) {
-        [reservationsArray addObject:bookingObj.reservation];
+        
+        // to convert bookingObj (RLMObj) to an NSObject and avoid weird nils in reservationsArray
+        Reservation *reservationObj = [Reservation new];
+        reservationObj.bookingId    = bookingObj.reservation.bookingId;
+        reservationObj.actorId      = bookingObj.reservation.actorId;
+        reservationObj.serviceId    = bookingObj.reservation.serviceId;
+        reservationObj.fromDateTime = bookingObj.reservation.fromDateTime;
+        reservationObj.toDateTime   = bookingObj.reservation.toDateTime;
+        reservationObj.type = bookingObj.reservation.type;
+        reservationObj.note = bookingObj.reservation.note;
+
+        [reservationsArray addObject:reservationObj];
     }
     
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
@@ -119,7 +143,19 @@ static NSString * const kSignUpSegue = @"cartVCToSignUpVC";
 
 #pragma mark - Navigation
 
+- (IBAction)unwindToCartVC:(UIStoryboardSegue *)segue {
+    
+}
+
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    
+    if ([segue.identifier isEqualToString:kWebViewSegue]) {
+        
+        if (sender && [sender isKindOfClass:[Payment class]]) {
+            EKPaymentGatewayViewController *vc = segue.destinationViewController;
+            vc.paymentObj = (Payment*)sender;
+        }
+    }
     
     if ([segue.identifier isEqualToString:kSuccessSegue]) {
         

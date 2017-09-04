@@ -8,10 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
+#import "EKPaymentGatewayViewController.h"
 #import "EKCartCollectionViewCell.h"
 
-#import "EKSettings.h"
 #import "Booking.h"
+#import "Payment.h"
+
+#import "EKSettings.h"
 
 #import "Customer+API.h"
 #import "Reservation+API.h"
@@ -31,5 +34,7 @@
 @property (strong, nonatomic) IBOutlet UIView *bottomBar;
 
 - (IBAction)didTapCheckoutButton:(UIButton *)button;
+
+- (IBAction)unwindToCartVC:(UIStoryboardSegue *)segue;
 
 @end
