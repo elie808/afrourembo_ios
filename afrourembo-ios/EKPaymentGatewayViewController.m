@@ -9,7 +9,8 @@
 #import "EKPaymentGatewayViewController.h"
 
 //0.01667 is roughly 1/60, so it will update at 60 FPS
-static const NSTimeInterval kTimer = 0.01667;
+static const NSTimeInterval kTimer  = 0.01667;
+static NSString * const kSuccessVC = @"paymentVCToCheckoutSucessVC";
 
 @implementation EKPaymentGatewayViewController {
     BOOL _webViewDidLoad;
@@ -22,16 +23,38 @@ static const NSTimeInterval kTimer = 0.01667;
     NSURL *htmlFileURL = [[NSBundle mainBundle] URLForResource:@"payment_gateway" withExtension:@"html"];
     NSString *htmlString = [NSString stringWithContentsOfFile:htmlFileURL.path encoding:NSUTF8StringEncoding error:nil];
 
-    htmlString = [htmlString stringByReplacingOccurrencesOfString:@"itemDescriptionVAR" withString:self.paymentObj.descriptionText];
-    htmlString = [htmlString stringByReplacingOccurrencesOfString:@"currencyVAR" withString:self.paymentObj.currency];
-    htmlString = [htmlString stringByReplacingOccurrencesOfString:@"orderAmountVAR"
-                                                       withString:[NSString stringWithFormat:@"%@", self.paymentObj.orderTotal]];
-    htmlString = [htmlString stringByReplacingOccurrencesOfString:@"fNameVAR" withString:self.paymentObj.fName];
-    htmlString = [htmlString stringByReplacingOccurrencesOfString:@"lNameVAR" withString:self.paymentObj.lName];
-    htmlString = [htmlString stringByReplacingOccurrencesOfString:@"emailVAR" withString:self.paymentObj.email];
-    htmlString = [htmlString stringByReplacingOccurrencesOfString:@"mobileVAR" withString:self.paymentObj.mobile];
+    htmlString = [htmlString
+                  stringByReplacingOccurrencesOfString:@"itemDescriptionVAR"
+                  withString:self.paymentObj.descriptionText.length > 0 ? self.paymentObj.descriptionText : @""];
     
-    htmlString = [htmlString stringByReplacingOccurrencesOfString:@"bookingID" withString:self.paymentObj.bookingID];
+    htmlString = [htmlString
+                  stringByReplacingOccurrencesOfString:@"currencyVAR"
+                  withString:self.paymentObj.currency.length > 0 ? self.paymentObj.currency : @""];
+    
+    htmlString = [htmlString
+                  stringByReplacingOccurrencesOfString:@"orderAmountVAR"
+                  withString:[NSString stringWithFormat:@"%@", self.paymentObj.orderTotal]];
+    
+    
+    htmlString = [htmlString
+                  stringByReplacingOccurrencesOfString:@"fNameVAR"
+                  withString:self.paymentObj.fName.length > 0 ? self.paymentObj.fName : @""];
+    
+    htmlString = [htmlString
+                  stringByReplacingOccurrencesOfString:@"lNameVAR"
+                  withString:self.paymentObj.lName.length > 0 ? self.paymentObj.lName : @""];
+    
+    htmlString = [htmlString
+                  stringByReplacingOccurrencesOfString:@"emailVAR"
+                  withString:self.paymentObj.email.length > 0 ? self.paymentObj.email : @""];
+    
+    htmlString = [htmlString
+                  stringByReplacingOccurrencesOfString:@"mobileVAR"
+                  withString:self.paymentObj.mobile.length > 0 ? self.paymentObj.mobile : @""];
+    
+    htmlString = [htmlString
+                  stringByReplacingOccurrencesOfString:@"bookingID"
+                  withString:self.paymentObj.bookingID.length > 0 ? self.paymentObj.bookingID : @""];
 
     [self.webView loadHTMLString:htmlString baseURL:nil];
 }
@@ -86,14 +109,16 @@ static const NSTimeInterval kTimer = 0.01667;
     }
 }
 
-/*
+- (IBAction)didTapDoneButton:(UIBarButtonItem *)sender {
+    [self performSegueWithIdentifier:kSuccessVC sender:nil];
+}
+
 #pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    
+    if ([segue.identifier isEqualToString:kSuccessVC]) {
+    }
 }
-*/
 
 @end
