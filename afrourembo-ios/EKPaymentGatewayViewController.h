@@ -12,9 +12,14 @@
 
 #import "EKSettings.h"
 
+#import <Realm/Realm.h>
+
 @interface EKPaymentGatewayViewController : UIViewController <UIWebViewDelegate>
 
 @property (strong, nonatomic) Payment *paymentObj;
+
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *cancelButton;
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *doneButton;
 
 @property (strong, nonatomic) IBOutlet UIProgressView *progressView;
 @property (strong, nonatomic) IBOutlet UIWebView *webView;

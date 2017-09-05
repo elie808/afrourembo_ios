@@ -11,14 +11,25 @@
 //0.01667 is roughly 1/60, so it will update at 60 FPS
 static const NSTimeInterval kTimer  = 0.01667;
 static NSString * const kSuccessVC = @"paymentVCToCheckoutSucessVC";
+static NSString * const kSuccessWebURL = @"http://35.158.118.170/successpage.html";
+
 
 @implementation EKPaymentGatewayViewController {
     BOOL _webViewDidLoad;
     NSTimer *_loadTimer;
+    RLMResults<Booking *> *_bookings;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    // hide Done UIBarItemButton
+    self.doneButton.enabled = NO;
+    self.doneButton.tintColor = [UIColor clearColor];
+    
+    // load the cached cart items
+    NSPredicate *pred = [NSPredicate predicateWithFormat:@"bookingOwner = %@", [EKSettings getSavedCustomer].email];
+    _bookings = [Booking objectsWithPredicate:pred];
     
     NSURL *htmlFileURL = [[NSBundle mainBundle] URLForResource:@"payment_gateway" withExtension:@"html"];
     NSString *htmlString = [NSString stringWithContentsOfFile:htmlFileURL.path encoding:NSUTF8StringEncoding error:nil];
@@ -74,6 +85,35 @@ static NSString * const kSuccessVC = @"paymentVCToCheckoutSucessVC";
     
     _webViewDidLoad = YES;
     [_loadTimer invalidate];
+}
+
+- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
+    
+    NSString *URLString = [[request URL] absoluteString];
+    
+    NSLog(@"URL: %@", URLString);
+    
+    // user directed to "succesful payment" webPage
+    if ([URLString isEqualToString:kSuccessWebURL]) {
+        
+//        self.doneButton.enabled = YES;
+//        self.doneButton.tintColor = [UIColor whiteColor];
+
+        self.cancelButton.enabled = NO;
+        self.cancelButton.tintColor = [UIColor clearColor];
+        
+        // if booking
+        for (Booking *bookingObj in _bookings) {
+            [[RLMRealm defaultRealm] beginWriteTransaction];
+            [[RLMRealm defaultRealm] deleteObject:bookingObj.reservation];
+            [[RLMRealm defaultRealm] deleteObject:bookingObj];
+            [[RLMRealm defaultRealm] commitWriteTransaction];
+        }
+        
+        [self performSegueWithIdentifier:kSuccessVC sender:nil];
+    }
+
+    return YES;
 }
 
 #pragma mark - Actions
