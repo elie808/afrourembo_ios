@@ -1557,9 +1557,15 @@
                                 </textAttributes>
                                 <items>
                                     <navigationItem title="Payment" id="xDi-Ir-sky">
-                                        <barButtonItem key="leftBarButtonItem" style="done" systemItem="done" id="cH5-fw-Y5v">
+                                        <barButtonItem key="leftBarButtonItem" style="plain" systemItem="cancel" id="cH5-fw-Y5v">
                                             <connections>
                                                 <segue destination="XHb-Yh-eqY" kind="unwind" unwindAction="unwindToCartVC:" id="S53-62-aGW"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="done" id="NLB-ui-Uxp">
+                                            <connections>
+                                                <action selector="didTapDoneButton:" destination="GCm-Cz-9By" id="ooG-fw-L2l"/>
+                                                <segue destination="rtY-H3-YQr" kind="presentation" identifier="paymentVCToCheckoutSucessVC" id="obx-IB-IIW"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -2009,7 +2015,8 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="xaI-bI-zkP"/>
-        <segue reference="yqX-hc-pNV"/>
         <segue reference="U39-u0-bPg"/>
+        <segue reference="yqX-hc-pNV"/>
+        <segue reference="obx-IB-IIW"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -70,6 +70,10 @@ static NSString *kSalonAnnotation = @"salonLocations";
     }
 }
 
+- (void)mapView:(MKMapView *)mapView regionWillChangeAnimated:(BOOL)animated {
+    [self.searchBar resignFirstResponder];
+}
+
 #pragma mark - Map UI
 
 - (void)clearAllPins {
