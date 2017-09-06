@@ -37,24 +37,24 @@ static CGFloat const kTimePickerHeight = 230.;
     if (!self.passedService) {
         
         // initialize fields to avoid nil errors when inserting into the datasource dictionary
-        self.serviceToEdit.serviceId = @"";
-        self.serviceToEdit.categoryId = @"";
+        self.serviceToEdit.serviceId    = @"";
+        self.serviceToEdit.categoryId   = @"";
         self.serviceToEdit.categoryName = @"";
-        self.serviceToEdit.name = @"";
-        self.serviceToEdit.price = 0.0;
-        self.serviceToEdit.time = 0.0;
+        self.serviceToEdit.name     = @"";
+        self.serviceToEdit.price    = 0;
+        self.serviceToEdit.time     = 0;
         self.serviceToEdit.currency = @"";
         
         self.removeServiceButton.hidden = YES;
         
     } else {
     
-        self.serviceToEdit.categoryId = self.passedService.categoryId;
+        self.serviceToEdit.categoryId   = self.passedService.categoryId;
         self.serviceToEdit.categoryName = self.passedService.categoryName;
-        self.serviceToEdit.serviceId = self.passedService.serviceId;
-        self.serviceToEdit.name = self.passedService.name;
-        self.serviceToEdit.price = self.passedService.price;
-        self.serviceToEdit.time = self.passedService.time;
+        self.serviceToEdit.serviceId    = self.passedService.serviceId;
+        self.serviceToEdit.name     = self.passedService.name;
+        self.serviceToEdit.price    = self.passedService.price;
+        self.serviceToEdit.time     = self.passedService.time;
         self.serviceToEdit.currency = self.passedService.currency;
     }
     
@@ -113,7 +113,7 @@ static CGFloat const kTimePickerHeight = 230.;
         cell.cellTextField.inputAccessoryView = self.keyboardToolbar;
         
         if (self.serviceToEdit.price && self.serviceToEdit.price > 0) {
-            cell.cellTextField.text = [NSString stringWithFormat:@"%.1f %@", self.serviceToEdit.price, self.serviceToEdit.currency];
+            cell.cellTextField.text = [NSString stringWithFormat:@"%ld %@", (long)self.serviceToEdit.price, self.serviceToEdit.currency];
         }
     }
     
@@ -250,8 +250,8 @@ static CGFloat const kTimePickerHeight = 230.;
     
         _dataSourceArray = @[
                              @{@"Service" : self.serviceToEdit.categoryName},
-                             @{@"Price" : [NSString stringWithFormat:@"%f", self.serviceToEdit.price]},
-                             @{@"Time for service" : [NSString stringWithFormat:@"%f", self.serviceToEdit.time]}
+                             @{@"Price (KSH)" : [NSString stringWithFormat:@"%ld", (long)self.serviceToEdit.price]},
+                             @{@"Time for service" : [NSString stringWithFormat:@"%ld", (long)self.serviceToEdit.time]}
                              ];
 //    }
 }
