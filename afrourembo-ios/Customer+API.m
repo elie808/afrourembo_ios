@@ -101,17 +101,24 @@
                                             
                                         } failure:^(RKObjectRequestOperation *operation, NSError *error) {
                                             
-                                            // exctract error message
-                                            NSDictionary *myDic = [NSJSONSerialization
-                                                                   JSONObjectWithData:operation.HTTPRequestOperation.responseData
-                                                                   options:NSJSONReadingMutableLeaves
-                                                                   error:nil];
-
-                                            NSString *errorMessage = [myDic valueForKey:@"message"];
-
-                                            NSNumber* statusCodeNumber = [myDic valueForKey:@"statusCode"];
+                                            if (operation.HTTPRequestOperation.responseData) {
                                             
-                                            errorBlock(error, errorMessage, [statusCodeNumber integerValue]);
+                                                // exctract error message
+                                                NSDictionary *myDic = [NSJSONSerialization
+                                                                       JSONObjectWithData:operation.HTTPRequestOperation.responseData
+                                                                       options:NSJSONReadingMutableLeaves
+                                                                       error:nil];
+
+                                                NSString *errorMessage = [myDic valueForKey:@"message"];
+
+                                                NSNumber* statusCodeNumber = [myDic valueForKey:@"statusCode"];
+                                                
+                                                errorBlock(error, errorMessage, [statusCodeNumber integerValue]);
+                                                
+                                            } else {
+                                                
+                                                errorBlock(error, @"You are not connected to the internet.", 0);
+                                            }
                                         }];
 }
 
