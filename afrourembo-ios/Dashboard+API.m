@@ -38,7 +38,7 @@
 
 #pragma mark - APIs
 
-+ (void)getDashboardOfVendor:(NSString *)userToken withBlock:(DashboardSuccessBlock)successBlock withErrors:(DashboardErrorBlock)errorBlock {
++ (void)getBookingsOfVendor:(NSString *)userToken withBlock:(DashboardSuccessBlock)successBlock withErrors:(DashboardErrorBlock)errorBlock {
     
     [[[RKObjectManager sharedManager] HTTPClient] setDefaultHeader:@"Authorization" value:userToken];
     

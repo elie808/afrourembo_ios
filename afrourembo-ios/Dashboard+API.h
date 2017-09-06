@@ -27,6 +27,6 @@ typedef void (^DashboardErrorBlock)(NSError *error, NSString *errorMessage, NSIn
  @param successBlock Server will return an array of vendor bookings
  @param errorBlock Server error logging
  */
-+ (void)getDashboardOfVendor:(NSString *)userToken withBlock:(DashboardSuccessBlock)successBlock withErrors:(DashboardErrorBlock)errorBlock;
++ (void)getBookingsOfVendor:(NSString *)userToken withBlock:(DashboardSuccessBlock)successBlock withErrors:(DashboardErrorBlock)errorBlock;
 
 @end
