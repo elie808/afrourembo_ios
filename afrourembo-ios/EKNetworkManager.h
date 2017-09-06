@@ -12,6 +12,7 @@
 #import "Booking+API.h"
 #import "Category+API.h"
 #import "Customer+API.h"
+#import "Dashboard+API.h"
 #import "Day+API.h"
 #import "Explore+API.h"
 #import "Professional+API.h"

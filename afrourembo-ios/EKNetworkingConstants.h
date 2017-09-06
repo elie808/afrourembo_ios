@@ -28,6 +28,7 @@ static NSString * const kUserReservationsAPIPath     = @"user/reservations";
 static NSString * const kProfessionalBookingsAPIPath = @"user/vendor/:userId/bookings";
 
 static NSString * const kProfessionalAvailabilityAPIPath = @"professional/availability";
+static NSString * const kProfessionalDashboardAPIPath    = @"professional/dashboard";
 static NSString * const kProfessionalRegisterAPIPath = @"professional/register";
 static NSString * const kProfessionalLoginAPIPath    = @"professional/login";
 static NSString * const kProfessionalServiceAPIPath  = @"professional/services";

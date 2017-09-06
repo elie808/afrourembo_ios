@@ -77,6 +77,8 @@
                                                      [Customer putUserProfileResponseDescriptor]
                                                      ]];
     
+    [objectManager addResponseDescriptor:[Dashboard getDashboardResponseDescriptor]];
+    
     [objectManager addResponseDescriptorsFromArray:@[
                                                      [Day availabilityResponseDescriptor],
                                                      [Day vendorAvailabilityResponseDescriptor]
