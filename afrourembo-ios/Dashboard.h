@@ -15,7 +15,7 @@
 @property NSString *bookingId;
 @property NSString *currency;
 
-@property NSInteger *price;
+@property NSNumber *price;
 
 @property NSDate *startDate;
 @property NSDate *endDate;

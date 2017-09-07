@@ -97,6 +97,7 @@
 		47A3BB8C1E7A9F3500963F27 /* EKSignInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47A3BB8B1E7A9F3500963F27 /* EKSignInViewController.m */; };
 		47AB79861F5FEF9F001D7AAA /* Dashboard.m in Sources */ = {isa = PBXBuildFile; fileRef = 47AB79851F5FEF9F001D7AAA /* Dashboard.m */; };
 		47AB79891F5FF090001D7AAA /* Dashboard+API.m in Sources */ = {isa = PBXBuildFile; fileRef = 47AB79881F5FF090001D7AAA /* Dashboard+API.m */; };
+		47AB798C1F60CED9001D7AAA /* Professional+Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 47AB798B1F60CED9001D7AAA /* Professional+Helpers.m */; };
 		47AF51AF1E9B686F005FE6EB /* EKInCellCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 47AF51AE1E9B686F005FE6EB /* EKInCellCollectionView.m */; };
 		47AF51B21E9B6897005FE6EB /* EKSalonListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 47AF51B11E9B6897005FE6EB /* EKSalonListTableViewCell.m */; };
 		47AF51B71E9B765D005FE6EB /* EKSalonListCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 47AF51B61E9B765D005FE6EB /* EKSalonListCollectionViewCell.m */; };
@@ -315,6 +316,8 @@
 		47AB79851F5FEF9F001D7AAA /* Dashboard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Dashboard.m; sourceTree = "<group>"; };
 		47AB79871F5FF090001D7AAA /* Dashboard+API.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Dashboard+API.h"; sourceTree = "<group>"; };
 		47AB79881F5FF090001D7AAA /* Dashboard+API.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Dashboard+API.m"; sourceTree = "<group>"; };
+		47AB798A1F60CED9001D7AAA /* Professional+Helpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Professional+Helpers.h"; sourceTree = "<group>"; };
+		47AB798B1F60CED9001D7AAA /* Professional+Helpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Professional+Helpers.m"; sourceTree = "<group>"; };
 		47AF51AD1E9B686F005FE6EB /* EKInCellCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKInCellCollectionView.h; sourceTree = "<group>"; };
 		47AF51AE1E9B686F005FE6EB /* EKInCellCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKInCellCollectionView.m; sourceTree = "<group>"; };
 		47AF51B01E9B6897005FE6EB /* EKSalonListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKSalonListTableViewCell.h; sourceTree = "<group>"; };
@@ -824,6 +827,8 @@
 				4734F5ED1F33FD2600982D94 /* NSDate+Helpers.m */,
 				47843A531F0470C900686CDD /* NSString+Helpers.h */,
 				47843A541F0470C900686CDD /* NSString+Helpers.m */,
+				47AB798A1F60CED9001D7AAA /* Professional+Helpers.h */,
+				47AB798B1F60CED9001D7AAA /* Professional+Helpers.m */,
 				471AA1891ED45DD0009B840A /* UIImage+Helpers.h */,
 				471AA18A1ED45DD0009B840A /* UIImage+Helpers.m */,
 				479F7D661EF00A1700EB445A /* UIViewController+Helpers.h */,
@@ -1367,6 +1372,7 @@
 				478BDEF11E99B7D700F74A5C /* EKExploreViewController.m in Sources */,
 				478BDEF51E99C20900F74A5C /* EKExploreCollectionViewCell.m in Sources */,
 				47074F8B1EAEB4A600E35EA7 /* EKSignupBPViewController.m in Sources */,
+				47AB798C1F60CED9001D7AAA /* Professional+Helpers.m in Sources */,
 				47A3BB8C1E7A9F3500963F27 /* EKSignInViewController.m in Sources */,
 				4757C6501ED9862800C2B52F /* EKTodayCollectionViewCell.m in Sources */,
 				479AB2681EA0B9E300A74659 /* EKCompanyProfileViewController.m in Sources */,

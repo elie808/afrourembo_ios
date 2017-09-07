@@ -133,7 +133,10 @@ static NSString * const kBPDashSegue = @"signInToBPDashboardVC";
                       withBlock:^(Customer *customerObj) {
                           
                           NSLog(@"USER LOGGED IN!!");
+                          
                           [MBProgressHUD hideHUDForView:self.view animated:YES];
+                          
+                          [EKSettings saveCustomer:customerObj];
                           [self performSegueWithIdentifier:kExploreSegue sender:customerObj];
                       }
                      withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
@@ -152,6 +155,9 @@ static NSString * const kBPDashSegue = @"signInToBPDashboardVC";
                                    withBlock:^(Professional *professionalObj) {
                                        
                                        NSLog(@"PROFESSIONAL LOGGED IN!!");
+                                       
+                                       [EKSettings saveVendor:professionalObj];
+                                       
                                        [MBProgressHUD hideHUDForView:self.view animated:YES];
                                        [self performSegueWithIdentifier:kBPDashSegue sender:nil];
                                    }
@@ -171,6 +177,7 @@ static NSString * const kBPDashSegue = @"signInToBPDashboardVC";
                      withBlock:^(Salon *salonObj) {
                          
                          NSLog(@"SALon LOGGED IN!!");
+
                          [MBProgressHUD hideHUDForView:self.view animated:YES];
                          [self performSegueWithIdentifier:kBPDashSegue sender:nil];
                      }
@@ -202,8 +209,6 @@ static NSString * const kBPDashSegue = @"signInToBPDashboardVC";
     }
     
     if ([segue.identifier isEqualToString:kBPDashSegue]) {
-        
-        [EKSettings saveVendor];
         
 //        if (self.signInRole == SignInRoleBP) {
 //            [EKSettings saveVendor];

@@ -84,6 +84,8 @@ static NSString * const kRoleSegue = @"signupBPToRoleVC";
                            withBlock:^(Professional *professionalObj) {
 
                                NSLog(@"PROFESSIONAL SIGNED UP!!");
+                               [EKSettings saveVendor:professionalObj];
+                               
                                [MBProgressHUD hideHUDForView:self.view animated:YES];
                                [self performSegueWithIdentifier:kRoleSegue sender:professionalObj];
                            }
@@ -141,6 +143,9 @@ static NSString * const kRoleSegue = @"signupBPToRoleVC";
                                                                     withBlock:^(Professional *professionalObj) {
                                                                         
                                                                         NSLog(@"PROFESSIONAL SIGNED UP!!");
+                                                                        
+                                                                        [EKSettings saveVendor:professionalObj];
+                                                                        
                                                                         [MBProgressHUD hideHUDForView:self.view animated:YES];
                                                                         
                                                                         professionalObj.fName = [result valueForKey:@"first_name"];
@@ -166,8 +171,6 @@ static NSString * const kRoleSegue = @"signupBPToRoleVC";
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
 
     if ([segue.identifier isEqualToString:kRoleSegue]) {
-        
-        [EKSettings saveVendor];
         
         EKRoleViewController *vc = segue.destinationViewController;
         Professional *profObj = (Professional *)sender;

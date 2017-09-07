@@ -102,7 +102,7 @@ static NSString * const kSuccessWebURL = @"http://35.158.118.170/successpage.htm
         self.cancelButton.enabled = NO;
         self.cancelButton.tintColor = [UIColor clearColor];
         
-        // if booking
+        // if booking succesful, remove all cached cart items
         for (Booking *bookingObj in _bookings) {
             [[RLMRealm defaultRealm] beginWriteTransaction];
             [[RLMRealm defaultRealm] deleteObject:bookingObj.reservation];

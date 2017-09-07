@@ -19,14 +19,25 @@ static NSString * const kCollectionCell = @"todayCell";
     [super viewDidLoad];
 
     self.contentOffsetDictionary = [NSMutableDictionary new];
-    _dataSource = [NSMutableArray arrayWithArray:[self createEmptyCal]];
     
     //TODO: abstract to NSDate categories
     NSDate *date = [[NSCalendar currentCalendar] startOfDayForDate:[NSDate date]];
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     dateFormatter.dateFormat = @"EEEE - MMMM dd, YYYY";
     
+    _dataSource = [NSMutableArray arrayWithArray:[self createStubs]];
+    
     self.dateLabel.text = [[dateFormatter stringFromDate:date] capitalizedString];
+    
+    [Dashboard getDashboardOfVendor:[EKSettings getSavedVendor].token
+                         withBlock:^(NSArray<Dashboard *> *dashboardItems) {
+                          
+                             
+                             
+                         }
+                        withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
+                            
+                        }];
 }
 
 #pragma mark - UITableViewDataSource
@@ -116,6 +127,20 @@ static NSString * const kCollectionCell = @"todayCell";
 }
 
 #pragma mark - Helpers
+
+/// pure convenience method, to keep using Appointment objects, since this view's UI was built on them initially...
+- (NSArray *)convertToAppointementObjects:(NSArray *)dashboardObjectsArray {
+    
+    Appointment *appt1 = [Appointment new];
+    appt1.clientName = @"Fannie Ballard";
+    appt1.serviceDescription = @"Natural Hair";
+    appt1.serviceTime = @"9:00 AM";
+    appt1.serviceDuration = 15;
+    appt1.serviceStatus = 0;
+    
+    
+    return nil;
+}
 
 - (NSArray *)createAppointmentStubs {
     

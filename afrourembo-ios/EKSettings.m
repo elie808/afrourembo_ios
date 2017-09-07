@@ -107,31 +107,77 @@ static NSString * const kLoggedInVendor     = @"afrourembo-loggedInVendor";
 
 #pragma mark - Vendors
 
-+ (BOOL)saveVendor {
++ (BOOL)saveVendor:(Professional*)professional {
     
-    if ([JNKeychain saveValue:@1 forKey:kLoggedInVendor]) {
+    NSString *userJSONString = [professional convertToJSON];
+    
+    if ([JNKeychain saveValue:userJSONString forKey:kLoggedInVendor]) {
+        
         NSLog(@"VENDOR PERSISTED!!!!");
         return YES;
+        
     } else {
+        
         NSLog(@"Failed to persist VENDOR");
         return NO;
     }
 }
 
-+ (BOOL)getVendor {
++ (Professional *)getSavedVendor {
     
-    NSNumber *vendor = [JNKeychain loadValueForKey:kLoggedInVendor];
-
-    return [vendor isEqualToNumber:@1] ? YES : NO;
+    NSString *proJSONString = [JNKeychain loadValueForKey:kLoggedInVendor];
+    
+    if (proJSONString && proJSONString.length > 0) {
+        
+        return [Professional professionalFromJSON:proJSONString];
+        
+    } else {
+        
+        NSLog(@"Did NOT Retrieve any saved Vendors");
+        
+        return nil;
+    }
 }
 
-+ (BOOL)deleteVendor {
++ (BOOL)deleteSavedVendor {
     
-    if ([JNKeychain saveValue:@0 forKey:kLoggedInVendor]) {
+    if ([JNKeychain deleteValueForKey:kLoggedInVendor]) {
+        
+        [EKSettings destroySessionCookies];
+        // [EKSettings deleteUserLocation];
+        
+        [[[RKObjectManager sharedManager] HTTPClient] setDefaultHeader:@"Authorization" value:@""];
+        
+        NSLog(@"Deleted value for key '%@'. User is now: %@", kLoggedInVendor, [JNKeychain loadValueForKey:kLoggedInVendor]);
         return YES;
+        
     } else {
+        
+        NSLog(@"Failed to delete vendor!");
         return NO;
     }
+}
+
++ (BOOL)updateSavedProfessional:(Professional *)updatedProfessional {
+    
+    Professional *oldUser = [EKSettings getSavedVendor];
+    
+    Professional *userToPersist = [Professional updateProfessional:oldUser from:updatedProfessional];
+    
+    NSString *userJSONString = [userToPersist convertToJSON];
+    
+    if ([JNKeychain saveValue:userJSONString forKey:kLoggedInVendor]) {
+        
+        NSLog(@"Vendor updated and persisted!");
+        return YES;
+        
+    } else {
+        
+        NSLog(@"Failed to update and persist Vendor!");
+        return NO;
+    }
+    
+    return NO;
 }
 
 #pragma mark - Helpers
