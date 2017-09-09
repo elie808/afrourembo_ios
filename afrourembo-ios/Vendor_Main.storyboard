@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16G12b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="6IF-kV-wMK">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="6IF-kV-wMK">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -44,7 +44,7 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sY8-nt-pwh" customClass="FSCalendar">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sY8-nt-pwh" customClass="FSCalendar">
                                 <rect key="frame" x="0.0" y="64" width="375" height="420"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="headerTitleColor">
@@ -75,14 +75,16 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Phs-kd-4gc" firstAttribute="trailing" secondItem="03o-bB-B83" secondAttribute="trailing" id="0z1-L7-vmd"/>
+                            <constraint firstItem="wfW-bU-vtW" firstAttribute="top" secondItem="sY8-nt-pwh" secondAttribute="bottom" constant="134" id="1Bu-l6-ctn"/>
                             <constraint firstItem="Phs-kd-4gc" firstAttribute="bottom" secondItem="03o-bB-B83" secondAttribute="top" id="1pf-bK-YI7"/>
-                            <constraint firstItem="Phs-kd-4gc" firstAttribute="leading" secondItem="sY8-nt-pwh" secondAttribute="leading" id="StI-t6-GzI"/>
+                            <constraint firstItem="sY8-nt-pwh" firstAttribute="trailing" secondItem="03o-bB-B83" secondAttribute="trailing" id="21T-zt-ziv"/>
+                            <constraint firstItem="sY8-nt-pwh" firstAttribute="top" secondItem="03o-bB-B83" secondAttribute="bottom" id="OFv-md-klR"/>
                             <constraint firstItem="Phs-kd-4gc" firstAttribute="leading" secondItem="SQE-Bh-Vna" secondAttribute="leading" id="T1R-w0-HBu"/>
                             <constraint firstItem="Phs-kd-4gc" firstAttribute="bottom" secondItem="HV8-Iy-A47" secondAttribute="bottom" id="cgw-KU-iL7"/>
                             <constraint firstItem="Phs-kd-4gc" firstAttribute="top" secondItem="SQE-Bh-Vna" secondAttribute="top" id="fRn-fn-1mK"/>
                             <constraint firstAttribute="trailing" secondItem="Phs-kd-4gc" secondAttribute="trailing" id="fXJ-05-BHj"/>
-                            <constraint firstItem="Phs-kd-4gc" firstAttribute="trailing" secondItem="sY8-nt-pwh" secondAttribute="trailing" id="hV8-Gc-cmi"/>
                             <constraint firstItem="Phs-kd-4gc" firstAttribute="leading" secondItem="03o-bB-B83" secondAttribute="leading" id="mM7-Q4-as5"/>
+                            <constraint firstItem="sY8-nt-pwh" firstAttribute="leading" secondItem="03o-bB-B83" secondAttribute="leading" id="nEh-uJ-Jh8"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Schedule" image="icScheduleNormal" id="wr0-hI-gnQ"/>
