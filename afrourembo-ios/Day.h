@@ -12,10 +12,19 @@
 @interface Day : NSObject
 
 //Use these properties for UI
-@property NSString *dayName;    // day name and date as strings. Used to display inside day cell in collectionview on bookingVC
-@property NSNumber *dayNumber;  // day number 0-6, used to determine Mon-Sun and handle availability in UI
-@property (assign, nonatomic) BOOL daySelected; // to highlight selected day cell in collectionview
-@property NSArray *timeSlotsArray;  // hold all time slots of the day. Use as data source for time slots collection view in bookingVC
+@property NSDate *dayDate;
+
+/// day name and date as strings. Used to display inside day cell in collectionview on bookingVC
+@property NSString *dayName;
+
+/// day number 0-6, used to determine Mon-Sun and handle availability in UI
+@property NSNumber *dayNumber;
+
+/// to highlight selected day cell in collectionview
+@property (assign, nonatomic) BOOL daySelected;
+
+/// hold all time slots of the day. Use as data source for time slots collection view in bookingVC
+@property NSArray *timeSlotsArray;
 
 @property NSString *serviceStartDate;
 @property NSString *serviceEndDate;
