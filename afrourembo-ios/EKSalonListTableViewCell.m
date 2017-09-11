@@ -42,7 +42,7 @@
     if (profObj.services && profObj.services.count > 0 ) {
         
         Service *serviceObj = profObj.services[0];
-        self.cellPriceLabel.text = [NSString stringWithFormat:@"%.0f %@", serviceObj.price, serviceObj.currency];
+        self.cellPriceLabel.text = [NSString stringWithFormat:@"%ld %@", (long)serviceObj.price, serviceObj.currency];
         
     } else {
         

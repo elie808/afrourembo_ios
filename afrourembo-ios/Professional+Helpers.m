@@ -35,7 +35,7 @@
     delta.fName = newProfessional.fName.length > 0 ? newProfessional.fName : existingProfessional.fName;
     delta.lName = newProfessional.lName.length > 0 ? newProfessional.lName : existingProfessional.lName;
     delta.email = newProfessional.email.length > 0 ? newProfessional.email : existingProfessional.email;
-    delta.phoneNumber = newProfessional.phoneNumber.length > 0 ? newProfessional.phoneNumber : existingProfessional.phoneNumber;
+    delta.phone = newProfessional.phone.length > 0 ? newProfessional.phone : existingProfessional.phone;
     
     delta.profilePicture = newProfessional.profilePicture.length > 0 ? newProfessional.profilePicture : existingProfessional.profilePicture;
     
@@ -53,7 +53,7 @@
                               @"profilePicture" : self.profilePicture.length > 0 ? self.profilePicture : @"",
                               @"fName" : self.fName.length > 0 ? self.fName : @"",
                               @"lName" : self.lName.length > 0 ? self.lName : @"",
-                              @"phoneNumber" : self.phoneNumber.length > 0 ? self.phoneNumber : @"",
+                              @"phone" : self.phone.length > 0 ? self.phone : @"",
                               @"email" : self.email.length > 0 ? self.email : @"",
                               @"token" : self.token.length > 0 ? self.token : @""
                               };
