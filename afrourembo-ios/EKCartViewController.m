@@ -89,19 +89,7 @@ static NSString * const kWebViewSegue = @"cartVCtoWebVC";
 #pragma mark - Actions
 
 - (IBAction)didTapCheckoutButton:(UIButton *)button {
-    
-    Payment *paymentObj = [Payment new];
-    paymentObj.descriptionText = @"Some Booking description here";
-    paymentObj.currency = @"KSH";
-    paymentObj.orderTotal = @10;
-    paymentObj.fName = [EKSettings getSavedCustomer].fName;
-    paymentObj.lName = [EKSettings getSavedCustomer].lName;
-    paymentObj.email = [EKSettings getSavedCustomer].email;
-    paymentObj.mobile = [EKSettings getSavedCustomer].phone;
-    paymentObj.bookingID = @"";
-    
-//    [self performSegueWithIdentifier:kWebViewSegue sender:paymentObj];
-    
+
     // filter Reservation objects out of Booking objects in the dataSource
     NSMutableArray *reservationsArray = [NSMutableArray new];
     for (Booking *bookingObj in _bookings) {
@@ -123,15 +111,35 @@ static NSString * const kWebViewSegue = @"cartVCtoWebVC";
     [Reservation postUserReservations:reservationsArray
                               forUser:[EKSettings getSavedCustomer].token
                             withBlock:^(Reservation *reservation) {
+
+                                Payment *paymentObj = [Payment new];
+                                paymentObj.descriptionText = @"Some Booking description here";
+                                paymentObj.currency = @"USD";
                                 
-                                for (Booking *bookingObj in _bookings) {
-                                    [[RLMRealm defaultRealm] beginWriteTransaction];
-                                    [[RLMRealm defaultRealm] deleteObject:bookingObj.reservation];
-                                    [[RLMRealm defaultRealm] deleteObject:bookingObj];
-                                    [[RLMRealm defaultRealm] commitWriteTransaction];
-                                }
+//                                float total = 0.0;
+//                                for (Booking *bookingObj in _bookings) {
+//                                    
+//                                    NSNumberFormatter *f = [[NSNumberFormatter alloc] init];
+//                                    f.numberStyle = NSNumberFormatterDecimalStyle;
+//                                    NSNumber *bookingCost = [f numberFromString:bookingObj.bookingCost];
+//
+//                                    total = total + [bookingCost floatValue];
+//                                }
+//                                paymentObj.orderTotal = [NSNumber numberWithFloat:total];
+                                
+                                paymentObj.orderTotal = @20;
+                                
+                                paymentObj.fName = [EKSettings getSavedCustomer].fName;
+                                paymentObj.lName = [EKSettings getSavedCustomer].lName;
+                                paymentObj.email = [EKSettings getSavedCustomer].email;
+                                paymentObj.mobile = [EKSettings getSavedCustomer].phone;
+                                paymentObj.bookingID = reservation.bookingId;
+                                
+//                              [self.collectionView reloadData];
                                 
                                 [MBProgressHUD hideHUDForView:self.view animated:YES];
+                                
+//                                [self performSegueWithIdentifier:kWebViewSegue sender:paymentObj];
                                 [self performSegueWithIdentifier:kSuccessSegue sender:nil];
                             }
                            withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
