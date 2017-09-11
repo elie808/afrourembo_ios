@@ -112,7 +112,7 @@ static CGFloat const kContainerViewHeight = 100;
         booking1.reservation = reservationObj;
         
         booking1.bookingTitle   = self.passedService.serviceName;
-        booking1.bookingCost    = [NSString stringWithFormat:@"%.0f %@", self.passedService.price, self.passedService.currency];
+        booking1.bookingCost    = [NSString stringWithFormat:@"%ld %@", (long)self.passedService.price, self.passedService.currency];
         booking1.bookingVendor  = [NSString stringWithFormat:@"%@ %@", self.selectedPro.fName, self.selectedPro.lName]; //TODO: or salon name
         booking1.practionner    = [NSString stringWithFormat:@"%@ %@", self.selectedPro.fName, self.selectedPro.lName];
         booking1.bookingDate    = reservationObj.fromDateTime;

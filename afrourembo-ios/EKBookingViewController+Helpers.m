@@ -15,52 +15,43 @@
     // create 10 days from today
     for (int i = 0; i < 10; i++) {
         
+        NSDate *todayDate = [[NSCalendar currentCalendar] startOfDayForDate:[NSDate date]];
         Day *day = [Day new];
         
-        day.dayName = [NSDate stringFromDate:[NSDate addDays:i after:[NSDate todayDate]]
-                                  withFormat:DateFormatLetterDayMonthYearAbbreviated];
+        day.dayDate = [todayDate dateByAddingDays:i];
+
+        day.dayName = [NSDate stringFromDate:[todayDate dateByAddingDays:i] withFormat:DateFormatLetterDayMonthYearAbbreviated];
         
-        day.dayNumber = [Day dayNumberFromDay:[NSDate addDays:i after:[NSDate todayDate]]];
+        day.dayNumber = [Day dayNumberFromDay:[todayDate dateByAddingDays:i]];
+
+        NSPredicate *pred = [NSPredicate predicateWithFormat:[NSString stringWithFormat:@"dayNumber = %@", day.dayNumber]];
+        if ([daysArray filteredArrayUsingPredicate:pred].count > 0) {
+
+            Day *availableDay = [[daysArray filteredArrayUsingPredicate:pred] firstObject];
+            
+            day.timeSlotsArray = [NSArray arrayWithArray:[self markDayAvailable:day.dayDate
+                                                                   startingHour:availableDay.fromHours
+                                                                     endingHour:availableDay.toHours
+                                                            lunchBreakStartHour:availableDay.lunchBreakFromHours
+                                                              lunchBreakEndHour:availableDay.lunchBreakToHours
+                                                             inMinuteIncrements:@15]];
+        } else {
+
+            day.timeSlotsArray = [self markDayUnavailable:day.dayDate from:@9 endingHour:@17 inMinuteIncrements:@15];
+        }
         
         [self.daysDataSource addObject:day];
     }
-    
-    // check if day number matches anything in the passed daysArray
-    //    for (Day *profAvailableDay in daysArray) {
-    
-    // go over the newly created days
-    for (Day *dataSourceDay in self.daysDataSource) {
-        
-        if (dataSourceDay.dayNumber &&
-            [[daysArray valueForKey:@"dayNumber"] containsObject:dataSourceDay.dayNumber] ) {
-            
-            NSString *predStr = [NSString stringWithFormat:@"dayNumber = %@", dataSourceDay.dayNumber];
-            
-            NSPredicate *pred = [NSPredicate predicateWithFormat:predStr];
-            Day *profAvailableDay = [[daysArray filteredArrayUsingPredicate:pred] firstObject];
-            
-            dataSourceDay.timeSlotsArray = [NSArray arrayWithArray:[self populateDayWithTimes:profAvailableDay.fromHours
-                                                                                   endingHour:profAvailableDay.toHours
-                                                                          lunchBreakStartHour:profAvailableDay.lunchBreakFromHours
-                                                                            lunchBreakEndHour:profAvailableDay.lunchBreakToHours
-                                                                           inMinuteIncrements:@15]];
-        } else {
-            
-            NSLog(@"dataSourceDay.dayNumber: %@", dataSourceDay.dayNumber);
-            
-            dataSourceDay.timeSlotsArray = [self markDayUnavailableFrom:@9
-                                                             endingHour:@17
-                                                     inMinuteIncrements:@15];
-        }
-    }
-    //    }
 }
 
-- (NSArray *)populateDayWithTimes:(NSNumber *)startHour endingHour:(NSNumber *)toHour lunchBreakStartHour:(NSNumber *)lbFromHour lunchBreakEndHour:(NSNumber *)lbToHour inMinuteIncrements:(NSNumber *)minIncrements {
+- (NSArray *)markDayAvailable:(NSDate *)day startingHour:(NSNumber *)startHour endingHour:(NSNumber *)toHour lunchBreakStartHour:(NSNumber *)lbFromHour lunchBreakEndHour:(NSNumber *)lbToHour inMinuteIncrements:(NSNumber *)minIncrements {
+    
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    NSDateComponents *comps = [calendar components: NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay fromDate:day];
     
     NSMutableArray *timeSlotsArray = [NSMutableArray new];
-    BOOL isAvailable;
-    
+    BOOL isHourAvailable;
+
     for (int hour = [startHour intValue]; hour < [toHour intValue]; hour++) {
         
         for (int startingMin = 0; startingMin < 60; startingMin += [minIncrements intValue]) {
@@ -70,17 +61,25 @@
                 // block out lunch break hours
                 if ( hour >= [lbFromHour intValue] && hour < [lbToHour intValue] ) {
                     
-                    isAvailable = NO;
+                    isHourAvailable = NO;
                     
                 } else {
                     
-                    isAvailable = YES;
+                    isHourAvailable = YES;
                 }
+    
+                TimeSlot *slot = [TimeSlot new];
                 
-                TimeSlot *slot = [[TimeSlot alloc] initWithDate:[NSDate todayAtTime:[NSNumber numberWithInt:hour]
-                                                                            minutes:[NSNumber numberWithInt:startingMin]]
-                                                andAvailability:isAvailable];
+                [comps setHour:hour];
+                [comps setMinute:startingMin];
+                [comps setSecond:[@0 intValue]];
+                slot.date = [calendar dateFromComponents:comps];
                 
+                slot.isAvailable = isHourAvailable;
+                slot.isSelected = NO;
+                
+                slot.hourString = [NSDate stringFromDate:slot.date withFormat:DateFormatDigitHourMinute];
+
                 [timeSlotsArray addObject:slot];
             }
         }
@@ -89,7 +88,10 @@
     return [NSArray arrayWithArray:timeSlotsArray];
 }
 
-- (NSArray *)markDayUnavailableFrom:(NSNumber *)startHour endingHour:(NSNumber *)toHour inMinuteIncrements:(NSNumber *)minIncrements {
+- (NSArray *)markDayUnavailable:(NSDate *)day from:(NSNumber *)startHour endingHour:(NSNumber *)toHour inMinuteIncrements:(NSNumber *)minIncrements {
+    
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    NSDateComponents *comps = [calendar components: NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay fromDate:day];
     
     NSMutableArray *timeSlotsArray = [NSMutableArray new];
     
@@ -97,9 +99,17 @@
         
         for (int startingMin = 0; startingMin < 60; startingMin += [minIncrements intValue]) {
             
-            TimeSlot *slot = [[TimeSlot alloc] initWithDate:[NSDate todayAtTime:[NSNumber numberWithInt:hour]
-                                                                        minutes:[NSNumber numberWithInt:startingMin]]
-                                            andAvailability:NO];
+            TimeSlot *slot = [TimeSlot new];
+            
+            [comps setHour:hour];
+            [comps setMinute:startingMin];
+            [comps setSecond:[@0 intValue]];
+            slot.date = [calendar dateFromComponents:comps];
+            
+            slot.isAvailable = NO;
+            slot.isSelected = NO;
+            
+            slot.hourString = [NSDate stringFromDate:slot.date withFormat:DateFormatDigitHourMinute];
             
             [timeSlotsArray addObject:slot];
         }
@@ -112,14 +122,14 @@
     
     TimeSlot *timeSlot = self.timesDataSource[indexPath.row];
     
-    // compute how many time slots ahead to highlight
-    int timeSlotsAhead = self.passedService.time / 15;
+    // compute how many time slots ahead to highlight. Knowing that the minimum service duration is 15 mins
+    NSInteger timeSlotsAhead = self.passedService.time / 15;
     
     if (timeSlot.isAvailable && (indexPath.row + timeSlotsAhead) < self.timesDataSource.count) {
         
         // check if slots to be selected, don't overlap with unavailable slots
         BOOL allSlotsAheadAvailable = YES;
-        for (int i = 0; i <= timeSlotsAhead; i++) {
+        for (NSInteger i = 0; i <= timeSlotsAhead; i++) {
             
             TimeSlot *nextSlot = self.timesDataSource[indexPath.row+i];
             if (!nextSlot.isAvailable) {
