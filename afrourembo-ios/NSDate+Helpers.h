@@ -22,8 +22,6 @@ typedef NS_ENUM(NSUInteger, DateFormat) {
 
 @property (assign, nonatomic) DateFormat dateFormat;
 
-+ (NSDate *)todayAtTime:(NSNumber *)hour minutes:(NSNumber *)minute;
-
 + (NSDate *)todayDate;
 + (NSDate *)tomorrowDate;
 + (NSDate *)nextDay:(NSDate *)date;

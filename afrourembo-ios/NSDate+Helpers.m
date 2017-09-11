@@ -14,19 +14,6 @@
 
 #pragma mark - Day manipulation
 
-+ (NSDate *)todayAtTime:(NSNumber *)hour minutes:(NSNumber *)minute {
-    
-    NSCalendar *calendar = [NSCalendar currentCalendar];
-    
-    NSDateComponents *comps = [calendar components: NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay
-                                          fromDate:[[NSCalendar currentCalendar] startOfDayForDate:[NSDate date]]];
-    [comps setHour:[hour intValue]];
-    [comps setMinute:[minute intValue]];
-    [comps setSecond:[@0 intValue]];
-    
-    return [calendar dateFromComponents:comps];
-}
-
 + (NSDate *)todayDate {
     return [[NSCalendar currentCalendar] startOfDayForDate:[NSDate date]];
 }
