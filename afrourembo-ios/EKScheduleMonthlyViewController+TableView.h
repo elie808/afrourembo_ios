@@ -8,6 +8,8 @@
 
 #import "EKScheduleMonthlyViewController.h"
 
-@interface EKScheduleMonthlyViewController (TableView)
+@interface EKScheduleMonthlyViewController (TableView) <UITableViewDelegate, UITableViewDataSource, UICollectionViewDelegate, UICollectionViewDataSource>
+
+- (void)createCalendarGrid;
 
 @end

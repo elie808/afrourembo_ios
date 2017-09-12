@@ -7,22 +7,60 @@
 //
 
 #import "EKScheduleMonthlyViewController.h"
+#import "EKScheduleMonthlyViewController+TableView.h"
 
-@interface EKScheduleMonthlyViewController ()
-
-@end
-
-@implementation EKScheduleMonthlyViewController
+@implementation EKScheduleMonthlyViewController  {
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.dataSource = [NSMutableArray new];
+    self.tableDataSource = [NSMutableArray new];
+    self.contentOffsetDictionary = [NSMutableDictionary new];
+    
+    [self createCalendarGrid];
 }
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    [Dashboard getDashboardOfVendor:[EKSettings getSavedVendor].token
+                          withBlock:^(NSArray<Dashboard *> *dashboardItems) {
+                              
+                              [self.dataSource removeAllObjects];
+                              [self.dataSource addObjectsFromArray:dashboardItems];
+                              [self.calendar reloadData];
+                              
+                          } withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
+                              
+                          }];
+}
+
+#pragma mark - FSCalendar
 
 - (void)calendar:(FSCalendar *)calendar boundingRectWillChange:(CGRect)bounds animated:(BOOL)animated
 {
 //    self.calendarHeightConstraint.constant = CGRectGetHeight(bounds);
     // Do other updates here
     [self.view layoutIfNeeded];
+}
+
+- (void)calendar:(FSCalendar *)calendar didSelectDate:(NSDate *)date atMonthPosition:(FSCalendarMonthPosition)monthPosition {
+    
+}
+
+- (BOOL)calendar:(FSCalendar *)calendar hasEventForDate:(NSDate *)date {
+    
+    for (Dashboard *dashObj in _dataSource) {
+        
+        if ([dashObj.startDate isSameDay:date]) {
+            
+            return YES;  
+        }
+    }
+    
+    return NO;
 }
 
 /*
