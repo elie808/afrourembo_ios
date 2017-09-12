@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "EKTextFieldTableViewCell.h"
 
-@interface EKProfileInfoFacebookViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
+@interface EKProfileInfoFacebookViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate>
 
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 

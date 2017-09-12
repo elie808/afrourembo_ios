@@ -74,6 +74,15 @@ static NSString * const kRoleSegue = @"signupBPToRoleVC";
     
 }
 
+#pragma mark - UITextField Delegate
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    
+    [textField resignFirstResponder];
+    
+    return YES;
+}
+
 #pragma mark - Actions
 
 - (IBAction)didTapSignUpButton:(id)sender {

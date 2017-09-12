@@ -20,7 +20,7 @@
 
 #import <MBProgressHUD/MBProgressHUD.h>
 
-@interface EKEditProfileInfoViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+@interface EKEditProfileInfoViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate>
 
 @property (strong, nonatomic) Customer *passedUser;
 

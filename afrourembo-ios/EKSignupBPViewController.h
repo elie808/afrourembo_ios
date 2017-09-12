@@ -22,7 +22,7 @@
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
 #import <MBProgressHUD/MBProgressHUD.h>
 
-@interface EKSignupBPViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+@interface EKSignupBPViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate>
 
 @property (strong, nonatomic) IBOutlet UIImageView *profilePicImageView;
 @property (strong, nonatomic) IBOutlet UITableView *tableView;

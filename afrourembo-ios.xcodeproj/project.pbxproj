@@ -114,6 +114,7 @@
 		47C480581F4DD34F00493E0B /* payment_gateway in Resources */ = {isa = PBXBuildFile; fileRef = 47C480571F4DD34F00493E0B /* payment_gateway */; };
 		47C4805A1F4E312600493E0B /* payment_gateway.html in Resources */ = {isa = PBXBuildFile; fileRef = 47C480591F4E312600493E0B /* payment_gateway.html */; };
 		47C7D4CC1EBB5EF000457E53 /* Day.m in Sources */ = {isa = PBXBuildFile; fileRef = 47C7D4CB1EBB5EF000457E53 /* Day.m */; };
+		47CAEE731F67D4310091919D /* EKScheduleMonthlyViewController+TableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 47CAEE721F67D4310091919D /* EKScheduleMonthlyViewController+TableView.m */; };
 		47D44C2D1EBEBB25007ACFAA /* EKFilterSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47D44C2C1EBEBB25007ACFAA /* EKFilterSearchViewController.m */; };
 		47D44C311EBEBD1A007ACFAA /* EKFilterSearchViewController+TableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 47D44C301EBEBD1A007ACFAA /* EKFilterSearchViewController+TableView.m */; };
 		47D88E6B1E793347001B88D0 /* EKSplashViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47D88E6A1E793347001B88D0 /* EKSplashViewController.m */; };
@@ -347,6 +348,8 @@
 		47C480591F4E312600493E0B /* payment_gateway.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = payment_gateway.html; sourceTree = "<group>"; };
 		47C7D4CA1EBB5EF000457E53 /* Day.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Day.h; sourceTree = "<group>"; };
 		47C7D4CB1EBB5EF000457E53 /* Day.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Day.m; sourceTree = "<group>"; };
+		47CAEE711F67D4310091919D /* EKScheduleMonthlyViewController+TableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "EKScheduleMonthlyViewController+TableView.h"; sourceTree = "<group>"; };
+		47CAEE721F67D4310091919D /* EKScheduleMonthlyViewController+TableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "EKScheduleMonthlyViewController+TableView.m"; sourceTree = "<group>"; };
 		47D44C2B1EBEBB25007ACFAA /* EKFilterSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKFilterSearchViewController.h; sourceTree = "<group>"; };
 		47D44C2C1EBEBB25007ACFAA /* EKFilterSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKFilterSearchViewController.m; sourceTree = "<group>"; };
 		47D44C2F1EBEBD1A007ACFAA /* EKFilterSearchViewController+TableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "EKFilterSearchViewController+TableView.h"; sourceTree = "<group>"; };
@@ -842,6 +845,8 @@
 			children = (
 				4795200D1EB3A40700E377E5 /* EKScheduleMonthlyViewController.h */,
 				4795200E1EB3A40700E377E5 /* EKScheduleMonthlyViewController.m */,
+				47CAEE711F67D4310091919D /* EKScheduleMonthlyViewController+TableView.h */,
+				47CAEE721F67D4310091919D /* EKScheduleMonthlyViewController+TableView.m */,
 			);
 			name = "BP - Monthly Schedule";
 			sourceTree = "<group>";
@@ -1311,6 +1316,7 @@
 				47843A581F048CD000686CDD /* Day+API.m in Sources */,
 				47FFF9751E99E81F008B6A31 /* EKImageTextTableViewCell.m in Sources */,
 				479F7D6E1EF0C17E00EB445A /* Professional+API.m in Sources */,
+				47CAEE731F67D4310091919D /* EKScheduleMonthlyViewController+TableView.m in Sources */,
 				47605F151F3F211D00991C3A /* Booking+API.m in Sources */,
 				4787C6E41EB4212F00DF7B83 /* EKNetworkManager.m in Sources */,
 				47605F181F3F5ABA00991C3A /* Reservation.m in Sources */,
