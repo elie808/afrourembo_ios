@@ -20,6 +20,7 @@
 #import "Dashboard+API.h"
 
 #import "UIViewController+Helpers.h"
+#import <DateTools/DateTools.h>
 
 @interface EKTodayViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UICollectionViewDelegate, UICollectionViewDataSource>
 

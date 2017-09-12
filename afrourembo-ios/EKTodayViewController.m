@@ -19,25 +19,30 @@ static NSString * const kCollectionCell = @"todayCell";
     [super viewDidLoad];
 
     self.contentOffsetDictionary = [NSMutableDictionary new];
+    _dataSource = [NSMutableArray new];
     
     //TODO: abstract to NSDate categories
     NSDate *date = [[NSCalendar currentCalendar] startOfDayForDate:[NSDate date]];
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     dateFormatter.dateFormat = @"EEEE - MMMM dd, YYYY";
-    
-    _dataSource = [NSMutableArray arrayWithArray:[self createStubs]];
-    
+
     self.dateLabel.text = [[dateFormatter stringFromDate:date] capitalizedString];
     
+    [self createCalendarGrid];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
     [Dashboard getDashboardOfVendor:[EKSettings getSavedVendor].token
-                         withBlock:^(NSArray<Dashboard *> *dashboardItems) {
-                          
-                             
-                             
-                         }
-                        withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
-                            
-                        }];
+                          withBlock:^(NSArray<Dashboard *> *dashboardItems) {
+                              
+                              [self populateCalendarWithDashObjects:dashboardItems];
+                              [self.tableView reloadData];
+                              
+                          } withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
+                              
+                          }];
 }
 
 #pragma mark - UITableViewDataSource
@@ -126,113 +131,89 @@ static NSString * const kCollectionCell = @"todayCell";
     
 }
 
+#pragma mark - Navigation
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    
+}
+
 #pragma mark - Helpers
 
 /// pure convenience method, to keep using Appointment objects, since this view's UI was built on them initially...
-- (NSArray *)convertToAppointementObjects:(NSArray *)dashboardObjectsArray {
+- (Appointment *)convertToAppointementObject:(Dashboard *)dashboardObject {
     
     Appointment *appt1 = [Appointment new];
-    appt1.clientName = @"Fannie Ballard";
-    appt1.serviceDescription = @"Natural Hair";
-    appt1.serviceTime = @"9:00 AM";
-    appt1.serviceDuration = 15;
-    appt1.serviceStatus = 0;
+    appt1.clientName = [NSString stringWithFormat:@"%@ %@", dashboardObject.fName, dashboardObject.lName];
+    appt1.serviceDescription = dashboardObject.service;
     
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    dateFormatter.dateFormat = @"hh a";
+    appt1.serviceTime = [dateFormatter stringFromDate:dashboardObject.startDate];
     
-    return nil;
+    appt1.serviceDuration = [dashboardObject.endDate minutesFrom:dashboardObject.startDate];
+    appt1.serviceStatus = 2; //mark as scheduled
+    
+    return appt1;
 }
 
-- (NSArray *)createAppointmentStubs {
+/// create empty calendar UI
+- (void)createCalendarGrid {
     
-    Appointment *appt1 = [Appointment new];
-    appt1.clientName = @"Fannie Ballard";
-    appt1.serviceDescription = @"Natural Hair";
-    appt1.serviceTime = @"9:00 AM";
-    appt1.serviceDuration = 15;
-    appt1.serviceStatus = 0;
+    [_dataSource removeAllObjects];
     
-    Appointment *appt2 = [Appointment new];
-    appt2.clientName = @"Victoria Barker";
-    appt2.serviceDescription = @"Extension & Weave";
-    appt2.serviceTime = @"1:00 PM";
-    appt2.serviceDuration = 30;
-    appt2.serviceStatus = 1;
+    NSDate *todayDate = [[NSCalendar currentCalendar] startOfDayForDate:[NSDate date]];
     
-    Appointment *appt3 = [Appointment new];
-    appt3.clientName = @"Violet Kelly";
-    appt3.serviceDescription = @"Natural Hair";
-    appt3.serviceTime = @"6:00 PM";
-    appt3.serviceDuration = 45;
-    appt3.serviceStatus = 0;
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    dateFormatter.dateFormat = @"hh a";
     
-    Appointment *appt4 = [Appointment new];
-    appt4.clientName = @"Corey Barret";
-    appt4.serviceDescription = @"Some Other Service";
-    appt4.serviceTime = @"5:00 PM";
-    appt4.serviceDuration = 10;
-    appt4.serviceStatus = 2;
-    
-    return @[appt1, appt2, appt3, appt4, appt2];
+    for (int hoursIncrement = 0; hoursIncrement < 24; hoursIncrement++) {
+        
+        NSDate *hour = [todayDate dateByAddingHours:hoursIncrement];
+        
+        Today *today = [Today new];
+        today.appointmentsHour = [dateFormatter stringFromDate:hour];
+        today.appointmentsArray = @[];
+        
+        [_dataSource addObject:today];
+    }
 }
 
-- (NSArray *)createStubs {
+/// create calendar UI with booked appointements
+- (void)populateCalendarWithDashObjects:(NSArray *)dashboardItems {
     
-    Today *today = [Today new];
-    today.appointmentsHour = @"10:00 AM";
-    today.appointmentsArray = [self createAppointmentStubs];
+    [_dataSource removeAllObjects];
     
-    Today *today1 = [Today new];
-    today1.appointmentsHour = @"11:00 AM";
-    today1.appointmentsArray = [self createAppointmentStubs];
+    NSDate *todayDate = [[NSCalendar currentCalendar] startOfDayForDate:[NSDate date]];
     
-    Today *today2 = [Today new];
-    today2.appointmentsHour = @"12:00 PM";
-    today2.appointmentsArray = [self createAppointmentStubs];
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    dateFormatter.dateFormat = @"hh a";
     
-    Today *today3 = [Today new];
-    today3.appointmentsHour = @"01:00 PM";
-    today3.appointmentsArray = [self createAppointmentStubs];
-    
-    Today *today4 = [Today new];
-    today4.appointmentsHour = @"02:00 PM";
-    today4.appointmentsArray = [self createAppointmentStubs];
-    
-    return @[today, today1, today2, today3, today4];
+    for (int hoursIncrement = 0; hoursIncrement < 24; hoursIncrement++) {
+        
+        NSDate *hour = [todayDate dateByAddingHours:hoursIncrement];
+        
+        Today *today = [Today new];
+        today.appointmentsHour = [dateFormatter stringFromDate:hour];
+        today.appointmentsArray = @[];
+        
+        for (Dashboard *dashObj in dashboardItems) {
+            
+            // if the startDate is today
+            if ([dashObj.startDate daysFrom:todayDate] == 0 &&
+                [dashObj.startDate hoursFrom:hour] == 0) {
+                
+//                NSLog(@"\n \n Booking with ID: %@", dashObj.bookingId);
+//                NSLog(@"Hour: %@", hour);
+//                NSLog(@"today.appointmentsHour: %@", today.appointmentsHour);
+//                NSLog(@"dashObj.fName: %@ - dashObj.lName: %@", dashObj.fName, dashObj.lName);
+//                NSLog(@"Starts on date: %@ \n \n", dashObj.startDate);
+                
+                today.appointmentsArray = @[[self convertToAppointementObject:dashObj]];
+            }
+        }
+        
+        [_dataSource addObject:today];
+    }
 }
-
-- (NSArray *)createEmptyCal {
-    
-    Today *today = [Today new];
-    today.appointmentsHour = @"10:00 AM";
-    today.appointmentsArray = @[];
-    
-    Today *today1 = [Today new];
-    today1.appointmentsHour = @"11:00 AM";
-    today1.appointmentsArray = @[];
-    
-    Today *today2 = [Today new];
-    today2.appointmentsHour = @"12:00 PM";
-    today2.appointmentsArray = @[];
-    
-    Today *today3 = [Today new];
-    today3.appointmentsHour = @"01:00 PM";
-    today3.appointmentsArray = @[];
-    
-    Today *today4 = [Today new];
-    today4.appointmentsHour = @"02:00 PM";
-    today4.appointmentsArray = @[];
-    
-    return @[today, today1, today2, today3, today4];
-}
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end
