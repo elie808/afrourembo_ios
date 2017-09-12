@@ -112,6 +112,7 @@ static NSString * const kRoleSegue = @"signupBPToRoleVC";
                                         
                                         [MBProgressHUD hideHUDForView:self.view animated:YES];
                                         // self.profilePicImageView.image = image;
+                                        [self performSegueWithIdentifier:kRoleSegue sender:professionalObj];
                                     }
                                     withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
 
@@ -120,8 +121,7 @@ static NSString * const kRoleSegue = @"signupBPToRoleVC";
                                     }];
                                }
 
-                               [MBProgressHUD hideHUDForView:self.view animated:YES];
-                               [self performSegueWithIdentifier:kRoleSegue sender:professionalObj];
+//                               [MBProgressHUD hideHUDForView:self.view animated:YES];
                            }
                           withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
                               
