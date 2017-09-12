@@ -667,6 +667,7 @@
                                                 <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                                     <integer key="value" value="31"/>
                                                 </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                             </userDefinedRuntimeAttributes>
                                         </imageView>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XNh-Pu-1kt">
@@ -676,6 +677,9 @@
                                                 <constraint firstAttribute="width" constant="21" id="XUA-Om-a9Q"/>
                                             </constraints>
                                             <state key="normal" title="Button" image="icEdit"/>
+                                            <connections>
+                                                <action selector="didTapChageProfilePicture:" destination="5dj-os-cYb" eventType="touchDown" id="NcM-Fu-Hgp"/>
+                                            </connections>
                                         </button>
                                     </subviews>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -788,6 +792,7 @@
                     <navigationItem key="navigationItem" id="zVP-lb-lux"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
+                        <outlet property="profilePicImageView" destination="NRi-hg-PIY" id="U3r-MM-4bW"/>
                         <outlet property="tableView" destination="ZPi-Mg-3cV" id="ebs-aE-CnQ"/>
                         <segue destination="niy-0f-08G" kind="show" identifier="signupBPToRoleVC" id="FPV-iI-mhs"/>
                     </connections>
@@ -2396,6 +2401,7 @@
                     </view>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
+                        <outlet property="profilePicImageView" destination="c3i-mM-Kvu" id="rYM-W1-z8B"/>
                         <outlet property="tableView" destination="0ed-ML-gPV" id="P8o-hR-pdc"/>
                     </connections>
                 </viewController>
@@ -2829,6 +2835,6 @@
         <segue reference="WR4-wb-Am0"/>
         <segue reference="pcN-xV-EFc"/>
         <segue reference="z4e-2X-Leh"/>
-        <segue reference="w0H-6g-W5f"/>
+        <segue reference="hg1-H8-gAt"/>
     </inferredMetricsTieBreakers>
 </document>

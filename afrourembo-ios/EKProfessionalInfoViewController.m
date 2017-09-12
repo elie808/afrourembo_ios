@@ -153,7 +153,7 @@ static NSString * const kAddressSegue       = @"professionalInfoToProfessionalAd
         
         vc.passedProfessional.business = selectedBusinessAdress;
         
-        vc.passedProfessional.phoneNumber = self.phoneNumber;
+        vc.passedProfessional.phone = self.phoneNumber;
         vc.passedProfessional.isMobile = self.isMobile;
     }
     

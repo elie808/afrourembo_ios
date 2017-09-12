@@ -7,19 +7,27 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "EKTextFieldTableViewCell.h"
-#import "Professional.h"
-#import "Professional+API.h"
+
 #import "EKRoleViewController.h"
+
+#import "EKTextFieldTableViewCell.h"
+
+#import "Professional.h"
+
+#import "Professional+API.h"
+#import "ProfilePicture+API.h"
 #import "UIViewController+Helpers.h"
+
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
 #import <MBProgressHUD/MBProgressHUD.h>
 
-@interface EKSignupBPViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+@interface EKSignupBPViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
+@property (strong, nonatomic) IBOutlet UIImageView *profilePicImageView;
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 
+- (IBAction)didTapChageProfilePicture:(id)sender;
 - (IBAction)didTapSignUpButton:(id)sender;
 - (IBAction)didTapFacebookSignUpButton:(id)sender;
 
