@@ -60,17 +60,17 @@ static NSString * const kAddressSegue       = @"professionalInfoToProfessionalAd
         return cell;
     }
     
-    if (indexPath.row == 2) {
-
-        EKTextFieldTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kPhoneCell forIndexPath:indexPath];
-        cell.cellTitleLabel.text = labelValue;
-        cell.cellTextField.text = placeHolderValue;
-        cell.cellTextField.tag = 1;
-        
-        return cell;
-    }
+//    if (indexPath.row == 2) {
+//
+//        EKTextFieldTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kPhoneCell forIndexPath:indexPath];
+//        cell.cellTitleLabel.text = labelValue;
+//        cell.cellTextField.text = placeHolderValue;
+//        cell.cellTextField.tag = 1;
+//        
+//        return cell;
+//    }
     
-    if (indexPath.row == 3) {
+    if (indexPath.row == 2) {
         
         EKProfessionalInfoTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kSwitchCell forIndexPath:indexPath];
         cell.cellLabel.text = labelValue;
@@ -177,7 +177,7 @@ static NSString * const kAddressSegue       = @"professionalInfoToProfessionalAd
     _dataSourceArray = @[
                          @{@"Company Name" : self.businessName},
                          @{@"Address" : self.address},
-                         @{@"Phone number" : self.phoneNumber},
+//                         @{@"Phone number" : self.phoneNumber},
                          @{@"I am mobile" : @""}
                          ];
 }
@@ -187,7 +187,7 @@ static NSString * const kAddressSegue       = @"professionalInfoToProfessionalAd
     _dataSourceArray = @[
                          @{@"Company Name" : self.businessName},
                          @{@"Address" : self.address},
-                         @{@"Phone number" : self.phoneNumber},
+//                         @{@"Phone number" : self.phoneNumber},
                          @{@"I am mobile" : @""}
                          ];
 }
