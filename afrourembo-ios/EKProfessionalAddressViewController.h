@@ -7,8 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Address.h"
+
 #import "EKProfessionalInfoViewController.h"
+
+#import "Address.h"
+
+#import "UIViewController+Helpers.h"
+
 #import <MapKit/MapKit.h>
 #import <MBProgressHUD/MBProgressHUD.h>
 

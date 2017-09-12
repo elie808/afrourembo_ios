@@ -13,6 +13,7 @@
 
 #define METERS_PER_MILE 1609.344
 
+static NSString * const kKenyaRegion = @"kenya";
 static NSString *kSalonAnnotation = @"salonLocations";
 
 @implementation EKDiscoverMapViewController (MapDelegate)
@@ -116,6 +117,59 @@ static NSString *kSalonAnnotation = @"salonLocations";
     MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(coords, PINS_ZOOM_FACTOR * METERS_PER_MILE,
                                                                        PINS_ZOOM_FACTOR * METERS_PER_MILE);
     [self.mapView setRegion:viewRegion animated:YES];
+}
+
+#pragma mark - UISeachBar
+
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
+    
+    [searchBar resignFirstResponder];
+    
+    // should be some address, state, and zip
+    NSString *searchText = [NSString stringWithFormat:@"%@ nairobi kenya", searchBar.text];
+    
+    NSLog(@"SEARCH: %@", searchText);
+    
+    CGFloat latitude = -1.280424;
+    CGFloat longitude = 36.816311;
+    
+    CLCircularRegion *searchRegion = [[CLCircularRegion alloc] initWithCenter:CLLocationCoordinate2DMake(latitude, longitude)
+                                                                       radius:8000.0
+                                                                   identifier:kKenyaRegion];
+    
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    [[[CLGeocoder alloc] init] geocodeAddressString:searchText
+                                           inRegion:searchRegion
+                                  completionHandler:^(NSArray<CLPlacemark *> * _Nullable placemarks, NSError * _Nullable error) {
+                                      
+                                      if (placemarks && placemarks.count > 0) {
+                                          
+                                          [MBProgressHUD hideHUDForView:self.view animated:YES];
+                                          
+                                          CLPlacemark *topResult = [placemarks objectAtIndex:0];
+                                          MKPlacemark *placemark = [[MKPlacemark alloc] initWithPlacemark:topResult];
+                                          
+                                          MKCoordinateRegion region = self.mapView.region;
+                                          region.center = placemark.region.center;
+                                          region.span.longitudeDelta /= 8.0;
+                                          region.span.latitudeDelta /= 8.0;
+                                          
+                                          [self.mapView setRegion:region animated:YES];
+                                          // [self.mapView addAnnotation:placemark];
+                                          
+                                      } else {
+                                          
+                                          [MBProgressHUD hideHUDForView:self.view animated:YES];
+                                          [self showMessage:@"We can't find the address you're searching for."
+                                                  withTitle:@"Address not found"
+                                            completionBlock:nil];
+                                      }
+                                  }];
+}
+
+- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
+    
+    NSLog(@"SERCH TEXT: %@", searchText);
 }
 
 @end
