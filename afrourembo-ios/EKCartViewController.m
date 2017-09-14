@@ -88,8 +88,6 @@ static NSString * const kWebViewSegue = @"cartVCtoWebVC";
 
 #pragma mark - Actions
 
-
-
 - (IBAction)didTapCheckoutButton:(UIButton *)button {
 
     // filter Reservation objects out of Booking objects in the dataSource
@@ -105,26 +103,18 @@ static NSString * const kWebViewSegue = @"cartVCtoWebVC";
                             withBlock:^(Reservation *reservation) {
 
                                 Payment *paymentObj = [Payment new];
-                                paymentObj.descriptionText = @"Some Booking description here";
-                                paymentObj.currency = @"USD";
-                                
-//                                float total = 0.0;
-//                                for (Booking *bookingObj in _bookings) {
-//                                    
-//                                    NSNumberFormatter *f = [[NSNumberFormatter alloc] init];
-//                                    f.numberStyle = NSNumberFormatterDecimalStyle;
-//                                    NSNumber *bookingCost = [f numberFromString:bookingObj.bookingCost];
-//
-//                                    total = total + [bookingCost floatValue];
-//                                }
-//                                paymentObj.orderTotal = [NSNumber numberWithFloat:total];
-                                
-                                paymentObj.orderTotal = @20;
+
+                                paymentObj.orderTotal = [self ordersTotal:_bookings];
+                                paymentObj.currency   = @"USD";
                                 
                                 paymentObj.fName = [EKSettings getSavedCustomer].fName;
                                 paymentObj.lName = [EKSettings getSavedCustomer].lName;
                                 paymentObj.email = [EKSettings getSavedCustomer].email;
-                                paymentObj.mobile = [EKSettings getSavedCustomer].phone;
+                                paymentObj.mobile= [EKSettings getSavedCustomer].phone;
+
+                                paymentObj.descriptionText =
+                                [NSString stringWithFormat:@"%@ %@ %@ %@ booking", paymentObj.fName, paymentObj.lName, paymentObj.orderTotal, paymentObj.currency ];
+
                                 paymentObj.bookingID = reservation.bookingId;
                                 
                                 [MBProgressHUD hideHUDForView:self.view animated:YES];
@@ -193,6 +183,27 @@ static NSString * const kWebViewSegue = @"cartVCtoWebVC";
         self.bottomBar.hidden = YES;
         self.emptyCartView.hidden = NO;
     }
+}
+
+/// compute the total amount of booking costs
+- (NSNumber *)ordersTotal:(RLMResults<Booking *> *)bookings {
+    
+    float total = 0.0;
+    NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
+    numberFormatter.numberStyle = NSNumberFormatterDecimalStyle;
+    
+    for (Booking *bookingObj in bookings) {
+        
+        // bookingCost string is a "cost + currency" string. So we exstract the cost value to compute the total
+        NSArray *completeBookingCostString = [bookingObj.bookingCost componentsSeparatedByCharactersInSet:
+                                              [NSCharacterSet whitespaceCharacterSet]];
+        NSString *bookingCostString = completeBookingCostString.count > 0 ? completeBookingCostString[0] : @"0";
+        NSNumber *bookingCost = [numberFormatter numberFromString:bookingCostString];
+        
+        total = total + [bookingCost floatValue];
+    }
+    
+    return [NSNumber numberWithFloat:total];
 }
 
 - (void)handleVendorAvailabilityErrors:(NSError *)error errorMessage:(NSString *)errorMessage statusCode:(NSInteger) statusCode {
