@@ -119,7 +119,7 @@ static CGFloat const kContainerViewHeight = 100;
         booking1.bookingDescription = reservationObj.note;
         
         booking1.bookingOwner   = [EKSettings getSavedCustomer].email;
-        booking1.bookingHash    = [NSString stringWithFormat:@"%@%@%@%@", booking1.bookingOwner, booking1.reservation.serviceId, booking1.reservation.actorId, booking1.bookingDate ];
+        booking1.bookingHash    = [Booking hashBooking:booking1];
         
         [[RLMRealm defaultRealm] beginWriteTransaction];
         [[RLMRealm defaultRealm] addOrUpdateObject:booking1];

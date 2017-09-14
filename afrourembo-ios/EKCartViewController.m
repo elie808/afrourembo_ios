@@ -88,23 +88,15 @@ static NSString * const kWebViewSegue = @"cartVCtoWebVC";
 
 #pragma mark - Actions
 
+
+
 - (IBAction)didTapCheckoutButton:(UIButton *)button {
 
     // filter Reservation objects out of Booking objects in the dataSource
     NSMutableArray *reservationsArray = [NSMutableArray new];
     for (Booking *bookingObj in _bookings) {
         
-        // to convert bookingObj (RLMObj) to an NSObject and avoid weird nils in reservationsArray
-        Reservation *reservationObj = [Reservation new];
-        reservationObj.bookingId    = bookingObj.reservation.bookingId;
-        reservationObj.actorId      = bookingObj.reservation.actorId;
-        reservationObj.serviceId    = bookingObj.reservation.serviceId;
-        reservationObj.fromDateTime = bookingObj.reservation.fromDateTime;
-        reservationObj.toDateTime   = bookingObj.reservation.toDateTime;
-        reservationObj.type = bookingObj.reservation.type;
-        reservationObj.note = bookingObj.reservation.note;
-
-        [reservationsArray addObject:reservationObj];
+        [reservationsArray addObject:[Booking convertBookingObj:bookingObj]];
     }
     
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
@@ -135,12 +127,23 @@ static NSString * const kWebViewSegue = @"cartVCtoWebVC";
                                 paymentObj.mobile = [EKSettings getSavedCustomer].phone;
                                 paymentObj.bookingID = reservation.bookingId;
                                 
-//                              [self.collectionView reloadData];
-                                
                                 [MBProgressHUD hideHUDForView:self.view animated:YES];
                                 
 //                                [self performSegueWithIdentifier:kWebViewSegue sender:paymentObj];
+                                
+                                //TODO: REMOVE BELOW CODE WHEN PAYMENT WEBPAGE RE-ENABLED
+                                ///-----------------------///
+                                // if booking succesful, remove all cached cart items
+                                for (Booking *bookingObj in _bookings) {
+                                    [[RLMRealm defaultRealm] beginWriteTransaction];
+                                    [[RLMRealm defaultRealm] deleteObject:bookingObj.reservation];
+                                    [[RLMRealm defaultRealm] deleteObject:bookingObj];
+                                    [[RLMRealm defaultRealm] commitWriteTransaction];
+                                }
+                                
+                                [self.collectionView reloadData];
                                 [self performSegueWithIdentifier:kSuccessSegue sender:nil];
+                                ///-----------------------///
                             }
                            withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
                                
