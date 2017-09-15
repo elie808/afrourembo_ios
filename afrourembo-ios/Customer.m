@@ -8,6 +8,8 @@
 
 #import "Customer.h"
 
-@implementation Customer
+@implementation CustomerFacebook
+@end
 
+@implementation Customer
 @end
