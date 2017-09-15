@@ -18,6 +18,8 @@ static NSString * const kBaseURL = @"http://35.158.118.170/api/v1/";
 static NSString * const kCategoriesAPIPath   = @"categories";
 
 static NSString * const kUserRegisterAPIPath = @"user/register";
+static NSString * const kUserFBRegisterAPIPath = @"user/facebook/register";
+static NSString * const kUserFBLoginAPIPath    = @"user/facebook/login";
 static NSString * const kUserLoginAPIPath    = @"user/login";
 static NSString * const kUserProfileAPIPath  = @"user/profile";
 static NSString * const kUserExploreAPIPath  = @"user/explore";

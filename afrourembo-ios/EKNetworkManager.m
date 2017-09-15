@@ -39,6 +39,7 @@
     
     [objectManager addRequestDescriptorsFromArray:@[
                                                     [Customer userRegistrationRequestDescriptor],
+                                                    [Customer fbCustomerRequestDescriptor]
                                                     ]];
     
     [objectManager addRequestDescriptor:[ProfessionalLogin professionalLoginRequestDescriptor]];
@@ -74,7 +75,9 @@
     [objectManager addResponseDescriptorsFromArray:@[
                                                      [Customer userRegistrationResponseDescriptor],
                                                      [Customer userLoginResponseDescriptor],
-                                                     [Customer putUserProfileResponseDescriptor]
+                                                     [Customer putUserProfileResponseDescriptor],
+                                                     [Customer fbUserRegistrationResponseDescriptor],
+                                                     [Customer fbUserLoginResponseDescriptor]
                                                      ]];
     
     [objectManager addResponseDescriptor:[Dashboard getDashboardResponseDescriptor]];

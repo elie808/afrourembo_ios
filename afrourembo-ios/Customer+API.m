@@ -16,14 +16,14 @@
     
     RKObjectMapping *mapping = [RKObjectMapping mappingForClass:[Customer class]];
     [mapping addAttributeMappingsFromArray:@[@"email", @"password", @"token", @"fName", @"lName", @"phone"]];
-    
+   
     return mapping;
 }
 
 + (RKObjectMapping *)map2 {
     
     RKObjectMapping *mapping = [RKObjectMapping mappingForClass:[Customer class]];
-    [mapping addAttributeMappingsFromArray:@[@"email", @"password"]];
+    [mapping addAttributeMappingsFromArray:@[@"email", @"password", @"fbToken"]];
     
     return mapping;
 }
@@ -45,6 +45,20 @@
                                     objectClass:[Customer class]
                                     rootKeyPath:nil
                                     method:RKRequestMethodPOST];
+    return request;
+}
+
+// major hack around RestKit. We use the CustomerFacebook to avoid collisions with the Customer class
++ (RKRequestDescriptor *)fbCustomerRequestDescriptor {
+    
+    RKObjectMapping *mapping = [RKObjectMapping mappingForClass:[CustomerFacebook class]];
+    [mapping addAttributeMappingsFromArray:@[@"fbToken"]];
+
+    RKRequestDescriptor *request = [RKRequestDescriptor requestDescriptorWithMapping:[mapping inverseMapping]
+                                                                         objectClass:[CustomerFacebook class]
+                                                                         rootKeyPath:nil
+                                                                              method:RKRequestMethodPOST];
+    
     return request;
 }
 
@@ -78,6 +92,28 @@
                                       responseDescriptorWithMapping:[Customer map1]
                                       method:RKRequestMethodPOST
                                       pathPattern:kUserLoginAPIPath
+                                      keyPath:nil
+                                      statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+    return response;
+}
+
++ (RKResponseDescriptor *)fbUserRegistrationResponseDescriptor {
+    
+    RKResponseDescriptor *response = [RKResponseDescriptor
+                                      responseDescriptorWithMapping:[Customer map1]
+                                      method:RKRequestMethodPOST
+                                      pathPattern:kUserFBRegisterAPIPath
+                                      keyPath:nil
+                                      statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+    return response;
+}
+
++ (RKResponseDescriptor *)fbUserLoginResponseDescriptor {
+    
+    RKResponseDescriptor *response = [RKResponseDescriptor
+                                      responseDescriptorWithMapping:[Customer map1]
+                                      method:RKRequestMethodPOST
+                                      pathPattern:kUserFBLoginAPIPath
                                       keyPath:nil
                                       statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     return response;
@@ -122,6 +158,43 @@
                                         }];
 }
 
++ (void)signUpCustomerWithFacebook:(NSString *)fbToken withBlock:(CustomerSignUpSuccessBlock)successBlock withErrors:(CustomerSignUpErrorBlock)errorBlock {
+    
+    CustomerFacebook *customer = [CustomerFacebook new];
+    customer.fbToken = fbToken;
+    
+    [[RKObjectManager sharedManager] postObject:customer
+                                           path:kUserFBRegisterAPIPath
+                                     parameters:nil
+                                        success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+                                            
+                                            Customer *customerObj = [mappingResult.array firstObject];
+                                            successBlock(customerObj);
+                                            
+                                        } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                                            
+                                            if (operation.HTTPRequestOperation.responseData) {
+                                                
+                                                // exctract error message
+                                                NSDictionary *myDic = [NSJSONSerialization
+                                                                       JSONObjectWithData:operation.HTTPRequestOperation.responseData
+                                                                       options:NSJSONReadingMutableLeaves
+                                                                       error:nil];
+                                                
+                                                NSString *errorMessage = [myDic valueForKey:@"message"];
+                                                
+                                                NSNumber *statusCode = [myDic valueForKey:@"statusCode"];
+                                                
+                                                NSLog(@"-------ERROR MESSAGE: %@", errorMessage);
+                                                errorBlock(error, errorMessage, [statusCode integerValue]);
+                                                
+                                            } else {
+                                                
+                                                errorBlock(error, @"You are not connected to the internet.", 0);
+                                            }
+                                        }];
+}
+
 + (void)loginCustomer:(NSString *)email password:(NSString *)password withBlock:(CustomerSignUpSuccessBlock)successBlock withErrors:(CustomerSignUpErrorBlock)errorBlock {
     
     Customer *customer = [Customer new];
@@ -130,6 +203,43 @@
     
     [[RKObjectManager sharedManager] postObject:customer
                                            path:kUserLoginAPIPath
+                                     parameters:nil
+                                        success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+                                            
+                                            Customer *customerObj = [mappingResult.array firstObject];
+                                            successBlock(customerObj);
+                                            
+                                        } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                                            
+                                            if (operation.HTTPRequestOperation.responseData) {
+                                                
+                                                // exctract error message
+                                                NSDictionary *myDic = [NSJSONSerialization
+                                                                       JSONObjectWithData:operation.HTTPRequestOperation.responseData
+                                                                       options:NSJSONReadingMutableLeaves
+                                                                       error:nil];
+                                                
+                                                NSString *errorMessage = [myDic valueForKey:@"message"];
+                                                
+                                                NSNumber *statusCode = [myDic valueForKey:@"statusCode"];
+                                                
+                                                NSLog(@"-------ERROR MESSAGE: %@", errorMessage);
+                                                errorBlock(error, errorMessage, [statusCode integerValue]);
+                                                
+                                            } else {
+                                                
+                                                errorBlock(error, @"You are not connected to the internet.", 0);
+                                            }
+                                        }];
+}
+
++ (void)loginCustomerWithFacebook:(NSString *)fbToken withBlock:(CustomerSignUpSuccessBlock)successBlock withErrors:(CustomerSignUpErrorBlock)errorBlock {
+    
+    CustomerFacebook *customer = [CustomerFacebook new];
+    customer.fbToken = fbToken;
+    
+    [[RKObjectManager sharedManager] postObject:customer
+                                           path:kUserFBLoginAPIPath
                                      parameters:nil
                                         success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
                                             

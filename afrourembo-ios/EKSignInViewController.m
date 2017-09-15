@@ -29,14 +29,8 @@ static NSString * const kBPDashSegue = @"signInToBPDashboardVC";
                          @{@"Password" : @"Your password"}
                          ];
     
-    // check if Facebook user logged in
-    //    if ([FBSDKAccessToken currentAccessToken]) {
-    //    
-    //        _dataSourceArray = @[
-    //                             @{@"Email" : @"address@mail.com"},
-    //                             @{@"Password" : [FBSDKAccessToken currentAccessToken].userID}
-    //                             ];
-    //    }
+    // if user already logged in, log them out before asking them to sign up
+    if ([FBSDKAccessToken currentAccessToken]) { [[[FBSDKLoginManager alloc] init] logOut]; }
 }
 
 #pragma mark - TableView DataSource
@@ -89,36 +83,47 @@ static NSString * const kBPDashSegue = @"signInToBPDashboardVC";
     
     FBSDKLoginManager *login = [[FBSDKLoginManager alloc] init];
     
-    // Login using Facebook account
-    [login logInWithReadPermissions:@[@"public_profile", @"email", @"user_friends"]
-                 fromViewController:self
-                            handler:^(FBSDKLoginManagerLoginResult *result, NSError *error) {
-                                
-                                if (error) {
+    if ([FBSDKAccessToken currentAccessToken]) {
+        
+        [login logOut];
+        
+    } else {
+    
+        // Login using Facebook account
+        [login logInWithReadPermissions:@[@"public_profile", @"email", @"user_friends"]
+                     fromViewController:self
+                                handler:^(FBSDKLoginManagerLoginResult *result, NSError *error) {
                                     
-                                    NSLog(@"Process error");
-                                    
-                                } else if (result.isCancelled) {
-                                    
-                                    NSLog(@"Cancelled");
-                                    
-                                } else {
-                                    
-                                    NSLog(@"Logged in");
-                                    NSLog(@"/n /n ~~~~~NAME: %@", [FBSDKProfile currentProfile].name);
-                                    
-                                    NSMutableDictionary* parameters = [NSMutableDictionary dictionary];
-                                    [parameters setValue:@"id,name,email,first_name,last_name" forKey:@"fields"];
-                                    
-                                    // Query Facebook graph to get user's email, and use userID as password to signup
-                                    [[[FBSDKGraphRequest alloc] initWithGraphPath:@"me"
-                                                                       parameters:parameters]
-                                     startWithCompletionHandler:^(FBSDKGraphRequestConnection *connection, id result, NSError *error) {
-                                         
-                                         [self signInEmail:[result valueForKey:@"email"] andPass:[result valueForKey:@"id"]];
-                                     }];
-                                }
-                            }];
+                                    if (error) {
+                                        
+                                        NSLog(@"Process error");
+                                        
+                                    } else if (result.isCancelled) {
+                                        
+                                        NSLog(@"Cancelled");
+                                        
+                                    } else {
+                                        
+                                        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+                                        
+                                        [Customer loginCustomerWithFacebook:result.token.tokenString
+                                                                  withBlock:^(Customer *customerObj) {
+                                                                      
+                                                                      [MBProgressHUD hideHUDForView:self.view animated:YES];
+                                                                      
+                                                                      [EKSettings saveCustomer:customerObj];
+                                                                      [self performSegueWithIdentifier:kExploreSegue sender:customerObj];
+                                                                      
+                                                                  } withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
+                                                                      
+                                                                      [MBProgressHUD hideHUDForView:self.view animated:YES];
+                                                                      [self showMessage:errorMessage
+                                                                              withTitle:@"There is something wrong"
+                                                                        completionBlock:nil];
+                                                                  }];
+                                    }
+                                }];        
+    }
 }
 
 #pragma mark - Helpers

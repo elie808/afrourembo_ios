@@ -27,6 +27,9 @@ static NSString * const kEditProfileSegue = @"signUpToEditProfile";
                          @{@"Email" : @"address@mail.com"},
                          @{@"Password" : @"Your password"}
                          ];
+    
+    // if user already logged in, log them out before asking them to sign up
+    if ([FBSDKAccessToken currentAccessToken]) { [[[FBSDKLoginManager alloc] init] logOut]; }
 }
 
 #pragma mark - UITableViewDataSource
@@ -112,42 +115,31 @@ static NSString * const kEditProfileSegue = @"signUpToEditProfile";
                                     } else {
                                         
                                         NSLog(@"Logged in");
-                                        NSLog(@"/n /n ~~~~~NAME: %@", [FBSDKProfile currentProfile].name);
+                                        NSLog(@"/n /n NAME: %@", [FBSDKProfile currentProfile].name);
                                         
                                         [MBProgressHUD showHUDAddedTo:self.view animated:YES];
                                         
-                                        NSMutableDictionary* parameters = [NSMutableDictionary dictionary];
-                                        [parameters setValue:@"id,name,email,first_name,last_name" forKey:@"fields"];
+                                        [Customer signUpCustomerWithFacebook:result.token.tokenString
+                                                                   withBlock:^(Customer *customerObj) {
+                                                                       
+                                                                       NSLog(@"USER SIGNED UP!!");
+                                                                       [MBProgressHUD hideHUDForView:self.view animated:YES];
+                                                                       
+//                                                                       customerObj.fName = [result valueForKey:@"first_name"];
+//                                                                       customerObj.lName = [result valueForKey:@"last_name"];
+                                                                       
+                                                                       [EKSettings saveCustomer:customerObj];
+                                                                       
+                                                                       [self performSegueWithIdentifier:kEditProfileSegue sender:customerObj];
+                                                                       
+                                                                   } withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
+                                                                       
+                                                                       [MBProgressHUD hideHUDForView:self.view animated:YES];
+                                                                       [self showMessage:errorMessage
+                                                                               withTitle:@"There is something wrong"
+                                                                         completionBlock:nil];
+                                                                   }];
                                         
-                                        // Query Facebook graph to get user's email, and use userID as password to signup
-                                        [[[FBSDKGraphRequest alloc] initWithGraphPath:@"me"
-                                                                           parameters:parameters]
-                                         startWithCompletionHandler:^(FBSDKGraphRequestConnection *connection, id result, NSError *error) {
-                                             
-                                             NSLog(@"RESULT: %@", [result valueForKey:@"email"]);
-                                             
-                                             [Customer signUpCustomer:[result valueForKey:@"email"]
-                                                             password:[result valueForKey:@"id"]
-                                                            withBlock:^(Customer *customerObj) {
-                                                                
-                                                                NSLog(@"USER SIGNED UP!!");
-                                                                [MBProgressHUD hideHUDForView:self.view animated:YES];
-                                                                
-                                                                customerObj.fName = [result valueForKey:@"first_name"];
-                                                                customerObj.lName = [result valueForKey:@"last_name"];
-
-                                                                [EKSettings saveCustomer:customerObj];
-                                                                
-                                                                [self performSegueWithIdentifier:kEditProfileSegue sender:customerObj];
-                                                            }
-                                                           withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
-                                                               
-                                                               [MBProgressHUD hideHUDForView:self.view animated:YES];
-                                                               [self showMessage:errorMessage
-                                                                       withTitle:@"There is something wrong"
-                                                                 completionBlock:nil];
-                                                           }];
-                                         }];
                                     }
                                 }];
     }
