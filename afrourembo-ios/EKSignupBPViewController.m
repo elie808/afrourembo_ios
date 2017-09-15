@@ -110,7 +110,6 @@ static NSString * const kRoleSegue = @"signupBPToRoleVC";
                                NSLog(@"PROFESSIONAL SIGNED UP!!");
                                [EKSettings saveVendor:professionalObj];
                                
-//                               [MBProgressHUD showHUDAddedTo:self.view animated:YES];
                                if (_didPickProfilePicture) {
 
                                    [ProfilePicture
@@ -126,11 +125,13 @@ static NSString * const kRoleSegue = @"signupBPToRoleVC";
                                     withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
 
                                         [MBProgressHUD hideHUDForView:self.view animated:YES];
-                                        //[self showMessage:errorMessage withTitle:@"Error" completionBlock:nil];
+                                        [self showMessage:errorMessage
+                                                withTitle:@"Error" completionBlock:nil];
                                     }];
                                }
 
-//                               [MBProgressHUD hideHUDForView:self.view animated:YES];
+                               [MBProgressHUD hideHUDForView:self.view animated:YES];
+                               [self performSegueWithIdentifier:kRoleSegue sender:professionalObj];
                            }
                           withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
                               
