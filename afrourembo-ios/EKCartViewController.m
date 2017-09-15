@@ -105,7 +105,7 @@ static NSString * const kWebViewSegue = @"cartVCtoWebVC";
                                 Payment *paymentObj = [Payment new];
 
                                 paymentObj.orderTotal = [self ordersTotal:_bookings];
-                                paymentObj.currency   = @"USD";
+                                paymentObj.currency   = kCurrency;
                                 
                                 paymentObj.fName = [EKSettings getSavedCustomer].fName;
                                 paymentObj.lName = [EKSettings getSavedCustomer].lName;

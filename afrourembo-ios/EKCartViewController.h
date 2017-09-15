@@ -14,6 +14,7 @@
 #import "Booking.h"
 #import "Payment.h"
 
+#import "EKConstants.h"
 #import "EKSettings.h"
 
 #import "Customer+API.h"
