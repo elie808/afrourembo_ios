@@ -42,7 +42,10 @@
                                                     [Customer fbCustomerRequestDescriptor]
                                                     ]];
     
-    [objectManager addRequestDescriptor:[ProfessionalLogin professionalLoginRequestDescriptor]];
+    [objectManager addRequestDescriptorsFromArray:@[
+                                                    [ProfessionalLogin professionalLoginRequestDescriptor],
+                                                    [ProfessionalLogin fbProfessionalRequestDescriptor]
+                                                    ]];
     
     [objectManager addRequestDescriptorsFromArray:@[
                                                     [Professional professionalRegistrationRequestDescriptor]
@@ -93,7 +96,11 @@
                                                      [ProfilePicture putUserProfilePictureResponseDescriptor]
                                                      ]];
     
-    [objectManager addResponseDescriptor:[ProfessionalLogin professionalLoginResponseDescriptor]];
+    [objectManager addResponseDescriptorsFromArray:@[
+                                                     [ProfessionalLogin professionalLoginResponseDescriptor],
+                                                     [ProfessionalLogin fbProfessionalLoginResponseDescriptor],
+                                                     [ProfessionalLogin fbProfessionalRegistrationResponseDescriptor]
+                                                     ]];
     
     [objectManager addResponseDescriptorsFromArray:@[ [Professional professionalRegistrationResponseDescriptor] ]];
     

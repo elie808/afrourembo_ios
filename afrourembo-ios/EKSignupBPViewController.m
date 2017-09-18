@@ -172,39 +172,25 @@ static NSString * const kRoleSegue = @"signupBPToRoleVC";
                                         
                                         [MBProgressHUD showHUDAddedTo:self.view animated:YES];
                                         
-                                        NSMutableDictionary* parameters = [NSMutableDictionary dictionary];
-                                        [parameters setValue:@"id,name,email,first_name,last_name" forKey:@"fields"];
-                                        
-                                        // Query Facebook graph to get user's email, and use userID as password to signup
-                                        [[[FBSDKGraphRequest alloc] initWithGraphPath:@"me"
-                                                                           parameters:parameters]
-                                         startWithCompletionHandler:^(FBSDKGraphRequestConnection *connection, id result, NSError *error) {
+                                        [ProfessionalLogin
+                                         signUpProfessionalWithFacebook:result.token.tokenString
+                                         withBlock:^(Professional *professionalObj) {
                                              
-                                             [Professional signUpProfessional:[result valueForKey:@"email"]
-                                                                     password:[result valueForKey:@"id"]
-                                                                    firstName:[result valueForKey:@"first_name"]
-                                                                     lastName:[result valueForKey:@"last_name"]
-                                                                  phoneNumber:@"000000000"
-                                                                    withBlock:^(Professional *professionalObj) {
-                                                                        
-                                                                        NSLog(@"PROFESSIONAL SIGNED UP!!");
-                                                                        
-                                                                        [EKSettings saveVendor:professionalObj];
-                                                                        
-                                                                        [MBProgressHUD hideHUDForView:self.view animated:YES];
-                                                                        
-                                                                        professionalObj.fName = [result valueForKey:@"first_name"];
-                                                                        professionalObj.lName = [result valueForKey:@"last_name"];
-                                                                        
-                                                                        [self performSegueWithIdentifier:kRoleSegue sender:professionalObj];
-                                                                    }
-                                                                   withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
-                                                                      
-                                                                       [MBProgressHUD hideHUDForView:self.view animated:YES];
-                                                                       [self showMessage:errorMessage
-                                                                               withTitle:@"There is something wrong"
-                                                                         completionBlock:nil];
-                                                                   }];
+                                             NSLog(@"PROF SIGNED UP!!");
+                                             
+                                             [MBProgressHUD hideHUDForView:self.view animated:YES];
+                                             
+                                             [EKSettings saveVendor:professionalObj];
+                                             
+                                             [self performSegueWithIdentifier:kRoleSegue sender:professionalObj];
+
+                                         } withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
+
+                                             [MBProgressHUD hideHUDForView:self.view animated:YES];
+                                             
+                                             [self showMessage:errorMessage
+                                                     withTitle:@"There is something wrong"
+                                               completionBlock:nil];
                                          }];
                                     }
                                 }];

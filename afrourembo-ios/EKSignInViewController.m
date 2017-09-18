@@ -106,21 +106,47 @@ static NSString * const kBPDashSegue = @"signInToBPDashboardVC";
                                         
                                         [MBProgressHUD showHUDAddedTo:self.view animated:YES];
                                         
-                                        [Customer loginCustomerWithFacebook:result.token.tokenString
-                                                                  withBlock:^(Customer *customerObj) {
-                                                                      
-                                                                      [MBProgressHUD hideHUDForView:self.view animated:YES];
-                                                                      
-                                                                      [EKSettings saveCustomer:customerObj];
-                                                                      [self performSegueWithIdentifier:kExploreSegue sender:customerObj];
-                                                                      
-                                                                  } withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
-                                                                      
-                                                                      [MBProgressHUD hideHUDForView:self.view animated:YES];
-                                                                      [self showMessage:errorMessage
-                                                                              withTitle:@"There is something wrong"
-                                                                        completionBlock:nil];
-                                                                  }];
+                                        if (self.signInRole == SignInRoleCustomer) {
+                                        
+                                            [Customer loginCustomerWithFacebook:result.token.tokenString
+                                                                      withBlock:^(Customer *customerObj) {
+                                                                          
+                                                                          [MBProgressHUD hideHUDForView:self.view animated:YES];
+                                                                          
+                                                                          [EKSettings saveCustomer:customerObj];
+                                                                          [self performSegueWithIdentifier:kExploreSegue sender:customerObj];
+                                                                          
+                                                                      } withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
+                                                                          
+                                                                          [MBProgressHUD hideHUDForView:self.view animated:YES];
+                                                                          [self showMessage:errorMessage
+                                                                                  withTitle:@"There is something wrong"
+                                                                            completionBlock:nil];
+                                                                      }];
+                                            
+                                        } else if (self.signInRole == SignInRoleBP) {
+                                            
+                                            [ProfessionalLogin
+                                             loginProfessionalWithFacebook:result.token.tokenString
+                                             withBlock:^(Professional *professionalObj) {
+                                                 
+                                                 NSLog(@"PROFESSIONAL LOGGED IN!!");
+                                                 
+                                                 [EKSettings saveVendor:professionalObj];
+                                                 
+                                                 [MBProgressHUD hideHUDForView:self.view animated:YES];
+                                                 [self performSegueWithIdentifier:kBPDashSegue sender:nil];
+                                             
+                                             } withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
+                                                 
+                                                 [MBProgressHUD hideHUDForView:self.view animated:YES];
+                                                 [self showMessage:errorMessage
+                                                         withTitle:@"There is something wrong"
+                                                   completionBlock:nil];
+                                             }];
+                                            
+                                        } else if (self.signInRole == SignInRoleSalon) {
+                                        }
                                     }
                                 }];        
     }

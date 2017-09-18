@@ -20,6 +20,10 @@
 @property NSString *picture;
 @end
 
+@interface ProfessionalFacebook : NSObject
+@property NSString *fbToken; //token returned by Facebook upon signup. Use to register user on our server
+@end
+
 @interface Professional : NSObject
 
 @property NSString *professionalID;
