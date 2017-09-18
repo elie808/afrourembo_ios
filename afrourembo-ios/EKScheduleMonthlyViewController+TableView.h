@@ -11,5 +11,7 @@
 @interface EKScheduleMonthlyViewController (TableView) <UITableViewDelegate, UITableViewDataSource, UICollectionViewDelegate, UICollectionViewDataSource>
 
 - (void)createCalendarGrid;
+//- (void)populateCalendarWithDashObjects:(NSArray *)dashboardItems;
+- (void)populateCalendarWithDashObjects:(NSArray *)dashboardItems forDate:(NSDate *)date;
 
 @end

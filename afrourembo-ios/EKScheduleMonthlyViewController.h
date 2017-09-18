@@ -20,10 +20,10 @@
 
 @interface EKScheduleMonthlyViewController : UIViewController
 
-/// calendar data source
+/// calendar data source. Used to store the downloaded Dashboard items
 @property (strong , nonatomic) NSMutableArray *dataSource;
 
-/// daily schedule data source
+/// daily schedule/calendar view's data source
 @property (strong , nonatomic) NSMutableArray *tableDataSource;
 
 @property (weak , nonatomic) IBOutlet FSCalendar *calendar;

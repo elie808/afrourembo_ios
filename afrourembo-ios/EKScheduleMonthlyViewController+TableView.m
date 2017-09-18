@@ -8,7 +8,7 @@
 
 #import "EKScheduleMonthlyViewController+TableView.h"
 
-static NSString * const kTableCell = @"todayTableCell";
+static NSString * const kTableCell = @"calendarTodayTableCell";
 static NSString * const kCollectionCell = @"todayCell";
 
 @implementation EKScheduleMonthlyViewController (TableView)
@@ -26,20 +26,11 @@ static NSString * const kCollectionCell = @"todayCell";
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     EKTodayTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kTableCell forIndexPath:indexPath];
-    
-    // when time slot falls within time of the day
-    if (indexPath.row == 2) {
-        //            cell.backgroundColor = [UIColor colorWithRed:255./255. green:195./255. blue:0 alpha:1.0];
-        // make font bold
-        // make text color white
-        // abstract into config cell method
-    }
-    
+
     Today *todayObj = [self.tableDataSource objectAtIndex:indexPath.row];
     
     cell.cellHourOfTheDayLabel.text = todayObj.appointmentsHour;
-    
-    cell.backgroundColor = [UIColor redColor];
+
     return cell;
 }
 
@@ -118,6 +109,94 @@ static NSString * const kCollectionCell = @"todayCell";
     }
     
     [self.tableView reloadData];
+}
+
+/// pure convenience method, to keep using Appointment objects, since this view's UI was built on them initially...
+- (Appointment *)convertToAppointementObject:(Dashboard *)dashboardObject {
+    
+    Appointment *appt1 = [Appointment new];
+    appt1.clientName = [NSString stringWithFormat:@"%@ %@", dashboardObject.fName, dashboardObject.lName];
+    appt1.serviceDescription = dashboardObject.service;
+    
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    dateFormatter.dateFormat = @"hh a";
+    appt1.serviceTime = [dateFormatter stringFromDate:dashboardObject.startDate];
+    
+    appt1.serviceDuration = [dashboardObject.endDate minutesFrom:dashboardObject.startDate];
+    appt1.serviceStatus = 2; //mark as scheduled
+    
+    return appt1;
+}
+
+/// create calendar UI with booked appointements
+//- (void)populateCalendarWithDashObjects:(NSArray *)dashboardItems {
+//    
+//    [self.tableDataSource removeAllObjects];
+//    
+//    NSDate *todayDate = [[NSCalendar currentCalendar] startOfDayForDate:[NSDate date]];
+//    
+//    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+//    dateFormatter.dateFormat = @"hh a";
+//    
+//    for (int hoursIncrement = 0; hoursIncrement < 24; hoursIncrement++) {
+//        
+//        NSDate *hour = [todayDate dateByAddingHours:hoursIncrement];
+//        
+//        Today *today = [Today new];
+//        today.appointmentsHour = [dateFormatter stringFromDate:hour];
+//        today.appointmentsArray = @[];
+//        
+//        for (Dashboard *dashObj in dashboardItems) {
+//            
+//            // if the startDate is today
+//            if ([dashObj.startDate daysFrom:todayDate] == 0 &&
+//                [dashObj.startDate hoursFrom:hour] == 0) {
+//                
+//                //                NSLog(@"\n \n Booking with ID: %@", dashObj.bookingId);
+//                //                NSLog(@"Hour: %@", hour);
+//                //                NSLog(@"today.appointmentsHour: %@", today.appointmentsHour);
+//                //                NSLog(@"dashObj.fName: %@ - dashObj.lName: %@", dashObj.fName, dashObj.lName);
+//                //                NSLog(@"Starts on date: %@ \n \n", dashObj.startDate);
+//                
+//                today.appointmentsArray = @[[self convertToAppointementObject:dashObj]];
+//            }
+//        }
+//        
+//        [self.tableDataSource addObject:today];
+//    }
+//    
+//}
+
+/// create calendar UI with booked appointements
+- (void)populateCalendarWithDashObjects:(NSArray *)dashboardItems forDate:(NSDate *)date {
+    
+    [self.tableDataSource removeAllObjects];
+    
+    NSDate *todayDate = [[NSCalendar currentCalendar] startOfDayForDate:date];
+    
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    dateFormatter.dateFormat = @"hh a";
+    
+    for (int hoursIncrement = 0; hoursIncrement < 24; hoursIncrement++) {
+        
+        NSDate *hour = [todayDate dateByAddingHours:hoursIncrement];
+        
+        Today *today = [Today new];
+        today.appointmentsHour = [dateFormatter stringFromDate:hour];
+        today.appointmentsArray = @[];
+        
+        for (Dashboard *dashObj in dashboardItems) {
+            
+            // if the startDate is today
+            if ([dashObj.startDate daysFrom:todayDate] == 0 &&
+                [dashObj.startDate hoursFrom:hour] == 0) {
+                
+                today.appointmentsArray = @[[self convertToAppointementObject:dashObj]];
+            }
+        }
+        
+        [self.tableDataSource addObject:today];
+    }
 }
 
 @end

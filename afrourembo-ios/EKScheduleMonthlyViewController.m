@@ -16,6 +16,7 @@
     [super viewDidLoad];
     
     self.dataSource = [NSMutableArray new];
+    self.dataSource = [NSMutableArray new];
     self.tableDataSource = [NSMutableArray new];
     self.contentOffsetDictionary = [NSMutableDictionary new];
     
@@ -39,15 +40,26 @@
 
 #pragma mark - FSCalendar
 
-- (void)calendar:(FSCalendar *)calendar boundingRectWillChange:(CGRect)bounds animated:(BOOL)animated
-{
+- (void)calendar:(FSCalendar *)calendar boundingRectWillChange:(CGRect)bounds animated:(BOOL)animated {
 //    self.calendarHeightConstraint.constant = CGRectGetHeight(bounds);
     // Do other updates here
     [self.view layoutIfNeeded];
 }
 
 - (void)calendar:(FSCalendar *)calendar didSelectDate:(NSDate *)date atMonthPosition:(FSCalendarMonthPosition)monthPosition {
+ 
+    NSMutableArray *temp = [NSMutableArray new];
     
+    for (Dashboard *dashObj in _dataSource) {
+        
+        if ([dashObj.startDate isSameDay:date]) {
+            
+            [temp addObject:dashObj];
+        }
+    }
+
+    [self populateCalendarWithDashObjects:temp forDate:date];
+    [self.tableView reloadData];
 }
 
 - (BOOL)calendar:(FSCalendar *)calendar hasEventForDate:(NSDate *)date {

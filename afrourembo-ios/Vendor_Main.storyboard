@@ -80,7 +80,7 @@
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </view>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="todayTableCell" rowHeight="80" id="SLx-y8-hmX" customClass="EKTodayTableViewCell">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="calendarTodayTableCell" rowHeight="80" id="SLx-y8-hmX" customClass="EKTodayTableViewCell">
                                         <rect key="frame" x="0.0" y="28" width="375" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="SLx-y8-hmX" id="NiE-dR-gWM">
@@ -193,8 +193,8 @@
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
-                                    <outlet property="dataSource" destination="mdi-cb-zSc" id="5GI-Vy-g5s"/>
-                                    <outlet property="delegate" destination="mdi-cb-zSc" id="Ydk-46-ksn"/>
+                                    <outlet property="dataSource" destination="4BS-nG-gAC" id="Wu1-Z8-Cix"/>
+                                    <outlet property="delegate" destination="4BS-nG-gAC" id="Usc-fI-mb7"/>
                                 </connections>
                             </tableView>
                         </subviews>
