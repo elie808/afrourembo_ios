@@ -23,7 +23,7 @@
 + (RKObjectMapping *)map2 {
     
     RKObjectMapping *mapping = [RKObjectMapping mappingForClass:[Customer class]];
-    [mapping addAttributeMappingsFromArray:@[@"email", @"password", @"fbToken"]];
+    [mapping addAttributeMappingsFromArray:@[@"email", @"password"]];
     
     return mapping;
 }
