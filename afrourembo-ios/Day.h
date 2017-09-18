@@ -61,4 +61,7 @@
 + (NSString *)fromTimeString:(Day *)day;
 + (NSString *)toTimeString:(Day *)day;
 
+/// correct for the fact that iOS counts days 1-7 (starting Sunday), and we need 0-6 (starting Monday). So we map iOS dayNumber values to values that work on our platform. Needless to mention how much of an utter shit salad this is.
++ (NSInteger)convertiOSDayToOurGaySystem:(NSInteger)iOSDayNumber;
+
 @end

@@ -11,36 +11,38 @@
 @implementation EKBookingViewController (Helpers)
 
 - (void)populateDataSourcesFrom:(NSArray<Day*> *)daysArray {
+
+    NSDate *todayDate = [[NSCalendar currentCalendar] startOfDayForDate:[NSDate date]];
     
     // create 10 days from today
     for (int i = 0; i < 10; i++) {
-        
-        NSDate *todayDate = [[NSCalendar currentCalendar] startOfDayForDate:[NSDate date]];
-        Day *day = [Day new];
-        
-        day.dayDate = [todayDate dateByAddingDays:i];
 
-        day.dayName = [NSDate stringFromDate:[todayDate dateByAddingDays:i] withFormat:DateFormatLetterDayMonthYearAbbreviated];
-        
-        day.dayNumber = [Day dayNumberFromDay:[todayDate dateByAddingDays:i]];
+        // create a day that we'll populate with relevant data if it matches the pro's availability
+        Day *weekDay = [Day new];
+        weekDay.dayDate = [todayDate dateByAddingDays:i];
+        weekDay.dayName = [NSDate stringFromDate:[todayDate dateByAddingDays:i] withFormat:DateFormatLetterDayMonthYearAbbreviated];
+        weekDay.dayNumber = [Day dayNumberFromDay:[todayDate dateByAddingDays:i]];
 
-        NSPredicate *pred = [NSPredicate predicateWithFormat:[NSString stringWithFormat:@"dayNumber = %@", day.dayNumber]];
+        // check if pro is available on this weekDay
+        NSPredicate *pred = [NSPredicate predicateWithFormat:[NSString stringWithFormat:@"dayNumber = %@", weekDay.dayNumber]];
         if ([daysArray filteredArrayUsingPredicate:pred].count > 0) {
 
-            Day *availableDay = [[daysArray filteredArrayUsingPredicate:pred] firstObject];
+            // get the pro's available start-end times and add them to weekDay
+            Day *proAvailableDay = [[daysArray filteredArrayUsingPredicate:pred] firstObject];
             
-            day.timeSlotsArray = [NSArray arrayWithArray:[self markDayAvailable:day.dayDate
-                                                                   startingHour:availableDay.fromHours
-                                                                     endingHour:availableDay.toHours
-                                                            lunchBreakStartHour:availableDay.lunchBreakFromHours
-                                                              lunchBreakEndHour:availableDay.lunchBreakToHours
-                                                             inMinuteIncrements:@15]];
+            weekDay.timeSlotsArray = [NSArray arrayWithArray:[self markDayAvailable:weekDay.dayDate
+                                                                       startingHour:proAvailableDay.fromHours
+                                                                         endingHour:proAvailableDay.toHours
+                                                                lunchBreakStartHour:proAvailableDay.lunchBreakFromHours
+                                                                  lunchBreakEndHour:proAvailableDay.lunchBreakToHours
+                                                                 inMinuteIncrements:@15]];
         } else {
 
-            day.timeSlotsArray = [self markDayUnavailable:day.dayDate from:@9 endingHour:@17 inMinuteIncrements:@15];
+            // since pro isn't available, mark weekDay as unavailable and populate with arbitrary start-end times
+            weekDay.timeSlotsArray = [self markDayUnavailable:weekDay.dayDate from:@9 endingHour:@17 inMinuteIncrements:@15];
         }
         
-        [self.daysDataSource addObject:day];
+        [self.daysDataSource addObject:weekDay];
     }
 }
 
