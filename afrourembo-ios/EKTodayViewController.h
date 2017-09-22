@@ -21,6 +21,7 @@
 
 #import "UIViewController+Helpers.h"
 #import <DateTools/DateTools.h>
+#import <MBProgressHUD/MBProgressHUD.h>
 
 @interface EKTodayViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UICollectionViewDelegate, UICollectionViewDataSource>
 
