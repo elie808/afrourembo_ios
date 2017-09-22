@@ -80,6 +80,7 @@
 		478BDEF51E99C20900F74A5C /* EKExploreCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 478BDEF41E99C20900F74A5C /* EKExploreCollectionViewCell.m */; };
 		478BDEF91E99C5FC00F74A5C /* Service.m in Sources */ = {isa = PBXBuildFile; fileRef = 478BDEF81E99C5FC00F74A5C /* Service.m */; };
 		47919E5A1E795664001C5600 /* EKOnboardingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47919E591E795664001C5600 /* EKOnboardingViewController.m */; };
+		479250E31F7569E700C7507C /* Summary.m in Sources */ = {isa = PBXBuildFile; fileRef = 479250E21F7569E700C7507C /* Summary.m */; };
 		4795200F1EB3A40700E377E5 /* EKScheduleMonthlyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4795200E1EB3A40700E377E5 /* EKScheduleMonthlyViewController.m */; };
 		4797AF321F30D15700AC1140 /* Review+API.m in Sources */ = {isa = PBXBuildFile; fileRef = 4797AF311F30D15700AC1140 /* Review+API.m */; };
 		479AB2681EA0B9E300A74659 /* EKCompanyProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 479AB2671EA0B9E300A74659 /* EKCompanyProfileViewController.m */; };
@@ -283,6 +284,8 @@
 		478BDF061E99D85500F74A5C /* EKConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKConstants.h; sourceTree = "<group>"; };
 		47919E581E795664001C5600 /* EKOnboardingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKOnboardingViewController.h; sourceTree = "<group>"; };
 		47919E591E795664001C5600 /* EKOnboardingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKOnboardingViewController.m; sourceTree = "<group>"; };
+		479250E11F7569E700C7507C /* Summary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Summary.h; sourceTree = "<group>"; };
+		479250E21F7569E700C7507C /* Summary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Summary.m; sourceTree = "<group>"; };
 		4795200D1EB3A40700E377E5 /* EKScheduleMonthlyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKScheduleMonthlyViewController.h; sourceTree = "<group>"; };
 		4795200E1EB3A40700E377E5 /* EKScheduleMonthlyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKScheduleMonthlyViewController.m; sourceTree = "<group>"; };
 		4797AF301F30D15700AC1140 /* Review+API.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Review+API.h"; sourceTree = "<group>"; };
@@ -807,10 +810,12 @@
 				47AF51B91E9B8561005FE6EB /* Salon.m */,
 				476F63701F075ECD00C27A92 /* SalonLogin.h */,
 				476F63711F075ECD00C27A92 /* SalonLogin.m */,
-				474FAE901F38E0A900970A1F /* TimeSlot.h */,
-				474FAE911F38E0A900970A1F /* TimeSlot.m */,
 				478BDEF71E99C5FC00F74A5C /* Service.h */,
 				478BDEF81E99C5FC00F74A5C /* Service.m */,
+				479250E11F7569E700C7507C /* Summary.h */,
+				479250E21F7569E700C7507C /* Summary.m */,
+				474FAE901F38E0A900970A1F /* TimeSlot.h */,
+				474FAE911F38E0A900970A1F /* TimeSlot.m */,
 				47EF0E2E1EDA23B3000B07BB /* Today.h */,
 				47EF0E2F1EDA23B3000B07BB /* Today.m */,
 			);
@@ -1321,6 +1326,7 @@
 				4787C6E41EB4212F00DF7B83 /* EKNetworkManager.m in Sources */,
 				47605F181F3F5ABA00991C3A /* Reservation.m in Sources */,
 				47BFEA691EA4A9A30091522B /* EKBookingDayCollectionViewCell.m in Sources */,
+				479250E31F7569E700C7507C /* Summary.m in Sources */,
 				471F5FBE1F48707C0097817E /* ProfilePicture+API.m in Sources */,
 				474BD5731E97F8F3009410C4 /* EKTextFieldTableViewCell.m in Sources */,
 				47F7140D1ED6FB2D0028FB65 /* EKBusinessModelViewController.m in Sources */,

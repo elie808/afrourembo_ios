@@ -8,6 +8,10 @@
 
 #import <Foundation/Foundation.h>
 
+/// UI class to display dashboard analytics nicely
 @interface Summary : NSObject
+
+@property NSInteger totalSalesValue;
+@property NSInteger totalBookingsValue;
 
 @end
