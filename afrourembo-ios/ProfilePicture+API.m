@@ -14,22 +14,22 @@
 
 #pragma mark - Response
 
-+ (RKResponseDescriptor *)putUserProfilePictureResponseDescriptor {
++ (RKResponseDescriptor *)postUserProfilePictureResponseDescriptor {
     
     RKResponseDescriptor *response = [RKResponseDescriptor
                                       responseDescriptorWithMapping:[Customer map1]
-                                      method:RKRequestMethodPUT
+                                      method:RKRequestMethodPOST
                                       pathPattern:kUserProfilePictureAPIPath
                                       keyPath:nil
                                       statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     return response;
 }
 
-+ (RKResponseDescriptor *)putProfessionalProfilePictureResponseDescriptor {
++ (RKResponseDescriptor *)postProfessionalProfilePictureResponseDescriptor {
     
     RKResponseDescriptor *response = [RKResponseDescriptor
                                       responseDescriptorWithMapping:[Professional map1]
-                                      method:RKRequestMethodPUT
+                                      method:RKRequestMethodPOST
                                       pathPattern:kProfessionalPictureAPIPath
                                       keyPath:nil
                                       statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
@@ -44,7 +44,7 @@
     
     NSMutableURLRequest *request = [[RKObjectManager sharedManager]
                                     multipartFormRequestWithObject:nil
-                                    method:RKRequestMethodPUT
+                                    method:RKRequestMethodPOST
                                     path:kUserProfilePictureAPIPath
                                     parameters:nil
                                     constructingBodyWithBlock:^(id<AFRKMultipartFormData> formData) {
@@ -104,7 +104,7 @@
     
     NSMutableURLRequest *request = [[RKObjectManager sharedManager]
                                     multipartFormRequestWithObject:nil
-                                    method:RKRequestMethodPUT
+                                    method:RKRequestMethodPOST
                                     path:kProfessionalPictureAPIPath
                                     parameters:nil
                                     constructingBodyWithBlock:^(id<AFRKMultipartFormData> formData) {

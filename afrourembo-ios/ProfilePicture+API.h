@@ -23,7 +23,8 @@ typedef void (^UserProfilePictureErrorBlock)(NSError *error, NSString *errorMess
 
 @interface ProfilePicture (API)
 
-+ (RKResponseDescriptor *)putUserProfilePictureResponseDescriptor;
++ (RKResponseDescriptor *)postUserProfilePictureResponseDescriptor;
++ (RKResponseDescriptor *)postProfessionalProfilePictureResponseDescriptor;
 
 + (void)uploadCustomerProfilePicture:(NSData *)imageData withToken:(NSString *)userToken withBlock:(UserProfilePictureSuccessBlock)successBlock withErrors:(UserProfilePictureErrorBlock)errorBlock;
 

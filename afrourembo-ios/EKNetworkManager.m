@@ -93,7 +93,8 @@
     [objectManager addResponseDescriptorsFromArray:@[ [Explore exploreResponseDescriptor] ]];
     
     [objectManager addResponseDescriptorsFromArray:@[
-                                                     [ProfilePicture putUserProfilePictureResponseDescriptor]
+                                                     [ProfilePicture postUserProfilePictureResponseDescriptor],
+                                                     [ProfilePicture postProfessionalProfilePictureResponseDescriptor]
                                                      ]];
     
     [objectManager addResponseDescriptorsFromArray:@[
