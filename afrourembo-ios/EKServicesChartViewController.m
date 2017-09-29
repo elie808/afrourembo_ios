@@ -8,20 +8,74 @@
 
 #import "EKServicesChartViewController.h"
 
-@interface EKServicesChartViewController ()
-
-@end
+static NSString * const kCellID = @"servicesChartCell";
 
 @implementation EKServicesChartViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+    [MBProgressHUD hideHUDForView:self.view animated:YES];
+    [Dashboard getDashboardOfVendor:[EKSettings getSavedVendor].token
+                          withBlock:^(NSArray<Dashboard *> *dashboardItems) {
+                              
+                              [MBProgressHUD hideHUDForView:self.view animated:YES];
+                              
+                              NSLog(@"\n \n %@", [dashboardItems valueForKeyPath:@"service"]);
+                              
+                          } withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
+                              
+                              [MBProgressHUD hideHUDForView:self.view animated:YES];
+                              [self showMessage:errorMessage withTitle:@"Error" completionBlock:nil];
+                          }];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+#pragma mark - UITableViewDataSource
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return 4;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    EKSalesSummaryTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kCellID forIndexPath:indexPath];
+    
+    cell.cellLeftValueLabel.text = @"Hair";
+    cell.cellRightValueLabel.text = @"10";
+    
+    return cell;
+}
+
+- (NSString*)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    return @"section text placeholder";
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    return self.headerView;
+}
+
+#pragma mark - UITableViewDelegate
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+}
+
+#pragma mark - Actions
+
+- (IBAction)didChangeSegmentedValue:(UISegmentedControl *)sender {
+    
+    switch (sender.selectedSegmentIndex) {
+            
+        case 0: NSLog(@"segment 0"); break;
+        case 1: NSLog(@"segment 1"); break;
+        case 2: NSLog(@"segment 2"); break;
+            
+        default: break;
+    }
 }
 
 /*

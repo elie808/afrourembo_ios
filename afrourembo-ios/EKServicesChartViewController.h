@@ -8,6 +8,20 @@
 
 #import <UIKit/UIKit.h>
 
-@interface EKServicesChartViewController : UIViewController
+#import "EKSalesSummaryTableViewCell.h"
+
+#import "Dashboard+API.h"
+#import "EKSettings.h"
+
+#import "UIViewController+Helpers.h"
+#import <DateTools/DateTools.h>
+#import <MBProgressHUD/MBProgressHUD.h>
+
+@interface EKServicesChartViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
+
+@property (strong, nonatomic) IBOutlet UIView *headerView;
+@property (strong, nonatomic) IBOutlet UITableView *tableView;
+
+- (IBAction)didChangeSegmentedValue:(UISegmentedControl *)sender;
 
 @end
