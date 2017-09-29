@@ -34,4 +34,7 @@ static CGFloat const kResetAnimationDuration = 0.30;
 
 static NSString * const kCurrency = @"KES";
 
+static NSString * const kDashboardNotification = @"dashboardNotificationKey";
+static NSString * const kDashObjKey = @"dashboardItemsKey";
+
 #endif /* EKConstants_h */

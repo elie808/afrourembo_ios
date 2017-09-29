@@ -14,4 +14,13 @@
 @property NSInteger totalSalesValue;
 @property NSInteger totalBookingsValue;
 
+@property NSInteger monthlySalesValue;
+@property NSInteger monthlyBookingsValue;
+
+@property NSInteger lastWeekSalesValue;
+@property NSInteger lastWeekBookingsValue;
+
+@property NSInteger nextWeekSalesValue;
+@property NSInteger nextWeekBookingsValue;
+
 @end
