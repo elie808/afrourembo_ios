@@ -8,6 +8,20 @@
 
 #import <UIKit/UIKit.h>
 
+#import "EKSalesSummaryViewController.h"
+#import "EKChartSummaryViewController.h"
+#import "EKServicesChartViewController.h"
+
+#import "Summary.h"
+#import "EKConstants.h"
+#import "EKSettings.h"
+
+#import "Dashboard+API.h"
+
+#import "UIViewController+Helpers.h"
+#import <DateTools/DateTools.h>
+#import <MBProgressHUD/MBProgressHUD.h>
+
 @interface EKDashboardViewController : UIViewController <UIPageViewControllerDataSource>
 
 @property (strong, nonatomic) UIPageViewController *pageViewController;
