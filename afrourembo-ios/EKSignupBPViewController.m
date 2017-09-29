@@ -95,7 +95,7 @@ static NSString * const kRoleSegue = @"signupBPToRoleVC";
     
     NSString *fNameStr = fNameCell.cellTextField.text;
     NSString *lNameStr = lNameCell.cellTextField.text;
-    NSString *emailStr = emailCell.cellTextField.text;
+    NSString *emailStr = [emailCell.cellTextField.text lowercaseString];
     NSString *passStr  = passCell.cellTextField.text;
     NSString *phoneStr = phoneCell.cellTextField.text;
     

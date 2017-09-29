@@ -73,7 +73,7 @@ static NSString * const kBPDashSegue = @"signInToBPDashboardVC";
     EKTextFieldTableViewCell *emailCell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
     EKTextFieldTableViewCell *passCell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:0]];
     
-    NSString *emailStr  = emailCell.cellTextField.text;
+    NSString *emailStr  = [emailCell.cellTextField.text lowercaseString];
     NSString *passStr   = passCell.cellTextField.text;
     
     [self signInEmail:emailStr andPass:passStr];
