@@ -13,23 +13,34 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
  
-    NSMutableArray <BarChartDataEntry*> *dataEntries = [NSMutableArray new];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(receivedNotification:)
+                                                 name:kDashboardNotification
+                                               object:nil];
+
+//    [MBProgressHUD hideHUDForView:self.view animated:YES];
+//    [Dashboard getDashboardOfVendor:[EKSettings getSavedVendor].token
+//                          withBlock:^(NSArray<Dashboard *> *dashboardItems) {
+//                              
+//                              [MBProgressHUD hideHUDForView:self.view animated:YES];
+////                              [self zabre:dashboardItems];
+//                              
+//                          } withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
+//                              
+//                              [MBProgressHUD hideHUDForView:self.view animated:YES];
+//                              [self showMessage:errorMessage withTitle:@"Error" completionBlock:nil];
+//                          }];
+}
+
+- (void)zabre:(NSArray *)dashboardItems {
     
-    BarChartDataEntry *dataEntry1 = [[BarChartDataEntry alloc] initWithX:1 y:1];
-    [dataEntries addObject:dataEntry1];
+    NSDate *todayDate = [[NSCalendar currentCalendar] startOfDayForDate:[NSDate date]];
     
-    BarChartDataEntry *dataEntry2 = [[BarChartDataEntry alloc] initWithX:2 y:2];
-    [dataEntries addObject:dataEntry2];
-    
-    BarChartDataEntry *dataEntry3 = [[BarChartDataEntry alloc] initWithX:3 y:3];
-    [dataEntries addObject:dataEntry3];
-    
-    BarChartDataSet *chartDataSet = [[BarChartDataSet alloc] initWithValues:dataEntries label:@"LEGEND DESCRIPTION"];
-    BarChartData *chartData = [[BarChartData alloc] initWithDataSet:chartDataSet];
-    
-    self.graph.data = chartData;
-    
-    /////
+    for (Dashboard *dashObj in dashboardItems) {
+     
+//        if (dashObj.startDate dateIs)
+        
+    }
     
     NSMutableArray <ChartDataEntry*> *dataEntries2 = [NSMutableArray new];
     
@@ -46,6 +57,10 @@
     LineChartData *lineData = [[LineChartData alloc] initWithDataSet:lineDataSet];
     
     self.revenueGraph.data = lineData;
+}
+
+- (void)receivedNotification:(NSNotification *) notification {
+
 }
 
 #pragma mark - Actions
