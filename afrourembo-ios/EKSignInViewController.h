@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "EKTextFieldTableViewCell.h"
 #import "EKExploreViewController.h"
+#import "EKConfirmPhoneNumberViewController.h"
 #import "Customer+API.h"
 #import "Professional+API.h"
 #import "ProfessionalLogin+API.h"

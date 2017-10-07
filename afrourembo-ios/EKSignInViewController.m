@@ -8,9 +8,10 @@
 
 #import "EKSignInViewController.h"
 
-static NSString * const kSigninCell = @"signinCell";
-static NSString * const kExploreSegue = @"signInToExploreVC";
-static NSString * const kBPDashSegue = @"signInToBPDashboardVC";
+static NSString * const kSigninCell     = @"signinCell";
+static NSString * const kExploreSegue   = @"signInToExploreVC";
+static NSString * const kBPDashSegue    = @"signInToBPDashboardVC";
+static NSString * const kConfirmPhoneSegue = @"confirmPhoneNumberVC";
 
 @interface EKSignInViewController() {
     NSArray *_dataSourceArray;
@@ -213,6 +214,12 @@ static NSString * const kBPDashSegue = @"signInToBPDashboardVC";
 //            
 //        }
         
+    }
+
+    if ([segue.identifier isEqualToString:kConfirmPhoneSegue]) {
+        
+        EKConfirmPhoneNumberViewController *vc = segue.destinationViewController;
+        vc.signInRole = self.signInRole;
     }
 }
 
