@@ -11,13 +11,17 @@
 #import "Service+API.h"
 
 @interface Business : NSObject
-@property NSString *address;
 @property NSString *name;
+@property NSString *address;
 @property NSDictionary *location;
 @end
 
 @interface Pictures : NSObject
 @property NSString *picture;
+@end
+
+@interface ProfessionalFacebook : NSObject
+@property NSString *fbToken; //token returned by Facebook upon signup. Use to register user on our server
 @end
 
 @interface Professional : NSObject
@@ -27,6 +31,7 @@
 @property NSString *fName;
 @property NSString *lName;
 @property NSString *email;
+@property NSString *phone;
 @property NSString *password;
 
 @property (assign, nonatomic) BOOL isMobile;

@@ -29,7 +29,7 @@ static NSString * const kService4 = @"SPECIAL OCCASIONS PROS";
 @property NSString *name;
 @property NSString *icon;
 
-@property CGFloat price; //price
-@property CGFloat time; //in minutes
+@property NSInteger price; //price
+@property NSInteger time; //in minutes
 
 @end

@@ -26,7 +26,7 @@ static NSString * const kVendorMainStoryboard = @"Vendor_Main";
 //    [[RLMRealm defaultRealm] beginWriteTransaction]; [[RLMRealm defaultRealm] deleteAllObjects]; [[RLMRealm defaultRealm] commitWriteTransaction];
     
 //    [EKSettings deleteSavedCustomer];
-//    [EKSettings deleteVendor];
+//    [EKSettings deleteSavedVendor];
     
     if ([EKSettings getSavedCustomer]) {
         
@@ -35,7 +35,7 @@ static NSString * const kVendorMainStoryboard = @"Vendor_Main";
         UINavigationController *rootViewController = [storyboard instantiateViewControllerWithIdentifier:kExploreVC];
         self.window.rootViewController = rootViewController;
         
-    } else if ([EKSettings getVendor]) {
+    } else if ([EKSettings getSavedVendor]) {
     
         // Vendor
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:kVendorMainStoryboard bundle:nil];

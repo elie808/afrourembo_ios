@@ -8,6 +8,10 @@
 
 #import <Foundation/Foundation.h>
 
+@interface CustomerFacebook : NSObject
+@property NSString *fbToken; //token returned by Facebook upon signup. Use to register user on our server
+@end
+
 @interface Customer : NSObject
 
 // signup

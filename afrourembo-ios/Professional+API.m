@@ -51,7 +51,7 @@
 + (RKObjectMapping *)map2 {
     
     RKObjectMapping *mapping = [RKObjectMapping mappingForClass:[Professional class]];
-    [mapping addAttributeMappingsFromArray:@[@"email", @"password", @"fName", @"lName"]];
+    [mapping addAttributeMappingsFromArray:@[@"email", @"password", @"fName", @"lName", @"phone"]];
 
     return mapping;
 }
@@ -91,7 +91,7 @@
 
 #pragma mark - APIs
 
-+ (void)signUpProfessional:(NSString *)email password:(NSString *)password  firstName:(NSString *)fName lastName:(NSString *)lName  withBlock:(ProfessionalSignUpSuccessBlock)successBlock withErrors:(ProfessionalSignUpErrorBlock)errorBlock {
++ (void)signUpProfessional:(NSString *)email password:(NSString *)password  firstName:(NSString *)fName lastName:(NSString *)lName phoneNumber:(NSString *)phone  withBlock:(ProfessionalSignUpSuccessBlock)successBlock withErrors:(ProfessionalSignUpErrorBlock)errorBlock {
     
     Professional *professional = [Professional new];
     
@@ -99,6 +99,7 @@
     professional.lName = lName;
     professional.email = email;
     professional.password = password;
+    professional.phone = phone;
     
     [[RKObjectManager sharedManager] postObject:professional
                                            path:kProfessionalRegisterAPIPath

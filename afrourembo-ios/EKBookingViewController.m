@@ -8,44 +8,28 @@
 
 #import "EKBookingViewController.h"
 
-static NSString * const kProCell = @"bookingProfessionalCell";
-static NSString * const kDayCell = @"bookingDayCell";
-static NSString * const kTimeCell = @"bookingTimeCell";
-
 static NSString * const kCartSegue   = @"bookingTimeToCartVC";
-static NSString * const kSignUpSegue = @"bookingVCToSignUpVC";
 
 //static NSString * const kPlaceHolderText = @"What do you like about this place?";
 static CGFloat const kContainerViewHeight = 100;
 
 @implementation EKBookingViewController {
     BOOL _keyboardShowing;
-
-    NSMutableArray *_daysDataSource;
-    NSMutableArray *_timesDataSource;
-    
-    NSString *_vendorType;
-    NSString *_bookingNote;
-    
-    NSDate *_selectedFromDate;
-    NSDate *_selectedToDate;
-    
-    Professional *_selectedPro;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
 
     //TODO: ADD IF STATEMENT AND CHANGE TYPE ACCORDING TO VIEW MODE
-    _vendorType = kProfessionalType;
+    self.vendorType = kProfessionalType;
     
     // init data source
-    _daysDataSource     = [NSMutableArray new];
-    _timesDataSource    = [NSMutableArray new];
-    _selectedFromDate   = nil;
-    _selectedToDate     = nil;
-    _bookingNote        = @"No notes";
-    _selectedPro        = nil;
+    self.daysDataSource     = [NSMutableArray new];
+    self.timesDataSource    = [NSMutableArray new];
+    self.selectedFromDate   = nil;
+    self.selectedToDate     = nil;
+    self.bookingNote        = @"No notes";
+    self.selectedPro        = nil;
     
     self.containerView.frame = CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, kContainerViewHeight);
     [self.view addSubview:self.containerView];
@@ -70,128 +54,6 @@ static CGFloat const kContainerViewHeight = 100;
     
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillHideNotification object:nil];
-}
-
-#pragma mark - UICollectionViewDataSource
-
-- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
-    return 1;
-}
-
-- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    
-    if (collectionView == self.proCollectionView) {
-        return self.professionalsDataSource.count;
-    }
-    
-    if (collectionView == self.dayCollectionView) {
-        return _daysDataSource.count;
-    }
-    
-    if (collectionView == self.timeCollectionView) {
-        return _timesDataSource.count;
-    }
-    
-    return 0;
-}
-
-- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-
-    if (collectionView == self.proCollectionView) {
-
-        EKBookingProCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kProCell forIndexPath:indexPath];
-
-        Professional *pro = self.professionalsDataSource[indexPath.row];
-        
-        [cell configureCellWithPro:pro];
-        
-        return cell;
-    }
-    
-    if (collectionView == self.dayCollectionView) {
-     
-        EKBookingDayCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kDayCell forIndexPath:indexPath];
-        
-        Day *day = _daysDataSource[indexPath.row];
-        
-        cell.cellDayLabel.text = day.dayName;
-        
-        return cell;
-    }
-    
-    if (collectionView == self.timeCollectionView) {
-        
-        EKBookingTimeCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kTimeCell forIndexPath:indexPath];
-        
-        TimeSlot *timeSlot = _timesDataSource[indexPath.row];
-        
-        [cell configureCell:timeSlot];
-        
-        return cell;
-    }
-    
-    return nil;
-}
-
-#pragma mark - UICollectionViewDelegate
-
-- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
- 
-    if (collectionView == self.proCollectionView) {
-     
-        Professional *pro = self.professionalsDataSource[indexPath.row];
-
-        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-        [Day getAvailabilityOfVendor:pro.professionalID
-                              ofType:_vendorType
-                           withToken:[EKSettings getSavedCustomer].token
-                           withBlock:^(NSArray *daysArray) {
-                               
-                               [MBProgressHUD hideHUDForView:self.view animated:YES];
-                               
-                               _selectedPro = pro;
-                                self.emptyTimeDataView.hidden = YES;
-                               [self populateDataSourcesFrom:daysArray];
-                               [self.dayCollectionView reloadData];
-                           
-                           } withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
-                              
-                              [MBProgressHUD hideHUDForView:self.view animated:YES];
-                              self.emptyTimeDataView.hidden = NO;
-                               
-                               [self handleVendorAvailabilityErrors:error errorMessage:errorMessage statusCode:statusCode];
-                          }];
-    }
-    
-    if (collectionView == self.dayCollectionView) {
-        
-        Day *day = _daysDataSource[indexPath.row];
-        
-        [_timesDataSource removeAllObjects];
-        [_timesDataSource addObjectsFromArray:day.timeSlotsArray];
-        
-        [self.timeCollectionView reloadData];
-    }
-    
-    if (collectionView == self.timeCollectionView) {
-        
-        [self highlightCellsForTimeSlotAtIndexPath:indexPath];
-        
-        [self.timeCollectionView reloadData];
-    }
-}
-
-// center solo cells
-- (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
-    
-    if (collectionView == self.proCollectionView && self.professionalsDataSource.count <= 1) {
-        
-        return UIEdgeInsetsMake(0, (self.view.frame.size.width/2) - 55., 0, 0);
-        
-    } else {
-        
-        return UIEdgeInsetsMake(0, 0, 0, 0);
-    }
 }
 
 #pragma mark - UITextViewDelegate
@@ -240,24 +102,24 @@ static CGFloat const kContainerViewHeight = 100;
         Reservation *reservationObj = [Reservation new];
         reservationObj.actorId      = _selectedPro.professionalID;
         reservationObj.serviceId    = self.passedService.serverServiceId;
-        reservationObj.fromDateTime = _selectedFromDate;
-        reservationObj.toDateTime   = _selectedToDate;
-        reservationObj.type = _vendorType;
-        reservationObj.note = _bookingNote;
+        reservationObj.fromDateTime = self.selectedFromDate;
+        reservationObj.toDateTime   = self.selectedToDate;
+        reservationObj.type = self.vendorType;
+        reservationObj.note = self.bookingNote;
         
         Booking *booking1 = [Booking new];
         
         booking1.reservation = reservationObj;
         
         booking1.bookingTitle   = self.passedService.serviceName;
-        booking1.bookingCost    = [NSString stringWithFormat:@"%.0f %@", self.passedService.price, self.passedService.currency];
-        booking1.bookingVendor  = [NSString stringWithFormat:@"%@ %@", _selectedPro.fName, _selectedPro.lName]; //TODO: or salon name
-        booking1.practionner    = [NSString stringWithFormat:@"%@ %@", _selectedPro.fName, _selectedPro.lName];
+        booking1.bookingCost    = [NSString stringWithFormat:@"%ld %@", (long)self.passedService.price, self.passedService.currency];
+        booking1.bookingVendor  = [NSString stringWithFormat:@"%@ %@", self.selectedPro.fName, self.selectedPro.lName]; //TODO: or salon name
+        booking1.practionner    = [NSString stringWithFormat:@"%@ %@", self.selectedPro.fName, self.selectedPro.lName];
         booking1.bookingDate    = reservationObj.fromDateTime;
         booking1.bookingDescription = reservationObj.note;
         
         booking1.bookingOwner   = [EKSettings getSavedCustomer].email;
-        booking1.bookingHash    = [NSString stringWithFormat:@"%@%@%@%@", booking1.bookingOwner, booking1.reservation.serviceId, booking1.reservation.actorId, booking1.bookingDate ];
+        booking1.bookingHash    = [Booking hashBooking:booking1];
         
         [[RLMRealm defaultRealm] beginWriteTransaction];
         [[RLMRealm defaultRealm] addOrUpdateObject:booking1];
@@ -295,182 +157,6 @@ static CGFloat const kContainerViewHeight = 100;
 }
 
 #pragma mark - Helpers
-
-- (void)populateDataSourcesFrom:(NSArray<Day*> *)daysArray {
-
-    // create 10 days from today
-    for (int i = 0; i < 10; i++) {
-    
-        Day *day = [Day new];
-        
-        day.dayName = [NSDate stringFromDate:[NSDate addDays:i after:[NSDate todayDate]] withFormat:DateFormatLetterDayMonthYear];
-        
-        day.dayNumber = [Day dayNumberFromDay:[NSDate addDays:i after:[NSDate todayDate]]];
-        
-        [_daysDataSource addObject:day];
-    }
-    
-    // check if day number matches anything in the passed daysArray
-//    for (Day *profAvailableDay in daysArray) {
-    
-        // go over the newly created days
-        for (Day *dataSourceDay in _daysDataSource) {
-            
-            if (dataSourceDay.dayNumber &&
-                [[daysArray valueForKey:@"dayNumber"] containsObject:dataSourceDay.dayNumber] ) {
-        
-                NSString *predStr = [NSString stringWithFormat:@"dayNumber = %@", dataSourceDay.dayNumber];
-                
-                NSPredicate *pred = [NSPredicate predicateWithFormat:predStr];
-                Day *profAvailableDay = [[daysArray filteredArrayUsingPredicate:pred] firstObject];
-                
-                dataSourceDay.timeSlotsArray = [NSArray arrayWithArray:[self populateDayWithTimes:profAvailableDay.fromHours
-                                                                                       endingHour:profAvailableDay.toHours
-                                                                              lunchBreakStartHour:profAvailableDay.lunchBreakFromHours
-                                                                                lunchBreakEndHour:profAvailableDay.lunchBreakToHours
-                                                                               inMinuteIncrements:@15]];
-            } else {
-                
-                NSLog(@"dataSourceDay.dayNumber: %@", dataSourceDay.dayNumber);
-                
-                dataSourceDay.timeSlotsArray = [self markDayUnavailableFrom:@9
-                                                                 endingHour:@17
-                                                         inMinuteIncrements:@15];
-            }
-        }
-//    }
-}
-
-- (NSArray *)populateDayWithTimes:(NSNumber *)startHour endingHour:(NSNumber *)toHour lunchBreakStartHour:(NSNumber *)lbFromHour lunchBreakEndHour:(NSNumber *)lbToHour inMinuteIncrements:(NSNumber *)minIncrements {
-    
-    NSMutableArray *timeSlotsArray = [NSMutableArray new];
-    BOOL isAvailable;
-    
-    for (int hour = [startHour intValue]; hour < [toHour intValue]; hour++) {
-        
-        for (int startingMin = 0; startingMin < 60; startingMin += [minIncrements intValue]) {
-            
-            if (lbFromHour > 0 && lbToHour > 0) {
-                
-                // block out lunch break hours
-                if ( hour >= [lbFromHour intValue] && hour < [lbToHour intValue] ) {
-                    
-                    isAvailable = NO;
-                    
-                } else {
-                    
-                    isAvailable = YES;
-                }
-                
-                TimeSlot *slot = [[TimeSlot alloc] initWithDate:[NSDate todayAtTime:[NSNumber numberWithInt:hour]
-                                                                            minutes:[NSNumber numberWithInt:startingMin]]
-                                                andAvailability:isAvailable];
-                
-                [timeSlotsArray addObject:slot];
-            }
-        }
-    }
-    
-    return [NSArray arrayWithArray:timeSlotsArray];
-}
-
-- (NSArray *)markDayUnavailableFrom:(NSNumber *)startHour endingHour:(NSNumber *)toHour inMinuteIncrements:(NSNumber *)minIncrements {
-    
-    NSMutableArray *timeSlotsArray = [NSMutableArray new];
-    
-    for (int hour = [startHour intValue]; hour < [toHour intValue]; hour++) {
-        
-        for (int startingMin = 0; startingMin < 60; startingMin += [minIncrements intValue]) {
-            
-            TimeSlot *slot = [[TimeSlot alloc] initWithDate:[NSDate todayAtTime:[NSNumber numberWithInt:hour]
-                                                                        minutes:[NSNumber numberWithInt:startingMin]]
-                                            andAvailability:NO];
-            
-            [timeSlotsArray addObject:slot];
-        }
-    }
-    
-    return [NSArray arrayWithArray:timeSlotsArray];
-}
-
-- (void)highlightCellsForTimeSlotAtIndexPath:(NSIndexPath *)indexPath {
-    
-    TimeSlot *timeSlot = _timesDataSource[indexPath.row];
-    
-    // compute how many time slots ahead to highlight
-    int timeSlotsAhead = self.passedService.time / 15;
-    
-    if (timeSlot.isAvailable && (indexPath.row + timeSlotsAhead) < _timesDataSource.count) {
-        
-        // check if slots to be selected, don't overlap with unavailable slots
-        BOOL allSlotsAheadAvailable = YES;
-        for (int i = 0; i <= timeSlotsAhead; i++) {
-            
-            TimeSlot *nextSlot = _timesDataSource[indexPath.row+i];
-            if (!nextSlot.isAvailable) {
-                allSlotsAheadAvailable = NO;
-                i = timeSlotsAhead;
-            }
-        }
-        
-        // deselect all slots
-        for (int j = 0; j < _timesDataSource.count; j++) {
-            TimeSlot *timeSlot = _timesDataSource[j];
-            timeSlot.isSelected = NO;
-        }
-        
-        // highlight needed cells
-        if (allSlotsAheadAvailable) {
-            
-            // nullify selected dates from before
-            _selectedFromDate   = nil;
-            _selectedToDate     = nil;
-            
-            for (int i = 0; i <= timeSlotsAhead; i++) {
-                TimeSlot *nextSlot = _timesDataSource[indexPath.row+i];
-                nextSlot.isSelected = YES;
-            }
-            
-            // update view model
-            _selectedFromDate   = ((TimeSlot *)(_timesDataSource[indexPath.row])).date;
-            _selectedToDate     = ((TimeSlot *)(_timesDataSource[indexPath.row + timeSlotsAhead])).date;
-        }
-    }
-}
-
-- (void)handleVendorAvailabilityErrors:(NSError *)error errorMessage:(NSString *)errorMessage statusCode:(NSInteger) statusCode {
-    
-    if (statusCode == 401) { // invalid token
-        
-        [self showLoginDialog:^(UIAlertAction *action, NSString *emailString, NSString *passString) {
-            
-            [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-            [Customer loginCustomer:emailString
-                           password:passString
-                          withBlock:^(Customer *customerObj) {
-                              
-                              [MBProgressHUD hideHUDForView:self.view animated:YES];
-                              [EKSettings saveCustomer:customerObj];
-                          }
-                         withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
-                             
-                             [MBProgressHUD hideHUDForView:self.view animated:YES];
-                             [self showMessage:errorMessage withTitle:@"There is something wrong"
-                               completionBlock:nil];
-                         }];
-            
-        } andSignUpBlock:^(UIAlertAction *action) {
-            
-            [EKSettings deleteBookingsForCustomer:[EKSettings getSavedCustomer]];
-            [EKSettings deleteSavedCustomer];
-            [self performSegueWithIdentifier:kSignUpSegue sender:nil];
-        }];
-        
-    } else {
-        
-        [self showMessage:errorMessage withTitle:@"Error" completionBlock:nil];
-    }
-}
 
 - (void)keyboardWillShow:(NSNotification *)notification {
     

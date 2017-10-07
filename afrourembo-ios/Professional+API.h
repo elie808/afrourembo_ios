@@ -26,6 +26,6 @@ typedef void (^ProfessionalEditErrorBlock)(NSError *error, NSString *errorMessag
 
 + (RKResponseDescriptor *)professionalRegistrationResponseDescriptor;
 
-+ (void)signUpProfessional:(NSString *)email password:(NSString *)password  firstName:(NSString *)fName lastName:(NSString *)lName  withBlock:(ProfessionalSignUpSuccessBlock)successBlock withErrors:(ProfessionalSignUpErrorBlock)errorBlock;
++ (void)signUpProfessional:(NSString *)email password:(NSString *)password  firstName:(NSString *)fName lastName:(NSString *)lName phoneNumber:(NSString *)phone  withBlock:(ProfessionalSignUpSuccessBlock)successBlock withErrors:(ProfessionalSignUpErrorBlock)errorBlock;
 
 @end

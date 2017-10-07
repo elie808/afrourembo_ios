@@ -8,13 +8,17 @@
 
 #import "EKDashboardViewController.h"
 
+static NSInteger const kViewCount = 3;
+
 @implementation EKDashboardViewController {
     NSUInteger _index;
+    NSArray <Dashboard *> *_dashboardItems;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    _dashboardItems = [NSArray new];
     _index = 0;
     
     // Create PageViewController
@@ -22,13 +26,36 @@
     self.pageViewController.view.frame = CGRectMake(0, 64, self.view.frame.size.width, self.view.frame.size.height-64);
     self.pageViewController.dataSource = self;
     
-    UIViewController *startingViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"content1"];
+    EKSalesSummaryViewController *startingViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"content1"];
+//    startingViewController.summaryDataSource = _summaryObj;
     [self.pageViewController setViewControllers:@[startingViewController]
                                       direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
     
     [self addChildViewController:self.pageViewController];
     [self.view addSubview:self.pageViewController.view];
     [self.pageViewController didMoveToParentViewController:self];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+    [MBProgressHUD hideHUDForView:self.view animated:YES];
+    [Dashboard getDashboardOfVendor:[EKSettings getSavedVendor].token
+                          withBlock:^(NSArray<Dashboard *> *dashboardItems) {
+
+                              [MBProgressHUD hideHUDForView:self.view animated:YES];
+                              
+                              _dashboardItems = dashboardItems;
+                              
+                              [[NSNotificationCenter defaultCenter] postNotificationName:kDashboardNotification
+                                                                                  object:nil
+                                                                                userInfo:[NSDictionary dictionaryWithObject:dashboardItems forKey:kDashObjKey]];
+                              
+                          } withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
+                              
+                              [MBProgressHUD hideHUDForView:self.view animated:YES];
+                              [self showMessage:errorMessage withTitle:@"Error" completionBlock:nil];
+                          }];
 }
 
 #pragma mark - Page View Controller Data Source
@@ -54,7 +81,7 @@
     NSLog(@"\n");
     NSLog(@"ViewAFTER - Index: %lu", (unsigned long)_index);
 
-    if (_index < 1) {//view count - 1
+    if (_index < kViewCount - 1) {//view count - 1
         _index++;
         NSLog(@"Index++ %lu", (unsigned long)_index);
     } else {
@@ -75,9 +102,28 @@
     
     switch (index) {
             
-        case 0: return [self.storyboard instantiateViewControllerWithIdentifier:@"content1"]; break;
+        case 0: {
             
-        case 1: return [self.storyboard instantiateViewControllerWithIdentifier:@"content2"]; break;
+            EKSalesSummaryViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"content1"];
+            vc.dataSource = _dashboardItems;
+            return vc;
+            
+        } break;
+            
+        case 1: {
+          
+            EKChartSummaryViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"content2"];
+//            vc.view.backgroundColor = [UIColor redColor];
+            return vc;
+            
+        } break;
+        
+        case 2: {
+            
+            EKServicesChartViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"content3"];
+            return vc;
+            
+        } break;
             
         default: return nil; break;
     }

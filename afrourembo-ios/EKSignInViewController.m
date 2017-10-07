@@ -29,14 +29,8 @@ static NSString * const kBPDashSegue = @"signInToBPDashboardVC";
                          @{@"Password" : @"Your password"}
                          ];
     
-    // check if Facebook user logged in
-    //    if ([FBSDKAccessToken currentAccessToken]) {
-    //    
-    //        _dataSourceArray = @[
-    //                             @{@"Email" : @"address@mail.com"},
-    //                             @{@"Password" : [FBSDKAccessToken currentAccessToken].userID}
-    //                             ];
-    //    }
+    // if user already logged in, log them out before asking them to sign up
+    if ([FBSDKAccessToken currentAccessToken]) { [[[FBSDKLoginManager alloc] init] logOut]; }
 }
 
 #pragma mark - TableView DataSource
@@ -79,7 +73,7 @@ static NSString * const kBPDashSegue = @"signInToBPDashboardVC";
     EKTextFieldTableViewCell *emailCell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
     EKTextFieldTableViewCell *passCell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:0]];
     
-    NSString *emailStr  = emailCell.cellTextField.text;
+    NSString *emailStr  = [emailCell.cellTextField.text lowercaseString];
     NSString *passStr   = passCell.cellTextField.text;
     
     [self signInEmail:emailStr andPass:passStr];
@@ -89,36 +83,73 @@ static NSString * const kBPDashSegue = @"signInToBPDashboardVC";
     
     FBSDKLoginManager *login = [[FBSDKLoginManager alloc] init];
     
-    // Login using Facebook account
-    [login logInWithReadPermissions:@[@"public_profile", @"email", @"user_friends"]
-                 fromViewController:self
-                            handler:^(FBSDKLoginManagerLoginResult *result, NSError *error) {
-                                
-                                if (error) {
+    if ([FBSDKAccessToken currentAccessToken]) {
+        
+        [login logOut];
+        
+    } else {
+    
+        // Login using Facebook account
+        [login logInWithReadPermissions:@[@"public_profile", @"email", @"user_friends"]
+                     fromViewController:self
+                                handler:^(FBSDKLoginManagerLoginResult *result, NSError *error) {
                                     
-                                    NSLog(@"Process error");
-                                    
-                                } else if (result.isCancelled) {
-                                    
-                                    NSLog(@"Cancelled");
-                                    
-                                } else {
-                                    
-                                    NSLog(@"Logged in");
-                                    NSLog(@"/n /n ~~~~~NAME: %@", [FBSDKProfile currentProfile].name);
-                                    
-                                    NSMutableDictionary* parameters = [NSMutableDictionary dictionary];
-                                    [parameters setValue:@"id,name,email,first_name,last_name" forKey:@"fields"];
-                                    
-                                    // Query Facebook graph to get user's email, and use userID as password to signup
-                                    [[[FBSDKGraphRequest alloc] initWithGraphPath:@"me"
-                                                                       parameters:parameters]
-                                     startWithCompletionHandler:^(FBSDKGraphRequestConnection *connection, id result, NSError *error) {
-                                         
-                                         [self signInEmail:[result valueForKey:@"email"] andPass:[result valueForKey:@"id"]];
-                                     }];
-                                }
-                            }];
+                                    if (error) {
+                                        
+                                        NSLog(@"Process error");
+                                        
+                                    } else if (result.isCancelled) {
+                                        
+                                        NSLog(@"Cancelled");
+                                        
+                                    } else {
+                                        
+                                        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+                                        
+                                        if (self.signInRole == SignInRoleCustomer) {
+                                        
+                                            [Customer loginCustomerWithFacebook:result.token.tokenString
+                                                                      withBlock:^(Customer *customerObj) {
+                                                                          
+                                                                          [MBProgressHUD hideHUDForView:self.view animated:YES];
+                                                                          
+                                                                          [EKSettings saveCustomer:customerObj];
+                                                                          [self performSegueWithIdentifier:kExploreSegue sender:customerObj];
+                                                                          
+                                                                      } withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
+                                                                          
+                                                                          [MBProgressHUD hideHUDForView:self.view animated:YES];
+                                                                          [self showMessage:errorMessage
+                                                                                  withTitle:@"There is something wrong"
+                                                                            completionBlock:nil];
+                                                                      }];
+                                            
+                                        } else if (self.signInRole == SignInRoleBP) {
+                                            
+                                            [ProfessionalLogin
+                                             loginProfessionalWithFacebook:result.token.tokenString
+                                             withBlock:^(Professional *professionalObj) {
+                                                 
+                                                 NSLog(@"PROFESSIONAL LOGGED IN!!");
+                                                 
+                                                 [EKSettings saveVendor:professionalObj];
+                                                 
+                                                 [MBProgressHUD hideHUDForView:self.view animated:YES];
+                                                 [self performSegueWithIdentifier:kBPDashSegue sender:nil];
+                                             
+                                             } withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
+                                                 
+                                                 [MBProgressHUD hideHUDForView:self.view animated:YES];
+                                                 [self showMessage:errorMessage
+                                                         withTitle:@"There is something wrong"
+                                                   completionBlock:nil];
+                                             }];
+                                            
+                                        } else if (self.signInRole == SignInRoleSalon) {
+                                        }
+                                    }
+                                }];        
+    }
 }
 
 #pragma mark - Helpers
@@ -133,7 +164,10 @@ static NSString * const kBPDashSegue = @"signInToBPDashboardVC";
                       withBlock:^(Customer *customerObj) {
                           
                           NSLog(@"USER LOGGED IN!!");
+                          
                           [MBProgressHUD hideHUDForView:self.view animated:YES];
+                          
+                          [EKSettings saveCustomer:customerObj];
                           [self performSegueWithIdentifier:kExploreSegue sender:customerObj];
                       }
                      withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
@@ -152,6 +186,9 @@ static NSString * const kBPDashSegue = @"signInToBPDashboardVC";
                                    withBlock:^(Professional *professionalObj) {
                                        
                                        NSLog(@"PROFESSIONAL LOGGED IN!!");
+                                       
+                                       [EKSettings saveVendor:professionalObj];
+                                       
                                        [MBProgressHUD hideHUDForView:self.view animated:YES];
                                        [self performSegueWithIdentifier:kBPDashSegue sender:nil];
                                    }
@@ -171,6 +208,7 @@ static NSString * const kBPDashSegue = @"signInToBPDashboardVC";
                      withBlock:^(Salon *salonObj) {
                          
                          NSLog(@"SALon LOGGED IN!!");
+
                          [MBProgressHUD hideHUDForView:self.view animated:YES];
                          [self performSegueWithIdentifier:kBPDashSegue sender:nil];
                      }
@@ -202,8 +240,6 @@ static NSString * const kBPDashSegue = @"signInToBPDashboardVC";
     }
     
     if ([segue.identifier isEqualToString:kBPDashSegue]) {
-        
-        [EKSettings saveVendor];
         
 //        if (self.signInRole == SignInRoleBP) {
 //            [EKSettings saveVendor];
