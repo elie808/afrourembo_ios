@@ -1,0 +1,29 @@
+//
+//  EKConfirmPhoneNumberViewController.h
+//  afrourembo-ios
+//
+//  Created by Elie El Khoury on 10/7/17.
+//  Copyright © 2017 Elie El Khoury. All rights reserved.
+//
+
+#import <UIKit/UIKit.h>
+#import "EKTextFieldTableViewCell.h"
+#import "UIViewController+Helpers.h"
+#import "EKSettings.h"
+#import <MBProgressHUD/MBProgressHUD.h>
+
+
+typedef NS_ENUM(NSUInteger, SignInRole) {
+    SignInRoleCustomer,
+    SignInRoleSalon,
+    SignInRoleBP
+};
+
+@interface EKConfirmPhoneNumberViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+
+@property (assign, nonatomic) SignInRole signInRole;
+@property (strong, nonatomic) IBOutlet UITableView *tableView;
+
+- (IBAction)didTapConfirmButton:(id)sender;
+
+@end
