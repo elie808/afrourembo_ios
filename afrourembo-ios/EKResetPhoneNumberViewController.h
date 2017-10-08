@@ -7,7 +7,23 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "EKExploreViewController.h"
+#import "EKTextFieldTableViewCell.h"
+#import "UIViewController+Helpers.h"
+#import "EKSettings.h"
+#import <MBProgressHUD/MBProgressHUD.h>
 
-@interface EKResetPhoneNumberViewController : UIViewController
+typedef NS_ENUM(NSUInteger, ResetRole) {
+    ResetRoleCustomer,
+    ResetRoleSalon,
+    ResetRoleBP
+};
+
+@interface EKResetPhoneNumberViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+
+@property (assign, nonatomic) ResetRole signInRole;
+@property (strong, nonatomic) IBOutlet UITableView *tableView;
+
+- (IBAction)didTapResetButton:(id)sender;
 
 @end

@@ -56,6 +56,7 @@
 		476F63781F0760C600C27A92 /* Salon+API.m in Sources */ = {isa = PBXBuildFile; fileRef = 476F63771F0760C600C27A92 /* Salon+API.m */; };
 		477256051EB958FF007CBD6B /* EKAvailabilityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 477256041EB958FF007CBD6B /* EKAvailabilityViewController.m */; };
 		477256091EB95EA4007CBD6B /* EKSwitchTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 477256081EB95EA4007CBD6B /* EKSwitchTableViewCell.m */; };
+		477935551F89A1EF00E0C034 /* EKResetPhoneNumberViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 477935541F89A1EF00E0C034 /* EKResetPhoneNumberViewController.m */; };
 		47800BC31EA3B2FA00F450DB /* EKBookingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47800BC21EA3B2FA00F450DB /* EKBookingViewController.m */; };
 		47822B051EDDAE49001E247F /* EKSalesSummaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47822B041EDDAE49001E247F /* EKSalesSummaryViewController.m */; };
 		47822B091EDDC37C001E247F /* EKSalesSummaryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 47822B081EDDC37C001E247F /* EKSalesSummaryTableViewCell.m */; };
@@ -226,6 +227,8 @@
 		477256041EB958FF007CBD6B /* EKAvailabilityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKAvailabilityViewController.m; sourceTree = "<group>"; };
 		477256071EB95EA4007CBD6B /* EKSwitchTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKSwitchTableViewCell.h; sourceTree = "<group>"; };
 		477256081EB95EA4007CBD6B /* EKSwitchTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKSwitchTableViewCell.m; sourceTree = "<group>"; };
+		477935531F89A1EF00E0C034 /* EKResetPhoneNumberViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKResetPhoneNumberViewController.h; sourceTree = "<group>"; };
+		477935541F89A1EF00E0C034 /* EKResetPhoneNumberViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKResetPhoneNumberViewController.m; sourceTree = "<group>"; };
 		47800BC11EA3B2FA00F450DB /* EKBookingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKBookingViewController.h; sourceTree = "<group>"; };
 		47800BC21EA3B2FA00F450DB /* EKBookingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKBookingViewController.m; sourceTree = "<group>"; };
 		47822B031EDDAE49001E247F /* EKSalesSummaryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKSalesSummaryViewController.h; sourceTree = "<group>"; };
@@ -955,9 +958,11 @@
 			isa = PBXGroup;
 			children = (
 				47A3BB8A1E7A9F3500963F27 /* EKSignInViewController.h */,
+				47A3BB8B1E7A9F3500963F27 /* EKSignInViewController.m */,
 				479F00F01F89283E00676DDF /* EKConfirmPhoneNumberViewController.h */,
 				479F00F11F89283E00676DDF /* EKConfirmPhoneNumberViewController.m */,
-				47A3BB8B1E7A9F3500963F27 /* EKSignInViewController.m */,
+				477935531F89A1EF00E0C034 /* EKResetPhoneNumberViewController.h */,
+				477935541F89A1EF00E0C034 /* EKResetPhoneNumberViewController.m */,
 			);
 			name = "Customer - Sign In ViewController";
 			sourceTree = "<group>";
@@ -1287,6 +1292,7 @@
 				479F7D711EF16D6700EB445A /* ProfessionalLogin.m in Sources */,
 				47605F1B1F3F5B0600991C3A /* Reservation+API.m in Sources */,
 				47FE51CC1EFD5BE100A39BAE /* Service+API.m in Sources */,
+				477935551F89A1EF00E0C034 /* EKResetPhoneNumberViewController.m in Sources */,
 				47C7D4CC1EBB5EF000457E53 /* Day.m in Sources */,
 				4757C6531ED98D8000C2B52F /* Appointment.m in Sources */,
 				47E2F0091EA5FF97002E2FD4 /* EKProfileInfoFacebookViewController.m in Sources */,

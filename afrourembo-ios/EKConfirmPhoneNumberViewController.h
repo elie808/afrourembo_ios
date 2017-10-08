@@ -7,21 +7,21 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "EKResetPhoneNumberViewController.h"
 #import "EKTextFieldTableViewCell.h"
 #import "UIViewController+Helpers.h"
 #import "EKSettings.h"
 #import <MBProgressHUD/MBProgressHUD.h>
 
-
-typedef NS_ENUM(NSUInteger, SignInRole) {
-    SignInRoleCustomer,
-    SignInRoleSalon,
-    SignInRoleBP
+typedef NS_ENUM(NSUInteger, PhoneConfirmRole) {
+    PhoneConfirmRoleCustomer,
+    PhoneConfirmRoleSalon,
+    PhoneConfirmRoleBP
 };
 
 @interface EKConfirmPhoneNumberViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
-@property (assign, nonatomic) SignInRole signInRole;
+@property (assign, nonatomic) PhoneConfirmRole signInRole;
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 
 - (IBAction)didTapConfirmButton:(id)sender;

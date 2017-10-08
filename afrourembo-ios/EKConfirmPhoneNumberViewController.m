@@ -9,6 +9,7 @@
 #import "EKConfirmPhoneNumberViewController.h"
 
 static NSString * const kPhoneCell = @"phoneCell";
+static NSString * const kResetPassSegue = @"confirmPhoneNumberToResetPasswordVC";
 
 @interface EKConfirmPhoneNumberViewController() {
     NSArray *_dataSourceArray;
@@ -20,10 +21,10 @@ static NSString * const kPhoneCell = @"phoneCell";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.title = @"Sign in";
+    self.title = @"Confirm phone number";
     
     _dataSourceArray = @[
-                         @{@"Phone number" : @"+254 00 00000000"},
+                         @{@"Phone number" : @"00 12345678"},
                          ];
 
 }
@@ -35,7 +36,7 @@ static NSString * const kPhoneCell = @"phoneCell";
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 2;
+    return _dataSourceArray.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -63,7 +64,8 @@ static NSString * const kPhoneCell = @"phoneCell";
     
     EKTextFieldTableViewCell *phoneCell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
     
-    NSString *phoneStr  = [self trimWhiteSpace:phoneCell.cellTextField.text];
+    NSString *phoneNumbr = phoneCell.cellTextField.text;
+    NSString *phoneStr = [self trimWhiteSpace:phoneNumbr];
     
     if (phoneStr.length > 0 && [self isValidPhoneNumber:phoneStr]) {
     
@@ -71,7 +73,7 @@ static NSString * const kPhoneCell = @"phoneCell";
     
     } else {
         
-        [self showMessage:@"Please enter a valid phone number in the following format (+254-area code-number), before proceeding"
+        [self showMessage:@"Please enter a valid phone number in the following format (area code-number), before proceeding"
                 withTitle:@"Warning" completionBlock:nil];
     }
 }
@@ -87,9 +89,10 @@ static NSString * const kPhoneCell = @"phoneCell";
     // Check if 53/54/56 exist as 1 piece
     // then check that the remaining 7 numbers range from 0-9
     // OR all conditions together using |
+    
     // NSString *phoneRegex = @"(53){1}[0-9]{7}|(54){1}[0-9]{7}|(56){1}[0-9]{7}";
     
-    NSString *phoneRegex = @"(+254){1}[0-9]{10}";
+    NSString *phoneRegex = @"[0-9]{10}";
     
     NSPredicate *testPhoneEN = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", phoneRegex];
     
@@ -100,23 +103,28 @@ static NSString * const kPhoneCell = @"phoneCell";
     
     NSLog(@"PHONE NUMBER: %@", phoneNumber);
     
-    if (self.signInRole == SignInRoleCustomer) {
+    [self performSegueWithIdentifier:kResetPassSegue sender:nil];
+    
+    if (self.signInRole == PhoneConfirmRoleCustomer) {
         
-    } else if (self.signInRole == SignInRoleBP) {
+    } else if (self.signInRole == PhoneConfirmRoleBP) {
 
-    } else if (self.signInRole == SignInRoleSalon) {
+    } else if (self.signInRole == PhoneConfirmRoleSalon) {
 
     }
 }
 
-/*
 #pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    
+    if ([segue.identifier isEqualToString:kResetPassSegue]) {
+        
+        EKResetPhoneNumberViewController *vc = segue.destinationViewController;
+        vc.signInRole = self.signInRole;
+        
+        // pass phoneNumber
+    }
 }
-*/
 
 @end
