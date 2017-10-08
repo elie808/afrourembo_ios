@@ -12,7 +12,7 @@ target 'afrourembo-ios' do
   pod 'FSCalendar'
   pod 'YYWebImage'
   pod 'STPopup'
-  pod 'Charts'
+  pod 'Charts', '3.0.2'
   pod 'MBProgressHUD'
   pod ‘FBSDKCoreKit'
   pod ’FBSDKLoginKit'
