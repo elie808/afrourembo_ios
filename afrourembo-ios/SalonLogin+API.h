@@ -12,6 +12,7 @@
 #import <RestKit/RestKit.h>
 #import "EKNetworkingConstants.h"
 
+typedef void (^SalonResetCodeSuccessBlock)(void);
 typedef void (^SalonSignUpSuccessBlock)(Salon *salonObj);
 typedef void (^SalonSignUpErrorBlock)(NSError *error, NSString *errorMessage, NSInteger statusCode);
 
@@ -25,5 +26,14 @@ typedef void (^SalonSignUpErrorBlock)(NSError *error, NSString *errorMessage, NS
 + (RKResponseDescriptor *)salonLoginResponseDescriptor;
 
 + (void)loginSalon:(NSString *)email password:(NSString *)password withBlock:(SalonSignUpSuccessBlock)successBlock withErrors:(SalonSignUpErrorBlock)errorBlock;
+
+/**
+ Send an SMS reset code when method returns succesfully, to be enterred for reseting password.
+ 
+ @param phoneNumber The salon's phone number
+ @param successBlock Server will return an empty response
+ @param errorBlock Server error logging
+ */
++ (void)getResetCodeForPhonenumber:(NSString *)phoneNumber withBlock:(SalonResetCodeSuccessBlock)successBlock withErrors:(SalonSignUpErrorBlock)errorBlock;
 
 @end

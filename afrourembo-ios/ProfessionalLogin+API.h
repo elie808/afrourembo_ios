@@ -12,6 +12,7 @@
 #import "EKNetworkingConstants.h"
 
 typedef void (^ProfessionalSignUpSuccessBlock)(Professional *professionalObj);
+typedef void (^ProfessionalResetCodeSuccessBlock)(void);
 typedef void (^ProfessionalSignUpErrorBlock)(NSError *error, NSString *errorMessage, NSInteger statusCode);
 
 @interface ProfessionalLogin (API)
@@ -24,5 +25,14 @@ typedef void (^ProfessionalSignUpErrorBlock)(NSError *error, NSString *errorMess
 + (RKResponseDescriptor *)professionalLoginResponseDescriptor;
 
 + (void)loginProfessional:(NSString *)email password:(NSString *)password withBlock:(ProfessionalSignUpSuccessBlock)successBlock withErrors:(ProfessionalSignUpErrorBlock)errorBlock;
+
+/**
+ Send an SMS reset code when method returns succesfully, to be enterred for reseting password.
+ 
+ @param phoneNumber The professional's phone number
+ @param successBlock Server will return an empty response
+ @param errorBlock Server error logging
+ */
++ (void)getResetCodeForPhonenumber:(NSString *)phoneNumber withBlock:(ProfessionalResetCodeSuccessBlock)successBlock withErrors:(ProfessionalSignUpErrorBlock)errorBlock;
 
 @end

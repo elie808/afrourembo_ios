@@ -11,6 +11,9 @@
 #import "EKTextFieldTableViewCell.h"
 #import "UIViewController+Helpers.h"
 #import "EKSettings.h"
+#import "Customer+API.h"
+#import "ProfessionalLogin+API.h"
+#import "SalonLogin+API.h"
 #import <MBProgressHUD/MBProgressHUD.h>
 
 typedef NS_ENUM(NSUInteger, PhoneConfirmRole) {

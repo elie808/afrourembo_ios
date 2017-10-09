@@ -11,6 +11,7 @@
 #import "EKNetworkingConstants.h"
 
 typedef void (^CustomerSignUpSuccessBlock)(Customer *customerObj);
+typedef void (^CustomerResetCodeSuccessBlock)(void);
 typedef void (^CustomerSignUpErrorBlock)(NSError *error, NSString *errorMessage, NSInteger statusCode);
 typedef void (^CustomerEditErrorBlock)(NSError *error, NSString *errorMessage);
 
@@ -48,5 +49,14 @@ typedef void (^CustomerEditErrorBlock)(NSError *error, NSString *errorMessage);
 + (void)loginCustomer:(NSString *)email password:(NSString *)password withBlock:(CustomerSignUpSuccessBlock)successBlock withErrors:(CustomerSignUpErrorBlock)errorBlock;
 
 + (void)updateInterests:(NSString *)firstName lastName:(NSString *)lastName phone:(NSString *)phone forUser:(NSString *)userToken withBlock:(CustomerSignUpSuccessBlock)successBlock withErrors:(CustomerEditErrorBlock)errorBlock;
+
+/**
+ Send an SMS reset code when method returns succesfully, to be enterred for reseting password.
+ 
+ @param phoneNumber The user's phone number
+ @param successBlock Server will return an empty response
+ @param errorBlock Server error logging
+ */
++ (void)getResetCodeForPhonenumber:(NSString *)phoneNumber withBlock:(CustomerResetCodeSuccessBlock)successBlock withErrors:(CustomerSignUpErrorBlock)errorBlock;
 
 @end

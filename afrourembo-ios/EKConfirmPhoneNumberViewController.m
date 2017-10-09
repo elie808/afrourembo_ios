@@ -103,14 +103,50 @@ static NSString * const kResetPassSegue = @"confirmPhoneNumberToResetPasswordVC"
     
     NSLog(@"PHONE NUMBER: %@", phoneNumber);
     
-    [self performSegueWithIdentifier:kResetPassSegue sender:nil];
-    
     if (self.signInRole == PhoneConfirmRoleCustomer) {
+        
+        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        [Customer getResetCodeForPhonenumber:phoneNumber
+                                   withBlock:^{
+        
+                                       [MBProgressHUD hideHUDForView:self.view animated:YES];
+                                       [self performSegueWithIdentifier:kResetPassSegue sender:nil];
+                                       
+                                   } withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
+                                       
+                                       [MBProgressHUD hideHUDForView:self.view animated:YES];
+                                       [self showMessage:errorMessage withTitle:@"Error" completionBlock:nil];
+                                   }];
         
     } else if (self.signInRole == PhoneConfirmRoleBP) {
 
+        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        [ProfessionalLogin getResetCodeForPhonenumber:phoneNumber
+                                            withBlock:^{
+                                       
+                                                [MBProgressHUD hideHUDForView:self.view animated:YES];
+                                                [self performSegueWithIdentifier:kResetPassSegue sender:nil];
+                                       
+                                            } withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
+                                       
+                                                [MBProgressHUD hideHUDForView:self.view animated:YES];
+                                                [self showMessage:errorMessage withTitle:@"Error" completionBlock:nil];
+                                            }];
+        
     } else if (self.signInRole == PhoneConfirmRoleSalon) {
 
+        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        [SalonLogin getResetCodeForPhonenumber:phoneNumber
+                                     withBlock:^{
+                                         
+                                         [MBProgressHUD hideHUDForView:self.view animated:YES];
+                                         [self performSegueWithIdentifier:kResetPassSegue sender:nil];
+                                         
+                                     } withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
+                                        
+                                         [MBProgressHUD hideHUDForView:self.view animated:YES];
+                                         [self showMessage:errorMessage withTitle:@"Error" completionBlock:nil];
+                                     }];
     }
 }
 
