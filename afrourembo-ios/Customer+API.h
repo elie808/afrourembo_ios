@@ -9,6 +9,7 @@
 #import "Customer.h"
 #import <RestKit/RestKit.h>
 #import "EKNetworkingConstants.h"
+#import "ResetPassword.h"
 
 typedef void (^CustomerSignUpSuccessBlock)(Customer *customerObj);
 typedef void (^CustomerResetCodeSuccessBlock)(void);
@@ -30,6 +31,8 @@ typedef void (^CustomerEditErrorBlock)(NSError *error, NSString *errorMessage);
 + (RKResponseDescriptor *)userRegistrationResponseDescriptor;
 
 + (RKResponseDescriptor *)putUserProfileResponseDescriptor;
+
++ (RKResponseDescriptor *)userResetPassResponseDescriptor;
 
 /// Maps the returned reponse from the POST Login call
 + (RKResponseDescriptor *)userLoginResponseDescriptor;
@@ -58,5 +61,7 @@ typedef void (^CustomerEditErrorBlock)(NSError *error, NSString *errorMessage);
  @param errorBlock Server error logging
  */
 + (void)getResetCodeForPhonenumber:(NSString *)phoneNumber withBlock:(CustomerResetCodeSuccessBlock)successBlock withErrors:(CustomerSignUpErrorBlock)errorBlock;
+
++ (void)resetPassword:(NSString *)newPassword forPhoneNumber:(NSString *)phoneNumber andConfirmationCode:(NSString *)confirmationCode withBlock:(CustomerSignUpSuccessBlock)successBlock withErrors:(CustomerSignUpErrorBlock)errorBlock;
 
 @end

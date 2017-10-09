@@ -110,7 +110,7 @@ static NSString * const kResetPassSegue = @"confirmPhoneNumberToResetPasswordVC"
                                    withBlock:^{
         
                                        [MBProgressHUD hideHUDForView:self.view animated:YES];
-                                       [self performSegueWithIdentifier:kResetPassSegue sender:nil];
+                                       [self performSegueWithIdentifier:kResetPassSegue sender:phoneNumber];
                                        
                                    } withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
                                        
@@ -125,7 +125,7 @@ static NSString * const kResetPassSegue = @"confirmPhoneNumberToResetPasswordVC"
                                             withBlock:^{
                                        
                                                 [MBProgressHUD hideHUDForView:self.view animated:YES];
-                                                [self performSegueWithIdentifier:kResetPassSegue sender:nil];
+                                                [self performSegueWithIdentifier:kResetPassSegue sender:phoneNumber];
                                        
                                             } withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
                                        
@@ -140,7 +140,7 @@ static NSString * const kResetPassSegue = @"confirmPhoneNumberToResetPasswordVC"
                                      withBlock:^{
                                          
                                          [MBProgressHUD hideHUDForView:self.view animated:YES];
-                                         [self performSegueWithIdentifier:kResetPassSegue sender:nil];
+                                         [self performSegueWithIdentifier:kResetPassSegue sender:phoneNumber];
                                          
                                      } withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
                                         
@@ -157,9 +157,11 @@ static NSString * const kResetPassSegue = @"confirmPhoneNumberToResetPasswordVC"
     if ([segue.identifier isEqualToString:kResetPassSegue]) {
         
         EKResetPhoneNumberViewController *vc = segue.destinationViewController;
-        vc.signInRole = self.signInRole;
+        vc.signInRole = (ResetRole)self.signInRole;
         
-        // pass phoneNumber
+        if (sender) {
+            vc.passedPhoneNumber = (NSString *)sender;
+        }
     }
 }
 

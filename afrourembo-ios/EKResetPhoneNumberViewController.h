@@ -22,6 +22,7 @@ typedef NS_ENUM(NSUInteger, ResetRole) {
 @interface EKResetPhoneNumberViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
 @property (assign, nonatomic) ResetRole signInRole;
+@property (assign, nonatomic) NSString *passedPhoneNumber;
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 
 - (IBAction)didTapResetButton:(id)sender;

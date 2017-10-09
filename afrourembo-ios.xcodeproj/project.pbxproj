@@ -48,6 +48,8 @@
 		47605F181F3F5ABA00991C3A /* Reservation.m in Sources */ = {isa = PBXBuildFile; fileRef = 47605F171F3F5ABA00991C3A /* Reservation.m */; };
 		47605F1B1F3F5B0600991C3A /* Reservation+API.m in Sources */ = {isa = PBXBuildFile; fileRef = 47605F1A1F3F5B0600991C3A /* Reservation+API.m */; };
 		4760FC7C1EF88C8200099DFD /* EKSalonAddressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4760FC7B1EF88C8200099DFD /* EKSalonAddressViewController.m */; };
+		476368C71F8BB77900249318 /* ResetPassword.m in Sources */ = {isa = PBXBuildFile; fileRef = 476368C61F8BB77900249318 /* ResetPassword.m */; };
+		476368CA1F8BB80300249318 /* ResetPassword+API.m in Sources */ = {isa = PBXBuildFile; fileRef = 476368C91F8BB80300249318 /* ResetPassword+API.m */; };
 		47652BF41F01DAA500796E04 /* Customer+Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 47652BF31F01DAA500796E04 /* Customer+Helpers.m */; };
 		47652BFA1F01DC8B00796E04 /* EKSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 47652BF91F01DC8B00796E04 /* EKSettings.m */; };
 		47652BFD1F01FB5700796E04 /* EKSettingsBPViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47652BFC1F01FB5700796E04 /* EKSettingsBPViewController.m */; };
@@ -211,6 +213,10 @@
 		47605F1A1F3F5B0600991C3A /* Reservation+API.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Reservation+API.m"; sourceTree = "<group>"; };
 		4760FC7A1EF88C8200099DFD /* EKSalonAddressViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKSalonAddressViewController.h; sourceTree = "<group>"; };
 		4760FC7B1EF88C8200099DFD /* EKSalonAddressViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKSalonAddressViewController.m; sourceTree = "<group>"; };
+		476368C51F8BB77900249318 /* ResetPassword.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResetPassword.h; sourceTree = "<group>"; };
+		476368C61F8BB77900249318 /* ResetPassword.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResetPassword.m; sourceTree = "<group>"; };
+		476368C81F8BB80300249318 /* ResetPassword+API.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ResetPassword+API.h"; sourceTree = "<group>"; };
+		476368C91F8BB80300249318 /* ResetPassword+API.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ResetPassword+API.m"; sourceTree = "<group>"; };
 		47652BF21F01DAA500796E04 /* Customer+Helpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Customer+Helpers.h"; sourceTree = "<group>"; };
 		47652BF31F01DAA500796E04 /* Customer+Helpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Customer+Helpers.m"; sourceTree = "<group>"; };
 		47652BF81F01DC8B00796E04 /* EKSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKSettings.h; sourceTree = "<group>"; };
@@ -770,6 +776,8 @@
 				479F7D701EF16D6700EB445A /* ProfessionalLogin.m */,
 				47605F161F3F5ABA00991C3A /* Reservation.h */,
 				47605F171F3F5ABA00991C3A /* Reservation.m */,
+				476368C51F8BB77900249318 /* ResetPassword.h */,
+				476368C61F8BB77900249318 /* ResetPassword.m */,
 				471AA1861ED44A0E009B840A /* Review.h */,
 				471AA1871ED44A0E009B840A /* Review.m */,
 				47AF51B81E9B8561005FE6EB /* Salon.h */,
@@ -1078,6 +1086,8 @@
 				471F5FBD1F48707C0097817E /* ProfilePicture+API.m */,
 				47605F191F3F5B0600991C3A /* Reservation+API.h */,
 				47605F1A1F3F5B0600991C3A /* Reservation+API.m */,
+				476368C81F8BB80300249318 /* ResetPassword+API.h */,
+				476368C91F8BB80300249318 /* ResetPassword+API.m */,
 				4797AF301F30D15700AC1140 /* Review+API.h */,
 				4797AF311F30D15700AC1140 /* Review+API.m */,
 				476F63761F0760C600C27A92 /* Salon+API.h */,
@@ -1263,6 +1273,7 @@
 				47FF4F681EB5520E0022A6ED /* Customer.m in Sources */,
 				4787C6DD1EB40D5500DF7B83 /* Booking.m in Sources */,
 				475FC37D1EB6B57900BB0731 /* EKAddServiceViewController.m in Sources */,
+				476368C71F8BB77900249318 /* ResetPassword.m in Sources */,
 				47652BFA1F01DC8B00796E04 /* EKSettings.m in Sources */,
 				478971941EA756F100917DB1 /* EKEditFacebookProfileInfoViewController.m in Sources */,
 				47822B091EDDC37C001E247F /* EKSalesSummaryTableViewCell.m in Sources */,
@@ -1321,6 +1332,7 @@
 				479B30A11EF7476400DE2121 /* EKCategoryListViewController.m in Sources */,
 				47FE51C31EFD26F900A39BAE /* Address.m in Sources */,
 				4734F5F11F3401D200982D94 /* EKCarousel.m in Sources */,
+				476368CA1F8BB80300249318 /* ResetPassword+API.m in Sources */,
 				475FC3811EB6BF5E00BB0731 /* EKAddNewServiceViewController.m in Sources */,
 				471F5FBB1F4870550097817E /* ProfilePicture.m in Sources */,
 				474ED7BC1E9C68940099CA0A /* EKDiscoverMapViewController+MapDelegate.m in Sources */,

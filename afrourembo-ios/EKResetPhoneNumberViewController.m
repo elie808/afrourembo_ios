@@ -26,8 +26,11 @@ static NSString * const kDashboardSegue = @"resetPassToDashboardVC";
     
     _dataSourceArray = @[
                          @{@"Confirmation code" : @"confirmation code"},
+                         @{@"Phone number" : @"00 12345678"},
                          @{@"New password" : @"password"},
                          ];
+    
+    NSLog(@"\n \n \n \n PHON NUMEBR : %@", self.passedPhoneNumber);
 }
 
 #pragma mark - TableView DataSource
@@ -50,9 +53,8 @@ static NSString * const kDashboardSegue = @"resetPassToDashboardVC";
     cell.cellTitleLabel.text = labelValue;
     cell.cellTextField.placeholder = placeHolderValue;
     
-    if (indexPath.row == 0) {
-        cell.cellTextField.text = @"abc123";
-    }
+//    if (indexPath.row == 0) { cell.cellTextField.text = @"0012345678"; }//self.passedPhoneNumber; }
+    if (indexPath.row == 1) { cell.cellTextField.text = @"abc123"; }
     
     return cell;
 }
@@ -68,30 +70,48 @@ static NSString * const kDashboardSegue = @"resetPassToDashboardVC";
 - (IBAction)didTapResetButton:(id)sender {
     
     EKTextFieldTableViewCell *codeCell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
-    EKTextFieldTableViewCell *passCell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:0]];
+    EKTextFieldTableViewCell *phoneCell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:0]];
+    EKTextFieldTableViewCell *passCell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:2 inSection:0]];
     
+    NSString *phonenumberStr = phoneCell.cellTextField.text;
     NSString *confirmationCodeStr = codeCell.cellTextField.text;
     NSString *passwordStr = passCell.cellTextField.text;
     
-    if (confirmationCodeStr.length > 0 && passwordStr.length > 0) {
+    if (confirmationCodeStr.length > 0 && passwordStr.length > 0 && phonenumberStr.length > 0) {
         
-        if (self.signInRole == ResetRoleCustomer) {
-            
-            [self performSegueWithIdentifier:kExploreSegue sender:nil];
-            
-        } else if (self.signInRole == ResetRoleBP) {
-            
-            [self performSegueWithIdentifier:kDashboardSegue sender:nil];
-            
-        } else if (self.signInRole == ResetRoleSalon) {
-            
-            [self performSegueWithIdentifier:kDashboardSegue sender:nil];
-        }
+        [self resetPassword:passwordStr forConfirmationCode:confirmationCodeStr andPhoneNumber:phonenumberStr];
         
     } else {
         
-        [self showMessage:@"Please enter a valid phone number in the following format (area code-number), before proceeding"
+        [self showMessage:@"Please enter a valid phone number and a new password, before proceeding"
                 withTitle:@"Warning" completionBlock:nil];
+    }
+}
+
+- (void)resetPassword:(NSString *)newPass forConfirmationCode:(NSString *)confirmationCode andPhoneNumber:(NSString*)phoneNumber{
+    
+    if (self.signInRole == ResetRoleCustomer) {
+        
+        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        [Customer resetPassword:newPass forPhoneNumber:phoneNumber andConfirmationCode:confirmationCode
+                      withBlock:^(Customer *customerObj) {
+                          
+                          [MBProgressHUD hideHUDForView:self.view animated:YES];
+                          [self performSegueWithIdentifier:kExploreSegue sender:customerObj];
+                          
+                      } withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
+                         
+                          [MBProgressHUD hideHUDForView:self.view animated:YES];
+                          [self showMessage:errorMessage withTitle:@"Error" completionBlock:nil];
+                     }];
+
+    } else if (self.signInRole == ResetRoleBP) {
+        
+        [self performSegueWithIdentifier:kDashboardSegue sender:nil];
+        
+    } else if (self.signInRole == ResetRoleSalon) {
+        
+        [self performSegueWithIdentifier:kDashboardSegue sender:nil];
     }
 }
 

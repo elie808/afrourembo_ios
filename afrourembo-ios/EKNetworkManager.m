@@ -49,6 +49,8 @@
     
     [objectManager addRequestDescriptor:[Reservation reservationsRequestDescriptor]];
     
+    [objectManager addRequestDescriptor:[ResetPassword resetPasswordRequestDescriptor]];
+    
     [objectManager addRequestDescriptor:[SalonLogin salonLoginRequestDescriptor]];
     
     [objectManager addRequestDescriptorsFromArray:@[
@@ -74,7 +76,8 @@
     [objectManager addResponseDescriptorsFromArray:@[
                                                      [Customer userRegistrationResponseDescriptor],
                                                      [Customer userLoginResponseDescriptor],
-                                                     [Customer putUserProfileResponseDescriptor]
+                                                     [Customer putUserProfileResponseDescriptor],
+                                                     [Customer userResetPassResponseDescriptor]
                                                      ]];
     
     [objectManager addResponseDescriptorsFromArray:@[
