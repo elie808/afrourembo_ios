@@ -93,7 +93,10 @@
     
     [objectManager addResponseDescriptor:[ProfessionalLogin professionalLoginResponseDescriptor]];
     
-    [objectManager addResponseDescriptorsFromArray:@[ [Professional professionalRegistrationResponseDescriptor] ]];
+    [objectManager addResponseDescriptorsFromArray:@[
+                                                     [Professional professionalRegistrationResponseDescriptor],
+                                                     [Professional professionalResetPassResponseDescriptor]
+                                                     ]];
     
     [objectManager addResponseDescriptor:[Review getReviewsResponseDescriptor]];
     

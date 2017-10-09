@@ -9,6 +9,7 @@
 #import "Professional.h"
 #import <RestKit/RestKit.h>
 #import "EKNetworkingConstants.h"
+#import "ResetPassword.h"
 
 typedef void (^ProfessionalSignUpSuccessBlock)(Professional *professionalObj);
 typedef void (^ProfessionalSignUpErrorBlock)(NSError *error, NSString *errorMessage, NSInteger statusCode);
@@ -26,6 +27,10 @@ typedef void (^ProfessionalEditErrorBlock)(NSError *error, NSString *errorMessag
 
 + (RKResponseDescriptor *)professionalRegistrationResponseDescriptor;
 
++ (RKResponseDescriptor *)professionalResetPassResponseDescriptor;
+
 + (void)signUpProfessional:(NSString *)email password:(NSString *)password  firstName:(NSString *)fName lastName:(NSString *)lName  withBlock:(ProfessionalSignUpSuccessBlock)successBlock withErrors:(ProfessionalSignUpErrorBlock)errorBlock;
+
++ (void)resetPassword:(NSString *)newPassword forPhoneNumber:(NSString *)phoneNumber andConfirmationCode:(NSString *)confirmationCode withBlock:(ProfessionalSignUpSuccessBlock)successBlock withErrors:(ProfessionalSignUpErrorBlock)errorBlock;
 
 @end

@@ -107,8 +107,19 @@ static NSString * const kDashboardSegue = @"resetPassToDashboardVC";
 
     } else if (self.signInRole == ResetRoleBP) {
         
-        [self performSegueWithIdentifier:kDashboardSegue sender:nil];
+        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        [Professional resetPassword:newPass forPhoneNumber:phoneNumber andConfirmationCode:confirmationCode
+                          withBlock:^(Professional *professionalObj) {
         
+                              [MBProgressHUD hideHUDForView:self.view animated:YES];
+                              [self performSegueWithIdentifier:kDashboardSegue sender:nil];
+                              
+                          } withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
+                          
+                              [MBProgressHUD hideHUDForView:self.view animated:YES];
+                              [self showMessage:errorMessage withTitle:@"Error" completionBlock:nil];
+                          }];
+
     } else if (self.signInRole == ResetRoleSalon) {
         
         [self performSegueWithIdentifier:kDashboardSegue sender:nil];
