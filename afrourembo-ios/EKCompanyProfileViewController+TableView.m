@@ -40,7 +40,7 @@ static NSString * const kProfessionalsCollectionCell = @"companyProfessionalsCol
                 
             case 1: return self.reviewsArray.count > 0 ? self.reviewsArray.count : 1; break; // Reviews
 
-            case 2: return 2; break; // Contacts
+            case 2: return 3; break; // Contacts
                 
             default: return 0; break;
         }
@@ -58,7 +58,7 @@ static NSString * const kProfessionalsCollectionCell = @"companyProfessionalsCol
             //TODO: Update from count of professionals in the salon
             case 2: return 0; break; // Professionals
                 
-            case 3: return 2; break; // Contacts
+            case 3: return 3; break; // Contacts
                 
             default: return 0; break;
         }
@@ -125,6 +125,11 @@ static NSString * const kProfessionalsCollectionCell = @"companyProfessionalsCol
                     }
                     
                     if (indexPath.row == 1) {
+                        cell.cellContactTypeLabel.text = @"Phone";
+                        cell.cellContactValueLabel.text = self.professional.phone;
+                    }
+                    
+                    if (indexPath.row == 2) {
                         cell.cellContactTypeLabel.text = @"Address";
                         cell.cellContactValueLabel.text = self.professional.business.address;
                     }
@@ -205,6 +210,11 @@ static NSString * const kProfessionalsCollectionCell = @"companyProfessionalsCol
                     if (indexPath.row == 1) {
 //                        cell.cellContactTypeLabel.text = @"Address";
 //                        cell.cellContactValueLabel.text = self.professional.business.address;
+                    }
+                    
+                    if (indexPath.row == 2) {
+                        //                        cell.cellContactTypeLabel.text = @"Address";
+                        //                        cell.cellContactValueLabel.text = self.professional.business.address;
                     }
                 }
                 
