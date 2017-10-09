@@ -30,7 +30,7 @@ static NSString * const kDashboardSegue = @"resetPassToDashboardVC";
                          @{@"New password" : @"password"},
                          ];
     
-    NSLog(@"\n \n \n \n PHON NUMEBR : %@", self.passedPhoneNumber);
+//    NSLog(@"\n \n \n \n PHON NUMEBR : %@", self.passedPhoneNumber);
 }
 
 #pragma mark - TableView DataSource
@@ -53,8 +53,9 @@ static NSString * const kDashboardSegue = @"resetPassToDashboardVC";
     cell.cellTitleLabel.text = labelValue;
     cell.cellTextField.placeholder = placeHolderValue;
     
-//    if (indexPath.row == 0) { cell.cellTextField.text = @"0012345678"; }//self.passedPhoneNumber; }
-    if (indexPath.row == 1) { cell.cellTextField.text = @"abc123"; }
+    if (indexPath.row == 0) { cell.cellTextField.text = @"abc123"; }
+//    if (indexPath.row == 1) { cell.cellTextField.text = @"0012345678"; }//self.passedPhoneNumber; }
+    
     
     return cell;
 }
@@ -122,7 +123,18 @@ static NSString * const kDashboardSegue = @"resetPassToDashboardVC";
 
     } else if (self.signInRole == ResetRoleSalon) {
         
-        [self performSegueWithIdentifier:kDashboardSegue sender:nil];
+        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        [SalonLogin resetPassword:newPass forPhoneNumber:phoneNumber andConfirmationCode:confirmationCode
+                        withBlock:^(Salon *salonObj) {
+                            
+                            [MBProgressHUD hideHUDForView:self.view animated:YES];
+                            [self performSegueWithIdentifier:kDashboardSegue sender:nil];
+                        }
+                       withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
+                           
+                           [MBProgressHUD hideHUDForView:self.view animated:YES];
+                           [self showMessage:errorMessage withTitle:@"Error" completionBlock:nil];
+                       }];
     }
 }
 

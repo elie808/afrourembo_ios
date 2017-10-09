@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "EKExploreViewController.h"
+#import "SalonLogin+API.h"
 #import "EKTextFieldTableViewCell.h"
 #import "UIViewController+Helpers.h"
 #import "EKSettings.h"

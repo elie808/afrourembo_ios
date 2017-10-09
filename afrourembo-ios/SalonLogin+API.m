@@ -45,6 +45,17 @@
     return response;
 }
 
++ (RKResponseDescriptor *)salonResetPassResponseDescriptor {
+    
+    RKResponseDescriptor *response = [RKResponseDescriptor
+                                      responseDescriptorWithMapping:[ResetPassword map1]
+                                      method:RKRequestMethodPOST
+                                      pathPattern:kSalonPassResetAPIPath
+                                      keyPath:nil
+                                      statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+    return response;
+}
+
 #pragma mark - APIs
 
 + (void)loginSalon:(NSString *)email password:(NSString *)password withBlock:(SalonSignUpSuccessBlock)successBlock withErrors:(SalonSignUpErrorBlock)errorBlock {
@@ -116,6 +127,45 @@
                                                       errorBlock(error, @"You are not connected to the internet.", 0);
                                                   }
                                               }];
+}
+
++ (void)resetPassword:(NSString *)newPassword forPhoneNumber:(NSString *)phoneNumber andConfirmationCode:(NSString *)confirmationCode withBlock:(SalonSignUpSuccessBlock)successBlock withErrors:(SalonSignUpErrorBlock)errorBlock {
+    
+    ResetPassword *resetObj = [ResetPassword new];
+    resetObj.phoneNumber = phoneNumber;
+    resetObj.userPassword = newPassword;
+    resetObj.resetCode = confirmationCode;
+    
+    [[RKObjectManager sharedManager] postObject:resetObj
+                                           path:kSalonPassResetAPIPath
+                                     parameters:nil
+                                        success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+                                            
+                                            Salon *salonObj = [mappingResult.array firstObject];
+                                            successBlock(salonObj);
+                                            
+                                        } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                                            
+                                            if (operation.HTTPRequestOperation.responseData) {
+                                                
+                                                // exctract error message
+                                                NSDictionary *myDic = [NSJSONSerialization
+                                                                       JSONObjectWithData:operation.HTTPRequestOperation.responseData
+                                                                       options:NSJSONReadingMutableLeaves
+                                                                       error:nil];
+                                                
+                                                NSString *errorMessage = [myDic valueForKey:@"message"];
+                                                
+                                                NSNumber *statusCode = [myDic valueForKey:@"statusCode"];
+                                                
+                                                NSLog(@"-------ERROR MESSAGE: %@", errorMessage);
+                                                errorBlock(error, errorMessage, [statusCode integerValue]);
+                                                
+                                            } else {
+                                                
+                                                errorBlock(error, @"You are not connected to the internet.", 0);
+                                            }
+                                        }];
 }
 
 @end

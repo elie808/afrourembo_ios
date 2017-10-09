@@ -100,7 +100,10 @@
     
     [objectManager addResponseDescriptor:[Review getReviewsResponseDescriptor]];
     
-    [objectManager addResponseDescriptor:[SalonLogin salonLoginResponseDescriptor]];
+    [objectManager addResponseDescriptorsFromArray:@[
+                                                     [SalonLogin salonLoginResponseDescriptor],
+                                                     [SalonLogin salonResetPassResponseDescriptor]
+                                                     ]];
     
     [objectManager addResponseDescriptorsFromArray:@[
                                                      [Service postServicesResponseDescriptor]
