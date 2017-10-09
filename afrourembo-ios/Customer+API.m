@@ -88,7 +88,7 @@
     RKResponseDescriptor *response = [RKResponseDescriptor
                                       responseDescriptorWithMapping:[Customer map1]
                                       method:RKRequestMethodPOST
-                                      pathPattern:kUserPassRestAPIPath
+                                      pathPattern:kUserPassResetAPIPath
                                       keyPath:nil
                                       statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     return response;
@@ -248,7 +248,7 @@
     resetObj.resetCode = confirmationCode;
     
     [[RKObjectManager sharedManager] postObject:resetObj
-                                           path:kUserPassRestAPIPath
+                                           path:kUserPassResetAPIPath
                                      parameters:nil
                                         success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
                                             
