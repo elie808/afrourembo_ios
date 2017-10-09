@@ -28,6 +28,7 @@
 @property NSString *lName;
 @property NSString *email;
 @property NSString *password;
+@property NSString *phone;
 
 @property (assign, nonatomic) BOOL isMobile;
 
