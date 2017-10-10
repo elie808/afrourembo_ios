@@ -33,7 +33,6 @@
 @property NSString *email;
 @property NSString *phone;
 @property NSString *password;
-@property NSString *phone;
 
 @property (assign, nonatomic) BOOL isMobile;
 

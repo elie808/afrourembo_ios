@@ -152,6 +152,7 @@
                                                       errorBlock(error, @"You are not connected to the internet.", 0);
                                                   }
                                               }];
+}
 
 + (void)loginProfessionalWithFacebook:(NSString *)fbToken withBlock:(ProfessionalSignUpSuccessBlock)successBlock withErrors:(ProfessionalSignUpErrorBlock)errorBlock {
     
@@ -226,5 +227,5 @@
                                             }
                                         }];
 }
-
+    
 @end

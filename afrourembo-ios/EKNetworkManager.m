@@ -82,7 +82,8 @@
                                                      [Customer userLoginResponseDescriptor],
                                                      [Customer putUserProfileResponseDescriptor],
                                                      [Customer fbUserRegistrationResponseDescriptor],
-                                                     [Customer fbUserLoginResponseDescriptor]
+                                                     [Customer fbUserLoginResponseDescriptor],
+                                                     [Customer userResetPassResponseDescriptor]
                                                      ]];
     
     [objectManager addResponseDescriptor:[Dashboard getDashboardResponseDescriptor]];
@@ -107,6 +108,7 @@
     
     [objectManager addResponseDescriptorsFromArray:@[
                                                      [Professional professionalRegistrationResponseDescriptor],
+                                                     [Professional professionalResetPassResponseDescriptor],
                                                      [Professional professionalResetPassResponseDescriptor]
                                                      ]];
     
