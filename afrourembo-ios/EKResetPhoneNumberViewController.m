@@ -98,6 +98,7 @@ static NSString * const kDashboardSegue = @"resetPassToDashboardVC";
                       withBlock:^(Customer *customerObj) {
                           
                           [MBProgressHUD hideHUDForView:self.view animated:YES];
+                          [EKSettings saveCustomer:customerObj];
                           [self performSegueWithIdentifier:kExploreSegue sender:customerObj];
                           
                       } withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
@@ -113,6 +114,7 @@ static NSString * const kDashboardSegue = @"resetPassToDashboardVC";
                           withBlock:^(Professional *professionalObj) {
         
                               [MBProgressHUD hideHUDForView:self.view animated:YES];
+                              [EKSettings saveVendor:professionalObj];
                               [self performSegueWithIdentifier:kDashboardSegue sender:nil];
                               
                           } withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
