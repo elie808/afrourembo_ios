@@ -21,8 +21,11 @@ typedef void (^ProfessionalSignUpErrorBlock)(NSError *error, NSString *errorMess
 + (RKObjectMapping *)map1;
 
 + (RKRequestDescriptor *)professionalLoginRequestDescriptor;
++ (RKRequestDescriptor *)fbProfessionalRequestDescriptor;
 
 + (RKResponseDescriptor *)professionalLoginResponseDescriptor;
++ (RKResponseDescriptor *)fbProfessionalRegistrationResponseDescriptor;
++ (RKResponseDescriptor *)fbProfessionalLoginResponseDescriptor;
 
 + (void)loginProfessional:(NSString *)email password:(NSString *)password withBlock:(ProfessionalSignUpSuccessBlock)successBlock withErrors:(ProfessionalSignUpErrorBlock)errorBlock;
 
@@ -34,5 +37,9 @@ typedef void (^ProfessionalSignUpErrorBlock)(NSError *error, NSString *errorMess
  @param errorBlock Server error logging
  */
 + (void)getResetCodeForPhonenumber:(NSString *)phoneNumber withBlock:(ProfessionalResetCodeSuccessBlock)successBlock withErrors:(ProfessionalSignUpErrorBlock)errorBlock;
+
++ (void)loginProfessionalWithFacebook:(NSString *)fbToken withBlock:(ProfessionalSignUpSuccessBlock)successBlock withErrors:(ProfessionalSignUpErrorBlock)errorBlock;
+
++ (void)signUpProfessionalWithFacebook:(NSString *)fbToken withBlock:(ProfessionalSignUpSuccessBlock)successBlock withErrors:(ProfessionalSignUpErrorBlock)errorBlock;
 
 @end

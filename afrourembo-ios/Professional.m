@@ -8,13 +8,13 @@
 
 #import "Professional.h"
 
-@implementation Location : NSObject
-@end
-
 @implementation Business : NSObject
 @end
 
 @implementation Pictures
+@end
+
+@implementation ProfessionalFacebook : NSObject
 @end
 
 @implementation Professional

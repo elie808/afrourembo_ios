@@ -37,8 +37,16 @@ typedef void (^CustomerEditErrorBlock)(NSError *error, NSString *errorMessage);
 /// Maps the returned reponse from the POST Login call
 + (RKResponseDescriptor *)userLoginResponseDescriptor;
 
+/// Maps the RESPONSE for the POST call of customer Facebook signup
++ (RKResponseDescriptor *)fbUserRegistrationResponseDescriptor;
+
++ (RKResponseDescriptor *)fbUserLoginResponseDescriptor;
+
+
 /// Maps the REQUEST for the POST call
 + (RKRequestDescriptor *)userRegistrationRequestDescriptor;
+
++ (RKRequestDescriptor *)fbCustomerRequestDescriptor;
 
 /**
  Info here
@@ -49,7 +57,11 @@ typedef void (^CustomerEditErrorBlock)(NSError *error, NSString *errorMessage);
  */
 + (void)signUpCustomer:(NSString *)email password:(NSString *)password withBlock:(CustomerSignUpSuccessBlock)successBlock withErrors:(CustomerSignUpErrorBlock)errorBlock;
 
++ (void)signUpCustomerWithFacebook:(NSString *)fbToken withBlock:(CustomerSignUpSuccessBlock)successBlock withErrors:(CustomerSignUpErrorBlock)errorBlock;
+
 + (void)loginCustomer:(NSString *)email password:(NSString *)password withBlock:(CustomerSignUpSuccessBlock)successBlock withErrors:(CustomerSignUpErrorBlock)errorBlock;
+
++ (void)loginCustomerWithFacebook:(NSString *)fbToken withBlock:(CustomerSignUpSuccessBlock)successBlock withErrors:(CustomerSignUpErrorBlock)errorBlock;
 
 + (void)updateInterests:(NSString *)firstName lastName:(NSString *)lastName phone:(NSString *)phone forUser:(NSString *)userToken withBlock:(CustomerSignUpSuccessBlock)successBlock withErrors:(CustomerEditErrorBlock)errorBlock;
 

@@ -71,6 +71,15 @@ static NSString * const kExploreSegue = @"editVcToExploreVC";
     
 }
 
+#pragma mark - UITextField Delegate
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    
+    [textField resignFirstResponder];
+    
+    return YES;
+}
+
 #pragma mark - UIImagePickerControllerDelegate
 
 // This method is called when an image has been chosen from the library or taken from the camera.
@@ -121,7 +130,7 @@ static NSString * const kExploreSegue = @"editVcToExploreVC";
                      
                         [MBProgressHUD hideHUDForView:self.view animated:YES];
                         
-                        [EKSettings saveCustomer:customerObj];
+                        [EKSettings updateSavedCustomer:customerObj];
                         
                         [self showMessage:@"You have succesfully created your AfroUrembo account!"
                                 withTitle:@"Success"

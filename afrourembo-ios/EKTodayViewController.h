@@ -7,10 +7,21 @@
 //
 
 #import <UIKit/UIKit.h>
+
 #import "EKTodayTableViewCell.h"
 #import "EKTodayCollectionViewCell.h"
+
 #import "Appointment.h"
+#import "Dashboard.h"
 #import "Today.h"
+
+#import "EKSettings.h"
+
+#import "Dashboard+API.h"
+
+#import "UIViewController+Helpers.h"
+#import <DateTools/DateTools.h>
+#import <MBProgressHUD/MBProgressHUD.h>
 
 @interface EKTodayViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UICollectionViewDelegate, UICollectionViewDataSource>
 

@@ -39,7 +39,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>17</string>
+	<string>23</string>
 	<key>FacebookAppID</key>
 	<string>1836255033360482</string>
 	<key>FacebookDisplayName</key>
@@ -68,6 +68,16 @@
 		<string>MKDirectionsModeTaxi</string>
 		<string>MKDirectionsModeTrain</string>
 	</array>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+		<key>NSExceptionDomains</key>
+		<dict>
+			<key>successpage.html</key>
+			<dict/>
+		</dict>
+	</dict>
 	<key>NSCameraUsageDescription</key>
 	<string>AfroUrembo would like to access your camera to allow you to upload a personal profile picture</string>
 	<key>NSPhotoLibraryUsageDescription</key>

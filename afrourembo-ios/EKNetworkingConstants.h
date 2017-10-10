@@ -18,6 +18,8 @@ static NSString * const kBaseURL = @"http://35.158.118.170/api/v1/";
 static NSString * const kCategoriesAPIPath   = @"categories";
 
 static NSString * const kUserRegisterAPIPath = @"user/register";
+static NSString * const kUserFBRegisterAPIPath = @"user/facebook/register";
+static NSString * const kUserFBLoginAPIPath    = @"user/facebook/login";
 static NSString * const kUserLoginAPIPath    = @"user/login";
 static NSString * const kUserProfileAPIPath  = @"user/profile";
 static NSString * const kUserExploreAPIPath  = @"user/explore";
@@ -29,8 +31,12 @@ static NSString * const kUserReservationsAPIPath     = @"user/reservations";
 static NSString * const kProfessionalBookingsAPIPath = @"user/vendor/:userId/bookings";
 
 static NSString * const kProfessionalAvailabilityAPIPath = @"professional/availability";
+static NSString * const kProfessionalDashboardAPIPath    = @"professional/dashboard";
 static NSString * const kProfessionalRegisterAPIPath = @"professional/register";
 static NSString * const kProfessionalLoginAPIPath    = @"professional/login";
+static NSString * const kProfessionalFBRegisterAPIPath = @"professional/facebook/register";
+static NSString * const kProfessionalFBLoginAPIPath  = @"professional/facebook/login";
+static NSString * const kProfessionalPictureAPIPath  = @"professional/profile/picture";
 static NSString * const kProfessionalServiceAPIPath  = @"professional/services";
 static NSString * const kProfessionalPassResetAPIPath = @"professional/password/reset";
 

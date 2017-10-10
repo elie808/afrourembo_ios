@@ -6,17 +6,20 @@ target 'afrourembo-ios' do
   use_frameworks!
 
   # Pods for afrourembo-ios
-  pod 'RestKit'
-  pod 'JNKeychain'
+  pod 'DateTools'
   pod 'EAIntroView'
+  pod 'FBSDKCoreKit'
+  pod 'FBSDKLoginKit'
+  pod 'FBSDKShareKit'
   pod 'FSCalendar'
   pod 'YYWebImage'
   pod 'STPopup'
   pod 'Charts', '3.0.2'
+  pod 'JNKeychain'
   pod 'MBProgressHUD'
-  pod ‘FBSDKCoreKit'
-  pod ’FBSDKLoginKit'
-  pod 'FBSDKShareKit'
+  pod 'STPopup'
   pod 'Realm'
+  pod 'RestKit'
+  pod 'YYWebImage'
 
 end

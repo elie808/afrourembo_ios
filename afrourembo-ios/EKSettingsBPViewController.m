@@ -25,7 +25,8 @@ static NSString * const kWelcomeSegue  = @"bpSettingsToWelcomeVC";
 #pragma mark - Actions
 
 - (IBAction)didTapLogOutButton:(id)sender {
-    [EKSettings deleteVendor];
+    
+    [EKSettings deleteSavedVendor];
     [self performSegueWithIdentifier:kWelcomeSegue sender:nil];
 }
 

@@ -8,6 +8,7 @@ PODS:
   - Charts (3.0.2):
     - Charts/Core (= 3.0.2)
   - Charts/Core (3.0.2)
+  - DateTools (2.0.0)
   - EAIntroView (2.10.0):
     - EARestrictedScrollView (~> 1.1.0)
   - EARestrictedScrollView (1.1.0)
@@ -57,6 +58,7 @@ PODS:
 
 DEPENDENCIES:
   - Charts (= 3.0.2)
+  - DateTools
   - EAIntroView
   - FBSDKCoreKit
   - FBSDKLoginKit
@@ -72,6 +74,7 @@ DEPENDENCIES:
 SPEC CHECKSUMS:
   Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
   Charts: 236d6ccdd0ce6feae151d89e829a7397381a21fd
+  DateTools: 933ac9c490f21f92127cf690ccd8c397e0126caf
   EAIntroView: 3494b7bbd1212e3a4f7e8d16194a1b00e7b9abb2
   EARestrictedScrollView: b0c2a3f92fb2610bb44d71c5e4893777c89e45ef
   FBSDKCoreKit: ebc6c5f5b3f0e72396041050e2266781a38ac587
@@ -91,6 +94,6 @@ SPEC CHECKSUMS:
   YYImage: 1e1b62a9997399593e4b9c4ecfbbabbf1d3f3b54
   YYWebImage: 5f7f36aee2ae293f016d418c7d6ba05c4863e928
 
-PODFILE CHECKSUM: 2408a51e5daf2f0ab4b1a193ce854c3ceab8a4c9
+PODFILE CHECKSUM: 7d39ba2ce86cf83cb304eb60a22e821e3652fae6
 
 COCOAPODS: 1.1.1

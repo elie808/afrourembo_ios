@@ -10,6 +10,7 @@
 
 typedef NS_ENUM(NSUInteger, DateFormat) {
     DateFormatLetterDayMonthYear,
+    DateFormatLetterDayMonthYearAbbreviated,
     DateFormatDigitYearMonthDay,
     DateFormatDigitYearMonth,
     DateFormatDigitMonthYear,
@@ -20,8 +21,6 @@ typedef NS_ENUM(NSUInteger, DateFormat) {
 @interface NSDate (Helpers)
 
 @property (assign, nonatomic) DateFormat dateFormat;
-
-+ (NSDate *)todayAtTime:(NSNumber *)hour minutes:(NSNumber *)minute;
 
 + (NSDate *)todayDate;
 + (NSDate *)tomorrowDate;

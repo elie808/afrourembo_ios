@@ -7,18 +7,27 @@
 //
 
 #import "ProfilePicture.h"
+
 #import "Customer.h"
+#import "Professional.h"
+
 #import "Customer+API.h"
+#import "Professional+API.h"
+
 #import "EKNetworkingConstants.h"
 #import <RestKit/RestKit.h>
 
 typedef void (^UserProfilePictureSuccessBlock)(Customer *customer);
+typedef void (^ProfessionalProfilePictureSuccessBlock)(Professional *professional);
 typedef void (^UserProfilePictureErrorBlock)(NSError *error, NSString *errorMessage, NSInteger statusCode);
 
 @interface ProfilePicture (API)
 
-+ (RKResponseDescriptor *)putUserProfilePictureResponseDescriptor;
++ (RKResponseDescriptor *)postUserProfilePictureResponseDescriptor;
++ (RKResponseDescriptor *)postProfessionalProfilePictureResponseDescriptor;
 
 + (void)uploadCustomerProfilePicture:(NSData *)imageData withToken:(NSString *)userToken withBlock:(UserProfilePictureSuccessBlock)successBlock withErrors:(UserProfilePictureErrorBlock)errorBlock;
+
++ (void)uploadProfessionalProfilePicture:(NSData *)imageData withToken:(NSString *)userToken withBlock:(ProfessionalProfilePictureSuccessBlock)successBlock withErrors:(UserProfilePictureErrorBlock)errorBlock;
 
 @end

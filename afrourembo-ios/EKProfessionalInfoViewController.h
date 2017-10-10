@@ -21,6 +21,7 @@
 // View Model
 @property NSString *businessName;
 @property NSString *address;
+@property NSString *phoneNumber;
 @property CLLocationCoordinate2D addressCoords;
 @property (assign, nonatomic) BOOL isMobile;
 

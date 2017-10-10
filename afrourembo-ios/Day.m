@@ -66,10 +66,31 @@ static NSString * const kDefaultEndHour = @"5:00 PM";
     NSCalendar *cal = [NSCalendar calendarWithIdentifier:NSCalendarIdentifierGregorian];
     NSDateComponents *components = [cal components:NSCalendarUnitDay | NSCalendarUnitWeekday fromDate:date];
     
-    // substract 1, to correct for the fact that iOS counts days 1-7, and we need 0-6
-    NSInteger dayNumber = [components weekday]-1;
+    NSInteger dayNumber = [components weekday]; // get iOS' weekDay value. We correct for in what follows
     
-    return [NSNumber numberWithInteger:dayNumber];
+    return [NSNumber numberWithInteger:[Day convertiOSDayToOurGaySystem:dayNumber]];
+}
+
++ (NSInteger)convertiOSDayToOurGaySystem:(NSInteger)iOSDayNumber {
+    
+    switch (iOSDayNumber) {
+            
+        case 2: return 0; break; //Monday
+            
+        case 3: return 1; break; //Tuesday
+            
+        case 4: return 2; break; //Wednesday
+            
+        case 5: return 3; break; //Thursday
+            
+        case 6: return 4; break; //Friday
+            
+        case 7: return 5; break; //Saturday
+            
+        case 1: return 6; break; //Sunday
+            
+        default: return 10; break; //return whatever. This will probably blow up another method somewhere. Debug accordingly
+    }
 }
 
 + (NSString *)dayStringFromNumber:(NSNumber *)dayNumber {

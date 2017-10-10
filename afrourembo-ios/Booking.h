@@ -26,4 +26,10 @@
 
 @property Reservation *reservation; // This property will be used to send to the server and make the booking from the cart
 
+/// to convert bookingObj (RLMObj) to an NSObject and avoid weird nils in reservationsArray
++ (Reservation *)convertBookingObj:(Booking *)bookingObj;
+
+/// create unique string/hash to be used as primary key (to avoid overlaps) when storing Booking obj in REALM
++ (NSString *)hashBooking:(Booking *)bookingObj;
+
 @end

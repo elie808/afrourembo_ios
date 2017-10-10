@@ -30,8 +30,8 @@
 - (void)configureCellForService:(Service *)serviceObj {
     
     self.cellServiceLabel.text = serviceObj.serviceName;
-    self.cellServiceLaborLabel.text = [NSString stringWithFormat:@"%.2f %@ for %.f mins",
-                                       serviceObj.price, serviceObj.currency, serviceObj.time];
+    self.cellServiceLaborLabel.text = [NSString stringWithFormat:@"%ld %@ for %ld mins",
+                                       (long)serviceObj.price, serviceObj.currency, (long)serviceObj.time];
 }
 
 - (IBAction)didTapBookButton:(id)sender {

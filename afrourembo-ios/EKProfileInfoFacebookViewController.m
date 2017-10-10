@@ -57,6 +57,15 @@ static NSString * const kProfileInfoCell = @"profileInfoFBTextfieldCell";
     
 }
 
+#pragma mark - UITextField Delegate
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    
+    [textField resignFirstResponder];
+    
+    return YES;
+}
+
 #pragma mark - Navigation
 
 - (IBAction)unwindToFbProfile:(UIStoryboardSegue *)segue {}

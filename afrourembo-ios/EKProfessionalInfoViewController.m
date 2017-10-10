@@ -10,6 +10,7 @@
 
 static NSString * const kProfInfoCell       = @"textFieldProfessionalInfoCell";
 static NSString * const kAdressCell         = @"professionalAddressCell";
+static NSString * const kPhoneCell          = @"professionalPhoneNumberCell";
 static NSString * const kSwitchCell         = @"professionalMobileCell";
 
 static NSString * const kAddServiceSegue    = @"profInfoToAddServiceVC";
@@ -21,11 +22,6 @@ static NSString * const kAddressSegue       = @"professionalInfoToProfessionalAd
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    self.businessName = @"";
-    self.address = @"";
-    self.addressCoords = CLLocationCoordinate2DMake(0, 0);
-    self.isMobile = NO;
     
     [self initializeDataSource];
 }
@@ -50,6 +46,7 @@ static NSString * const kAddressSegue       = @"professionalInfoToProfessionalAd
         EKTextFieldTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kProfInfoCell forIndexPath:indexPath];
         cell.cellTitleLabel.text = labelValue;
         cell.cellTextField.text = placeHolderValue;
+        cell.cellTextField.tag = 0;
         
         return cell;
     }
@@ -62,6 +59,16 @@ static NSString * const kAddressSegue       = @"professionalInfoToProfessionalAd
         
         return cell;
     }
+    
+//    if (indexPath.row == 2) {
+//
+//        EKTextFieldTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kPhoneCell forIndexPath:indexPath];
+//        cell.cellTitleLabel.text = labelValue;
+//        cell.cellTextField.text = placeHolderValue;
+//        cell.cellTextField.tag = 1;
+//        
+//        return cell;
+//    }
     
     if (indexPath.row == 2) {
         
@@ -99,7 +106,15 @@ static NSString * const kAddressSegue       = @"professionalInfoToProfessionalAd
 
 - (void)textFieldDidEndEditing:(UITextField *)textField {
     
-    self.businessName = textField.text;
+    NSLog(@"\n \n TEXTFIELD TAG: %ld", (long)textField.tag);
+    
+    if (textField.tag == 0) {
+        self.businessName = textField.text;
+    }
+    
+    if (textField.tag == 1) {
+        self.phoneNumber = textField.text;
+    }
 }
 
 #pragma mark - Actions
@@ -112,8 +127,6 @@ static NSString * const kAddressSegue       = @"professionalInfoToProfessionalAd
 
 - (IBAction)didChangeSwitch:(UISwitch*)sender {
     
-    NSLog(@"IS MOBILE? %@", sender.isOn ? @"YES" : @"NO");
-    
     self.isMobile = sender.isOn;
 }
 
@@ -121,7 +134,7 @@ static NSString * const kAddressSegue       = @"professionalInfoToProfessionalAd
 
 - (IBAction)unwindToProfessionalInfoVC:(UIStoryboardSegue *)segue {
     
-    [self initializeDataSource];
+    [self updateDataSource];
     [self.tableView reloadData];
 }
 
@@ -131,7 +144,7 @@ static NSString * const kAddressSegue       = @"professionalInfoToProfessionalAd
         
         EKAddServiceViewController *vc = segue.destinationViewController;
         vc.passedProfessional = self.passedProfessional;
-
+        
         Business *selectedBusinessAdress = [Business new];
         selectedBusinessAdress.name = self.businessName;
         selectedBusinessAdress.address = self.address;
@@ -140,12 +153,14 @@ static NSString * const kAddressSegue       = @"professionalInfoToProfessionalAd
         
         vc.passedProfessional.business = selectedBusinessAdress;
         
+        vc.passedProfessional.phone = self.phoneNumber;
         vc.passedProfessional.isMobile = self.isMobile;
     }
     
     if ([segue.identifier isEqualToString:kAddressSegue]) {
-        
-//        EKProfessionalAddressViewController *vc = segue.destinationViewController;
+
+        EKProfessionalAddressViewController *vc = segue.destinationViewController;
+        vc.passedCoords = self.addressCoords;
     }
 }
 
@@ -153,9 +168,26 @@ static NSString * const kAddressSegue       = @"professionalInfoToProfessionalAd
 
 - (void)initializeDataSource {
     
+    self.businessName = @"";
+    self.address = @"";
+    self.phoneNumber = @"";
+    self.addressCoords = CLLocationCoordinate2DMake(0, 0);
+    self.isMobile = NO;
+    
     _dataSourceArray = @[
                          @{@"Company Name" : self.businessName},
                          @{@"Address" : self.address},
+//                         @{@"Phone number" : self.phoneNumber},
+                         @{@"I am mobile" : @""}
+                         ];
+}
+
+- (void)updateDataSource {
+    
+    _dataSourceArray = @[
+                         @{@"Company Name" : self.businessName},
+                         @{@"Address" : self.address},
+//                         @{@"Phone number" : self.phoneNumber},
                          @{@"I am mobile" : @""}
                          ];
 }
