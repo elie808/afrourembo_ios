@@ -64,10 +64,9 @@ static NSString * const kResetPassSegue = @"confirmPhoneNumberToResetPasswordVC"
     
     EKTextFieldTableViewCell *phoneCell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
     
-    NSString *phoneNumbr = phoneCell.cellTextField.text;
-    NSString *phoneStr = [self trimWhiteSpace:phoneNumbr];
+    NSString *phoneStr = [phoneCell.cellTextField trimWhiteSpace:phoneCell.cellTextField.text];
     
-    if (phoneStr.length > 0 && [self isValidPhoneNumber:phoneStr]) {
+    if (phoneStr.length > 0 && [phoneStr isValidPhoneNumber]) {
     
         [self confirmPhoneNumber:phoneStr];
     
@@ -79,25 +78,6 @@ static NSString * const kResetPassSegue = @"confirmPhoneNumberToResetPasswordVC"
 }
 
 #pragma mark - Helpers
-
-- (NSString *)trimWhiteSpace:(NSString *)text {
-    return [text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
-}
-
-- (BOOL)isValidPhoneNumber:(NSString *)phoneNumber {
-    
-    // Check if 53/54/56 exist as 1 piece
-    // then check that the remaining 7 numbers range from 0-9
-    // OR all conditions together using |
-    
-    // NSString *phoneRegex = @"(53){1}[0-9]{7}|(54){1}[0-9]{7}|(56){1}[0-9]{7}";
-    
-    NSString *phoneRegex = @"[0-9]{10}";
-    
-    NSPredicate *testPhoneEN = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", phoneRegex];
-    
-    return [testPhoneEN evaluateWithObject:phoneNumber];
-}
 
 - (void)confirmPhoneNumber:(NSString *)phoneNumber {
     
@@ -161,6 +141,8 @@ static NSString * const kResetPassSegue = @"confirmPhoneNumberToResetPasswordVC"
         
         if (sender) {
             vc.passedPhoneNumber = (NSString *)sender;
+            
+            
         }
     }
 }

@@ -14,6 +14,8 @@
 #import "Customer+API.h"
 #import "ProfessionalLogin+API.h"
 #import "SalonLogin+API.h"
+#import "UITextField+Helpers.h"
+#import "NSString+Helpers.h"
 #import <MBProgressHUD/MBProgressHUD.h>
 
 typedef NS_ENUM(NSUInteger, PhoneConfirmRole) {
