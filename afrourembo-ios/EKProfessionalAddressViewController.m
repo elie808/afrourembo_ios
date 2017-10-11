@@ -81,7 +81,7 @@ static NSString * const kUnwindSegue = @"unwindToProfessionalInfo";
                                           MKPlacemark *placemark = [[MKPlacemark alloc] initWithPlacemark:topResult];
                                           
                                           MKCoordinateRegion region = self.mapView.region;
-                                          region.center = placemark.region.center;
+                                          region.center = [(CLCircularRegion *)placemark.region center];
                                           region.span.longitudeDelta /= 8.0;
                                           region.span.latitudeDelta /= 8.0;
                                           
