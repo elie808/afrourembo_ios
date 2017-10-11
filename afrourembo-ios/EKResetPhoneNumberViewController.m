@@ -74,11 +74,11 @@ static NSString * const kDashboardSegue = @"resetPassToDashboardVC";
     EKTextFieldTableViewCell *phoneCell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:0]];
     EKTextFieldTableViewCell *passCell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:2 inSection:0]];
     
-    NSString *phonenumberStr = phoneCell.cellTextField.text;
+    NSString *phonenumberStr = [phoneCell.cellTextField trimWhiteSpace:phoneCell.cellTextField.text];
     NSString *confirmationCodeStr = codeCell.cellTextField.text;
     NSString *passwordStr = passCell.cellTextField.text;
     
-    if (confirmationCodeStr.length > 0 && passwordStr.length > 0 && phonenumberStr.length > 0) {
+    if (confirmationCodeStr.length > 0 && passwordStr.length > 0 && phonenumberStr.length > 0 && [phonenumberStr isValidPhoneNumber]) {
         
         [self resetPassword:passwordStr forConfirmationCode:confirmationCodeStr andPhoneNumber:phonenumberStr];
         

@@ -61,6 +61,7 @@
 		477256051EB958FF007CBD6B /* EKAvailabilityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 477256041EB958FF007CBD6B /* EKAvailabilityViewController.m */; };
 		477256091EB95EA4007CBD6B /* EKSwitchTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 477256081EB95EA4007CBD6B /* EKSwitchTableViewCell.m */; };
 		477935551F89A1EF00E0C034 /* EKResetPhoneNumberViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 477935541F89A1EF00E0C034 /* EKResetPhoneNumberViewController.m */; };
+		4779E2DD1F8E5F8B004C80D4 /* UITextField+Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 4779E2DC1F8E5F8B004C80D4 /* UITextField+Helpers.m */; };
 		47800BC31EA3B2FA00F450DB /* EKBookingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47800BC21EA3B2FA00F450DB /* EKBookingViewController.m */; };
 		47822B051EDDAE49001E247F /* EKSalesSummaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47822B041EDDAE49001E247F /* EKSalesSummaryViewController.m */; };
 		47822B091EDDC37C001E247F /* EKSalesSummaryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 47822B081EDDC37C001E247F /* EKSalesSummaryTableViewCell.m */; };
@@ -251,6 +252,8 @@
 		477256081EB95EA4007CBD6B /* EKSwitchTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKSwitchTableViewCell.m; sourceTree = "<group>"; };
 		477935531F89A1EF00E0C034 /* EKResetPhoneNumberViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKResetPhoneNumberViewController.h; sourceTree = "<group>"; };
 		477935541F89A1EF00E0C034 /* EKResetPhoneNumberViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKResetPhoneNumberViewController.m; sourceTree = "<group>"; };
+		4779E2DB1F8E5F8B004C80D4 /* UITextField+Helpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextField+Helpers.h"; sourceTree = "<group>"; };
+		4779E2DC1F8E5F8B004C80D4 /* UITextField+Helpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextField+Helpers.m"; sourceTree = "<group>"; };
 		47800BC11EA3B2FA00F450DB /* EKBookingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKBookingViewController.h; sourceTree = "<group>"; };
 		47800BC21EA3B2FA00F450DB /* EKBookingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKBookingViewController.m; sourceTree = "<group>"; };
 		47822B031EDDAE49001E247F /* EKSalesSummaryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKSalesSummaryViewController.h; sourceTree = "<group>"; };
@@ -874,6 +877,8 @@
 				47AB798B1F60CED9001D7AAA /* Professional+Helpers.m */,
 				471AA1891ED45DD0009B840A /* UIImage+Helpers.h */,
 				471AA18A1ED45DD0009B840A /* UIImage+Helpers.m */,
+				4779E2DB1F8E5F8B004C80D4 /* UITextField+Helpers.h */,
+				4779E2DC1F8E5F8B004C80D4 /* UITextField+Helpers.m */,
 				479F7D661EF00A1700EB445A /* UIViewController+Helpers.h */,
 				479F7D671EF00A1700EB445A /* UIViewController+Helpers.m */,
 			);
@@ -1444,6 +1449,7 @@
 				475A4CF71EC0041F0089D477 /* EKCheckoutSuccessViewController.m in Sources */,
 				479F7D741EF16D8600EB445A /* ProfessionalLogin+API.m in Sources */,
 				4797AF321F30D15700AC1140 /* Review+API.m in Sources */,
+				4779E2DD1F8E5F8B004C80D4 /* UITextField+Helpers.m in Sources */,
 				476F63751F075EF000C27A92 /* SalonLogin+API.m in Sources */,
 				47919E5A1E795664001C5600 /* EKOnboardingViewController.m in Sources */,
 				475A4CFB1EC01EAB0089D477 /* EKExploreViewController+SideMenuTableView.m in Sources */,

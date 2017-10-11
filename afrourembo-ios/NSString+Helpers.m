@@ -24,4 +24,19 @@
     return YES;
 }
 
+- (BOOL)isValidPhoneNumber {
+    
+    // Check if 53/54/56 exist as 1 piece
+    // then check that the remaining 7 numbers range from 0-9
+    // OR all conditions together using |
+    
+    // NSString *phoneRegex = @"(53){1}[0-9]{7}|(54){1}[0-9]{7}|(56){1}[0-9]{7}";
+    
+    NSString *phoneRegex = @"[0-9]{10}";
+    
+    NSPredicate *testPhoneEN = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", phoneRegex];
+    
+    return [testPhoneEN evaluateWithObject:self];
+}
+
 @end

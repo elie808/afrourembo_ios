@@ -11,5 +11,6 @@
 @interface NSString (Helpers)
 
 - (BOOL)validEmail;
+- (BOOL)isValidPhoneNumber;
 
 @end

@@ -10,8 +10,10 @@
 #import "EKExploreViewController.h"
 #import "SalonLogin+API.h"
 #import "EKTextFieldTableViewCell.h"
-#import "UIViewController+Helpers.h"
 #import "EKSettings.h"
+#import "UIViewController+Helpers.h"
+#import "UITextField+Helpers.h"
+#import "NSString+Helpers.h"
 #import <MBProgressHUD/MBProgressHUD.h>
 
 typedef NS_ENUM(NSUInteger, ResetRole) {
