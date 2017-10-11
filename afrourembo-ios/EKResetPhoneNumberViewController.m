@@ -54,8 +54,9 @@ static NSString * const kDashboardSegue = @"resetPassToDashboardVC";
     cell.cellTextField.placeholder = placeHolderValue;
     
     if (indexPath.row == 0) { cell.cellTextField.text = @"abc123"; }
-//    if (indexPath.row == 1) { cell.cellTextField.text = @"0012345678"; }//self.passedPhoneNumber; }
-    
+    if (indexPath.row == 1) {
+        cell.cellTextField.text = self.passedPhoneNumber.length > 0 ? self.passedPhoneNumber : @"0012345678";
+    }
     
     return cell;
 }
