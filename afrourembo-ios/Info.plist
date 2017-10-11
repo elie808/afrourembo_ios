@@ -46,6 +46,8 @@
 	<string>Afrourembo</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
+		<string>telprompt</string>
+		<string>tel</string>
 		<string>fbapi</string>
 		<string>fb-messenger-api</string>
 		<string>fbauth2</string>

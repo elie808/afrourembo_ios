@@ -371,6 +371,21 @@ static NSString * const kProfessionalsCollectionCell = @"companyProfessionalsCol
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
+     if (self.professional) {
+         
+         switch (indexPath.section) {
+      
+             case 2:
+                 
+                 if (indexPath.row == 1) { // PHONE
+                     if (self.professional.phone.length > 0) { [self call:self.professional.phone]; }
+                 }
+                 
+                 break;
+                 
+             default: break;
+         }
+     }
 }
 
 #pragma mark - UICollectionViewDataSource

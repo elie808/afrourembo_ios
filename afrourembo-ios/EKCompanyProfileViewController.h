@@ -46,4 +46,7 @@ static NSString * const kBookingSegue     = @"companyProfileVCToBookingVC";
 - (IBAction)didTapFacebookButton:(id)sender;
 - (IBAction)didTapTwitterButton:(id)sender;
 
+/// make phone calls
+- (void)call:(NSString *)phoneNumber;
+
 @end

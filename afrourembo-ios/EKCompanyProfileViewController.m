@@ -69,6 +69,21 @@
                      }];
 }
 
+- (void)call:(NSString *)phoneNumber {
+    
+    NSString *unspacedPhoneNumber = [phoneNumber stringByReplacingOccurrencesOfString:@" " withString:@""];
+    
+    NSURL *phoneNumberURL = [NSURL URLWithString:[NSString stringWithFormat:@"tel:%@", unspacedPhoneNumber]];
+    
+    if ([[UIApplication sharedApplication] canOpenURL:phoneNumberURL]) {
+        
+        [[UIApplication sharedApplication] openURL:phoneNumberURL];
+        
+    } else {
+        
+    }
+}
+
 #pragma mark - Actions
 
 - (IBAction)didTapInstagramButton:(id)sender {
