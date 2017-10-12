@@ -46,6 +46,7 @@
 		475A4CFB1EC01EAB0089D477 /* EKExploreViewController+SideMenuTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 475A4CFA1EC01EAB0089D477 /* EKExploreViewController+SideMenuTableView.m */; };
 		475FC37D1EB6B57900BB0731 /* EKAddServiceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 475FC37C1EB6B57900BB0731 /* EKAddServiceViewController.m */; };
 		475FC3811EB6BF5E00BB0731 /* EKAddNewServiceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 475FC3801EB6BF5E00BB0731 /* EKAddNewServiceViewController.m */; };
+		47605DC51F8EF01200DB1968 /* EKSettingsBPViewController+CollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 47605DC41F8EF01100DB1968 /* EKSettingsBPViewController+CollectionView.m */; };
 		47605F151F3F211D00991C3A /* Booking+API.m in Sources */ = {isa = PBXBuildFile; fileRef = 47605F141F3F211D00991C3A /* Booking+API.m */; };
 		47605F181F3F5ABA00991C3A /* Reservation.m in Sources */ = {isa = PBXBuildFile; fileRef = 47605F171F3F5ABA00991C3A /* Reservation.m */; };
 		47605F1B1F3F5B0600991C3A /* Reservation+API.m in Sources */ = {isa = PBXBuildFile; fileRef = 47605F1A1F3F5B0600991C3A /* Reservation+API.m */; };
@@ -223,6 +224,8 @@
 		475FC37C1EB6B57900BB0731 /* EKAddServiceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKAddServiceViewController.m; sourceTree = "<group>"; };
 		475FC37F1EB6BF5E00BB0731 /* EKAddNewServiceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKAddNewServiceViewController.h; sourceTree = "<group>"; };
 		475FC3801EB6BF5E00BB0731 /* EKAddNewServiceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKAddNewServiceViewController.m; sourceTree = "<group>"; };
+		47605DC31F8EF01100DB1968 /* EKSettingsBPViewController+CollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "EKSettingsBPViewController+CollectionView.h"; sourceTree = "<group>"; };
+		47605DC41F8EF01100DB1968 /* EKSettingsBPViewController+CollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "EKSettingsBPViewController+CollectionView.m"; sourceTree = "<group>"; };
 		47605F131F3F211D00991C3A /* Booking+API.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Booking+API.h"; sourceTree = "<group>"; };
 		47605F141F3F211D00991C3A /* Booking+API.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Booking+API.m"; sourceTree = "<group>"; };
 		47605F161F3F5ABA00991C3A /* Reservation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reservation.h; sourceTree = "<group>"; };
@@ -645,6 +648,8 @@
 				47652BFC1F01FB5700796E04 /* EKSettingsBPViewController.m */,
 				477EEDA81F8EE541007124E0 /* EKSettingsBPViewController+TableView.h */,
 				477EEDA91F8EE541007124E0 /* EKSettingsBPViewController+TableView.m */,
+				47605DC31F8EF01100DB1968 /* EKSettingsBPViewController+CollectionView.h */,
+				47605DC41F8EF01100DB1968 /* EKSettingsBPViewController+CollectionView.m */,
 			);
 			name = "BP - Settings";
 			sourceTree = "<group>";
@@ -1351,6 +1356,7 @@
 			files = (
 				47FF4F6B1EB557620022A6ED /* Customer+API.m in Sources */,
 				470CD7491EA11AD40086DEE4 /* EKCompanyContactTableViewCell.m in Sources */,
+				47605DC51F8EF01200DB1968 /* EKSettingsBPViewController+CollectionView.m in Sources */,
 				4757C6491ED879FB00C2B52F /* EKTodayViewController.m in Sources */,
 				47F714111ED704350028FB65 /* EKSalonSelectViewController.m in Sources */,
 				478BDEEE1E99A25E00F74A5C /* EKImageTextButton.m in Sources */,

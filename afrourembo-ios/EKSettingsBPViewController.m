@@ -15,7 +15,7 @@ static NSString * const kWelcomeSegue  = @"bpSettingsToWelcomeVC";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.dataSource = @[
+    self.tableViewDataSource = @[
                     @"Check my public profile",
                     @"Explore services",
                     @"Profile information",

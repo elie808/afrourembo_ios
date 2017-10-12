@@ -1,5 +1,5 @@
 //
-//  EKSettingsBPViewController+TableView.h
+//  EKSettingsBPViewController+CollectionView.h
 //  afrourembo-ios
 //
 //  Created by Elie El Khoury on 10/12/17.
@@ -8,6 +8,6 @@
 
 #import "EKSettingsBPViewController.h"
 
-@interface EKSettingsBPViewController (TableView)  <UITableViewDelegate, UITableViewDataSource>
+@interface EKSettingsBPViewController (CollectionView) <UICollectionViewDelegate, UICollectionViewDataSource>
 
 @end
