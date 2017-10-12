@@ -585,7 +585,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="70"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ECN-4I-p1V" id="NB5-C3-heK">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="70"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="69.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total Sales YTD" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dhd-MU-vps">
@@ -724,7 +724,7 @@
                                         <rect key="frame" x="0.0" y="35" width="375" height="55"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fhP-LC-s6X" id="0M4-1t-1AH">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="55"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="54.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="skI-wu-utb">
@@ -939,14 +939,46 @@
                                                 <inset key="sectionInset" minX="10" minY="10" maxX="0.0" maxY="0.0"/>
                                             </collectionViewFlowLayout>
                                             <cells>
-                                                <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="settingsCollectionCell" id="JEe-EQ-p8b">
+                                                <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="settingsCollectionCell" id="JEe-EQ-p8b" customClass="EKCompanyProfessionalCollectionViewCell">
                                                     <rect key="frame" x="10" y="15.5" width="80" height="80"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                                         <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
                                                         <autoresizingMask key="autoresizingMask"/>
+                                                        <subviews>
+                                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Euc-nu-v2l">
+                                                                <rect key="frame" x="16" y="0.0" width="48" height="48"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="48" id="6x1-VK-Rnu"/>
+                                                                    <constraint firstAttribute="width" constant="48" id="BaV-2C-tTa"/>
+                                                                </constraints>
+                                                                <userDefinedRuntimeAttributes>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                        <integer key="value" value="24"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                                                </userDefinedRuntimeAttributes>
+                                                            </imageView>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iok-fK-Lz4">
+                                                                <rect key="frame" x="0.0" y="52" width="80" height="28"/>
+                                                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="12"/>
+                                                                <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                        </subviews>
                                                     </view>
-                                                    <color key="backgroundColor" red="1" green="0.76470588240000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="bottom" secondItem="iok-fK-Lz4" secondAttribute="bottom" id="4Qt-Ut-Cgj"/>
+                                                        <constraint firstItem="iok-fK-Lz4" firstAttribute="leading" secondItem="JEe-EQ-p8b" secondAttribute="leading" id="7Fl-4u-0gn"/>
+                                                        <constraint firstAttribute="trailing" secondItem="iok-fK-Lz4" secondAttribute="trailing" id="AQK-sY-zCM"/>
+                                                        <constraint firstItem="Euc-nu-v2l" firstAttribute="centerX" secondItem="iok-fK-Lz4" secondAttribute="centerX" id="J3r-8x-dHk"/>
+                                                        <constraint firstItem="Euc-nu-v2l" firstAttribute="top" secondItem="JEe-EQ-p8b" secondAttribute="top" id="SOh-zV-g6i"/>
+                                                        <constraint firstItem="iok-fK-Lz4" firstAttribute="top" secondItem="Euc-nu-v2l" secondAttribute="bottom" constant="4" id="kzx-9w-eQu"/>
+                                                    </constraints>
+                                                    <connections>
+                                                        <outlet property="cellImageView" destination="Euc-nu-v2l" id="0YT-8j-Cgh"/>
+                                                        <outlet property="cellNameLabel" destination="iok-fK-Lz4" id="qFm-bS-ULm"/>
+                                                    </connections>
                                                 </collectionViewCell>
                                             </cells>
                                             <connections>
@@ -1054,6 +1086,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Settings" image="icSettingsSalonNormal" id="XJi-ir-uET"/>
                     <connections>
+                        <outlet property="collectionView" destination="P9b-Bl-rKR" id="UAV-tL-i6b"/>
                         <outlet property="tableView" destination="a1B-Ut-vBf" id="i5T-82-ccl"/>
                     </connections>
                 </viewController>

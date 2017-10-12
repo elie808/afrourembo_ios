@@ -34,6 +34,8 @@ static NSString * const kWelcomeSegue  = @"bpSettingsToWelcomeVC";
                     @"About",
                     @"Feedback"
                     ];
+    
+    self.collectionViewDataSource = @[@""];
 }
 
 #pragma mark - Navigation

@@ -7,12 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "EKCompanyProfessionalCollectionViewCell.h"
 #import "EKSettings.h"
 
 @interface EKSettingsBPViewController : UIViewController
 
 @property (strong, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
+
 @property (strong, nonatomic) NSArray *tableViewDataSource;
 @property (strong, nonatomic) NSArray *collectionViewDataSource;
 

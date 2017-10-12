@@ -19,17 +19,25 @@ static NSString * const kCollectionCell = @"settingsCollectionCell";
 }
  
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return 7;
+    return self.collectionViewDataSource.count;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     
-    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kCollectionCell
-                                                                           forIndexPath:indexPath];
- 
- //    NSInteger index = ((EKInCellCollectionView*)collectionView).collectionIndexPath.row;
- //    Salon *salon = [self.dataSourceArray objectAtIndex:index];
- //    cell.cellTextLabel.text = [salon.timesArray objectAtIndex:indexPath.row];
+    EKCompanyProfessionalCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kCollectionCell
+                                                                                              forIndexPath:indexPath];
+    
+    if (indexPath.row == self.collectionViewDataSource.count) {
+        
+//        cell.cellImageView.image = [UIImage imageNamed:@"uploadImageCameraIcon"];
+        cell.cellImageView.backgroundColor = [UIColor colorWithRed:255./255. green:195./255. blue:0./255. alpha:1.0];
+        cell.cellNameLabel.text = @"Add new";
+        
+    } else {
+
+        cell.cellImageView.backgroundColor = [UIColor whiteColor];
+        cell.cellNameLabel.text = @"First Last name";
+    }
  
     return cell;
 }
