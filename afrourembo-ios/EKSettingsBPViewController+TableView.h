@@ -8,6 +8,6 @@
 
 #import "EKSettingsBPViewController.h"
 
-@interface EKSettingsBPViewController (TableView)
+@interface EKSettingsBPViewController (TableView)  <UITableViewDelegate, UITableViewDataSource, UICollectionViewDelegate, UICollectionViewDataSource>
 
 @end

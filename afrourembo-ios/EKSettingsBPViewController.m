@@ -14,6 +14,26 @@ static NSString * const kWelcomeSegue  = @"bpSettingsToWelcomeVC";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.dataSource = @[
+                    @"Check my public profile",
+                    @"Explore services",
+                    @"Profile information",
+                    @"Business information",
+                    @"Manage photos",
+                    @"My services",
+                    @"Availability",
+                    @"Social accounts",
+                    @"Billing information",
+                    @"Notifications",
+                    @"Export financial data",
+                    @"Share app",
+                    @"Rate us",
+                    @"Terms & conditions",
+                    @"Privacy policy",
+                    @"About",
+                    @"Feedback"
+                    ];
 }
 
 #pragma mark - Navigation

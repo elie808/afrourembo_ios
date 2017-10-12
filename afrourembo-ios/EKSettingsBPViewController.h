@@ -11,6 +11,9 @@
 
 @interface EKSettingsBPViewController : UIViewController
 
+@property (strong, nonatomic) IBOutlet UITableView *tableView;
+@property (strong, nonatomic) NSArray *dataSource;
+
 - (IBAction)didTapLogOutButton:(id)sender;
 
 @end
