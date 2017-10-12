@@ -62,6 +62,7 @@
 		477256091EB95EA4007CBD6B /* EKSwitchTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 477256081EB95EA4007CBD6B /* EKSwitchTableViewCell.m */; };
 		477935551F89A1EF00E0C034 /* EKResetPhoneNumberViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 477935541F89A1EF00E0C034 /* EKResetPhoneNumberViewController.m */; };
 		4779E2DD1F8E5F8B004C80D4 /* UITextField+Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 4779E2DC1F8E5F8B004C80D4 /* UITextField+Helpers.m */; };
+		477EEDAA1F8EE541007124E0 /* EKSettingsBPViewController+TableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 477EEDA91F8EE541007124E0 /* EKSettingsBPViewController+TableView.m */; };
 		47800BC31EA3B2FA00F450DB /* EKBookingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47800BC21EA3B2FA00F450DB /* EKBookingViewController.m */; };
 		47822B051EDDAE49001E247F /* EKSalesSummaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47822B041EDDAE49001E247F /* EKSalesSummaryViewController.m */; };
 		47822B091EDDC37C001E247F /* EKSalesSummaryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 47822B081EDDC37C001E247F /* EKSalesSummaryTableViewCell.m */; };
@@ -254,6 +255,8 @@
 		477935541F89A1EF00E0C034 /* EKResetPhoneNumberViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKResetPhoneNumberViewController.m; sourceTree = "<group>"; };
 		4779E2DB1F8E5F8B004C80D4 /* UITextField+Helpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextField+Helpers.h"; sourceTree = "<group>"; };
 		4779E2DC1F8E5F8B004C80D4 /* UITextField+Helpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextField+Helpers.m"; sourceTree = "<group>"; };
+		477EEDA81F8EE541007124E0 /* EKSettingsBPViewController+TableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "EKSettingsBPViewController+TableView.h"; sourceTree = "<group>"; };
+		477EEDA91F8EE541007124E0 /* EKSettingsBPViewController+TableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "EKSettingsBPViewController+TableView.m"; sourceTree = "<group>"; };
 		47800BC11EA3B2FA00F450DB /* EKBookingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKBookingViewController.h; sourceTree = "<group>"; };
 		47800BC21EA3B2FA00F450DB /* EKBookingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKBookingViewController.m; sourceTree = "<group>"; };
 		47822B031EDDAE49001E247F /* EKSalesSummaryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKSalesSummaryViewController.h; sourceTree = "<group>"; };
@@ -640,6 +643,8 @@
 			children = (
 				47652BFB1F01FB5700796E04 /* EKSettingsBPViewController.h */,
 				47652BFC1F01FB5700796E04 /* EKSettingsBPViewController.m */,
+				477EEDA81F8EE541007124E0 /* EKSettingsBPViewController+TableView.h */,
+				477EEDA91F8EE541007124E0 /* EKSettingsBPViewController+TableView.m */,
 			);
 			name = "BP - Settings";
 			sourceTree = "<group>";
@@ -1360,6 +1365,7 @@
 				47FF4F681EB5520E0022A6ED /* Customer.m in Sources */,
 				4787C6DD1EB40D5500DF7B83 /* Booking.m in Sources */,
 				47403DFD1F7955A4003BC79D /* EKServicesChartViewController.m in Sources */,
+				477EEDAA1F8EE541007124E0 /* EKSettingsBPViewController+TableView.m in Sources */,
 				475FC37D1EB6B57900BB0731 /* EKAddServiceViewController.m in Sources */,
 				476368C71F8BB77900249318 /* ResetPassword.m in Sources */,
 				47652BFA1F01DC8B00796E04 /* EKSettings.m in Sources */,
