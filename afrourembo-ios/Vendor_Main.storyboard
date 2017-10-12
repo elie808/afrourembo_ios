@@ -585,7 +585,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="70"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ECN-4I-p1V" id="NB5-C3-heK">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="69.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="70"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total Sales YTD" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dhd-MU-vps">
@@ -724,7 +724,7 @@
                                         <rect key="frame" x="0.0" y="35" width="375" height="55"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fhP-LC-s6X" id="0M4-1t-1AH">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="54.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="55"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="skI-wu-utb">
@@ -959,8 +959,8 @@
                                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                                                 </userDefinedRuntimeAttributes>
                                                             </imageView>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iok-fK-Lz4">
-                                                                <rect key="frame" x="0.0" y="52" width="80" height="28"/>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iok-fK-Lz4">
+                                                                <rect key="frame" x="0.0" y="50" width="80" height="30"/>
                                                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="12"/>
                                                                 <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <nil key="highlightedColor"/>
@@ -973,7 +973,7 @@
                                                         <constraint firstAttribute="trailing" secondItem="iok-fK-Lz4" secondAttribute="trailing" id="AQK-sY-zCM"/>
                                                         <constraint firstItem="Euc-nu-v2l" firstAttribute="centerX" secondItem="iok-fK-Lz4" secondAttribute="centerX" id="J3r-8x-dHk"/>
                                                         <constraint firstItem="Euc-nu-v2l" firstAttribute="top" secondItem="JEe-EQ-p8b" secondAttribute="top" id="SOh-zV-g6i"/>
-                                                        <constraint firstItem="iok-fK-Lz4" firstAttribute="top" secondItem="Euc-nu-v2l" secondAttribute="bottom" constant="4" id="kzx-9w-eQu"/>
+                                                        <constraint firstItem="iok-fK-Lz4" firstAttribute="top" secondItem="Euc-nu-v2l" secondAttribute="bottom" constant="2" id="kzx-9w-eQu"/>
                                                     </constraints>
                                                     <connections>
                                                         <outlet property="cellImageView" destination="Euc-nu-v2l" id="0YT-8j-Cgh"/>

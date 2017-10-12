@@ -19,7 +19,7 @@ static NSString * const kCollectionCell = @"settingsCollectionCell";
 }
  
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return self.collectionViewDataSource.count;
+    return self.collectionViewDataSource.count + 1;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -29,14 +29,16 @@ static NSString * const kCollectionCell = @"settingsCollectionCell";
     
     if (indexPath.row == self.collectionViewDataSource.count) {
         
-//        cell.cellImageView.image = [UIImage imageNamed:@"uploadImageCameraIcon"];
+        cell.cellImageView.image = [UIImage imageNamed:@"icAdd"];
         cell.cellImageView.backgroundColor = [UIColor colorWithRed:255./255. green:195./255. blue:0./255. alpha:1.0];
         cell.cellNameLabel.text = @"Add new";
         
     } else {
 
-        cell.cellImageView.backgroundColor = [UIColor whiteColor];
-        cell.cellNameLabel.text = @"First Last name";
+        //TODO: Show salon profile pictures here
+        // [cell.cellImageView yy_setImageWithURL:[NSURL URLWithString:@""] options:YYWebImageOptionProgressiveBlur|YYWebImageOptionSetImageWithFadeAnimation];
+        cell.cellImageView.backgroundColor = [UIColor clearColor];
+//        cell.cellNameLabel.text = @"First Last name";
     }
  
     return cell;
@@ -45,6 +47,12 @@ static NSString * const kCollectionCell = @"settingsCollectionCell";
 #pragma mark - UICollectionViewDelegate
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    
+    if (indexPath.row == self.collectionViewDataSource.count) {
+        NSLog(@"ADD SALON");
+    } else {
+        NSLog(@"Salon cell");
+    }
 }
 
 @end

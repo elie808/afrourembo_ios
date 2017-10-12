@@ -10,6 +10,8 @@
 #import "EKCompanyProfessionalCollectionViewCell.h"
 #import "EKSettings.h"
 
+#import <YYWebImage/YYWebImage.h>
+
 @interface EKSettingsBPViewController : UIViewController
 
 @property (strong, nonatomic) IBOutlet UICollectionView *collectionView;
