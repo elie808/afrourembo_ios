@@ -48,6 +48,10 @@
                                                     ]];
     
     [objectManager addRequestDescriptorsFromArray:@[
+                                                    [ProfessionalInfo professionalInfoRequestDescriptor]
+                                                    ]];
+    
+    [objectManager addRequestDescriptorsFromArray:@[
                                                     [Professional professionalRegistrationRequestDescriptor]
                                                     ]];
     
@@ -105,6 +109,8 @@
                                                      [ProfessionalLogin fbProfessionalLoginResponseDescriptor],
                                                      [ProfessionalLogin fbProfessionalRegistrationResponseDescriptor]
                                                      ]];
+    
+    [objectManager addResponseDescriptor:[ProfessionalInfo professionalInfoResponseDescriptor]];
     
     [objectManager addResponseDescriptorsFromArray:@[
                                                      [Professional professionalRegistrationResponseDescriptor],

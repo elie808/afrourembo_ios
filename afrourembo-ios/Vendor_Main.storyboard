@@ -893,7 +893,17 @@
                 <viewControllerPlaceholder storyboardName="Welcome" referencedIdentifier="welcomeVC" id="Ydr-fK-oRR" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vce-6c-uE5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2121" y="1000"/>
+            <point key="canvasLocation" x="1838" y="1004"/>
+        </scene>
+        <!--proInfoVC-->
+        <scene sceneID="Xfh-wY-Cah">
+            <objects>
+                <viewControllerPlaceholder storyboardName="SignUp" referencedIdentifier="proInfoVC" id="LdT-zB-aNR" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="eI3-IQ-Rp2"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Fac-po-6t9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3068" y="1321"/>
         </scene>
         <!--Settings-->
         <scene sceneID="awo-OX-Dnr">
@@ -1088,11 +1098,30 @@
                     <connections>
                         <outlet property="collectionView" destination="P9b-Bl-rKR" id="UAV-tL-i6b"/>
                         <outlet property="tableView" destination="a1B-Ut-vBf" id="i5T-82-ccl"/>
+                        <segue destination="jwS-v8-vfj" kind="show" identifier="settingsToProfileInfoVC" id="0WI-Zy-y1d"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eB7-Us-jA5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2120.8000000000002" y="570.76461769115451"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="PV3-n5-62q">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="jwS-v8-vfj" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="U08-Hh-C0i">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="LdT-zB-aNR" kind="relationship" relationship="rootViewController" id="TOL-j7-anl"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IWB-Gn-llR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2414" y="1322"/>
         </scene>
     </scenes>
     <resources>

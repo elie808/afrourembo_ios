@@ -17,6 +17,7 @@
 #import "Explore+API.h"
 #import "Professional+API.h"
 #import "ProfessionalLogin+API.h"
+#import "ProfessionalInfo+API.h"
 #import "ProfilePicture+API.h"
 #import "Reservation+API.h"
 #import "ResetPassword+API.h"

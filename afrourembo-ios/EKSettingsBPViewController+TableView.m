@@ -38,6 +38,28 @@ static NSString * const kTableCell = @"settingsTableCell";
 #pragma mark - UITableViewDelegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+
+    NSString *selectedItem = self.tableViewDataSource[indexPath.row];
+    
+    if ([selectedItem isEqualToString:kProfile]) {
+        
+    }
+    
+    if ([selectedItem isEqualToString:kBusinessInfo]) {
+        [self performSegueWithIdentifier:kBusinessSegue sender:nil];
+    }
+    
+    if ([selectedItem isEqualToString:kManagePhotos]) {
+        
+    }
+    
+    if ([selectedItem isEqualToString:kServices]) {
+        
+    }
+    
+    if ([selectedItem isEqualToString:kAvailability]) {
+        
+    }
 }
 
 @end

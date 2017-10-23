@@ -91,6 +91,8 @@
 		4795200F1EB3A40700E377E5 /* EKScheduleMonthlyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4795200E1EB3A40700E377E5 /* EKScheduleMonthlyViewController.m */; };
 		4797AF321F30D15700AC1140 /* Review+API.m in Sources */ = {isa = PBXBuildFile; fileRef = 4797AF311F30D15700AC1140 /* Review+API.m */; };
 		479A84FC1F9DCE68002ECC2C /* Salon+Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 479A84FB1F9DCE68002ECC2C /* Salon+Helpers.m */; };
+		479A85001F9E0BB6002ECC2C /* ProfessionalInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 479A84FF1F9E0BB6002ECC2C /* ProfessionalInfo.m */; };
+		479A85031F9E0BC5002ECC2C /* ProfessionalInfo+API.m in Sources */ = {isa = PBXBuildFile; fileRef = 479A85021F9E0BC5002ECC2C /* ProfessionalInfo+API.m */; };
 		479AB2681EA0B9E300A74659 /* EKCompanyProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 479AB2671EA0B9E300A74659 /* EKCompanyProfileViewController.m */; };
 		479AB26C1EA0CC0000A74659 /* EKCompanyServiceTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 479AB26B1EA0CC0000A74659 /* EKCompanyServiceTableViewCell.m */; };
 		479B30A11EF7476400DE2121 /* EKCategoryListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 479B30A01EF7476400DE2121 /* EKCategoryListViewController.m */; };
@@ -315,6 +317,10 @@
 		4797AF311F30D15700AC1140 /* Review+API.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Review+API.m"; sourceTree = "<group>"; };
 		479A84FA1F9DCE68002ECC2C /* Salon+Helpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Salon+Helpers.h"; sourceTree = "<group>"; };
 		479A84FB1F9DCE68002ECC2C /* Salon+Helpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Salon+Helpers.m"; sourceTree = "<group>"; };
+		479A84FE1F9E0BB6002ECC2C /* ProfessionalInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfessionalInfo.h; sourceTree = "<group>"; };
+		479A84FF1F9E0BB6002ECC2C /* ProfessionalInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfessionalInfo.m; sourceTree = "<group>"; };
+		479A85011F9E0BC5002ECC2C /* ProfessionalInfo+API.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ProfessionalInfo+API.h"; sourceTree = "<group>"; };
+		479A85021F9E0BC5002ECC2C /* ProfessionalInfo+API.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ProfessionalInfo+API.m"; sourceTree = "<group>"; };
 		479AB2661EA0B9E300A74659 /* EKCompanyProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKCompanyProfileViewController.h; sourceTree = "<group>"; };
 		479AB2671EA0B9E300A74659 /* EKCompanyProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKCompanyProfileViewController.m; sourceTree = "<group>"; };
 		479AB26A1EA0CC0000A74659 /* EKCompanyServiceTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKCompanyServiceTableViewCell.h; sourceTree = "<group>"; };
@@ -851,6 +857,8 @@
 				471F5FBA1F4870550097817E /* ProfilePicture.m */,
 				479F7D6F1EF16D6700EB445A /* ProfessionalLogin.h */,
 				479F7D701EF16D6700EB445A /* ProfessionalLogin.m */,
+				479A84FE1F9E0BB6002ECC2C /* ProfessionalInfo.h */,
+				479A84FF1F9E0BB6002ECC2C /* ProfessionalInfo.m */,
 				47605F161F3F5ABA00991C3A /* Reservation.h */,
 				47605F171F3F5ABA00991C3A /* Reservation.m */,
 				476368C51F8BB77900249318 /* ResetPassword.h */,
@@ -909,6 +917,15 @@
 				47CAEE721F67D4310091919D /* EKScheduleMonthlyViewController+TableView.m */,
 			);
 			name = "BP - Monthly Schedule";
+			sourceTree = "<group>";
+		};
+		479A84FD1F9E0123002ECC2C /* BP -  */ = {
+			isa = PBXGroup;
+			children = (
+				47329CA01F0BC06D00E5DF13 /* EKProfessionalInfoViewController.h */,
+				47329CA11F0BC06D00E5DF13 /* EKProfessionalInfoViewController.m */,
+			);
+			name = "BP - ";
 			sourceTree = "<group>";
 		};
 		479AB2691EA0B9EE00A74659 /* Customer - Company Profile */ = {
@@ -1143,8 +1160,7 @@
 			children = (
 				47F7140B1ED6FB2D0028FB65 /* EKBusinessModelViewController.h */,
 				47F7140C1ED6FB2D0028FB65 /* EKBusinessModelViewController.m */,
-				47329CA01F0BC06D00E5DF13 /* EKProfessionalInfoViewController.h */,
-				47329CA11F0BC06D00E5DF13 /* EKProfessionalInfoViewController.m */,
+				479A84FD1F9E0123002ECC2C /* BP -  */,
 				47329CA51F0BE77700E5DF13 /* EKProfessionalAddressViewController.h */,
 				47329CA61F0BE77700E5DF13 /* EKProfessionalAddressViewController.m */,
 				47A2DE0E1F3AFAB10063ADF8 /* Cells */,
@@ -1182,6 +1198,8 @@
 				479F7D6D1EF0C17E00EB445A /* Professional+API.m */,
 				479F7D721EF16D8600EB445A /* ProfessionalLogin+API.h */,
 				479F7D731EF16D8600EB445A /* ProfessionalLogin+API.m */,
+				479A85011F9E0BC5002ECC2C /* ProfessionalInfo+API.h */,
+				479A85021F9E0BC5002ECC2C /* ProfessionalInfo+API.m */,
 				471F5FBC1F48707C0097817E /* ProfilePicture+API.h */,
 				471F5FBD1F48707C0097817E /* ProfilePicture+API.m */,
 				47605F191F3F5B0600991C3A /* Reservation+API.h */,
@@ -1364,6 +1382,7 @@
 				47605DC51F8EF01200DB1968 /* EKSettingsBPViewController+CollectionView.m in Sources */,
 				4757C6491ED879FB00C2B52F /* EKTodayViewController.m in Sources */,
 				47F714111ED704350028FB65 /* EKSalonSelectViewController.m in Sources */,
+				479A85031F9E0BC5002ECC2C /* ProfessionalInfo+API.m in Sources */,
 				478BDEEE1E99A25E00F74A5C /* EKImageTextButton.m in Sources */,
 				474ED7C01E9C6BD90099CA0A /* EKDiscoverMapViewController+TableView.m in Sources */,
 				47A3BB881E7A8C0B00963F27 /* EKRoleViewController.m in Sources */,
@@ -1405,6 +1424,7 @@
 				47A2DE0D1F3AFAAA0063ADF8 /* EKProfessionalInfoTableViewCell.m in Sources */,
 				471AA18B1ED45DD0009B840A /* UIImage+Helpers.m in Sources */,
 				477256091EB95EA4007CBD6B /* EKSwitchTableViewCell.m in Sources */,
+				479A85001F9E0BB6002ECC2C /* ProfessionalInfo.m in Sources */,
 				47AF51BA1E9B8561005FE6EB /* Salon.m in Sources */,
 				47843A551F0470C900686CDD /* NSString+Helpers.m in Sources */,
 				47652BF41F01DAA500796E04 /* Customer+Helpers.m in Sources */,

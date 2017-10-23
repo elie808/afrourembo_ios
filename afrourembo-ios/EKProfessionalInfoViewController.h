@@ -12,7 +12,11 @@
 #import "EKTextFieldTableViewCell.h"
 #import "EKProfessionalInfoTableViewCell.h"
 #import "EKProfessionalAddressViewController.h"
+#import "ProfessionalInfo+API.h"
+#import "EKSettings.h"
 #import <MapKit/MapKit.h>
+
+#import "UIViewController+Helpers.h"
 
 @interface EKProfessionalInfoViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate>
 
@@ -26,6 +30,8 @@
 @property (assign, nonatomic) BOOL isMobile;
 
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *barButton;
+@property NSString *unwindSegueID; // ghetto fix to make view reusable by BP Settings
 
 - (IBAction)unwindToProfessionalInfoVC:(UIStoryboardSegue *)segue;
 

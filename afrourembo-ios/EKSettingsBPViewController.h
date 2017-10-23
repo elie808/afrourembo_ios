@@ -10,7 +10,19 @@
 #import "EKCompanyProfessionalCollectionViewCell.h"
 #import "EKSettings.h"
 
+#import "EKProfessionalInfoViewController.h"
+
 #import <YYWebImage/YYWebImage.h>
+
+static NSString * const kProfile  = @"Profile information";
+static NSString * const kBusinessInfo   = @"Business information";
+static NSString * const kManagePhotos   = @"Manage photos";
+static NSString * const kServices = @"My services";
+static NSString * const kAvailability = @"Availability";
+
+// Segues
+static NSString * const kWelcomeSegue  = @"bpSettingsToWelcomeVC";
+static NSString * const kBusinessSegue = @"settingsToProfileInfoVC";
 
 @interface EKSettingsBPViewController : UIViewController
 
@@ -21,5 +33,6 @@
 @property (strong, nonatomic) NSArray *collectionViewDataSource;
 
 - (IBAction)didTapLogOutButton:(id)sender;
+- (IBAction)unwindToBpSettingsVC:(UIStoryboardSegue *)segue;
 
 @end

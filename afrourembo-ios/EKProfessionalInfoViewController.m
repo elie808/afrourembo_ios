@@ -106,8 +106,6 @@ static NSString * const kAddressSegue       = @"professionalInfoToProfessionalAd
 
 - (void)textFieldDidEndEditing:(UITextField *)textField {
     
-    NSLog(@"\n \n TEXTFIELD TAG: %ld", (long)textField.tag);
-    
     if (textField.tag == 0) {
         self.businessName = textField.text;
     }
@@ -121,8 +119,28 @@ static NSString * const kAddressSegue       = @"professionalInfoToProfessionalAd
 
 - (IBAction)didTapNextButton:(id)sender {
     
-    //TODO: ADD API CALL
-    [self performSegueWithIdentifier:kAddServiceSegue sender:nil];
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    [ProfessionalInfo postProInfo:self.businessName
+                          address:self.address
+                        longitude:[NSNumber numberWithFloat:self.addressCoords.longitude]
+                        lattitude:[NSNumber numberWithFloat:self.addressCoords.latitude]
+                         andToken:[EKSettings getSavedVendor].token
+                        withBlock:^(Professional *professionalObj) {
+                          
+                            [MBProgressHUD hideHUDForView:self.view animated:YES];
+                            [EKSettings updateSavedProfessional:professionalObj];
+                            
+                            if (self.unwindSegueID && self.unwindSegueID.length) {
+                                [self performSegueWithIdentifier:self.unwindSegueID sender:nil]; //unwind to bpSettingsVC
+                            } else {
+                                [self performSegueWithIdentifier:kAddServiceSegue sender:nil];
+                            }
+                            
+                        } withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
+                           
+                            [MBProgressHUD hideHUDForView:self.view animated:YES];
+                            [self showMessage:errorMessage withTitle:@"Error" completionBlock:nil];
+                       }];
 }
 
 - (IBAction)didChangeSwitch:(UISwitch*)sender {
