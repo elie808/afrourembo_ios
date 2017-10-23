@@ -115,7 +115,8 @@
     [objectManager addResponseDescriptorsFromArray:@[
                                                      [Professional professionalRegistrationResponseDescriptor],
                                                      [Professional professionalResetPassResponseDescriptor],
-                                                     [Professional professionalResetPassResponseDescriptor]
+                                                     [Professional professionalResetPassResponseDescriptor],
+                                                     [Professional professionalClientsResponseDescriptor]
                                                      ]];
     
     [objectManager addResponseDescriptor:[Review getReviewsResponseDescriptor]];

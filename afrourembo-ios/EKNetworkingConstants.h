@@ -31,15 +31,16 @@ static NSString * const kUserReservationsAPIPath     = @"user/reservations";
 static NSString * const kProfessionalBookingsAPIPath = @"user/vendor/:userId/bookings";
 
 static NSString * const kProfessionalAvailabilityAPIPath = @"professional/availability";
-static NSString * const kProfessionalInfoAPIPath         = @"professional/business";
+static NSString * const kProfessionalClientsAPIPath      = @"professional/clients";
 static NSString * const kProfessionalDashboardAPIPath    = @"professional/dashboard";
-static NSString * const kProfessionalRegisterAPIPath = @"professional/register";
-static NSString * const kProfessionalLoginAPIPath    = @"professional/login";
+static NSString * const kProfessionalInfoAPIPath         = @"professional/business";
 static NSString * const kProfessionalFBRegisterAPIPath = @"professional/facebook/register";
 static NSString * const kProfessionalFBLoginAPIPath  = @"professional/facebook/login";
+static NSString * const kProfessionalRegisterAPIPath = @"professional/register";
+static NSString * const kProfessionalLoginAPIPath    = @"professional/login";
+static NSString * const kProfessionalPassResetAPIPath = @"professional/password/reset";
 static NSString * const kProfessionalPictureAPIPath  = @"professional/profile/picture";
 static NSString * const kProfessionalServiceAPIPath  = @"professional/services";
-static NSString * const kProfessionalPassResetAPIPath = @"professional/password/reset";
 
 static NSString * const kSalonLoginAPIPath     = @"salon/login";
 static NSString * const kSalonPassResetAPIPath = @"salon/password/reset";
