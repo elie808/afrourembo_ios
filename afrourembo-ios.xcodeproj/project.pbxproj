@@ -93,6 +93,8 @@
 		479A84FC1F9DCE68002ECC2C /* Salon+Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 479A84FB1F9DCE68002ECC2C /* Salon+Helpers.m */; };
 		479A85001F9E0BB6002ECC2C /* ProfessionalInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 479A84FF1F9E0BB6002ECC2C /* ProfessionalInfo.m */; };
 		479A85031F9E0BC5002ECC2C /* ProfessionalInfo+API.m in Sources */ = {isa = PBXBuildFile; fileRef = 479A85021F9E0BC5002ECC2C /* ProfessionalInfo+API.m */; };
+		479A85061F9E600C002ECC2C /* EKClientsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 479A85051F9E600C002ECC2C /* EKClientsViewController.m */; };
+		479A850A1F9E6A28002ECC2C /* EKClientTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 479A85091F9E6A28002ECC2C /* EKClientTableViewCell.m */; };
 		479AB2681EA0B9E300A74659 /* EKCompanyProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 479AB2671EA0B9E300A74659 /* EKCompanyProfileViewController.m */; };
 		479AB26C1EA0CC0000A74659 /* EKCompanyServiceTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 479AB26B1EA0CC0000A74659 /* EKCompanyServiceTableViewCell.m */; };
 		479B30A11EF7476400DE2121 /* EKCategoryListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 479B30A01EF7476400DE2121 /* EKCategoryListViewController.m */; };
@@ -321,6 +323,10 @@
 		479A84FF1F9E0BB6002ECC2C /* ProfessionalInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfessionalInfo.m; sourceTree = "<group>"; };
 		479A85011F9E0BC5002ECC2C /* ProfessionalInfo+API.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ProfessionalInfo+API.h"; sourceTree = "<group>"; };
 		479A85021F9E0BC5002ECC2C /* ProfessionalInfo+API.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ProfessionalInfo+API.m"; sourceTree = "<group>"; };
+		479A85041F9E600C002ECC2C /* EKClientsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKClientsViewController.h; sourceTree = "<group>"; };
+		479A85051F9E600C002ECC2C /* EKClientsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKClientsViewController.m; sourceTree = "<group>"; };
+		479A85081F9E6A28002ECC2C /* EKClientTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKClientTableViewCell.h; sourceTree = "<group>"; };
+		479A85091F9E6A28002ECC2C /* EKClientTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKClientTableViewCell.m; sourceTree = "<group>"; };
 		479AB2661EA0B9E300A74659 /* EKCompanyProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKCompanyProfileViewController.h; sourceTree = "<group>"; };
 		479AB2671EA0B9E300A74659 /* EKCompanyProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKCompanyProfileViewController.m; sourceTree = "<group>"; };
 		479AB26A1EA0CC0000A74659 /* EKCompanyServiceTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKCompanyServiceTableViewCell.h; sourceTree = "<group>"; };
@@ -928,6 +934,25 @@
 			name = "BP - ";
 			sourceTree = "<group>";
 		};
+		479A85071F9E6012002ECC2C /* BP - Clients List */ = {
+			isa = PBXGroup;
+			children = (
+				479A85041F9E600C002ECC2C /* EKClientsViewController.h */,
+				479A85051F9E600C002ECC2C /* EKClientsViewController.m */,
+				479A850B1F9E6A37002ECC2C /* Cells */,
+			);
+			name = "BP - Clients List";
+			sourceTree = "<group>";
+		};
+		479A850B1F9E6A37002ECC2C /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				479A85081F9E6A28002ECC2C /* EKClientTableViewCell.h */,
+				479A85091F9E6A28002ECC2C /* EKClientTableViewCell.m */,
+			);
+			name = Cells;
+			sourceTree = "<group>";
+		};
 		479AB2691EA0B9EE00A74659 /* Customer - Company Profile */ = {
 			isa = PBXGroup;
 			children = (
@@ -1042,6 +1067,7 @@
 				47F7140E1ED6FB320028FB65 /* BP - Business Model */,
 				470F0B921EDB7D5A002FDE96 /* BP - Dashboard */,
 				4757C64A1ED87A0300C2B52F /* BP - BP Today Calendar View */,
+				479A85071F9E6012002ECC2C /* BP - Clients List */,
 				47F714121ED70ACF0028FB65 /* BP - Salon select List */,
 				475FC37E1EB6B57D00BB0731 /* BP - Add Service List */,
 				479B30A21EF7476D00DE2121 /* BP - Category List */,
@@ -1394,6 +1420,7 @@
 				4795200F1EB3A40700E377E5 /* EKScheduleMonthlyViewController.m in Sources */,
 				47FF4F681EB5520E0022A6ED /* Customer.m in Sources */,
 				4787C6DD1EB40D5500DF7B83 /* Booking.m in Sources */,
+				479A85061F9E600C002ECC2C /* EKClientsViewController.m in Sources */,
 				47403DFD1F7955A4003BC79D /* EKServicesChartViewController.m in Sources */,
 				477EEDAA1F8EE541007124E0 /* EKSettingsBPViewController+TableView.m in Sources */,
 				475FC37D1EB6B57900BB0731 /* EKAddServiceViewController.m in Sources */,
@@ -1436,6 +1463,7 @@
 				47C7D4CC1EBB5EF000457E53 /* Day.m in Sources */,
 				4757C6531ED98D8000C2B52F /* Appointment.m in Sources */,
 				47E2F0091EA5FF97002E2FD4 /* EKProfileInfoFacebookViewController.m in Sources */,
+				479A850A1F9E6A28002ECC2C /* EKClientTableViewCell.m in Sources */,
 				47FE51C61EFD59F500A39BAE /* Category.m in Sources */,
 				4783DF8D1EA4CDAD00C87C60 /* EKBookingTimeCollectionViewCell.m in Sources */,
 				4760FC7C1EF88C8200099DFD /* EKSalonAddressViewController.m in Sources */,
