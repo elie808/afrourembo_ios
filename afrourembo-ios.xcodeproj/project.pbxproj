@@ -90,6 +90,7 @@
 		479250E31F7569E700C7507C /* Summary.m in Sources */ = {isa = PBXBuildFile; fileRef = 479250E21F7569E700C7507C /* Summary.m */; };
 		4795200F1EB3A40700E377E5 /* EKScheduleMonthlyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4795200E1EB3A40700E377E5 /* EKScheduleMonthlyViewController.m */; };
 		4797AF321F30D15700AC1140 /* Review+API.m in Sources */ = {isa = PBXBuildFile; fileRef = 4797AF311F30D15700AC1140 /* Review+API.m */; };
+		479A84FC1F9DCE68002ECC2C /* Salon+Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 479A84FB1F9DCE68002ECC2C /* Salon+Helpers.m */; };
 		479AB2681EA0B9E300A74659 /* EKCompanyProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 479AB2671EA0B9E300A74659 /* EKCompanyProfileViewController.m */; };
 		479AB26C1EA0CC0000A74659 /* EKCompanyServiceTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 479AB26B1EA0CC0000A74659 /* EKCompanyServiceTableViewCell.m */; };
 		479B30A11EF7476400DE2121 /* EKCategoryListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 479B30A01EF7476400DE2121 /* EKCategoryListViewController.m */; };
@@ -312,6 +313,8 @@
 		4795200E1EB3A40700E377E5 /* EKScheduleMonthlyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKScheduleMonthlyViewController.m; sourceTree = "<group>"; };
 		4797AF301F30D15700AC1140 /* Review+API.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Review+API.h"; sourceTree = "<group>"; };
 		4797AF311F30D15700AC1140 /* Review+API.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Review+API.m"; sourceTree = "<group>"; };
+		479A84FA1F9DCE68002ECC2C /* Salon+Helpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Salon+Helpers.h"; sourceTree = "<group>"; };
+		479A84FB1F9DCE68002ECC2C /* Salon+Helpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Salon+Helpers.m"; sourceTree = "<group>"; };
 		479AB2661EA0B9E300A74659 /* EKCompanyProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKCompanyProfileViewController.h; sourceTree = "<group>"; };
 		479AB2671EA0B9E300A74659 /* EKCompanyProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKCompanyProfileViewController.m; sourceTree = "<group>"; };
 		479AB26A1EA0CC0000A74659 /* EKCompanyServiceTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKCompanyServiceTableViewCell.h; sourceTree = "<group>"; };
@@ -885,6 +888,8 @@
 				47843A541F0470C900686CDD /* NSString+Helpers.m */,
 				47AB798A1F60CED9001D7AAA /* Professional+Helpers.h */,
 				47AB798B1F60CED9001D7AAA /* Professional+Helpers.m */,
+				479A84FA1F9DCE68002ECC2C /* Salon+Helpers.h */,
+				479A84FB1F9DCE68002ECC2C /* Salon+Helpers.m */,
 				471AA1891ED45DD0009B840A /* UIImage+Helpers.h */,
 				471AA18A1ED45DD0009B840A /* UIImage+Helpers.m */,
 				4779E2DB1F8E5F8B004C80D4 /* UITextField+Helpers.h */,
@@ -1379,6 +1384,7 @@
 				47822B091EDDC37C001E247F /* EKSalesSummaryTableViewCell.m in Sources */,
 				475572111F519A1D00741CA9 /* Payment.m in Sources */,
 				47843A581F048CD000686CDD /* Day+API.m in Sources */,
+				479A84FC1F9DCE68002ECC2C /* Salon+Helpers.m in Sources */,
 				47FFF9751E99E81F008B6A31 /* EKImageTextTableViewCell.m in Sources */,
 				479F7D6E1EF0C17E00EB445A /* Professional+API.m in Sources */,
 				47CAEE731F67D4310091919D /* EKScheduleMonthlyViewController+TableView.m in Sources */,

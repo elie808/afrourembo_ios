@@ -10,7 +10,6 @@
 
 @interface Professional (Helpers)
 
-
 /// professionalID, fName, lName, phoneNumber, email, token
 + (Professional *)professionalFromJSON:(NSString *)professionalJSONString;
 

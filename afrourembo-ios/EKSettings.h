@@ -12,9 +12,10 @@
 #import <JNKeychain/JNKeychain.h>
 
 #import "Booking.h"
-#import "Professional+Helpers.h"
 
 #import "Customer+Helpers.h"
+#import "Professional+Helpers.h"
+#import "Salon+Helpers.h"
 
 @interface EKSettings : NSObject
 
@@ -28,6 +29,11 @@
 + (Professional *)getSavedVendor;
 + (BOOL)deleteSavedVendor;
 + (BOOL)updateSavedProfessional:(Professional *)updatedProfessional;
+
++ (BOOL)saveSalon:(Salon *)salon;
++ (Salon *)getSavedSalon;
++ (BOOL)deleteSavedSalon;
++ (BOOL)updateSavedSalon:(Salon *)updatedSalon;
 
 + (void)saveToUserDefaultsValue:(id)value forKey:(NSString *)key;
 + (id)getFromUserDefaultsValueForKey:(NSString *)key;

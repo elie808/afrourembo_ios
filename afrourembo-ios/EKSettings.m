@@ -10,6 +10,7 @@
 
 static NSString * const kLoggedInCustomer   = @"afrourembo-loggedInCustomer";
 static NSString * const kLoggedInVendor     = @"afrourembo-loggedInVendor";
+static NSString * const kLoggedInSalon      = @"afrourembo-loggedInSalon";
 
 @implementation EKSettings
 
@@ -174,6 +175,81 @@ static NSString * const kLoggedInVendor     = @"afrourembo-loggedInVendor";
     } else {
         
         NSLog(@"Failed to update and persist Vendor!");
+        return NO;
+    }
+    
+    return NO;
+}
+
+#pragma mark - Salon
+
++ (BOOL)saveSalon:(Salon *)salon {
+    
+    NSString *userJSONString = [salon convertToJSON];
+    
+    if ([JNKeychain saveValue:userJSONString forKey:kLoggedInSalon]) {
+        
+        NSLog(@"SALON PERSISTED!!!!");
+        return YES;
+        
+    } else {
+        
+        NSLog(@"Failed to persist SALON");
+        return NO;
+    }
+}
+
++ (Salon *)getSavedSalon {
+    
+    NSString *JSONString = [JNKeychain loadValueForKey:kLoggedInSalon];
+    
+    if (JSONString && JSONString.length > 0) {
+        
+        return [Salon salonFromJSON:JSONString];
+        
+    } else {
+        
+        NSLog(@"Did NOT Retrieve any saved Vendors");
+        
+        return nil;
+    }
+}
+
++ (BOOL)deleteSavedSalon {
+    
+    if ([JNKeychain deleteValueForKey:kLoggedInSalon]) {
+        
+        [EKSettings destroySessionCookies];
+        // [EKSettings deleteUserLocation];
+        
+        [[[RKObjectManager sharedManager] HTTPClient] setDefaultHeader:@"Authorization" value:@""];
+        
+        NSLog(@"Deleted value for key '%@'. User is now: %@", kLoggedInVendor, [JNKeychain loadValueForKey:kLoggedInSalon]);
+        return YES;
+        
+    } else {
+        
+        NSLog(@"Failed to delete vendor!");
+        return NO;
+    }
+}
+
++ (BOOL)updateSavedSalon:(Salon *)updatedSalon {
+    
+    Salon *oldUser = [EKSettings getSavedSalon];
+    
+    Salon *userToPersist = [Salon updateSalon:oldUser from:updatedSalon];
+    
+    NSString *userJSONString = [userToPersist convertToJSON];
+    
+    if ([JNKeychain saveValue:userJSONString forKey:kLoggedInSalon]) {
+        
+        NSLog(@"Salon updated and persisted!");
+        return YES;
+        
+    } else {
+        
+        NSLog(@"Failed to update and persist Salon!");
         return NO;
     }
     
