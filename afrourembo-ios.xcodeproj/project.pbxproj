@@ -95,6 +95,8 @@
 		479A85031F9E0BC5002ECC2C /* ProfessionalInfo+API.m in Sources */ = {isa = PBXBuildFile; fileRef = 479A85021F9E0BC5002ECC2C /* ProfessionalInfo+API.m */; };
 		479A85061F9E600C002ECC2C /* EKClientsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 479A85051F9E600C002ECC2C /* EKClientsViewController.m */; };
 		479A850A1F9E6A28002ECC2C /* EKClientTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 479A85091F9E6A28002ECC2C /* EKClientTableViewCell.m */; };
+		479A850E1F9E9DA7002ECC2C /* ClientBooking.m in Sources */ = {isa = PBXBuildFile; fileRef = 479A850D1F9E9DA7002ECC2C /* ClientBooking.m */; };
+		479A85151F9EA0F9002ECC2C /* EKOrdersPaymentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 479A85141F9EA0F9002ECC2C /* EKOrdersPaymentsViewController.m */; };
 		479AB2681EA0B9E300A74659 /* EKCompanyProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 479AB2671EA0B9E300A74659 /* EKCompanyProfileViewController.m */; };
 		479AB26C1EA0CC0000A74659 /* EKCompanyServiceTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 479AB26B1EA0CC0000A74659 /* EKCompanyServiceTableViewCell.m */; };
 		479B30A11EF7476400DE2121 /* EKCategoryListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 479B30A01EF7476400DE2121 /* EKCategoryListViewController.m */; };
@@ -327,6 +329,10 @@
 		479A85051F9E600C002ECC2C /* EKClientsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKClientsViewController.m; sourceTree = "<group>"; };
 		479A85081F9E6A28002ECC2C /* EKClientTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKClientTableViewCell.h; sourceTree = "<group>"; };
 		479A85091F9E6A28002ECC2C /* EKClientTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKClientTableViewCell.m; sourceTree = "<group>"; };
+		479A850C1F9E9DA7002ECC2C /* ClientBooking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClientBooking.h; sourceTree = "<group>"; };
+		479A850D1F9E9DA7002ECC2C /* ClientBooking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClientBooking.m; sourceTree = "<group>"; };
+		479A85131F9EA0F9002ECC2C /* EKOrdersPaymentsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKOrdersPaymentsViewController.h; sourceTree = "<group>"; };
+		479A85141F9EA0F9002ECC2C /* EKOrdersPaymentsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKOrdersPaymentsViewController.m; sourceTree = "<group>"; };
 		479AB2661EA0B9E300A74659 /* EKCompanyProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKCompanyProfileViewController.h; sourceTree = "<group>"; };
 		479AB2671EA0B9E300A74659 /* EKCompanyProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKCompanyProfileViewController.m; sourceTree = "<group>"; };
 		479AB26A1EA0CC0000A74659 /* EKCompanyServiceTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKCompanyServiceTableViewCell.h; sourceTree = "<group>"; };
@@ -742,6 +748,7 @@
 				47FFF9721E99E7FD008B6A31 /* Cells */,
 				478BDEEC1E99A25E00F74A5C /* EKImageTextButton.h */,
 				478BDEED1E99A25E00F74A5C /* EKImageTextButton.m */,
+				479A85121F9EA0D0002ECC2C /* Customer - Orders & Payments */,
 				478BDEFA1E99C60100F74A5C /* Models */,
 				47A3BB851E7A8BE400963F27 /* View Controllers */,
 				478BDF091E99D85E00F74A5C /* Utilities */,
@@ -847,6 +854,8 @@
 				4787C6DC1EB40D5500DF7B83 /* Booking.m */,
 				47FE51C41EFD59F500A39BAE /* Category.h */,
 				47FE51C51EFD59F500A39BAE /* Category.m */,
+				479A850C1F9E9DA7002ECC2C /* ClientBooking.h */,
+				479A850D1F9E9DA7002ECC2C /* ClientBooking.m */,
 				47FF4F661EB5520E0022A6ED /* Customer.h */,
 				47FF4F671EB5520E0022A6ED /* Customer.m */,
 				47AB79841F5FEF9F001D7AAA /* Dashboard.h */,
@@ -951,6 +960,15 @@
 				479A85091F9E6A28002ECC2C /* EKClientTableViewCell.m */,
 			);
 			name = Cells;
+			sourceTree = "<group>";
+		};
+		479A85121F9EA0D0002ECC2C /* Customer - Orders & Payments */ = {
+			isa = PBXGroup;
+			children = (
+				479A85131F9EA0F9002ECC2C /* EKOrdersPaymentsViewController.h */,
+				479A85141F9EA0F9002ECC2C /* EKOrdersPaymentsViewController.m */,
+			);
+			name = "Customer - Orders & Payments";
 			sourceTree = "<group>";
 		};
 		479AB2691EA0B9EE00A74659 /* Customer - Company Profile */ = {
@@ -1472,6 +1490,7 @@
 				477256051EB958FF007CBD6B /* EKAvailabilityViewController.m in Sources */,
 				47AF51BD1E9C4001005FE6EB /* EKDiscoverMapViewController.m in Sources */,
 				47800BC31EA3B2FA00F450DB /* EKBookingViewController.m in Sources */,
+				479A85151F9EA0F9002ECC2C /* EKOrdersPaymentsViewController.m in Sources */,
 				478BDEF91E99C5FC00F74A5C /* Service.m in Sources */,
 				479F00F21F89283E00676DDF /* EKConfirmPhoneNumberViewController.m in Sources */,
 				471AA1881ED44A0E009B840A /* Review.m in Sources */,
@@ -1493,6 +1512,7 @@
 				476368CA1F8BB80300249318 /* ResetPassword+API.m in Sources */,
 				475FC3811EB6BF5E00BB0731 /* EKAddNewServiceViewController.m in Sources */,
 				471F5FBB1F4870550097817E /* ProfilePicture.m in Sources */,
+				479A850E1F9E9DA7002ECC2C /* ClientBooking.m in Sources */,
 				474ED7BC1E9C68940099CA0A /* EKDiscoverMapViewController+MapDelegate.m in Sources */,
 				47AB79891F5FF090001D7AAA /* Dashboard+API.m in Sources */,
 				47EF0E301EDA23B3000B07BB /* Today.m in Sources */,

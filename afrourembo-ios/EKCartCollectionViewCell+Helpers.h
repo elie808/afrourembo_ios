@@ -8,10 +8,12 @@
 
 #import "EKCartCollectionViewCell.h"
 #import "Booking.h"
+#import "ClientBooking.h"
 #import "NSDate+Helpers.h"
 
 @interface EKCartCollectionViewCell (Helpers)
 
 - (void)configureCellWithBooking:(Booking *)booking;
+- (void)configureCellWithOrder:(ClientBooking *)order;
 
 @end

@@ -15,7 +15,7 @@
 + (RKObjectMapping *)map1 {
     
     RKObjectMapping *mapping = [RKObjectMapping mappingForClass:[Customer class]];
-    [mapping addAttributeMappingsFromArray:@[@"email", @"password", @"token", @"fName", @"lName", @"phone"]];
+    [mapping addAttributeMappingsFromArray:@[@"email", @"password", @"token", @"fName", @"lName", @"phone", @"profilePicture"]];
    
     return mapping;
 }
@@ -126,6 +126,20 @@
                                       responseDescriptorWithMapping:[Customer map1]
                                       method:RKRequestMethodPOST
                                       pathPattern:kUserFBLoginAPIPath
+                                      keyPath:nil
+                                      statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+    return response;
+}
+
++ (RKResponseDescriptor *)userBookingsResponseDescriptor {
+    
+    RKObjectMapping *mapping = [RKObjectMapping mappingForClass:[ClientBooking class]];
+    [mapping addAttributeMappingsFromArray:@[@"bookingId", @"currentBookingId", @"actorBusinessName", @"actorId", @"currency", @"date", @"price", @"professionalType", @"service", @"serviceId", @"status", @"professionalBusinessName", @"reviewed"]];
+    
+    RKResponseDescriptor *response = [RKResponseDescriptor
+                                      responseDescriptorWithMapping:mapping
+                                      method:RKRequestMethodGET
+                                      pathPattern:kUserBookingsAPIPath
                                       keyPath:nil
                                       statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     return response;
@@ -395,6 +409,42 @@
                                                 errorBlock(error, @"You are not connected to the internet.", 0);
                                             }
                                         }];
+}
+
++ (void)getBookingsForUser:(NSString *)token withBlock:(CustomerBookingsSuccessBlock)successBlock withErrors:(CustomerSignUpErrorBlock)errorBlock {
+    
+    [[[RKObjectManager sharedManager] HTTPClient] setDefaultHeader:@"Authorization" value:token];
+    
+    [[RKObjectManager sharedManager] getObjectsAtPath:kUserBookingsAPIPath
+                                           parameters:nil
+                                              success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+                                                  
+                                                  NSLog(@"Success getting client Bookings!!");
+                                                  successBlock(mappingResult.array);
+                                                  
+                                              } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                                                  
+                                                  if (operation.HTTPRequestOperation.responseData) {
+                                                      
+                                                      // exctract error message
+                                                      NSDictionary *myDic = [NSJSONSerialization
+                                                                             JSONObjectWithData:operation.HTTPRequestOperation.responseData
+                                                                             options:NSJSONReadingMutableLeaves
+                                                                             error:nil];
+                                                      
+                                                      NSString *errorMessage = [myDic valueForKey:@"message"];
+                                                      
+                                                      NSNumber *statusCode = [myDic valueForKey:@"statusCode"];
+                                                      
+                                                      NSLog(@"-------ERROR MESSAGE: %@", errorMessage);
+                                                      errorBlock(error, errorMessage, [statusCode integerValue]);
+//                                                      errorBlock(error, nil, 0);
+                                                      
+                                                  } else {
+                                                      
+                                                      errorBlock(error, @"You are not connected to the internet.", 0);
+                                                  }
+                                              }];
 }
 
 @end

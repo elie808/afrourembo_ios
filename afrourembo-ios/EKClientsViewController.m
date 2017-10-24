@@ -29,7 +29,7 @@ static NSString * const kClientListCell = @"settingsClientsTableCell";
                    withBlock:^(NSArray<Customer *> *customersArray) {
     
                        [MBProgressHUD hideHUDForView:self.view animated:YES];
-                       if (customersArray.count == 0) {
+                       if (customersArray.count > 0) {
                            
                            self.emptyDataView.hidden = YES;
                            
@@ -62,9 +62,13 @@ static NSString * const kClientListCell = @"settingsClientsTableCell";
     EKClientTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kClientListCell forIndexPath:indexPath];
 
     cell.cellTitleLabel.text = [NSString stringWithFormat:@"%@ %@", customerObj.fName, customerObj.lName];
-//    [cell.cellImageView yy_setImageWithURL:[NSURL URLWithString:customerObj.pr]
+//    [cell.cellImageView yy_setImageWithURL:[NSURL URLWithString:customerObj.profilePicture]
 //                                   options:YYWebImageOptionProgressiveBlur|YYWebImageOptionSetImageWithFadeAnimation];
-    cell.cellImageView.image = [UIImage imageNamed:@"icPlaceholder"];
+    
+    [cell.cellImageView yy_setImageWithURL:[NSURL URLWithString:customerObj.profilePicture]
+                               placeholder:[UIImage imageNamed:@"icPlaceholder"]
+                                   options:YYWebImageOptionProgressiveBlur|YYWebImageOptionSetImageWithFadeAnimation
+                                completion:nil];
     
     return cell;
 }

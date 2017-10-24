@@ -10,9 +10,11 @@
 #import <RestKit/RestKit.h>
 #import "EKNetworkingConstants.h"
 #import "ResetPassword.h"
+#import "ClientBooking.h"
 
 typedef void (^CustomerSignUpSuccessBlock)(Customer *customerObj);
 typedef void (^CustomerResetCodeSuccessBlock)(void);
+typedef void (^CustomerBookingsSuccessBlock)(NSArray <ClientBooking*> *customerObj);
 typedef void (^CustomerSignUpErrorBlock)(NSError *error, NSString *errorMessage, NSInteger statusCode);
 typedef void (^CustomerEditErrorBlock)(NSError *error, NSString *errorMessage);
 
@@ -41,6 +43,9 @@ typedef void (^CustomerEditErrorBlock)(NSError *error, NSString *errorMessage);
 + (RKResponseDescriptor *)fbUserRegistrationResponseDescriptor;
 
 + (RKResponseDescriptor *)fbUserLoginResponseDescriptor;
+
+/// bookingId, currentBookingId, actorBusinessName, actorId, currency, date, price, professionalType, service, serviceId, status, professionalBusinessName, reviewed
++ (RKResponseDescriptor *)userBookingsResponseDescriptor;
 
 
 /// Maps the REQUEST for the POST call
@@ -75,5 +80,7 @@ typedef void (^CustomerEditErrorBlock)(NSError *error, NSString *errorMessage);
 + (void)getResetCodeForPhonenumber:(NSString *)phoneNumber withBlock:(CustomerResetCodeSuccessBlock)successBlock withErrors:(CustomerSignUpErrorBlock)errorBlock;
 
 + (void)resetPassword:(NSString *)newPassword forPhoneNumber:(NSString *)phoneNumber andConfirmationCode:(NSString *)confirmationCode withBlock:(CustomerSignUpSuccessBlock)successBlock withErrors:(CustomerSignUpErrorBlock)errorBlock;
+
++ (void)getBookingsForUser:(NSString *)token withBlock:(CustomerBookingsSuccessBlock)successBlock withErrors:(CustomerSignUpErrorBlock)errorBlock;
 
 @end

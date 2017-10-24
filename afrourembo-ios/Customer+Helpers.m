@@ -34,6 +34,7 @@
     delta.lName = newCustomer.lName.length > 0 ? newCustomer.lName : existingCustomer.lName;
     delta.phone = newCustomer.phone.length > 0 ? newCustomer.phone : existingCustomer.phone;
     delta.email = newCustomer.email.length > 0 ? newCustomer.email : existingCustomer.email;
+    delta.profilePicture = newCustomer.profilePicture.length > 0 ? newCustomer.profilePicture : existingCustomer.profilePicture;
     delta.token = newCustomer.token.length > 0 ? newCustomer.token : existingCustomer.token;
     
     return delta;
@@ -48,6 +49,7 @@
                               @"lName" : self.lName.length > 0 ? self.lName : @"",
                               @"phone" : self.phone.length > 0 ? self.phone : @"",
                               @"email" : self.email.length > 0 ? self.email : @"",
+                              @"profilePicture" : self.profilePicture.length > 0 ? self.profilePicture : @"",
                               @"token" : self.token.length > 0 ? self.token : @""
                               };
     

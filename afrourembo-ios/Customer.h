@@ -23,5 +23,6 @@
 @property NSString *fName;
 @property NSString *lName;
 @property NSString *phone;
+@property NSString *profilePicture;
 
 @end

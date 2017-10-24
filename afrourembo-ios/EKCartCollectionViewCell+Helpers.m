@@ -21,4 +21,17 @@
     self.bookingDescriptionLabel.text = booking.bookingDescription;
 }
 
+- (void)configureCellWithOrder:(ClientBooking *)order {
+    
+    NSLog(@"\n \n \n \n CONFIG CELL");
+    
+    self.bookingTitleLabel.text = order.service;
+    self.bookingCostLabel.text = @"123 KES";//[NSString stringWithFormat:@"%@ %@", order.price, order.currency];
+    self.bookingVendorLabel.text = order.professionalBusinessName;
+    self.practionnerLabel.text = order.actorBusinessName;
+    self.bookingDateLabel.text = [NSDate stringFromDate:order.date withFormat:DateFormatLetterDayMonthYear];
+    self.bookingTimeLabel.text = [NSDate stringFromDate:order.date withFormat:DateFormatDigitHourMinute];
+//    self.bookingDescriptionLabel.text = booking.bookingDescription;
+}
+
 @end
