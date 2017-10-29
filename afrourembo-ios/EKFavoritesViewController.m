@@ -27,11 +27,11 @@ static NSString * const kFavCell = @"favoriteCell";
     [Customer getFavoritesForUser:[EKSettings getSavedCustomer].token
                         withBlock:^(NSArray<Favorite *> *favoriteObj) {
                           
-                            if (favoriteObj.count > 0) {
-                                self.emptyFavoritesView.hidden = YES;
-                                _dataSourceArray = [NSMutableArray arrayWithArray:favoriteObj];
-                                [self.tableView reloadData];
-                            }
+//                            if (favoriteObj.count > 0) {
+//                                self.emptyFavoritesView.hidden = YES;
+//                                _dataSourceArray = [NSMutableArray arrayWithArray:favoriteObj];
+//                                [self.tableView reloadData];
+//                            }
                             
                         } withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
                             [self showMessage:errorMessage withTitle:@"Error" completionBlock:nil];

@@ -127,9 +127,42 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qZ1-8U-taD" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <view contentMode="scaleToFill" id="3eu-lu-HfK">
-                    <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                    <rect key="frame" x="0.0" y="0.0" width="368" height="195"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <color key="backgroundColor" red="1" green="0.33725490200000002" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icFavEmpty" translatesAutoresizingMaskIntoConstraints="NO" id="osC-TD-ddk">
+                            <rect key="frame" x="158" y="65.5" width="52" height="64"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="64" id="5E9-A5-2dp"/>
+                                <constraint firstAttribute="width" constant="52" id="6aD-At-Cbd"/>
+                            </constraints>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="There are no favorites yet" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pkE-2K-K1f">
+                            <rect key="frame" x="16" y="137.5" width="336" height="16"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                            <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You can add them from salon or beauty professional profiles" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f7U-2a-abf">
+                            <rect key="frame" x="16" y="161.5" width="336" height="31.5"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                            <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="pkE-2K-K1f" firstAttribute="top" secondItem="osC-TD-ddk" secondAttribute="bottom" constant="8" id="5W2-NW-Qy0"/>
+                        <constraint firstItem="pkE-2K-K1f" firstAttribute="leading" secondItem="3eu-lu-HfK" secondAttribute="leading" constant="16" id="C4i-Hu-hwC"/>
+                        <constraint firstItem="osC-TD-ddk" firstAttribute="leading" secondItem="3eu-lu-HfK" secondAttribute="leading" constant="158" id="FCc-4d-t7S"/>
+                        <constraint firstItem="f7U-2a-abf" firstAttribute="top" secondItem="pkE-2K-K1f" secondAttribute="bottom" constant="8" id="HtV-oV-Gn8"/>
+                        <constraint firstAttribute="trailing" secondItem="osC-TD-ddk" secondAttribute="trailing" constant="158" id="Ljw-Cx-IM9"/>
+                        <constraint firstItem="f7U-2a-abf" firstAttribute="leading" secondItem="3eu-lu-HfK" secondAttribute="leading" constant="16" id="N1g-KZ-Xqp"/>
+                        <constraint firstAttribute="trailing" secondItem="f7U-2a-abf" secondAttribute="trailing" constant="16" id="fbv-wk-xFn"/>
+                        <constraint firstItem="f7U-2a-abf" firstAttribute="top" secondItem="pkE-2K-K1f" secondAttribute="bottom" constant="8" id="g2a-Pq-xgm"/>
+                        <constraint firstItem="osC-TD-ddk" firstAttribute="centerY" secondItem="3eu-lu-HfK" secondAttribute="centerY" id="gA4-aO-dB9"/>
+                        <constraint firstAttribute="trailing" secondItem="pkE-2K-K1f" secondAttribute="trailing" constant="16" id="oye-I6-Drc"/>
+                    </constraints>
                 </view>
             </objects>
             <point key="canvasLocation" x="1685.5999999999999" y="115.59220389805098"/>
@@ -2339,6 +2372,7 @@
         <image name="dummy_male2" width="153" height="151"/>
         <image name="icBookingEmpty" width="56" height="43"/>
         <image name="icCartActive" width="20" height="18"/>
+        <image name="icFavEmpty" width="58" height="70"/>
         <image name="icFavorites" width="14" height="17"/>
         <image name="icFbActive" width="24" height="24"/>
         <image name="icFilter" width="18" height="16"/>
