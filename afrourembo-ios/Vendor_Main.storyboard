@@ -1237,7 +1237,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="HGR-If-nUp" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Clients" image="icClientsNormal" id="GT3-YX-5hU"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="sqJ-ia-eEi">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="sqJ-ia-eEi">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

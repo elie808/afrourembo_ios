@@ -20,6 +20,8 @@
 		471F5FBB1F4870550097817E /* ProfilePicture.m in Sources */ = {isa = PBXBuildFile; fileRef = 471F5FBA1F4870550097817E /* ProfilePicture.m */; };
 		471F5FBE1F48707C0097817E /* ProfilePicture+API.m in Sources */ = {isa = PBXBuildFile; fileRef = 471F5FBD1F48707C0097817E /* ProfilePicture+API.m */; };
 		472E3F551FA5D45900EBA889 /* Favorite.m in Sources */ = {isa = PBXBuildFile; fileRef = 472E3F541FA5D45900EBA889 /* Favorite.m */; };
+		472E3F581FA5E2A600EBA889 /* EKFavoritesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 472E3F571FA5E2A600EBA889 /* EKFavoritesViewController.m */; };
+		472E3F5C1FA5E54C00EBA889 /* EKFavoritesTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 472E3F5B1FA5E54C00EBA889 /* EKFavoritesTableViewCell.m */; };
 		47329CA21F0BC06D00E5DF13 /* EKProfessionalInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47329CA11F0BC06D00E5DF13 /* EKProfessionalInfoViewController.m */; };
 		47329CA71F0BE77700E5DF13 /* EKProfessionalAddressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47329CA61F0BE77700E5DF13 /* EKProfessionalAddressViewController.m */; };
 		4734F5EE1F33FD2600982D94 /* NSDate+Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 4734F5ED1F33FD2600982D94 /* NSDate+Helpers.m */; };
@@ -180,6 +182,10 @@
 		471F5FBD1F48707C0097817E /* ProfilePicture+API.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ProfilePicture+API.m"; sourceTree = "<group>"; };
 		472E3F531FA5D45900EBA889 /* Favorite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Favorite.h; sourceTree = "<group>"; };
 		472E3F541FA5D45900EBA889 /* Favorite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Favorite.m; sourceTree = "<group>"; };
+		472E3F561FA5E2A600EBA889 /* EKFavoritesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKFavoritesViewController.h; sourceTree = "<group>"; };
+		472E3F571FA5E2A600EBA889 /* EKFavoritesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKFavoritesViewController.m; sourceTree = "<group>"; };
+		472E3F5A1FA5E54C00EBA889 /* EKFavoritesTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKFavoritesTableViewCell.h; sourceTree = "<group>"; };
+		472E3F5B1FA5E54C00EBA889 /* EKFavoritesTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKFavoritesTableViewCell.m; sourceTree = "<group>"; };
 		47329CA01F0BC06D00E5DF13 /* EKProfessionalInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKProfessionalInfoViewController.h; sourceTree = "<group>"; };
 		47329CA11F0BC06D00E5DF13 /* EKProfessionalInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKProfessionalInfoViewController.m; sourceTree = "<group>"; };
 		47329CA51F0BE77700E5DF13 /* EKProfessionalAddressViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKProfessionalAddressViewController.h; sourceTree = "<group>"; };
@@ -502,6 +508,25 @@
 			name = "view2 - Chart";
 			sourceTree = "<group>";
 		};
+		472E3F591FA5E2C700EBA889 /* Customer - Favorites */ = {
+			isa = PBXGroup;
+			children = (
+				472E3F561FA5E2A600EBA889 /* EKFavoritesViewController.h */,
+				472E3F571FA5E2A600EBA889 /* EKFavoritesViewController.m */,
+				472E3F5D1FA5E59B00EBA889 /* Cells */,
+			);
+			name = "Customer - Favorites";
+			sourceTree = "<group>";
+		};
+		472E3F5D1FA5E59B00EBA889 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				472E3F5A1FA5E54C00EBA889 /* EKFavoritesTableViewCell.h */,
+				472E3F5B1FA5E54C00EBA889 /* EKFavoritesTableViewCell.m */,
+			);
+			name = Cells;
+			sourceTree = "<group>";
+		};
 		47329CA31F0BE74800E5DF13 /* SALON - Role */ = {
 			isa = PBXGroup;
 			children = (
@@ -751,7 +776,6 @@
 				47FFF9721E99E7FD008B6A31 /* Cells */,
 				478BDEEC1E99A25E00F74A5C /* EKImageTextButton.h */,
 				478BDEED1E99A25E00F74A5C /* EKImageTextButton.m */,
-				479A85121F9EA0D0002ECC2C /* Customer - Orders & Payments */,
 				478BDEFA1E99C60100F74A5C /* Models */,
 				47A3BB851E7A8BE400963F27 /* View Controllers */,
 				478BDF091E99D85E00F74A5C /* Utilities */,
@@ -1082,6 +1106,8 @@
 				4787C6D61EB4013900DF7B83 /* Customer - Cart review */,
 				475A4CF81EC004500089D477 /* Customer - Success checkout ViewController */,
 				478BDEF21E99B7DD00F74A5C /* Customer - Explore ViewController */,
+				472E3F591FA5E2C700EBA889 /* Customer - Favorites */,
+				479A85121F9EA0D0002ECC2C /* Customer - Orders & Payments */,
 				47D44C2E1EBEBB2A007ACFAA /* Customer - Filter & Search ViewController */,
 				47AF51BE1E9C4013005FE6EB /* Customer - Discover Map ViewController */,
 				479AB2691EA0B9EE00A74659 /* Customer - Company Profile */,
@@ -1501,6 +1527,7 @@
 				471AA1881ED44A0E009B840A /* Review.m in Sources */,
 				4740243D1EDE1DB30089A6D2 /* EKChartSummaryViewController.m in Sources */,
 				47AB79861F5FEF9F001D7AAA /* Dashboard.m in Sources */,
+				472E3F5C1FA5E54C00EBA889 /* EKFavoritesTableViewCell.m in Sources */,
 				478278D11E7923D000FB2FD2 /* AppDelegate.m in Sources */,
 				4787C6E01EB40DD200DF7B83 /* EKCartCollectionViewCell+Helpers.m in Sources */,
 				47428CFE1EFB5E70001C193F /* EKSalonRoleViewController.m in Sources */,
@@ -1546,6 +1573,7 @@
 				47919E5A1E795664001C5600 /* EKOnboardingViewController.m in Sources */,
 				475A4CFB1EC01EAB0089D477 /* EKExploreViewController+SideMenuTableView.m in Sources */,
 				478278CE1E7923D000FB2FD2 /* main.m in Sources */,
+				472E3F581FA5E2A600EBA889 /* EKFavoritesViewController.m in Sources */,
 				47329CA21F0BC06D00E5DF13 /* EKProfessionalInfoViewController.m in Sources */,
 				476F63781F0760C600C27A92 /* Salon+API.m in Sources */,
 				47871AE51EBA17A3003B9BEB /* EKDualButtonTableViewCell.m in Sources */,
