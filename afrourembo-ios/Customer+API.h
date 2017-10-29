@@ -11,9 +11,11 @@
 #import "EKNetworkingConstants.h"
 #import "ResetPassword.h"
 #import "ClientBooking.h"
+#import "Favorite.h"
 
 typedef void (^CustomerSignUpSuccessBlock)(Customer *customerObj);
 typedef void (^CustomerResetCodeSuccessBlock)(void);
+typedef void (^CustomerFavoritesCodeSuccessBlock)(NSArray <Favorite*> *favoriteObj);
 typedef void (^CustomerBookingsSuccessBlock)(NSArray <ClientBooking*> *customerObj);
 typedef void (^CustomerSignUpErrorBlock)(NSError *error, NSString *errorMessage, NSInteger statusCode);
 typedef void (^CustomerEditErrorBlock)(NSError *error, NSString *errorMessage);
@@ -47,11 +49,19 @@ typedef void (^CustomerEditErrorBlock)(NSError *error, NSString *errorMessage);
 /// bookingId, currentBookingId, actorBusinessName, actorId, currency, date, price, professionalType, service, serviceId, status, professionalBusinessName, reviewed
 + (RKResponseDescriptor *)userBookingsResponseDescriptor;
 
++ (RKResponseDescriptor *)userPostFavoritesResponseDescriptor;
+
+/// address, businessName, rating, ratingBasedOn, userType, userId
++ (RKResponseDescriptor *)userGetFavoritesResponseDescriptor;
+
 
 /// Maps the REQUEST for the POST call
 + (RKRequestDescriptor *)userRegistrationRequestDescriptor;
 
 + (RKRequestDescriptor *)fbCustomerRequestDescriptor;
+
+/// Maps the REQUEST for the POST call of user Favorites
++ (RKRequestDescriptor *)userFavoritesRequestDescriptor;
 
 /**
  Info here
@@ -82,5 +92,9 @@ typedef void (^CustomerEditErrorBlock)(NSError *error, NSString *errorMessage);
 + (void)resetPassword:(NSString *)newPassword forPhoneNumber:(NSString *)phoneNumber andConfirmationCode:(NSString *)confirmationCode withBlock:(CustomerSignUpSuccessBlock)successBlock withErrors:(CustomerSignUpErrorBlock)errorBlock;
 
 + (void)getBookingsForUser:(NSString *)token withBlock:(CustomerBookingsSuccessBlock)successBlock withErrors:(CustomerSignUpErrorBlock)errorBlock;
+
++ (void)postFavorite:(NSString *)userID vendorType:(NSString *)userType withToken:(NSString *)token withBlock:(CustomerFavoritesCodeSuccessBlock)successBlock withErrors:(CustomerSignUpErrorBlock)errorBlock;
+
++ (void)getFavoritesForUser:(NSString *)token withBlock:(CustomerFavoritesCodeSuccessBlock)successBlock withErrors:(CustomerSignUpErrorBlock)errorBlock;
 
 @end

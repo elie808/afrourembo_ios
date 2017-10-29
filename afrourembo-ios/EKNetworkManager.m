@@ -39,7 +39,8 @@
     
     [objectManager addRequestDescriptorsFromArray:@[
                                                     [Customer userRegistrationRequestDescriptor],
-                                                    [Customer fbCustomerRequestDescriptor]
+                                                    [Customer fbCustomerRequestDescriptor],
+                                                    [Customer userFavoritesRequestDescriptor]
                                                     ]];
     
     [objectManager addRequestDescriptorsFromArray:@[
@@ -88,7 +89,9 @@
                                                      [Customer fbUserRegistrationResponseDescriptor],
                                                      [Customer fbUserLoginResponseDescriptor],
                                                      [Customer userResetPassResponseDescriptor],
-                                                     [Customer userBookingsResponseDescriptor]
+                                                     [Customer userBookingsResponseDescriptor],
+                                                     [Customer userPostFavoritesResponseDescriptor],
+                                                     [Customer userGetFavoritesResponseDescriptor]
                                                      ]];
     
     [objectManager addResponseDescriptor:[Dashboard getDashboardResponseDescriptor]];

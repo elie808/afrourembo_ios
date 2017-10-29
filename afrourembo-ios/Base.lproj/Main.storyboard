@@ -1058,13 +1058,27 @@
                                                 <outlet property="delegate" destination="q3N-QV-x45" id="Isk-WK-rky"/>
                                             </connections>
                                         </scrollView>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WEC-yZ-fJU">
+                                            <rect key="frame" x="332" y="8" width="35" height="35"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="35" id="5H0-wT-9HB"/>
+                                                <constraint firstAttribute="height" constant="35" id="iYj-b9-zz7"/>
+                                            </constraints>
+                                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <state key="normal" image="icFavorites"/>
+                                            <connections>
+                                                <action selector="didTapFavoriteButton:" destination="q3N-QV-x45" eventType="touchDown" id="PtL-VQ-SL9"/>
+                                            </connections>
+                                        </button>
                                     </subviews>
                                     <color key="backgroundColor" red="0.8980392157" green="0.8980392157" blue="0.8980392157" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <constraints>
                                         <constraint firstItem="EHU-HD-AFQ" firstAttribute="top" secondItem="gpH-m2-Y1a" secondAttribute="top" id="FTr-62-bWd"/>
+                                        <constraint firstAttribute="trailing" secondItem="WEC-yZ-fJU" secondAttribute="trailing" constant="8" id="Mf3-QD-cAh"/>
                                         <constraint firstAttribute="bottom" secondItem="EHU-HD-AFQ" secondAttribute="bottom" id="NHW-jI-QmI"/>
                                         <constraint firstAttribute="trailing" secondItem="EHU-HD-AFQ" secondAttribute="trailing" id="U8p-Ml-LQk"/>
                                         <constraint firstItem="EHU-HD-AFQ" firstAttribute="leading" secondItem="gpH-m2-Y1a" secondAttribute="leading" id="Vk9-Uh-YmJ"/>
+                                        <constraint firstItem="WEC-yZ-fJU" firstAttribute="top" secondItem="gpH-m2-Y1a" secondAttribute="top" constant="8" id="X5z-bM-hzF"/>
                                     </constraints>
                                 </view>
                                 <view key="tableFooterView" contentMode="scaleToFill" id="0GJ-7f-p0R">

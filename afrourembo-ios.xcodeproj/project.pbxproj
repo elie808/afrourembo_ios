@@ -19,6 +19,7 @@
 		471AA18B1ED45DD0009B840A /* UIImage+Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 471AA18A1ED45DD0009B840A /* UIImage+Helpers.m */; };
 		471F5FBB1F4870550097817E /* ProfilePicture.m in Sources */ = {isa = PBXBuildFile; fileRef = 471F5FBA1F4870550097817E /* ProfilePicture.m */; };
 		471F5FBE1F48707C0097817E /* ProfilePicture+API.m in Sources */ = {isa = PBXBuildFile; fileRef = 471F5FBD1F48707C0097817E /* ProfilePicture+API.m */; };
+		472E3F551FA5D45900EBA889 /* Favorite.m in Sources */ = {isa = PBXBuildFile; fileRef = 472E3F541FA5D45900EBA889 /* Favorite.m */; };
 		47329CA21F0BC06D00E5DF13 /* EKProfessionalInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47329CA11F0BC06D00E5DF13 /* EKProfessionalInfoViewController.m */; };
 		47329CA71F0BE77700E5DF13 /* EKProfessionalAddressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47329CA61F0BE77700E5DF13 /* EKProfessionalAddressViewController.m */; };
 		4734F5EE1F33FD2600982D94 /* NSDate+Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 4734F5ED1F33FD2600982D94 /* NSDate+Helpers.m */; };
@@ -177,6 +178,8 @@
 		471F5FBA1F4870550097817E /* ProfilePicture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfilePicture.m; sourceTree = "<group>"; };
 		471F5FBC1F48707C0097817E /* ProfilePicture+API.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ProfilePicture+API.h"; sourceTree = "<group>"; };
 		471F5FBD1F48707C0097817E /* ProfilePicture+API.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ProfilePicture+API.m"; sourceTree = "<group>"; };
+		472E3F531FA5D45900EBA889 /* Favorite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Favorite.h; sourceTree = "<group>"; };
+		472E3F541FA5D45900EBA889 /* Favorite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Favorite.m; sourceTree = "<group>"; };
 		47329CA01F0BC06D00E5DF13 /* EKProfessionalInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKProfessionalInfoViewController.h; sourceTree = "<group>"; };
 		47329CA11F0BC06D00E5DF13 /* EKProfessionalInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKProfessionalInfoViewController.m; sourceTree = "<group>"; };
 		47329CA51F0BE77700E5DF13 /* EKProfessionalAddressViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKProfessionalAddressViewController.h; sourceTree = "<group>"; };
@@ -864,6 +867,8 @@
 				47C7D4CB1EBB5EF000457E53 /* Day.m */,
 				473535311F0B1E71009FCE41 /* Explore.h */,
 				473535321F0B1E71009FCE41 /* Explore.m */,
+				472E3F531FA5D45900EBA889 /* Favorite.h */,
+				472E3F541FA5D45900EBA889 /* Favorite.m */,
 				4755720F1F519A1D00741CA9 /* Payment.h */,
 				475572101F519A1D00741CA9 /* Payment.m */,
 				479F7D691EF0C09600EB445A /* Professional.h */,
@@ -1522,6 +1527,7 @@
 				478BDEF51E99C20900F74A5C /* EKExploreCollectionViewCell.m in Sources */,
 				47074F8B1EAEB4A600E35EA7 /* EKSignupBPViewController.m in Sources */,
 				47AB798C1F60CED9001D7AAA /* Professional+Helpers.m in Sources */,
+				472E3F551FA5D45900EBA889 /* Favorite.m in Sources */,
 				47A3BB8C1E7A9F3500963F27 /* EKSignInViewController.m in Sources */,
 				4757C6501ED9862800C2B52F /* EKTodayCollectionViewCell.m in Sources */,
 				479AB2681EA0B9E300A74659 /* EKCompanyProfileViewController.m in Sources */,

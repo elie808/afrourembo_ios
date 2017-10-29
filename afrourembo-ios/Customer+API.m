@@ -62,6 +62,20 @@
     return request;
 }
 
++ (RKRequestDescriptor *)userFavoritesRequestDescriptor {
+    
+    RKObjectMapping *mapping = [RKObjectMapping mappingForClass:[Favorite class]];
+    [mapping addAttributeMappingsFromArray:@[@"userId", @"userType"]];
+    
+    RKRequestDescriptor *request = [RKRequestDescriptor requestDescriptorWithMapping:[mapping inverseMapping]
+                                                                         objectClass:[Favorite class]
+                                                                         rootKeyPath:nil
+                                                                              method:RKRequestMethodPOST];
+    
+    return request;
+}
+
+
 #pragma mark - Responses
 
 + (RKResponseDescriptor *)userRegistrationResponseDescriptor {
@@ -140,6 +154,37 @@
                                       responseDescriptorWithMapping:mapping
                                       method:RKRequestMethodGET
                                       pathPattern:kUserBookingsAPIPath
+                                      keyPath:nil
+                                      statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+    return response;
+}
+
++ (RKResponseDescriptor *)userPostFavoritesResponseDescriptor {
+    
+    RKObjectMapping *mapping = [RKObjectMapping mappingForClass:[ClientBooking class]];
+    [mapping addAttributeMappingsFromArray:@[@"bookingId"]];
+    
+    RKResponseDescriptor *response = [RKResponseDescriptor
+                                      responseDescriptorWithMapping:mapping
+                                      method:RKRequestMethodPOST
+                                      pathPattern:kUserFavoritesAPIPath
+                                      keyPath:nil
+                                      statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+    return response;
+}
+
++ (RKResponseDescriptor *)userGetFavoritesResponseDescriptor {
+    
+    RKObjectMapping *mapping = [RKObjectMapping mappingForClass:[Favorite class]];
+    [mapping addAttributeMappingsFromArray:@[@"address", @"businessName", @"rating", @"ratingBasedOn"]];
+    
+    [mapping addAttributeMappingsFromDictionary:@{@"_id" : @"userId"}];
+    [mapping addAttributeMappingsFromDictionary:@{@"type" : @"userType"}];
+    
+    RKResponseDescriptor *response = [RKResponseDescriptor
+                                      responseDescriptorWithMapping:mapping
+                                      method:RKRequestMethodGET
+                                      pathPattern:kUserFavoritesAPIPath
                                       keyPath:nil
                                       statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     return response;
@@ -439,6 +484,81 @@
                                                       NSLog(@"-------ERROR MESSAGE: %@", errorMessage);
                                                       errorBlock(error, errorMessage, [statusCode integerValue]);
 //                                                      errorBlock(error, nil, 0);
+                                                      
+                                                  } else {
+                                                      
+                                                      errorBlock(error, @"You are not connected to the internet.", 0);
+                                                  }
+                                              }];
+}
+
++ (void)postFavorite:(NSString *)userID vendorType:(NSString *)userType withToken:(NSString *)token withBlock:(CustomerFavoritesCodeSuccessBlock)successBlock withErrors:(CustomerSignUpErrorBlock)errorBlock {
+    
+    [[[RKObjectManager sharedManager] HTTPClient] setDefaultHeader:@"Authorization" value:token];
+    
+    Favorite *favObj = [Favorite new];
+    favObj.userId = userID;
+    favObj.userType = userType;
+    
+    [[RKObjectManager sharedManager] postObject:favObj
+                                           path:kUserFavoritesAPIPath
+                                     parameters:nil
+                                        success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+                                            
+//                                            Customer *customerObj = [mappingResult.array firstObject];
+                                            successBlock(nil);
+                                            
+                                        } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                                            
+                                            if (operation.HTTPRequestOperation.responseData) {
+                                                
+                                                // exctract error message
+                                                NSDictionary *myDic = [NSJSONSerialization
+                                                                       JSONObjectWithData:operation.HTTPRequestOperation.responseData
+                                                                       options:NSJSONReadingMutableLeaves
+                                                                       error:nil];
+                                                
+                                                NSString *errorMessage = [myDic valueForKey:@"message"];
+                                                
+                                                NSNumber *statusCode = [myDic valueForKey:@"statusCode"];
+                                                
+                                                NSLog(@"-------ERROR MESSAGE: %@", errorMessage);
+                                                errorBlock(error, errorMessage, [statusCode integerValue]);
+                                                
+                                            } else {
+                                                
+                                                errorBlock(error, @"You are not connected to the internet.", 0);
+                                            }
+                                        }];
+}
+
++ (void)getFavoritesForUser:(NSString *)token withBlock:(CustomerFavoritesCodeSuccessBlock)successBlock withErrors:(CustomerSignUpErrorBlock)errorBlock {
+    
+    [[[RKObjectManager sharedManager] HTTPClient] setDefaultHeader:@"Authorization" value:token];
+    
+    [[RKObjectManager sharedManager] getObjectsAtPath:kUserFavoritesAPIPath
+                                           parameters:nil
+                                              success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+                                                  
+                                                  NSLog(@"Success getting user Favorites !!");
+                                                  successBlock(mappingResult.array);
+                                                  
+                                              } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                                                  
+                                                  if (operation.HTTPRequestOperation.responseData) {
+                                                      
+                                                      // exctract error message
+                                                      NSDictionary *myDic = [NSJSONSerialization
+                                                                             JSONObjectWithData:operation.HTTPRequestOperation.responseData
+                                                                             options:NSJSONReadingMutableLeaves
+                                                                             error:nil];
+                                                      
+                                                      NSString *errorMessage = [myDic valueForKey:@"message"];
+                                                      
+                                                      NSNumber *statusCode = [myDic valueForKey:@"statusCode"];
+                                                      
+                                                      NSLog(@"-------ERROR MESSAGE: %@", errorMessage);
+                                                      errorBlock(error, errorMessage, [statusCode integerValue]);
                                                       
                                                   } else {
                                                       

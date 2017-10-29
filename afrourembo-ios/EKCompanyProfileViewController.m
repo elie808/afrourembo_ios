@@ -9,13 +9,27 @@
 #import "EKCompanyProfileViewController.h"
 #import "EKCompanyProfileViewController+TableView.h"
 
-@implementation EKCompanyProfileViewController
+@implementation EKCompanyProfileViewController {
+    NSString *_vendorID;
+    NSString *_vendorType;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     self.reviewsArray = [NSMutableArray new];
 
+    if (self.professional) {
+        
+        _vendorID = self.professional.professionalID;
+        _vendorType = kProfessionalType;
+        
+    } else if (self.salon) {
+        
+        _vendorID = self.salon.salonID;
+        _vendorType = kSalonType;
+    }
+    
     [self configureCarousel];
     
     [self getReviews];
@@ -38,23 +52,9 @@
 }
 
 - (void)getReviews {
-    
-    NSString *vendorID;
-    NSString *vendorType;
-    
-    if (self.professional) {
-        
-        vendorID = self.professional.professionalID;
-        vendorType = kProfessionalType;
-        
-    } else if (self.salon) {
-        
-        vendorID = self.salon.salonID;
-        vendorType = kSalonType;
-    }
 
-    [Review getReviewsForVendor:vendorID
-                         ofType:vendorType
+    [Review getReviewsForVendor:_vendorID
+                         ofType:_vendorType
                       withToken:self.passedCustomer.token
                       withBlock:^(NSArray<Review *> *reviewsArray) {
                           
@@ -85,6 +85,16 @@
 }
 
 #pragma mark - Actions
+
+- (IBAction)didTapFavoriteButton:(id)sender {
+    
+    [Customer postFavorite:_vendorID vendorType:_vendorType withToken:[EKSettings getSavedCustomer].token
+                 withBlock:^(NSArray<Favorite *> *favoriteObj) {
+                     [self showMessage:@"Added to favorites!" withTitle:@"Success" completionBlock:nil];
+                 } withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
+                     [self showMessage:errorMessage withTitle:@"Error" completionBlock:nil];
+                 }];
+}
 
 - (IBAction)didTapInstagramButton:(id)sender {
     

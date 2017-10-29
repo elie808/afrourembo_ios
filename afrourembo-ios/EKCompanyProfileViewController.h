@@ -42,6 +42,7 @@ static NSString * const kBookingSegue     = @"companyProfileVCToBookingVC";
 
 @property (strong, nonatomic) NSMutableArray *reviewsArray;
 
+- (IBAction)didTapFavoriteButton:(id)sender;
 - (IBAction)didTapInstagramButton:(id)sender;
 - (IBAction)didTapFacebookButton:(id)sender;
 - (IBAction)didTapTwitterButton:(id)sender;
