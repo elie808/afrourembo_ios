@@ -57,14 +57,12 @@ static NSString * const kCell = @"ordersCollectionCellID";
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     
-//    ClientBooking *order = [_ordersArray objectAtIndex:indexPath.row];
-//    
-//    EKCartCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kCell forIndexPath:indexPath];
-//    cell.delegate = self;
-//    cell.cellIndexPath = indexPath;
-//    [cell configureCellWithOrder:order];
-
-    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"dummy" forIndexPath:indexPath];
+    ClientBooking *order = [_ordersArray objectAtIndex:indexPath.row];
+    
+    EKCartCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kCell forIndexPath:indexPath];
+    cell.delegate = self;
+    cell.cellIndexPath = indexPath;
+    [cell configureCellWithOrder:order];
     
     return cell;
 }

@@ -23,10 +23,8 @@
 
 - (void)configureCellWithOrder:(ClientBooking *)order {
     
-    NSLog(@"\n \n \n \n CONFIG CELL");
-    
     self.bookingTitleLabel.text = order.service;
-    self.bookingCostLabel.text = @"123 KES";//[NSString stringWithFormat:@"%@ %@", order.price, order.currency];
+    self.bookingCostLabel.text = [NSString stringWithFormat:@"%@ %@", order.price, order.currency];
     self.bookingVendorLabel.text = order.professionalBusinessName;
     self.practionnerLabel.text = order.actorBusinessName;
     self.bookingDateLabel.text = [NSDate stringFromDate:order.date withFormat:DateFormatLetterDayMonthYear];
