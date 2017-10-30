@@ -9,6 +9,7 @@
 #import "EKFavoritesViewController.h"
 
 static NSString * const kFavCell = @"favoriteCell";
+static NSString * const kVendorProfile = @"favoritesToVendorProfileVC";
 
 @implementation EKFavoritesViewController {
     NSMutableArray *_dataSourceArray;
@@ -29,6 +30,7 @@ static NSString * const kFavCell = @"favoriteCell";
                         withBlock:^(NSArray<Favorite *> *favoriteObj) {
                           
                             if (favoriteObj.count > 0) {
+                                
                                 [MBProgressHUD hideHUDForView:self.view animated:YES];
                                 self.emptyFavoritesView.hidden = YES;
                                 _dataSourceArray = [NSMutableArray arrayWithArray:favoriteObj];
@@ -65,12 +67,47 @@ static NSString * const kFavCell = @"favoriteCell";
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
+    Favorite *favObj = [_dataSourceArray objectAtIndex:indexPath.row];
+    
+    if ([favObj.userType isEqualToString:kProfessionalType]) {
+    
+        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        [Professional getProfile:favObj.userId
+               withCustomerToken:[EKSettings getSavedCustomer].token
+                       withBlock:^(Professional *professionalObj) {
+                           
+                           [MBProgressHUD hideHUDForView:self.view animated:YES];
+                           [self performSegueWithIdentifier:kVendorProfile sender:professionalObj];
+                           
+                       } withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
+                           
+                           [MBProgressHUD hideHUDForView:self.view animated:YES];
+                           [self showMessage:errorMessage withTitle:@"Error" completionBlock:nil];
+                       }];
+    
+    } else if ([favObj.userType isEqualToString:kSalonType]) {
+        
+    }
 }
 
 #pragma mark - Navigation
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     
+    if ([segue.identifier isEqualToString:kVendorProfile]) {
+        
+        EKCompanyProfileViewController *vc = segue.destinationViewController;
+        vc.passedCustomer = [EKSettings getSavedCustomer];
+        
+        if ([sender isKindOfClass:[Professional class]]) {
+        
+            vc.professional = (Professional *)sender;
+        
+        } else if ([sender isKindOfClass:[Salon class]]) {
+         
+            vc.salon = (Salon*)sender;
+        }
+    }
 }
 
 @end

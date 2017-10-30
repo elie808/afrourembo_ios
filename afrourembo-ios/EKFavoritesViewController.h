@@ -11,8 +11,11 @@
 
 #import "Favorite.h"
 #import "EKSettings.h"
+#import "EKConstants.h"
 #import "EKFavoritesTableViewCell.h"
+#import "EKCompanyProfileViewController.h"
 #import "Customer+API.h"
+#import "Professional+API.h"
 #import "UIViewController+Helpers.h"
 
 @interface EKFavoritesViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
