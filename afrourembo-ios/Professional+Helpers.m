@@ -39,6 +39,8 @@
     
     delta.profilePicture = newProfessional.profilePicture.length > 0 ? newProfessional.profilePicture : existingProfessional.profilePicture;
     
+    delta.portfolio = [NSArray arrayWithArray:newProfessional.portfolio];
+    
     delta.token = newProfessional.token.length > 0 ? newProfessional.token : existingProfessional.token;
 
     return delta;
@@ -48,6 +50,12 @@
 
 - (NSString *)convertToJSON {
     
+    // exctract portfolio picture URLs, so we're able to serialize them with no errors...FUCK THIS BULLSHIT !!!!
+    NSMutableArray *arr = [NSMutableArray new];
+    for (Pictures *pic in self.portfolio) {
+        [arr addObject:pic.picture];
+    }
+    
     NSDictionary *details = @{
                               @"professionalID" : self.professionalID.length > 0 ? self.professionalID : @"",
                               @"profilePicture" : self.profilePicture.length > 0 ? self.profilePicture : @"",
@@ -55,6 +63,7 @@
                               @"lName" : self.lName.length > 0 ? self.lName : @"",
                               @"phone" : self.phone.length > 0 ? self.phone : @"",
                               @"email" : self.email.length > 0 ? self.email : @"",
+                              @"portfolio" : arr.count > 0 ? arr : [NSArray new],
                               @"token" : self.token.length > 0 ? self.token : @""
                               };
     
