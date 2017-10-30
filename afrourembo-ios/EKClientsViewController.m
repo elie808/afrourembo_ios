@@ -9,6 +9,7 @@
 #import "EKClientsViewController.h"
 
 static NSString * const kClientListCell = @"settingsClientsTableCell";
+static NSString * const kClientsDetailSegue = @"clientsListToClientsDetailsVC";
 
 @implementation EKClientsViewController {
     NSMutableArray *_dataSourceArray;
@@ -62,6 +63,7 @@ static NSString * const kClientListCell = @"settingsClientsTableCell";
     EKClientTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kClientListCell forIndexPath:indexPath];
 
     cell.cellTitleLabel.text = [NSString stringWithFormat:@"%@ %@", customerObj.fName, customerObj.lName];
+    
 //    [cell.cellImageView yy_setImageWithURL:[NSURL URLWithString:customerObj.profilePicture]
 //                                   options:YYWebImageOptionProgressiveBlur|YYWebImageOptionSetImageWithFadeAnimation];
     
@@ -76,12 +78,21 @@ static NSString * const kClientListCell = @"settingsClientsTableCell";
 #pragma mark - UITableViewDelegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+ 
+    Customer *customerObj = _dataSourceArray[indexPath.row];
     
+    [self performSegueWithIdentifier:kClientsDetailSegue sender:customerObj];
 }
 
 #pragma mark - Navigation
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    
+    if ([segue.identifier isEqualToString:kClientsDetailSegue]) {
+        
+        EKClientDetailsViewController *vc = segue.destinationViewController;
+        vc.passedCustomer = (Customer *)sender;
+    }
 }
 
 @end

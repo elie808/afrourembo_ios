@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		22C292D6FFA22AC47BB29DD5 /* Pods_afrourembo_ios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B75458C58C1790EFF018F83 /* Pods_afrourembo_ios.framework */; };
+		470627541FA746A8006E2BB1 /* EKClientDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 470627531FA746A8006E2BB1 /* EKClientDetailsViewController.m */; };
 		47074F8B1EAEB4A600E35EA7 /* EKSignupBPViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47074F8A1EAEB4A600E35EA7 /* EKSignupBPViewController.m */; };
 		470CD7461EA10B920086DEE4 /* EKCompanyReviewTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 470CD7451EA10B920086DEE4 /* EKCompanyReviewTableViewCell.m */; };
 		470CD7491EA11AD40086DEE4 /* EKCompanyContactTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 470CD7481EA11AD40086DEE4 /* EKCompanyContactTableViewCell.m */; };
@@ -158,6 +159,8 @@
 /* Begin PBXFileReference section */
 		2A4784F414DB67A4877E7962 /* Pods-afrourembo-ios.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-afrourembo-ios.debug.xcconfig"; path = "Pods/Target Support Files/Pods-afrourembo-ios/Pods-afrourembo-ios.debug.xcconfig"; sourceTree = "<group>"; };
 		3B75458C58C1790EFF018F83 /* Pods_afrourembo_ios.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_afrourembo_ios.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		470627521FA746A8006E2BB1 /* EKClientDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKClientDetailsViewController.h; sourceTree = "<group>"; };
+		470627531FA746A8006E2BB1 /* EKClientDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKClientDetailsViewController.m; sourceTree = "<group>"; };
 		47074F891EAEB4A600E35EA7 /* EKSignupBPViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKSignupBPViewController.h; sourceTree = "<group>"; };
 		47074F8A1EAEB4A600E35EA7 /* EKSignupBPViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKSignupBPViewController.m; sourceTree = "<group>"; };
 		470CD7441EA10B920086DEE4 /* EKCompanyReviewTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKCompanyReviewTableViewCell.h; sourceTree = "<group>"; };
@@ -467,6 +470,15 @@
 				3B75458C58C1790EFF018F83 /* Pods_afrourembo_ios.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		470627551FA7474F006E2BB1 /* BP - Client Details */ = {
+			isa = PBXGroup;
+			children = (
+				470627521FA746A8006E2BB1 /* EKClientDetailsViewController.h */,
+				470627531FA746A8006E2BB1 /* EKClientDetailsViewController.m */,
+			);
+			name = "BP - Client Details";
 			sourceTree = "<group>";
 		};
 		47074F8C1EAEB4AC00E35EA7 /* BP - Sign up ViewController */ = {
@@ -1117,6 +1129,7 @@
 				470F0B921EDB7D5A002FDE96 /* BP - Dashboard */,
 				4757C64A1ED87A0300C2B52F /* BP - BP Today Calendar View */,
 				479A85071F9E6012002ECC2C /* BP - Clients List */,
+				470627551FA7474F006E2BB1 /* BP - Client Details */,
 				47F714121ED70ACF0028FB65 /* BP - Salon select List */,
 				475FC37E1EB6B57D00BB0731 /* BP - Add Service List */,
 				479B30A21EF7476D00DE2121 /* BP - Category List */,
@@ -1540,6 +1553,7 @@
 				47F714151ED70AFB0028FB65 /* EKSalonSelectTableViewCell.m in Sources */,
 				479B30A11EF7476400DE2121 /* EKCategoryListViewController.m in Sources */,
 				47FE51C31EFD26F900A39BAE /* Address.m in Sources */,
+				470627541FA746A8006E2BB1 /* EKClientDetailsViewController.m in Sources */,
 				4734F5F11F3401D200982D94 /* EKCarousel.m in Sources */,
 				476368CA1F8BB80300249318 /* ResetPassword+API.m in Sources */,
 				475FC3811EB6BF5E00BB0731 /* EKAddNewServiceViewController.m in Sources */,

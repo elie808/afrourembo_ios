@@ -1241,7 +1241,7 @@
                                         <rect key="frame" x="0.0" y="233" width="375" height="83"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gBY-cw-kgc" id="yhl-jZ-NCu">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="82.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="83"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Men's Haircut" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VAX-VQ-5z5">
@@ -1479,7 +1479,7 @@
                                         <rect key="frame" x="0.0" y="650" width="375" height="52"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="OKy-LV-Elw" id="4fn-sU-FFd">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="51.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="52"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Phone Number" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gyA-Lw-1Ky">

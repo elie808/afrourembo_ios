@@ -12,6 +12,7 @@
 
 #import "EKSettings.h"
 #import "EKClientTableViewCell.h"
+#import "EKClientDetailsViewController.h"
 
 #import "Professional+API.h"
 #import "UIViewController+Helpers.h"
