@@ -7,7 +7,23 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MBProgressHUD/MBProgressHUD.h>
+#import <YYWebImage/YYWebImage.h>
 
-@interface EKVendorGalleryViewController : UIViewController
+#import "EKConstants.h"
+#import "EKSettings.h"
+#import "EKVendorGalleryCollectionViewCell.h"
+#import "ProfilePicture+API.h"
+
+#import "UIImage+Helpers.h"
+#import "UIViewController+Helpers.h"
+
+@interface EKVendorGalleryViewController : UIViewController <UICollectionViewDelegate, UICollectionViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+
+@property (strong, nonatomic) IBOutlet UIView *emptyDataView;
+@property (strong, nonatomic) IBOutlet UIButton *addPicturesButton;
+@property (strong, nonatomic) IBOutlet UICollectionView *collectionView;
+
+- (IBAction)didTapAddPhotoPicture:(id)sender;
 
 @end

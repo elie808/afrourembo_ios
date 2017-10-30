@@ -34,11 +34,11 @@
 //                    ];
 
     self.tableViewDataSource = @[
-                                 kProfile,
+//                                 kProfile,
                                  kBusinessInfo,
-                                 kManagePhotos,
-                                 kServices,
-                                 kAvailability
+                                 kManagePhotos
+//                                 kServices,
+//                                 kAvailability
                                  ];
     
     self.collectionViewDataSource = @[];
@@ -54,6 +54,10 @@
         EKProfessionalInfoViewController *vc = (EKProfessionalInfoViewController *)([navController viewControllers][0]);
         vc.barButton.title = @"Done";
         vc.unwindSegueID = @"unwindToBpSettingsVC";
+    }
+    
+    if ([segue.identifier isEqualToString:kGallerySegue]) {
+        
     }
 }
 

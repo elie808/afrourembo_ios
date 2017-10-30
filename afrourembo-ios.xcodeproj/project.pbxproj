@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		22C292D6FFA22AC47BB29DD5 /* Pods_afrourembo_ios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B75458C58C1790EFF018F83 /* Pods_afrourembo_ios.framework */; };
 		470627541FA746A8006E2BB1 /* EKClientDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 470627531FA746A8006E2BB1 /* EKClientDetailsViewController.m */; };
+		470627571FA7C560006E2BB1 /* Vendor_Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 470627561FA7C560006E2BB1 /* Vendor_Settings.storyboard */; };
+		4706275A1FA7CBD5006E2BB1 /* EKVendorGalleryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 470627591FA7CBD5006E2BB1 /* EKVendorGalleryViewController.m */; };
+		4706275E1FA7E44E006E2BB1 /* EKVendorGalleryCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4706275D1FA7E44E006E2BB1 /* EKVendorGalleryCollectionViewCell.m */; };
 		47074F8B1EAEB4A600E35EA7 /* EKSignupBPViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47074F8A1EAEB4A600E35EA7 /* EKSignupBPViewController.m */; };
 		470CD7461EA10B920086DEE4 /* EKCompanyReviewTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 470CD7451EA10B920086DEE4 /* EKCompanyReviewTableViewCell.m */; };
 		470CD7491EA11AD40086DEE4 /* EKCompanyContactTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 470CD7481EA11AD40086DEE4 /* EKCompanyContactTableViewCell.m */; };
@@ -161,6 +164,11 @@
 		3B75458C58C1790EFF018F83 /* Pods_afrourembo_ios.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_afrourembo_ios.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		470627521FA746A8006E2BB1 /* EKClientDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKClientDetailsViewController.h; sourceTree = "<group>"; };
 		470627531FA746A8006E2BB1 /* EKClientDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKClientDetailsViewController.m; sourceTree = "<group>"; };
+		470627561FA7C560006E2BB1 /* Vendor_Settings.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Vendor_Settings.storyboard; sourceTree = "<group>"; };
+		470627581FA7CBD5006E2BB1 /* EKVendorGalleryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKVendorGalleryViewController.h; sourceTree = "<group>"; };
+		470627591FA7CBD5006E2BB1 /* EKVendorGalleryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKVendorGalleryViewController.m; sourceTree = "<group>"; };
+		4706275C1FA7E44E006E2BB1 /* EKVendorGalleryCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKVendorGalleryCollectionViewCell.h; sourceTree = "<group>"; };
+		4706275D1FA7E44E006E2BB1 /* EKVendorGalleryCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKVendorGalleryCollectionViewCell.m; sourceTree = "<group>"; };
 		47074F891EAEB4A600E35EA7 /* EKSignupBPViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKSignupBPViewController.h; sourceTree = "<group>"; };
 		47074F8A1EAEB4A600E35EA7 /* EKSignupBPViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKSignupBPViewController.m; sourceTree = "<group>"; };
 		470CD7441EA10B920086DEE4 /* EKCompanyReviewTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKCompanyReviewTableViewCell.h; sourceTree = "<group>"; };
@@ -479,6 +487,17 @@
 				470627531FA746A8006E2BB1 /* EKClientDetailsViewController.m */,
 			);
 			name = "BP - Client Details";
+			sourceTree = "<group>";
+		};
+		4706275B1FA7CBDA006E2BB1 /* BP - Gallery */ = {
+			isa = PBXGroup;
+			children = (
+				470627581FA7CBD5006E2BB1 /* EKVendorGalleryViewController.h */,
+				470627591FA7CBD5006E2BB1 /* EKVendorGalleryViewController.m */,
+				4706275C1FA7E44E006E2BB1 /* EKVendorGalleryCollectionViewCell.h */,
+				4706275D1FA7E44E006E2BB1 /* EKVendorGalleryCollectionViewCell.m */,
+			);
+			name = "BP - Gallery";
 			sourceTree = "<group>";
 		};
 		47074F8C1EAEB4AC00E35EA7 /* BP - Sign up ViewController */ = {
@@ -816,6 +835,7 @@
 				47C42DDD1E7D65D1008CBF51 /* SignUp.storyboard */,
 				478278D51E7923D000FB2FD2 /* Main.storyboard */,
 				47DD4CC91EB2149A009AA482 /* Vendor_Main.storyboard */,
+				470627561FA7C560006E2BB1 /* Vendor_Settings.storyboard */,
 			);
 			name = Storyboards;
 			sourceTree = "<group>";
@@ -1138,6 +1158,7 @@
 				477256061EB95908007CBD6B /* BP - Availability */,
 				479520101EB3A40A00E377E5 /* BP - Monthly Schedule */,
 				47652BFE1F01FB5D00796E04 /* BP - Settings */,
+				4706275B1FA7CBDA006E2BB1 /* BP - Gallery */,
 				479F7D781EF17C0100EB445A /* SALON - Info */,
 				47329CA41F0BE75600E5DF13 /* SALON - Address */,
 				47329CA31F0BE74800E5DF13 /* SALON - Role */,
@@ -1403,6 +1424,7 @@
 				47C42DDC1E7D6509008CBF51 /* Welcome.storyboard in Resources */,
 				478278D91E7923D000FB2FD2 /* Assets.xcassets in Resources */,
 				47C480581F4DD34F00493E0B /* payment_gateway in Resources */,
+				470627571FA7C560006E2BB1 /* Vendor_Settings.storyboard in Resources */,
 				47DD4CCA1EB2149A009AA482 /* Vendor_Main.storyboard in Resources */,
 				478278D71E7923D000FB2FD2 /* Main.storyboard in Resources */,
 				47C4805A1F4E312600493E0B /* payment_gateway.html in Resources */,
@@ -1530,8 +1552,10 @@
 				4783DF8D1EA4CDAD00C87C60 /* EKBookingTimeCollectionViewCell.m in Sources */,
 				4760FC7C1EF88C8200099DFD /* EKSalonAddressViewController.m in Sources */,
 				474FAE921F38E0A900970A1F /* TimeSlot.m in Sources */,
+				4706275E1FA7E44E006E2BB1 /* EKVendorGalleryCollectionViewCell.m in Sources */,
 				4757C64D1ED973FD00C2B52F /* EKTodayTableViewCell.m in Sources */,
 				477256051EB958FF007CBD6B /* EKAvailabilityViewController.m in Sources */,
+				4706275A1FA7CBD5006E2BB1 /* EKVendorGalleryViewController.m in Sources */,
 				47AF51BD1E9C4001005FE6EB /* EKDiscoverMapViewController.m in Sources */,
 				47800BC31EA3B2FA00F450DB /* EKBookingViewController.m in Sources */,
 				479A85151F9EA0F9002ECC2C /* EKOrdersPaymentsViewController.m in Sources */,

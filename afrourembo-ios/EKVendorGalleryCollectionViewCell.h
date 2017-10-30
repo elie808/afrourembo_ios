@@ -10,4 +10,6 @@
 
 @interface EKVendorGalleryCollectionViewCell : UICollectionViewCell
 
+@property (strong, nonatomic) IBOutlet UIImageView *cellImageView;
+
 @end

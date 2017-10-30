@@ -105,7 +105,8 @@
     
     [objectManager addResponseDescriptorsFromArray:@[
                                                      [ProfilePicture postUserProfilePictureResponseDescriptor],
-                                                     [ProfilePicture postProfessionalProfilePictureResponseDescriptor]
+                                                     [ProfilePicture postProfessionalProfilePictureResponseDescriptor],
+                                                     [ProfilePicture postProfessionalPortfolioPictureResponseDescriptor]
                                                      ]];
     
     [objectManager addResponseDescriptorsFromArray:@[

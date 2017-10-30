@@ -21,8 +21,9 @@ static NSString * const kServices = @"My services";
 static NSString * const kAvailability = @"Availability";
 
 // Segues
-static NSString * const kWelcomeSegue  = @"bpSettingsToWelcomeVC";
-static NSString * const kBusinessSegue = @"settingsToProfileInfoVC";
+static NSString * const kWelcomeSegue   = @"bpSettingsToWelcomeVC";
+static NSString * const kBusinessSegue  = @"settingsToProfileInfoVC";
+static NSString * const kGallerySegue   = @"settingsToGalleryVC";
 
 @interface EKSettingsBPViewController : UIViewController
 

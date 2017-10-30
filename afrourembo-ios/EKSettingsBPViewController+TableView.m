@@ -50,7 +50,7 @@ static NSString * const kTableCell = @"settingsTableCell";
     }
     
     if ([selectedItem isEqualToString:kManagePhotos]) {
-        
+        [self performSegueWithIdentifier:kGallerySegue sender:nil];
     }
     
     if ([selectedItem isEqualToString:kServices]) {
