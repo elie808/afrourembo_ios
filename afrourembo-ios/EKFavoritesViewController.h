@@ -7,6 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MBProgressHUD/MBProgressHUD.h>
+
 #import "Favorite.h"
 #import "EKSettings.h"
 #import "EKFavoritesTableViewCell.h"

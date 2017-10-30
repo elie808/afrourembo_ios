@@ -24,16 +24,19 @@ static NSString * const kFavCell = @"favoriteCell";
     self.emptyFavoritesView.hidden = NO;
     [self.view addSubview:self.emptyFavoritesView];
     
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     [Customer getFavoritesForUser:[EKSettings getSavedCustomer].token
                         withBlock:^(NSArray<Favorite *> *favoriteObj) {
                           
-//                            if (favoriteObj.count > 0) {
-//                                self.emptyFavoritesView.hidden = YES;
-//                                _dataSourceArray = [NSMutableArray arrayWithArray:favoriteObj];
-//                                [self.tableView reloadData];
-//                            }
+                            if (favoriteObj.count > 0) {
+                                [MBProgressHUD hideHUDForView:self.view animated:YES];
+                                self.emptyFavoritesView.hidden = YES;
+                                _dataSourceArray = [NSMutableArray arrayWithArray:favoriteObj];
+                                [self.tableView reloadData];
+                            }
                             
                         } withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
+                            [MBProgressHUD hideHUDForView:self.view animated:YES];
                             [self showMessage:errorMessage withTitle:@"Error" completionBlock:nil];
                        }];
 }
