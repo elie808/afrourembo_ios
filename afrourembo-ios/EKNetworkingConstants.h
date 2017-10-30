@@ -19,18 +19,18 @@ static NSString * const kCategoriesAPIPath   = @"categories";
 
 static NSString * const kUserRegisterAPIPath = @"user/register";
 static NSString * const kUserBookingsAPIPath = @"user/bookings";
+static NSString * const kUserExploreAPIPath  = @"user/explore";
+static NSString * const kUserFavoritesAPIPath  = @"user/favorites";
 static NSString * const kUserFBRegisterAPIPath = @"user/facebook/register";
 static NSString * const kUserFBLoginAPIPath    = @"user/facebook/login";
-static NSString * const kUserFavoritesAPIPath  = @"user/favorites";
 static NSString * const kUserLoginAPIPath    = @"user/login";
 static NSString * const kUserProfileAPIPath  = @"user/profile";
-static NSString * const kUserExploreAPIPath  = @"user/explore";
 static NSString * const kUserReviewsAPIPath  = @"user/reviews/:id";
 static NSString * const kUserPassResetAPIPath = @"user/password/reset";
-static NSString * const kVendorAvailabilityAPIPath = @"user/professional/:userId/availability";
+static NSString * const kUserProfessionalBookingsAPIPath = @"user/vendor/:userId/bookings";
 static NSString * const kUserProfilePictureAPIPath = @"user/profile/picture";
 static NSString * const kUserReservationsAPIPath     = @"user/reservations";
-static NSString * const kProfessionalBookingsAPIPath = @"user/vendor/:userId/bookings";
+static NSString * const kUserVendorAvailabilityAPIPath = @"user/professional/:userId/availability";
 
 static NSString * const kProfessionalAvailabilityAPIPath = @"professional/availability";
 static NSString * const kProfessionalClientsAPIPath      = @"professional/clients";

@@ -29,7 +29,7 @@
     RKResponseDescriptor *response = [RKResponseDescriptor
                                       responseDescriptorWithMapping:[Booking map1]
                                       method:RKRequestMethodGET
-                                      pathPattern:kProfessionalBookingsAPIPath
+                                      pathPattern:kUserProfessionalBookingsAPIPath
                                       keyPath:nil
                                       statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     return response;

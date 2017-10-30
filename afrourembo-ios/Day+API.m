@@ -60,7 +60,7 @@
     RKResponseDescriptor *response = [RKResponseDescriptor
                                       responseDescriptorWithMapping:[Day map2]
                                       method:RKRequestMethodGET
-                                      pathPattern:kVendorAvailabilityAPIPath
+                                      pathPattern:kUserVendorAvailabilityAPIPath
                                       keyPath:nil
                                       statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     return response;
