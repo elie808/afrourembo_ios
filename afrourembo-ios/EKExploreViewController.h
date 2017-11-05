@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "EKDiscoverMapViewController.h"
+#import "EKEditProfileInfoViewController.h"
 #import "EKExploreCollectionViewCell.h"
 #import "EKImageTextTableViewCell.h"
 #import "Category.h"

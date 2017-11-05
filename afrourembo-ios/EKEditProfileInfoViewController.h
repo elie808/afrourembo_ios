@@ -7,6 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <YYWebImage/YYWebImage.h>
+#import <MBProgressHUD/MBProgressHUD.h>
 
 #import "EKTextFieldTableViewCell.h"
 #import "Customer.h"
@@ -18,11 +20,10 @@
 #import "UIImage+Helpers.h"
 #import "UIViewController+Helpers.h"
 
-#import <MBProgressHUD/MBProgressHUD.h>
-
 @interface EKEditProfileInfoViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate>
 
 @property (strong, nonatomic) Customer *passedUser;
+@property (assign, nonatomic) BOOL unwindToExploreVC; // If property available, means the vc is called from the sidemenu, and must unwind to the explore vc
 
 @property (strong, nonatomic) IBOutlet UIImageView *profilePicImageView;
 @property (strong, nonatomic) IBOutlet UITableView *tableView;

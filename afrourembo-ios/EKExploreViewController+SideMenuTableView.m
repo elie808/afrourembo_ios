@@ -15,6 +15,7 @@ static NSString * const kDiscoverSegue  = @"exploreToDiscover";
 static NSString * const kCartSegue      = @"sideMenuToCartVC";
 static NSString * const kOrdersSegue    = @"sideMenuToOrdersPaymentsVC";
 static NSString * const kWelcomeSegue   = @"sideMenuToWelcomeVC";
+static NSString * const KSettingsSegue  = @"sideMenuToCustomerProfileVC";
 
 //@{@"icExploreNormal"  : @"Explore"},
 //@{@"icCartNormal"     : @"Cart"},
@@ -61,7 +62,7 @@ static NSString * const kWelcomeSegue   = @"sideMenuToWelcomeVC";
             
 //        case 3:  break; // Gifts
             
-        case 3: break; // Settings
+        case 3: [self performSegueWithIdentifier:KSettingsSegue sender:nil]; break; // Settings
             
         default: break;
     }

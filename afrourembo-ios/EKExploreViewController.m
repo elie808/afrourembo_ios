@@ -188,6 +188,12 @@ static NSString * const kDiscoverSegue  = @"exploreToDiscover";
     if ([segue.identifier isEqualToString:kSearchSegue]) {
         
     }
+    
+    if ([segue.identifier isEqualToString:@"sideMenuToCustomerProfileVC"]) {
+        EKEditProfileInfoViewController *vc = segue.destinationViewController;
+        vc.unwindToExploreVC = YES;
+        vc.passedUser = [EKSettings getSavedCustomer];
+    }
 }
 
 - (IBAction)didTapSideMenuButton:(UIBarButtonItem *)sender {
