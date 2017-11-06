@@ -33,7 +33,11 @@ typedef void (^ProfessionalEditErrorBlock)(NSError *error, NSString *errorMessag
 
 + (RKResponseDescriptor *)professionalResetPassResponseDescriptor;
 
+/// Professional profile, requested by a Customer
 + (RKResponseDescriptor *)professionalProfileResponseDescriptor;
+
+/// Professional profile, requested by the professional
++ (RKResponseDescriptor *)getProfessionalProfileResponseDescriptor;
 
 + (void)signUpProfessional:(NSString *)email password:(NSString *)password  firstName:(NSString *)fName lastName:(NSString *)lName phoneNumber:(NSString *)phone  withBlock:(ProfessionalSignUpSuccessBlock)successBlock withErrors:(ProfessionalSignUpErrorBlock)errorBlock;
 
@@ -42,7 +46,10 @@ typedef void (^ProfessionalEditErrorBlock)(NSError *error, NSString *errorMessag
 /// GET list of professional's clients
 + (void)getClients:(NSString *)token withBlock:(ProfessionalClientsSuccessBlock)successBlock withErrors:(ProfessionalSignUpErrorBlock)errorBlock;
 
-/// GET professional's profile
+/// GET professional's profile from a Customer's account
 + (void)getProfile:(NSString *)profID withCustomerToken:(NSString *)token withBlock:(ProfessionalSignUpSuccessBlock)successBlock withErrors:(ProfessionalSignUpErrorBlock)errorBlock;
+
+/// GET professional's profile from a professional's account
++ (void)getProfileForProfessional:(NSString *)token withBlock:(ProfessionalSignUpSuccessBlock)successBlock withErrors:(ProfessionalSignUpErrorBlock)errorBlock;
 
 @end

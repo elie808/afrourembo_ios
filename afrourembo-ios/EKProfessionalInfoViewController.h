@@ -13,6 +13,7 @@
 #import "EKProfessionalInfoTableViewCell.h"
 #import "EKProfessionalAddressViewController.h"
 #import "ProfessionalInfo+API.h"
+#import "Professional+API.h"
 #import "EKSettings.h"
 #import <MapKit/MapKit.h>
 

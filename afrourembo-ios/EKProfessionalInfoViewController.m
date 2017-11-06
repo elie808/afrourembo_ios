@@ -23,7 +23,26 @@ static NSString * const kAddressSegue       = @"professionalInfoToProfessionalAd
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self initializeDataSource];
+    if ([EKSettings getSavedVendor].token.length > 0) { // if viewcontroller is accessed from professional's Settings
+    
+        [Professional getProfileForProfessional:[EKSettings getSavedVendor].token
+                                      withBlock:^(Professional *professionalObj) {
+                                          
+                                          self.businessName = professionalObj.business.name;
+                                          self.address = professionalObj.business.address;
+                                          self.phoneNumber = professionalObj.phone;
+                                          self.isMobile = professionalObj.isMobile;
+                                          
+                                          [self updateDataSource];
+                                          [self.tableView reloadData];
+                                          
+                                      } withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
+                                         [self showMessage:errorMessage withTitle:@"Error" completionBlock:nil];
+                                     }];
+    } else {
+        
+        [self initializeDataSource];
+    }
 }
 
 #pragma mark - TableView DataSource

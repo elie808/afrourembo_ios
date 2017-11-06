@@ -122,7 +122,8 @@
                                                      [Professional professionalResetPassResponseDescriptor],
                                                      [Professional professionalResetPassResponseDescriptor],
                                                      [Professional professionalClientsResponseDescriptor],
-                                                     [Professional professionalProfileResponseDescriptor]
+                                                     [Professional professionalProfileResponseDescriptor],
+                                                     [Professional getProfessionalProfileResponseDescriptor]
                                                      ]];
     
     [objectManager addResponseDescriptor:[Review getReviewsResponseDescriptor]];
