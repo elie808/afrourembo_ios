@@ -32,19 +32,34 @@ static NSString * const kRoleSegue = @"onboardingToRole";
     page3.bgColor = [UIColor blueColor];
     */
     
+//    EAIntroPage *page1 = [EAIntroPage page];
+//    page1.title = @"EXPLORE SALONS AND PROFESSIONALS NEAR YOU";
+//    page1.titleFont = [UIFont boldSystemFontOfSize:26];
+//    page1.bgImage = [UIImage imageNamed:@"bg1"];
+//    
+//    EAIntroPage *page2 = [EAIntroPage page];
+//    page2.title = @"FIND AND BOOK THE BEST BEAUTY SERVICES";
+//    page2.titleFont = [UIFont boldSystemFontOfSize:26];
+//    page2.bgImage = [UIImage imageNamed:@"bg2"];
+//    
+//    EAIntroPage *page3 = [EAIntroPage page];
+//    page3.title = @"RATE AND SAVE FAVORITED PROFESSIONALS";
+//    page3.bgImage = [UIImage imageNamed:@"bg3"];
+//    page3.titleFont = [UIFont boldSystemFontOfSize:26];
+    
     EAIntroPage *page1 = [EAIntroPage page];
     page1.title = @"EXPLORE SALONS AND PROFESSIONALS NEAR YOU";
     page1.titleFont = [UIFont boldSystemFontOfSize:26];
-    page1.bgImage = [UIImage imageNamed:@"bg1"];
+    page1.bgImage = [UIImage imageNamed:@"obg3"];
     
     EAIntroPage *page2 = [EAIntroPage page];
     page2.title = @"FIND AND BOOK THE BEST BEAUTY SERVICES";
     page2.titleFont = [UIFont boldSystemFontOfSize:26];
-    page2.bgImage = [UIImage imageNamed:@"bg2"];
+    page2.bgImage = [UIImage imageNamed:@"obg2"];
     
     EAIntroPage *page3 = [EAIntroPage page];
     page3.title = @"RATE AND SAVE FAVORITED PROFESSIONALS";
-    page3.bgImage = [UIImage imageNamed:@"bg3"];
+    page3.bgImage = [UIImage imageNamed:@"obg1"];
     page3.titleFont = [UIFont boldSystemFontOfSize:26];
     
     UIButton *skipButton = [UIButton buttonWithType:UIButtonTypeCustom];
