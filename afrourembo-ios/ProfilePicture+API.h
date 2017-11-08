@@ -26,11 +26,14 @@ typedef void (^UserProfilePictureErrorBlock)(NSError *error, NSString *errorMess
 + (RKResponseDescriptor *)postUserProfilePictureResponseDescriptor;
 + (RKResponseDescriptor *)postProfessionalProfilePictureResponseDescriptor;
 + (RKResponseDescriptor *)postProfessionalPortfolioPictureResponseDescriptor;
++ (RKResponseDescriptor *)deleteProfessionalPortfolioPictureResponseDescriptor;
 
 + (void)uploadCustomerProfilePicture:(NSData *)imageData withToken:(NSString *)userToken withBlock:(UserProfilePictureSuccessBlock)successBlock withErrors:(UserProfilePictureErrorBlock)errorBlock;
 
 + (void)uploadProfessionalProfilePicture:(NSData *)imageData withToken:(NSString *)userToken withBlock:(ProfessionalProfilePictureSuccessBlock)successBlock withErrors:(UserProfilePictureErrorBlock)errorBlock;
 
 + (void)uploadProfessionalPortfolioPicture:(NSData *)imageData withToken:(NSString *)userToken withBlock:(ProfessionalProfilePictureSuccessBlock)successBlock withErrors:(UserProfilePictureErrorBlock)errorBlock;
+
++ (void)deleteProfessionalPortfolioPictureWithID:(NSString *)picID withToken:(NSString *)userToken withBlock:(ProfessionalProfilePictureSuccessBlock)successBlock withErrors:(UserProfilePictureErrorBlock)errorBlock;
 
 @end

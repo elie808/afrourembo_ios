@@ -60,6 +60,32 @@ static NSString * const kGalleryCell  = @"galleryCell";
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     
+    Pictures *pic = [_dataSource objectAtIndex:indexPath.row];
+    
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    [ProfilePicture deleteProfessionalPortfolioPictureWithID:pic.pictureID
+                                                   withToken:[EKSettings getSavedVendor].token
+                                                   withBlock:^(Professional *professional) {
+                                                       
+                                                       [MBProgressHUD hideHUDForView:self.view animated:YES];
+                                                       
+                                                       [EKSettings updateSavedProfessional:professional];
+                                                       
+                                                       [_dataSource removeAllObjects];
+                                                       [_dataSource addObjectsFromArray:[EKSettings getSavedVendor].portfolio];
+                                                       [self.collectionView reloadData];
+                                                       
+                                                       if (_dataSource.count > 0) {
+                                                           self.emptyDataView.hidden = YES;
+                                                       } else {
+                                                           self.emptyDataView.hidden = NO;
+                                                       }
+                                                       
+                                                   } withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
+                                                     
+                                                       [MBProgressHUD hideHUDForView:self.view animated:YES];
+                                                       [self showMessage:errorMessage withTitle:@"Error" completionBlock:nil];
+                                                  }];
 }
 
 #pragma mark - Actions

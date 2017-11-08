@@ -45,6 +45,7 @@ static NSString * const kProfessionalPassResetAPIPath = @"professional/password/
 static NSString * const kProfessionalProfileAPIPath  = @"professional/profile";
 static NSString * const kProfessionalPictureAPIPath  = @"professional/profile/picture";
 static NSString * const kProfessionalPortfolioAPIPath   = @"professional/portfolio";
+static NSString * const kProfessionalDeletePortfolioAPIPath   = @"professional/portfolio/:id";
 static NSString * const kProfessionalServiceAPIPath  = @"professional/services";
 
 static NSString * const kSalonLoginAPIPath     = @"salon/login";
