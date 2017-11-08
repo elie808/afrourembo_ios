@@ -148,7 +148,7 @@
 + (RKResponseDescriptor *)userBookingsResponseDescriptor {
     
     RKObjectMapping *mapping = [RKObjectMapping mappingForClass:[ClientBooking class]];
-    [mapping addAttributeMappingsFromArray:@[@"bookingId", @"currentBookingId", @"actorBusinessName", @"actorId", @"currency", @"date", @"price", @"professionalType", @"service", @"serviceId", @"status", @"professionalBusinessName", @"reviewed"]];
+    [mapping addAttributeMappingsFromArray:@[@"bookingId", @"currentBookingId", @"actorBusinessName", @"actorId", @"currency", @"date", @"price", @"professionalType", @"service", @"serviceId", @"status", @"professionalBusinessName", @"reviewed", @"note"]];
     
     RKResponseDescriptor *response = [RKResponseDescriptor
                                       responseDescriptorWithMapping:mapping
