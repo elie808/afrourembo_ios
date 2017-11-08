@@ -32,6 +32,7 @@
     //FUCK THIS SHIT!!!!! :(
     RKObjectMapping *portfolioMapping = [RKObjectMapping mappingForClass:[Pictures class]];
     [portfolioMapping addAttributeMappingsFromArray:@[@"picture"]];
+    [portfolioMapping addAttributeMappingsFromDictionary:@{@"_id" : @"pictureID"}];
     
     [mapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"portfolio"
                                                                             toKeyPath:@"portfolio"

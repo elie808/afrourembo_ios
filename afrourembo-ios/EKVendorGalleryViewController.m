@@ -44,12 +44,14 @@ static NSString * const kGalleryCell  = @"galleryCell";
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     
-    NSString *imageURL = [_dataSource objectAtIndex:indexPath.row];
+    Pictures *pic = [_dataSource objectAtIndex:indexPath.row];
     
     EKVendorGalleryCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kGalleryCell forIndexPath:indexPath];
     
-    [cell.cellImageView yy_setImageWithURL:[NSURL URLWithString:imageURL]
-                                   options:YYWebImageOptionProgressiveBlur|YYWebImageOptionSetImageWithFadeAnimation];
+    [cell.cellImageView yy_setImageWithURL:[NSURL URLWithString:pic.picture]
+                               placeholder:[UIImage imageNamed:@"icGalleryEmpty"]
+                                   options:YYWebImageOptionProgressiveBlur|YYWebImageOptionSetImageWithFadeAnimation
+                                completion:nil];
     
     return cell;
 }

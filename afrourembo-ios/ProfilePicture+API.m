@@ -179,9 +179,7 @@
                                     path:kProfessionalPortfolioAPIPath
                                     parameters:nil
                                     constructingBodyWithBlock:^(id<AFRKMultipartFormData> formData) {
-                                        
-                                        //                                        NSLog(@"Original image size: %@",[NSByteCountFormatter stringFromByteCount:imageData.length countStyle:NSByteCountFormatterCountStyleFile]);
-                                        
+
                                         [formData appendPartWithFileData:imageData
                                                                     name:@"stream"
                                                                 fileName:@"profilePicture.png"

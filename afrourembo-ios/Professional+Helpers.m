@@ -20,7 +20,24 @@
     
     [jsonDictionary enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
         
-        [retrievedProfessional setValue:obj forKey:(NSString *)key];
+        // since portfolio array (of Pictures objects) is saved as a dictionary,
+        // we manually convert it to an NSArray of NSObjects. bullshit of course :[
+        if ( [(NSString *)key isEqualToString:@"portfolio"] ) {
+        
+            NSMutableArray *picsArray = [NSMutableArray new];
+            for (NSDictionary *portfolioDict in [jsonDictionary valueForKey:@"portfolio"]) {
+                Pictures *pic = [Pictures new];
+                pic.pictureID = [portfolioDict valueForKey:@"pictureID"];
+                pic.picture   = [portfolioDict valueForKey:@"picture"];
+                [picsArray addObject:pic];
+            }
+
+            retrievedProfessional.portfolio = [NSArray arrayWithArray:picsArray];
+            
+        } else {
+         
+            [retrievedProfessional setValue:obj forKey:(NSString *)key];
+        }
     }];
     
     return retrievedProfessional;
@@ -51,9 +68,12 @@
 - (NSString *)convertToJSON {
     
     // exctract portfolio picture URLs, so we're able to serialize them with no errors...FUCK THIS BULLSHIT !!!!
-    NSMutableArray *arr = [NSMutableArray new];
+    NSMutableArray *portfolioArray = [NSMutableArray new];
     for (Pictures *pic in self.portfolio) {
-        [arr addObject:pic.picture];
+        
+        [portfolioArray addObject:@{@"pictureID":pic.pictureID,
+                                    @"picture":pic.picture
+                                    }];
     }
     
     NSDictionary *details = @{
@@ -63,7 +83,7 @@
                               @"lName" : self.lName.length > 0 ? self.lName : @"",
                               @"phone" : self.phone.length > 0 ? self.phone : @"",
                               @"email" : self.email.length > 0 ? self.email : @"",
-                              @"portfolio" : arr.count > 0 ? arr : [NSArray new],
+                              @"portfolio" : portfolioArray.count > 0 ? portfolioArray : [NSArray new],
                               @"token" : self.token.length > 0 ? self.token : @""
                               };
     

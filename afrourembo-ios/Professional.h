@@ -18,6 +18,7 @@
 
 @interface Pictures : NSObject
 @property NSString *picture;
+@property NSString *pictureID;
 @end
 
 @interface ProfessionalFacebook : NSObject
