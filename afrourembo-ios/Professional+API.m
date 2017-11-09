@@ -40,7 +40,7 @@
     
     //FUCK THIS SHIT!!!!! :(
     RKObjectMapping *businessMapping = [RKObjectMapping mappingForClass:[Business class]];
-    [businessMapping addAttributeMappingsFromArray:@[@"address", @"name", @"longitude", @"latitude", @"location"]];
+    [businessMapping addAttributeMappingsFromArray:@[@"address", @"name", @"longitude", @"latitude"]];
     
     [mapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"business"
                                                                             toKeyPath:@"business"

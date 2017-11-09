@@ -185,8 +185,11 @@ static NSString * const kAddressSegue       = @"professionalInfoToProfessionalAd
         Business *selectedBusinessAdress = [Business new];
         selectedBusinessAdress.name = self.businessName;
         selectedBusinessAdress.address = self.address;
-        selectedBusinessAdress.location = @{@"longitude" : [NSNumber numberWithFloat:self.addressCoords.longitude],
-                                            @"latitude" : [NSNumber numberWithFloat:self.addressCoords.latitude]};
+        selectedBusinessAdress.longitude = self.addressCoords.longitude;
+        selectedBusinessAdress.latitude = self.addressCoords.latitude;
+        
+//        selectedBusinessAdress.location = @{@"longitude" : [NSNumber numberWithFloat:self.addressCoords.longitude],
+//                                            @"latitude" : [NSNumber numberWithFloat:self.addressCoords.latitude]};
         
         vc.passedProfessional.business = selectedBusinessAdress;
         
@@ -222,8 +225,8 @@ static NSString * const kAddressSegue       = @"professionalInfoToProfessionalAd
 - (void)updateDataSource {
     
     _dataSourceArray = @[
-                         @{@"Company Name" : self.businessName},
-                         @{@"Address" : self.address},
+                         @{@"Company Name" : self.businessName ? self.businessName : @""},
+                         @{@"Address" : self.address ? self.address : @""},
 //                         @{@"Phone number" : self.phoneNumber},
                          @{@"I am mobile" : @""}
                          ];
