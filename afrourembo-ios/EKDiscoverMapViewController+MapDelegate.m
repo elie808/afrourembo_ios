@@ -100,11 +100,7 @@ static NSString *kSalonAnnotation = @"salonLocations";
         annotation.title = profObj.business.name;
         annotation.profObj = profObj;
         
-        NSArray <NSNumber *> *coordArray = profObj.business.location[@"coordinates"];
-        NSNumber *longitude= coordArray[0];
-        NSNumber *latitude = coordArray[1];
-        
-        coords = CLLocationCoordinate2DMake([latitude floatValue], [longitude floatValue]);
+        coords = CLLocationCoordinate2DMake(profObj.business.latitude, profObj.business.longitude);
         annotation.coordinate = coords;
         
         [pinsArray addObject:annotation];

@@ -31,12 +31,23 @@
 
 #pragma mark - Responses
 
-+ (RKResponseDescriptor *)exploreResponseDescriptor {
++ (RKResponseDescriptor *)exploreProfessionalsResponseDescriptor {
     
     RKResponseDescriptor *response = [RKResponseDescriptor
-                                      responseDescriptorWithMapping:[Explore map1]
+                                      responseDescriptorWithMapping:[Professional map1]
                                       method:RKRequestMethodGET
-                                      pathPattern:kUserExploreAPIPath
+                                      pathPattern:kUserExploreProfessionalsAPIPath
+                                      keyPath:nil
+                                      statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+    return response;
+}
+
++ (RKResponseDescriptor *)exploreSalonsResponseDescriptor {
+    
+    RKResponseDescriptor *response = [RKResponseDescriptor
+                                      responseDescriptorWithMapping:[Salon map1]
+                                      method:RKRequestMethodGET
+                                      pathPattern:kUserExploreSalonsAPIPath
                                       keyPath:nil
                                       statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     return response;
@@ -44,6 +55,92 @@
 
 #pragma mark - APIs
 
++ (void)getProfessionalsForCategory:(NSString *)category andService:(NSString *)service WithBlock:(ExploreProfessionalsSuccessBlock)successBlock withErrors:(ExploreErrorBlock)errorBlock {
+    
+    NSString *URL;
+
+    if (service && service.length > 0) {
+        URL = [NSString stringWithFormat:@"%@?category=%@&service=%@", kUserExploreProfessionalsAPIPath, category, service];
+    } else {
+        URL = [NSString stringWithFormat:@"%@?category=%@", kUserExploreProfessionalsAPIPath, category];
+    }
+
+    [[RKObjectManager sharedManager]
+     getObjectsAtPath:[URL stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]]
+                                           parameters:nil
+                                              success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+                                                  
+                                                  NSLog(@"Success Fetching Professionals Explore!!");
+                                                  successBlock(mappingResult.array);
+                                                  
+                                              } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                                                  
+                                                  if (operation.HTTPRequestOperation.responseData) {
+                                                      
+                                                      // exctract error message
+                                                      NSDictionary *myDic = [NSJSONSerialization
+                                                                             JSONObjectWithData:operation.HTTPRequestOperation.responseData
+                                                                             options:NSJSONReadingMutableLeaves
+                                                                             error:nil];
+                                                      
+                                                      NSString *errorMessage = [myDic valueForKey:@"message"];
+                                                      
+                                                      NSNumber *statusCode = [myDic valueForKey:@"statusCode"];
+                                                      
+                                                      NSLog(@"-------ERROR MESSAGE: %@", errorMessage);
+                                                      errorBlock(error, errorMessage, [statusCode integerValue]);
+                                                      
+                                                  } else {
+                                                      
+                                                      errorBlock(error, @"You are not connected to the internet.", 0);
+                                                  }
+                                              }];
+}
+
++ (void)getSalonsForCategory:(NSString *)category andService:(NSString *)service WithBlock:(ExploreSalonsSuccessBlock)successBlock withErrors:(ExploreErrorBlock)errorBlock {
+    
+    NSString *URL;
+    
+    if (service && service.length > 0) {
+        URL = [NSString stringWithFormat:@"%@?category=%@&service=%@", kUserExploreSalonsAPIPath, category, service];
+    } else {
+        URL = [NSString stringWithFormat:@"%@?category=%@", kUserExploreSalonsAPIPath, category];
+    }
+    
+    [[RKObjectManager sharedManager]
+     getObjectsAtPath:[URL stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]]
+                                           parameters:nil
+                                              success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+                                                  
+                                                  NSLog(@"Success Fetching Salons Explore!!");
+                                                  successBlock(mappingResult.array);
+                                                  
+                                              } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                                                  
+                                                  if (operation.HTTPRequestOperation.responseData) {
+                                                      
+                                                      // exctract error message
+                                                      NSDictionary *myDic = [NSJSONSerialization
+                                                                             JSONObjectWithData:operation.HTTPRequestOperation.responseData
+                                                                             options:NSJSONReadingMutableLeaves
+                                                                             error:nil];
+                                                      
+                                                      NSString *errorMessage = [myDic valueForKey:@"message"];
+                                                      
+                                                      NSNumber *statusCode = [myDic valueForKey:@"statusCode"];
+                                                      
+                                                      NSLog(@"-------ERROR MESSAGE: %@", errorMessage);
+                                                      errorBlock(error, errorMessage, [statusCode integerValue]);
+                                                      
+                                                  } else {
+                                                      
+                                                      errorBlock(error, @"You are not connected to the internet.", 0);
+                                                  }
+                                              }];
+}
+
+
+/*
 + (void)getExploreLocationsForUser:(NSString *)userToken WithBlock:(ExploreSuccessBlock)successBlock withErrors:(ExploreErrorBlock)errorBlock {
     
     [[[RKObjectManager sharedManager] HTTPClient] setDefaultHeader:@"Authorization" value:userToken];
@@ -78,6 +175,6 @@
                                                   }
                                               }];
 }
-
+*/
 
 @end

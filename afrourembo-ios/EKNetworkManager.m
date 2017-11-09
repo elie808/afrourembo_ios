@@ -101,7 +101,10 @@
                                                      [Day vendorAvailabilityResponseDescriptor]
                                                      ]];
     
-    [objectManager addResponseDescriptorsFromArray:@[ [Explore exploreResponseDescriptor] ]];
+    [objectManager addResponseDescriptorsFromArray:@[
+                                                     [Explore exploreProfessionalsResponseDescriptor],
+                                                     [Explore exploreSalonsResponseDescriptor]
+                                                     ]];
     
     [objectManager addResponseDescriptorsFromArray:@[
                                                      [ProfilePicture postUserProfilePictureResponseDescriptor],

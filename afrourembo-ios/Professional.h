@@ -14,6 +14,8 @@
 @property NSString *name;
 @property NSString *address;
 @property NSDictionary *location;
+@property CGFloat longitude;
+@property CGFloat latitude;
 @end
 
 @interface Pictures : NSObject

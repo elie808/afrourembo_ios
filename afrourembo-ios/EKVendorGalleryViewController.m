@@ -62,30 +62,7 @@ static NSString * const kGalleryCell  = @"galleryCell";
     
     Pictures *pic = [_dataSource objectAtIndex:indexPath.row];
     
-    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    [ProfilePicture deleteProfessionalPortfolioPictureWithID:pic.pictureID
-                                                   withToken:[EKSettings getSavedVendor].token
-                                                   withBlock:^(Professional *professional) {
-                                                       
-                                                       [MBProgressHUD hideHUDForView:self.view animated:YES];
-                                                       
-                                                       [EKSettings updateSavedProfessional:professional];
-                                                       
-                                                       [_dataSource removeAllObjects];
-                                                       [_dataSource addObjectsFromArray:[EKSettings getSavedVendor].portfolio];
-                                                       [self.collectionView reloadData];
-                                                       
-                                                       if (_dataSource.count > 0) {
-                                                           self.emptyDataView.hidden = YES;
-                                                       } else {
-                                                           self.emptyDataView.hidden = NO;
-                                                       }
-                                                       
-                                                   } withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
-                                                     
-                                                       [MBProgressHUD hideHUDForView:self.view animated:YES];
-                                                       [self showMessage:errorMessage withTitle:@"Error" completionBlock:nil];
-                                                  }];
+    [self deletePictureWithID:pic.pictureID];
 }
 
 #pragma mark - Actions
@@ -175,6 +152,34 @@ static NSString * const kGalleryCell  = @"galleryCell";
     imagePickerController.cameraDevice=UIImagePickerControllerCameraDeviceFront;
     imagePickerController.delegate = self;
     [self presentViewController:imagePickerController animated:YES completion:nil];
+}
+
+- (void)deletePictureWithID:(NSString *)picID {
+
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    [ProfilePicture deleteProfessionalPortfolioPictureWithID:picID
+                                                   withToken:[EKSettings getSavedVendor].token
+                                                   withBlock:^(Professional *professional) {
+                                                       
+                                                       [MBProgressHUD hideHUDForView:self.view animated:YES];
+                                                       
+                                                       [EKSettings updateSavedProfessional:professional];
+                                                       
+                                                       [_dataSource removeAllObjects];
+                                                       [_dataSource addObjectsFromArray:[EKSettings getSavedVendor].portfolio];
+                                                       [self.collectionView reloadData];
+                                                       
+                                                       if (_dataSource.count > 0) {
+                                                           self.emptyDataView.hidden = YES;
+                                                       } else {
+                                                           self.emptyDataView.hidden = NO;
+                                                       }
+                                                       
+                                                   } withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
+                                                       
+                                                       [MBProgressHUD hideHUDForView:self.view animated:YES];
+                                                       [self showMessage:errorMessage withTitle:@"Error" completionBlock:nil];
+                                                   }];
 }
 
 /*

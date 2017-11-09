@@ -12,16 +12,17 @@
 #import "Salon+API.h"
 #import "EKNetworkingConstants.h"
 
-typedef void (^ExploreSuccessBlock)(Explore *exploreObj);
+typedef void (^ExploreProfessionalsSuccessBlock)(NSArray <Professional *> *proArray);
+typedef void (^ExploreSalonsSuccessBlock)(NSArray <Salon *> *salonArray);
 typedef void (^ExploreErrorBlock)(NSError *error, NSString *errorMessage, NSInteger statusCode);
 
 @interface Explore (API)
 
-/// professionals, salons
-+ (RKObjectMapping *)map1;
++ (RKResponseDescriptor *)exploreProfessionalsResponseDescriptor;
++ (RKResponseDescriptor *)exploreSalonsResponseDescriptor;
 
-+ (RKResponseDescriptor *)exploreResponseDescriptor;
++ (void)getProfessionalsForCategory:(NSString *)category andService:(NSString *)service WithBlock:(ExploreProfessionalsSuccessBlock)successBlock withErrors:(ExploreErrorBlock)errorBlock;
 
-+ (void)getExploreLocationsForUser:(NSString *)userToken WithBlock:(ExploreSuccessBlock)successBlock withErrors:(ExploreErrorBlock)errorBlock;
++ (void)getSalonsForCategory:(NSString *)category andService:(NSString *)service WithBlock:(ExploreSalonsSuccessBlock)successBlock withErrors:(ExploreErrorBlock)errorBlock;
 
 @end
