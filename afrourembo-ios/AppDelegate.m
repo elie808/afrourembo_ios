@@ -49,7 +49,12 @@ static NSString * const kVendorMainStoryboard = @"Vendor_Main";
         UINavigationController *rootViewController = [storyboard instantiateViewControllerWithIdentifier:kSplashVC];
         self.window.rootViewController = rootViewController;
     }
-
+    
+    // Pro Info
+//    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"SignUp" bundle:nil];
+//    UINavigationController *rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"proInfoVC"];
+//    self.window.rootViewController = rootViewController;
+    
     // Availability
 //    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"SignUp" bundle:nil];
 //    UINavigationController *rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"Availability"];

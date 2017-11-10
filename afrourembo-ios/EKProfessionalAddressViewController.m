@@ -11,12 +11,18 @@
 static CLLocationDistance const kZoomDistance = 500;
 
 static NSString * const kKenyaRegion = @"kenya";
+static NSString * const kCell = @"SearchResultsCell";
 static NSString * const kUnwindSegue = @"unwindToProfessionalInfo";
 
-@implementation EKProfessionalAddressViewController
+@implementation EKProfessionalAddressViewController {
+    MKLocalSearch *localSearch;
+    MKLocalSearchResponse *searchResults;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.searchResultsTableView.hidden = YES;
     
     self.pinImageView.frame = CGRectMake(0,0, 26, 39);
     self.pinImageView.center = self.mapView.center;
@@ -36,10 +42,6 @@ static NSString * const kUnwindSegue = @"unwindToProfessionalInfo";
     MKCoordinateRegion adjustedRegion = [self.mapView regionThatFits:viewRegion];
     [self.mapView setRegion:adjustedRegion animated:YES];
 }
-
-// REVERSE LOOKUP FROM STRING
-/*
-*/
 
 #pragma mark - MKMapViewDelegate
 
@@ -86,7 +88,6 @@ static NSString * const kUnwindSegue = @"unwindToProfessionalInfo";
                                           region.span.latitudeDelta /= 8.0;
                                           
                                           [self.mapView setRegion:region animated:YES];
-                                          // [self.mapView addAnnotation:placemark];
                                           
                                       } else {
                                           
@@ -98,9 +99,76 @@ static NSString * const kUnwindSegue = @"unwindToProfessionalInfo";
                                   }];
 }
 
+
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
     
-    NSLog(@"SERCH TEXT: %@", searchText);
+    if (searchText.length > 0) {
+        
+        self.searchResultsTableView.hidden = NO;
+        
+        MKLocalSearchRequest *request = [[MKLocalSearchRequest alloc] init];
+        request.naturalLanguageQuery = searchText;
+        request.region = self.mapView.region;
+        
+        [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+        localSearch = [[MKLocalSearch alloc] initWithRequest:request];
+        
+        [localSearch startWithCompletionHandler:^(MKLocalSearchResponse *response, NSError *error){
+            
+            [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+            
+            if (error != nil) {
+                return;
+            }
+            
+            if ([response.mapItems count] == 0) {
+                return;
+            }
+            
+            searchResults = response;
+            [self.searchResultsTableView reloadData];
+        }];
+        
+    } else {
+     
+        self.searchResultsTableView.hidden = YES;
+    }
+}
+
+#pragma mark - TableViewDelagate
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return [searchResults.mapItems count];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kCell];
+    
+    MKMapItem *item = searchResults.mapItems[indexPath.row];
+    
+    cell.textLabel.text = [NSString stringWithFormat:@"%@ %@",
+                           item.name,
+                           item.placemark.addressDictionary[@"Street"] ? item.placemark.addressDictionary[@"Street"] : @""];
+
+    return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    MKMapItem *item = searchResults.mapItems[indexPath.row];
+
+    MKCoordinateRegion region = self.mapView.region;
+    region.center = [(CLCircularRegion *)item.placemark.region center];
+    region.span.longitudeDelta /= 8.0;
+    region.span.latitudeDelta /= 8.0;
+    
+    self.searchBar.text = @"";
+    [self.searchBar reloadInputViews];
+    
+    self.searchResultsTableView.hidden = YES;
+    [self.mapView setRegion:region animated:YES];
+    
 }
 
 #pragma mark - Actions

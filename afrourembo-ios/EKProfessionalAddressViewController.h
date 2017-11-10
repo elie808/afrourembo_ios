@@ -17,11 +17,12 @@
 #import <MapKit/MapKit.h>
 #import <MBProgressHUD/MBProgressHUD.h>
 
-@interface EKProfessionalAddressViewController : UIViewController <MKMapViewDelegate, UISearchBarDelegate>
+@interface EKProfessionalAddressViewController : UIViewController <MKMapViewDelegate, UISearchBarDelegate, UITableViewDataSource, UITableViewDelegate>
 
 @property (assign, nonatomic) CLLocationCoordinate2D passedCoords;
 
 @property (strong, nonatomic) IBOutlet UISearchBar *searchBar;
+@property (strong, nonatomic) IBOutlet UITableView *searchResultsTableView;
 @property (strong, nonatomic) IBOutlet MKMapView *mapView;
 @property (strong, nonatomic) IBOutlet UIImageView *pinImageView;
 
