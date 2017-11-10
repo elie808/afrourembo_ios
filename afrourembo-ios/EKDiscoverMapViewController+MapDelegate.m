@@ -92,16 +92,24 @@ static NSString *kSalonAnnotation = @"salonLocations";
     NSMutableArray *pinsArray = [NSMutableArray array];
     CLLocationCoordinate2D coords = CLLocationCoordinate2DMake(0, 0);
     
-//    for (Salon *salonObj in dataSource) {
-    for (Professional *profObj in dataSource) {
+    for (id venueObj in dataSource) {
     
-        // Create Pin object
         EKAnnotation *annotation = [[EKAnnotation alloc] init];
-        annotation.title = profObj.business.name;
-        annotation.profObj = profObj;
         
-        coords = CLLocationCoordinate2DMake(profObj.business.latitude, profObj.business.longitude);
-        annotation.coordinate = coords;
+        if ([venueObj isKindOfClass:[Professional class]]) {
+            
+            annotation.title = ((Professional*)venueObj).business.name;
+            annotation.profObj = (Professional*)venueObj;
+            
+            coords = CLLocationCoordinate2DMake(((Professional*)venueObj).business.latitude,
+                                                ((Professional*)venueObj).business.longitude);
+            annotation.coordinate = coords;
+        }
+        
+        if ([venueObj isKindOfClass:[Salon class]]) {
+            
+            //TODO: ADD SALON MAPPING
+        }
         
         [pinsArray addObject:annotation];
     }

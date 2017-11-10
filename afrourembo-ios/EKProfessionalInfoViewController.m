@@ -72,23 +72,14 @@ static NSString * const kAddressSegue       = @"professionalInfoToProfessionalAd
     
     if (indexPath.row == 1) {
         
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kAdressCell forIndexPath:indexPath];
-        cell.textLabel.text = labelValue;
-        cell.detailTextLabel.text = placeHolderValue;
+        EKTextFieldTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kAdressCell forIndexPath:indexPath];
+        cell.cellTitleLabel.text = labelValue;
+        cell.cellTextField.text = placeHolderValue;
+        cell.cellTextField.tag = 1;
         
         return cell;
     }
-    
-//    if (indexPath.row == 2) {
-//
-//        EKTextFieldTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kPhoneCell forIndexPath:indexPath];
-//        cell.cellTitleLabel.text = labelValue;
-//        cell.cellTextField.text = placeHolderValue;
-//        cell.cellTextField.tag = 1;
-//        
-//        return cell;
-//    }
-    
+
     if (indexPath.row == 2) {
         
         EKProfessionalInfoTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kSwitchCell forIndexPath:indexPath];
@@ -130,7 +121,7 @@ static NSString * const kAddressSegue       = @"professionalInfoToProfessionalAd
     }
     
     if (textField.tag == 1) {
-        self.phoneNumber = textField.text;
+        self.address = textField.text;
     }
 }
 

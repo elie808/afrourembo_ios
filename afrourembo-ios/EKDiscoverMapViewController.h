@@ -25,7 +25,9 @@ static NSString * const kCompanyProfile = @"discoverMapToCompanyProfileVC";
 
 @property (strong, nonatomic) Customer *passedCustomer;
 @property (strong, nonatomic) Service *passedService;
-@property (strong, nonatomic) NSArray *venuesList; // store Salon list, to enable filtering tableView dataSource for oneCell display
+
+/// store Pro/Salon list, to enable filtering tableView dataSource for oneCell display
+@property (strong, nonatomic) NSArray *venuesList;
 
 @property (strong, nonatomic) IBOutlet UISearchBar *searchBar;
 @property (strong, nonatomic) IBOutlet UIButton *toggleButton;
@@ -35,7 +37,9 @@ static NSString * const kCompanyProfile = @"discoverMapToCompanyProfileVC";
 
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) NSMutableArray *dataSourceArray;
-@property (strong, nonatomic) NSMutableDictionary *contentOffsetDictionary; // used to keep track of collectionViews scrolling positions/offsets
+
+/// used to keep track of collectionViews scrolling positions/offsets
+@property (strong, nonatomic) NSMutableDictionary *contentOffsetDictionary;
 
 - (IBAction)didTapPresentListButton:(UIButton *)sender;
 
