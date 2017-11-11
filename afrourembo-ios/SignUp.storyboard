@@ -1355,29 +1355,9 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="43q-WW-izN">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                                <view key="tableFooterView" contentMode="scaleToFill" id="LlA-NS-mvR">
-                                    <rect key="frame" x="0.0" y="161.5" width="375" height="44"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <subviews>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mHb-Iw-pkc">
-                                            <rect key="frame" x="8" y="8" width="359" height="28"/>
-                                            <state key="normal" title="zabre"/>
-                                            <connections>
-                                                <action selector="didTapDummyButton:" destination="7Nt-wP-He4" eventType="touchDown" id="i9Z-we-FPZ"/>
-                                            </connections>
-                                        </button>
-                                    </subviews>
-                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <constraints>
-                                        <constraint firstAttribute="trailing" secondItem="mHb-Iw-pkc" secondAttribute="trailing" constant="8" id="2nF-pk-fFi"/>
-                                        <constraint firstAttribute="bottom" secondItem="mHb-Iw-pkc" secondAttribute="bottom" constant="8" id="ecI-al-PfN"/>
-                                        <constraint firstItem="mHb-Iw-pkc" firstAttribute="top" secondItem="LlA-NS-mvR" secondAttribute="top" constant="8" id="hGO-3b-3a1"/>
-                                        <constraint firstItem="mHb-Iw-pkc" firstAttribute="leading" secondItem="LlA-NS-mvR" secondAttribute="leading" constant="8" id="vfH-2i-lvd"/>
-                                    </constraints>
-                                </view>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="availabilitySwitchCell" id="b6A-ZD-cvj" customClass="EKSwitchTableViewCell">
-                                        <rect key="frame" x="0.0" y="55.5" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="56" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="b6A-ZD-cvj" id="IDb-pj-YgH">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
@@ -1413,7 +1393,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="availabilityTimeCell" id="fnk-r3-iWM" customClass="EKDualButtonTableViewCell">
-                                        <rect key="frame" x="0.0" y="99.5" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="100" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fnk-r3-iWM" id="dre-d8-6yP">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
