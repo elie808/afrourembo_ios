@@ -54,6 +54,12 @@
 + (Day *)defaultModelForDay:(NSNumber *)day;
 - (void)resetModel;
 
+/// Set model values for lunch break to default from 1:00 PM to 2:00 PM
+- (void)defaultLunchBreakValues;
+
+/// Set model values for lunch break to 0s
+- (void)resetLunchBreakValues;
+
 + (NSString *)dayStringFromNumber:(NSNumber *)dayNumber;
 + (NSString *)dayInitialsStringFromNumber:(NSNumber *)dayNumber;
 + (NSNumber *)dayNumberFromDay:(NSDate *)aDay;

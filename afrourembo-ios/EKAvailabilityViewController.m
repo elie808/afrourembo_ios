@@ -178,6 +178,8 @@ static CGFloat const kDatePickerHeight = 180;
     if (indexPath.row == 2) {
     
         dayModel.lunchBreakSelected = switchValue;
+        
+        if (switchValue) { [dayModel defaultLunchBreakValues]; } else { [dayModel resetLunchBreakValues]; }
     }
     
     [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:indexPath.section] withRowAnimation:UITableViewRowAnimationMiddle];
@@ -269,6 +271,7 @@ static CGFloat const kDatePickerHeight = 180;
     [self hideDatePicker];
 }
 
+/// PURELY FOR TESTING. WILL PROBABLY NEED TO REMOVE AT SOME POINT
 - (IBAction)didTapDummyButton:(id)sender {
     
     NSMutableArray *daysArray = [NSMutableArray new];
@@ -280,13 +283,38 @@ static CGFloat const kDatePickerHeight = 180;
         }
     }
     
-    [Day postAvailabilityDays:[NSArray arrayWithArray:daysArray]
-            professionalToken:self.passedProfessional.token
-                    withBlock:^(NSArray *daysArray) {
-                        
-                    } withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
-                        
-                    }];
+    if (daysArray.count > 0) {
+        
+        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        [Day postAvailabilityDays:[NSArray arrayWithArray:daysArray]
+                professionalToken:@"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1YTA2NzQyNDQ2OWE5NzY5NTNmMmY1MzIiLCJjb250ZXh0IjoicHJvZmVzc2lvbmFsIiwiaWF0IjoxNTEwMzcyMzg4LCJleHAiOjE3Njk1NzIzODh9.2B59wErqNSQNqegYaWstUhUkolpHESbSaMJIhYDH_fw"
+                        withBlock:^(NSArray *daysArray) {
+                            
+                            [MBProgressHUD hideHUDForView:self.view animated:YES];
+                            
+                            [self showMessage:@"You have succesfully created your AfroUrembo account!"
+                                    withTitle:@"Success"
+                              completionBlock:^(UIAlertAction *action) {
+                                  
+//                                  [self performSegueWithIdentifier:kVendorDashSegue sender:nil];
+                              }];
+                            
+                            
+                        } withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
+                            
+                            [MBProgressHUD hideHUDForView:self.view animated:YES];
+                            [self showMessage:errorMessage
+                                    withTitle:@"There is something wrong"
+                              completionBlock:nil];
+                        }];
+        
+    } else {
+        
+        [self showMessage:@"You need to add the schedule of 1 day at least in order to proceed"
+                withTitle:@"There is something wrong"
+          completionBlock:nil];
+    }
+
 }
 
 #pragma mark - Navigation

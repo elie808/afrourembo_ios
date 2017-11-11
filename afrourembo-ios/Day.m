@@ -11,6 +11,9 @@
 static NSString * const kDefaultStartHour = @"9:00 AM";
 static NSString * const kDefaultEndHour = @"5:00 PM";
 
+static NSString * const kDefaultLunchStartHour = @"1:00 PM";
+static NSString * const kDefaultLunchEndHour = @"2:00 PM";
+
 @implementation Day
 
 + (Day *)defaultModelForDay:(NSNumber *)day {
@@ -24,8 +27,8 @@ static NSString * const kDefaultEndHour = @"5:00 PM";
     model.serviceStartDate  = kDefaultStartHour;
     model.serviceEndDate    = kDefaultEndHour;
     model.lunchBreakSelected = NO;
-    model.lunchStartDate    = kDefaultStartHour;
-    model.lunchEndDate      = kDefaultEndHour;
+    model.lunchStartDate    = kDefaultLunchStartHour;
+    model.lunchEndDate      = kDefaultLunchEndHour;
     
     model.fromHours     = @9;
     model.fromMinutes   = @0;
@@ -45,13 +48,29 @@ static NSString * const kDefaultEndHour = @"5:00 PM";
     self.serviceStartDate   = kDefaultStartHour;
     self.serviceEndDate     = kDefaultEndHour;
     self.lunchBreakSelected = NO;
-    self.lunchStartDate = kDefaultStartHour;
-    self.lunchEndDate   = kDefaultEndHour;
+    self.lunchStartDate = kDefaultLunchStartHour;
+    self.lunchEndDate   = kDefaultLunchEndHour;
     
     self.fromHours     = @9;
     self.fromMinutes   = @0;
     self.toHours       = @17;
     self.toMinutes     = @0;
+    self.lbFromHours   = @0;
+    self.lbFromMinutes = @0;
+    self.lbToHours     = @0;
+    self.lbToMinutes   = @0;
+}
+
+- (void)defaultLunchBreakValues {
+    
+    self.lbFromHours   = @13;
+    self.lbFromMinutes = @0;
+    self.lbToHours     = @14;
+    self.lbToMinutes   = @0;
+}
+
+- (void)resetLunchBreakValues {
+    
     self.lbFromHours   = @0;
     self.lbFromMinutes = @0;
     self.lbToHours     = @0;
