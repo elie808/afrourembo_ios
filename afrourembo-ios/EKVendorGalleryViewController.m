@@ -14,6 +14,8 @@ static NSString * const kGalleryCell  = @"galleryCell";
 
 @implementation EKVendorGalleryViewController {
     NSMutableArray *_dataSource;
+    NSMutableArray *_picsToDeleteArray;
+    Pictures *_selectedPic;
 }
 
 - (void)viewDidLoad {
@@ -25,6 +27,8 @@ static NSString * const kGalleryCell  = @"galleryCell";
     [self.view addSubview:self.emptyDataView];
     [self.view bringSubviewToFront:self.addPicturesButton]; // make the button float on top of the empty data view
     
+    _selectedPic = nil;
+    _picsToDeleteArray = [NSMutableArray new];
     _dataSource = [NSMutableArray arrayWithArray:[EKSettings getSavedVendor].portfolio];
     
     if (_dataSource.count > 0) {
@@ -53,6 +57,22 @@ static NSString * const kGalleryCell  = @"galleryCell";
                                    options:YYWebImageOptionProgressiveBlur|YYWebImageOptionSetImageWithFadeAnimation
                                 completion:nil];
     
+//    if (pic.isSelected) {
+//        cell.layer.borderWidth = 2;
+//        cell.layer.borderColor = [UIColor colorWithRed:255./255. green:195./255. blue:0./255. alpha:1.0].CGColor;
+//    } else {
+//        cell.layer.borderWidth = 1;
+//        cell.layer.borderColor = [UIColor clearColor].CGColor;
+//    }
+
+    if ([pic.pictureID isEqualToString:_selectedPic.pictureID]) {
+        cell.layer.borderWidth = 2;
+        cell.layer.borderColor = [UIColor colorWithRed:255./255. green:195./255. blue:0./255. alpha:1.0].CGColor;
+    } else {
+        cell.layer.borderWidth = 1;
+        cell.layer.borderColor = [UIColor clearColor].CGColor;
+    }
+    
     return cell;
 }
 
@@ -62,7 +82,30 @@ static NSString * const kGalleryCell  = @"galleryCell";
     
     Pictures *pic = [_dataSource objectAtIndex:indexPath.row];
     
-    [self deletePictureWithID:pic.pictureID];
+    if ([_selectedPic.pictureID isEqualToString:pic.pictureID]) {
+        _selectedPic = nil;
+    } else {
+        _selectedPic = pic;
+    }
+
+    //    pic.isSelected = !pic.isSelected;
+    
+    // to support multiple image delete
+    // if (pic.isSelected) { [_picsToDeleteArray addObject:pic]; } else { [_picsToDeleteArray removeObject:pic]; }
+    
+//    if (_picsToDeleteArray.count == 0) {
+//        self.deleteButton.tintColor = [UIColor clearColor];
+//    } else {
+//        self.deleteButton.tintColor = [UIColor colorWithRed:255./255. green:195./255. blue:0./255. alpha:1.0];
+//    }
+    
+    [self.collectionView reloadData];
+    
+    if (_selectedPic) {
+        self.deleteButton.tintColor = [UIColor colorWithRed:255./255. green:195./255. blue:0./255. alpha:1.0];
+    } else {
+        self.deleteButton.tintColor = [UIColor clearColor];
+    }
 }
 
 #pragma mark - Actions
@@ -70,6 +113,17 @@ static NSString * const kGalleryCell  = @"galleryCell";
 - (IBAction)didTapAddPhotoPicture:(id)sender {
     
     [self presentAlertController];
+}
+
+- (IBAction)deletePictures:(id)sender {
+    
+//    if (_picsToDeleteArray && _picsToDeleteArray.count > 0) {
+//        for (Pictures *pic in _picsToDeleteArray) {
+//            [self deletePictureWithID:pic.pictureID];
+//        }
+//    }
+    
+    if (_selectedPic) { [self deletePictureWithID:_selectedPic.pictureID]; }
 }
 
 #pragma mark - UIImagePickerControllerDelegate
@@ -157,6 +211,7 @@ static NSString * const kGalleryCell  = @"galleryCell";
 - (void)deletePictureWithID:(NSString *)picID {
 
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    
     [ProfilePicture deleteProfessionalPortfolioPictureWithID:picID
                                                    withToken:[EKSettings getSavedVendor].token
                                                    withBlock:^(Professional *professional) {

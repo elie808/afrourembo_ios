@@ -20,6 +20,10 @@
 @interface Pictures : NSObject
 @property NSString *picture;
 @property NSString *pictureID;
+
+/// UI property
+@property (assign, nonatomic) BOOL isSelected;
+
 @end
 
 @interface ProfessionalFacebook : NSObject

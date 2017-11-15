@@ -95,10 +95,17 @@
                                 <segue destination="89L-fc-fIp" kind="unwind" unwindAction="unwindToBpSettingsVC:" id="AhT-34-gjH"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Delete" id="AFg-Bw-qDm">
+                            <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="deletePictures:" destination="442-nn-1zF" id="OUd-Lq-2mu"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="addPicturesButton" destination="YGQ-hb-f2u" id="CSU-IG-Nx9"/>
                         <outlet property="collectionView" destination="D0j-XW-6vJ" id="pUF-Bk-8zE"/>
+                        <outlet property="deleteButton" destination="AFg-Bw-qDm" id="VxJ-Bv-SfU"/>
                         <outlet property="emptyDataView" destination="lff-p1-fm7" id="LBY-6h-lXk"/>
                     </connections>
                 </viewController>

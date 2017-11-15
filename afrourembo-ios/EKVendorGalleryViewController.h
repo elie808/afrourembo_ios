@@ -20,10 +20,12 @@
 
 @interface EKVendorGalleryViewController : UIViewController <UICollectionViewDelegate, UICollectionViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *deleteButton;
 @property (strong, nonatomic) IBOutlet UIView *emptyDataView;
 @property (strong, nonatomic) IBOutlet UIButton *addPicturesButton;
 @property (strong, nonatomic) IBOutlet UICollectionView *collectionView;
 
 - (IBAction)didTapAddPhotoPicture:(id)sender;
+- (IBAction)deletePictures:(id)sender;
 
 @end
