@@ -34,7 +34,7 @@
 @property NSString *lunchStartDate;
 @property NSString *lunchEndDate;
 
-//Use these properties for server operations
+// Use these properties for server operations
 
 @property NSNumber *fromHours;
 @property NSNumber *fromMinutes;
@@ -51,6 +51,9 @@
 @property NSNumber *lunchBreakToHours;
 @property NSNumber *lunchBreakToMinutes;
 
+/// Produce a UI viewmodel from the server response of a Day object
++ (Day *)viewModelFrom:(Day *)responseObj;
+
 + (Day *)defaultModelForDay:(NSNumber *)day;
 - (void)resetModel;
 
@@ -64,8 +67,8 @@
 + (NSString *)dayInitialsStringFromNumber:(NSNumber *)dayNumber;
 + (NSNumber *)dayNumberFromDay:(NSDate *)aDay;
 
-+ (NSString *)fromTimeString:(Day *)day;
-+ (NSString *)toTimeString:(Day *)day;
+/// Return a HH:MM string from hours and minutes NSNumber parameters
++ (NSString *)formatTimeStringFromHour:(NSNumber *)hour andMinutes:(NSNumber *)minutes;
 
 /// correct for the fact that iOS counts days 1-7 (starting Sunday), and we need 0-6 (starting Monday). So we map iOS dayNumber values to values that work on our platform. Needless to mention how much of an utter shit salad this is.
 + (NSInteger)convertiOSDayToOurGaySystem:(NSInteger)iOSDayNumber;

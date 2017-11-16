@@ -20,7 +20,7 @@ static NSString * const kDefaultLunchEndHour = @"2:00 PM";
     
     Day *model = [Day new];
     
-//    model.day = day;
+    // UI model
     model.dayNumber = day;
     
     model.daySelected = NO;
@@ -30,6 +30,7 @@ static NSString * const kDefaultLunchEndHour = @"2:00 PM";
     model.lunchStartDate    = kDefaultLunchStartHour;
     model.lunchEndDate      = kDefaultLunchEndHour;
     
+    // server model
     model.fromHours     = @9;
     model.fromMinutes   = @0;
     model.toHours       = @17;
@@ -42,14 +43,42 @@ static NSString * const kDefaultLunchEndHour = @"2:00 PM";
     return model;
 }
 
++ (Day *)viewModelFrom:(Day *)responseObj {
+    
+    Day *model = [Day new];
+    
+    model.dayNumber = responseObj.dayNumber;
+    
+    model.daySelected = YES;
+    
+    // server model
+    model.fromHours     = responseObj.fromHours;
+    model.fromMinutes   = responseObj.fromMinutes;
+    model.toHours       = responseObj.toHours;
+    model.toMinutes     = responseObj.toMinutes;
+    model.lbFromHours   = responseObj.lunchBreakFromHours;
+    model.lbFromMinutes = responseObj.lunchBreakFromMinutes;
+    model.lbToHours     = responseObj.lunchBreakToHours;
+    model.lbToMinutes   = responseObj.lunchBreakFromMinutes;
+    
+    // UI model
+    model.serviceStartDate  = [Day formatTimeStringFromHour:responseObj.fromHours andMinutes:responseObj.fromMinutes];
+    model.serviceEndDate    = [Day formatTimeStringFromHour:responseObj.toHours andMinutes:responseObj.toMinutes];
+    model.lunchBreakSelected = responseObj.lunchBreakFromHours > 0 ? YES : NO;
+    model.lunchStartDate    = [Day formatTimeStringFromHour:responseObj.lunchBreakFromHours andMinutes:responseObj.lunchBreakFromMinutes];
+    model.lunchEndDate      = [Day formatTimeStringFromHour:responseObj.lunchBreakToHours andMinutes:responseObj.lunchBreakToMinutes];
+
+    return model;
+}
+
 - (void)resetModel {
     
     self.daySelected = NO;
-    self.serviceStartDate   = kDefaultStartHour;
-    self.serviceEndDate     = kDefaultEndHour;
+    self.serviceStartDate   = [Day formatTimeStringFromHour:@9 andMinutes:@0];
+    self.serviceEndDate     = [Day formatTimeStringFromHour:@17 andMinutes:@0];
     self.lunchBreakSelected = NO;
-    self.lunchStartDate = kDefaultLunchStartHour;
-    self.lunchEndDate   = kDefaultLunchEndHour;
+    self.lunchStartDate = [Day formatTimeStringFromHour:@13 andMinutes:@0];
+    self.lunchEndDate   = [Day formatTimeStringFromHour:@14 andMinutes:@0];
     
     self.fromHours     = @9;
     self.fromMinutes   = @0;
@@ -176,6 +205,11 @@ static NSString * const kDefaultLunchEndHour = @"2:00 PM";
     }
     
     return @"";
+}
+
++ (NSString *)formatTimeStringFromHour:(NSNumber *)hour andMinutes:(NSNumber *)minutes {
+
+    return [NSString stringWithFormat:@"%02d:%02d", hour.intValue, minutes.intValue];
 }
 
 + (NSString *)fromTimeString:(Day *)day {
