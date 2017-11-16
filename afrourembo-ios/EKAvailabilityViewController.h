@@ -17,10 +17,11 @@
 
 @interface EKAvailabilityViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, EKSwitchCellDelegate, EKDualButtonCellDelegate>
 
-@property (strong, nonatomic) Professional *passedProfessional;
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
-
 @property (strong, nonatomic) IBOutlet UIView *datePickerView;
+
+@property (strong, nonatomic) Professional *passedProfessional;
+@property (assign, nonatomic) BOOL isInEditMode;
 
 - (IBAction)didChangeDate:(UIDatePicker *)sender;
 - (IBAction)didTapCancelDatePicker:(id)sender;

@@ -9,6 +9,7 @@
 #import "EKAvailabilityViewController.h"
 
 static NSString * const kVendorDashSegue = @"availabilityVcToVendorDashboard";
+static NSString * const kUnwindToSettingsSegue = @"unwindAvailabilityToBPSettingsVC";
 
 static NSString * const kSwitchCell = @"availabilitySwitchCell";
 static NSString * const kTimeCell   = @"availabilityTimeCell";
@@ -36,43 +37,19 @@ static CGFloat const kDatePickerHeight = 180;
     
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleDone
                                                                              target:self action:@selector(didTapDoneButton)];
-//    self.navigationItem.rightBarButtonItem.tintColor = [UIColor colorWithRed:255./255. green:195./255. blue:0./255. alpha:1.0];
+    // self.navigationItem.rightBarButtonItem.tintColor = [UIColor colorWithRed:255./255. green:195./255. blue:0./255. alpha:1.0];
     
     [self initializeDataFormatters];
-    _dataSourceArray = [NSMutableArray arrayWithArray:[self createDataSource]];
     
-    self.datePickerView.frame = CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, kDatePickerHeight);
-    [self.view addSubview:self.datePickerView];
-    self.datePickerView.hidden = YES;
-}
+    // create datasource with empty days for entire week
+    _dataSourceArray = [NSMutableArray arrayWithArray:[self createEmptyDataSource]];
+    
+    if (self.isInEditMode) {
 
-/// Used to manipulate dates from strings and numbers and vice versa
-- (void)initializeDataFormatters {
+        [self createEditableDataSource];
+    }
     
-    _numberFormatter = [[NSNumberFormatter alloc] init];
-    _numberFormatter.numberStyle = NSNumberFormatterDecimalStyle;
-    
-    _completeDateFormatter = [[NSDateFormatter alloc] init];
-    _completeDateFormatter.dateFormat = @"HH:mm";
-    
-    _hoursDateFormatter = [[NSDateFormatter alloc] init];
-    _hoursDateFormatter.dateFormat = @"HH";
-    
-    _minutesDateFormatter = [[NSDateFormatter alloc] init];
-    _minutesDateFormatter.dateFormat = @"mm";
-}
-
-- (NSArray *)createDataSource {
-    
-    Day *monday     = [Day defaultModelForDay:@0];
-    Day *tuesday    = [Day defaultModelForDay:@1];
-    Day *wednesday  = [Day defaultModelForDay:@2];
-    Day *thursday   = [Day defaultModelForDay:@3];
-    Day *friday     = [Day defaultModelForDay:@4];
-    Day *saturday   = [Day defaultModelForDay:@5];
-    Day *sunday     = [Day defaultModelForDay:@6];
-    
-    return @[monday, tuesday, wednesday, thursday, friday, saturday, sunday];
+    [self initializeDatePickerUI];
 }
 
 #pragma mark - UITableViewDataSource
@@ -227,14 +204,19 @@ static CGFloat const kDatePickerHeight = 180;
                             
                             [MBProgressHUD hideHUDForView:self.view animated:YES];
                             
-                            [self showMessage:@"You have succesfully created your AfroUrembo account!"
-                                    withTitle:@"Success"
-                              completionBlock:^(UIAlertAction *action) {
-                                  
-                                  [self performSegueWithIdentifier:kVendorDashSegue sender:nil];
+                            if (self.isInEditMode) {
+                            
+                                [self performSegueWithIdentifier:kUnwindToSettingsSegue sender:nil];
+                          
+                            } else {
+                              
+                                [self showMessage:@"You have succesfully created your AfroUrembo account!"
+                                      withTitle:@"Success"
+                                completionBlock:^(UIAlertAction *action) {
+                                    [self performSegueWithIdentifier:kVendorDashSegue sender:nil];
                               }];
-                            
-                            
+                          }
+
                         } withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
                             
                             [MBProgressHUD hideHUDForView:self.view animated:YES];
@@ -271,52 +253,6 @@ static CGFloat const kDatePickerHeight = 180;
     [self hideDatePicker];
 }
 
-/// PURELY FOR TESTING. WILL PROBABLY NEED TO REMOVE AT SOME POINT
-- (IBAction)didTapDummyButton:(id)sender {
-    
-    NSMutableArray *daysArray = [NSMutableArray new];
-    
-    for (Day *day in _dataSourceArray) {
-        
-        if (day.daySelected) {
-            [daysArray addObject:day];
-        }
-    }
-    
-    if (daysArray.count > 0) {
-        
-        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-        [Day postAvailabilityDays:[NSArray arrayWithArray:daysArray]
-                professionalToken:@"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1YTA2NzQyNDQ2OWE5NzY5NTNmMmY1MzIiLCJjb250ZXh0IjoicHJvZmVzc2lvbmFsIiwiaWF0IjoxNTEwMzcyMzg4LCJleHAiOjE3Njk1NzIzODh9.2B59wErqNSQNqegYaWstUhUkolpHESbSaMJIhYDH_fw"
-                        withBlock:^(NSArray *daysArray) {
-                            
-                            [MBProgressHUD hideHUDForView:self.view animated:YES];
-                            
-                            [self showMessage:@"You have succesfully created your AfroUrembo account!"
-                                    withTitle:@"Success"
-                              completionBlock:^(UIAlertAction *action) {
-                                  
-//                                  [self performSegueWithIdentifier:kVendorDashSegue sender:nil];
-                              }];
-                            
-                            
-                        } withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
-                            
-                            [MBProgressHUD hideHUDForView:self.view animated:YES];
-                            [self showMessage:errorMessage
-                                    withTitle:@"There is something wrong"
-                              completionBlock:nil];
-                        }];
-        
-    } else {
-        
-        [self showMessage:@"You need to add the schedule of 1 day at least in order to proceed"
-                withTitle:@"There is something wrong"
-          completionBlock:nil];
-    }
-
-}
-
 #pragma mark - Navigation
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
@@ -324,6 +260,62 @@ static CGFloat const kDatePickerHeight = 180;
 }
 
 #pragma mark - Helpers
+
+/// Used to manipulate dates from strings and numbers and vice versa
+- (void)initializeDataFormatters {
+    
+    _numberFormatter = [[NSNumberFormatter alloc] init];
+    _numberFormatter.numberStyle = NSNumberFormatterDecimalStyle;
+    
+    _completeDateFormatter = [[NSDateFormatter alloc] init];
+    _completeDateFormatter.dateFormat = @"HH:mm";
+    
+    _hoursDateFormatter = [[NSDateFormatter alloc] init];
+    _hoursDateFormatter.dateFormat = @"HH";
+    
+    _minutesDateFormatter = [[NSDateFormatter alloc] init];
+    _minutesDateFormatter.dateFormat = @"mm";
+}
+
+- (NSArray *)createEmptyDataSource {
+    
+    Day *monday     = [Day defaultModelForDay:@0];
+    Day *tuesday    = [Day defaultModelForDay:@1];
+    Day *wednesday  = [Day defaultModelForDay:@2];
+    Day *thursday   = [Day defaultModelForDay:@3];
+    Day *friday     = [Day defaultModelForDay:@4];
+    Day *saturday   = [Day defaultModelForDay:@5];
+    Day *sunday     = [Day defaultModelForDay:@6];
+    
+    return @[monday, tuesday, wednesday, thursday, friday, saturday, sunday];
+}
+
+/// replace default valued days in datasource, with editable days
+- (void)createEditableDataSource {
+    
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    [Day getAvailabilityForVendor:self.passedProfessional.token withBlock:^(NSArray *daysArray) {
+        
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+        
+        // place populated days in their proper spot in the datasource array
+        for (Day *day in daysArray) { _dataSourceArray[day.dayNumber.integerValue] = [Day viewModelFrom:day]; }
+        
+        [self.tableView reloadData];
+        
+    } withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
+        
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+        [self showMessage:errorMessage withTitle:@"Error" completionBlock:nil];
+    }];
+}
+
+- (void)initializeDatePickerUI {
+    
+    self.datePickerView.frame = CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, kDatePickerHeight);
+    [self.view addSubview:self.datePickerView];
+    self.datePickerView.hidden = YES;
+}
 
 - (void)showDatePicker {
     
