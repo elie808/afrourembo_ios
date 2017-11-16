@@ -11,6 +11,7 @@
 #import "EKNetworkingConstants.h"
 
 typedef void (^ServicesPostSuccessBlock)(Service *servicenObj);
+typedef void (^ServicesDeleteSuccessBlock)(NSArray <Service *> *servicesArray);
 typedef void (^ServicesErrorBlock)(NSError *error, NSString *errorMessage, NSNumber *statusCode);
 
 @interface Service (API)
@@ -22,8 +23,12 @@ typedef void (^ServicesErrorBlock)(NSError *error, NSString *errorMessage, NSNum
 + (RKObjectMapping *)map2;
 
 + (RKResponseDescriptor *)postServicesResponseDescriptor;
++ (RKResponseDescriptor *)deleteServiceResponseDescriptor;
+
 + (RKRequestDescriptor *)postServicesRequestDescriptor;
 
 + (void)postServiceForVendor:(NSString *)vendorToken forCategory:(NSString *)catID service:(NSString *)serviceID price:(CGFloat)price time:(CGFloat)time withBlock:(ServicesPostSuccessBlock)successBlock withErrors:(ServicesErrorBlock)errorBlock;
+
++ (void)deleteServiceWithID:(NSString *)serviceID withToken:(NSString *)userToken withBlock:(ServicesDeleteSuccessBlock)successBlock withErrors:(ServicesErrorBlock)errorBlock;
 
 @end

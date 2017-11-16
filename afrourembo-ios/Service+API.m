@@ -59,6 +59,17 @@
     return response;
 }
 
++ (RKResponseDescriptor *)deleteServiceResponseDescriptor {
+    
+    RKResponseDescriptor *response = [RKResponseDescriptor
+                                      responseDescriptorWithMapping:[Service map1]
+                                      method:RKRequestMethodDELETE
+                                      pathPattern:kProfessionalDeleteServiceAPIPath
+                                      keyPath:nil
+                                      statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+    return response;
+}
+
 #pragma mark - APIs
 
 + (void)postServiceForVendor:(NSString *)vendorToken forCategory:(NSString *)catID service:(NSString *)serviceID price:(CGFloat)price time:(CGFloat)time withBlock:(ServicesPostSuccessBlock)successBlock withErrors:(ServicesErrorBlock)errorBlock {
@@ -103,6 +114,43 @@
                                                 errorBlock(error, @"You are not connected to the internet.", 0);
                                             }
                                         }];
+}
+
++ (void)deleteServiceWithID:(NSString *)serviceID withToken:(NSString *)userToken withBlock:(ServicesDeleteSuccessBlock)successBlock withErrors:(ServicesErrorBlock)errorBlock {
+    
+    [[[RKObjectManager sharedManager] HTTPClient] setDefaultHeader:@"Authorization" value:userToken];
+    
+    [[RKObjectManager sharedManager] deleteObject:nil
+                                             path:[NSString stringWithFormat:@"%@/%@",kProfessionalServiceAPIPath, serviceID]
+                                       parameters:nil
+                                          success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+                                              
+                                              NSLog(@"!!! SUCCESS DELETING SERVICE !!!");
+                                              
+                                              successBlock(mappingResult.array);
+                                              
+                                          } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                                              
+                                              if (operation.HTTPRequestOperation.responseData) {
+                                                  
+                                                  // exctract error message
+                                                  NSDictionary *myDic = [NSJSONSerialization
+                                                                         JSONObjectWithData:operation.HTTPRequestOperation.responseData
+                                                                         options:NSJSONReadingMutableLeaves
+                                                                         error:nil];
+                                                  
+                                                  NSString *errorMessage = [myDic valueForKey:@"message"];
+                                                  
+                                                  NSNumber *statusCode = [myDic valueForKey:@"statusCode"];
+                                                  
+                                                  NSLog(@"-------ERROR MESSAGE: %@", errorMessage);
+                                                  errorBlock(error, errorMessage, statusCode);
+                                                  
+                                              } else {
+                                                  
+                                                  errorBlock(error, @"You are not connected to the internet.", 0);
+                                              }
+                                          }];
 }
 
 @end

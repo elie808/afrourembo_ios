@@ -139,7 +139,8 @@
                                                      ]];
     
     [objectManager addResponseDescriptorsFromArray:@[
-                                                     [Service postServicesResponseDescriptor]
+                                                     [Service postServicesResponseDescriptor],
+                                                     [Service deleteServiceResponseDescriptor]
                                                      ]];
 }
 
