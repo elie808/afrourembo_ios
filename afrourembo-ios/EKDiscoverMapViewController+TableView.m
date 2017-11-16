@@ -89,8 +89,8 @@ static NSString * const  kDayCollectionViewCell = @"whiteSalonListInCellCollecti
     
     NSString *dayOfTheWeek = [Day dayInitialsStringFromNumber:schedule.dayNumber];
     
-    NSString *fromTime = [Day fromTimeString:schedule];
-    NSString *toTime   = [Day toTimeString:schedule];
+    NSString *fromTime = [Day formatTimeStringFromHour:schedule.fromHours andMinutes:schedule.fromMinutes];
+    NSString *toTime   = [Day formatTimeStringFromHour:schedule.toHours andMinutes:schedule.toMinutes];
 
     if (indexPath.row % 3 == 0) {
     
