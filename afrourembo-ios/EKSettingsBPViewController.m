@@ -36,9 +36,9 @@
     self.tableViewDataSource = @[
 //                                 kProfile,
                                  kBusinessInfo,
-                                 kManagePhotos
+                                 kManagePhotos,
 //                                 kServices,
-//                                 kAvailability
+                                 kAvailability
                                  ];
     
     self.collectionViewDataSource = @[];
@@ -58,6 +58,14 @@
     
     if ([segue.identifier isEqualToString:kGallerySegue]) {
         
+    }
+    
+    if ([segue.identifier isEqualToString:kAvailabilitySegue]) {
+        
+        UINavigationController *navController = [segue destinationViewController];
+        EKAvailabilityViewController *vc = (EKAvailabilityViewController *)([navController viewControllers][0]);
+        vc.isInEditMode = YES;
+        vc.passedProfessional = [EKSettings getSavedVendor];
     }
 }
 

@@ -58,7 +58,7 @@ static NSString * const kTableCell = @"settingsTableCell";
     }
     
     if ([selectedItem isEqualToString:kAvailability]) {
-        
+        [self performSegueWithIdentifier:kAvailabilitySegue sender:nil];
     }
 }
 

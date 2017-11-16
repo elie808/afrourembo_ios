@@ -10,6 +10,7 @@
 #import "EKCompanyProfessionalCollectionViewCell.h"
 #import "EKSettings.h"
 
+#import "EKAvailabilityViewController.h"
 #import "EKProfessionalInfoViewController.h"
 
 #import <YYWebImage/YYWebImage.h>
@@ -24,6 +25,7 @@ static NSString * const kAvailability = @"Availability";
 static NSString * const kWelcomeSegue   = @"bpSettingsToWelcomeVC";
 static NSString * const kBusinessSegue  = @"settingsToProfileInfoVC";
 static NSString * const kGallerySegue   = @"settingsToGalleryVC";
+static NSString * const kAvailabilitySegue = @"settingsToAvailabilityVC";
 
 @interface EKSettingsBPViewController : UIViewController
 
