@@ -173,7 +173,25 @@ static CGFloat const kTimePickerHeight = 230.;
 
 - (IBAction)didTapRemoveServiceButton:(id)sender {
     
-    [self performSegueWithIdentifier:kUnwindRemoveSegue sender:nil];
+    if ([EKSettings getSavedVendor].token.length > 0) {
+        
+        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        [Service deleteServiceWithID:self.passedService.serviceId
+                           withToken:[EKSettings getSavedVendor].token
+                           withBlock:^(NSArray<Service *> *servicesArray) {
+                           
+                               [MBProgressHUD hideHUDForView:self.view animated:YES];
+                               [self performSegueWithIdentifier:kUnwindRemoveSegue sender:nil];
+                               
+                           } withErrors:^(NSError *error, NSString *errorMessage, NSNumber *statusCode) {
+                              
+                               [MBProgressHUD hideHUDForView:self.view animated:YES];
+                               [self showMessage:errorMessage withTitle:@"Error" completionBlock:nil];
+                          }];
+    } else {
+     
+        [self performSegueWithIdentifier:kUnwindRemoveSegue sender:nil];
+    }
 }
 
 - (void)doneWithNumberPad {

@@ -15,6 +15,7 @@ static NSString * const kAvailabilitySegue = @"addServiceToAvailabilityVC";
 static NSString * const kServiceCell = @"addServiceCell";
 
 static NSString * const kUnwindFromNewService = @"unwindFromNewServiceToServiceVC";
+static NSString * const kUnwindToSettings = @"unwindAddServicesToBPSettings";
 
 @implementation EKAddServiceViewController
 
@@ -24,6 +25,26 @@ static NSString * const kUnwindFromNewService = @"unwindFromNewServiceToServiceV
     self.title = @"Services";
     
     self.dataSourceArray = [NSMutableArray new];
+    
+    // if viewcontroller is accessed from professional's Settings. Could potentially use the unwindSegueID property for extra ghettoness
+    if ([EKSettings getSavedVendor].token.length > 0) {
+        
+        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        [Professional getProfileForProfessional:[EKSettings getSavedVendor].token
+                                      withBlock:^(Professional *professionalObj) {
+        
+                                          [MBProgressHUD hideHUDForView:self.view animated:YES];
+                                          
+                                          [self.dataSourceArray addObjectsFromArray:professionalObj.services];
+                                          
+                                          [self.tableView reloadData];
+                                          
+                                      } withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
+                                          
+                                          [MBProgressHUD hideHUDForView:self.view animated:YES];
+                                          [self showMessage:errorMessage withTitle:@"Error" completionBlock:nil];
+                                      }];
+    }
 }
 
 #pragma mark - UITableViewDataSource
@@ -45,8 +66,13 @@ static NSString * const kUnwindFromNewService = @"unwindFromNewServiceToServiceV
     
     Service *serviceObj = [self.dataSourceArray objectAtIndex:indexPath.row];
     
-    cell.cellTextLabel.text = serviceObj.name;
-    
+    // ghetto workaround to handle all nil serviceName proprety when adding a new Service...who needs fucking consistency anyway ?!?!?
+    if (serviceObj.serviceName.length > 0) {
+        cell.cellTextLabel.text = serviceObj.serviceName;
+    } else {
+        cell.cellTextLabel.text = serviceObj.name;
+    }
+
     return cell;
 }
 
@@ -74,27 +100,57 @@ static NSString * const kUnwindFromNewService = @"unwindFromNewServiceToServiceV
 
 - (IBAction)didTapNextButton:(id)sender {
     
-    Service *serviceObj = [self.dataSourceArray firstObject];
+    if (self.dataSourceArray.count > 0) {
     
-    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    [Service postServiceForVendor:self.passedProfessional.token
-                      forCategory:serviceObj.categoryId //@"5941502e4c59bd6a64bb4def"
-                          service:serviceObj.serviceId //@"590f3fa827757f0c9cf5fc0d"
-                            price:serviceObj.price
-                             time:serviceObj.time
-                        withBlock:^(Service *servicenObj) {
-                            
-                            [MBProgressHUD hideHUDForView:self.view animated:YES];
-                            [self performSegueWithIdentifier:kAvailabilitySegue sender:nil];
-                        }
-                       withErrors:^(NSError *error, NSString *errorMessage, NSNumber *statusCode) {
-                           
-                           [MBProgressHUD hideHUDForView:self.view animated:YES];
-                           
-                           [self showMessage:errorMessage
-                                   withTitle:@"There is something wrong"
-                             completionBlock:nil];
-                       }];
+        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        for (int i = 0; i < self.dataSourceArray.count; i++) {
+     
+            Service *serviceObj = [self.dataSourceArray objectAtIndex:i];
+            
+            [Service postServiceForVendor:self.passedProfessional.token
+                              forCategory:serviceObj.categoryId
+                                  service:serviceObj.serviceId
+                                    price:serviceObj.price
+                                     time:serviceObj.time
+                                withBlock:^(Service *servicenObj) {
+                                    
+                                    if (i == self.dataSourceArray.count-1) {
+                                        
+                                        [MBProgressHUD hideHUDForView:self.view animated:YES];
+                                        
+                                        if (self.unwindSegueID && self.unwindSegueID.length > 0) {
+                                            [self performSegueWithIdentifier:kUnwindToSettings sender:nil];
+                                        } else {
+                                            [self performSegueWithIdentifier:kAvailabilitySegue sender:nil];
+                                        }
+                                    }
+                                }
+                               withErrors:^(NSError *error, NSString *errorMessage, NSNumber *statusCode) {
+                                   
+                                   [MBProgressHUD hideHUDForView:self.view animated:YES];
+                                   
+                                   //TODO: REMOVE THIS GHETTO ASS FIX, AND ALWAYS DISPLAY ERRORS !!
+                                   if (self.unwindSegueID.length > 0) {
+                                       //THIS IS ALSO BULLSHIT AND SHOULD BE REMOVED
+                                       [self performSegueWithIdentifier:kUnwindToSettings sender:nil];
+                                       
+                                   } else {
+                                   
+                                       [self showMessage:errorMessage
+                                               withTitle:@"There is something wrong"
+                                         completionBlock:nil];
+                                   }
+                               }];
+        }
+    
+    } else {
+        
+        if (self.unwindSegueID && self.unwindSegueID.length > 0) {
+            [self performSegueWithIdentifier:kUnwindToSettings sender:nil];
+        } else {
+            [self performSegueWithIdentifier:kAvailabilitySegue sender:nil];
+        }
+    }
 }
 
 #pragma mark - Navigation
