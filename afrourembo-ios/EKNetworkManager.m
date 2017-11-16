@@ -98,7 +98,8 @@
     
     [objectManager addResponseDescriptorsFromArray:@[
                                                      [Day availabilityResponseDescriptor],
-                                                     [Day vendorAvailabilityResponseDescriptor]
+                                                     [Day vendorAvailabilityResponseDescriptor],
+                                                     [Day getAvailabilityResponseDescriptor]
                                                      ]];
     
     [objectManager addResponseDescriptorsFromArray:@[

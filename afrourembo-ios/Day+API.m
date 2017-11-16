@@ -66,6 +66,17 @@
     return response;
 }
 
++ (RKResponseDescriptor *)getAvailabilityResponseDescriptor {
+    
+    RKResponseDescriptor *response = [RKResponseDescriptor
+                                      responseDescriptorWithMapping:[Day map2]
+                                      method:RKRequestMethodGET
+                                      pathPattern:kProfessionalAvailabilityAPIPath
+                                      keyPath:nil
+                                      statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+    return response;
+}
+
 #pragma mark - API
 
 + (void)postAvailabilityDays:(NSArray *)availableDays professionalToken:(NSString*)token withBlock:(AvailabilitySuccessBlock)successBlock withErrors:(AvailabilityErrorBlock)errorBlock {
@@ -113,6 +124,41 @@
                                               success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
                                                   
                                                   NSLog(@"Success Fetching Vendor Bookings!!");
+                                                  successBlock(mappingResult.array);
+                                                  
+                                              } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                                                  
+                                                  if (operation.HTTPRequestOperation.responseData) {
+                                                      
+                                                      // exctract error message
+                                                      NSDictionary *myDic = [NSJSONSerialization
+                                                                             JSONObjectWithData:operation.HTTPRequestOperation.responseData
+                                                                             options:NSJSONReadingMutableLeaves
+                                                                             error:nil];
+                                                      
+                                                      NSString *errorMessage = [myDic valueForKey:@"message"];
+                                                      
+                                                      NSNumber *statusCode = [myDic valueForKey:@"statusCode"];
+                                                      
+                                                      NSLog(@"-------ERROR MESSAGE: %@", errorMessage);
+                                                      errorBlock(error, errorMessage, [statusCode integerValue]);
+                                                      
+                                                  } else {
+                                                      
+                                                      errorBlock(error, @"You are not connected to the internet.", 0);
+                                                  }
+                                              }];
+}
+
++ (void)getAvailabilityForVendor:(NSString *)vendorToken withBlock:(AvailabilitySuccessBlock)successBlock withErrors:(AvailabilityErrorBlock)errorBlock {
+    
+    [[[RKObjectManager sharedManager] HTTPClient] setDefaultHeader:@"Authorization" value:vendorToken];
+    
+    [[RKObjectManager sharedManager] getObjectsAtPath:kProfessionalAvailabilityAPIPath
+                                           parameters:nil
+                                              success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+                                                  
+                                                  NSLog(@"Success Fetching Vendor Availability!!");
                                                   successBlock(mappingResult.array);
                                                   
                                               } failure:^(RKObjectRequestOperation *operation, NSError *error) {

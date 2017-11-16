@@ -29,6 +29,9 @@ typedef void (^AvailabilityErrorBlock)(NSError *error, NSString *errorMessage, N
 /// Used for mapping response of vendor's availability, when queried by the user
 + (RKResponseDescriptor *)vendorAvailabilityResponseDescriptor;
 
+/// Used for mapping response of vendor's availability, when queried by the vendor
++ (RKResponseDescriptor *)getAvailabilityResponseDescriptor;
+
 + (void)postAvailabilityDays:(NSArray *)availableDays professionalToken:(NSString*)token withBlock:(AvailabilitySuccessBlock)successBlock withErrors:(AvailabilityErrorBlock)errorBlock;
 
 /**
@@ -38,6 +41,14 @@ typedef void (^AvailabilityErrorBlock)(NSError *error, NSString *errorMessage, N
  @param errorBlock Server error logging
  */
 + (void)getAvailabilityOfVendor:(NSString *)vendorID ofType:(NSString *)vendorType withToken:(NSString *)userToken withBlock:(AvailabilitySuccessBlock)successBlock withErrors:(AvailabilityErrorBlock)errorBlock;
+
+/**
+ Returns all the available days of a vendor, when queried by them (to populate the availability VC)
+ 
+ @param successBlock Server will return an array of available days
+ @param errorBlock Server error logging
+ */
++ (void)getAvailabilityForVendor:(NSString *)vendorToken withBlock:(AvailabilitySuccessBlock)successBlock withErrors:(AvailabilityErrorBlock)errorBlock;
 
 @end
 
