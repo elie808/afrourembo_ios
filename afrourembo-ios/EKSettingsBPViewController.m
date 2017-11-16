@@ -37,7 +37,7 @@
 //                                 kProfile,
                                  kBusinessInfo,
                                  kManagePhotos,
-//                                 kServices,
+                                 kServices,
                                  kAvailability
                                  ];
     
@@ -54,6 +54,15 @@
         EKProfessionalInfoViewController *vc = (EKProfessionalInfoViewController *)([navController viewControllers][0]);
         vc.barButton.title = @"Done";
         vc.unwindSegueID = @"unwindToBpSettingsVC";
+    }
+
+    if ([segue.identifier isEqualToString:kAddServicesSegue]) {
+    
+        UINavigationController *navController = [segue destinationViewController];
+        EKAddServiceViewController *vc = (EKAddServiceViewController *)([navController viewControllers][0]);
+        vc.barButton.title = @"Done";
+        vc.passedProfessional = [EKSettings getSavedVendor];
+        vc.unwindSegueID = @"unwindAddServicesToBPSettings";
     }
     
     if ([segue.identifier isEqualToString:kGallerySegue]) {

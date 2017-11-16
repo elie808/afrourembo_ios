@@ -173,6 +173,16 @@
             </objects>
             <point key="canvasLocation" x="1079" y="819"/>
         </scene>
+        <!--addServicesVC-->
+        <scene sceneID="SGa-fN-LdF">
+            <objects>
+                <viewControllerPlaceholder storyboardName="SignUp" referencedIdentifier="addServicesVC" id="sce-Br-Ox2" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="NUt-kG-YxN"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ICj-47-uDn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1046" y="1551"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="J5S-2v-Axc">
             <objects>
@@ -190,6 +200,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UdW-k5-PGD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="308" y="820"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="fC2-km-bWa">
+            <objects>
+                <navigationController storyboardIdentifier="AddServicesSettingsVC" automaticallyAdjustsScrollViewInsets="NO" id="RnX-Y3-2hS" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="GsJ-vE-Dje">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="sce-Br-Ox2" kind="relationship" relationship="rootViewController" id="0EJ-ts-YCv"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Z5E-Kl-EBd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="308" y="1552"/>
         </scene>
     </scenes>
     <resources>
