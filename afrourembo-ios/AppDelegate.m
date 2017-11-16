@@ -57,7 +57,7 @@ static NSString * const kVendorMainStoryboard = @"Vendor_Main";
     
     // Availability
 //    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"SignUp" bundle:nil];
-//    UINavigationController *rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"Availability"];
+//    UINavigationController *rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"AvailabilityVC"];
 //    self.window.rootViewController = rootViewController;
     
     // Add Service

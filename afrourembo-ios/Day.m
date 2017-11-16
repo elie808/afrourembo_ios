@@ -64,7 +64,7 @@ static NSString * const kDefaultLunchEndHour = @"2:00 PM";
     // UI model
     model.serviceStartDate  = [Day formatTimeStringFromHour:responseObj.fromHours andMinutes:responseObj.fromMinutes];
     model.serviceEndDate    = [Day formatTimeStringFromHour:responseObj.toHours andMinutes:responseObj.toMinutes];
-    model.lunchBreakSelected = responseObj.lunchBreakFromHours > 0 ? YES : NO;
+    model.lunchBreakSelected = responseObj.lunchBreakFromHours.integerValue > 0 ? YES : NO;
     model.lunchStartDate    = [Day formatTimeStringFromHour:responseObj.lunchBreakFromHours andMinutes:responseObj.lunchBreakFromMinutes];
     model.lunchEndDate      = [Day formatTimeStringFromHour:responseObj.lunchBreakToHours andMinutes:responseObj.lunchBreakToMinutes];
 
@@ -96,6 +96,10 @@ static NSString * const kDefaultLunchEndHour = @"2:00 PM";
     self.lbFromMinutes = @0;
     self.lbToHours     = @14;
     self.lbToMinutes   = @0;
+    
+    // UI model
+    self.lunchStartDate = [Day formatTimeStringFromHour:@13 andMinutes:@0];
+    self.lunchEndDate   = [Day formatTimeStringFromHour:@14 andMinutes:@0];
 }
 
 - (void)resetLunchBreakValues {
@@ -104,6 +108,10 @@ static NSString * const kDefaultLunchEndHour = @"2:00 PM";
     self.lbFromMinutes = @0;
     self.lbToHours     = @0;
     self.lbToMinutes   = @0;
+    
+    // UI model
+    self.lunchStartDate = [Day formatTimeStringFromHour:@0 andMinutes:@0];
+    self.lunchEndDate   = [Day formatTimeStringFromHour:@0 andMinutes:@0];
 }
 
 + (NSNumber *)dayNumberFromDay:(NSDate *)aDay {
