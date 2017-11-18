@@ -39,6 +39,9 @@ typedef void (^ProfessionalEditErrorBlock)(NSError *error, NSString *errorMessag
 /// Professional profile, requested by the professional
 + (RKResponseDescriptor *)getProfessionalProfileResponseDescriptor;
 
+/// Update Professional profile
++ (RKResponseDescriptor *)putProfessionalProfileResponseDescriptor;
+
 + (void)signUpProfessional:(NSString *)email password:(NSString *)password  firstName:(NSString *)fName lastName:(NSString *)lName phoneNumber:(NSString *)phone  withBlock:(ProfessionalSignUpSuccessBlock)successBlock withErrors:(ProfessionalSignUpErrorBlock)errorBlock;
 
 + (void)resetPassword:(NSString *)newPassword forPhoneNumber:(NSString *)phoneNumber andConfirmationCode:(NSString *)confirmationCode withBlock:(ProfessionalSignUpSuccessBlock)successBlock withErrors:(ProfessionalSignUpErrorBlock)errorBlock;
@@ -51,5 +54,8 @@ typedef void (^ProfessionalEditErrorBlock)(NSError *error, NSString *errorMessag
 
 /// GET professional's profile from a professional's account
 + (void)getProfileForProfessional:(NSString *)token withBlock:(ProfessionalSignUpSuccessBlock)successBlock withErrors:(ProfessionalSignUpErrorBlock)errorBlock;
+
+/// PUT professional's profile to update it
++ (void)udpateProfile:(NSString *)fName lastName:(NSString *)lName phoneNumber:(NSString *)phone about:(NSString *)aboutText withToken:(NSString *)userToken withBlock:(ProfessionalSignUpSuccessBlock)successBlock withErrors:(ProfessionalSignUpErrorBlock)errorBlock;
 
 @end

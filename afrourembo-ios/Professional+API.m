@@ -15,7 +15,7 @@
 + (RKObjectMapping *)map1 {
     
     RKObjectMapping *mapping = [RKObjectMapping mappingForClass:[Professional class]];
-    [mapping addAttributeMappingsFromArray:@[@"email", @"password", @"token", @"fName", @"lName", @"phone", @"isMobile"]];
+    [mapping addAttributeMappingsFromArray:@[@"email", @"password", @"token", @"fName", @"lName", @"phone", @"isMobile", @"about"]];
     
     [mapping addAttributeMappingsFromArray:@[@"ratingBasedOn", @"profilePicture"]];
     
@@ -171,6 +171,17 @@
     RKResponseDescriptor *response = [RKResponseDescriptor
                                       responseDescriptorWithMapping:[Professional map1]
                                       method:RKRequestMethodGET
+                                      pathPattern:kProfessionalProfileAPIPath
+                                      keyPath:nil
+                                      statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+    return response;
+}
+
++ (RKResponseDescriptor *)putProfessionalProfileResponseDescriptor {
+    
+    RKResponseDescriptor *response = [RKResponseDescriptor
+                                      responseDescriptorWithMapping:[Professional map1]
+                                      method:RKRequestMethodPUT
                                       pathPattern:kProfessionalProfileAPIPath
                                       keyPath:nil
                                       statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
@@ -363,6 +374,50 @@
                                                       errorBlock(error, @"You are not connected to the internet.", 0);
                                                   }
                                               }];
+}
+
++ (void)udpateProfile:(NSString *)fName lastName:(NSString *)lName phoneNumber:(NSString *)phone about:(NSString *)aboutText withToken:(NSString *)userToken withBlock:(ProfessionalSignUpSuccessBlock)successBlock withErrors:(ProfessionalSignUpErrorBlock)errorBlock {
+    
+    [[[RKObjectManager sharedManager] HTTPClient] setDefaultHeader:@"Authorization" value:userToken];
+    
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    [params setValue:fName forKey:@"fName"];
+    [params setValue:lName forKey:@"lName"];
+    [params setValue:phone forKey:@"phone"];
+    [params setValue:aboutText forKey:@"about"];
+    
+    [[RKObjectManager sharedManager] putObject:nil
+                                          path:kProfessionalProfileAPIPath
+                                    parameters:params
+                                       success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+                                           
+                                           NSLog(@"Success Updating Pro BIO!!");
+                                           
+                                           Professional *proObj = [mappingResult.array firstObject];
+                                           successBlock(proObj);
+                                       }
+                                       failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                                           
+                                           if (operation.HTTPRequestOperation.responseData) {
+                                               
+                                               // exctract error message
+                                               NSDictionary *myDic = [NSJSONSerialization
+                                                                      JSONObjectWithData:operation.HTTPRequestOperation.responseData
+                                                                      options:NSJSONReadingMutableLeaves
+                                                                      error:nil];
+                                               
+                                               NSString *errorMessage = [myDic valueForKey:@"message"];
+                                               
+                                               NSNumber *statusCode = [myDic valueForKey:@"statusCode"];
+                                               
+                                               NSLog(@"-------ERROR MESSAGE: %@", errorMessage);
+                                               errorBlock(error, errorMessage, [statusCode integerValue]);
+                                               
+                                           } else {
+                                               
+                                               errorBlock(error, @"You are not connected to the internet.", 0);
+                                           }
+                                       }];
 }
 
 @end

@@ -39,6 +39,7 @@
 @property NSString *email;
 @property NSString *phone;
 @property NSString *password;
+@property NSString *about;
 
 @property (assign, nonatomic) BOOL isMobile;
 
