@@ -110,6 +110,7 @@ static NSString * const kRoleSegue = @"signupBPToRoleVC";
                                NSLog(@"PROFESSIONAL SIGNED UP!!");
                                [EKSettings saveVendor:professionalObj];
                                
+                               // can't place this call outside, because we depend on token, which is innexistent outside...0 sense.
                                if (_didPickProfilePicture) {
 
                                    [ProfilePicture
