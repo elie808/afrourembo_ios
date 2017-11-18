@@ -53,6 +53,7 @@
     delta.lName = newProfessional.lName.length > 0 ? newProfessional.lName : existingProfessional.lName;
     delta.email = newProfessional.email.length > 0 ? newProfessional.email : existingProfessional.email;
     delta.phone = newProfessional.phone.length > 0 ? newProfessional.phone : existingProfessional.phone;
+    delta.about = newProfessional.about.length > 0 ? newProfessional.about : existingProfessional.about;
     
     delta.profilePicture = newProfessional.profilePicture.length > 0 ? newProfessional.profilePicture : existingProfessional.profilePicture;
     
@@ -83,6 +84,7 @@
                               @"lName" : self.lName.length > 0 ? self.lName : @"",
                               @"phone" : self.phone.length > 0 ? self.phone : @"",
                               @"email" : self.email.length > 0 ? self.email : @"",
+                              @"about" : self.about.length > 0 ? self.about : @"",
                               @"portfolio" : portfolioArray.count > 0 ? portfolioArray : [NSArray new],
                               @"token" : self.token.length > 0 ? self.token : @""
                               };

@@ -34,7 +34,7 @@
 //                    ];
 
     self.tableViewDataSource = @[
-//                                 kProfile,
+                                 kProfile,
                                  kBusinessInfo,
                                  kManagePhotos,
                                  kServices,

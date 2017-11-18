@@ -129,6 +129,7 @@
 		47BD3CEC1EC2A7680062AA97 /* EKAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 47BD3CEB1EC2A7680062AA97 /* EKAnnotation.m */; };
 		47BFEA651EA49AB10091522B /* EKBookingProCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 47BFEA641EA49AB10091522B /* EKBookingProCollectionViewCell.m */; };
 		47BFEA691EA4A9A30091522B /* EKBookingDayCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 47BFEA681EA4A9A30091522B /* EKBookingDayCollectionViewCell.m */; };
+		47C07CF81FBF000F00950EB0 /* EKEditProfileBPViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47C07CF71FBF000F00950EB0 /* EKEditProfileBPViewController.m */; };
 		47C42DDC1E7D6509008CBF51 /* Welcome.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 47C42DDB1E7D6509008CBF51 /* Welcome.storyboard */; };
 		47C42DDE1E7D65D1008CBF51 /* SignUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 47C42DDD1E7D65D1008CBF51 /* SignUp.storyboard */; };
 		47C4804D1F4DBC3B00493E0B /* EKBookingViewController+CollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 47C4804C1F4DBC3B00493E0B /* EKBookingViewController+CollectionView.m */; };
@@ -403,6 +404,8 @@
 		47BFEA641EA49AB10091522B /* EKBookingProCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKBookingProCollectionViewCell.m; sourceTree = "<group>"; };
 		47BFEA671EA4A9A30091522B /* EKBookingDayCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKBookingDayCollectionViewCell.h; sourceTree = "<group>"; };
 		47BFEA681EA4A9A30091522B /* EKBookingDayCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKBookingDayCollectionViewCell.m; sourceTree = "<group>"; };
+		47C07CF61FBF000F00950EB0 /* EKEditProfileBPViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKEditProfileBPViewController.h; sourceTree = "<group>"; };
+		47C07CF71FBF000F00950EB0 /* EKEditProfileBPViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKEditProfileBPViewController.m; sourceTree = "<group>"; };
 		47C30CAD1EC11F8B00CE66DD /* afrourembo-ios.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "afrourembo-ios.entitlements"; sourceTree = "<group>"; };
 		47C42DDB1E7D6509008CBF51 /* Welcome.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Welcome.storyboard; sourceTree = "<group>"; };
 		47C42DDD1E7D65D1008CBF51 /* SignUp.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SignUp.storyboard; sourceTree = "<group>"; };
@@ -730,6 +733,8 @@
 				477EEDA91F8EE541007124E0 /* EKSettingsBPViewController+TableView.m */,
 				47605DC31F8EF01100DB1968 /* EKSettingsBPViewController+CollectionView.h */,
 				47605DC41F8EF01100DB1968 /* EKSettingsBPViewController+CollectionView.m */,
+				47C07CF61FBF000F00950EB0 /* EKEditProfileBPViewController.h */,
+				47C07CF71FBF000F00950EB0 /* EKEditProfileBPViewController.m */,
 			);
 			name = "BP - Settings";
 			sourceTree = "<group>";
@@ -1513,6 +1518,7 @@
 				478971941EA756F100917DB1 /* EKEditFacebookProfileInfoViewController.m in Sources */,
 				47822B091EDDC37C001E247F /* EKSalesSummaryTableViewCell.m in Sources */,
 				475572111F519A1D00741CA9 /* Payment.m in Sources */,
+				47C07CF81FBF000F00950EB0 /* EKEditProfileBPViewController.m in Sources */,
 				47843A581F048CD000686CDD /* Day+API.m in Sources */,
 				479A84FC1F9DCE68002ECC2C /* Salon+Helpers.m in Sources */,
 				47FFF9751E99E81F008B6A31 /* EKImageTextTableViewCell.m in Sources */,

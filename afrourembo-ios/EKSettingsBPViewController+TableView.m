@@ -42,7 +42,7 @@ static NSString * const kTableCell = @"settingsTableCell";
     NSString *selectedItem = self.tableViewDataSource[indexPath.row];
     
     if ([selectedItem isEqualToString:kProfile]) {
-        
+        [self performSegueWithIdentifier:kProfileSegue sender:nil];
     }
     
     if ([selectedItem isEqualToString:kBusinessInfo]) {
