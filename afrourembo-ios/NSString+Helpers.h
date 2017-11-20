@@ -13,4 +13,7 @@
 - (BOOL)validEmail;
 - (BOOL)isValidPhoneNumber;
 
+/// return a properly formatted string with the number of photos
++ (NSString *)numberOfPhotosForCount:(NSInteger)photoCount;
+
 @end

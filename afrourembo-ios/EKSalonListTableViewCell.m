@@ -24,7 +24,7 @@
     
     self.cellStarImageView.image = [UIImage imageForStars:salon.stars];
     self.cellPriceLabel.text = [NSString stringWithFormat:@"$%@+", salon.price];
-    self.cellPhotoCountLabel.text = [NSString stringWithFormat:@"%@ Photo(s)", salon.photoCount];
+    self.cellPhotoCountLabel.text = [NSString numberOfPhotosForCount:salon.photoCount.integerValue];
     
     self.cellUserImageView.image = [UIImage imageNamed:salon.userImageName];
     self.cellUserNameLabel.text = salon.userName;
@@ -51,14 +51,11 @@
     
     if (profObj.portfolio && profObj.portfolio.count > 0) {
         
-        self.cellPhotoCountLabel.text = [NSString stringWithFormat:@"%lu Photo(s)", (unsigned long)profObj.portfolio.count];
+        self.cellPhotoCountLabel.text = [NSString numberOfPhotosForCount:profObj.portfolio.count];
         
         Pictures *picObj = profObj.portfolio[0];
         [self.cellMainImageView yy_setImageWithURL:[NSURL URLWithString:picObj.picture]
                                            options:YYWebImageOptionProgressiveBlur|YYWebImageOptionSetImageWithFadeAnimation];
-    } else {
-        
-        self.cellPhotoCountLabel.text = @"0 Photos";
     }
     
     if (profObj.isMobile) {

@@ -11,6 +11,7 @@
 #import "Professional.h"
 #import "Salon.h"
 #import "UIImage+Helpers.h"
+#import "NSString+Helpers.h"
 #import <YYWebImage/YYWebImage.h>
 
 @interface EKSalonListTableViewCell : UITableViewCell

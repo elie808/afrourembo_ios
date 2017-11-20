@@ -39,4 +39,20 @@
     return [testPhoneEN evaluateWithObject:self];
 }
 
++ (NSString *)numberOfPhotosForCount:(NSInteger)photoCount {
+    
+    if ( (int)photoCount == 1) {
+        
+        return [NSString stringWithFormat:@"%d photo", (int)photoCount];
+        
+    } else if (photoCount == 0){
+    
+        return @"No photos";
+        
+    } else {
+        
+        return [NSString stringWithFormat:@"%d photos", (int)photoCount];
+    }
+}
+
 @end
