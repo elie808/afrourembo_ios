@@ -109,6 +109,7 @@
      if ([segue.identifier isEqualToString:kCompanyProfile]) {
          
          EKCompanyProfileViewController *vc = segue.destinationViewController;
+         vc.passedCustomer = self.passedCustomer;
          
          if ([sender isKindOfClass:[Professional class]]) {
              vc.professional = (Professional *)sender;
