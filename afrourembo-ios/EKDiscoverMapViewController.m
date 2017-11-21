@@ -23,42 +23,43 @@
         
     } else {
         
+        self.venuesList = [NSMutableArray new];
+        self.dataSourceArray = [NSMutableArray new];
+        self.contentOffsetDictionary = [NSMutableDictionary new];
+        
         [Explore getProfessionalsForCategory:self.passedService.name
                                   andService:nil
                                    WithBlock:^(NSArray<Professional *> *proArray) {
                                      
                                        _listViewVisible = NO;
                                        
-                                       self.contentOffsetDictionary = [NSMutableDictionary new];
-                                       self.venuesList = [NSArray arrayWithArray:proArray];
+                                       [self.venuesList addObjectsFromArray:proArray];
                                        
-                                       self.dataSourceArray = [NSMutableArray arrayWithArray:self.venuesList];
+                                       [self.dataSourceArray addObjectsFromArray:proArray];
                                        [self.tableView reloadData];
+                                       
                                        [self placeVenuePins:self.dataSourceArray];
                                        
                                    } withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
                                       [self showMessage:errorMessage withTitle:@"Error" completionBlock:nil];
                                   }];
         
-        //TODO: Service specific
-//        [Explore getExploreLocationsForUser:self.passedCustomer.token
-//                                  WithBlock:^(Explore *exploreObj) {
-//                                    
-//                                      NSLog(@"EXPLORE: %@", exploreObj);
-//                                      
-//                                      _listViewVisible = NO;
-//                                      
-//                                      self.contentOffsetDictionary = [NSMutableDictionary new];
-//                                      self.venuesList = exploreObj.professionals;
-//                                      
-////                                      self.venuesList = [self createStubs];//exploreObj.professionals;
-//                                      self.dataSourceArray = [NSMutableArray arrayWithArray:self.venuesList];
-//                                      [self.tableView reloadData];
-//                                      [self placeVenuePins:self.dataSourceArray];
-//
-//                                  } withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
-//                                     
-//                                 }];
+        [Explore getSalonsForCategory:self.passedService.name
+                           andService:nil
+                            WithBlock:^(NSArray<Salon *> *salonArray) {
+                                
+                                _listViewVisible = NO;
+
+                                [self.venuesList addObjectsFromArray:salonArray];
+
+                                [self.dataSourceArray addObjectsFromArray:salonArray];
+                                [self.tableView reloadData];
+
+//                                [self placeVenuePins:self.dataSourceArray];
+                                
+                            } withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
+                                [self showMessage:errorMessage withTitle:@"Error" completionBlock:nil];
+                            }];
     }
     
     [self initLayout];

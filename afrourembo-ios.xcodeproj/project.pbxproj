@@ -108,6 +108,7 @@
 		479AB26C1EA0CC0000A74659 /* EKCompanyServiceTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 479AB26B1EA0CC0000A74659 /* EKCompanyServiceTableViewCell.m */; };
 		479B30A11EF7476400DE2121 /* EKCategoryListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 479B30A01EF7476400DE2121 /* EKCategoryListViewController.m */; };
 		479B30AC1EF75B7F00DE2121 /* EKServiceListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 479B30AB1EF75B7F00DE2121 /* EKServiceListViewController.m */; };
+		479E37DC1FC41A9500630954 /* Pictures.m in Sources */ = {isa = PBXBuildFile; fileRef = 479E37DB1FC41A9500630954 /* Pictures.m */; };
 		479F00F21F89283E00676DDF /* EKConfirmPhoneNumberViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 479F00F11F89283E00676DDF /* EKConfirmPhoneNumberViewController.m */; };
 		479F7D681EF00A1700EB445A /* UIViewController+Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 479F7D671EF00A1700EB445A /* UIViewController+Helpers.m */; };
 		479F7D6B1EF0C09600EB445A /* Professional.m in Sources */ = {isa = PBXBuildFile; fileRef = 479F7D6A1EF0C09600EB445A /* Professional.m */; };
@@ -362,6 +363,8 @@
 		479B30A01EF7476400DE2121 /* EKCategoryListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKCategoryListViewController.m; sourceTree = "<group>"; };
 		479B30AA1EF75B7F00DE2121 /* EKServiceListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKServiceListViewController.h; sourceTree = "<group>"; };
 		479B30AB1EF75B7F00DE2121 /* EKServiceListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKServiceListViewController.m; sourceTree = "<group>"; };
+		479E37DA1FC41A9500630954 /* Pictures.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Pictures.h; sourceTree = "<group>"; };
+		479E37DB1FC41A9500630954 /* Pictures.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Pictures.m; sourceTree = "<group>"; };
 		479F00F01F89283E00676DDF /* EKConfirmPhoneNumberViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKConfirmPhoneNumberViewController.h; sourceTree = "<group>"; };
 		479F00F11F89283E00676DDF /* EKConfirmPhoneNumberViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKConfirmPhoneNumberViewController.m; sourceTree = "<group>"; };
 		479F7D661EF00A1700EB445A /* UIViewController+Helpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Helpers.h"; sourceTree = "<group>"; };
@@ -932,6 +935,8 @@
 				472E3F541FA5D45900EBA889 /* Favorite.m */,
 				4755720F1F519A1D00741CA9 /* Payment.h */,
 				475572101F519A1D00741CA9 /* Payment.m */,
+				479E37DA1FC41A9500630954 /* Pictures.h */,
+				479E37DB1FC41A9500630954 /* Pictures.m */,
 				479F7D691EF0C09600EB445A /* Professional.h */,
 				479F7D6A1EF0C09600EB445A /* Professional.m */,
 				471F5FB91F4870550097817E /* ProfilePicture.h */,
@@ -1520,6 +1525,7 @@
 				475572111F519A1D00741CA9 /* Payment.m in Sources */,
 				47C07CF81FBF000F00950EB0 /* EKEditProfileBPViewController.m in Sources */,
 				47843A581F048CD000686CDD /* Day+API.m in Sources */,
+				479E37DC1FC41A9500630954 /* Pictures.m in Sources */,
 				479A84FC1F9DCE68002ECC2C /* Salon+Helpers.m in Sources */,
 				47FFF9751E99E81F008B6A31 /* EKImageTextTableViewCell.m in Sources */,
 				479F7D6E1EF0C17E00EB445A /* Professional+API.m in Sources */,

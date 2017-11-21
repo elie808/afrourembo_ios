@@ -20,23 +20,24 @@ static NSString * const kServiceSegue = @"salonSelectToServiceVC";
     
     self.title = @"Select your salon";
     
-    Salon *salon1 = [Salon new];
-    salon1.userName = @"Salon 1";
-    salon1.isCentralizedModel = YES;
-    
-    Salon *salon2 = [Salon new];
-    salon2.userName = @"Salon 2";
-    salon2.isCentralizedModel = YES;
-    
-    Salon *salon3 = [Salon new];
-    salon3.userName = @"Salon 3";
-    salon3.isCentralizedModel = NO;
-    
-    Salon *salon4 = [Salon new];
-    salon4.userName = @"Salon 4";
-    salon4.isCentralizedModel = NO;
-    
-    _dataSourceArray = [NSMutableArray arrayWithObjects:salon1, salon2, salon3, salon4, nil];
+//    Salon *salon1 = [Salon new];
+//    salon1.userName = @"Salon 1";
+//    salon1.isCentralizedModel = YES;
+//    
+//    Salon *salon2 = [Salon new];
+//    salon2.userName = @"Salon 2";
+//    salon2.isCentralizedModel = YES;
+//    
+//    Salon *salon3 = [Salon new];
+//    salon3.userName = @"Salon 3";
+//    salon3.isCentralizedModel = NO;
+//    
+//    Salon *salon4 = [Salon new];
+//    salon4.userName = @"Salon 4";
+//    salon4.isCentralizedModel = NO;
+//    
+//    _dataSourceArray = [NSMutableArray arrayWithObjects:salon1, salon2, salon3, salon4, nil];
+    _dataSourceArray = [NSMutableArray new];
 }
 
 #pragma mark - UITableViewDataSource
@@ -55,7 +56,7 @@ static NSString * const kServiceSegue = @"salonSelectToServiceVC";
 
     Salon *salonObj = [_dataSourceArray objectAtIndex:indexPath.row];
     
-    cell.cellTextLabel.text = salonObj.userName;
+    cell.cellTextLabel.text = salonObj.name;
     
     if (salonObj.isCentralizedModel) {
     

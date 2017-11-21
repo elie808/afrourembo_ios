@@ -8,21 +8,28 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
-#import "Service.h"
+
+#import "Pictures.h"
 #import "Review.h"
+#import "Service.h"
 
 @interface Salon : NSObject
 
 @property NSString *salonID;
+@property NSString *token;
 
-@property NSString *mainImageName;
+@property NSString *fName;
+@property NSString *lName;
+@property NSString *email;
+@property NSString *profilePicture;
+@property NSString *name;
+@property NSString *address;
+
+@property NSArray<Pictures*> *portfolio;
+
+// unmapped fields
 @property NSNumber *stars;
 @property NSNumber *price;
-@property NSNumber *photoCount;
-@property NSString *userImageName;
-@property NSString *userName;
-@property NSString *address;
-@property NSString *token;
 
 //TODO: Encapsulate into object ?
 @property CGFloat longitude;

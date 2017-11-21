@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Pictures.h"
 #import "Day+API.h"
 #import "Service+API.h"
 
@@ -15,15 +16,6 @@
 @property NSString *address;
 @property CGFloat longitude;
 @property CGFloat latitude;
-@end
-
-@interface Pictures : NSObject
-@property NSString *picture;
-@property NSString *pictureID;
-
-/// UI property
-@property (assign, nonatomic) BOOL isSelected;
-
 @end
 
 @interface ProfessionalFacebook : NSObject

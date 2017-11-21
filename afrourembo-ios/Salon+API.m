@@ -15,11 +15,17 @@
 + (RKObjectMapping *)map1 {
     
     RKObjectMapping *mapping = [RKObjectMapping mappingForClass:[Salon class]];
-    [mapping addAttributeMappingsFromArray:@[@"token"]];
+    [mapping addAttributeMappingsFromArray:@[@"token", @"fName", @"lName", @"email", @"profilePicture", @"name", @"address"]];
     
     [mapping addAttributeMappingsFromDictionary:@{@"_id" : @"salonID"}];
     
-    //TODO: add mapping for remaining fields
+    RKObjectMapping *portfolioMapping = [RKObjectMapping mappingForClass:[Pictures class]];
+    [portfolioMapping addAttributeMappingsFromArray:@[@"picture"]];
+    [portfolioMapping addAttributeMappingsFromDictionary:@{@"_id" : @"pictureID"}];
+    
+    [mapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"portfolio"
+                                                                            toKeyPath:@"portfolio"
+                                                                          withMapping:portfolioMapping]];
     
     return mapping;
 }

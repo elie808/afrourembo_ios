@@ -20,15 +20,24 @@
 
 - (void)configureCellWithSalon:(Salon *)salon {
 
-    self.cellMainImageView.image = [UIImage imageNamed:salon.mainImageName];
+    self.cellUserNameLabel.text = salon.name;
+    self.cellAddressLabel.text = salon.address;
+    
+    [self.cellUserImageView yy_setImageWithURL:[NSURL URLWithString:salon.profilePicture]
+                                       options:YYWebImageOptionProgressiveBlur|YYWebImageOptionSetImageWithFadeAnimation];
     
     self.cellStarImageView.image = [UIImage imageForStars:salon.stars];
     self.cellPriceLabel.text = [NSString stringWithFormat:@"$%@+", salon.price];
-    self.cellPhotoCountLabel.text = [NSString numberOfPhotosForCount:salon.photoCount.integerValue];
+    self.cellPhotoCountLabel.text = [NSString numberOfPhotosForCount:salon.portfolio.count];
     
-    self.cellUserImageView.image = [UIImage imageNamed:salon.userImageName];
-    self.cellUserNameLabel.text = salon.userName;
-    self.cellAddressLabel.text = salon.address;
+    if (salon.portfolio && salon.portfolio.count > 0) {
+        
+        self.cellPhotoCountLabel.text = [NSString numberOfPhotosForCount:salon.portfolio.count];
+        
+        Pictures *picObj = salon.portfolio[0];
+        [self.cellMainImageView yy_setImageWithURL:[NSURL URLWithString:picObj.picture]
+                                           options:YYWebImageOptionProgressiveBlur|YYWebImageOptionSetImageWithFadeAnimation];
+    }
 }
 
 - (void)configureCellWithProfessional:(Professional *)profObj {

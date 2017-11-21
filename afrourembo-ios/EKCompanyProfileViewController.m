@@ -94,6 +94,15 @@
                  } withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
                      [self showMessage:errorMessage withTitle:@"Error" completionBlock:nil];
                  }];
+    
+//    [Customer deleteFavorite:_vendorID
+//                   withToken:[EKSettings getSavedCustomer].token
+//                   withBlock:^(NSArray<Favorite *> *favoriteObj) {
+//                       [self showMessage:@"Removed from favorites!" withTitle:@"Success" completionBlock:nil];
+//                   } withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
+//                      [self showMessage:errorMessage withTitle:@"Error" completionBlock:nil];
+//                  }];
+    
 }
 
 - (IBAction)didTapInstagramButton:(id)sender {

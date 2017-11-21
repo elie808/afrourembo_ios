@@ -27,7 +27,7 @@ static NSString * const kCompanyProfile = @"discoverMapToCompanyProfileVC";
 @property (strong, nonatomic) Service *passedService;
 
 /// store Pro/Salon list, to enable filtering tableView dataSource for oneCell display
-@property (strong, nonatomic) NSArray *venuesList;
+@property (strong, nonatomic) NSMutableArray *venuesList;
 
 @property (strong, nonatomic) IBOutlet UISearchBar *searchBar;
 @property (strong, nonatomic) IBOutlet UIButton *toggleButton;

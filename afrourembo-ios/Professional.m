@@ -11,9 +11,6 @@
 @implementation Business : NSObject
 @end
 
-@implementation Pictures
-@end
-
 @implementation ProfessionalFacebook : NSObject
 @end
 
