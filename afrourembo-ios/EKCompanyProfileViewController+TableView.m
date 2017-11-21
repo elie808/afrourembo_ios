@@ -22,9 +22,9 @@ static NSString * const kProfessionalsCollectionCell = @"companyProfessionalsCol
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     
-    if (self.professional) { return 3; }
+    if (self.passedProfessional) { return 3; }
     
-    if (self.salon) { return 4; }
+    if (self.passedSalon) { return 4; }
     
     return 0;
 }
@@ -32,11 +32,11 @@ static NSString * const kProfessionalsCollectionCell = @"companyProfessionalsCol
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
     // Professionals config
-    if (self.professional) {
+    if (self.passedProfessional) {
         
         switch (section) {
                 
-            case 0: return self.professional.services.count > 0 ? self.professional.services.count : 1; break; // Services
+            case 0: return self.passedProfessional.services.count > 0 ? self.passedProfessional.services.count : 1; break; // Services
                 
             case 1: return self.reviewsArray.count > 0 ? self.reviewsArray.count : 1; break; // Reviews
 
@@ -47,11 +47,11 @@ static NSString * const kProfessionalsCollectionCell = @"companyProfessionalsCol
     }
     
     // Salon config
-    if (self.salon) {
+    if (self.passedSalon) {
 
         switch (section) {
                 
-            case 0: return self.salon.servicesArray.count > 0 ? self.salon.servicesArray.count : 1; break; // Services
+            case 0: return self.passedSalon.servicesArray.count > 0 ? self.passedSalon.servicesArray.count : 1; break; // Services
                 
             case 1: return self.reviewsArray.count > 0 ? self.reviewsArray.count : 1; break; // Reviews
                 
@@ -70,7 +70,7 @@ static NSString * const kProfessionalsCollectionCell = @"companyProfessionalsCol
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     // Professionals config
-    if (self.professional) {
+    if (self.passedProfessional) {
      
         switch (indexPath.section) {
                 
@@ -78,9 +78,9 @@ static NSString * const kProfessionalsCollectionCell = @"companyProfessionalsCol
                 
                 EKCompanyServiceTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kServicesCell forIndexPath:indexPath];
                 
-                if (self.professional.services.count > 0) {
+                if (self.passedProfessional.services.count > 0) {
                     
-                    Service *serviceObj = [self.professional.services objectAtIndex:indexPath.row];
+                    Service *serviceObj = [self.passedProfessional.services objectAtIndex:indexPath.row];
                     
                     cell.cellDelegate = self;
                     [cell configureCellForService:serviceObj];
@@ -117,21 +117,21 @@ static NSString * const kProfessionalsCollectionCell = @"companyProfessionalsCol
                 
                 EKCompanyContactTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kContactsCell forIndexPath:indexPath];
                 
-                if (self.professional) {
+                if (self.passedProfessional) {
                     
                     if (indexPath.row == 0) {
                         cell.cellContactTypeLabel.text = @"Name";
-                        cell.cellContactValueLabel.text = self.professional.business.name;
+                        cell.cellContactValueLabel.text = self.passedProfessional.business.name;
                     }
                     
                     if (indexPath.row == 1) {
                         cell.cellContactTypeLabel.text = @"Phone";
-                        cell.cellContactValueLabel.text = self.professional.phone;
+                        cell.cellContactValueLabel.text = self.passedProfessional.phone;
                     }
                     
                     if (indexPath.row == 2) {
                         cell.cellContactTypeLabel.text = @"Address";
-                        cell.cellContactValueLabel.text = self.professional.business.address;
+                        cell.cellContactValueLabel.text = self.passedProfessional.business.address;
                     }
                 }
                 
@@ -144,7 +144,7 @@ static NSString * const kProfessionalsCollectionCell = @"companyProfessionalsCol
     }
     
     // Salon config
-    if (self.salon) {
+    if (self.passedSalon) {
         
         switch (indexPath.section) {
                 
@@ -152,9 +152,9 @@ static NSString * const kProfessionalsCollectionCell = @"companyProfessionalsCol
                 
                 EKCompanyServiceTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kServicesCell forIndexPath:indexPath];
                 
-                if (self.professional.services.count > 0) {
+                if (self.passedProfessional.services.count > 0) {
                     
-                    Service *serviceObj = [self.professional.services objectAtIndex:indexPath.row];
+                    Service *serviceObj = [self.passedProfessional.services objectAtIndex:indexPath.row];
                     
                     cell.cellDelegate = self;
                     [cell configureCellForService:serviceObj];
@@ -200,7 +200,7 @@ static NSString * const kProfessionalsCollectionCell = @"companyProfessionalsCol
                 EKCompanyContactTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kContactsCell forIndexPath:indexPath];
                 
                 //TODO: Config with proper salon name
-                if (self.salon) {
+                if (self.passedSalon) {
                     
                     if (indexPath.row == 0) {
 //                        cell.cellContactTypeLabel.text = @"Name";
@@ -231,7 +231,7 @@ static NSString * const kProfessionalsCollectionCell = @"companyProfessionalsCol
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    if (self.professional) {
+    if (self.passedProfessional) {
         switch (indexPath.section) {
                 
             // Services
@@ -271,7 +271,7 @@ static NSString * const kProfessionalsCollectionCell = @"companyProfessionalsCol
         }
     }
     
-    if (self.salon) {
+    if (self.passedSalon) {
     
         switch (indexPath.section) {
                 
@@ -320,7 +320,7 @@ static NSString * const kProfessionalsCollectionCell = @"companyProfessionalsCol
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
     
-    if (self.professional) {
+    if (self.passedProfessional) {
         
         switch (section) {
                 
@@ -334,7 +334,7 @@ static NSString * const kProfessionalsCollectionCell = @"companyProfessionalsCol
         }
     }
     
-    if (self.salon) {
+    if (self.passedSalon) {
         
         switch (section) {
                 
@@ -371,14 +371,14 @@ static NSString * const kProfessionalsCollectionCell = @"companyProfessionalsCol
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
-     if (self.professional) {
+     if (self.passedProfessional) {
          
          switch (indexPath.section) {
       
              case 2:
                  
                  if (indexPath.row == 1) { // PHONE
-                     if (self.professional.phone.length > 0) { [self call:self.professional.phone]; }
+                     if (self.passedProfessional.phone.length > 0) { [self call:self.passedProfessional.phone]; }
                  }
                  
                  break;
@@ -424,14 +424,14 @@ static NSString * const kProfessionalsCollectionCell = @"companyProfessionalsCol
 
 - (void)didTapBookButtonAtIndexPath:(NSIndexPath *)indexPath {
     
-    if (self.professional) {
+    if (self.passedProfessional) {
         
-        Service *serviceObj = [self.professional.services objectAtIndex:indexPath.row];
+        Service *serviceObj = [self.passedProfessional.services objectAtIndex:indexPath.row];
         
         [self performSegueWithIdentifier:kBookingSegue sender:serviceObj];
     }
     
-    if (self.salon) { }
+    if (self.passedSalon) { }
 }
 
 @end

@@ -101,11 +101,11 @@ static NSString * const kVendorProfile = @"favoritesToVendorProfileVC";
         
         if ([sender isKindOfClass:[Professional class]]) {
         
-            vc.professional = (Professional *)sender;
+            vc.passedProfessional = (Professional *)sender;
         
         } else if ([sender isKindOfClass:[Salon class]]) {
          
-            vc.salon = (Salon*)sender;
+            vc.passedSalon = (Salon*)sender;
         }
     }
 }

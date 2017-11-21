@@ -19,14 +19,14 @@
     
     self.reviewsArray = [NSMutableArray new];
 
-    if (self.professional) {
+    if (self.passedProfessional) {
         
-        _vendorID = self.professional.professionalID;
+        _vendorID = self.passedProfessional.professionalID;
         _vendorType = kProfessionalType;
         
-    } else if (self.salon) {
+    } else if (self.passedSalon) {
         
-        _vendorID = self.salon.salonID;
+        _vendorID = self.passedSalon.salonID;
         _vendorType = kSalonType;
     }
     
@@ -39,14 +39,14 @@
 
 - (void)configureCarousel {
     
-    if (self.professional) {
+    if (self.passedProfessional) {
         
         NSMutableArray *picLinksArray = [NSMutableArray new];
-        for (Pictures *pic in self.professional.portfolio) { [picLinksArray addObject:pic.picture]; }
+        for (Pictures *pic in self.passedProfessional.portfolio) { [picLinksArray addObject:pic.picture]; }
         
         [self.carousel configureWithVenueImages:picLinksArray];
         
-    } else if (self.salon) {
+    } else if (self.passedSalon) {
         
     }
 }
@@ -129,11 +129,11 @@
             vc.passedService = (Service *)sender;
         }
         
-        if (self.professional) {
+        if (self.passedProfessional) {
         
-            vc.professionalsDataSource = @[self.professional];
+            vc.professionalsDataSource = @[self.passedProfessional];
             
-        } else if (self.salon) {
+        } else if (self.passedSalon) {
             
             //TODO: pass all professionals from salon
         }

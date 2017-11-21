@@ -64,9 +64,9 @@ static NSString * const  kDayCollectionViewCell = @"whiteSalonListInCellCollecti
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    Professional *profObj = [self.dataSourceArray objectAtIndex:indexPath.row];
+    id venueObj = [self.dataSourceArray objectAtIndex:indexPath.row];
     
-    [self performSegueWithIdentifier:kCompanyProfile sender:profObj];
+    [self performSegueWithIdentifier:kCompanyProfile sender:venueObj];
 }
 
 #pragma mark - UICollectionViewDataSource

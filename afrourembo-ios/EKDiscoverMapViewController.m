@@ -113,11 +113,11 @@
          vc.passedCustomer = self.passedCustomer;
          
          if ([sender isKindOfClass:[Professional class]]) {
-             vc.professional = (Professional *)sender;
+             vc.passedProfessional = (Professional *)sender;
          }
          
          if ([sender isKindOfClass:[Salon class]]) {
-             vc.salon = (Salon *)sender;
+             vc.passedSalon = (Salon *)sender;
          }
      }
 }

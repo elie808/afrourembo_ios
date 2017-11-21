@@ -37,8 +37,8 @@ static NSString * const kBookingSegue     = @"companyProfileVCToBookingVC";
 @property (strong, nonatomic) IBOutlet EKCarousel *carousel;
 
 @property (strong, nonatomic) Customer *passedCustomer;
-@property (strong, nonatomic) Salon *salon;
-@property (strong, nonatomic) Professional *professional;
+@property (strong, nonatomic) Salon *passedSalon;
+@property (strong, nonatomic) Professional *passedProfessional;
 
 @property (strong, nonatomic) NSMutableArray *reviewsArray;
 
