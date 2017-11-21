@@ -38,7 +38,7 @@
                                        [self.dataSourceArray addObjectsFromArray:proArray];
                                        [self.tableView reloadData];
                                        
-                                       [self placeVenuePins:self.dataSourceArray];
+                                       [self placeVenuePins:proArray];
                                        
                                    } withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
                                       [self showMessage:errorMessage withTitle:@"Error" completionBlock:nil];
@@ -55,7 +55,7 @@
                                 [self.dataSourceArray addObjectsFromArray:salonArray];
                                 [self.tableView reloadData];
 
-//                                [self placeVenuePins:self.dataSourceArray];
+                                [self placeVenuePins:salonArray];
                                 
                             } withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
                                 [self showMessage:errorMessage withTitle:@"Error" completionBlock:nil];

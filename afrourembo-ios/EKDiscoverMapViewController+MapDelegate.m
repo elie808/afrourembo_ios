@@ -31,7 +31,22 @@ static NSString *kSalonAnnotation = @"salonLocations";
             annotationView = [[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:kSalonAnnotation];
             annotationView.enabled = YES;
             annotationView.canShowCallout = YES;
-            annotationView.image = [UIImage imageNamed:@"icPinNormal"]; //here we use a nice image instead of the default pins
+            
+            // here we use a nice image instead of the default pins.
+            // display proper colored pin depending on whether we're displaying a Professional or Salon
+            if ([annotation isKindOfClass:[EKAnnotation class]]) {
+                
+                // display pin for Professional
+                if ( ((EKAnnotation *)annotation).profObj) {
+                    
+                    annotationView.image = [UIImage imageNamed:@"icPinNormal"];
+                
+                // display pin for Salon
+                } else if ( ((EKAnnotation *)annotation).salonObj) {
+                    
+                    annotationView.image = [UIImage imageNamed:@"icPinActive"];
+                }
+            }
             
         } else {
             
@@ -48,11 +63,20 @@ static NSString *kSalonAnnotation = @"salonLocations";
     
     if ([view.annotation isKindOfClass:[EKAnnotation class]]) {
 
-//        Salon *salonObj = ((EKAnnotation*)view.annotation).salonObj;
-        Professional *salonObj = ((EKAnnotation*)view.annotation).profObj;
+        if ( ((EKAnnotation *)view.annotation).profObj) {
+            
+            Professional *profObj = ((EKAnnotation*)view.annotation).profObj;
+            [self.dataSourceArray removeAllObjects];
+            [self.dataSourceArray addObject:profObj];
+        }
+        
+        if ( ((EKAnnotation *)view.annotation).salonObj) {
+            
+            Salon *salonObj = ((EKAnnotation*)view.annotation).salonObj;
+            [self.dataSourceArray removeAllObjects];
+            [self.dataSourceArray addObject:salonObj];
+        }
 
-        [self.dataSourceArray removeAllObjects];
-        [self.dataSourceArray addObject:salonObj];
         [self.tableView reloadData];
         
         [self animateOneCellList:YES];
@@ -108,7 +132,12 @@ static NSString *kSalonAnnotation = @"salonLocations";
         
         if ([venueObj isKindOfClass:[Salon class]]) {
             
-            //TODO: ADD SALON MAPPING
+            annotation.title = ((Salon *)venueObj).name;
+            annotation.salonObj = (Salon *)venueObj;
+            
+            coords = CLLocationCoordinate2DMake(((Salon*)venueObj).latitude,
+                                                ((Salon*)venueObj).longitude);
+            annotation.coordinate = coords;
         }
         
         [pinsArray addObject:annotation];
