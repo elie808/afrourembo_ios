@@ -8,9 +8,6 @@
 
 #import "Professional.h"
 
-@implementation Business : NSObject
-@end
-
 @implementation ProfessionalFacebook : NSObject
 @end
 

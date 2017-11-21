@@ -173,7 +173,7 @@ static NSString * const kAddressSegue       = @"professionalInfoToProfessionalAd
         EKAddServiceViewController *vc = segue.destinationViewController;
         vc.passedProfessional = self.passedProfessional;
         
-        Business *selectedBusinessAdress = [Business new];
+        BusinessInfo *selectedBusinessAdress = [BusinessInfo new];
         selectedBusinessAdress.name = self.businessName;
         selectedBusinessAdress.address = self.address;
         selectedBusinessAdress.longitude = self.addressCoords.longitude;

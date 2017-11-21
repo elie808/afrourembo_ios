@@ -39,7 +39,7 @@
                                                                           withMapping:portfolioMapping]];
     
     //FUCK THIS SHIT!!!!! :(
-    RKObjectMapping *businessMapping = [RKObjectMapping mappingForClass:[Business class]];
+    RKObjectMapping *businessMapping = [RKObjectMapping mappingForClass:[BusinessInfo class]];
     [businessMapping addAttributeMappingsFromArray:@[@"address", @"name", @"longitude", @"latitude"]];
     
     [mapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"business"
@@ -98,7 +98,7 @@
                                                                           withMapping:portfolioMapping]];
     
     //FUCK THIS SHIT!!!!! :(
-    RKObjectMapping *businessMapping = [RKObjectMapping mappingForClass:[Business class]];
+    RKObjectMapping *businessMapping = [RKObjectMapping mappingForClass:[BusinessInfo class]];
     [businessMapping addAttributeMappingsFromArray:@[@"address", @"name", @"location"]];
     
     [mapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"business"

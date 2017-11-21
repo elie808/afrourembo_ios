@@ -109,6 +109,7 @@
 		479B30A11EF7476400DE2121 /* EKCategoryListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 479B30A01EF7476400DE2121 /* EKCategoryListViewController.m */; };
 		479B30AC1EF75B7F00DE2121 /* EKServiceListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 479B30AB1EF75B7F00DE2121 /* EKServiceListViewController.m */; };
 		479E37DC1FC41A9500630954 /* Pictures.m in Sources */ = {isa = PBXBuildFile; fileRef = 479E37DB1FC41A9500630954 /* Pictures.m */; };
+		479E37DF1FC43B8F00630954 /* BusinessInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 479E37DE1FC43B8F00630954 /* BusinessInfo.m */; };
 		479F00F21F89283E00676DDF /* EKConfirmPhoneNumberViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 479F00F11F89283E00676DDF /* EKConfirmPhoneNumberViewController.m */; };
 		479F7D681EF00A1700EB445A /* UIViewController+Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 479F7D671EF00A1700EB445A /* UIViewController+Helpers.m */; };
 		479F7D6B1EF0C09600EB445A /* Professional.m in Sources */ = {isa = PBXBuildFile; fileRef = 479F7D6A1EF0C09600EB445A /* Professional.m */; };
@@ -365,6 +366,8 @@
 		479B30AB1EF75B7F00DE2121 /* EKServiceListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKServiceListViewController.m; sourceTree = "<group>"; };
 		479E37DA1FC41A9500630954 /* Pictures.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Pictures.h; sourceTree = "<group>"; };
 		479E37DB1FC41A9500630954 /* Pictures.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Pictures.m; sourceTree = "<group>"; };
+		479E37DD1FC43B8E00630954 /* BusinessInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BusinessInfo.h; sourceTree = "<group>"; };
+		479E37DE1FC43B8F00630954 /* BusinessInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BusinessInfo.m; sourceTree = "<group>"; };
 		479F00F01F89283E00676DDF /* EKConfirmPhoneNumberViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKConfirmPhoneNumberViewController.h; sourceTree = "<group>"; };
 		479F00F11F89283E00676DDF /* EKConfirmPhoneNumberViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKConfirmPhoneNumberViewController.m; sourceTree = "<group>"; };
 		479F7D661EF00A1700EB445A /* UIViewController+Helpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Helpers.h"; sourceTree = "<group>"; };
@@ -919,6 +922,8 @@
 				4757C6521ED98D8000C2B52F /* Appointment.m */,
 				4787C6DB1EB40D5500DF7B83 /* Booking.h */,
 				4787C6DC1EB40D5500DF7B83 /* Booking.m */,
+				479E37DD1FC43B8E00630954 /* BusinessInfo.h */,
+				479E37DE1FC43B8F00630954 /* BusinessInfo.m */,
 				47FE51C41EFD59F500A39BAE /* Category.h */,
 				47FE51C51EFD59F500A39BAE /* Category.m */,
 				479A850C1F9E9DA7002ECC2C /* ClientBooking.h */,
@@ -1584,6 +1589,7 @@
 				47AF51B71E9B765D005FE6EB /* EKSalonListCollectionViewCell.m in Sources */,
 				47EA09DC1EB7594800400603 /* EKAccessoryTableViewCell.m in Sources */,
 				479F7D771EF17BF900EB445A /* EKSalonInfoViewController.m in Sources */,
+				479E37DF1FC43B8F00630954 /* BusinessInfo.m in Sources */,
 				479AB26C1EA0CC0000A74659 /* EKCompanyServiceTableViewCell.m in Sources */,
 				479F7D6B1EF0C09600EB445A /* Professional.m in Sources */,
 				47F714151ED70AFB0028FB65 /* EKSalonSelectTableViewCell.m in Sources */,

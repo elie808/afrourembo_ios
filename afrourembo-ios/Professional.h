@@ -7,16 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "BusinessInfo.h"
 #import "Pictures.h"
 #import "Day+API.h"
 #import "Service+API.h"
-
-@interface Business : NSObject
-@property NSString *name;
-@property NSString *address;
-@property CGFloat longitude;
-@property CGFloat latitude;
-@end
 
 @interface ProfessionalFacebook : NSObject
 @property NSString *fbToken; //token returned by Facebook upon signup. Use to register user on our server
@@ -40,7 +34,7 @@
 @property NSNumber *ratingBasedOn;
 @property NSString *profilePicture;
 @property NSArray<Pictures*> *portfolio;
-@property Business *business;
+@property BusinessInfo *business;
 
 @property NSArray<Day *> *schedule;
 @property NSArray<Service *> *services;
