@@ -135,10 +135,12 @@ static NSString * const  kSubCategoryCell = @"subCategoryCellID";
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     
-    NSInteger index = ((EKInCellCollectionView*)collectionView).collectionIndexPath.row;
-    Salon *salon = [self.dataSourceArray objectAtIndex:index];
+//    NSInteger index = ((EKInCellCollectionView*)collectionView).collectionIndexPath.row;
+//    Salon *salon = [self.dataSourceArray objectAtIndex:index];
+//    
+//    return salon.timesArray.count;
     
-    return salon.timesArray.count;
+    return 0;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -147,9 +149,9 @@ static NSString * const  kSubCategoryCell = @"subCategoryCellID";
         
         EKSalonListCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kDayCollectionViewCell forIndexPath:indexPath];
         
-        NSInteger index = ((EKInCellCollectionView*)collectionView).collectionIndexPath.row;
-        Salon *salon = [self.dataSourceArray objectAtIndex:index];
-        cell.cellTextLabel.text = [salon.timesArray objectAtIndex:indexPath.row];
+//        NSInteger index = ((EKInCellCollectionView*)collectionView).collectionIndexPath.row;
+//        Salon *salon = [self.dataSourceArray objectAtIndex:index];
+//        cell.cellTextLabel.text = [salon.timesArray objectAtIndex:indexPath.row];
         
         return cell;
         
@@ -157,9 +159,9 @@ static NSString * const  kSubCategoryCell = @"subCategoryCellID";
         
         EKSalonListCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kCollectionViewCell forIndexPath:indexPath];
         
-        NSInteger index = ((EKInCellCollectionView*)collectionView).collectionIndexPath.row;
-        Salon *salon = [self.dataSourceArray objectAtIndex:index];
-        cell.cellTextLabel.text = [salon.timesArray objectAtIndex:indexPath.row];
+//        NSInteger index = ((EKInCellCollectionView*)collectionView).collectionIndexPath.row;
+//        Salon *salon = [self.dataSourceArray objectAtIndex:index];
+//        cell.cellTextLabel.text = [salon.timesArray objectAtIndex:indexPath.row];
         
         return cell;
     }
