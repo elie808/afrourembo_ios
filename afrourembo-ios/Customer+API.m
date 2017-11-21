@@ -190,6 +190,23 @@
     return response;
 }
 
++ (RKResponseDescriptor *)userDeleteFavoritesResponseDescriptor {
+    
+    RKObjectMapping *mapping = [RKObjectMapping mappingForClass:[Favorite class]];
+    [mapping addAttributeMappingsFromArray:@[@"address", @"businessName", @"rating", @"ratingBasedOn"]];
+    
+    [mapping addAttributeMappingsFromDictionary:@{@"_id" : @"userId"}];
+    [mapping addAttributeMappingsFromDictionary:@{@"type" : @"userType"}];
+    
+    RKResponseDescriptor *response = [RKResponseDescriptor
+                                      responseDescriptorWithMapping:mapping
+                                      method:RKRequestMethodDELETE
+                                      pathPattern:kUserDeleteFavoritesAPIPath
+                                      keyPath:nil
+                                      statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+    return response;
+}
+
 #pragma mark - APIs
 
 + (void)signUpCustomer:(NSString *)email password:(NSString *)password withBlock:(CustomerSignUpSuccessBlock)successBlock withErrors:(CustomerSignUpErrorBlock)errorBlock {
@@ -566,5 +583,89 @@
                                                   }
                                               }];
 }
+
++ (void)deleteFavorite:(NSString *)userID withToken:(NSString *)token withBlock:(CustomerFavoritesCodeSuccessBlock)successBlock withErrors:(CustomerSignUpErrorBlock)errorBlock {
+    
+    [[[RKObjectManager sharedManager] HTTPClient] setDefaultHeader:@"Authorization" value:token];
+    
+    [[RKObjectManager sharedManager] deleteObject:nil
+                                             path:[NSString stringWithFormat:@"%@/%@",kUserFavoritesAPIPath, userID]
+                                       parameters:nil
+                                          success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+                                              
+                                              NSLog(@"!!! SUCCESS DELETING FAVORITE VENDOR !!!");
+
+                                              if (mappingResult.array.count > 0) {
+                                                  successBlock(mappingResult.array);
+                                              } else {
+                                                  successBlock(nil);
+                                              }
+                                              
+                                          } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                                              
+                                              if (operation.HTTPRequestOperation.responseData) {
+
+                                                // exctract error message
+
+                                                  NSDictionary *myDic = [NSJSONSerialization
+                                                                         JSONObjectWithData:operation.HTTPRequestOperation.responseData
+                                                                         options:NSJSONReadingMutableLeaves
+                                                                         error:nil];
+
+                                                  NSString *errorMessage = [myDic valueForKey:@"message"];
+                                                
+                                                  NSNumber *statusCode = [myDic valueForKey:@"statusCode"];
+                                                  NSLog(@"-------ERROR MESSAGE: %@", errorMessage);
+                                                  errorBlock(error, errorMessage, [statusCode integerValue]);
+                                                  
+                                            } else {
+                                                errorBlock(error, @"You are not connected to the internet.", 0);
+                                            }
+                                          }];
+}
+
+//+ (void)deleteProfessionalPortfolioPictureWithID:(NSString *)picID withToken:(NSString *)userToken withBlock:(ProfessionalProfilePictureSuccessBlock)successBlock withErrors:(UserProfilePictureErrorBlock)errorBlock {
+//    
+//    [[[RKObjectManager sharedManager] HTTPClient] setDefaultHeader:@"Authorization" value:userToken];
+//    
+//    [[RKObjectManager sharedManager] deleteObject:nil
+//                                             path:[NSString stringWithFormat:@"%@/%@",kUserFavoritesAPIPath, picID]
+//                                       parameters:nil
+//                                          success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+//                                              
+//                                              NSLog(@"!!! SUCCESS DELETING PORTFOLIO PICTURE !!!");
+//                                              
+//                                              if (mappingResult.array.count > 0) {
+//                                                  
+//                                                  Professional *professional = [mappingResult.array firstObject];
+//                                                  successBlock(professional);
+//                                                  
+//                                              } else {
+//                                                  successBlock(nil);
+//                                              }
+//                                              
+//                                          } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+//                                              
+//                                              if (operation.HTTPRequestOperation.responseData) {
+//                                                  
+//                                                  // exctract error message
+//                                                  NSDictionary *myDic = [NSJSONSerialization
+//                                                                         JSONObjectWithData:operation.HTTPRequestOperation.responseData
+//                                                                         options:NSJSONReadingMutableLeaves
+//                                                                         error:nil];
+//                                                  
+//                                                  NSString *errorMessage = [myDic valueForKey:@"message"];
+//                                                  
+//                                                  NSNumber *statusCode = [myDic valueForKey:@"statusCode"];
+//                                                  
+//                                                  NSLog(@"-------ERROR MESSAGE: %@", errorMessage);
+//                                                  errorBlock(error, errorMessage, [statusCode integerValue]);
+//                                                  
+//                                              } else {
+//                                                  
+//                                                  errorBlock(error, @"You are not connected to the internet.", 0);
+//                                              }
+//                                          }];
+//}
 
 @end

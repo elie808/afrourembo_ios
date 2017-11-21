@@ -54,6 +54,8 @@ typedef void (^CustomerEditErrorBlock)(NSError *error, NSString *errorMessage);
 /// address, businessName, rating, ratingBasedOn, userType, userId
 + (RKResponseDescriptor *)userGetFavoritesResponseDescriptor;
 
+/// customer DELETE vendor from favorites. mapping: address, businessName, rating, ratingBasedOn, userType, userId
++ (RKResponseDescriptor *)userDeleteFavoritesResponseDescriptor;
 
 /// Maps the REQUEST for the POST call
 + (RKRequestDescriptor *)userRegistrationRequestDescriptor;
@@ -96,5 +98,7 @@ typedef void (^CustomerEditErrorBlock)(NSError *error, NSString *errorMessage);
 + (void)postFavorite:(NSString *)userID vendorType:(NSString *)userType withToken:(NSString *)token withBlock:(CustomerFavoritesCodeSuccessBlock)successBlock withErrors:(CustomerSignUpErrorBlock)errorBlock;
 
 + (void)getFavoritesForUser:(NSString *)token withBlock:(CustomerFavoritesCodeSuccessBlock)successBlock withErrors:(CustomerSignUpErrorBlock)errorBlock;
+
++ (void)deleteFavorite:(NSString *)userID withToken:(NSString *)token withBlock:(CustomerFavoritesCodeSuccessBlock)successBlock withErrors:(CustomerSignUpErrorBlock)errorBlock;
 
 @end

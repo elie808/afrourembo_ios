@@ -91,7 +91,8 @@
                                                      [Customer userResetPassResponseDescriptor],
                                                      [Customer userBookingsResponseDescriptor],
                                                      [Customer userPostFavoritesResponseDescriptor],
-                                                     [Customer userGetFavoritesResponseDescriptor]
+                                                     [Customer userGetFavoritesResponseDescriptor],
+                                                     [Customer userDeleteFavoritesResponseDescriptor]
                                                      ]];
     
     [objectManager addResponseDescriptor:[Dashboard getDashboardResponseDescriptor]];
