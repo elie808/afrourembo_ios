@@ -65,13 +65,6 @@
     return mapping;
 }
 
-//@property NSNumber *rating;
-//@property NSNumber *ratingBasedOn;
-//
-//@property NSString *businessName;
-//@property NSString *address;
-//@property NSString *type;
-
 + (RKObjectMapping *)map4 {
     
     RKObjectMapping *mapping = [RKObjectMapping mappingForClass:[Professional class]];
