@@ -48,6 +48,10 @@
         
     } else if (self.passedSalon) {
         
+        NSMutableArray *picLinksArray = [NSMutableArray new];
+        for (Pictures *pic in self.passedSalon.portfolio) { [picLinksArray addObject:pic.picture]; }
+        
+        [self.carousel configureWithVenueImages:picLinksArray];
     }
 }
 
