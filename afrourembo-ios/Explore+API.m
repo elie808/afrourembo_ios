@@ -60,13 +60,14 @@
     NSString *URL;
 
     if (service && service.length > 0) {
+        
         URL = [NSString stringWithFormat:@"%@?category=%@&service=%@", kUserExploreProfessionalsAPIPath, category, service];
     } else {
+        
         URL = [NSString stringWithFormat:@"%@?category=%@", kUserExploreProfessionalsAPIPath, category];
     }
-
-    [[RKObjectManager sharedManager]
-     getObjectsAtPath:[URL stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]]
+    
+    [[RKObjectManager sharedManager] getObjectsAtPath:[URL cleanupURL]
                                            parameters:nil
                                               success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
                                                   
@@ -106,9 +107,8 @@
     } else {
         URL = [NSString stringWithFormat:@"%@?category=%@", kUserExploreSalonsAPIPath, category];
     }
-    
-    [[RKObjectManager sharedManager]
-     getObjectsAtPath:[URL stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]]
+
+    [[RKObjectManager sharedManager] getObjectsAtPath:[URL cleanupURL]
                                            parameters:nil
                                               success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
                                                   

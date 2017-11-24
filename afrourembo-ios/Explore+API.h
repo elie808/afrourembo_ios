@@ -10,6 +10,7 @@
 #import <RestKit/RestKit.h>
 #import "Professional+API.h"
 #import "Salon+API.h"
+#import "NSString+Helpers.h"
 #import "EKNetworkingConstants.h"
 
 typedef void (^ExploreProfessionalsSuccessBlock)(NSArray <Professional *> *proArray);

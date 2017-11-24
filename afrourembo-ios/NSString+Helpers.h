@@ -13,7 +13,10 @@
 - (BOOL)validEmail;
 - (BOOL)isValidPhoneNumber;
 
-/// return a properly formatted string with the number of photos
+/// Return a properly formatted string with the number of photos
 + (NSString *)numberOfPhotosForCount:(NSInteger)photoCount;
+
+/// Remove spaces then & chars from URL. Do it this ghetto way because fucking Apple's method misses out on some special chars...
+- (NSString *)cleanupURL;
 
 @end

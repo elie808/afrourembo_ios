@@ -55,4 +55,9 @@
     }
 }
 
+- (NSString *)cleanupURL {
+    
+    return [[self stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]] stringByReplacingOccurrencesOfString:@"&" withString:@"%26"];
+}
+
 @end
