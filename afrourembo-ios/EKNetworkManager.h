@@ -22,6 +22,7 @@
 #import "Reservation+API.h"
 #import "ResetPassword+API.h"
 #import "Review+API.h"
+#import "Salon+API.h"
 #import "SalonLogin+API.h"
 #import "Service+API.h"
 

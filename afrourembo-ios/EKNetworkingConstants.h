@@ -54,6 +54,7 @@ static NSString * const kProfessionalServiceAPIPath  = @"professional/services";
 
 static NSString * const kSalonLoginAPIPath     = @"salon/login";
 static NSString * const kSalonPassResetAPIPath = @"salon/password/reset";
+static NSString * const kSalonStaffAPIPath     = @"salon/:userId/professionals";
 
 #pragma mark - Status Codes
 

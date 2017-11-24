@@ -136,6 +136,10 @@
     [objectManager addResponseDescriptor:[Review getReviewsResponseDescriptor]];
     
     [objectManager addResponseDescriptorsFromArray:@[
+                                                     [Salon getStaffResponseDescriptor]
+                                                     ]];
+    
+    [objectManager addResponseDescriptorsFromArray:@[
                                                      [SalonLogin salonLoginResponseDescriptor],
                                                      [SalonLogin salonResetPassResponseDescriptor]
                                                      ]];
