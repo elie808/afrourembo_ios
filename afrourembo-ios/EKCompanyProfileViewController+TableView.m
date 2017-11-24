@@ -55,8 +55,7 @@ static NSString * const kProfessionalsCollectionCell = @"companyProfessionalsCol
                 
             case 1: return self.reviewsArray.count > 0 ? self.reviewsArray.count : 1; break; // Reviews
                 
-            //TODO: Update from count of professionals in the salon
-            case 2: return 0; break; // Professionals
+            case 2: return self.staffArray.count > 0 ? 1 : 0; break; // Professionals
                 
             case 3: return 3; break; // Contacts
                 
@@ -190,7 +189,7 @@ static NSString * const kProfessionalsCollectionCell = @"companyProfessionalsCol
             case 2: { // Professionals
     
                 EKCompanyProfessionalTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kProfessionalsCell forIndexPath:indexPath];
-    
+            
                 return cell;
     
             } break;
@@ -394,22 +393,20 @@ static NSString * const kProfessionalsCollectionCell = @"companyProfessionalsCol
     return 1;
 }
 
-//TODO: Config from Salon
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     
     //    NSInteger index = ((EKInCellCollectionView*)collectionView).collectionIndexPath.row;
     //    Salon *salon = [self.dataSourceArray objectAtIndex:index];
     
-    return 7;
+    return self.staffArray.count;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     
     EKCompanyProfessionalCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kProfessionalsCollectionCell forIndexPath:indexPath];
     
-    //    NSInteger index = ((EKInCellCollectionView*)collectionView).collectionIndexPath.row;
-    //    Salon *salon = [self.dataSourceArray objectAtIndex:index];
-    //    cell.cellTextLabel.text = [salon.timesArray objectAtIndex:indexPath.row];
+    Professional *pro = [self.staffArray objectAtIndex:indexPath.row];
+    cell.cellNameLabel.text = [NSString stringWithFormat:@"%@ %@", pro.fName, pro.lName];
     
     return cell;
 }
@@ -418,6 +415,8 @@ static NSString * const kProfessionalsCollectionCell = @"companyProfessionalsCol
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     
+    Professional *pro = [self.staffArray objectAtIndex:indexPath.row];
+    [self getReviewsForVendor:pro.professionalID ofType:kProfessionalType];
 }
 
 #pragma mark - EKCompanyServiceCellDelegate

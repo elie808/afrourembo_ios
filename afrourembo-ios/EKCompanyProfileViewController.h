@@ -25,6 +25,7 @@
 #import "EKConstants.h"
 #import "EKCarousel.h"
 #import "Review+API.h"
+#import "Salon+API.h"
 #import "UIViewController+Helpers.h"
 
 #import <YYWebImage/YYWebImage.h>
@@ -41,11 +42,14 @@ static NSString * const kBookingSegue     = @"companyProfileVCToBookingVC";
 @property (strong, nonatomic) Professional *passedProfessional;
 
 @property (strong, nonatomic) NSMutableArray *reviewsArray;
+@property (strong, nonatomic) NSMutableArray *staffArray;
 
 - (IBAction)didTapFavoriteButton:(id)sender;
 - (IBAction)didTapInstagramButton:(id)sender;
 - (IBAction)didTapFacebookButton:(id)sender;
 - (IBAction)didTapTwitterButton:(id)sender;
+
+- (void)getReviewsForVendor:(NSString *)vendorID ofType:(NSString *)vendorType;
 
 /// make phone calls
 - (void)call:(NSString *)phoneNumber;

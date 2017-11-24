@@ -18,21 +18,24 @@
     [super viewDidLoad];
     
     self.reviewsArray = [NSMutableArray new];
+    self.staffArray = [NSMutableArray new];
 
     if (self.passedProfessional) {
         
         _vendorID = self.passedProfessional.professionalID;
         _vendorType = kProfessionalType;
         
+        [self getReviewsForVendor:_vendorID ofType:_vendorType];
+        
     } else if (self.passedSalon) {
         
         _vendorID = self.passedSalon.salonID;
         _vendorType = kSalonType;
+        
+        [self getStaff];
     }
     
     [self configureCarousel];
-    
-    [self getReviews];
 }
 
 #pragma mark - Helpers
@@ -55,22 +58,43 @@
     }
 }
 
-- (void)getReviews {
+- (void)getReviewsForVendor:(NSString *)vendorID ofType:(NSString *)vendorType {
 
-    [Review getReviewsForVendor:_vendorID
-                         ofType:_vendorType
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    
+    [Review getReviewsForVendor:vendorID
+                         ofType:vendorType
                       withToken:self.passedCustomer.token
                       withBlock:^(NSArray<Review *> *reviewsArray) {
-                          
+    
+                          [MBProgressHUD hideHUDForView:self.view animated:YES];
                           if (reviewsArray.count > 0) {
                               self.reviewsArray = [NSMutableArray arrayWithArray:reviewsArray];
                               [self.tableView reloadData];
                           }
                       }
                      withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
-                         
+                         [MBProgressHUD hideHUDForView:self.view animated:YES];
                          [self showMessage:errorMessage withTitle:@"Error" completionBlock:nil];
                      }];
+}
+
+- (void)getStaff {
+
+    [MBProgressHUD hideHUDForView:self.view animated:YES];
+    [Salon getStaffForSalon:self.passedSalon.salonID
+                forCustomer:[EKSettings getSavedCustomer].token
+                  withBlock:^(NSArray<Professional *> *staffArray) {
+
+                      [MBProgressHUD hideHUDForView:self.view animated:YES];
+                      [self.staffArray addObjectsFromArray:staffArray];
+                      [self.tableView reloadData];
+                      
+                  } withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
+                      
+                      [MBProgressHUD hideHUDForView:self.view animated:YES];
+                      [self showMessage:errorMessage withTitle:@"Error" completionBlock:nil];
+                 }];
 }
 
 - (void)call:(NSString *)phoneNumber {
