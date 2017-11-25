@@ -33,7 +33,7 @@
 - (void)configureCellForReview:(Review *)reviewObj {
     
     self.cellServiceLabel.text = reviewObj.serviceName;
-    self.cellProfessionalLabel.text = @"";
+    self.cellProfessionalLabel.text = @"by Professional name";
     self.cellCustomerNameLabel.text = [NSString stringWithFormat:@"%@ %@", reviewObj.reviewerFirstName, reviewObj.reviewerLastName];
     self.cellDateLabel.text = [NSDate stringFromDate:reviewObj.date withFormat:DateFormatLetterDayMonthYear];
     self.cellTextView.text = reviewObj.review;
