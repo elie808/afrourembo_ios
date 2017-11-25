@@ -10,6 +10,7 @@
 #import <UIKit/UIKit.h>
 
 #import "Pictures.h"
+#import "Professional.h"
 #import "Review.h"
 #import "Service.h"
 
@@ -24,19 +25,22 @@
 @property NSString *profilePicture;
 @property NSString *name;
 @property NSString *address;
+@property NSString *phone;
 
 @property CGFloat longitude;
 @property CGFloat latitude;
 
 @property NSArray<Pictures*> *portfolio;
 
+@property (assign, nonatomic) BOOL isCentralizedModel;
+
 // unmapped fields
 @property NSNumber *stars;
 @property NSNumber *price;
 
-@property (assign, nonatomic) BOOL isCentralizedModel;
-
+// UI model fields
 @property NSArray<Service*> *servicesArray;
 @property NSArray<Review*> *reviewsArray;
+@property Professional *selectedProfessional;
 
 @end

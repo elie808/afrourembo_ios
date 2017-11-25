@@ -26,7 +26,7 @@ static NSString * const kProfessionalsCollectionCell = @"companyProfessionalsCol
     
     if (self.passedProfessional) { return 4; }
     
-    if (self.passedSalon) { return 4; }
+    if (self.passedSalon) { return 5; }
     
     return 0;
 }
@@ -38,7 +38,7 @@ static NSString * const kProfessionalsCollectionCell = @"companyProfessionalsCol
         
         switch (section) {
                 
-            case 0: return 1; break;
+            case 0: return 1; break; // Bio
                 
             case 1: return self.passedProfessional.services.count > 0 ? self.passedProfessional.services.count : 1; break; // Services
                 
@@ -55,13 +55,15 @@ static NSString * const kProfessionalsCollectionCell = @"companyProfessionalsCol
 
         switch (section) {
                 
-            case 0: return self.passedSalon.servicesArray.count > 0 ? self.passedSalon.servicesArray.count : 1; break; // Services
+            case 0: return 1; break; // Bio
                 
-            case 1: return self.reviewsArray.count > 0 ? self.reviewsArray.count : 1; break; // Reviews
+            case 1: return self.passedSalon.servicesArray.count > 0 ? self.passedSalon.servicesArray.count : 1; break; // Services
                 
-            case 2: return self.staffArray.count > 0 ? 1 : 0; break; // Professionals
+            case 2: return self.reviewsArray.count > 0 ? self.reviewsArray.count : 1; break; // Reviews
                 
-            case 3: return 3; break; // Contacts
+            case 3: return self.staffArray.count > 0 ? 1 : 0; break; // Professionals
+                
+            case 4: return 3; break; // Contacts
                 
             default: return 0; break;
         }
@@ -81,7 +83,7 @@ static NSString * const kProfessionalsCollectionCell = @"companyProfessionalsCol
                 
                 UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kBioCell forIndexPath:indexPath];
                 
-                cell.textLabel.text = self.passedProfessional.about;
+                if (self.passedProfessional.about.length > 0) { cell.textLabel.text = self.passedProfessional.about; }
                 
                 return cell;
                 
@@ -166,46 +168,68 @@ static NSString * const kProfessionalsCollectionCell = @"companyProfessionalsCol
         
         switch (indexPath.section) {
                 
-            case 0: { // Services
-                
-                EKCompanyServiceTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kServicesCell forIndexPath:indexPath];
-                
-                if (self.passedProfessional.services.count > 0) {
-                    
-                    Service *serviceObj = [self.passedProfessional.services objectAtIndex:indexPath.row];
-                    
-                    cell.cellDelegate = self;
-                    [cell configureCellForService:serviceObj];
-                    
-                } else {
-                    
-                    [cell configureEmptyCell];
+            case 0: { // Bio
+
+                UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kBioCell forIndexPath:indexPath];
+
+                if (self.passedSalon.selectedProfessional.about.length > 0) {
+                    cell.textLabel.text = self.passedSalon.selectedProfessional.about;
                 }
-                
+
                 return cell;
                 
             } break;
                 
-            case 1: { // Reviews
+            case 1: { // Services
+
+                if (self.passedSalon.selectedProfessional.services.count > 0) {
+
+                    EKCompanyServiceTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kServicesCell forIndexPath:indexPath];
+                    
+                    Service *serviceObj = [self.passedSalon.selectedProfessional.services objectAtIndex:indexPath.row];
+                    
+                    cell.cellDelegate = self;
+                    [cell configureCellForService:serviceObj];
+                    
+                    return cell;
+                    
+                } else {
+                    
+                    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kBioCell forIndexPath:indexPath];
+                    
+                    cell.textLabel.text = @"There are no services yet ...";
+                    cell.textLabel.textColor = [UIColor colorWithRed:255./255. green:195./255. blue:0./255. alpha:1.0];
+                    
+                    return cell;
+                }
+
+            } break;
                 
-                EKCompanyReviewTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kReviewsCell forIndexPath:indexPath];
+            case 2: { // Reviews
                 
                 if (self.reviewsArray.count > 0) {
+                    
+                    EKCompanyReviewTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kReviewsCell forIndexPath:indexPath];
                     
                     Review *reviewObj = [self.reviewsArray objectAtIndex:indexPath.row];
                     
                     [cell configureCellForReview:reviewObj];
                     
-                } else {
+                    return cell;
                     
-                    [cell configureEmptyCell];
+                } else { // No reviews available
+                    
+                    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kBioCell forIndexPath:indexPath];
+                    
+                    cell.textLabel.text = @"No Reviews";
+                    cell.textLabel.textColor = [UIColor colorWithRed:255./255. green:195./255. blue:0./255. alpha:1.0];
+                    
+                    return cell;
                 }
-                
-                return cell;
                 
             } break;
                 
-            case 2: { // Professionals
+            case 3: { // Professionals
     
                 EKCompanyProfessionalTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kProfessionalsCell forIndexPath:indexPath];
             
@@ -213,26 +237,25 @@ static NSString * const kProfessionalsCollectionCell = @"companyProfessionalsCol
     
             } break;
                 
-            case 3: { // Contacts
+            case 4: { // Contacts
                 
                 EKCompanyContactTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kContactsCell forIndexPath:indexPath];
-                
-                //TODO: Config with proper salon name
+
                 if (self.passedSalon) {
                     
                     if (indexPath.row == 0) {
-//                        cell.cellContactTypeLabel.text = @"Name";
-//                        cell.cellContactValueLabel.text = self.professional.business.name;
+                        cell.cellContactTypeLabel.text = @"Name";
+                        cell.cellContactValueLabel.text = self.passedSalon.name;
                     }
                     
                     if (indexPath.row == 1) {
-//                        cell.cellContactTypeLabel.text = @"Address";
-//                        cell.cellContactValueLabel.text = self.professional.business.address;
+                        cell.cellContactTypeLabel.text = @"Phone";
+                        cell.cellContactValueLabel.text = self.passedSalon.phone;
                     }
                     
                     if (indexPath.row == 2) {
-                        //                        cell.cellContactTypeLabel.text = @"Address";
-                        //                        cell.cellContactValueLabel.text = self.professional.business.address;
+                        cell.cellContactTypeLabel.text = @"Address";
+                        cell.cellContactValueLabel.text = self.passedSalon.address;
                     }
                 }
                 
@@ -279,7 +302,14 @@ static NSString * const kProfessionalsCollectionCell = @"companyProfessionalsCol
             } break;
                 
             // Services
-            case 1: return servicesCellHeight; break;
+            case 1: {
+                
+                if (self.passedProfessional.services.count > 0) {
+                    return servicesCellHeight; break;
+                } else {
+                    return defaultCellHeight; break;
+                }
+            }
                 
             // Reviews
             case 2: {
@@ -313,11 +343,38 @@ static NSString * const kProfessionalsCollectionCell = @"companyProfessionalsCol
     
         switch (indexPath.section) {
                 
-            // Services
-            case 0: return servicesCellHeight; break;
+            // Bio
+            case 0: {
                 
-            // Reviews
+                if (self.passedSalon.selectedProfessional.about.length > 0) {
+                    
+                    CGRect textLabelRect = [self.passedSalon.selectedProfessional.about
+                                            boundingRectWithSize:CGSizeMake(textLabelWidth, CGFLOAT_MAX)
+                                            options:NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading
+                                            attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:14]}
+                                            context:nil];
+                    
+                    return textLabelRect.size.height + 16;
+                    
+                } else {
+                    
+                    return defaultCellHeight;
+                }
+            } break;
+
+                
+            // Services
             case 1: {
+                
+                if (self.passedSalon.selectedProfessional.services.count > 0) {
+                    return servicesCellHeight; break;
+                } else {
+                    return defaultCellHeight; break;
+                }
+            }
+
+            // Reviews
+            case 2: {
                 
                 if (self.reviewsArray.count > 0) {
                     
@@ -333,21 +390,15 @@ static NSString * const kProfessionalsCollectionCell = @"companyProfessionalsCol
                     
                 } else {
                     
-                    CGRect textLabelRect = [@"No Reviews"
-                                            boundingRectWithSize:CGSizeMake(self.tableView.frame.size.width, CGFLOAT_MAX)
-                                            options:NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading
-                                            attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:14]}
-                                            context:nil];
-                    
-                    return textLabelRect.size.height + heightOfOtherUIObjects; //computed text label height + height of other UI elements
+                    return defaultCellHeight;
                 }
             } break;
                 
             // Professionals
-            case 2: return professionalsCellHeight; break;
+            case 3: return professionalsCellHeight; break;
                 
             // Contacts
-            case 3: return contactCellHeight; break;
+            case 4: return contactCellHeight; break;
                 
             default: return defaultCellHeight; break;
         }
@@ -362,7 +413,7 @@ static NSString * const kProfessionalsCollectionCell = @"companyProfessionalsCol
         
         switch (section) {
                 
-            case 0: return @"BIO"; break; // Services
+            case 0: return @"BIO"; break; // Bio
                 
             case 1: return @"SERVICES"; break; // Services
                 
@@ -378,13 +429,15 @@ static NSString * const kProfessionalsCollectionCell = @"companyProfessionalsCol
         
         switch (section) {
                 
-            case 0: return @"SERVICES"; break; // Services
+            case 0: return @"BIO"; break; // Bio
                 
-            case 1: return @"REVIEWS"; break; // Reviews
+            case 1: return @"SERVICES"; break; // Services
                 
-            case 2: return @"BEAUTY PROFESSIONALS"; break; // Professionals
+            case 2: return @"REVIEWS"; break; // Reviews
                 
-            case 3: return @"CONTACT INFO"; break; // Contacts
+            case 3: return @"BEAUTY PROFESSIONALS"; break; // Professionals
+                
+            case 4: return @"CONTACT INFO"; break; // Contacts
                 
             default: return @""; break;
         }
@@ -398,13 +451,25 @@ static NSString * const kProfessionalsCollectionCell = @"companyProfessionalsCol
     UITableViewHeaderFooterView *header = (UITableViewHeaderFooterView *)view;
     
     header.contentView.backgroundColor = [UIColor whiteColor];
-    header.textLabel.font = [UIFont boldSystemFontOfSize:22.];
     header.textLabel.textColor = [UIColor blackColor];
+    header.textLabel.font = [UIFont boldSystemFontOfSize:22.];
     
-    if (section == 3) { // CONTACT Section
+    if (self.passedProfessional) {
         
-        header.contentView.backgroundColor = [UIColor colorWithRed:51./255. green:51./255. blue:51./255. alpha:1.0];
-        header.textLabel.textColor = [UIColor whiteColor];
+        if (section == 3) { // CONTACT Section
+            
+            header.contentView.backgroundColor = [UIColor colorWithRed:51./255. green:51./255. blue:51./255. alpha:1.0];
+            header.textLabel.textColor = [UIColor whiteColor];
+        }
+    }
+    
+    if (self.passedSalon) {
+    
+        if (section == 4) { // CONTACT Section
+            
+            header.contentView.backgroundColor = [UIColor colorWithRed:51./255. green:51./255. blue:51./255. alpha:1.0];
+            header.textLabel.textColor = [UIColor whiteColor];
+        }
     }
 }
 
@@ -427,6 +492,22 @@ static NSString * const kProfessionalsCollectionCell = @"companyProfessionalsCol
              default: break;
          }
      }
+    
+    if (self.passedSalon) {
+        
+        switch (indexPath.section) {
+                
+            case 4:
+                if (indexPath.row == 1) { // PHONE
+                    if (self.passedSalon.selectedProfessional.phone.length > 0) { [self call:self.passedSalon.selectedProfessional.phone]; }
+                }
+                
+                break;
+                
+            default: break;
+        }
+    }
+    
 }
 
 #pragma mark - UICollectionViewDataSource
@@ -458,8 +539,15 @@ static NSString * const kProfessionalsCollectionCell = @"companyProfessionalsCol
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     
-    Professional *pro = [self.staffArray objectAtIndex:indexPath.row];
-    [self getReviewsForVendor:pro.professionalID ofType:kProfessionalType];
+    if (self.passedSalon && self.staffArray.count > 0) {
+        
+        Professional *pro = [self.staffArray objectAtIndex:indexPath.row];
+        
+        self.passedSalon.selectedProfessional = pro;
+        [self.tableView reloadData];
+        
+        [self getReviewsForVendor:pro.professionalID ofType:kProfessionalType];
+    }
 }
 
 #pragma mark - EKCompanyServiceCellDelegate
