@@ -10,6 +10,7 @@
 
 @interface EKCompanyProfessionalCollectionViewCell : UICollectionViewCell
 
+@property (strong, nonatomic) IBOutlet UIView *cellImageBorder;
 @property (strong, nonatomic) IBOutlet UIImageView *cellImageView;
 @property (strong, nonatomic) IBOutlet UILabel *cellNameLabel;
 

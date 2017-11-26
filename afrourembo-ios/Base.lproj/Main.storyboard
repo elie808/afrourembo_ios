@@ -1430,43 +1430,61 @@
                                                     </collectionViewFlowLayout>
                                                     <cells>
                                                         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="companyProfessionalsCollectionCell" id="eOq-nL-FEA" customClass="EKCompanyProfessionalCollectionViewCell">
-                                                            <rect key="frame" x="0.0" y="-0.5" width="80" height="94"/>
+                                                            <rect key="frame" x="0.0" y="-1" width="80" height="94"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                                                 <rect key="frame" x="0.0" y="0.0" width="80" height="94"/>
                                                                 <autoresizingMask key="autoresizingMask"/>
                                                                 <subviews>
+                                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OzJ-b4-0Ai">
+                                                                        <rect key="frame" x="11" y="-1" width="58" height="58"/>
+                                                                        <subviews>
+                                                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dummy_male2" translatesAutoresizingMaskIntoConstraints="NO" id="0o4-av-mGc">
+                                                                                <rect key="frame" x="5" y="5" width="48" height="48"/>
+                                                                                <userDefinedRuntimeAttributes>
+                                                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                                        <integer key="value" value="24"/>
+                                                                                    </userDefinedRuntimeAttribute>
+                                                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                                                                </userDefinedRuntimeAttributes>
+                                                                            </imageView>
+                                                                        </subviews>
+                                                                        <color key="backgroundColor" red="1" green="0.33725490200000002" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                        <constraints>
+                                                                            <constraint firstItem="0o4-av-mGc" firstAttribute="top" secondItem="OzJ-b4-0Ai" secondAttribute="top" constant="5" id="PdV-Nc-VTh"/>
+                                                                            <constraint firstItem="0o4-av-mGc" firstAttribute="centerX" secondItem="OzJ-b4-0Ai" secondAttribute="centerX" id="R8y-aM-u4Q"/>
+                                                                            <constraint firstItem="0o4-av-mGc" firstAttribute="centerY" secondItem="OzJ-b4-0Ai" secondAttribute="centerY" id="mge-dg-hrt"/>
+                                                                            <constraint firstItem="0o4-av-mGc" firstAttribute="leading" secondItem="OzJ-b4-0Ai" secondAttribute="leading" constant="5" id="oTd-Vg-Snl"/>
+                                                                        </constraints>
+                                                                        <userDefinedRuntimeAttributes>
+                                                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                                <integer key="value" value="29"/>
+                                                                            </userDefinedRuntimeAttribute>
+                                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                                                        </userDefinedRuntimeAttributes>
+                                                                    </view>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Johanna Mullins" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dXJ-mP-UaT">
                                                                         <rect key="frame" x="0.0" y="57" width="80" height="29"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="height" constant="29" id="rcZ-NV-NEq"/>
+                                                                        </constraints>
                                                                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="12"/>
                                                                         <nil key="textColor"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
-                                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dummy_male2" translatesAutoresizingMaskIntoConstraints="NO" id="0o4-av-mGc">
-                                                                        <rect key="frame" x="16" y="0.0" width="48" height="48"/>
-                                                                        <constraints>
-                                                                            <constraint firstAttribute="width" constant="48" id="GIz-CL-yDu"/>
-                                                                            <constraint firstAttribute="height" constant="48" id="cS5-3M-6M1"/>
-                                                                        </constraints>
-                                                                        <userDefinedRuntimeAttributes>
-                                                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                                                <integer key="value" value="24"/>
-                                                                            </userDefinedRuntimeAttribute>
-                                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
-                                                                        </userDefinedRuntimeAttributes>
-                                                                    </imageView>
                                                                 </subviews>
                                                             </view>
                                                             <constraints>
-                                                                <constraint firstItem="dXJ-mP-UaT" firstAttribute="leading" secondItem="eOq-nL-FEA" secondAttribute="leading" id="6tX-vH-IOp"/>
-                                                                <constraint firstItem="0o4-av-mGc" firstAttribute="leading" secondItem="eOq-nL-FEA" secondAttribute="leading" constant="16" id="LIa-BC-6qx"/>
-                                                                <constraint firstItem="dXJ-mP-UaT" firstAttribute="top" secondItem="0o4-av-mGc" secondAttribute="bottom" constant="9" id="YGC-fw-vQr"/>
-                                                                <constraint firstAttribute="bottom" secondItem="dXJ-mP-UaT" secondAttribute="bottom" constant="8" id="bSm-yK-V6A"/>
-                                                                <constraint firstItem="0o4-av-mGc" firstAttribute="top" secondItem="eOq-nL-FEA" secondAttribute="top" id="gd7-cL-aXj"/>
-                                                                <constraint firstAttribute="trailing" secondItem="0o4-av-mGc" secondAttribute="trailing" constant="16" id="jnQ-28-N9B"/>
-                                                                <constraint firstAttribute="trailing" secondItem="dXJ-mP-UaT" secondAttribute="trailing" id="zzJ-vi-JiX"/>
+                                                                <constraint firstAttribute="trailing" secondItem="dXJ-mP-UaT" secondAttribute="trailing" id="As4-v3-Un4"/>
+                                                                <constraint firstItem="dXJ-mP-UaT" firstAttribute="top" secondItem="OzJ-b4-0Ai" secondAttribute="bottom" id="at9-R2-EEW"/>
+                                                                <constraint firstItem="OzJ-b4-0Ai" firstAttribute="top" secondItem="eOq-nL-FEA" secondAttribute="topMargin" constant="-9" id="cPi-aK-q6J"/>
+                                                                <constraint firstItem="OzJ-b4-0Ai" firstAttribute="centerX" secondItem="dXJ-mP-UaT" secondAttribute="centerX" id="iuS-k7-0QM"/>
+                                                                <constraint firstItem="OzJ-b4-0Ai" firstAttribute="leading" secondItem="eOq-nL-FEA" secondAttribute="leadingMargin" constant="3" id="vpe-Py-0IB"/>
+                                                                <constraint firstItem="dXJ-mP-UaT" firstAttribute="bottom" secondItem="eOq-nL-FEA" secondAttribute="bottomMargin" id="wmG-K7-VoX"/>
+                                                                <constraint firstItem="dXJ-mP-UaT" firstAttribute="leading" secondItem="eOq-nL-FEA" secondAttribute="leading" id="wrm-EW-lfV"/>
                                                             </constraints>
                                                             <connections>
+                                                                <outlet property="cellImageBorder" destination="OzJ-b4-0Ai" id="nY8-ZX-11i"/>
                                                                 <outlet property="cellImageView" destination="0o4-av-mGc" id="wpG-4R-pKt"/>
                                                                 <outlet property="cellNameLabel" destination="dXJ-mP-UaT" id="0Qa-u2-fOk"/>
                                                             </connections>
@@ -1601,7 +1619,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Y2w-Xy-4O0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2488.8000000000002" y="-645.42728635682158"/>
+            <point key="canvasLocation" x="2488.5" y="-645.5"/>
         </scene>
         <!--signUpCustomer-->
         <scene sceneID="DV9-tP-1K2">
@@ -1634,27 +1652,26 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="bookingProfessionalCell" id="AO8-9D-Ydn" customClass="EKBookingProCollectionViewCell">
-                                        <rect key="frame" x="0.0" y="7.5" width="100" height="115"/>
+                                        <rect key="frame" x="0.0" y="8" width="100" height="115"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="100" height="115"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Prd-uU-c6V">
-                                                    <rect key="frame" x="17" y="111" width="66" height="0.0"/>
+                                                    <rect key="frame" x="12" y="83" width="76" height="32"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="32" id="W8O-uP-tWL"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" weight="light" pointSize="12"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VZp-PA-lfO">
-                                                    <rect key="frame" x="12" y="5" width="76" height="105"/>
+                                                    <rect key="frame" x="12" y="5" width="76" height="77"/>
                                                     <subviews>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ihm-xl-KCF">
                                                             <rect key="frame" x="6" y="6" width="64" height="64"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="height" constant="64" id="ETf-74-EHr"/>
-                                                                <constraint firstAttribute="width" constant="64" id="Hmw-oA-3i0"/>
-                                                            </constraints>
                                                             <userDefinedRuntimeAttributes>
                                                                 <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                                                     <integer key="value" value="32"/>
@@ -1664,8 +1681,10 @@
                                                         </imageView>
                                                     </subviews>
                                                     <constraints>
-                                                        <constraint firstItem="Ihm-xl-KCF" firstAttribute="leading" secondItem="VZp-PA-lfO" secondAttribute="leading" constant="6" id="MRU-cP-cqJ"/>
-                                                        <constraint firstItem="Ihm-xl-KCF" firstAttribute="top" secondItem="VZp-PA-lfO" secondAttribute="top" constant="6" id="bpE-rm-IaD"/>
+                                                        <constraint firstItem="Ihm-xl-KCF" firstAttribute="centerX" secondItem="VZp-PA-lfO" secondAttribute="centerX" id="GS0-3d-4E4"/>
+                                                        <constraint firstItem="Ihm-xl-KCF" firstAttribute="top" secondItem="VZp-PA-lfO" secondAttribute="top" constant="6" id="LuN-50-8i5"/>
+                                                        <constraint firstItem="Ihm-xl-KCF" firstAttribute="centerY" secondItem="VZp-PA-lfO" secondAttribute="centerY" id="Qr2-51-UEy"/>
+                                                        <constraint firstItem="Ihm-xl-KCF" firstAttribute="leading" secondItem="VZp-PA-lfO" secondAttribute="leading" constant="6" id="tOs-B3-OyM"/>
                                                     </constraints>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -1677,13 +1696,13 @@
                                         </view>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstItem="Prd-uU-c6V" firstAttribute="leading" secondItem="AO8-9D-Ydn" secondAttribute="leadingMargin" constant="9" id="F4D-bV-Krs"/>
-                                            <constraint firstItem="VZp-PA-lfO" firstAttribute="trailing" secondItem="Prd-uU-c6V" secondAttribute="trailing" constant="5" id="Inj-m8-iD8"/>
-                                            <constraint firstAttribute="bottomMargin" secondItem="Prd-uU-c6V" secondAttribute="bottom" constant="-4" id="Q4P-st-6ND"/>
-                                            <constraint firstItem="Prd-uU-c6V" firstAttribute="top" secondItem="VZp-PA-lfO" secondAttribute="bottom" constant="1" id="RqO-FH-LA5"/>
-                                            <constraint firstItem="Prd-uU-c6V" firstAttribute="centerX" secondItem="AO8-9D-Ydn" secondAttribute="centerX" id="WDt-rY-U0X"/>
-                                            <constraint firstItem="VZp-PA-lfO" firstAttribute="leading" secondItem="AO8-9D-Ydn" secondAttribute="leadingMargin" constant="4" id="d2w-kY-T8O"/>
-                                            <constraint firstItem="VZp-PA-lfO" firstAttribute="top" secondItem="AO8-9D-Ydn" secondAttribute="topMargin" constant="-3" id="zFq-eG-0lN"/>
+                                            <constraint firstItem="Prd-uU-c6V" firstAttribute="top" secondItem="VZp-PA-lfO" secondAttribute="bottom" constant="1" id="Emu-jP-IFK"/>
+                                            <constraint firstItem="VZp-PA-lfO" firstAttribute="leading" secondItem="Prd-uU-c6V" secondAttribute="leading" id="LSS-b6-F7N"/>
+                                            <constraint firstItem="VZp-PA-lfO" firstAttribute="centerX" secondItem="AO8-9D-Ydn" secondAttribute="centerX" id="dV6-Ih-4H4"/>
+                                            <constraint firstItem="VZp-PA-lfO" firstAttribute="leading" secondItem="AO8-9D-Ydn" secondAttribute="leadingMargin" constant="4" id="nVd-KK-HVc"/>
+                                            <constraint firstItem="VZp-PA-lfO" firstAttribute="trailing" secondItem="Prd-uU-c6V" secondAttribute="trailing" id="vVA-NL-N29"/>
+                                            <constraint firstAttribute="bottom" secondItem="Prd-uU-c6V" secondAttribute="bottom" id="vmC-Qj-PvX"/>
+                                            <constraint firstItem="VZp-PA-lfO" firstAttribute="top" secondItem="AO8-9D-Ydn" secondAttribute="topMargin" constant="-3" id="vxf-qD-xaj"/>
                                         </constraints>
                                         <connections>
                                             <outlet property="cellImageBorder" destination="VZp-PA-lfO" id="8bs-lA-J6o"/>

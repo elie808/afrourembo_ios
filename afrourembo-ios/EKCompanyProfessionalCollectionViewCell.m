@@ -10,4 +10,10 @@
 
 @implementation EKCompanyProfessionalCollectionViewCell
 
+- (void)setSelected:(BOOL)selected {
+    [super setSelected:selected];
+    
+    self.cellImageBorder.backgroundColor = selected ? [UIColor orangeColor] : [UIColor clearColor];
+}
+
 @end
