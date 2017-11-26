@@ -278,17 +278,30 @@
                                                         <constraint firstAttribute="height" constant="1" id="dRB-NG-6sh"/>
                                                     </constraints>
                                                 </view>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="49l-dm-cP1">
+                                                    <rect key="frame" x="10" y="144" width="335" height="33"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <state key="normal" title="Leave review">
+                                                        <color key="titleColor" red="1" green="0.76470588240000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="didTapEditButton:" destination="wx7-2I-vnc" eventType="touchDown" id="o9q-bd-Yli"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                         </view>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstItem="8mO-5c-JyD" firstAttribute="top" secondItem="wx7-2I-vnc" secondAttribute="top" id="29r-PB-NDt"/>
+                                            <constraint firstAttribute="trailingMargin" secondItem="49l-dm-cP1" secondAttribute="trailing" constant="2" id="4RS-Jq-QWs"/>
                                             <constraint firstAttribute="trailingMargin" secondItem="nVJ-Te-mEg" secondAttribute="trailing" constant="2" id="5tl-eB-Ohw"/>
                                             <constraint firstItem="i3H-ey-h0h" firstAttribute="top" secondItem="nVJ-Te-mEg" secondAttribute="bottom" constant="10" id="7L2-7s-fuO"/>
                                             <constraint firstAttribute="trailingMargin" secondItem="OYQ-np-zUm" secondAttribute="trailing" constant="2" id="Ag0-ca-axH"/>
+                                            <constraint firstItem="49l-dm-cP1" firstAttribute="leading" secondItem="wx7-2I-vnc" secondAttribute="leadingMargin" constant="2" id="Gwj-6k-1tZ"/>
                                             <constraint firstItem="OUw-Yy-3yb" firstAttribute="top" secondItem="OYQ-np-zUm" secondAttribute="bottom" constant="10" id="LP8-2h-hJx"/>
                                             <constraint firstItem="nVJ-Te-mEg" firstAttribute="leading" secondItem="wx7-2I-vnc" secondAttribute="leadingMargin" constant="2" id="Ody-Wu-4FZ"/>
                                             <constraint firstItem="OYQ-np-zUm" firstAttribute="top" secondItem="l4e-hp-U1U" secondAttribute="bottom" constant="8" id="Oy5-TF-0vd"/>
+                                            <constraint firstItem="49l-dm-cP1" firstAttribute="bottom" secondItem="wx7-2I-vnc" secondAttribute="bottomMargin" id="VDd-DL-f5f"/>
                                             <constraint firstAttribute="trailingMargin" secondItem="l4e-hp-U1U" secondAttribute="trailing" constant="1" id="Zu6-6Q-i6f"/>
                                             <constraint firstAttribute="trailing" secondItem="8mO-5c-JyD" secondAttribute="trailing" id="cw8-4l-Gup"/>
                                             <constraint firstItem="nVJ-Te-mEg" firstAttribute="top" secondItem="OUw-Yy-3yb" secondAttribute="bottom" constant="10" id="fd8-YN-7ud"/>
@@ -304,6 +317,7 @@
                                             <constraint firstItem="8U8-3h-HQR" firstAttribute="top" secondItem="YWx-S0-PKo" secondAttribute="bottom" constant="8" id="y8f-zz-6wy"/>
                                         </constraints>
                                         <connections>
+                                            <outlet property="actionButton" destination="49l-dm-cP1" id="0px-rP-MvS"/>
                                             <outlet property="bookingCostLabel" destination="kHj-28-B0P" id="v4x-Jk-XVc"/>
                                             <outlet property="bookingDateLabel" destination="l4e-hp-U1U" id="8U3-f5-g08"/>
                                             <outlet property="bookingDescriptionLabel" destination="nVJ-Te-mEg" id="Q8J-L3-PZg"/>
@@ -373,7 +387,7 @@
                     </constraints>
                 </view>
             </objects>
-            <point key="canvasLocation" x="870" y="116"/>
+            <point key="canvasLocation" x="869.60000000000002" y="115.59220389805098"/>
         </scene>
         <!--customerProfileVC-->
         <scene sceneID="UwK-I4-70i">
@@ -2522,7 +2536,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="oT6-4C-Llh"/>
-        <segue reference="xaI-gU-dNR"/>
+        <segue reference="yqX-hc-pNV"/>
         <segue reference="Tgh-kR-Ldd"/>
         <segue reference="U39-u0-bPg"/>
     </inferredMetricsTieBreakers>

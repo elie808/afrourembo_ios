@@ -25,6 +25,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *bookingTimeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *bookingDescriptionLabel;
 
+@property (weak, nonatomic) IBOutlet UIButton *actionButton;
+
 - (IBAction)didTapEditButton:(id)sender;
 
 @end
