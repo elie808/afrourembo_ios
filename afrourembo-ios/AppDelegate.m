@@ -20,9 +20,8 @@ static NSString * const kVendorMainStoryboard = @"Vendor_Main";
     
     [EKNetworkManager configureRestKit];
     
-    NSLog(@"\n \n Realm directory: %@", [RLMRealmConfiguration defaultConfiguration]);
+//    NSLog(@"\n \n Realm directory: %@", [RLMRealmConfiguration defaultConfiguration]);
 //    [[NSFileManager defaultManager] removeItemAtURL:[RLMRealmConfiguration defaultConfiguration].fileURL error:nil];
-    
 //    [[RLMRealm defaultRealm] beginWriteTransaction]; [[RLMRealm defaultRealm] deleteAllObjects]; [[RLMRealm defaultRealm] commitWriteTransaction];
     
 //    [EKSettings deleteSavedCustomer];

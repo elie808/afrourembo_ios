@@ -15,7 +15,7 @@
 + (RKObjectMapping *)map1 {
     
     RKObjectMapping *mapping = [RKObjectMapping mappingForClass:[Reservation class]];
-    [mapping addAttributeMappingsFromArray:@[@"actorId", @"serviceId", @"fromDateTime", @"toDateTime", @"type", @"note"]];
+    [mapping addAttributeMappingsFromArray:@[@"actorId", @"serviceId", @"fromDateTime", @"toDateTime", @"type", @"note", @"salonId", @"salonName"]];
     
     return mapping;
 }

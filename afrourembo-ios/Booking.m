@@ -36,6 +36,9 @@
     reservationObj.type = bookingObj.reservation.type;
     reservationObj.note = bookingObj.reservation.note;
     
+    reservationObj.salonId = bookingObj.reservation.salonId;
+    reservationObj.salonName = bookingObj.reservation.salonName;
+    
     //to make sure we avoid weird "not iso8601" date errors on some devices...
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     NSLocale *enUSPOSIXLocale = [NSLocale localeWithLocaleIdentifier:@"en_US_POSIX"];

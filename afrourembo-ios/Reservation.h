@@ -20,4 +20,7 @@
 
 @property NSString *bookingId;
 
+@property NSString *salonId;
+@property NSString *salonName;
+
 @end
