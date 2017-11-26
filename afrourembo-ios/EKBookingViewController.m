@@ -20,8 +20,8 @@ static CGFloat const kContainerViewHeight = 100;
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    //TODO: ADD IF STATEMENT AND CHANGE TYPE ACCORDING TO VIEW MODE
-    self.vendorType = kProfessionalType;
+    // TODO: ADD IF STATEMENT AND CHANGE TYPE ACCORDING TO VIEW MODE
+    // self.vendorType = kProfessionalType;
     
     // init data source
     self.daysDataSource     = [NSMutableArray new];
@@ -96,7 +96,6 @@ static CGFloat const kContainerViewHeight = 100;
 
 - (IBAction)didTapNextButton:(UIBarButtonItem *)sender {
     
-    //TODO: check if user is signed in ???
     if (_selectedPro) {
         
         Reservation *reservationObj = [Reservation new];
@@ -104,8 +103,10 @@ static CGFloat const kContainerViewHeight = 100;
         reservationObj.serviceId    = self.passedService.serverServiceId;
         reservationObj.fromDateTime = self.selectedFromDate;
         reservationObj.toDateTime   = self.selectedToDate;
-        reservationObj.type = self.vendorType;
+        reservationObj.type = kProfessionalType;
         reservationObj.note = self.bookingNote;
+        reservationObj.salonId = self.salonId;
+        reservationObj.salonName = self.salonName;
         
         Booking *booking1 = [Booking new];
         

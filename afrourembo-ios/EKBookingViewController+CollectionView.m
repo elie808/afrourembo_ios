@@ -87,7 +87,7 @@ static NSString * const kTimeCell = @"bookingTimeCell";
         
         [MBProgressHUD showHUDAddedTo:self.view animated:YES];
         [Day getAvailabilityOfVendor:pro.professionalID
-                              ofType:self.vendorType
+                              ofType:kProfessionalType // hardcoded, because we decided to only support this type for now ...
                            withToken:[EKSettings getSavedCustomer].token
                            withBlock:^(NSArray *daysArray) {
                                

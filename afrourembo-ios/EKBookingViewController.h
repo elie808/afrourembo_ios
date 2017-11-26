@@ -36,15 +36,18 @@
 
 static NSString * const kSignUpSegue = @"bookingVCToSignUpVC";
 
-@interface EKBookingViewController : UIViewController <UICollectionViewDataSource, UICollectionViewDelegate, UIGestureRecognizerDelegate, UITextViewDelegate>
+@interface EKBookingViewController : UIViewController <UIGestureRecognizerDelegate, UITextViewDelegate>
 
+// Data model
 @property (strong, nonatomic) Service *passedService;
+@property (strong, nonatomic) NSString *salonId;
+@property (strong, nonatomic) NSString *salonName;
 
 @property (strong, nonatomic) NSArray *professionalsDataSource;
 @property (strong, nonatomic) NSMutableArray *daysDataSource;
 @property (strong, nonatomic) NSMutableArray *timesDataSource;
 
-@property (strong, nonatomic) NSString *vendorType;
+//@property (strong, nonatomic) NSString *vendorType; // unused
 @property (strong, nonatomic) NSString *bookingNote;
 @property (strong, nonatomic) NSDate *selectedFromDate;
 @property (strong, nonatomic) NSDate *selectedToDate;

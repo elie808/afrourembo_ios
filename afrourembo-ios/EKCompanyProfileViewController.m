@@ -160,10 +160,14 @@
         if (self.passedProfessional) {
         
             vc.professionalsDataSource = @[self.passedProfessional];
+            vc.salonId = @"-1";
+            vc.salonName = @"-1";
             
         } else if (self.passedSalon) {
             
-            //TODO: pass all professionals from salon
+            vc.professionalsDataSource = @[self.passedSalon.selectedProfessional];
+            vc.salonId = self.passedSalon.salonID;
+            vc.salonName = self.passedSalon.name;
         }
     }
 }

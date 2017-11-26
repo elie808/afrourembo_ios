@@ -561,7 +561,12 @@ static NSString * const kProfessionalsCollectionCell = @"companyProfessionalsCol
         [self performSegueWithIdentifier:kBookingSegue sender:serviceObj];
     }
     
-    if (self.passedSalon) { }
+    if (self.passedSalon) {
+    
+        Service *serviceObj = [self.passedSalon.selectedProfessional.services objectAtIndex:indexPath.row];
+        
+        [self performSegueWithIdentifier:kBookingSegue sender:serviceObj];
+    }
 }
 
 @end

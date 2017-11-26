@@ -8,6 +8,6 @@
 
 #import "EKBookingViewController.h"
 
-@interface EKBookingViewController (CollectionView)
+@interface EKBookingViewController (CollectionView) <UICollectionViewDelegate, UICollectionViewDataSource>
 
 @end
