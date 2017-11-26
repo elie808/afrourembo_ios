@@ -57,7 +57,7 @@ static NSString * const kProfessionalsCollectionCell = @"companyProfessionalsCol
                 
             case 0: return 1; break; // Bio
                 
-            case 1: return self.passedSalon.servicesArray.count > 0 ? self.passedSalon.servicesArray.count : 1; break; // Services
+            case 1: return self.passedSalon.selectedProfessional.services.count > 0 ? self.passedSalon.selectedProfessional.services.count : 1; break; // Services
                 
             case 2: return self.reviewsArray.count > 0 ? self.reviewsArray.count : 1; break; // Reviews
                 
