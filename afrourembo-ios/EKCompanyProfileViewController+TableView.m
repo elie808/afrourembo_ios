@@ -55,13 +55,13 @@ static NSString * const kProfessionalsCollectionCell = @"companyProfessionalsCol
 
         switch (section) {
                 
-            case 0: return 1; break; // Bio
+            case 0: return self.staffArray.count > 0 ? 1 : 0; break; // Professionals
                 
-            case 1: return self.passedSalon.selectedProfessional.services.count > 0 ? self.passedSalon.selectedProfessional.services.count : 1; break; // Services
+            case 1: return 1; break; // Bio
                 
-            case 2: return self.reviewsArray.count > 0 ? self.reviewsArray.count : 1; break; // Reviews
+            case 2: return self.passedSalon.selectedProfessional.services.count > 0 ? self.passedSalon.selectedProfessional.services.count : 1; break; // Services
                 
-            case 3: return self.staffArray.count > 0 ? 1 : 0; break; // Professionals
+            case 3: return self.reviewsArray.count > 0 ? self.reviewsArray.count : 1; break; // Reviews
                 
             case 4: return 3; break; // Contacts
                 
@@ -168,7 +168,15 @@ static NSString * const kProfessionalsCollectionCell = @"companyProfessionalsCol
         
         switch (indexPath.section) {
                 
-            case 0: { // Bio
+            case 0: { // Professionals
+                
+                EKCompanyProfessionalTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kProfessionalsCell forIndexPath:indexPath];
+                
+                return cell;
+                
+            } break;
+                
+            case 1: { // Bio
 
                 UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kBioCell forIndexPath:indexPath];
 
@@ -180,7 +188,7 @@ static NSString * const kProfessionalsCollectionCell = @"companyProfessionalsCol
                 
             } break;
                 
-            case 1: { // Services
+            case 2: { // Services
 
                 if (self.passedSalon.selectedProfessional.services.count > 0) {
 
@@ -205,7 +213,7 @@ static NSString * const kProfessionalsCollectionCell = @"companyProfessionalsCol
 
             } break;
                 
-            case 2: { // Reviews
+            case 3: { // Reviews
                 
                 if (self.reviewsArray.count > 0) {
                     
@@ -227,14 +235,6 @@ static NSString * const kProfessionalsCollectionCell = @"companyProfessionalsCol
                     return cell;
                 }
                 
-            } break;
-                
-            case 3: { // Professionals
-    
-                EKCompanyProfessionalTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kProfessionalsCell forIndexPath:indexPath];
-            
-                return cell;
-    
             } break;
                 
             case 4: { // Contacts
@@ -343,8 +343,11 @@ static NSString * const kProfessionalsCollectionCell = @"companyProfessionalsCol
     
         switch (indexPath.section) {
                 
+            // Professionals
+            case 0: return professionalsCellHeight; break;
+                
             // Bio
-            case 0: {
+            case 1: {
                 
                 if (self.passedSalon.selectedProfessional.about.length > 0) {
                     
@@ -364,7 +367,7 @@ static NSString * const kProfessionalsCollectionCell = @"companyProfessionalsCol
 
                 
             // Services
-            case 1: {
+            case 2: {
                 
                 if (self.passedSalon.selectedProfessional.services.count > 0) {
                     return servicesCellHeight; break;
@@ -374,7 +377,7 @@ static NSString * const kProfessionalsCollectionCell = @"companyProfessionalsCol
             }
 
             // Reviews
-            case 2: {
+            case 3: {
                 
                 if (self.reviewsArray.count > 0) {
                     
@@ -393,10 +396,7 @@ static NSString * const kProfessionalsCollectionCell = @"companyProfessionalsCol
                     return defaultCellHeight;
                 }
             } break;
-                
-            // Professionals
-            case 3: return professionalsCellHeight; break;
-                
+    
             // Contacts
             case 4: return contactCellHeight; break;
                 
@@ -428,15 +428,15 @@ static NSString * const kProfessionalsCollectionCell = @"companyProfessionalsCol
     if (self.passedSalon) {
         
         switch (section) {
+
+            case 0: return @"BEAUTY PROFESSIONALS"; break; // Professionals
                 
-            case 0: return @"BIO"; break; // Bio
+            case 1: return @"BIO"; break; // Bio
                 
-            case 1: return @"SERVICES"; break; // Services
+            case 2: return @"SERVICES"; break; // Services
                 
-            case 2: return @"REVIEWS"; break; // Reviews
-                
-            case 3: return @"BEAUTY PROFESSIONALS"; break; // Professionals
-                
+            case 3: return @"REVIEWS"; break; // Reviews
+    
             case 4: return @"CONTACT INFO"; break; // Contacts
                 
             default: return @""; break;
