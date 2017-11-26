@@ -8,7 +8,8 @@
 
 #import "EKDiscoverMapViewController+TableView.h"
 
-static NSString * const  kTableViewCell = @"salonListCell";
+static NSString * const  kTableViewCell = @"proListCell";
+static NSString * const  kSalonTableViewCell = @"salonListCell";
 static NSString * const  kCollectionViewCell = @"yellowSalonListInCellCollectionViewCell";
 static NSString * const  kDayCollectionViewCell = @"whiteSalonListInCellCollectionViewCell";
 
@@ -25,20 +26,28 @@ static NSString * const  kDayCollectionViewCell = @"whiteSalonListInCellCollecti
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    EKSalonListTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kTableViewCell forIndexPath:indexPath];
-    
+
     id venueObj = [self.dataSourceArray objectAtIndex:indexPath.row];
 
     if ([venueObj isKindOfClass:[Professional class]]) {
+        
+        EKSalonListTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kTableViewCell forIndexPath:indexPath];
+        
         [cell configureCellWithProfessional:venueObj];
+        
+        return cell;
     }
 
     if ([venueObj isKindOfClass:[Salon class]]) {
+        
+        EKSalonListTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kSalonTableViewCell forIndexPath:indexPath];
+        
         [cell configureCellWithSalon:venueObj];
+        
+        return cell;
     }
 
-    return cell;
+    return nil;
 }
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(EKSalonListTableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {

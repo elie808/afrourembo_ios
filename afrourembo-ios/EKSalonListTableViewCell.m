@@ -27,7 +27,6 @@
                                        options:YYWebImageOptionProgressiveBlur|YYWebImageOptionSetImageWithFadeAnimation];
     
     self.cellStarImageView.image = [UIImage imageForStars:salon.stars];
-    self.cellPriceLabel.text = [NSString stringWithFormat:@"$%@+", salon.price];
     self.cellPhotoCountLabel.text = [NSString numberOfPhotosForCount:salon.portfolio.count];
     
     if (salon.portfolio && salon.portfolio.count > 0) {

@@ -543,6 +543,7 @@ static NSString * const kProfessionalsCollectionCell = @"companyProfessionalsCol
         
         Professional *pro = [self.staffArray objectAtIndex:indexPath.row];
         
+        self.title = [NSString stringWithFormat:@"%@ %@", pro.fName, pro.lName];
         self.passedSalon.selectedProfessional = pro;
         [self.tableView reloadData];
         

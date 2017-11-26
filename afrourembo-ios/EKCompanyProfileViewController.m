@@ -22,12 +22,16 @@
 
     if (self.passedProfessional) {
         
+        self.title = [NSString stringWithFormat:@"%@ %@", self.passedProfessional.fName, self.passedProfessional.lName];
+        
         _vendorID = self.passedProfessional.professionalID;
         _vendorType = kProfessionalType;
         
         [self getReviewsForVendor:_vendorID ofType:_vendorType];
         
     } else if (self.passedSalon) {
+        
+        self.title = self.passedSalon.name;
         
         _vendorID = self.passedSalon.salonID;
         _vendorType = kSalonType;
@@ -49,12 +53,16 @@
         
         [self.carousel configureWithVenueImages:picLinksArray];
         
+        self.photoCountLabel.text = [NSString stringWithFormat:@"%lu photos", (unsigned long)picLinksArray.count];
+        
     } else if (self.passedSalon) {
         
         NSMutableArray *picLinksArray = [NSMutableArray new];
         for (Pictures *pic in self.passedSalon.portfolio) { [picLinksArray addObject:pic.picture]; }
         
         [self.carousel configureWithVenueImages:picLinksArray];
+        
+        self.photoCountLabel.text = [NSString stringWithFormat:@"%lu photos", (unsigned long)picLinksArray.count];
     }
 }
 
