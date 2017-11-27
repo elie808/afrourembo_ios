@@ -8,6 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
+static NSString * const kBookingStatusComplete = @"complete";
+//static NSString * const kBookingStatusIncomplete = @"incomplete";
+
 @interface ClientBooking : NSObject
 
 @property NSString *bookingId;
