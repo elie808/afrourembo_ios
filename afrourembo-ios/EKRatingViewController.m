@@ -18,15 +18,31 @@ static NSString * const KUnwind = @"unwindToOrders";
     self.serviceNameLabel.text = self.passedBooking.service;
     self.salonNameLabel.text = self.passedBooking.actorBusinessName;
     self.professionalNameLabel.text = self.passedBooking.professionalBusinessName;
+}
+
+#pragma mark - UITextFieldDelegate
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    return YES;
+}
+
+#pragma mark - Actions
+
+- (IBAction)didTapSubmit:(id)sender {
     
-//    self.reviewTextField.text = @"";
+    //    self.ratingSlider.value = 0;
+    //    self.reviewTextField.text = @"";
     
+    [self performSegueWithIdentifier:KUnwind sender:nil];
 }
 
 #pragma mark - Navigation
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
 
+    if ([segue.identifier isEqualToString:KUnwind]) {
+        
+    }
 }
 
 @end

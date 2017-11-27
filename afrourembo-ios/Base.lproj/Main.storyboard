@@ -420,12 +420,41 @@
                                 <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tK6-wY-QR5">
+                            <view contentMode="scaleToFill" restorationIdentifier="Cosmos" translatesAutoresizingMaskIntoConstraints="NO" id="tK6-wY-QR5" customClass="HCSStarRatingView">
                                 <rect key="frame" x="16" y="137" width="343" height="48"/>
-                                <color key="backgroundColor" red="1" green="0.76470588240000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="tintColor" red="1" green="0.76470588240000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="48" id="nas-gE-cmO"/>
                                 </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="rating">
+                                        <real key="value" value="3"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="totalStars">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="starSize">
+                                        <real key="value" value="30"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="filledColor">
+                                        <color key="value" red="1" green="0.76470588240000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="emptyStarColor">
+                                        <color key="value" red="0.8980392157" green="0.8980392157" blue="0.8980392157" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="starBorderColor">
+                                        <color key="value" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="accurateHalfStars" value="NO"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="allowsHalfStars" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="continuous" value="NO"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="minimumValue">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="maximumValue">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iTj-Lm-zyn" userLabel="upper separator">
                                 <rect key="frame" x="20" y="215" width="335" height="1"/>
@@ -443,17 +472,40 @@
                                 <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="hTb-kK-hAD" id="Wat-ip-e83"/>
+                                </connections>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fOP-yH-Pax">
+                                <rect key="frame" x="8" y="279" width="359" height="44"/>
+                                <color key="backgroundColor" red="1" green="0.76470588240000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="5GG-gi-rvF"/>
+                                </constraints>
+                                <state key="normal" title="Submit">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="22"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="didTapSubmit:" destination="hTb-kK-hAD" eventType="touchDown" id="fP8-po-3Xb"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="g4v-1j-5ov" firstAttribute="trailing" secondItem="me1-0m-QfV" secondAttribute="trailingMargin" id="1nu-Ox-1VL"/>
                             <constraint firstItem="tK6-wY-QR5" firstAttribute="leading" secondItem="me1-0m-QfV" secondAttribute="leadingMargin" id="2rh-qC-jiY"/>
+                            <constraint firstItem="fOP-yH-Pax" firstAttribute="top" secondItem="lsU-pv-X9D" secondAttribute="bottom" constant="16" id="7BU-Yx-eLH"/>
                             <constraint firstItem="iTj-Lm-zyn" firstAttribute="leading" secondItem="me1-0m-QfV" secondAttribute="leadingMargin" constant="4" id="8zZ-Jj-f4s"/>
                             <constraint firstItem="lsU-pv-X9D" firstAttribute="top" secondItem="iTj-Lm-zyn" secondAttribute="bottom" constant="12" id="B8D-FK-UrW"/>
                             <constraint firstItem="eCA-qf-i2C" firstAttribute="leading" secondItem="me1-0m-QfV" secondAttribute="leadingMargin" id="E2a-dM-0LZ"/>
                             <constraint firstItem="eCA-qf-i2C" firstAttribute="trailing" secondItem="me1-0m-QfV" secondAttribute="trailingMargin" id="ERa-pP-vAw"/>
                             <constraint firstItem="Geg-JJ-eSe" firstAttribute="top" secondItem="g4v-1j-5ov" secondAttribute="bottom" constant="5" id="I35-9a-xH1"/>
+                            <constraint firstAttribute="trailing" secondItem="fOP-yH-Pax" secondAttribute="trailing" constant="8" id="Kdu-dO-LSt"/>
                             <constraint firstItem="g4v-1j-5ov" firstAttribute="top" secondItem="eCA-qf-i2C" secondAttribute="bottom" constant="19" id="KrY-B3-5eg"/>
                             <constraint firstItem="tK6-wY-QR5" firstAttribute="top" secondItem="Geg-JJ-eSe" secondAttribute="bottom" constant="30" id="OhK-7D-xLh"/>
                             <constraint firstItem="eCA-qf-i2C" firstAttribute="top" secondItem="8T1-Qf-UHn" secondAttribute="bottom" constant="30" id="WdK-Ub-dzh"/>
@@ -462,6 +514,7 @@
                             <constraint firstItem="g4v-1j-5ov" firstAttribute="leading" secondItem="me1-0m-QfV" secondAttribute="leadingMargin" id="eMg-Gx-7d6"/>
                             <constraint firstItem="Geg-JJ-eSe" firstAttribute="leading" secondItem="me1-0m-QfV" secondAttribute="leadingMargin" id="ker-rj-VYE"/>
                             <constraint firstItem="lsU-pv-X9D" firstAttribute="leading" secondItem="me1-0m-QfV" secondAttribute="leadingMargin" constant="4" id="q9d-l3-KJ2"/>
+                            <constraint firstItem="fOP-yH-Pax" firstAttribute="leading" secondItem="me1-0m-QfV" secondAttribute="leading" constant="8" id="s77-oC-RZ2"/>
                             <constraint firstItem="lsU-pv-X9D" firstAttribute="trailing" secondItem="me1-0m-QfV" secondAttribute="trailingMargin" constant="-4" id="sLL-I1-jUq"/>
                             <constraint firstItem="Geg-JJ-eSe" firstAttribute="trailing" secondItem="me1-0m-QfV" secondAttribute="trailingMargin" id="uPg-1l-iqC"/>
                             <constraint firstItem="iTj-Lm-zyn" firstAttribute="top" secondItem="tK6-wY-QR5" secondAttribute="bottom" constant="30" id="wNE-xM-a6A"/>
@@ -469,6 +522,7 @@
                     </view>
                     <connections>
                         <outlet property="professionalNameLabel" destination="Geg-JJ-eSe" id="K2G-CG-NiO"/>
+                        <outlet property="ratingSlider" destination="tK6-wY-QR5" id="ufu-xw-1dJ"/>
                         <outlet property="reviewTextField" destination="lsU-pv-X9D" id="hLn-jA-JQZ"/>
                         <outlet property="salonNameLabel" destination="g4v-1j-5ov" id="Jad-sh-o1k"/>
                         <outlet property="serviceNameLabel" destination="eCA-qf-i2C" id="RW6-Th-5VS"/>
@@ -2629,6 +2683,6 @@
         <segue reference="oT6-4C-Llh"/>
         <segue reference="yqX-hc-pNV"/>
         <segue reference="Tgh-kR-Ldd"/>
-        <segue reference="U39-u0-bPg"/>
+        <segue reference="MUO-W6-Tur"/>
     </inferredMetricsTieBreakers>
 </document>

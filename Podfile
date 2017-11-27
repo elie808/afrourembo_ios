@@ -6,6 +6,7 @@ target 'afrourembo-ios' do
   use_frameworks!
 
   # Pods for afrourembo-ios
+  pod 'HCSStarRatingView'
   pod 'DateTools'
   pod 'EAIntroView'
   pod 'FBSDKCoreKit'

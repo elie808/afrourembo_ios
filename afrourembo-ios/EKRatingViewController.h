@@ -9,10 +9,12 @@
 #import <UIKit/UIKit.h>
 #import "ClientBooking.h"
 #import "EKSettings.h"
+#import "HCSStarRatingView.h"
 
-@interface EKRatingViewController : UIViewController
+@interface EKRatingViewController : UIViewController <UITextFieldDelegate>
 
 @property (strong, nonatomic) ClientBooking *passedBooking;
+@property (strong, nonatomic) IBOutlet HCSStarRatingView *ratingSlider;
 
 @property (strong, nonatomic) IBOutlet UILabel *serviceNameLabel;
 @property (strong, nonatomic) IBOutlet UILabel *salonNameLabel;
