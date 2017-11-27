@@ -128,6 +128,7 @@
 		47AF51B71E9B765D005FE6EB /* EKSalonListCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 47AF51B61E9B765D005FE6EB /* EKSalonListCollectionViewCell.m */; };
 		47AF51BA1E9B8561005FE6EB /* Salon.m in Sources */ = {isa = PBXBuildFile; fileRef = 47AF51B91E9B8561005FE6EB /* Salon.m */; };
 		47AF51BD1E9C4001005FE6EB /* EKDiscoverMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47AF51BC1E9C4001005FE6EB /* EKDiscoverMapViewController.m */; };
+		47B82E721FCC6D9F0075CDC5 /* EKRatingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47B82E711FCC6D9F0075CDC5 /* EKRatingViewController.m */; };
 		47BD3CEC1EC2A7680062AA97 /* EKAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 47BD3CEB1EC2A7680062AA97 /* EKAnnotation.m */; };
 		47BFEA651EA49AB10091522B /* EKBookingProCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 47BFEA641EA49AB10091522B /* EKBookingProCollectionViewCell.m */; };
 		47BFEA691EA4A9A30091522B /* EKBookingDayCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 47BFEA681EA4A9A30091522B /* EKBookingDayCollectionViewCell.m */; };
@@ -404,6 +405,8 @@
 		47AF51B91E9B8561005FE6EB /* Salon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Salon.m; sourceTree = "<group>"; };
 		47AF51BB1E9C4001005FE6EB /* EKDiscoverMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKDiscoverMapViewController.h; sourceTree = "<group>"; };
 		47AF51BC1E9C4001005FE6EB /* EKDiscoverMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKDiscoverMapViewController.m; sourceTree = "<group>"; };
+		47B82E701FCC6D9F0075CDC5 /* EKRatingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKRatingViewController.h; sourceTree = "<group>"; };
+		47B82E711FCC6D9F0075CDC5 /* EKRatingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKRatingViewController.m; sourceTree = "<group>"; };
 		47BD3CEA1EC2A7680062AA97 /* EKAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKAnnotation.h; sourceTree = "<group>"; };
 		47BD3CEB1EC2A7680062AA97 /* EKAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKAnnotation.m; sourceTree = "<group>"; };
 		47BFEA631EA49AB10091522B /* EKBookingProCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKBookingProCollectionViewCell.h; sourceTree = "<group>"; };
@@ -771,6 +774,8 @@
 			children = (
 				47800BC11EA3B2FA00F450DB /* EKBookingViewController.h */,
 				47800BC21EA3B2FA00F450DB /* EKBookingViewController.m */,
+				47B82E701FCC6D9F0075CDC5 /* EKRatingViewController.h */,
+				47B82E711FCC6D9F0075CDC5 /* EKRatingViewController.m */,
 				47C4804E1F4DBD3B00493E0B /* Categories */,
 				47BFEA661EA49D3B0091522B /* Cells */,
 			);
@@ -1563,6 +1568,7 @@
 				477935551F89A1EF00E0C034 /* EKResetPhoneNumberViewController.m in Sources */,
 				47C7D4CC1EBB5EF000457E53 /* Day.m in Sources */,
 				4757C6531ED98D8000C2B52F /* Appointment.m in Sources */,
+				47B82E721FCC6D9F0075CDC5 /* EKRatingViewController.m in Sources */,
 				47E2F0091EA5FF97002E2FD4 /* EKProfileInfoFacebookViewController.m in Sources */,
 				479A850A1F9E6A28002ECC2C /* EKClientTableViewCell.m in Sources */,
 				47FE51C61EFD59F500A39BAE /* Category.m in Sources */,

@@ -345,6 +345,7 @@
                     <connections>
                         <outlet property="collectionView" destination="X9Q-BE-l0E" id="uP3-9E-3Fk"/>
                         <outlet property="emptyOrdersView" destination="OUc-C3-f3l" id="bxc-AR-nmS"/>
+                        <segue destination="hTb-kK-hAD" kind="show" identifier="ordersPaymentsToRatingVC" id="sNm-vs-vNE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HxJ-Md-7ad" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -388,6 +389,28 @@
                 </view>
             </objects>
             <point key="canvasLocation" x="869.60000000000002" y="115.59220389805098"/>
+        </scene>
+        <!--Rating View Controller-->
+        <scene sceneID="MQp-vq-5cJ">
+            <objects>
+                <viewController id="hTb-kK-hAD" customClass="EKRatingViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="8T1-Qf-UHn"/>
+                        <viewControllerLayoutGuide type="bottom" id="qzs-Nh-U0W"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="me1-0m-QfV">
+                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <segue destination="dWB-gs-HSy" kind="unwind" identifier="unwindToOrders" unwindAction="unwindToOrdersVC:" id="j3y-bh-ecw"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="W3o-3E-lBU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="dWB-gs-HSy" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="870" y="868"/>
         </scene>
         <!--customerProfileVC-->
         <scene sceneID="UwK-I4-70i">

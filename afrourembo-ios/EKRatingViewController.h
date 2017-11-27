@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ClientBooking.h"
+#import "EKSettings.h"
 
 @interface EKRatingViewController : UIViewController
+
+@property (strong, nonatomic) ClientBooking *booking;
 
 @end

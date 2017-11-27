@@ -9,6 +9,7 @@
 #import "EKOrdersPaymentsViewController.h"
 
 static NSString * const kCell = @"ordersCollectionCellID";
+static NSString * const kRatingSegue = @"ordersPaymentsToRatingVC";
 
 @implementation EKOrdersPaymentsViewController {
     NSMutableArray<ClientBooking *> *_ordersArray;
@@ -78,8 +79,11 @@ static NSString * const kCell = @"ordersCollectionCellID";
 #pragma mark - EKCartCollectionViewCellDelegate
 
 - (void)didTapEditButtonAtIndex:(NSIndexPath *)indexPath {
+        
+    ClientBooking *order = [_ordersArray objectAtIndex:indexPath.row];
     
-    NSLog(@"TAP ATO");
+    [self performSegueWithIdentifier:kRatingSegue sender:order];
+    
 //    Booking *booking = [_bookings objectAtIndex:indexPath.row];
 //    
 //    [[RLMRealm defaultRealm] beginWriteTransaction];
@@ -101,14 +105,20 @@ static NSString * const kCell = @"ordersCollectionCellID";
 //    [self.collectionView reloadData];
 }
 
-/*
 #pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+
+    if ([segue.identifier isEqualToString:kRatingSegue]) {
+        
+        if (sender && [sender isKindOfClass:[ClientBooking class]]) {
+            
+            EKRatingViewController *vc = segue.destinationViewController;
+            vc.booking = (ClientBooking*)sender;
+        }
+    }
 }
-*/
+
+- (IBAction)unwindToOrdersVC:(UIStoryboardSegue *)segue {}
 
 @end
