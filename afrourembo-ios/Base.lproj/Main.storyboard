@@ -168,10 +168,10 @@
             </objects>
             <point key="canvasLocation" x="1685.5999999999999" y="115.59220389805098"/>
         </scene>
-        <!--Orders Payments View Controller-->
+        <!--Orders-->
         <scene sceneID="4eI-9i-FZw">
             <objects>
-                <viewController id="JoW-i2-Woq" customClass="EKOrdersPaymentsViewController" sceneMemberID="viewController">
+                <viewController title="Orders" id="JoW-i2-Woq" customClass="EKOrdersPaymentsViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="c4q-um-uZL"/>
                         <viewControllerLayoutGuide type="bottom" id="I2d-ov-JlN"/>
@@ -390,10 +390,10 @@
             </objects>
             <point key="canvasLocation" x="869.60000000000002" y="115.59220389805098"/>
         </scene>
-        <!--Rating View Controller-->
+        <!--Rate & Comment-->
         <scene sceneID="MQp-vq-5cJ">
             <objects>
-                <viewController id="hTb-kK-hAD" customClass="EKRatingViewController" sceneMemberID="viewController">
+                <viewController title="Rate &amp; Comment" id="hTb-kK-hAD" customClass="EKRatingViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="8T1-Qf-UHn"/>
                         <viewControllerLayoutGuide type="bottom" id="qzs-Nh-U0W"/>
@@ -401,16 +401,84 @@
                     <view key="view" contentMode="scaleToFill" id="me1-0m-QfV">
                         <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Haircut &amp; Beard Trim" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eCA-qf-i2C">
+                                <rect key="frame" x="16" y="30" width="343" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="McLaren Barbershop" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g4v-1j-5ov">
+                                <rect key="frame" x="16" y="70" width="343" height="16"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="13"/>
+                                <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Johanna Mullins" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Geg-JJ-eSe">
+                                <rect key="frame" x="16" y="91" width="343" height="16"/>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="13"/>
+                                <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tK6-wY-QR5">
+                                <rect key="frame" x="16" y="137" width="343" height="48"/>
+                                <color key="backgroundColor" red="1" green="0.76470588240000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="48" id="nas-gE-cmO"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iTj-Lm-zyn" userLabel="upper separator">
+                                <rect key="frame" x="20" y="215" width="335" height="1"/>
+                                <color key="backgroundColor" red="0.83921568629999999" green="0.83921568629999999" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="wUk-He-6es"/>
+                                </constraints>
+                            </view>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Leave your review here ..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lsU-pv-X9D">
+                                <rect key="frame" x="20" y="228" width="335" height="35"/>
+                                <color key="tintColor" red="1" green="0.76470588240000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="dd7-wL-h2D"/>
+                                </constraints>
+                                <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="g4v-1j-5ov" firstAttribute="trailing" secondItem="me1-0m-QfV" secondAttribute="trailingMargin" id="1nu-Ox-1VL"/>
+                            <constraint firstItem="tK6-wY-QR5" firstAttribute="leading" secondItem="me1-0m-QfV" secondAttribute="leadingMargin" id="2rh-qC-jiY"/>
+                            <constraint firstItem="iTj-Lm-zyn" firstAttribute="leading" secondItem="me1-0m-QfV" secondAttribute="leadingMargin" constant="4" id="8zZ-Jj-f4s"/>
+                            <constraint firstItem="lsU-pv-X9D" firstAttribute="top" secondItem="iTj-Lm-zyn" secondAttribute="bottom" constant="12" id="B8D-FK-UrW"/>
+                            <constraint firstItem="eCA-qf-i2C" firstAttribute="leading" secondItem="me1-0m-QfV" secondAttribute="leadingMargin" id="E2a-dM-0LZ"/>
+                            <constraint firstItem="eCA-qf-i2C" firstAttribute="trailing" secondItem="me1-0m-QfV" secondAttribute="trailingMargin" id="ERa-pP-vAw"/>
+                            <constraint firstItem="Geg-JJ-eSe" firstAttribute="top" secondItem="g4v-1j-5ov" secondAttribute="bottom" constant="5" id="I35-9a-xH1"/>
+                            <constraint firstItem="g4v-1j-5ov" firstAttribute="top" secondItem="eCA-qf-i2C" secondAttribute="bottom" constant="19" id="KrY-B3-5eg"/>
+                            <constraint firstItem="tK6-wY-QR5" firstAttribute="top" secondItem="Geg-JJ-eSe" secondAttribute="bottom" constant="30" id="OhK-7D-xLh"/>
+                            <constraint firstItem="eCA-qf-i2C" firstAttribute="top" secondItem="8T1-Qf-UHn" secondAttribute="bottom" constant="30" id="WdK-Ub-dzh"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="iTj-Lm-zyn" secondAttribute="trailing" constant="4" id="ZX9-Gf-oqt"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="tK6-wY-QR5" secondAttribute="trailing" id="dcK-fv-uXO"/>
+                            <constraint firstItem="g4v-1j-5ov" firstAttribute="leading" secondItem="me1-0m-QfV" secondAttribute="leadingMargin" id="eMg-Gx-7d6"/>
+                            <constraint firstItem="Geg-JJ-eSe" firstAttribute="leading" secondItem="me1-0m-QfV" secondAttribute="leadingMargin" id="ker-rj-VYE"/>
+                            <constraint firstItem="lsU-pv-X9D" firstAttribute="leading" secondItem="me1-0m-QfV" secondAttribute="leadingMargin" constant="4" id="q9d-l3-KJ2"/>
+                            <constraint firstItem="lsU-pv-X9D" firstAttribute="trailing" secondItem="me1-0m-QfV" secondAttribute="trailingMargin" constant="-4" id="sLL-I1-jUq"/>
+                            <constraint firstItem="Geg-JJ-eSe" firstAttribute="trailing" secondItem="me1-0m-QfV" secondAttribute="trailingMargin" id="uPg-1l-iqC"/>
+                            <constraint firstItem="iTj-Lm-zyn" firstAttribute="top" secondItem="tK6-wY-QR5" secondAttribute="bottom" constant="30" id="wNE-xM-a6A"/>
+                        </constraints>
                     </view>
                     <connections>
+                        <outlet property="professionalNameLabel" destination="Geg-JJ-eSe" id="K2G-CG-NiO"/>
+                        <outlet property="reviewTextField" destination="lsU-pv-X9D" id="hLn-jA-JQZ"/>
+                        <outlet property="salonNameLabel" destination="g4v-1j-5ov" id="Jad-sh-o1k"/>
+                        <outlet property="serviceNameLabel" destination="eCA-qf-i2C" id="RW6-Th-5VS"/>
                         <segue destination="dWB-gs-HSy" kind="unwind" identifier="unwindToOrders" unwindAction="unwindToOrdersVC:" id="j3y-bh-ecw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W3o-3E-lBU" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="dWB-gs-HSy" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="870" y="868"/>
+            <point key="canvasLocation" x="869.60000000000002" y="867.61619190404804"/>
         </scene>
         <!--customerProfileVC-->
         <scene sceneID="UwK-I4-70i">

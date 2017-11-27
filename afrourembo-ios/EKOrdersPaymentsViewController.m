@@ -79,30 +79,10 @@ static NSString * const kRatingSegue = @"ordersPaymentsToRatingVC";
 #pragma mark - EKCartCollectionViewCellDelegate
 
 - (void)didTapEditButtonAtIndex:(NSIndexPath *)indexPath {
-        
+    
     ClientBooking *order = [_ordersArray objectAtIndex:indexPath.row];
     
     [self performSegueWithIdentifier:kRatingSegue sender:order];
-    
-//    Booking *booking = [_bookings objectAtIndex:indexPath.row];
-//    
-//    [[RLMRealm defaultRealm] beginWriteTransaction];
-//    [[RLMRealm defaultRealm] deleteObject:booking.reservation];
-//    [[RLMRealm defaultRealm] deleteObject:booking];
-//    [[RLMRealm defaultRealm] commitWriteTransaction];
-//    
-//    if (_bookings.count > 0) {
-//        
-//        self.bottomBar.hidden = NO;
-//        self.emptyCartView.hidden = YES;
-//        
-//    } else {
-//        
-//        self.bottomBar.hidden = YES;
-//        self.emptyCartView.hidden = NO;
-//    }
-//    
-//    [self.collectionView reloadData];
 }
 
 #pragma mark - Navigation
@@ -114,7 +94,7 @@ static NSString * const kRatingSegue = @"ordersPaymentsToRatingVC";
         if (sender && [sender isKindOfClass:[ClientBooking class]]) {
             
             EKRatingViewController *vc = segue.destinationViewController;
-            vc.booking = (ClientBooking*)sender;
+            vc.passedBooking = (ClientBooking*)sender;
         }
     }
 }

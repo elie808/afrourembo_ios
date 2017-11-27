@@ -12,6 +12,12 @@
 
 @interface EKRatingViewController : UIViewController
 
-@property (strong, nonatomic) ClientBooking *booking;
+@property (strong, nonatomic) ClientBooking *passedBooking;
+
+@property (strong, nonatomic) IBOutlet UILabel *serviceNameLabel;
+@property (strong, nonatomic) IBOutlet UILabel *salonNameLabel;
+@property (strong, nonatomic) IBOutlet UILabel *professionalNameLabel;
+
+@property (strong, nonatomic) IBOutlet UITextField *reviewTextField;
 
 @end

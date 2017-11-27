@@ -14,6 +14,13 @@ static NSString * const KUnwind = @"unwindToOrders";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.serviceNameLabel.text = self.passedBooking.service;
+    self.salonNameLabel.text = self.passedBooking.actorBusinessName;
+    self.professionalNameLabel.text = self.passedBooking.professionalBusinessName;
+    
+//    self.reviewTextField.text = @"";
+    
 }
 
 #pragma mark - Navigation
