@@ -27,6 +27,7 @@ static NSString * const kUserFBLoginAPIPath    = @"user/facebook/login";
 static NSString * const kUserLoginAPIPath    = @"user/login";
 static NSString * const kUserProfileAPIPath  = @"user/profile";
 static NSString * const kUserReviewsAPIPath  = @"user/reviews/:id";
+static NSString * const kUserPOSTReviewsAPIPath  = @"user/reviews";
 static NSString * const kUserPassResetAPIPath  = @"user/password/reset";
 static NSString * const kUserProfessionalBookingsAPIPath = @"user/vendor/:userId/bookings";
 static NSString * const kUserProfilePictureAPIPath      = @"user/profile/picture";

@@ -11,6 +11,9 @@
 #import "EKSettings.h"
 #import "HCSStarRatingView.h"
 
+#import "Review+API.h"
+#import "UIViewController+Helpers.h"
+
 @interface EKRatingViewController : UIViewController <UITextFieldDelegate>
 
 @property (strong, nonatomic) ClientBooking *passedBooking;

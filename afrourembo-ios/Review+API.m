@@ -20,6 +20,23 @@
     return mapping;
 }
 
+#pragma mark - Requests
+
++ (RKRequestDescriptor *)postReviewsRequestDescriptor {
+    
+    RKObjectMapping *mapping = [RKObjectMapping mappingForClass:[ClientBooking class]];
+    [mapping addAttributeMappingsFromArray:@[@"bookingId", @"review", @"rating"]];
+    
+    [mapping addAttributeMappingsFromDictionary:@{@"serviceIdInBooking" : @"serviceId"}];
+    
+    RKRequestDescriptor *request = [RKRequestDescriptor
+                                    requestDescriptorWithMapping:[mapping inverseMapping]
+                                    objectClass:[ClientBooking class]
+                                    rootKeyPath:nil
+                                    method:RKRequestMethodPOST];
+    return request;
+}
+
 #pragma mark - Responses
 
 + (RKResponseDescriptor *)getReviewsResponseDescriptor {
@@ -28,6 +45,21 @@
                                       responseDescriptorWithMapping:[Review map1]
                                       method:RKRequestMethodGET
                                       pathPattern:kUserReviewsAPIPath
+                                      keyPath:nil
+                                      statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+    return response;
+}
+
++ (RKResponseDescriptor *)postReviewsResponseDescriptor {
+    
+    RKObjectMapping *mapping = [RKObjectMapping mappingForClass:[ClientBooking class]];
+    [mapping addAttributeMappingsFromArray:@[@"bookingId", @"review", @"rating"]];
+    [mapping addAttributeMappingsFromDictionary:@{@"serviceIdInBooking" : @"serviceId"}];
+    
+    RKResponseDescriptor *response = [RKResponseDescriptor
+                                      responseDescriptorWithMapping:mapping
+                                      method:RKRequestMethodGET
+                                      pathPattern:kUserPOSTReviewsAPIPath
                                       keyPath:nil
                                       statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     return response;
@@ -68,6 +100,47 @@
                                                       errorBlock(error, @"You are not connected to the internet.", 0);
                                                   }
                                               }];
+}
+
++ (void)postReviewForBooking:(NSString *)bookingID withService:(NSString *)currentBookingID rating:(NSNumber *)rating andReview:(NSString *)review forUser:(NSString *)userToken withBlock:(ReviewPostSuccessBlock)successBlock withErrors:(ReviewErrorBlock)errorBlock {
+    
+    ClientBooking *reviewObj = [ClientBooking new];
+    reviewObj.bookingId = bookingID;
+    reviewObj.serviceId = currentBookingID;
+    reviewObj.rating = rating;
+    reviewObj.review = review;
+    
+    [[[RKObjectManager sharedManager] HTTPClient] setDefaultHeader:@"Authorization" value:userToken];
+    
+    [[RKObjectManager sharedManager] postObject:reviewObj
+                                           path:kUserPOSTReviewsAPIPath
+                                     parameters:nil
+                                        success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+
+                                            successBlock(nil);
+                                            
+                                        } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                                            
+                                            if (operation.HTTPRequestOperation.responseData) {
+                                                
+                                                // exctract error message
+                                                NSDictionary *myDic = [NSJSONSerialization
+                                                                       JSONObjectWithData:operation.HTTPRequestOperation.responseData
+                                                                       options:NSJSONReadingMutableLeaves
+                                                                       error:nil];
+                                                
+                                                NSString *errorMessage = [myDic valueForKey:@"message"];
+                                                
+                                                NSNumber *statusCode = [myDic valueForKey:@"statusCode"];
+                                                
+                                                NSLog(@"-------ERROR MESSAGE: %@", errorMessage);
+                                                errorBlock(error, errorMessage, [statusCode integerValue]);
+                                                
+                                            } else {
+                                                
+                                                errorBlock(error, @"You are not connected to the internet.", 0);
+                                            }
+                                        }];
 }
 
 @end

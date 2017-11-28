@@ -24,11 +24,15 @@ static NSString * const kRatingSegue = @"ordersPaymentsToRatingVC";
                                           self.collectionView.frame.size.width, self.collectionView.frame.size.height);
     self.emptyOrdersView.hidden = NO;
     [self.view addSubview:self.emptyOrdersView];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
     
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     [Customer getBookingsForUser:[EKSettings getSavedCustomer].token
                        withBlock:^(NSArray<ClientBooking *> *customerObj) {
-
+                           
                            [MBProgressHUD hideHUDForView:self.view animated:YES];
                            
                            if (customerObj.count > 0) {
@@ -40,7 +44,7 @@ static NSString * const kRatingSegue = @"ordersPaymentsToRatingVC";
                            }
                            
                        } withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
-                          
+                           
                            [MBProgressHUD hideHUDForView:self.view animated:YES];
                            [self showMessage:errorMessage withTitle:@"Error" completionBlock:nil];
                        }];

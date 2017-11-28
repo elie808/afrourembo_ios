@@ -30,10 +30,18 @@ static NSString * const KUnwind = @"unwindToOrders";
 
 - (IBAction)didTapSubmit:(id)sender {
     
-    //    self.ratingSlider.value = 0;
-    //    self.reviewTextField.text = @"";
-    
-    [self performSegueWithIdentifier:KUnwind sender:nil];
+    [Review postReviewForBooking:self.passedBooking.bookingId
+                     withService:self.passedBooking.currentBookingId
+                          rating:[NSNumber numberWithFloat:self.ratingSlider.value]
+                       andReview:self.reviewTextField.text
+                         forUser:[EKSettings getSavedCustomer].token
+                       withBlock:^(Review *reviews) {
+                         
+                           [self performSegueWithIdentifier:KUnwind sender:nil];
+                           
+                       } withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
+                          
+                      }];
 }
 
 #pragma mark - Navigation

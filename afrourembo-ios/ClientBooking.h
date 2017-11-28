@@ -27,4 +27,7 @@ static NSString * const kBookingStatusComplete = @"complete";
 @property NSString *professionalBusinessName;
 @property BOOL reviewed;
 
+@property NSString *review;
+@property NSNumber *rating;
+
 @end

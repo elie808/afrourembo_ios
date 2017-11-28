@@ -60,6 +60,10 @@
     
     [objectManager addRequestDescriptor:[ResetPassword resetPasswordRequestDescriptor]];
     
+    [objectManager addRequestDescriptorsFromArray:@[
+                                                    [Review postReviewsRequestDescriptor]
+                                                    ]];
+    
     [objectManager addRequestDescriptor:[SalonLogin salonLoginRequestDescriptor]];
     
     [objectManager addRequestDescriptorsFromArray:@[
@@ -133,7 +137,10 @@
                                                      [Professional putProfessionalProfileResponseDescriptor]
                                                      ]];
     
-    [objectManager addResponseDescriptor:[Review getReviewsResponseDescriptor]];
+    [objectManager addResponseDescriptorsFromArray:@[
+                                                     [Review getReviewsResponseDescriptor],
+                                                     [Review postReviewsResponseDescriptor]
+                                                     ]];
     
     [objectManager addResponseDescriptorsFromArray:@[
                                                      [Salon getStaffResponseDescriptor]
