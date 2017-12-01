@@ -58,13 +58,18 @@
 + (void)getProfessionalsForCategory:(NSString *)category andService:(NSString *)service WithBlock:(ExploreProfessionalsSuccessBlock)successBlock withErrors:(ExploreErrorBlock)errorBlock {
     
     NSString *URL;
-
-    if (service && service.length > 0) {
-        
-        URL = [NSString stringWithFormat:@"%@?category=%@&service=%@", kUserExploreProfessionalsAPIPath, category, service];
-    } else {
+    
+    if (category && category.length > 0) {
         
         URL = [NSString stringWithFormat:@"%@?category=%@", kUserExploreProfessionalsAPIPath, category];
+        
+    } else if (category && category.length > 0 && service && service.length > 0) {
+        
+        URL = [NSString stringWithFormat:@"%@?category=%@&service=%@", kUserExploreProfessionalsAPIPath, category, service];
+        
+    } else {
+        
+        URL = kUserExploreProfessionalsAPIPath;
     }
     
     [[RKObjectManager sharedManager] getObjectsAtPath:[URL cleanupURL]
@@ -102,11 +107,18 @@
     
     NSString *URL;
     
-    if (service && service.length > 0) {
-        URL = [NSString stringWithFormat:@"%@?category=%@&service=%@", kUserExploreSalonsAPIPath, category, service];
-    } else {
-        URL = [NSString stringWithFormat:@"%@?category=%@", kUserExploreSalonsAPIPath, category];
-    }
+     if (category && category.length > 0) {
+     
+         URL = [NSString stringWithFormat:@"%@?category=%@", kUserExploreSalonsAPIPath, category];
+     
+     } else if (category && category.length > 0 && service && service.length > 0) {
+     
+         URL = [NSString stringWithFormat:@"%@?category=%@&service=%@", kUserExploreSalonsAPIPath, category, service];
+     
+     } else {
+         
+         URL = kUserExploreSalonsAPIPath;
+     }
 
     [[RKObjectManager sharedManager] getObjectsAtPath:[URL cleanupURL]
                                            parameters:nil
