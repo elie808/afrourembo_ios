@@ -20,24 +20,19 @@ static NSString * const kServiceSegue = @"salonSelectToServiceVC";
     
     self.title = @"Select your salon";
     
-//    Salon *salon1 = [Salon new];
-//    salon1.userName = @"Salon 1";
-//    salon1.isCentralizedModel = YES;
-//    
-//    Salon *salon2 = [Salon new];
-//    salon2.userName = @"Salon 2";
-//    salon2.isCentralizedModel = YES;
-//    
-//    Salon *salon3 = [Salon new];
-//    salon3.userName = @"Salon 3";
-//    salon3.isCentralizedModel = NO;
-//    
-//    Salon *salon4 = [Salon new];
-//    salon4.userName = @"Salon 4";
-//    salon4.isCentralizedModel = NO;
-//    
-//    _dataSourceArray = [NSMutableArray arrayWithObjects:salon1, salon2, salon3, salon4, nil];
     _dataSourceArray = [NSMutableArray new];
+    
+    [Explore getSalonsForCategory:nil
+                       andService:nil
+                        WithBlock:^(NSArray<Salon *> *salonArray) {
+                            
+                            [_dataSourceArray addObjectsFromArray:salonArray];
+                            [self.tableView reloadData];
+                            
+                        } withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
+                            
+                            [self showMessage:errorMessage withTitle:@"Error" completionBlock:nil];
+                        }];
 }
 
 #pragma mark - UITableViewDataSource
@@ -74,7 +69,21 @@ static NSString * const kServiceSegue = @"salonSelectToServiceVC";
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    [self performSegueWithIdentifier:kServiceSegue sender:nil];
+    Salon *salonObj = [_dataSourceArray objectAtIndex:indexPath.row];
+    
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    [Professional joinSalon:salonObj.salonID
+                  withToken:self.passedProfessional.token
+                  withBlock:^(Salon *salonObj) {
+    
+                      [MBProgressHUD hideHUDForView:self.view animated:YES];
+                      [self performSegueWithIdentifier:kServiceSegue sender:nil];
+                      
+                  } withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
+                     
+                      [MBProgressHUD hideHUDForView:self.view animated:YES];
+                      [self showMessage:errorMessage withTitle:@"Error" completionBlock:nil];
+                 }];
 }
 
 #pragma mark - Navigation

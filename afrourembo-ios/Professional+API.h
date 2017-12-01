@@ -10,9 +10,12 @@
 #import <RestKit/RestKit.h>
 #import "EKNetworkingConstants.h"
 #import "ResetPassword.h"
+#import "Salon.h"
+#import "Salon+API.h"
 #import "Customer+API.h"
 
 typedef void (^ProfessionalSignUpSuccessBlock)(Professional *professionalObj);
+typedef void (^ProfessionalSalonJoinSuccessBlock)(Salon *salonObj);
 typedef void (^ProfessionalClientsSuccessBlock)(NSArray<Customer *> *customersArray);
 typedef void (^ProfessionalSignUpErrorBlock)(NSError *error, NSString *errorMessage, NSInteger statusCode);
 typedef void (^ProfessionalEditErrorBlock)(NSError *error, NSString *errorMessage);
@@ -42,6 +45,9 @@ typedef void (^ProfessionalEditErrorBlock)(NSError *error, NSString *errorMessag
 /// Update Professional profile
 + (RKResponseDescriptor *)putProfessionalProfileResponseDescriptor;
 
+/// Request to join a salon
++ (RKResponseDescriptor *)postProfessionalSalonJoinResponseDescriptor;
+
 + (void)signUpProfessional:(NSString *)email password:(NSString *)password  firstName:(NSString *)fName lastName:(NSString *)lName phoneNumber:(NSString *)phone  withBlock:(ProfessionalSignUpSuccessBlock)successBlock withErrors:(ProfessionalSignUpErrorBlock)errorBlock;
 
 + (void)resetPassword:(NSString *)newPassword forPhoneNumber:(NSString *)phoneNumber andConfirmationCode:(NSString *)confirmationCode withBlock:(ProfessionalSignUpSuccessBlock)successBlock withErrors:(ProfessionalSignUpErrorBlock)errorBlock;
@@ -57,5 +63,8 @@ typedef void (^ProfessionalEditErrorBlock)(NSError *error, NSString *errorMessag
 
 /// PUT professional's profile to update it
 + (void)udpateProfile:(NSString *)fName lastName:(NSString *)lName phoneNumber:(NSString *)phone about:(NSString *)aboutText withToken:(NSString *)userToken withBlock:(ProfessionalSignUpSuccessBlock)successBlock withErrors:(ProfessionalSignUpErrorBlock)errorBlock;
+
+/// POST request to join a Salon. Has to be approved by Salon
++ (void)joinSalon:(NSString *)salonID withToken:(NSString *)token withBlock:(ProfessionalSalonJoinSuccessBlock)successBlock withErrors:(ProfessionalSignUpErrorBlock)errorBlock;
 
 @end

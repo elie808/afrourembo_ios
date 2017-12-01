@@ -134,7 +134,8 @@
                                                      [Professional professionalClientsResponseDescriptor],
                                                      [Professional professionalProfileResponseDescriptor],
                                                      [Professional getProfessionalProfileResponseDescriptor],
-                                                     [Professional putProfessionalProfileResponseDescriptor]
+                                                     [Professional putProfessionalProfileResponseDescriptor],
+                                                     [Professional postProfessionalSalonJoinResponseDescriptor]
                                                      ]];
     
     [objectManager addResponseDescriptorsFromArray:@[
