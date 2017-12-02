@@ -28,6 +28,8 @@
 		472E3F5C1FA5E54C00EBA889 /* EKFavoritesTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 472E3F5B1FA5E54C00EBA889 /* EKFavoritesTableViewCell.m */; };
 		47329CA21F0BC06D00E5DF13 /* EKProfessionalInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47329CA11F0BC06D00E5DF13 /* EKProfessionalInfoViewController.m */; };
 		47329CA71F0BE77700E5DF13 /* EKProfessionalAddressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47329CA61F0BE77700E5DF13 /* EKProfessionalAddressViewController.m */; };
+		4734BCC21FD24ADC00C5725D /* EKSalonManageStaffViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4734BCC11FD24ADC00C5725D /* EKSalonManageStaffViewController.m */; };
+		4734BCC61FD252A500C5725D /* EKManageStaffTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4734BCC51FD252A500C5725D /* EKManageStaffTableViewCell.m */; };
 		4734F5EE1F33FD2600982D94 /* NSDate+Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 4734F5ED1F33FD2600982D94 /* NSDate+Helpers.m */; };
 		4734F5F11F3401D200982D94 /* EKCarousel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4734F5F01F3401D200982D94 /* EKCarousel.m */; };
 		473535331F0B1E71009FCE41 /* Explore.m in Sources */ = {isa = PBXBuildFile; fileRef = 473535321F0B1E71009FCE41 /* Explore.m */; };
@@ -205,6 +207,10 @@
 		47329CA11F0BC06D00E5DF13 /* EKProfessionalInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKProfessionalInfoViewController.m; sourceTree = "<group>"; };
 		47329CA51F0BE77700E5DF13 /* EKProfessionalAddressViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKProfessionalAddressViewController.h; sourceTree = "<group>"; };
 		47329CA61F0BE77700E5DF13 /* EKProfessionalAddressViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKProfessionalAddressViewController.m; sourceTree = "<group>"; };
+		4734BCC01FD24ADC00C5725D /* EKSalonManageStaffViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKSalonManageStaffViewController.h; sourceTree = "<group>"; };
+		4734BCC11FD24ADC00C5725D /* EKSalonManageStaffViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKSalonManageStaffViewController.m; sourceTree = "<group>"; };
+		4734BCC41FD252A500C5725D /* EKManageStaffTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKManageStaffTableViewCell.h; sourceTree = "<group>"; };
+		4734BCC51FD252A500C5725D /* EKManageStaffTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKManageStaffTableViewCell.m; sourceTree = "<group>"; };
 		4734F5EC1F33FD2600982D94 /* NSDate+Helpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Helpers.h"; sourceTree = "<group>"; };
 		4734F5ED1F33FD2600982D94 /* NSDate+Helpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Helpers.m"; sourceTree = "<group>"; };
 		4734F5EF1F3401D200982D94 /* EKCarousel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKCarousel.h; sourceTree = "<group>"; };
@@ -586,6 +592,17 @@
 				4760FC7B1EF88C8200099DFD /* EKSalonAddressViewController.m */,
 			);
 			name = "SALON - Address";
+			sourceTree = "<group>";
+		};
+		4734BCC31FD24AE200C5725D /* SALON - Manage Staff */ = {
+			isa = PBXGroup;
+			children = (
+				4734BCC01FD24ADC00C5725D /* EKSalonManageStaffViewController.h */,
+				4734BCC11FD24ADC00C5725D /* EKSalonManageStaffViewController.m */,
+				4734BCC41FD252A500C5725D /* EKManageStaffTableViewCell.h */,
+				4734BCC51FD252A500C5725D /* EKManageStaffTableViewCell.m */,
+			);
+			name = "SALON - Manage Staff";
 			sourceTree = "<group>";
 		};
 		4734F5F21F3401D900982D94 /* Views */ = {
@@ -1182,6 +1199,7 @@
 				479F7D781EF17C0100EB445A /* SALON - Info */,
 				47329CA41F0BE75600E5DF13 /* SALON - Address */,
 				47329CA31F0BE74800E5DF13 /* SALON - Role */,
+				4734BCC31FD24AE200C5725D /* SALON - Manage Staff */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -1513,6 +1531,7 @@
 				4757C6491ED879FB00C2B52F /* EKTodayViewController.m in Sources */,
 				47F714111ED704350028FB65 /* EKSalonSelectViewController.m in Sources */,
 				479A85031F9E0BC5002ECC2C /* ProfessionalInfo+API.m in Sources */,
+				4734BCC61FD252A500C5725D /* EKManageStaffTableViewCell.m in Sources */,
 				478BDEEE1E99A25E00F74A5C /* EKImageTextButton.m in Sources */,
 				474ED7C01E9C6BD90099CA0A /* EKDiscoverMapViewController+TableView.m in Sources */,
 				47A3BB881E7A8C0B00963F27 /* EKRoleViewController.m in Sources */,
@@ -1521,6 +1540,7 @@
 				470F0B951EDB7DF2002FDE96 /* EKDashboardViewController.m in Sources */,
 				470CD74C1EA1C6C00086DEE4 /* EKCompanyProfessionalTableViewCell.m in Sources */,
 				47BFEA651EA49AB10091522B /* EKBookingProCollectionViewCell.m in Sources */,
+				4734BCC21FD24ADC00C5725D /* EKSalonManageStaffViewController.m in Sources */,
 				4795200F1EB3A40700E377E5 /* EKScheduleMonthlyViewController.m in Sources */,
 				47FF4F681EB5520E0022A6ED /* Customer.m in Sources */,
 				4787C6DD1EB40D5500DF7B83 /* Booking.m in Sources */,
