@@ -210,6 +210,8 @@ static NSString * const kConfirmPhoneSegue = @"confirmPhoneNumberVC";
                          
                          NSLog(@"SALon LOGGED IN!!");
 
+                         [EKSettings saveSalon:salonObj];
+                         
                          [MBProgressHUD hideHUDForView:self.view animated:YES];
                          [self performSegueWithIdentifier:kBPDashSegue sender:nil];
                      }
