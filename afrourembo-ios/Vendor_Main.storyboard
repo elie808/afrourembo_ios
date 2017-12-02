@@ -420,13 +420,21 @@
             </objects>
             <point key="canvasLocation" x="2892" y="-1769.865067466267"/>
         </scene>
+        <!--EditStaffVC-->
+        <scene sceneID="omG-GG-VfU">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Vendor_Settings" referencedIdentifier="EditStaffVC" id="J9M-TE-LjP" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oWG-4m-zpy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="986" y="836"/>
+        </scene>
         <!--welcomeVC-->
         <scene sceneID="v9f-5i-kK5">
             <objects>
                 <viewControllerPlaceholder storyboardName="Welcome" referencedIdentifier="welcomeVC" id="JfT-dJ-4HH" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eFI-4M-xbs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3451" y="-636"/>
+            <point key="canvasLocation" x="3450" y="-593"/>
         </scene>
         <!--Client Details View Controller-->
         <scene sceneID="UBC-G6-6NX">
@@ -1401,6 +1409,7 @@
                         <segue destination="vU9-hw-mUl" kind="show" identifier="settingsToAvailabilityVC" id="wdz-Kd-GjP"/>
                         <segue destination="gBf-Mb-y4I" kind="show" identifier="settingsToAddServicesVC" id="ZpQ-3H-DPF"/>
                         <segue destination="QUJ-9U-m4i" kind="show" identifier="settingsToEditProfileVC" id="eJ0-Yi-duu"/>
+                        <segue destination="J9M-TE-LjP" kind="show" identifier="bpSettingsToManageStaffVC" id="7Yb-yp-ySw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eB7-Us-jA5" userLabel="First Responder" sceneMemberID="firstResponder"/>
