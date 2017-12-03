@@ -20,6 +20,7 @@ static NSString * const kBusinessInfo   = @"Business information";
 static NSString * const kManagePhotos   = @"Manage photos";
 static NSString * const kServices = @"My services";
 static NSString * const kAvailability = @"Availability";
+static NSString * const kStaff        = @"Manage staff";
 
 // Segues
 static NSString * const kWelcomeSegue   = @"bpSettingsToWelcomeVC";
@@ -28,6 +29,7 @@ static NSString * const kGallerySegue   = @"settingsToGalleryVC";
 static NSString * const kAvailabilitySegue = @"settingsToAvailabilityVC";
 static NSString * const kAddServicesSegue  = @"settingsToAddServicesVC";
 static NSString * const kProfileSegue   = @"settingsToEditProfileVC";
+static NSString * const kStaffSegue     = @"bpSettingsToManageStaffVC";
 
 @interface EKSettingsBPViewController : UIViewController
 

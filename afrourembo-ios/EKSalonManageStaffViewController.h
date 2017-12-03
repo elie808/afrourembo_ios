@@ -7,7 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MBProgressHUD/MBProgressHUD.h>
+#import <YYWebImage/YYWebImage.h>
 
-@interface EKSalonManageStaffViewController : UIViewController
+#import "EKSettings.h"
+#import "EKManageStaffTableViewCell.h"
+
+#import "UIViewController+Helpers.h"
+#import "Salon+API.h"
+
+@interface EKSalonManageStaffViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, EKManageStaffCellDelegate>
+
+@property (strong, nonatomic) IBOutlet UITableView *tableView;
 
 @end

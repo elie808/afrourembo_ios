@@ -38,7 +38,8 @@
                                  kBusinessInfo,
                                  kManagePhotos,
                                  kServices,
-                                 kAvailability
+                                 kAvailability,
+                                 kStaff
                                  ];
     
     self.collectionViewDataSource = @[];
@@ -75,6 +76,10 @@
         EKAvailabilityViewController *vc = (EKAvailabilityViewController *)([navController viewControllers][0]);
         vc.isInEditMode = YES;
         vc.passedProfessional = [EKSettings getSavedVendor];
+    }
+    
+    if ([segue.identifier isEqualToString:kStaffSegue]) {
+        
     }
 }
 
