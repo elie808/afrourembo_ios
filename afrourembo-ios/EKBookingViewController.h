@@ -36,7 +36,7 @@
 
 static NSString * const kSignUpSegue = @"bookingVCToSignUpVC";
 
-@interface EKBookingViewController : UIViewController <UIGestureRecognizerDelegate, UITextViewDelegate>
+@interface EKBookingViewController : UIViewController <UIGestureRecognizerDelegate>//, UITextViewDelegate>
 
 // Data model
 @property (strong, nonatomic) Service *passedService;

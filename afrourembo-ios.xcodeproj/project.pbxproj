@@ -794,8 +794,6 @@
 			children = (
 				47800BC11EA3B2FA00F450DB /* EKBookingViewController.h */,
 				47800BC21EA3B2FA00F450DB /* EKBookingViewController.m */,
-				47B82E701FCC6D9F0075CDC5 /* EKRatingViewController.h */,
-				47B82E711FCC6D9F0075CDC5 /* EKRatingViewController.m */,
 				47C4804E1F4DBD3B00493E0B /* Categories */,
 				47BFEA661EA49D3B0091522B /* Cells */,
 			);
@@ -1186,6 +1184,7 @@
 				47AF51BE1E9C4013005FE6EB /* Customer - Discover Map ViewController */,
 				479AB2691EA0B9EE00A74659 /* Customer - Company Profile */,
 				47800BC41EA3B2FF00F450DB /* Customer - Booking ViewController */,
+				47AF4F301FD47E6000C296CC /* Customer - Rating ViewController */,
 				47074F8C1EAEB4AC00E35EA7 /* BP - Sign up ViewController */,
 				47F7140E1ED6FB320028FB65 /* BP - Business Model */,
 				470F0B921EDB7D5A002FDE96 /* BP - Dashboard */,
@@ -1229,6 +1228,15 @@
 				477935541F89A1EF00E0C034 /* EKResetPhoneNumberViewController.m */,
 			);
 			name = "Customer - Sign In ViewController";
+			sourceTree = "<group>";
+		};
+		47AF4F301FD47E6000C296CC /* Customer - Rating ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				47B82E701FCC6D9F0075CDC5 /* EKRatingViewController.h */,
+				47B82E711FCC6D9F0075CDC5 /* EKRatingViewController.m */,
+			);
+			name = "Customer - Rating ViewController";
 			sourceTree = "<group>";
 		};
 		47AF51B31E9B68A3005FE6EB /* Views */ = {

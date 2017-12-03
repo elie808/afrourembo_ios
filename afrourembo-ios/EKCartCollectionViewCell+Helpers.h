@@ -14,6 +14,8 @@
 @interface EKCartCollectionViewCell (Helpers)
 
 - (void)configureCellWithBooking:(Booking *)booking;
+
+/// Called to configure cells on orders/payments view
 - (void)configureCellWithOrder:(ClientBooking *)order;
 
 @end

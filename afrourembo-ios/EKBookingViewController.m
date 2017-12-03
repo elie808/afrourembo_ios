@@ -20,21 +20,17 @@ static CGFloat const kContainerViewHeight = 100;
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    // TODO: ADD IF STATEMENT AND CHANGE TYPE ACCORDING TO VIEW MODE
-    // self.vendorType = kProfessionalType;
-    
     // init data source
     self.daysDataSource     = [NSMutableArray new];
     self.timesDataSource    = [NSMutableArray new];
     self.selectedFromDate   = nil;
     self.selectedToDate     = nil;
-    self.bookingNote        = @"No notes";
+    self.bookingNote        = @"";
     self.selectedPro        = nil;
     
-    self.containerView.frame = CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, kContainerViewHeight);
-    [self.view addSubview:self.containerView];
-    self.containerView.hidden = YES;
-    //    self.textView.text = kPlaceHolderText;
+//    self.containerView.frame = CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, kContainerViewHeight);
+//    [self.view addSubview:self.containerView];
+//    self.containerView.hidden = YES;
     
     self.emptyTimeDataView.frame = CGRectMake(self.timeCollectionView.frame.origin.x, self.timeCollectionView.frame.origin.y,
                                               self.timeCollectionView.frame.size.width, self.timeCollectionView.frame.size.height);
@@ -42,6 +38,7 @@ static CGFloat const kContainerViewHeight = 100;
     [self.view addSubview:self.emptyTimeDataView];
 }
 
+/*
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
 
@@ -55,9 +52,11 @@ static CGFloat const kContainerViewHeight = 100;
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillHideNotification object:nil];
 }
+ */
 
 #pragma mark - UITextViewDelegate
 
+/*
 - (void)textViewDidChange:(UITextView *)textView {
     
     _bookingNote = textView.text;
@@ -84,6 +83,7 @@ static CGFloat const kContainerViewHeight = 100;
 //    
 //    [textView resignFirstResponder];
 }
+*/
 
 #pragma mark - UIGestureRecognizerDelegate
 
@@ -103,10 +103,10 @@ static CGFloat const kContainerViewHeight = 100;
         reservationObj.serviceId    = self.passedService.serverServiceId;
         reservationObj.fromDateTime = self.selectedFromDate;
         reservationObj.toDateTime   = self.selectedToDate;
+        reservationObj.salonId      = self.salonId;
+        reservationObj.salonName    = self.salonName;
         reservationObj.type = kProfessionalType;
         reservationObj.note = self.bookingNote;
-        reservationObj.salonId = self.salonId;
-        reservationObj.salonName = self.salonName;
         
         Booking *booking1 = [Booking new];
         
@@ -136,22 +136,44 @@ static CGFloat const kContainerViewHeight = 100;
 
 - (IBAction)didTapAddNoteButton:(id)sender {
     
-    self.containerView.hidden = NO;
-    [self.textView becomeFirstResponder];
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Add a note"
+                                                                   message:@"Add a note for this booking below"
+                                                            preferredStyle:UIAlertControllerStyleAlert];
+    
+    [alert addTextFieldWithConfigurationHandler:^(UITextField *textField) {
+        textField.placeholder = @"Note ...";
+
+        if (self.bookingNote.length > 0) {
+            textField.text = self.bookingNote;
+        }
+    }];
+    
+    [alert addAction:[UIAlertAction actionWithTitle:@"Done" style:UIAlertActionStyleDefault
+                                            handler:^(UIAlertAction * action) {
+                                                
+                                                if (alert.textFields.count > 0) {
+                                                    
+                                                    UITextField *emailTextField = [alert.textFields firstObject];
+                                                    self.bookingNote = emailTextField.text;
+                                                }
+                                            }]];
+    
+    [alert addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil]];
+    
+    [self presentViewController:alert animated:YES completion:nil];
 }
 
-- (IBAction)didTapDoneButton:(id)sender {
-    
-    [self.textView resignFirstResponder];
-    self.containerView.hidden = YES;
-}
+//- (IBAction)didTapDoneButton:(id)sender {
+//    
+//    [self.textView resignFirstResponder];
+//    self.containerView.hidden = YES;
+//}
 
 #pragma mark - Navigation
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     
     if ([segue.identifier isEqualToString:kCartSegue]) {
-        
 //        EKCartViewController *vc = segue.destinationViewController;
 //        vc.passedBooking = (Booking *)sender;
     }
@@ -159,6 +181,7 @@ static CGFloat const kContainerViewHeight = 100;
 
 #pragma mark - Helpers
 
+/*
 - (void)keyboardWillShow:(NSNotification *)notification {
     
     CGSize keyboardSize = [[[notification userInfo] objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
@@ -191,5 +214,6 @@ static CGFloat const kContainerViewHeight = 100;
         }];
     }
 }
+*/
 
 @end

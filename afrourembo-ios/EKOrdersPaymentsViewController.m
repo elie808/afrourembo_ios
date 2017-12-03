@@ -68,9 +68,7 @@ static NSString * const kRatingSegue = @"ordersPaymentsToRatingVC";
     cell.delegate = self;
     cell.cellIndexPath = indexPath;
     [cell configureCellWithOrder:order];
-    
-    if (order.reviewed) { cell.actionButton.hidden = YES; } else { cell.actionButton.hidden = NO; }
-    
+        
     return cell;
 }
 

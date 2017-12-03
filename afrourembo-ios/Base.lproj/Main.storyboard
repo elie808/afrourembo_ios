@@ -184,17 +184,17 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                                 <color key="backgroundColor" red="0.8980392157" green="0.8980392157" blue="0.8980392157" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="zPa-Ms-Ktl">
-                                    <size key="itemSize" width="355" height="185"/>
+                                    <size key="itemSize" width="355" height="155"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="16" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ordersCollectionCellID" id="wx7-2I-vnc" customClass="EKCartCollectionViewCell">
-                                        <rect key="frame" x="10" y="16" width="355" height="185"/>
+                                        <rect key="frame" x="10" y="16" width="355" height="155"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="355" height="185"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="355" height="155"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8mO-5c-JyD">
@@ -228,12 +228,6 @@
                                                         <constraint firstItem="1Y5-Et-nYk" firstAttribute="top" secondItem="8mO-5c-JyD" secondAttribute="top" constant="12" id="xYW-Fb-h78"/>
                                                     </constraints>
                                                 </view>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No booking note." lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nVJ-Te-mEg">
-                                                    <rect key="frame" x="10" y="115" width="335" height="14.5"/>
-                                                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="12"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Shop name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YWx-S0-PKo">
                                                     <rect key="frame" x="10" y="54" width="70" height="16"/>
                                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="13"/>
@@ -271,15 +265,11 @@
                                                     <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i3H-ey-h0h" userLabel="lower separator">
-                                                    <rect key="frame" x="10" y="139.5" width="339" height="1"/>
-                                                    <color key="backgroundColor" red="0.83921568629999999" green="0.83921568629999999" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="1" id="dRB-NG-6sh"/>
-                                                    </constraints>
-                                                </view>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="49l-dm-cP1">
-                                                    <rect key="frame" x="10" y="144" width="335" height="33"/>
+                                                    <rect key="frame" x="10" y="113" width="335" height="33"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="33" id="Adl-1g-GUf"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <state key="normal" title="Leave review">
                                                         <color key="titleColor" red="1" green="0.76470588240000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -293,24 +283,18 @@
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstItem="8mO-5c-JyD" firstAttribute="top" secondItem="wx7-2I-vnc" secondAttribute="top" id="29r-PB-NDt"/>
-                                            <constraint firstAttribute="trailingMargin" secondItem="49l-dm-cP1" secondAttribute="trailing" constant="2" id="4RS-Jq-QWs"/>
-                                            <constraint firstAttribute="trailingMargin" secondItem="nVJ-Te-mEg" secondAttribute="trailing" constant="2" id="5tl-eB-Ohw"/>
-                                            <constraint firstItem="i3H-ey-h0h" firstAttribute="top" secondItem="nVJ-Te-mEg" secondAttribute="bottom" constant="10" id="7L2-7s-fuO"/>
                                             <constraint firstAttribute="trailingMargin" secondItem="OYQ-np-zUm" secondAttribute="trailing" constant="2" id="Ag0-ca-axH"/>
-                                            <constraint firstItem="49l-dm-cP1" firstAttribute="leading" secondItem="wx7-2I-vnc" secondAttribute="leadingMargin" constant="2" id="Gwj-6k-1tZ"/>
+                                            <constraint firstAttribute="trailingMargin" secondItem="49l-dm-cP1" secondAttribute="trailing" constant="2" id="HCS-n5-LVv"/>
+                                            <constraint firstItem="49l-dm-cP1" firstAttribute="top" secondItem="OUw-Yy-3yb" secondAttribute="bottom" constant="8" id="Kax-YR-zvM"/>
                                             <constraint firstItem="OUw-Yy-3yb" firstAttribute="top" secondItem="OYQ-np-zUm" secondAttribute="bottom" constant="10" id="LP8-2h-hJx"/>
-                                            <constraint firstItem="nVJ-Te-mEg" firstAttribute="leading" secondItem="wx7-2I-vnc" secondAttribute="leadingMargin" constant="2" id="Ody-Wu-4FZ"/>
                                             <constraint firstItem="OYQ-np-zUm" firstAttribute="top" secondItem="l4e-hp-U1U" secondAttribute="bottom" constant="8" id="Oy5-TF-0vd"/>
-                                            <constraint firstItem="49l-dm-cP1" firstAttribute="bottom" secondItem="wx7-2I-vnc" secondAttribute="bottomMargin" id="VDd-DL-f5f"/>
                                             <constraint firstAttribute="trailingMargin" secondItem="l4e-hp-U1U" secondAttribute="trailing" constant="1" id="Zu6-6Q-i6f"/>
                                             <constraint firstAttribute="trailing" secondItem="8mO-5c-JyD" secondAttribute="trailing" id="cw8-4l-Gup"/>
-                                            <constraint firstItem="nVJ-Te-mEg" firstAttribute="top" secondItem="OUw-Yy-3yb" secondAttribute="bottom" constant="10" id="fd8-YN-7ud"/>
+                                            <constraint firstItem="49l-dm-cP1" firstAttribute="leading" secondItem="wx7-2I-vnc" secondAttribute="leadingMargin" constant="2" id="kDS-Pf-ANY"/>
                                             <constraint firstAttribute="trailingMargin" secondItem="OUw-Yy-3yb" secondAttribute="trailing" constant="2" id="kPM-Qo-OSn"/>
                                             <constraint firstItem="8mO-5c-JyD" firstAttribute="leading" secondItem="wx7-2I-vnc" secondAttribute="leading" id="pKB-EP-Ak4"/>
-                                            <constraint firstItem="i3H-ey-h0h" firstAttribute="trailing" secondItem="wx7-2I-vnc" secondAttribute="trailingMargin" constant="2" id="qqw-7J-EB5"/>
                                             <constraint firstItem="8U8-3h-HQR" firstAttribute="leading" secondItem="wx7-2I-vnc" secondAttribute="leadingMargin" constant="2" id="rD4-ct-Ccl"/>
                                             <constraint firstItem="l4e-hp-U1U" firstAttribute="top" secondItem="8mO-5c-JyD" secondAttribute="bottom" constant="10" id="rzF-tu-6AQ"/>
-                                            <constraint firstItem="i3H-ey-h0h" firstAttribute="leading" secondItem="wx7-2I-vnc" secondAttribute="leadingMargin" constant="2" id="sNT-EY-4d2"/>
                                             <constraint firstItem="YWx-S0-PKo" firstAttribute="top" secondItem="8mO-5c-JyD" secondAttribute="bottom" constant="10" id="vr9-P6-R77"/>
                                             <constraint firstItem="YWx-S0-PKo" firstAttribute="leading" secondItem="wx7-2I-vnc" secondAttribute="leadingMargin" constant="2" id="wtT-ak-Yde"/>
                                             <constraint firstItem="OUw-Yy-3yb" firstAttribute="leading" secondItem="wx7-2I-vnc" secondAttribute="leadingMargin" constant="2" id="y5B-jl-yLj"/>
@@ -320,7 +304,6 @@
                                             <outlet property="actionButton" destination="49l-dm-cP1" id="0px-rP-MvS"/>
                                             <outlet property="bookingCostLabel" destination="kHj-28-B0P" id="v4x-Jk-XVc"/>
                                             <outlet property="bookingDateLabel" destination="l4e-hp-U1U" id="8U3-f5-g08"/>
-                                            <outlet property="bookingDescriptionLabel" destination="nVJ-Te-mEg" id="Q8J-L3-PZg"/>
                                             <outlet property="bookingTimeLabel" destination="OYQ-np-zUm" id="zgT-dH-kUT"/>
                                             <outlet property="bookingTitleLabel" destination="1Y5-Et-nYk" id="kJg-QD-9Rw"/>
                                             <outlet property="bookingVendorLabel" destination="YWx-S0-PKo" id="D75-QV-csh"/>
@@ -2119,7 +2102,6 @@
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
-                        <outlet property="containerView" destination="2cK-ag-cty" id="Ehp-O6-hmg"/>
                         <outlet property="dayCollectionView" destination="BD3-fN-II5" id="q0A-Gq-gkq"/>
                         <outlet property="emptyTimeDataView" destination="igL-wJ-PMF" id="6uf-fp-fRY"/>
                         <outlet property="proCollectionView" destination="Ijo-ep-hjH" id="sE7-BB-3gw"/>
@@ -2170,9 +2152,6 @@
                             <state key="normal" title="Done">
                                 <color key="titleColor" red="1" green="0.76470588240000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </state>
-                            <connections>
-                                <action selector="didTapDoneButton:" destination="lyj-pg-PLO" eventType="touchDown" id="ceH-wp-OpE"/>
-                            </connections>
                         </button>
                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s4H-aZ-bW4">
                             <rect key="frame" x="0.0" y="34" width="369" height="60"/>
@@ -2305,7 +2284,7 @@
                                         <rect key="frame" x="6.5" y="0.0" width="362" height="220"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="363" height="220"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="362" height="220"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0y9-Y3-DfF">
@@ -2681,7 +2660,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="oT6-4C-Llh"/>
-        <segue reference="yqX-hc-pNV"/>
+        <segue reference="xaI-gU-dNR"/>
         <segue reference="Tgh-kR-Ldd"/>
         <segue reference="MUO-W6-Tur"/>
     </inferredMetricsTieBreakers>
