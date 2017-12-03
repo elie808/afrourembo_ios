@@ -10,8 +10,7 @@
 
 static NSString * const  kTableViewCell = @"proListCell";
 static NSString * const  kSalonTableViewCell = @"salonListCell";
-static NSString * const  kCollectionViewCell = @"yellowSalonListInCellCollectionViewCell";
-static NSString * const  kDayCollectionViewCell = @"whiteSalonListInCellCollectionViewCell";
+static NSString * const  kDayCollectionViewCell = @"salonListInCellCollectionViewCell";
 
 @implementation EKDiscoverMapViewController (TableView)
 
@@ -92,7 +91,8 @@ static NSString * const  kDayCollectionViewCell = @"whiteSalonListInCellCollecti
     
     if ([venueObj isKindOfClass:[Professional class]]) {
     
-        return ((Professional*)venueObj).schedule.count * 3;
+//        return ((Professional*)venueObj).schedule.count * 3;
+        return ((Professional*)venueObj).schedule.count;
     
     } else if ([venueObj isKindOfClass:[Salon class]]) {
         
@@ -112,26 +112,33 @@ static NSString * const  kDayCollectionViewCell = @"whiteSalonListInCellCollecti
     
     if ([venueObj isKindOfClass:[Professional class]]) {
         
-        Day *schedule = ((Professional *)venueObj).schedule[0];
+        Day *schedule = ((Professional *)venueObj).schedule[indexPath.row];
         
-        NSString *dayOfTheWeek = [Day dayInitialsStringFromNumber:schedule.dayNumber];
-        
+        NSString *dayOfTheWeek = [Day dayStringFromNumber:schedule.dayNumber];
         NSString *fromTime = [Day formatTimeStringFromHour:schedule.fromHours andMinutes:schedule.fromMinutes];
         NSString *toTime   = [Day formatTimeStringFromHour:schedule.toHours andMinutes:schedule.toMinutes];
         
+        EKSalonListCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kDayCollectionViewCell
+                                                                                        forIndexPath:indexPath];
+        
+        cell.cellDayLabel.text  = dayOfTheWeek;
+        cell.cellStartHourLabel.text = fromTime;
+        cell.cellEndHourLabel.text   = toTime;
+        
+        return cell;
+        
+        /*
         if (indexPath.row % 3 == 0) {
             
             EKSalonListCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kDayCollectionViewCell
                                                                                             forIndexPath:indexPath];
             
-            cell.cellTextLabel.text = dayOfTheWeek;
+//            cell.cellTextLabel.text = dayOfTheWeek;
             
             return cell;
             
         } else if (indexPath.row % 3 == 1) {
-            
-            NSLog(@"INDEX PATH ROW: %ld, FROM TIME: %@", (long)indexPath.row, fromTime);
-            
+
             EKSalonListCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kCollectionViewCell forIndexPath:indexPath];
             
             cell.cellTextLabel.text = fromTime;
@@ -139,9 +146,7 @@ static NSString * const  kDayCollectionViewCell = @"whiteSalonListInCellCollecti
             return cell;
             
         } else if (indexPath.row % 3 == 2) {
-            
-            NSLog(@"INDEX PATH ROW: %ld, TO TIME: %@", (long)indexPath.row, toTime);
-            
+
             EKSalonListCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kCollectionViewCell forIndexPath:indexPath];
             
             cell.cellTextLabel.text = toTime;
@@ -152,6 +157,7 @@ static NSString * const  kDayCollectionViewCell = @"whiteSalonListInCellCollecti
             
             return nil;
         }
+        */
     
     } else if ([venueObj isKindOfClass:[Salon class]]) {
         

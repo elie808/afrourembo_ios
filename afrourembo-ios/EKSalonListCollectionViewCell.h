@@ -11,5 +11,8 @@
 @interface EKSalonListCollectionViewCell : UICollectionViewCell
 
 @property (strong, nonatomic) IBOutlet UILabel *cellTextLabel;
+@property (strong, nonatomic) IBOutlet UILabel *cellDayLabel;
+@property (strong, nonatomic) IBOutlet UILabel *cellStartHourLabel;
+@property (strong, nonatomic) IBOutlet UILabel *cellEndHourLabel;
 
 @end
