@@ -43,6 +43,37 @@
     return response;
 }
 
++ (RKResponseDescriptor *)getStaffJoinRequestsResponseDescriptor {
+    
+    RKObjectMapping *mapping = [RKObjectMapping mappingForClass:[JoinSalonRequest class]];
+    
+    [mapping addAttributeMappingsFromDictionary:@{@"_id" : @"joinID"}];
+    
+    [mapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"professional"
+                                                                            toKeyPath:@"professional"
+                                                                          withMapping:[Professional map1]]];
+    
+    RKResponseDescriptor *response = [RKResponseDescriptor
+                                      responseDescriptorWithMapping:mapping
+                                      method:RKRequestMethodGET
+                                      pathPattern:kSalonJoinRequestsAPIPath
+                                      keyPath:nil
+                                      statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+    return response;
+}
+
+//+ (RKResponseDescriptor *)putUserProfileResponseDescriptor {
+//    
+//    RKResponseDescriptor *response = [RKResponseDescriptor
+//                                      responseDescriptorWithMapping:[Customer map1]
+//                                      method:RKRequestMethodPUT
+//                                      pathPattern:kUserProfileAPIPath
+//                                      keyPath:nil
+//                                      statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+//    return response;
+//}
+
+
 #pragma mark - APIs
 
 + (void)getStaffForSalon:(NSString *)salonID forCustomer:(NSString *)userToken withBlock:(SalonStaffFetchSuccessBlock)successBlock withErrors:(SalonErrorBlock)errorBlock {
@@ -78,6 +109,111 @@
                                                       errorBlock(error, @"You are not connected to the internet.", 0);
                                                   }
                                               }];
+}
+
++ (void)getJoinRequestsForSalon:(NSString *)salonID withBlock:(SalonJoinFetchSuccessBlock)successBlock withErrors:(SalonErrorBlock)errorBlock {
+    
+    [[[RKObjectManager sharedManager] HTTPClient] setDefaultHeader:@"Authorization" value:salonID];
+    
+    [[RKObjectManager sharedManager] getObjectsAtPath:kSalonJoinRequestsAPIPath
+                                           parameters:nil
+                                              success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+                                                  
+                                                  NSLog(@"Success Fetching Joins Requests !!!");
+                                                  successBlock(mappingResult.array);
+                                              }
+                                              failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                                                  
+                                                  if (operation.HTTPRequestOperation.responseData) {
+                                                      
+                                                      // exctract error message
+                                                      NSDictionary *myDic = [NSJSONSerialization
+                                                                             JSONObjectWithData:operation.HTTPRequestOperation.responseData
+                                                                             options:NSJSONReadingMutableLeaves
+                                                                             error:nil];
+                                                      
+                                                      NSString *errorMessage = [myDic valueForKey:@"message"];
+                                                      
+                                                      NSNumber *statusCode = [myDic valueForKey:@"statusCode"];
+                                                      
+                                                      NSLog(@"-------ERROR MESSAGE: %@", errorMessage);
+                                                      errorBlock(error, errorMessage, [statusCode integerValue]);
+                                                      
+                                                  } else {
+                                                      
+                                                      errorBlock(error, @"You are not connected to the internet.", 0);
+                                                  }
+                                              }];
+}
+
++ (void)acceptJoinRequest:(NSString *)requestID forSalon:(NSString *)salonToken withBlock:(SalonJoinSuccessBlock)successBlock withErrors:(SalonErrorBlock)errorBlock {
+
+    [[[RKObjectManager sharedManager] HTTPClient] setDefaultHeader:@"Authorization" value:salonToken];
+    
+    [[RKObjectManager sharedManager] putObject:nil
+                                          path:[NSString stringWithFormat:@"%@/%@", kSalonJoinRequestsAPIPath, requestID]
+                                    parameters:nil
+                                       success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+                                           
+                                           NSLog(@"Success Accept Join Request !!");
+                                           successBlock();
+                                       }
+                                       failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                                           
+                                           if (operation.HTTPRequestOperation.responseData) {
+                                               
+                                               // exctract error message
+                                               NSDictionary *myDic = [NSJSONSerialization
+                                                                      JSONObjectWithData:operation.HTTPRequestOperation.responseData
+                                                                      options:NSJSONReadingMutableLeaves
+                                                                      error:nil];
+                                               
+                                               NSString *errorMessage = [myDic valueForKey:@"message"];
+                                               NSNumber *errorCode = [myDic valueForKey:@"statusCode"];
+                                               
+                                               NSLog(@"-------ERROR MESSAGE: %@", errorMessage);
+                                               errorBlock(error, errorMessage, errorCode.integerValue);
+                                               
+                                           } else {
+                                               
+                                               errorBlock(error, @"You are not connected to the internet.", 0);
+                                           }
+                                       }];
+}
+
++ (void)declineJoinRequest:(NSString *)requestID forSalon:(NSString *)salonToken withBlock:(SalonJoinSuccessBlock)successBlock withErrors:(SalonErrorBlock)errorBlock {
+    
+    [[[RKObjectManager sharedManager] HTTPClient] setDefaultHeader:@"Authorization" value:salonToken];
+
+    [[RKObjectManager sharedManager] deleteObject:nil
+                                             path:[NSString stringWithFormat:@"%@/%@", kSalonJoinRequestsAPIPath, requestID]
+                                       parameters:nil
+                                          success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+                                              
+                                              NSLog(@"Success Declining Join Request !!");
+                                              successBlock();
+                                              
+                                          } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                                              
+                                              if (operation.HTTPRequestOperation.responseData) {
+                                                  
+                                                  // exctract error message
+                                                  NSDictionary *myDic = [NSJSONSerialization
+                                                                         JSONObjectWithData:operation.HTTPRequestOperation.responseData
+                                                                         options:NSJSONReadingMutableLeaves
+                                                                         error:nil];
+                                                  
+                                                  NSString *errorMessage = [myDic valueForKey:@"message"];
+                                                  NSNumber *errorCode = [myDic valueForKey:@"statusCode"];
+                                                  
+                                                  NSLog(@"-------ERROR MESSAGE: %@", errorMessage);
+                                                  errorBlock(error, errorMessage, errorCode.integerValue);
+                                                  
+                                              } else {
+                                                  
+                                                  errorBlock(error, @"You are not connected to the internet.", 0);
+                                              }
+                                          }];
 }
 
 @end
