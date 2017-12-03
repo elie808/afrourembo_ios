@@ -30,6 +30,7 @@
 		47329CA71F0BE77700E5DF13 /* EKProfessionalAddressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47329CA61F0BE77700E5DF13 /* EKProfessionalAddressViewController.m */; };
 		4734BCC21FD24ADC00C5725D /* EKSalonManageStaffViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4734BCC11FD24ADC00C5725D /* EKSalonManageStaffViewController.m */; };
 		4734BCC61FD252A500C5725D /* EKManageStaffTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4734BCC51FD252A500C5725D /* EKManageStaffTableViewCell.m */; };
+		4734BCC91FD37A5600C5725D /* JoinSalonRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 4734BCC81FD37A5600C5725D /* JoinSalonRequest.m */; };
 		4734F5EE1F33FD2600982D94 /* NSDate+Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 4734F5ED1F33FD2600982D94 /* NSDate+Helpers.m */; };
 		4734F5F11F3401D200982D94 /* EKCarousel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4734F5F01F3401D200982D94 /* EKCarousel.m */; };
 		473535331F0B1E71009FCE41 /* Explore.m in Sources */ = {isa = PBXBuildFile; fileRef = 473535321F0B1E71009FCE41 /* Explore.m */; };
@@ -211,6 +212,8 @@
 		4734BCC11FD24ADC00C5725D /* EKSalonManageStaffViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKSalonManageStaffViewController.m; sourceTree = "<group>"; };
 		4734BCC41FD252A500C5725D /* EKManageStaffTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKManageStaffTableViewCell.h; sourceTree = "<group>"; };
 		4734BCC51FD252A500C5725D /* EKManageStaffTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKManageStaffTableViewCell.m; sourceTree = "<group>"; };
+		4734BCC71FD37A5600C5725D /* JoinSalonRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JoinSalonRequest.h; sourceTree = "<group>"; };
+		4734BCC81FD37A5600C5725D /* JoinSalonRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JoinSalonRequest.m; sourceTree = "<group>"; };
 		4734F5EC1F33FD2600982D94 /* NSDate+Helpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Helpers.h"; sourceTree = "<group>"; };
 		4734F5ED1F33FD2600982D94 /* NSDate+Helpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Helpers.m"; sourceTree = "<group>"; };
 		4734F5EF1F3401D200982D94 /* EKCarousel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKCarousel.h; sourceTree = "<group>"; };
@@ -960,6 +963,8 @@
 				473535321F0B1E71009FCE41 /* Explore.m */,
 				472E3F531FA5D45900EBA889 /* Favorite.h */,
 				472E3F541FA5D45900EBA889 /* Favorite.m */,
+				4734BCC71FD37A5600C5725D /* JoinSalonRequest.h */,
+				4734BCC81FD37A5600C5725D /* JoinSalonRequest.m */,
 				4755720F1F519A1D00741CA9 /* Payment.h */,
 				475572101F519A1D00741CA9 /* Payment.m */,
 				479E37DA1FC41A9500630954 /* Pictures.h */,
@@ -1614,6 +1619,7 @@
 				47D88E6B1E793347001B88D0 /* EKSplashViewController.m in Sources */,
 				47AF51B71E9B765D005FE6EB /* EKSalonListCollectionViewCell.m in Sources */,
 				47EA09DC1EB7594800400603 /* EKAccessoryTableViewCell.m in Sources */,
+				4734BCC91FD37A5600C5725D /* JoinSalonRequest.m in Sources */,
 				479F7D771EF17BF900EB445A /* EKSalonInfoViewController.m in Sources */,
 				479E37DF1FC43B8F00630954 /* BusinessInfo.m in Sources */,
 				479AB26C1EA0CC0000A74659 /* EKCompanyServiceTableViewCell.m in Sources */,
