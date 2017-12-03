@@ -7,6 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <YYWebImage/YYWebImage.h>
+
+#import "JoinSalonRequest.h"
+#import "Professional.h"
 
 @protocol EKManageStaffCellDelegate <NSObject>
 - (void)acceptStaffAtIndex:(NSIndexPath *)indexPath;
@@ -23,5 +27,9 @@
 @property (strong, nonatomic) IBOutlet UILabel *cellEmailLabel;
 @property (strong, nonatomic) IBOutlet UIButton *cellAcceptButton;
 @property (strong, nonatomic) IBOutlet UIButton *cellDeclineButton;
+
+- (void)configureCellWithJoinRequest:(JoinSalonRequest *)request atIndexPath:(NSIndexPath *)indexPath withDelegate:(id<EKManageStaffCellDelegate>)delegate;
+
+- (void)configureCellWithProfessional:(Professional *)proObj atIndexPath:(NSIndexPath *)indexPath withDelegate:(id<EKManageStaffCellDelegate>)delegate;
 
 @end

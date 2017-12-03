@@ -19,6 +19,28 @@
     [super setSelected:selected animated:animated];
 }
 
+#pragma mark - Helpers
+
+- (void)configureCellWithJoinRequest:(JoinSalonRequest *)request atIndexPath:(NSIndexPath *)indexPath withDelegate:(id<EKManageStaffCellDelegate>)delegate {
+    
+    self.cellDelegate = delegate;
+    self.cellIndexPath = indexPath;
+    
+    self.cellProfessionalNameLabel.text = [NSString stringWithFormat:@"%@ %@", request.professional.fName, request.professional.lName];
+    self.cellEmailLabel.text = request.professional.phone;
+    [self.cellImageView yy_setImageWithURL:[NSURL URLWithString:request.professional.profilePicture] options:YYWebImageOptionProgressive];
+}
+
+- (void)configureCellWithProfessional:(Professional *)proObj atIndexPath:(NSIndexPath *)indexPath withDelegate:(id<EKManageStaffCellDelegate>)delegate {
+    
+    self.cellDelegate = delegate;
+    self.cellIndexPath = indexPath;
+    
+    self.cellProfessionalNameLabel.text = [NSString stringWithFormat:@"%@ %@", proObj.fName, proObj.lName];
+    self.cellEmailLabel.text = proObj.phone;
+    [self.cellImageView yy_setImageWithURL:[NSURL URLWithString:proObj.profilePicture] options:YYWebImageOptionProgressive];
+}
+
 #pragma mark - Actions
 
 - (IBAction)didTapAcceptButton:(UIButton *)sender {

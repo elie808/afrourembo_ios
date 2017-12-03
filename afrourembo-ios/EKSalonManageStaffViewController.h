@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 #import <MBProgressHUD/MBProgressHUD.h>
-#import <YYWebImage/YYWebImage.h>
 
 #import "EKSettings.h"
 #import "EKManageStaffTableViewCell.h"
