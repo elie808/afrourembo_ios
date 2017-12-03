@@ -34,19 +34,25 @@ static NSString * const kCollectionCell = @"todayCell";
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
-    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    [Dashboard getDashboardOfVendor:[EKSettings getSavedVendor].token
-                          withBlock:^(NSArray<Dashboard *> *dashboardItems) {
-    
-                              [MBProgressHUD hideHUDForView:self.view animated:YES];
-                              [self populateCalendarWithDashObjects:dashboardItems];
-                              [self.tableView reloadData];
-                              
-                          } withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
-                              
-                              [MBProgressHUD hideHUDForView:self.view animated:YES];
-                              [self showMessage:errorMessage withTitle:@"Error" completionBlock:nil];
-                          }];
+    if ([EKSettings getSavedVendor]) {
+     
+        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        [Dashboard getDashboardOfVendor:[EKSettings getSavedVendor].token
+                              withBlock:^(NSArray<Dashboard *> *dashboardItems) {
+                                  
+                                  [MBProgressHUD hideHUDForView:self.view animated:YES];
+                                  [self populateCalendarWithDashObjects:dashboardItems];
+                                  [self.tableView reloadData];
+                                  
+                              } withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
+                                  
+                                  [MBProgressHUD hideHUDForView:self.view animated:YES];
+                                  [self showMessage:errorMessage withTitle:@"Error" completionBlock:nil];
+                              }];
+        
+    } else if ([EKSettings getSavedSalon]) {
+        
+    }
 }
 
 #pragma mark - UITableViewDataSource

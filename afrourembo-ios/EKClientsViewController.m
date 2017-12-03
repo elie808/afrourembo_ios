@@ -25,25 +25,31 @@ static NSString * const kClientsDetailSegue = @"clientsListToClientsDetailsVC";
     self.emptyDataView.hidden = NO;
     [self.view addSubview:self.emptyDataView];
     
-    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    [Professional getClients:[EKSettings getSavedVendor].token
-                   withBlock:^(NSArray<Customer *> *customersArray) {
+    if ([EKSettings getSavedVendor]) {
     
-                       [MBProgressHUD hideHUDForView:self.view animated:YES];
-                       if (customersArray.count > 0) {
+        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        [Professional getClients:[EKSettings getSavedVendor].token
+                       withBlock:^(NSArray<Customer *> *customersArray) {
                            
-                           self.emptyDataView.hidden = YES;
+                           [MBProgressHUD hideHUDForView:self.view animated:YES];
+                           if (customersArray.count > 0) {
+                               
+                               self.emptyDataView.hidden = YES;
+                               
+                               _dataSourceArray = [NSMutableArray arrayWithArray:customersArray];
+                           }
                            
-                           _dataSourceArray = [NSMutableArray arrayWithArray:customersArray];
-                       }
-                       
-                       [self.tableView reloadData];
-
-                   } withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
-                       
-                       [MBProgressHUD hideHUDForView:self.view animated:YES];
-                       [self showMessage:errorMessage withTitle:@"Error" completionBlock:nil];
-                  }];
+                           [self.tableView reloadData];
+                           
+                       } withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
+                           
+                           [MBProgressHUD hideHUDForView:self.view animated:YES];
+                           [self showMessage:errorMessage withTitle:@"Error" completionBlock:nil];
+                       }];
+        
+    } else if ([EKSettings getSavedSalon]) {
+        
+    }
 }
 
 #pragma mark - UITableViewDataSource

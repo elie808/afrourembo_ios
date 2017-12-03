@@ -7,6 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <DateTools/DateTools.h>
+#import <MBProgressHUD/MBProgressHUD.h>
 
 #import "FSCalendar.h"
 #import "EKTodayTableViewCell.h"
@@ -16,7 +18,7 @@
 #import "EKSettings.h"
 
 #import "Dashboard+API.h"
-#import <DateTools/DateTools.h>
+#import "UIViewController+Helpers.h"
 
 @interface EKScheduleMonthlyViewController : UIViewController
 

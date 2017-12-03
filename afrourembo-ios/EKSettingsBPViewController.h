@@ -33,6 +33,7 @@ static NSString * const kStaffSegue     = @"bpSettingsToManageStaffVC";
 
 @interface EKSettingsBPViewController : UIViewController
 
+@property (strong, nonatomic) IBOutlet UIView *headerView;
 @property (strong, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 

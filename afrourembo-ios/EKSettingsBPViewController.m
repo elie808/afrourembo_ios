@@ -33,15 +33,28 @@
 //                    @"Feedback"
 //                    ];
 
-    self.tableViewDataSource = @[
-                                 kProfile,
-                                 kBusinessInfo,
-                                 kManagePhotos,
-                                 kServices,
-                                 kAvailability,
-                                 kStaff
-                                 ];
+    if ([EKSettings getSavedVendor]) {
+        
+        self.tableViewDataSource = @[
+                                     kProfile,
+                                     kBusinessInfo,
+                                     kManagePhotos,
+                                     kServices,
+                                     kAvailability
+                                     ];
+        
+    } else if ([EKSettings getSavedSalon]) {
     
+        self.tableViewDataSource = @[
+                                     kProfile,
+                                     kBusinessInfo,
+                                     kManagePhotos,
+                                     kServices,
+                                     kAvailability,
+                                     kStaff
+                                     ];
+    }
+
     self.collectionViewDataSource = @[];
 }
 
@@ -90,6 +103,7 @@
 - (IBAction)didTapLogOutButton:(id)sender {
     
     [EKSettings deleteSavedVendor];
+    [EKSettings deleteSavedSalon];
     [self performSegueWithIdentifier:kWelcomeSegue sender:nil];
 }
 
