@@ -58,6 +58,8 @@ static NSString * const kSalonLoginAPIPath     = @"salon/login";
 static NSString * const kSalonPassResetAPIPath = @"salon/password/reset";
 static NSString * const kSalonStaffAPIPath     = @"salon/:userId/professionals";
 static NSString * const kSalonJoinRequestsAPIPath = @"salon/join/requests";
+static NSString * const kSalonCurrentStaffAPIPath = @"salon/staff";
+static NSString * const kSalonDeleteStaffAPIPath  = @"salon/staff/:id";
 
 #pragma mark - Status Codes
 

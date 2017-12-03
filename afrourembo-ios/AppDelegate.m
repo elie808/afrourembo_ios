@@ -26,6 +26,7 @@ static NSString * const kVendorMainStoryboard = @"Vendor_Main";
     
 //    [EKSettings deleteSavedCustomer];
 //    [EKSettings deleteSavedVendor];
+//    [EKSettings deleteSavedSalon];
     
     if ([EKSettings getSavedCustomer]) {
         
@@ -37,6 +38,14 @@ static NSString * const kVendorMainStoryboard = @"Vendor_Main";
     } else if ([EKSettings getSavedVendor]) {
     
         // Vendor
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:kVendorMainStoryboard bundle:nil];
+        UINavigationController *rootViewController = [storyboard instantiateViewControllerWithIdentifier:kVendorDashVC];
+        self.window.rootViewController = rootViewController;
+       
+        
+    } else if ([EKSettings getSavedSalon]) {
+        
+        // Salon
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:kVendorMainStoryboard bundle:nil];
         UINavigationController *rootViewController = [storyboard instantiateViewControllerWithIdentifier:kVendorDashVC];
         self.window.rootViewController = rootViewController;

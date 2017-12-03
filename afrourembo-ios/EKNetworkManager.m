@@ -145,7 +145,8 @@
     
     [objectManager addResponseDescriptorsFromArray:@[
                                                      [Salon getStaffResponseDescriptor],
-                                                     [Salon getStaffJoinRequestsResponseDescriptor]
+                                                     [Salon getStaffJoinRequestsResponseDescriptor],
+                                                     [Salon getCurrentStaffResponseDescriptor]
                                                      ]];
     
     [objectManager addResponseDescriptorsFromArray:@[
