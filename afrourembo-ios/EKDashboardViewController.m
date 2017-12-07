@@ -78,7 +78,6 @@ static NSInteger const kViewCount = 3;
                                  [MBProgressHUD hideHUDForView:self.view animated:YES];
                                  [self showMessage:errorMessage withTitle:@"Error" completionBlock:nil];
                             }];
-        
     }
 }
 

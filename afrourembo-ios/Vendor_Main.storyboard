@@ -1400,7 +1400,7 @@
                             <constraint firstAttribute="trailing" secondItem="MgB-xW-QVo" secondAttribute="trailing" id="vBW-Li-sgb"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Settings" image="icSettingsSalonNormal" id="XJi-ir-uET"/>
+                    <tabBarItem key="tabBarItem" tag="4" title="Settings" image="icSettingsSalonNormal" id="XJi-ir-uET"/>
                     <connections>
                         <outlet property="collectionView" destination="P9b-Bl-rKR" id="UAV-tL-i6b"/>
                         <outlet property="tableView" destination="a1B-Ut-vBf" id="i5T-82-ccl"/>

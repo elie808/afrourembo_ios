@@ -52,6 +52,18 @@ static NSString * const kCollectionCell = @"todayCell";
         
     } else if ([EKSettings getSavedSalon]) {
         
+        [Dashboard getDashboardOfSalon:[EKSettings getSavedSalon].token
+                             withBlock:^(NSArray<Dashboard *> *dashboardItems) {
+                                 
+                                 [MBProgressHUD hideHUDForView:self.view animated:YES];
+                                 [self populateCalendarWithDashObjects:dashboardItems];
+                                 [self.tableView reloadData];
+                                 
+                             } withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
+                                 
+                                 [MBProgressHUD hideHUDForView:self.view animated:YES];
+                                 [self showMessage:errorMessage withTitle:@"Error" completionBlock:nil];
+                             }];
     }
 }
 

@@ -44,6 +44,21 @@
                               }];
         
     } else if ([EKSettings getSavedSalon]) {
+        
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+        [Dashboard getDashboardOfSalon:[EKSettings getSavedSalon].token
+                             withBlock:^(NSArray<Dashboard *> *dashboardItems) {
+                                 
+                                 [MBProgressHUD hideHUDForView:self.view animated:YES];
+                                 [self.dataSource removeAllObjects];
+                                 [self.dataSource addObjectsFromArray:dashboardItems];
+                                 [self.calendar reloadData];
+                                 
+                             } withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
+                                 
+                                 [MBProgressHUD hideHUDForView:self.view animated:YES];
+                                 [self showMessage:errorMessage withTitle:@"Error" completionBlock:nil];
+                             }];
     }
 }
 

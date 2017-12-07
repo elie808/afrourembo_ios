@@ -53,7 +53,7 @@
     
     [[[RKObjectManager sharedManager] HTTPClient] setDefaultHeader:@"Authorization" value:userToken];
     
-    [[RKObjectManager sharedManager] getObjectsAtPath:kSalonDashboardAPIPath
+    [[RKObjectManager sharedManager] getObjectsAtPath:kProfessionalDashboardAPIPath
                                            parameters:nil
                                               success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
                                                   

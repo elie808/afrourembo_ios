@@ -192,6 +192,17 @@
     return response;
 }
 
++ (RKResponseDescriptor *)getSalonClientsResponseDescriptor {
+    
+    RKResponseDescriptor *response = [RKResponseDescriptor
+                                      responseDescriptorWithMapping:[Customer map1]
+                                      method:RKRequestMethodGET
+                                      pathPattern:kSalonClientsAPIPath
+                                      keyPath:nil
+                                      statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+    return response;
+}
+
 #pragma mark - APIs
 
 + (void)signUpProfessional:(NSString *)email password:(NSString *)password  firstName:(NSString *)fName lastName:(NSString *)lName phoneNumber:(NSString *)phone  withBlock:(ProfessionalSignUpSuccessBlock)successBlock withErrors:(ProfessionalSignUpErrorBlock)errorBlock {
@@ -275,7 +286,7 @@
                                         }];
 }
 
-+ (void)getClients:(NSString *)token withBlock:(ProfessionalClientsSuccessBlock)successBlock withErrors:(ProfessionalSignUpErrorBlock)errorBlock {
++ (void)getClientsForProfessional:(NSString *)token withBlock:(ProfessionalClientsSuccessBlock)successBlock withErrors:(ProfessionalSignUpErrorBlock)errorBlock {
     
     [[[RKObjectManager sharedManager] HTTPClient] setDefaultHeader:@"Authorization" value:token];
     
@@ -284,7 +295,89 @@
                                               success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
                                                   
                                                   NSLog(@"Success Fetching Clients !!");
-                                                  successBlock(mappingResult.array);
+                                                  if (mappingResult.array.count > 0) {
+                                                      successBlock(mappingResult.array);
+                                                  } else {
+                                                      successBlock(@[]);
+                                                  }
+                                                  
+                                              } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                                                  
+                                                  if (operation.HTTPRequestOperation.responseData) {
+                                                      
+                                                      // exctract error message
+                                                      NSDictionary *myDic = [NSJSONSerialization
+                                                                             JSONObjectWithData:operation.HTTPRequestOperation.responseData
+                                                                             options:NSJSONReadingMutableLeaves
+                                                                             error:nil];
+                                                      
+                                                      NSString *errorMessage = [myDic valueForKey:@"message"];
+                                                      
+                                                      NSNumber *statusCode = [myDic valueForKey:@"statusCode"];
+                                                      
+                                                      NSLog(@"-------ERROR MESSAGE: %@", errorMessage);
+                                                      errorBlock(error, errorMessage, [statusCode integerValue]);
+                                                      
+                                                  } else {
+                                                      
+                                                      errorBlock(error, @"You are not connected to the internet.", 0);
+                                                  }
+                                              }];
+}
+
++ (void)getClientsForSalon:(NSString *)token withBlock:(ProfessionalClientsSuccessBlock)successBlock withErrors:(ProfessionalSignUpErrorBlock)errorBlock {
+    
+    [[[RKObjectManager sharedManager] HTTPClient] setDefaultHeader:@"Authorization" value:token];
+    
+    [[RKObjectManager sharedManager] getObjectsAtPath:kSalonClientsAPIPath
+                                           parameters:nil
+                                              success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+                                                  
+                                                  NSLog(@"Success Fetching Salon Clients !!");
+                                                  if (mappingResult.array.count > 0) {
+                                                      successBlock(mappingResult.array);
+                                                  } else {
+                                                      successBlock(@[]);
+                                                  }
+                                                  
+                                              } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                                                  
+                                                  if (operation.HTTPRequestOperation.responseData) {
+                                                      
+                                                      // exctract error message
+                                                      NSDictionary *myDic = [NSJSONSerialization
+                                                                             JSONObjectWithData:operation.HTTPRequestOperation.responseData
+                                                                             options:NSJSONReadingMutableLeaves
+                                                                             error:nil];
+                                                      
+                                                      NSString *errorMessage = [myDic valueForKey:@"message"];
+                                                      
+                                                      NSNumber *statusCode = [myDic valueForKey:@"statusCode"];
+                                                      
+                                                      NSLog(@"-------ERROR MESSAGE: %@", errorMessage);
+                                                      errorBlock(error, errorMessage, [statusCode integerValue]);
+                                                      
+                                                  } else {
+                                                      
+                                                      errorBlock(error, @"You are not connected to the internet.", 0);
+                                                  }
+                                              }];
+}
+
++ (void)getSalonsForProfessional:(NSString *)token withBlock:(ProfessionalClientsSuccessBlock)successBlock withErrors:(ProfessionalSignUpErrorBlock)errorBlock {
+    
+    [[[RKObjectManager sharedManager] HTTPClient] setDefaultHeader:@"Authorization" value:token];
+    
+    [[RKObjectManager sharedManager] getObjectsAtPath:kSalonClientsAPIPath
+                                           parameters:nil
+                                              success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+                                                  
+                                                  NSLog(@"Success Fetching Clients !!");
+                                                  if (mappingResult.array.count > 0) {
+                                                      successBlock(mappingResult.array);
+                                                  } else {
+                                                      successBlock(@[]);
+                                                  }
                                                   
                                               } failure:^(RKObjectRequestOperation *operation, NSError *error) {
                                                   

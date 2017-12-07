@@ -209,7 +209,7 @@ static NSString * const kLoggedInSalon      = @"afrourembo-loggedInSalon";
         
     } else {
         
-        NSLog(@"Did NOT Retrieve any saved Vendors");
+        NSLog(@"Did NOT Retrieve any saved Salon");
         
         return nil;
     }
@@ -224,12 +224,12 @@ static NSString * const kLoggedInSalon      = @"afrourembo-loggedInSalon";
         
         [[[RKObjectManager sharedManager] HTTPClient] setDefaultHeader:@"Authorization" value:@""];
         
-        NSLog(@"Deleted value for key '%@'. User is now: %@", kLoggedInVendor, [JNKeychain loadValueForKey:kLoggedInSalon]);
+        NSLog(@"Deleted value for key '%@'. Salon is now: %@", kLoggedInSalon, [JNKeychain loadValueForKey:kLoggedInSalon]);
         return YES;
         
     } else {
         
-        NSLog(@"Failed to delete vendor!");
+        NSLog(@"Failed to delete salon!");
         return NO;
     }
 }

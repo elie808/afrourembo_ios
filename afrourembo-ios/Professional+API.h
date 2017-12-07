@@ -48,12 +48,18 @@ typedef void (^ProfessionalEditErrorBlock)(NSError *error, NSString *errorMessag
 /// Request to join a salon
 + (RKResponseDescriptor *)postProfessionalSalonJoinResponseDescriptor;
 
+/// Get salon's clients
++ (RKResponseDescriptor *)getSalonClientsResponseDescriptor;
+
 + (void)signUpProfessional:(NSString *)email password:(NSString *)password  firstName:(NSString *)fName lastName:(NSString *)lName phoneNumber:(NSString *)phone  withBlock:(ProfessionalSignUpSuccessBlock)successBlock withErrors:(ProfessionalSignUpErrorBlock)errorBlock;
 
 + (void)resetPassword:(NSString *)newPassword forPhoneNumber:(NSString *)phoneNumber andConfirmationCode:(NSString *)confirmationCode withBlock:(ProfessionalSignUpSuccessBlock)successBlock withErrors:(ProfessionalSignUpErrorBlock)errorBlock;
 
 /// GET list of professional's clients
-+ (void)getClients:(NSString *)token withBlock:(ProfessionalClientsSuccessBlock)successBlock withErrors:(ProfessionalSignUpErrorBlock)errorBlock;
++ (void)getClientsForProfessional:(NSString *)token withBlock:(ProfessionalClientsSuccessBlock)successBlock withErrors:(ProfessionalSignUpErrorBlock)errorBlock;
+
+/// GET list of salon's clients
++ (void)getClientsForSalon:(NSString *)token withBlock:(ProfessionalClientsSuccessBlock)successBlock withErrors:(ProfessionalSignUpErrorBlock)errorBlock;
 
 /// GET professional's profile from a Customer's account
 + (void)getProfile:(NSString *)profID withCustomerToken:(NSString *)token withBlock:(ProfessionalSignUpSuccessBlock)successBlock withErrors:(ProfessionalSignUpErrorBlock)errorBlock;
