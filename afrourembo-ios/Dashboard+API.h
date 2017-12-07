@@ -21,6 +21,8 @@ typedef void (^DashboardErrorBlock)(NSError *error, NSString *errorMessage, NSIn
 
 + (RKResponseDescriptor *)getDashboardResponseDescriptor;
 
++ (RKResponseDescriptor *)getSalonDashboardResponseDescriptor;
+
 /**
  Returns all the bookings of a vendor with customer info and dates on each
  
@@ -28,5 +30,13 @@ typedef void (^DashboardErrorBlock)(NSError *error, NSString *errorMessage, NSIn
  @param errorBlock Server error logging
  */
 + (void)getDashboardOfVendor:(NSString *)userToken withBlock:(DashboardSuccessBlock)successBlock withErrors:(DashboardErrorBlock)errorBlock;
+
+/**
+ Returns all the bookings of a salon with customer info and dates on each
+ 
+ @param successBlock Server will return an array of vendor bookings
+ @param errorBlock Server error logging
+ */
++ (void)getDashboardOfSalon:(NSString *)userToken withBlock:(DashboardSuccessBlock)successBlock withErrors:(DashboardErrorBlock)errorBlock;
 
 @end

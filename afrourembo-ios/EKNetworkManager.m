@@ -99,7 +99,10 @@
                                                      [Customer userDeleteFavoritesResponseDescriptor]
                                                      ]];
     
-    [objectManager addResponseDescriptor:[Dashboard getDashboardResponseDescriptor]];
+    [objectManager addResponseDescriptorsFromArray:@[
+                                                     [Dashboard getDashboardResponseDescriptor],
+                                                     [Dashboard getSalonDashboardResponseDescriptor]
+                                                     ]];
     
     [objectManager addResponseDescriptorsFromArray:@[
                                                      [Day availabilityResponseDescriptor],

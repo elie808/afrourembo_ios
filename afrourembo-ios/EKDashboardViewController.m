@@ -61,6 +61,24 @@ static NSInteger const kViewCount = 3;
         
     } else if ([EKSettings getSavedSalon]) {
 
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+        [Dashboard getDashboardOfSalon:[EKSettings getSavedSalon].token
+                             withBlock:^(NSArray<Dashboard *> *dashboardItems) {
+                                 
+                                 [MBProgressHUD hideHUDForView:self.view animated:YES];
+                                 
+                                 _dashboardItems = dashboardItems;
+                                 
+                                 [[NSNotificationCenter defaultCenter] postNotificationName:kDashboardNotification
+                                                                                     object:nil
+                                                                                   userInfo:[NSDictionary dictionaryWithObject:dashboardItems forKey:kDashObjKey]];
+                                 
+                             } withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
+                                
+                                 [MBProgressHUD hideHUDForView:self.view animated:YES];
+                                 [self showMessage:errorMessage withTitle:@"Error" completionBlock:nil];
+                            }];
+        
     }
 }
 
