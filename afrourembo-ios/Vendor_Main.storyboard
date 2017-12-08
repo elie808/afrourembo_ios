@@ -1166,10 +1166,10 @@
             </objects>
             <point key="canvasLocation" x="3668" y="571"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Vendor Tab Bar View Controller-->
         <scene sceneID="1aR-sJ-zJ8">
             <objects>
-                <tabBarController storyboardIdentifier="vendor_dashboard" id="6IF-kV-wMK" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="vendor_dashboard" id="6IF-kV-wMK" customClass="EKVendorTabBarViewController" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" translucent="NO" id="KPu-U2-9G6">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
