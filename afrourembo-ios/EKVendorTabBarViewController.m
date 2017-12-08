@@ -26,6 +26,7 @@
                                  
                                   [MBProgressHUD hideHUDForView:self.view animated:YES];
                                   [self showMessage:errorMessage withTitle:@"Error" completionBlock:nil];
+                                  
                              }];
         
         [Professional getClientsForProfessional:[EKSettings getSavedVendor].token
@@ -119,6 +120,42 @@
         [vc configureWithDashboardItems:customersArray];
     }
 }
+
+/*
+- (void)handleVendorAvailabilityErrors:(NSError *)error errorMessage:(NSString *)errorMessage statusCode:(NSInteger) statusCode {
+    
+    if (statusCode == 401) { // invalid token
+        
+        [self showLoginDialog:^(UIAlertAction *action, NSString *emailString, NSString *passString) {
+            
+            [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+            [Customer loginCustomer:emailString
+                           password:passString
+                          withBlock:^(Customer *customerObj) {
+                              
+                              [MBProgressHUD hideHUDForView:self.view animated:YES];
+                              [EKSettings saveCustomer:customerObj];
+                          }
+                         withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
+                             
+                             [MBProgressHUD hideHUDForView:self.view animated:YES];
+                             [self showMessage:errorMessage withTitle:@"There is something wrong"
+                               completionBlock:nil];
+                         }];
+            
+        } andSignUpBlock:^(UIAlertAction *action) {
+            
+            [EKSettings deleteBookingsForCustomer:[EKSettings getSavedCustomer]];
+            [EKSettings deleteSavedCustomer];
+            [self performSegueWithIdentifier:kSignUpSegue sender:nil];
+        }];
+        
+    } else {
+        
+        [self showMessage:errorMessage withTitle:@"Error" completionBlock:nil];
+    }
+}
+*/
 
 /*
 #pragma mark - Navigation
