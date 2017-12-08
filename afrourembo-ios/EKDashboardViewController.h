@@ -28,4 +28,6 @@
 
 - (IBAction)didTapFilterButton:(UIBarButtonItem *)sender;
 
+- (void)configureWithDashboardItems:(NSArray<Dashboard *> *)dashboardItemsArray;
+
 @end

@@ -22,4 +22,6 @@
 @property (strong, nonatomic) IBOutlet UIView *emptyDataView;
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 
+- (void)configureWithDashboardItems:(NSArray<Customer *> *)customersArray;
+
 @end

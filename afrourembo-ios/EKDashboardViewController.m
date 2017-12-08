@@ -38,47 +38,7 @@ static NSInteger const kViewCount = 3;
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    
-    if ([EKSettings getSavedVendor]) {
-     
-        [MBProgressHUD hideHUDForView:self.view animated:YES];
-        [Dashboard getDashboardOfVendor:[EKSettings getSavedVendor].token
-                              withBlock:^(NSArray<Dashboard *> *dashboardItems) {
-                                  
-                                  [MBProgressHUD hideHUDForView:self.view animated:YES];
-                                  
-                                  _dashboardItems = dashboardItems;
-                                  
-                                  [[NSNotificationCenter defaultCenter] postNotificationName:kDashboardNotification
-                                                                                      object:nil
-                                                                                    userInfo:[NSDictionary dictionaryWithObject:dashboardItems forKey:kDashObjKey]];
-                                  
-                              } withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
-                                  
-                                  [MBProgressHUD hideHUDForView:self.view animated:YES];
-                                  [self showMessage:errorMessage withTitle:@"Error" completionBlock:nil];
-                              }];
-        
-    } else if ([EKSettings getSavedSalon]) {
 
-        [MBProgressHUD hideHUDForView:self.view animated:YES];
-        [Dashboard getDashboardOfSalon:[EKSettings getSavedSalon].token
-                             withBlock:^(NSArray<Dashboard *> *dashboardItems) {
-                                 
-                                 [MBProgressHUD hideHUDForView:self.view animated:YES];
-                                 
-                                 _dashboardItems = dashboardItems;
-                                 
-                                 [[NSNotificationCenter defaultCenter] postNotificationName:kDashboardNotification
-                                                                                     object:nil
-                                                                                   userInfo:[NSDictionary dictionaryWithObject:dashboardItems forKey:kDashObjKey]];
-                                 
-                             } withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
-                                
-                                 [MBProgressHUD hideHUDForView:self.view animated:YES];
-                                 [self showMessage:errorMessage withTitle:@"Error" completionBlock:nil];
-                            }];
-    }
 }
 
 #pragma mark - Page View Controller Data Source
@@ -174,6 +134,18 @@ static NSInteger const kViewCount = 3;
     [alertController addAction:cancelAction];
     
     [self presentViewController:alertController animated:YES completion:^{}];
+}
+
+#pragma mark - Helpers 
+
+- (void)configureWithDashboardItems:(NSArray<Dashboard *> *)dashboardItemsArray {
+    
+    _dashboardItems = dashboardItemsArray;
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:kDashboardNotification
+                                                        object:nil
+                                                      userInfo:[NSDictionary dictionaryWithObject:dashboardItemsArray
+                                                                                           forKey:kDashObjKey]];
 }
 
 /*

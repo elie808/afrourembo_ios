@@ -16,6 +16,7 @@
 
 #import "Today.h"
 #import "EKSettings.h"
+#import "EKConstants.h"
 
 #import "Dashboard+API.h"
 #import "UIViewController+Helpers.h"
@@ -32,5 +33,7 @@
 @property (weak , nonatomic) IBOutlet UITableView *tableView;
 
 @property (strong, nonatomic) NSMutableDictionary *contentOffsetDictionary;
+
+- (void)configureWithDashboardItems:(NSArray<Dashboard *> *)dashboardItemsArray;
 
 @end

@@ -26,40 +26,7 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
-    if ([EKSettings getSavedVendor]) {
-     
-        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-        [Dashboard getDashboardOfVendor:[EKSettings getSavedVendor].token
-                              withBlock:^(NSArray<Dashboard *> *dashboardItems) {
-        
-                                  [MBProgressHUD hideHUDForView:self.view animated:YES];
-                                  [self.dataSource removeAllObjects];
-                                  [self.dataSource addObjectsFromArray:dashboardItems];
-                                  [self.calendar reloadData];
-                                  
-                              } withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
-                                  
-                                  [MBProgressHUD hideHUDForView:self.view animated:YES];
-                                  [self showMessage:errorMessage withTitle:@"Error" completionBlock:nil];
-                              }];
-        
-    } else if ([EKSettings getSavedSalon]) {
-        
-        [MBProgressHUD hideHUDForView:self.view animated:YES];
-        [Dashboard getDashboardOfSalon:[EKSettings getSavedSalon].token
-                             withBlock:^(NSArray<Dashboard *> *dashboardItems) {
-                                 
-                                 [MBProgressHUD hideHUDForView:self.view animated:YES];
-                                 [self.dataSource removeAllObjects];
-                                 [self.dataSource addObjectsFromArray:dashboardItems];
-                                 [self.calendar reloadData];
-                                 
-                             } withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
-                                 
-                                 [MBProgressHUD hideHUDForView:self.view animated:YES];
-                                 [self showMessage:errorMessage withTitle:@"Error" completionBlock:nil];
-                             }];
-    }
+    [[self.tabBarController.tabBar.items objectAtIndex:kScheduleVCIndex] setBadgeValue:nil];
 }
 
 #pragma mark - FSCalendar
@@ -97,6 +64,38 @@
     }
     
     return NO;
+}
+
+#pragma mark - Helpers
+
+- (void)configureWithDashboardItems:(NSArray<Dashboard *> *)dashboardItemsArray {
+    
+    if (dashboardItemsArray && dashboardItemsArray.count > 0) {
+        
+        [self.dataSource removeAllObjects];
+
+        NSDate *todayDate = [[NSCalendar currentCalendar] startOfDayForDate:[NSDate date]];
+
+        // used to display number as a badge on tab
+        NSInteger appointementsToday = 0;
+        
+        for (Dashboard *dashObj in dashboardItemsArray) {
+            
+            // if the startDate is today
+            if ([dashObj.startDate daysFrom:todayDate] == 0) {
+                appointementsToday ++;
+            }
+        }
+
+        [self.dataSource addObjectsFromArray:dashboardItemsArray];
+        [self.calendar reloadData];
+        
+        // update tab bar badge
+        if (appointementsToday > 0) {
+            [[self.tabBarController.tabBar.items objectAtIndex:kTodayVCIndex]
+             setBadgeValue:[NSString stringWithFormat:@"%ld", (long)appointementsToday]];
+        }
+    }
 }
 
 /*

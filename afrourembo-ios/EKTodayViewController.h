@@ -16,6 +16,7 @@
 #import "Today.h"
 
 #import "EKSettings.h"
+#import "EKConstants.h"
 
 #import "Dashboard+API.h"
 
@@ -30,5 +31,7 @@
 
 // used to keep track of collectionViews scrolling positions/offsets
 @property (strong, nonatomic) NSMutableDictionary *contentOffsetDictionary;
+
+- (void)configureWithDashboardItems:(NSArray<Dashboard *> *)dashboardItemsArray;
 
 @end

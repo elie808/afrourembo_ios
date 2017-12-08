@@ -23,48 +23,7 @@ static NSString * const kClientsDetailSegue = @"clientsListToClientsDetailsVC";
     self.emptyDataView.frame = CGRectMake(self.tableView.frame.origin.x, self.tableView.frame.origin.y,
                                           self.tableView.frame.size.width, self.tableView.frame.size.height);
     self.emptyDataView.hidden = NO;
-    [self.view addSubview:self.emptyDataView];
-    
-    if ([EKSettings getSavedVendor]) {
-    
-        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-        [Professional getClientsForProfessional:[EKSettings getSavedVendor].token
-                                      withBlock:^(NSArray<Customer *> *customersArray) {
-                           
-                                          [MBProgressHUD hideHUDForView:self.view animated:YES];
-                                          if (customersArray.count > 0) {
-                                              self.emptyDataView.hidden = YES;
-                                              _dataSourceArray = [NSMutableArray arrayWithArray:customersArray];
-                                          }
-                                          
-                                          [self.tableView reloadData];
-                           
-                                      } withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
-
-                                          [MBProgressHUD hideHUDForView:self.view animated:YES];
-                                          [self showMessage:errorMessage withTitle:@"Error" completionBlock:nil];
-                                      }];
-        
-    } else if ([EKSettings getSavedSalon]) {
-        
-        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-        [Professional getClientsForSalon:[EKSettings getSavedSalon].token
-                               withBlock:^(NSArray<Customer *> *customersArray) {
-        
-                                   [MBProgressHUD hideHUDForView:self.view animated:YES];
-                                   if (customersArray.count > 0) {
-                                       self.emptyDataView.hidden = YES;
-                                       _dataSourceArray = [NSMutableArray arrayWithArray:customersArray];
-                                   }
-                                   
-                                   [self.tableView reloadData];
-                                   
-                               } withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
-                      
-                                   [MBProgressHUD hideHUDForView:self.view animated:YES];
-                                   [self showMessage:errorMessage withTitle:@"Error" completionBlock:nil];
-                               }];
-    }
+    [self.view addSubview:self.emptyDataView];    
 }
 
 #pragma mark - UITableViewDataSource
@@ -103,6 +62,23 @@ static NSString * const kClientsDetailSegue = @"clientsListToClientsDetailsVC";
     Customer *customerObj = _dataSourceArray[indexPath.row];
     
     [self performSegueWithIdentifier:kClientsDetailSegue sender:customerObj];
+}
+
+#pragma mark - Helpers
+
+- (void)configureWithDashboardItems:(NSArray<Customer *> *)customersArray {
+    
+    if (customersArray && customersArray.count > 0) {
+        
+        self.emptyDataView.hidden = YES;
+        _dataSourceArray = [NSMutableArray arrayWithArray:customersArray];
+        
+    } else {
+        
+        self.emptyDataView.hidden = NO;
+    }
+    
+    [self.tableView reloadData];
 }
 
 #pragma mark - Navigation

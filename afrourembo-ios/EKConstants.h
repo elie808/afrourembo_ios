@@ -15,6 +15,14 @@ static NSString * const kSplashVC = @"splashVC";
 static NSString * const kExploreVC = @"exploreVC";
 static NSString * const kVendorDashVC = @"vendor_dashboard";
 
+#pragma mark - Storyboard IDs
+
+static NSInteger const kTodayVCIndex = 0;
+static NSInteger const kScheduleVCIndex  = 1;
+static NSInteger const kDashboardVCIndex = 2;
+static NSInteger const kClientsVCIndex   = 3;
+static NSInteger const kSettingsVCIndex  = 4;
+
 #pragma mark - In-app constants
 
 static NSString * const kProfessionalType = @"professional";

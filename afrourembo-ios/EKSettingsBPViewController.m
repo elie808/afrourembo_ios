@@ -12,26 +12,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-//    self.tableViewDataSource = @[
-//                    @"Check my public profile",
-//                    @"Explore services",
-//                    @"Profile information",
-//                    @"Business information",
-//                    @"Manage photos",
-//                    @"My services",
-//                    @"Availability",
-//                    @"Social accounts",
-//                    @"Billing information",
-//                    @"Notifications",
-//                    @"Export financial data",
-//                    @"Share app",
-//                    @"Rate us",
-//                    @"Terms & conditions",
-//                    @"Privacy policy",
-//                    @"About",
-//                    @"Feedback"
-//                    ];
 
     if ([EKSettings getSavedVendor]) {
         
@@ -56,6 +36,11 @@
     }
 
     self.collectionViewDataSource = @[];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [[self.tabBarController.tabBar.items objectAtIndex:kSettingsVCIndex] setBadgeValue:nil];
 }
 
 #pragma mark - Navigation

@@ -13,59 +13,111 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    [Dashboard getDashboardOfSalon:[EKSettings getSavedSalon].token
-                         withBlock:^(NSArray<Dashboard *> *dashboardItems) {
-                             
-                             if ([[[self viewControllers] objectAtIndex:kTodayVCIndex] isKindOfClass:[EKTodayViewController class]] ) {
+    if ([EKSettings getSavedVendor]) {
+    
+        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        [Dashboard getDashboardOfVendor:[EKSettings getSavedVendor].token
+                              withBlock:^(NSArray<Dashboard *> *dashboardItems) {
+                                  
+                                  [MBProgressHUD hideHUDForView:self.view animated:YES];
+                                  [self configureChildrenWith:dashboardItems];
+                                  
+                              } withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
                                  
-                                 EKTodayViewController *vc = [[self viewControllers] objectAtIndex:kTodayVCIndex];
-                                 [vc configureWithDashboardItems:dashboardItems];
-                             }
-                             
-                             if ([[[self viewControllers] objectAtIndex:kScheduleVCIndex] isKindOfClass:[EKScheduleMonthlyViewController class]] ) {
-                                 EKScheduleMonthlyViewController *vc = [[self viewControllers] objectAtIndex:kScheduleVCIndex];
-                             }
-                             
-                             if ([[[self viewControllers] objectAtIndex:2] isKindOfClass:[EKDashboardViewController class]] ) {
-                                 EKDashboardViewController *vc = [[self viewControllers] objectAtIndex:2];
-                             }
-                             
-                             if ([[[self viewControllers] objectAtIndex:4] isKindOfClass:[EKSettingsBPViewController class]] ) {
-                                 EKSettingsBPViewController *vc = [[self viewControllers] objectAtIndex:4];
-                             }
-                             
-                         } withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
-                             
-                             [self showMessage:errorMessage withTitle:@"Error" completionBlock:nil];
-                         }];
+                                  [MBProgressHUD hideHUDForView:self.view animated:YES];
+                                  [self showMessage:errorMessage withTitle:@"Error" completionBlock:nil];
+                             }];
+        
+        [Professional getClientsForProfessional:[EKSettings getSavedVendor].token
+                                      withBlock:^(NSArray<Customer *> *customersArray) {
+
+                                          [self configureClientsVC:customersArray];
+                                          
+                                      } withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
+
+                                          [self showMessage:errorMessage withTitle:@"Error" completionBlock:nil];
+                                      }];
+        
+    } else if ([EKSettings getSavedSalon]) {
     
+        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        [Dashboard getDashboardOfSalon:[EKSettings getSavedSalon].token
+                             withBlock:^(NSArray<Dashboard *> *dashboardItems) {
+                                 
+                                 [MBProgressHUD hideHUDForView:self.view animated:YES];
+                                 [self configureChildrenWith:dashboardItems];
+                                 
+                             } withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
+                                 
+                                 [MBProgressHUD hideHUDForView:self.view animated:YES];
+                                 [self showMessage:errorMessage withTitle:@"Error" completionBlock:nil];
+                             }];
+        
+        [Professional getClientsForSalon:[EKSettings getSavedSalon].token
+                               withBlock:^(NSArray<Customer *> *customersArray) {
+
+                                   [self configureClientsVC:customersArray];
+                                
+                               } withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
+                                   
+                                   [self showMessage:errorMessage withTitle:@"Error" completionBlock:nil];
+                               }];
+        
+        [Salon getJoinRequestsForSalon:[EKSettings getSavedSalon].token
+                             withBlock:^(NSArray<JoinSalonRequest *> *joinRequestsArray) {
+                                 
+                                 if (joinRequestsArray.count > 0) {
+                                 
+                                     [[self.tabBar.items objectAtIndex:kSettingsVCIndex]
+                                      setBadgeValue:[NSString stringWithFormat:@"%lu", (unsigned long)joinRequestsArray.count]];
+                                 }
+                                 
+                             } withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
+                                 
+                                 [self showMessage:errorMessage withTitle:@"Error" completionBlock:nil];
+                             }];
+        
+    }
+}
+
+#pragma mark - Helpers
+
+- (void)configureChildrenWith:(NSArray <Dashboard*> *)dashboardItems {
     
-    // TODO: EKClientsViewController is embedded in a navigationController. Handle accordingly.
+    if ([[[self viewControllers] objectAtIndex:kTodayVCIndex] isKindOfClass:[EKTodayViewController class]] ) {
+        
+        EKTodayViewController *vc = [[self viewControllers] objectAtIndex:kTodayVCIndex];
+        [vc configureWithDashboardItems:dashboardItems];
+    }
     
+    if ([[[self viewControllers] objectAtIndex:kScheduleVCIndex] isKindOfClass:[EKScheduleMonthlyViewController class]] ) {
+        
+        EKScheduleMonthlyViewController *vc = [[self viewControllers] objectAtIndex:kScheduleVCIndex];
+        [vc configureWithDashboardItems:dashboardItems];
+    }
     
-//    if ([EKSettings getSavedVendor]) {
-//        
-//        [Professional getClientsForProfessional:[EKSettings getSavedVendor].token
-//                                      withBlock:^(NSArray<Customer *> *customersArray) {
-//                                          
-//                                      } withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
-//                                          
-//                                          [self showMessage:errorMessage withTitle:@"Error" completionBlock:nil];
-//                                      }];
-//        
-//    } else if ([EKSettings getSavedSalon]) {
-//        
-//        [Professional getClientsForSalon:[EKSettings getSavedSalon].token
-//                               withBlock:^(NSArray<Customer *> *customersArray) {
-//                                   
-//                              
-//                                   
-//                               } withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
-//                                   
-//                                   [self showMessage:errorMessage withTitle:@"Error" completionBlock:nil];
-//                               }];
-//    }
+    if ([[[self viewControllers] objectAtIndex:kDashboardVCIndex] isKindOfClass:[EKDashboardViewController class]] ) {
+        
+        EKDashboardViewController *vc = [[self viewControllers] objectAtIndex:kDashboardVCIndex];
+        [vc configureWithDashboardItems:dashboardItems];
+    }
     
+    if ([[[self viewControllers] objectAtIndex:kSettingsVCIndex] isKindOfClass:[EKSettingsBPViewController class]] ) {
+        
+//        EKSettingsBPViewController *vc = [[self viewControllers] objectAtIndex:kSettingsVCIndex];
+    }
+}
+
+- (void)configureClientsVC:(NSArray<Customer *> *)customersArray {
+    
+    if ( [[[self viewControllers] objectAtIndex:kClientsVCIndex]
+          isKindOfClass:[UINavigationController class]] ) {
+        
+        UINavigationController *navController = [[self viewControllers] objectAtIndex:kClientsVCIndex];
+        
+        EKClientsViewController *vc = (EKClientsViewController *)([navController viewControllers][0]);
+        [vc configureWithDashboardItems:customersArray];
+    }
 }
 
 /*

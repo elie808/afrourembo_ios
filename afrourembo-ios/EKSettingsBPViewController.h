@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "EKCompanyProfessionalCollectionViewCell.h"
 #import "EKSettings.h"
+#import "EKConstants.h"
 
 #import "EKAvailabilityViewController.h"
 #import "EKProfessionalInfoViewController.h"

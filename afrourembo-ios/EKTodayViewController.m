@@ -34,37 +34,7 @@ static NSString * const kCollectionCell = @"todayCell";
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
-    if ([EKSettings getSavedVendor]) {
-     
-        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-        [Dashboard getDashboardOfVendor:[EKSettings getSavedVendor].token
-                              withBlock:^(NSArray<Dashboard *> *dashboardItems) {
-                                  
-                                  [MBProgressHUD hideHUDForView:self.view animated:YES];
-                                  [self populateCalendarWithDashObjects:dashboardItems];
-                                  [self.tableView reloadData];
-                                  
-                              } withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
-                                  
-                                  [MBProgressHUD hideHUDForView:self.view animated:YES];
-                                  [self showMessage:errorMessage withTitle:@"Error" completionBlock:nil];
-                              }];
-        
-    } else if ([EKSettings getSavedSalon]) {
-        
-        [Dashboard getDashboardOfSalon:[EKSettings getSavedSalon].token
-                             withBlock:^(NSArray<Dashboard *> *dashboardItems) {
-                                 
-                                 [MBProgressHUD hideHUDForView:self.view animated:YES];
-                                 [self populateCalendarWithDashObjects:dashboardItems];
-                                 [self.tableView reloadData];
-                                 
-                             } withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
-                                 
-                                 [MBProgressHUD hideHUDForView:self.view animated:YES];
-                                 [self showMessage:errorMessage withTitle:@"Error" completionBlock:nil];
-                             }];
-    }
+    [[self.tabBarController.tabBar.items objectAtIndex:kTodayVCIndex] setBadgeValue:nil];
 }
 
 #pragma mark - UITableViewDataSource
@@ -82,12 +52,7 @@ static NSString * const kCollectionCell = @"todayCell";
     EKTodayTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kTableCell forIndexPath:indexPath];
     
     // when time slot falls within time of the day
-    if (indexPath.row == 2) {
-//            cell.backgroundColor = [UIColor colorWithRed:255./255. green:195./255. blue:0 alpha:1.0];
-        // make font bold
-        // make text color white
-        // abstract into config cell method
-    }
+    if (indexPath.row == 2) { }
     
     Today *todayObj = [_dataSource objectAtIndex:indexPath.row];
     
@@ -161,6 +126,19 @@ static NSString * const kCollectionCell = @"todayCell";
 
 #pragma mark - Helpers
 
+- (void)configureWithDashboardItems:(NSArray<Dashboard *> *)dashboardItemsArray {
+    
+    if (dashboardItemsArray && dashboardItemsArray.count > 0) {
+        
+        [self populateCalendarWithDashObjects:dashboardItemsArray];
+        
+    } else {
+        
+    }
+    
+    [self.tableView reloadData];
+}
+
 /// pure convenience method, to keep using Appointment objects, since this view's UI was built on them initially...
 - (Appointment *)convertToAppointementObject:(Dashboard *)dashboardObject {
     
@@ -202,8 +180,11 @@ static NSString * const kCollectionCell = @"todayCell";
 
 /// create calendar UI with booked appointements
 - (void)populateCalendarWithDashObjects:(NSArray *)dashboardItems {
-    
+
     [_dataSource removeAllObjects];
+    
+    // used to display number as a badge on tab
+    NSInteger appointementsToday = 0;
     
     NSDate *todayDate = [[NSCalendar currentCalendar] startOfDayForDate:[NSDate date]];
     
@@ -231,10 +212,16 @@ static NSString * const kCollectionCell = @"todayCell";
 //                NSLog(@"Starts on date: %@ \n \n", dashObj.startDate);
                 
                 today.appointmentsArray = @[[self convertToAppointementObject:dashObj]];
+                appointementsToday ++;
             }
         }
         
         [_dataSource addObject:today];
+    }
+    
+    if (appointementsToday > 0) {
+        [[self.tabBarController.tabBar.items objectAtIndex:kTodayVCIndex]
+         setBadgeValue:[NSString stringWithFormat:@"%ld", (long)appointementsToday]];
     }
 }
 
