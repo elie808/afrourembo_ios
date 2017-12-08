@@ -39,9 +39,6 @@
                                         <barButtonItem key="leftBarButtonItem" image="icWeek" id="tHg-Xb-SUE">
                                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" image="icFilter" id="YLi-QZ-D1a">
-                                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
@@ -252,11 +249,7 @@
                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </textAttributes>
                                 <items>
-                                    <navigationItem title="Today" id="n7c-Kf-0bd">
-                                        <barButtonItem key="rightBarButtonItem" image="icFilter" id="u0l-bS-P21">
-                                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        </barButtonItem>
-                                    </navigationItem>
+                                    <navigationItem title="Today" id="n7c-Kf-0bd"/>
                                 </items>
                             </navigationBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="80" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Snn-SK-ke9">
@@ -653,14 +646,7 @@
                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </textAttributes>
                                 <items>
-                                    <navigationItem title="Dashboard" id="gJT-zK-dMb">
-                                        <barButtonItem key="rightBarButtonItem" image="icFilter" id="sKR-2i-yMZ">
-                                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <connections>
-                                                <action selector="didTapFilterButton:" destination="ujd-HZ-l3o" id="UmJ-fT-iLo"/>
-                                            </connections>
-                                        </barButtonItem>
-                                    </navigationItem>
+                                    <navigationItem title="Dashboard" id="gJT-zK-dMb"/>
                                 </items>
                             </navigationBar>
                         </subviews>
@@ -1501,7 +1487,6 @@
         <image name="icDashNormal" width="20" height="20"/>
         <image name="icDone" width="12" height="12"/>
         <image name="icEmail" width="12" height="10"/>
-        <image name="icFilter" width="18" height="16"/>
         <image name="icNext" width="10" height="16"/>
         <image name="icPhone" width="12" height="12"/>
         <image name="icPlaceholder" width="62" height="62"/>
