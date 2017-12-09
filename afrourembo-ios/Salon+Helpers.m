@@ -31,7 +31,7 @@
     Salon *delta = [Salon new];
     
     delta.salonID = newSalon.salonID.length > 0 ? newSalon.salonID : existingSalon.salonID;
-    delta.token = newSalon.token.length > 0 ? newSalon.token : newSalon.token;
+    delta.token = newSalon.token.length > 0 ? newSalon.token : existingSalon.token;
     
     return delta;
 }
