@@ -89,6 +89,21 @@ static NSString * const kWorkInSalonBP   =  @"salonRoleVCToBusinessModelVC";
         vc.signInRole = SignInRoleBP;
     }
     
+    //-- sign up
+    
+    if ([segue.identifier isEqualToString:kCustomerSignUpSegue]) {
+    }
+    
+    if ([segue.identifier isEqualToString:kBPSignUpSegue]) {
+        EKSignupBPViewController *vc = segue.destinationViewController;
+        vc.signUpRole = SignUpRoleBP;
+    }
+    
+    if ([segue.identifier isEqualToString:kSalonSignUpSegue]) {
+        EKSignupBPViewController *vc = segue.destinationViewController;
+        vc.signUpRole = SignUpRoleSalon;
+    }
+    
     //-- business model | No longer redirects to Business Model VCs. Keeping it as is, while higher power decide
     
     if ([segue.identifier isEqualToString:kWorkAloneBP]) {

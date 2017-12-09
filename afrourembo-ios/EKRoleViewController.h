@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "EKBusinessModelViewController.h"
 #import "EKSignInViewController.h"
+#import "EKSignupBPViewController.h"
 #import "EKAddServiceViewController.h"
 #import "EKSalonSelectViewController.h"
 #import "EKProfessionalInfoViewController.h"
