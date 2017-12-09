@@ -22,7 +22,10 @@ typedef void (^SalonSignUpErrorBlock)(NSError *error, NSString *errorMessage, NS
 /// email, password
 + (RKObjectMapping *)map1;
 
++ (RKRequestDescriptor *)salonFBRequestDescriptor;
 + (RKRequestDescriptor *)salonLoginRequestDescriptor;
+
++ (RKResponseDescriptor *)salonFBRegistrationResponseDescriptor;
 
 + (RKResponseDescriptor *)salonLoginResponseDescriptor;
 
@@ -40,5 +43,7 @@ typedef void (^SalonSignUpErrorBlock)(NSError *error, NSString *errorMessage, NS
 + (void)getResetCodeForPhonenumber:(NSString *)phoneNumber withBlock:(SalonResetCodeSuccessBlock)successBlock withErrors:(SalonSignUpErrorBlock)errorBlock;
 
 + (void)resetPassword:(NSString *)newPassword forPhoneNumber:(NSString *)phoneNumber andConfirmationCode:(NSString *)confirmationCode withBlock:(SalonSignUpSuccessBlock)successBlock withErrors:(SalonSignUpErrorBlock)errorBlock;
+
++ (void)signUpSalonWithFacebook:(NSString *)fbToken withBlock:(SalonSignUpSuccessBlock)successBlock withErrors:(SalonSignUpErrorBlock)errorBlock;
 
 @end

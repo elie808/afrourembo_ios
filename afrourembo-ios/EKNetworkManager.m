@@ -68,7 +68,10 @@
                                                     [Salon salonRegistrationRequestDescriptor]
                                                     ]];
     
-    [objectManager addRequestDescriptor:[SalonLogin salonLoginRequestDescriptor]];
+    [objectManager addRequestDescriptorsFromArray:@[
+                                                    [SalonLogin salonLoginRequestDescriptor],
+                                                    [SalonLogin salonFBRequestDescriptor]
+                                                    ]];
     
     [objectManager addRequestDescriptorsFromArray:@[
                                                     [Service postServicesRequestDescriptor]
@@ -160,7 +163,8 @@
     
     [objectManager addResponseDescriptorsFromArray:@[
                                                      [SalonLogin salonLoginResponseDescriptor],
-                                                     [SalonLogin salonResetPassResponseDescriptor]
+                                                     [SalonLogin salonResetPassResponseDescriptor],
+                                                     [SalonLogin salonFBRegistrationResponseDescriptor]
                                                      ]];
     
     [objectManager addResponseDescriptorsFromArray:@[

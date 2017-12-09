@@ -55,6 +55,7 @@ static NSString * const kProfessionalServiceAPIPath  = @"professional/services";
 static NSString * const kProfessionalJoinSalonAPIPath = @"professional/salon/:id/join";
 
 static NSString * const kSalonRegisterAPIPath  = @"salon/register";
+static NSString * const kSalonFBRegisterAPIPath   = @"salon/facebook/register";
 static NSString * const kSalonLoginAPIPath     = @"salon/login";
 static NSString * const kSalonPassResetAPIPath = @"salon/password/reset";
 static NSString * const kSalonStaffAPIPath     = @"salon/:userId/professionals";
