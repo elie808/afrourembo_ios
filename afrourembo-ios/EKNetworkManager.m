@@ -64,6 +64,10 @@
                                                     [Review postReviewsRequestDescriptor]
                                                     ]];
     
+    [objectManager addRequestDescriptorsFromArray:@[
+                                                    [Salon salonRegistrationRequestDescriptor]
+                                                    ]];
+    
     [objectManager addRequestDescriptor:[SalonLogin salonLoginRequestDescriptor]];
     
     [objectManager addRequestDescriptorsFromArray:@[
@@ -148,6 +152,7 @@
                                                      ]];
     
     [objectManager addResponseDescriptorsFromArray:@[
+                                                     [Salon salonRegistrationResponseDescriptor],
                                                      [Salon getStaffResponseDescriptor],
                                                      [Salon getStaffJoinRequestsResponseDescriptor],
                                                      [Salon getCurrentStaffResponseDescriptor]

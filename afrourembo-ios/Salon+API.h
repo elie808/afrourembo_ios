@@ -13,6 +13,7 @@
 
 #import <RestKit/RestKit.h>
 
+typedef void (^SalonSignUpSuccessBlock)(Salon *salonObj);
 typedef void (^SalonStaffFetchSuccessBlock)(NSArray <Professional *> *staffArray);
 typedef void (^SalonJoinSuccessBlock)();
 typedef void (^SalonJoinFetchSuccessBlock)(NSArray <JoinSalonRequest *> *joinRequests);
@@ -23,6 +24,14 @@ typedef void (^SalonErrorBlock)(NSError *error, NSString *errorMessage, NSIntege
 /// fName, lName, token, email, password, phone
 + (RKObjectMapping *)map1;
 
+/// email, password, fName, lName, phone
++ (RKObjectMapping *)map2;
+
+/// salon sign up request
++ (RKRequestDescriptor *)salonRegistrationRequestDescriptor;
+
++ (RKResponseDescriptor *)salonRegistrationResponseDescriptor;
+
 /// when queried by customer
 + (RKResponseDescriptor *)getStaffResponseDescriptor;
 
@@ -30,6 +39,8 @@ typedef void (^SalonErrorBlock)(NSError *error, NSString *errorMessage, NSIntege
 + (RKResponseDescriptor *)getCurrentStaffResponseDescriptor;
 
 + (RKResponseDescriptor *)getStaffJoinRequestsResponseDescriptor;
+
++ (void)signUpSalon:(NSString *)email password:(NSString *)password firstName:(NSString *)fName lastName:(NSString *)lName phoneNumber:(NSString *)phone withBlock:(SalonSignUpSuccessBlock)successBlock withErrors:(SalonErrorBlock)errorBlock;
 
 /// Called by customers on company profile to view professionals currently working in the salon being viewed 
 + (void)getStaffForSalon:(NSString *)salonID forCustomer:(NSString *)userToken withBlock:(SalonStaffFetchSuccessBlock)successBlock withErrors:(SalonErrorBlock)errorBlock;

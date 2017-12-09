@@ -30,7 +30,38 @@
     return mapping;
 }
 
++ (RKObjectMapping *)map2 {
+    
+    RKObjectMapping *mapping = [RKObjectMapping mappingForClass:[Salon class]];
+    [mapping addAttributeMappingsFromArray:@[@"email", @"password", @"fName", @"lName", @"phone"]];
+    
+    return mapping;
+}
+
+#pragma mark - Requests
+
++ (RKRequestDescriptor *)salonRegistrationRequestDescriptor {
+    
+    RKRequestDescriptor *request = [RKRequestDescriptor
+                                    requestDescriptorWithMapping:[[Salon map2] inverseMapping]
+                                    objectClass:[Salon class]
+                                    rootKeyPath:nil
+                                    method:RKRequestMethodPOST];
+    return request;
+}
+
 #pragma mark - Responses
+
++ (RKResponseDescriptor *)salonRegistrationResponseDescriptor {
+    
+    RKResponseDescriptor *response = [RKResponseDescriptor
+                                      responseDescriptorWithMapping:[Salon map1]
+                                      method:RKRequestMethodPOST
+                                      pathPattern:kSalonRegisterAPIPath
+                                      keyPath:nil
+                                      statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+    return response;
+}
 
 + (RKResponseDescriptor *)getStaffResponseDescriptor {
     
@@ -74,6 +105,52 @@
 }
 
 #pragma mark - APIs
+
++ (void)signUpSalon:(NSString *)email password:(NSString *)password firstName:(NSString *)fName lastName:(NSString *)lName phoneNumber:(NSString *)phone withBlock:(SalonSignUpSuccessBlock)successBlock withErrors:(SalonErrorBlock)errorBlock {
+    
+    Salon *salon = [Salon new];
+    
+    salon.fName = fName;
+    salon.lName = lName;
+    salon.email = email;
+    salon.password = password;
+    salon.phone = phone;
+    
+    [[RKObjectManager sharedManager] postObject:salon
+                                           path:kSalonRegisterAPIPath
+                                     parameters:nil
+                                        success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+                                            
+                                            if (mappingResult.array.count > 0) {
+                                                Salon *salonObj = [mappingResult.array firstObject];
+                                                successBlock(salonObj);
+                                            } else {
+                                                successBlock(nil);
+                                            }
+
+                                        } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                                            
+                                            if (operation.HTTPRequestOperation.responseData) {
+                                                
+                                                // exctract error message
+                                                NSDictionary *myDic = [NSJSONSerialization
+                                                                       JSONObjectWithData:operation.HTTPRequestOperation.responseData
+                                                                       options:NSJSONReadingMutableLeaves
+                                                                       error:nil];
+                                                
+                                                NSString *errorMessage = [myDic valueForKey:@"message"];
+                                                
+                                                NSNumber *statusCode = [myDic valueForKey:@"statusCode"];
+                                                
+                                                NSLog(@"-------ERROR MESSAGE: %@", errorMessage);
+                                                errorBlock(error, errorMessage, [statusCode integerValue]);
+                                                
+                                            } else {
+                                                
+                                                errorBlock(error, @"You are not connected to the internet.", 0);
+                                            }
+                                        }];    
+}
 
 + (void)getCurrentStaffForSalon:(NSString *)salonToken withBlock:(SalonStaffFetchSuccessBlock)successBlock withErrors:(SalonErrorBlock)errorBlock {
     
