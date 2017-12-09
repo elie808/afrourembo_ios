@@ -29,7 +29,15 @@ static NSString * const kGalleryCell  = @"galleryCell";
     
     _selectedPic = nil;
     _picsToDeleteArray = [NSMutableArray new];
-    _dataSource = [NSMutableArray arrayWithArray:[EKSettings getSavedVendor].portfolio];
+    
+    if ([EKSettings getSavedVendor]) {
+        
+        _dataSource = [NSMutableArray arrayWithArray:[EKSettings getSavedVendor].portfolio];
+        
+    } else if ([EKSettings getSavedSalon]) {
+        
+        _dataSource = [NSMutableArray arrayWithArray:[EKSettings getSavedSalon].portfolio];
+    }
     
     if (_dataSource.count > 0) {
         self.emptyDataView.hidden = YES;
@@ -135,29 +143,59 @@ static NSString * const kGalleryCell  = @"galleryCell";
     
     [picker dismissViewControllerAnimated:YES completion:nil];
     
-    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    [ProfilePicture uploadProfessionalPortfolioPicture:[UIImage compressImage:image toSize:kMaxImageSize]
-                                             withToken:[EKSettings getSavedVendor].token
-                                             withBlock:^(Professional *professional) {
-                                             
-                                                 [MBProgressHUD hideHUDForView:self.view animated:YES];
-                                                 
-                                                 [EKSettings updateSavedProfessional:professional];
-                                                 
-                                                 [_dataSource removeAllObjects];
-                                                 [_dataSource addObjectsFromArray:[EKSettings getSavedVendor].portfolio];
-                                                 [self.collectionView reloadData];
-                                                 
-                                                 if (_dataSource.count > 0) {
-                                                     self.emptyDataView.hidden = YES;
-                                                 } else {
-                                                     self.emptyDataView.hidden = NO;
-                                                 }
-                                                 
-                                             } withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
-                                                [MBProgressHUD hideHUDForView:self.view animated:YES];
-                                                [self showMessage:errorMessage withTitle:@"Error" completionBlock:nil];
-                                            }];
+    if ([EKSettings getSavedVendor]) {
+        
+        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        [ProfilePicture uploadProfessionalPortfolioPicture:[UIImage compressImage:image toSize:kMaxImageSize]
+                                                 withToken:[EKSettings getSavedVendor].token
+                                                 withBlock:^(Professional *professional) {
+                                                     
+                                                     [MBProgressHUD hideHUDForView:self.view animated:YES];
+                                                     
+                                                     [EKSettings updateSavedProfessional:professional];
+                                                     
+                                                     [_dataSource removeAllObjects];
+                                                     [_dataSource addObjectsFromArray:[EKSettings getSavedVendor].portfolio];
+                                                     [self.collectionView reloadData];
+                                                     
+                                                     if (_dataSource.count > 0) {
+                                                         self.emptyDataView.hidden = YES;
+                                                     } else {
+                                                         self.emptyDataView.hidden = NO;
+                                                     }
+                                                     
+                                                 } withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
+                                                     [MBProgressHUD hideHUDForView:self.view animated:YES];
+                                                     [self showMessage:errorMessage withTitle:@"Error" completionBlock:nil];
+                                                 }];
+        
+    } else if ([EKSettings getSavedSalon]) {
+     
+        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        [ProfilePicture uploadSalonPortfolioPicture:[UIImage compressImage:image toSize:kMaxImageSize]
+                                          withToken:[EKSettings getSavedSalon].token
+                                          withBlock:^(Salon *salon) {
+                                              
+                                              [MBProgressHUD hideHUDForView:self.view animated:YES];
+                                              
+                                              [EKSettings updateSavedSalon:salon];
+                                              
+                                              [_dataSource removeAllObjects];
+                                              [_dataSource addObjectsFromArray:[EKSettings getSavedSalon].portfolio];
+                                              [self.collectionView reloadData];
+                                              
+                                              if (_dataSource.count > 0) {
+                                                  self.emptyDataView.hidden = YES;
+                                              } else {
+                                                  self.emptyDataView.hidden = NO;
+                                              }
+                                              
+                                          } withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
+                                              
+                                              [MBProgressHUD hideHUDForView:self.view animated:YES];
+                                              [self showMessage:errorMessage withTitle:@"Error" completionBlock:nil];
+                                         }];
+    }
 }
 
 #pragma mark - Helpers
@@ -210,31 +248,60 @@ static NSString * const kGalleryCell  = @"galleryCell";
 
 - (void)deletePictureWithID:(NSString *)picID {
 
-    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    
-    [ProfilePicture deleteProfessionalPortfolioPictureWithID:picID
-                                                   withToken:[EKSettings getSavedVendor].token
-                                                   withBlock:^(Professional *professional) {
-                                                       
-                                                       [MBProgressHUD hideHUDForView:self.view animated:YES];
-                                                       
-                                                       [EKSettings updateSavedProfessional:professional];
-                                                       
-                                                       [_dataSource removeAllObjects];
-                                                       [_dataSource addObjectsFromArray:[EKSettings getSavedVendor].portfolio];
-                                                       [self.collectionView reloadData];
-                                                       
-                                                       if (_dataSource.count > 0) {
-                                                           self.emptyDataView.hidden = YES;
-                                                       } else {
-                                                           self.emptyDataView.hidden = NO;
-                                                       }
-                                                       
-                                                   } withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
-                                                       
-                                                       [MBProgressHUD hideHUDForView:self.view animated:YES];
-                                                       [self showMessage:errorMessage withTitle:@"Error" completionBlock:nil];
-                                                   }];
+    if ([EKSettings getSavedVendor]) {
+     
+        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        [ProfilePicture deleteProfessionalPortfolioPictureWithID:picID
+                                                       withToken:[EKSettings getSavedVendor].token
+                                                       withBlock:^(Professional *professional) {
+                                                           
+                                                           [MBProgressHUD hideHUDForView:self.view animated:YES];
+                                                           
+                                                           [EKSettings updateSavedProfessional:professional];
+                                                           
+                                                           [_dataSource removeAllObjects];
+                                                           [_dataSource addObjectsFromArray:[EKSettings getSavedVendor].portfolio];
+                                                           [self.collectionView reloadData];
+                                                           
+                                                           if (_dataSource.count > 0) {
+                                                               self.emptyDataView.hidden = YES;
+                                                           } else {
+                                                               self.emptyDataView.hidden = NO;
+                                                           }
+                                                           
+                                                       } withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
+                                                           
+                                                           [MBProgressHUD hideHUDForView:self.view animated:YES];
+                                                           [self showMessage:errorMessage withTitle:@"Error" completionBlock:nil];
+                                                       }];
+        
+    } else if ([EKSettings getSavedSalon]) {
+        
+        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        [ProfilePicture deleteSalonPortfolioPictureWithID:picID
+                                                withToken:[EKSettings getSavedSalon].token
+                                                withBlock:^(Salon *salon) {
+                                                    
+                                                    [MBProgressHUD hideHUDForView:self.view animated:YES];
+                                                    
+                                                    [EKSettings updateSavedSalon:salon];
+                                                    
+                                                    [_dataSource removeAllObjects];
+                                                    [_dataSource addObjectsFromArray:[EKSettings getSavedSalon].portfolio];
+                                                    [self.collectionView reloadData];
+                                                    
+                                                    if (_dataSource.count > 0) {
+                                                        self.emptyDataView.hidden = YES;
+                                                    } else {
+                                                        self.emptyDataView.hidden = NO;
+                                                    }
+                                                    
+                                                } withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
+                                                    
+                                                    [MBProgressHUD hideHUDForView:self.view animated:YES];
+                                                    [self showMessage:errorMessage withTitle:@"Error" completionBlock:nil];
+                                                }];
+    }
 }
 
 /*
