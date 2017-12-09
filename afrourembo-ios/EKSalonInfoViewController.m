@@ -23,10 +23,22 @@ static NSString * const kSalonDashSegue = @"salonInfoToMainVendorDash";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.companyName = @"";
-    self.role = @"";
-    self.address = @"";
-    self.addressCoords = CLLocationCoordinate2DMake(0, 0);
+    if (self.unwindSegueID && self.unwindSegueID.length > 0) {
+        
+        self.passedSalon = [EKSettings getSavedSalon];
+        
+        self.companyName = self.passedSalon.name;
+        self.role = @"";
+        self.address = self.passedSalon.address;
+        self.addressCoords = CLLocationCoordinate2DMake(self.passedSalon.latitude, self.passedSalon.longitude);
+        
+    } else {
+     
+        self.companyName = @"";
+        self.role = @"";
+        self.address = @"";
+        self.addressCoords = CLLocationCoordinate2DMake(0, 0);
+    }
     
     [self initializeDataSource];
 }
@@ -120,13 +132,11 @@ static NSString * const kSalonDashSegue = @"salonInfoToMainVendorDash";
                    [MBProgressHUD hideHUDForView:self.view animated:YES];
                    [EKSettings updateSavedSalon:salonObj];
 
-                   [self performSegueWithIdentifier:kSalonDashSegue sender:nil];
-                   
-//                   if (self.unwindSegueID && self.unwindSegueID.length) {
-//                       [self performSegueWithIdentifier:self.unwindSegueID sender:nil]; //unwind to bpSettingsVC
-//                   } else {
-//                       [self performSegueWithIdentifier:kAddServiceSegue sender:nil];
-//                   }
+                   if (self.unwindSegueID && self.unwindSegueID.length) {
+                       [self performSegueWithIdentifier:self.unwindSegueID sender:nil]; //unwind to bpSettingsVC
+                   } else {
+                       [self performSegueWithIdentifier:kSalonDashSegue sender:nil];
+                   }
                    
                } withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
                    

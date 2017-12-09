@@ -30,6 +30,8 @@
 
 @property (strong, nonatomic) Salon *passedSalon;
 
+@property NSString *unwindSegueID; // ghetto fix to make view reusable by BP Settings
+
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 
 - (IBAction)didTapSubmit:(id)sender;
