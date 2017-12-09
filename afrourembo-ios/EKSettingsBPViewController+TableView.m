@@ -45,6 +45,10 @@ static NSString * const kTableCell = @"settingsTableCell";
         [self performSegueWithIdentifier:kProfileSegue sender:nil];
     }
     
+    if ([selectedItem isEqualToString:kSalonInfo]) {
+        [self performSegueWithIdentifier:kSalonInfoSegue sender:nil];
+    }
+    
     if ([selectedItem isEqualToString:kBusinessInfo]) {
         [self performSegueWithIdentifier:kBusinessSegue sender:nil];
     }
