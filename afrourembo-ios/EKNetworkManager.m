@@ -160,7 +160,9 @@
                                                      [Salon getStaffResponseDescriptor],
                                                      [Salon getStaffJoinRequestsResponseDescriptor],
                                                      [Salon getCurrentStaffResponseDescriptor],
-                                                     [Salon postSalonInfoResponseDescriptor]
+                                                     [Salon postSalonInfoResponseDescriptor],
+                                                     [Salon getSalonProfileResponseDescriptor],
+                                                     [Salon putSalonProfileResponseDescriptor]
                                                      ]];
     
     [objectManager addResponseDescriptorsFromArray:@[

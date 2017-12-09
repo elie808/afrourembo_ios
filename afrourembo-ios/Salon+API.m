@@ -15,7 +15,7 @@
 + (RKObjectMapping *)map1 {
     
     RKObjectMapping *mapping = [RKObjectMapping mappingForClass:[Salon class]];
-    [mapping addAttributeMappingsFromArray:@[@"token", @"fName", @"lName", @"email", @"profilePicture", @"name", @"phone", @"address", @"longitude", @"latitude"]];
+    [mapping addAttributeMappingsFromArray:@[@"token", @"fName", @"lName", @"email", @"profilePicture", @"name", @"phone", @"address", @"longitude", @"latitude", @"about"]];
     
     [mapping addAttributeMappingsFromDictionary:@{@"_id" : @"salonID"}];
     
@@ -133,6 +133,28 @@
     return response;
 }
 
++ (RKResponseDescriptor *)getSalonProfileResponseDescriptor {
+    
+    RKResponseDescriptor *response = [RKResponseDescriptor
+                                      responseDescriptorWithMapping:[Salon map1]
+                                      method:RKRequestMethodGET
+                                      pathPattern:kSalonProfileAPIPath
+                                      keyPath:nil
+                                      statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+    return response;
+}
+
++ (RKResponseDescriptor *)putSalonProfileResponseDescriptor {
+    
+    RKResponseDescriptor *response = [RKResponseDescriptor
+                                      responseDescriptorWithMapping:[Salon map1]
+                                      method:RKRequestMethodPUT
+                                      pathPattern:kSalonProfileAPIPath
+                                      keyPath:nil
+                                      statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+    return response;
+}
+
 #pragma mark - APIs
 
 + (void)signUpSalon:(NSString *)email password:(NSString *)password firstName:(NSString *)fName lastName:(NSString *)lName phoneNumber:(NSString *)phone withBlock:(SalonSignUpSuccessBlock)successBlock withErrors:(SalonErrorBlock)errorBlock {
@@ -229,6 +251,93 @@
                                             }
                                         }];
 }
+
++ (void)getProfileForSalon:(NSString *)token withBlock:(SalonSignUpSuccessBlock)successBlock withErrors:(SalonErrorBlock)errorBlock {
+    
+    [[[RKObjectManager sharedManager] HTTPClient] setDefaultHeader:@"Authorization" value:token];
+    
+    [[RKObjectManager sharedManager] getObjectsAtPath:kSalonProfileAPIPath
+                                           parameters:nil
+                                              success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+                                                  
+                                                  NSLog(@"Success getting Salon Profile !!");
+                                                  if (mappingResult.array.count > 0) {
+                                                      successBlock([mappingResult.array firstObject]);
+                                                  } else {
+                                                      successBlock(nil);
+                                                  }
+                                                  
+                                              } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                                                  
+                                                  if (operation.HTTPRequestOperation.responseData) {
+                                                      
+                                                      // exctract error message
+                                                      NSDictionary *myDic = [NSJSONSerialization
+                                                                             JSONObjectWithData:operation.HTTPRequestOperation.responseData
+                                                                             options:NSJSONReadingMutableLeaves
+                                                                             error:nil];
+                                                      
+                                                      NSString *errorMessage = [myDic valueForKey:@"message"];
+                                                      
+                                                      NSNumber *statusCode = [myDic valueForKey:@"statusCode"];
+                                                      
+                                                      NSLog(@"-------ERROR MESSAGE: %@", errorMessage);
+                                                      errorBlock(error, errorMessage, [statusCode integerValue]);
+                                                      
+                                                  } else {
+                                                      
+                                                      errorBlock(error, @"You are not connected to the internet.", 0);
+                                                  }
+                                              }];
+}
+
++ (void)udpateSalonProfile:(NSString *)fName lastName:(NSString *)lName phoneNumber:(NSString *)phone about:(NSString *)aboutText withToken:(NSString *)userToken withBlock:(SalonSignUpSuccessBlock)successBlock withErrors:(SalonErrorBlock)errorBlock {
+    
+    [[[RKObjectManager sharedManager] HTTPClient] setDefaultHeader:@"Authorization" value:userToken];
+    
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    [params setValue:fName forKey:@"fName"];
+    [params setValue:lName forKey:@"lName"];
+    [params setValue:phone forKey:@"phone"];
+    [params setValue:aboutText forKey:@"about"];
+    
+    [[RKObjectManager sharedManager] putObject:nil
+                                          path:kSalonProfileAPIPath
+                                    parameters:params
+                                       success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+                                           
+                                           NSLog(@"Success Updating Salon BIO!!");
+                                           if (mappingResult.array.count >0) {
+                                               Salon *salonObj = [mappingResult.array firstObject];
+                                               successBlock(salonObj);
+                                           } else {
+                                               successBlock(nil);
+                                           }
+                                       }
+                                       failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                                           
+                                           if (operation.HTTPRequestOperation.responseData) {
+                                               
+                                               // exctract error message
+                                               NSDictionary *myDic = [NSJSONSerialization
+                                                                      JSONObjectWithData:operation.HTTPRequestOperation.responseData
+                                                                      options:NSJSONReadingMutableLeaves
+                                                                      error:nil];
+                                               
+                                               NSString *errorMessage = [myDic valueForKey:@"message"];
+                                               
+                                               NSNumber *statusCode = [myDic valueForKey:@"statusCode"];
+                                               
+                                               NSLog(@"-------ERROR MESSAGE: %@", errorMessage);
+                                               errorBlock(error, errorMessage, [statusCode integerValue]);
+                                               
+                                           } else {
+                                               
+                                               errorBlock(error, @"You are not connected to the internet.", 0);
+                                           }
+                                       }];
+}
+
 
 + (void)getCurrentStaffForSalon:(NSString *)salonToken withBlock:(SalonStaffFetchSuccessBlock)successBlock withErrors:(SalonErrorBlock)errorBlock {
     

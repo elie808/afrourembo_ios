@@ -31,6 +31,7 @@
 
 @property NSString *salonID;
 @property NSString *token;
+@property NSString *password;
 
 @property NSString *fName;
 @property NSString *lName;
@@ -39,7 +40,8 @@
 @property NSString *name;
 @property NSString *address;
 @property NSString *phone;
-@property NSString *password;
+
+@property NSString *about;
 
 @property CGFloat longitude;
 @property CGFloat latitude;
