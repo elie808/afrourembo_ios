@@ -29,6 +29,10 @@
                                                                             toKeyPath:@"services"
                                                                           withMapping:[Service map1]]];
 
+    [mapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"partOf"
+                                                                            toKeyPath:@"partOf"
+                                                                          withMapping:[Salon map1]]];
+    
     //FUCK THIS SHIT!!!!! :(
     RKObjectMapping *portfolioMapping = [RKObjectMapping mappingForClass:[Pictures class]];
     [portfolioMapping addAttributeMappingsFromArray:@[@"picture"]];
@@ -45,7 +49,7 @@
     [mapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"business"
                                                                             toKeyPath:@"business"
                                                                           withMapping:businessMapping]];
-    
+
     return mapping;
 }
 

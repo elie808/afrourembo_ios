@@ -7,6 +7,7 @@
 //
 
 #import "Professional+Helpers.h"
+#import "Salon.h"
 
 @implementation Professional (Helpers)
 
@@ -19,6 +20,7 @@
     Professional *retrievedProfessional = [Professional new];
     
     [jsonDictionary enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
+        
         
         // since portfolio array (of Pictures objects) is saved as a dictionary,
         // we manually convert it to an NSArray of NSObjects. bullshit of course :[
@@ -34,8 +36,20 @@
 
             retrievedProfessional.portfolio = [NSArray arrayWithArray:picsArray];
             
+        } else if ( [(NSString *)key isEqualToString:@"partOf"] ) {
+        
+            NSMutableArray *partOfArray = [NSMutableArray new];
+            for (NSDictionary *portfolioDict in [jsonDictionary valueForKey:@"partOf"]) {
+                Salon *salon = [Salon new];
+                salon.salonID = [portfolioDict valueForKey:@"salonId"];
+                salon.name   = [portfolioDict valueForKey:@"name"];
+                [partOfArray addObject:salon];
+            }
+            
+            retrievedProfessional.partOf = [NSArray arrayWithArray:partOfArray];
+            
         } else {
-         
+        
             [retrievedProfessional setValue:obj forKey:(NSString *)key];
         }
     }];
@@ -59,6 +73,8 @@
     
     delta.portfolio = [NSArray arrayWithArray:newProfessional.portfolio];
     
+    delta.partOf = [NSArray arrayWithArray:newProfessional.partOf];
+    
     delta.token = newProfessional.token.length > 0 ? newProfessional.token : existingProfessional.token;
 
     return delta;
@@ -77,6 +93,15 @@
                                     }];
     }
     
+    NSMutableArray *partOfArray = [NSMutableArray new];
+    for (Salon *salon in self.partOf) {
+        
+        [partOfArray addObject:@{@"salonId":salon.salonID,
+                                 @"name":salon.name
+                                 }];
+    }
+    
+    
     NSDictionary *details = @{
                               @"professionalID" : self.professionalID.length > 0 ? self.professionalID : @"",
                               @"profilePicture" : self.profilePicture.length > 0 ? self.profilePicture : @"",
@@ -86,6 +111,7 @@
                               @"email" : self.email.length > 0 ? self.email : @"",
                               @"about" : self.about.length > 0 ? self.about : @"",
                               @"portfolio" : portfolioArray.count > 0 ? portfolioArray : [NSArray new],
+                              @"partOf" : partOfArray.count > 0 ? partOfArray : [NSArray new],
                               @"token" : self.token.length > 0 ? self.token : @""
                               };
     

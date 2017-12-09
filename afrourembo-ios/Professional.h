@@ -33,10 +33,12 @@
 
 @property NSNumber *ratingBasedOn;
 @property NSString *profilePicture;
-@property NSArray<Pictures*> *portfolio;
+
 @property BusinessInfo *business;
 
 @property NSArray<Day *> *schedule;
+@property NSArray<Pictures*> *portfolio;
 @property NSArray<Service *> *services;
+@property NSArray *partOf; // list of salons the professional is part of
 
 @end
