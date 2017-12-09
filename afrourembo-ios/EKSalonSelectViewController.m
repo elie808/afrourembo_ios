@@ -10,6 +10,7 @@
 
 static NSString * const kSalonSelectCell = @"salonSelectCell";
 static NSString * const kServiceSegue = @"salonSelectToServiceVC";
+static NSString * const kUnwindSegue  = @"unwindFromSalonListToBPSettingsVC";
 
 @implementation EKSalonSelectViewController {
     NSMutableArray *_dataSourceArray;
@@ -77,8 +78,13 @@ static NSString * const kServiceSegue = @"salonSelectToServiceVC";
                   withBlock:^(Salon *salonObj) {
     
                       [MBProgressHUD hideHUDForView:self.view animated:YES];
-                      [self performSegueWithIdentifier:kServiceSegue sender:nil];
                       
+                      if (self.unwindSegue && self.unwindSegue.length > 0) {
+                          [self performSegueWithIdentifier:kUnwindSegue sender:nil];
+                      } else {
+                          [self performSegueWithIdentifier:kServiceSegue sender:nil];
+                      }
+
                   } withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
                      
                       [MBProgressHUD hideHUDForView:self.view animated:YES];

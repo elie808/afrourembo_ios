@@ -23,8 +23,12 @@
                                      kAvailability
                                      ];
         
+        self.collectionViewDataSource = [NSArray arrayWithArray:[EKSettings getSavedVendor].partOf];
+        
     } else if ([EKSettings getSavedSalon]) {
     
+        self.tableView.tableHeaderView = nil;
+        
         self.tableViewDataSource = @[
                                      kProfile,
                                      kSalonInfo,
@@ -32,8 +36,6 @@
                                      kStaff
                                      ];
     }
-
-    self.collectionViewDataSource = @[];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -45,6 +47,14 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
 
+    if ([segue.identifier isEqualToString:kSalonListSegue]) {
+        
+        UINavigationController *navController = [segue destinationViewController];
+        EKSalonSelectViewController *vc = (EKSalonSelectViewController *)([navController viewControllers][0]);
+        vc.passedProfessional = [EKSettings getSavedVendor];
+        vc.unwindSegue = @"unwindFromSalonListToBPSettingsVC";
+    }
+    
     if ([segue.identifier isEqualToString:kSalonInfoSegue]) {
         
         UINavigationController *navController = [segue destinationViewController];

@@ -1197,6 +1197,16 @@
             </objects>
             <point key="canvasLocation" x="785" y="1760"/>
         </scene>
+        <!--selectSalonListVC-->
+        <scene sceneID="v1d-9C-coQ">
+            <objects>
+                <viewControllerPlaceholder storyboardName="SignUp" referencedIdentifier="selectSalonListVC" id="y10-sO-Anj" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="lUT-NJ-3Se"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Lby-JR-5j3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-83" y="1760"/>
+        </scene>
         <!--Settings-->
         <scene sceneID="awo-OX-Dnr">
             <objects>
@@ -1397,6 +1407,7 @@
                         <segue destination="QUJ-9U-m4i" kind="show" identifier="settingsToEditProfileVC" id="eJ0-Yi-duu"/>
                         <segue destination="J9M-TE-LjP" kind="show" identifier="bpSettingsToManageStaffVC" id="7Yb-yp-ySw"/>
                         <segue destination="WEU-hb-kfs" kind="show" identifier="settingsToSalonInfoVC" id="8FS-jt-LLj"/>
+                        <segue destination="2I3-FD-3zw" kind="show" identifier="settingsToSelectSalonVC" id="vnA-9V-Gib"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eB7-Us-jA5" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1490,6 +1501,28 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mVt-Ph-o67" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2532" y="1178"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="RGs-8J-I5e">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="2I3-FD-3zw" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="fwR-Ul-TDN">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="y10-sO-Anj" kind="relationship" relationship="rootViewController" id="qdf-LO-6xg"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6hU-OT-OJE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-82" y="1317"/>
         </scene>
     </scenes>
     <resources>

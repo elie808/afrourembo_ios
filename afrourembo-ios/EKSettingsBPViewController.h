@@ -13,6 +13,7 @@
 
 #import "EKAvailabilityViewController.h"
 #import "EKSalonInfoViewController.h"
+#import "EKSalonSelectViewController.h"
 #import "EKProfessionalInfoViewController.h"
 
 #import <YYWebImage/YYWebImage.h>
@@ -34,6 +35,7 @@ static NSString * const kAvailabilitySegue = @"settingsToAvailabilityVC";
 static NSString * const kAddServicesSegue  = @"settingsToAddServicesVC";
 static NSString * const kProfileSegue   = @"settingsToEditProfileVC";
 static NSString * const kStaffSegue     = @"bpSettingsToManageStaffVC";
+static NSString * const kSalonListSegue    = @"settingsToSelectSalonVC";
 
 @interface EKSettingsBPViewController : UIViewController
 

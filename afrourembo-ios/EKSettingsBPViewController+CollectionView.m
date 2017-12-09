@@ -7,6 +7,7 @@
 //
 
 #import "EKSettingsBPViewController+CollectionView.h"
+#import "Salon.h"
 
 static NSString * const kCollectionCell = @"settingsCollectionCell";
 
@@ -35,10 +36,13 @@ static NSString * const kCollectionCell = @"settingsCollectionCell";
         
     } else {
 
+        Salon *salon = [self.collectionViewDataSource objectAtIndex:indexPath.row];
+        
         //TODO: Show salon profile pictures here
-        // [cell.cellImageView yy_setImageWithURL:[NSURL URLWithString:@""] options:YYWebImageOptionProgressiveBlur|YYWebImageOptionSetImageWithFadeAnimation];
+//         [cell.cellImageView yy_setImageWithURL:[NSURL URLWithString:@""] options:YYWebImageOptionProgressiveBlur|YYWebImageOptionSetImageWithFadeAnimation];
+        cell.cellImageView.image = [UIImage imageNamed:@"icPlaceholder"];
         cell.cellImageView.backgroundColor = [UIColor clearColor];
-//        cell.cellNameLabel.text = @"First Last name";
+        cell.cellNameLabel.text = salon.name;
     }
  
     return cell;
@@ -49,9 +53,8 @@ static NSString * const kCollectionCell = @"settingsCollectionCell";
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     
     if (indexPath.row == self.collectionViewDataSource.count) {
-        NSLog(@"ADD SALON");
+        [self performSegueWithIdentifier:kSalonListSegue sender:nil];
     } else {
-        NSLog(@"Salon cell");
     }
 }
 

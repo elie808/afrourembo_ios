@@ -816,7 +816,7 @@
         <!--Salon Select View Controller-->
         <scene sceneID="hTP-dt-5TN">
             <objects>
-                <viewController id="fYx-x9-wM9" customClass="EKSalonSelectViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="selectSalonListVC" id="fYx-x9-wM9" customClass="EKSalonSelectViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="idI-GT-35k"/>
                         <viewControllerLayoutGuide type="bottom" id="zdn-Xg-iP1"/>
@@ -888,12 +888,22 @@
                             <constraint firstItem="zdn-Xg-iP1" firstAttribute="top" secondItem="c3W-aT-8qT" secondAttribute="bottom" id="pIa-ZL-CUJ"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="Qah-gd-tZx">
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="RXB-kq-Eal">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <segue destination="yDV-PG-2M0" kind="unwind" unwindAction="unwindToBpSettingsVC:" id="luK-vd-Hdf"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="c3W-aT-8qT" id="mNJ-f2-kCW"/>
                         <segue destination="glK-ac-Okm" kind="show" identifier="salonSelectToServiceVC" id="XIv-EK-ddw"/>
+                        <segue destination="yDV-PG-2M0" kind="unwind" identifier="unwindFromSalonListToBPSettingsVC" unwindAction="unwindToBpSettingsVC:" id="y38-HS-lNs"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5iP-XG-rl7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="yDV-PG-2M0" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="3170" y="-358"/>
         </scene>
@@ -1360,10 +1370,10 @@
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="availabilitySwitchCell" id="b6A-ZD-cvj" customClass="EKSwitchTableViewCell">
-                                        <rect key="frame" x="0.0" y="56" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="55.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="b6A-ZD-cvj" id="IDb-pj-YgH">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="opN-Po-hfk">
@@ -1396,10 +1406,10 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="availabilityTimeCell" id="fnk-r3-iWM" customClass="EKDualButtonTableViewCell">
-                                        <rect key="frame" x="0.0" y="100" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="99.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fnk-r3-iWM" id="dre-d8-6yP">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="I0C-Wh-cvO">
@@ -2883,9 +2893,9 @@
         <image name="salonFlowLine" width="300" height="44"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="WR4-wb-Am0"/>
-        <segue reference="pcN-xV-EFc"/>
         <segue reference="zqt-Ee-Ez4"/>
+        <segue reference="pcN-xV-EFc"/>
+        <segue reference="XIv-EK-ddw"/>
         <segue reference="hg1-H8-gAt"/>
     </inferredMetricsTieBreakers>
 </document>

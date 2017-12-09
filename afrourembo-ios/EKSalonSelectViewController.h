@@ -20,6 +20,8 @@
 
 @interface EKSalonSelectViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
+@property (strong, nonatomic) NSString *unwindSegue;
+
 @property (strong, nonatomic) Professional *passedProfessional;
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 
