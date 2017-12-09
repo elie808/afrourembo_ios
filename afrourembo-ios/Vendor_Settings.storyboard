@@ -148,7 +148,7 @@
             <objects>
                 <navigationController storyboardIdentifier="vendorGalleryVC" automaticallyAdjustsScrollViewInsets="NO" id="lpP-Gt-P5e" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="lZC-hr-aXa">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="lZC-hr-aXa">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -192,11 +192,11 @@
                         <viewControllerLayoutGuide type="bottom" id="KS0-25-lO5"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="lz5-Gi-scz">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="2Ok-9m-SrC">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <view key="tableHeaderView" contentMode="scaleToFill" id="X9v-Y5-tOc">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="80"/>
@@ -347,11 +347,11 @@
                         <viewControllerLayoutGuide type="bottom" id="kh4-Ug-ubn"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Zg3-aR-nft">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="SY1-2o-I4Q">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <view key="tableFooterView" contentMode="scaleToFill" id="Cnk-Xs-k7A">
                                     <rect key="frame" x="0.0" y="202" width="375" height="44"/>
@@ -533,13 +533,14 @@
                         <color key="backgroundColor" red="0.1647058824" green="0.46274509800000002" blue="0.37647058820000001" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="kh4-Ug-ubn" firstAttribute="top" secondItem="SY1-2o-I4Q" secondAttribute="bottom" id="929-Ly-vru"/>
-                            <constraint firstItem="SY1-2o-I4Q" firstAttribute="top" secondItem="gre-eG-eNG" secondAttribute="bottom" constant="-64" id="K4p-nX-cHZ"/>
+                            <constraint firstItem="SY1-2o-I4Q" firstAttribute="top" secondItem="gre-eG-eNG" secondAttribute="bottom" id="K4p-nX-cHZ"/>
                             <constraint firstItem="SY1-2o-I4Q" firstAttribute="leading" secondItem="Zg3-aR-nft" secondAttribute="leading" id="S6z-z2-HBd"/>
                             <constraint firstAttribute="trailing" secondItem="SY1-2o-I4Q" secondAttribute="trailing" id="d98-m9-NDm"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="ELq-zF-Zfr">
                         <barButtonItem key="rightBarButtonItem" style="done" systemItem="done" id="sC1-AB-WkN">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <segue destination="mpH-pl-rwo" kind="unwind" unwindAction="unwindToBpSettingsVC:" id="kcP-1D-e0M"/>
                             </connections>
@@ -559,9 +560,13 @@
             <objects>
                 <navigationController storyboardIdentifier="AvailabilitySettingsVC" automaticallyAdjustsScrollViewInsets="NO" id="hCW-V2-mLi" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Ktr-tJ-bRt">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="Ktr-tJ-bRt">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -577,9 +582,13 @@
             <objects>
                 <navigationController storyboardIdentifier="AddServicesSettingsVC" automaticallyAdjustsScrollViewInsets="NO" id="RnX-Y3-2hS" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="GsJ-vE-Dje">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="GsJ-vE-Dje">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -595,9 +604,15 @@
             <objects>
                 <navigationController storyboardIdentifier="EditProfileSettingsVC" automaticallyAdjustsScrollViewInsets="NO" id="Tya-nW-9Ya" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="kOd-eB-OKK">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="kOd-eB-OKK">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="barTintColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -613,9 +628,13 @@
             <objects>
                 <navigationController storyboardIdentifier="EditStaffVC" automaticallyAdjustsScrollViewInsets="NO" id="Phz-7l-kfT" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="aak-xc-nnR">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="aak-xc-nnR">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
