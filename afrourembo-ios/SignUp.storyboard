@@ -1857,7 +1857,7 @@
         <!--Salon Info View Controller-->
         <scene sceneID="OJ7-ZT-d2d">
             <objects>
-                <viewController id="05v-6l-dbB" customClass="EKSalonInfoViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="salonInfoVC" id="05v-6l-dbB" customClass="EKSalonInfoViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="gCx-ij-etS"/>
                         <viewControllerLayoutGuide type="bottom" id="w4V-3R-2X3"/>
@@ -2002,9 +2002,11 @@
                         <segue destination="1Pe-qS-UPc" kind="presentation" identifier="salonInfoToSalonAdressVC" id="Lhg-LB-mBt"/>
                         <segue destination="hiu-fb-7EH" kind="show" identifier="salonInfoToRoleVC" id="Ofm-k8-KTx"/>
                         <segue destination="NQ1-Re-GMD" kind="presentation" identifier="salonInfoToMainVendorDash" id="ZJE-Ps-s0t"/>
+                        <segue destination="gl9-aA-7mF" kind="unwind" identifier="unwindFromSalonInfoToBPSettingsVC" unwindAction="unwindToBpSettingsVC:" id="QZZ-PQ-HDI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="H6Y-CP-B4c" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="gl9-aA-7mF" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1637.5999999999999" y="1669.1154422788607"/>
         </scene>

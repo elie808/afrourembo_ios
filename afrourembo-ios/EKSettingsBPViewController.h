@@ -12,20 +12,23 @@
 #import "EKConstants.h"
 
 #import "EKAvailabilityViewController.h"
+#import "EKSalonInfoViewController.h"
 #import "EKProfessionalInfoViewController.h"
 
 #import <YYWebImage/YYWebImage.h>
 
 static NSString * const kProfile  = @"Profile information";
 static NSString * const kBusinessInfo   = @"Business information";
+static NSString * const kSalonInfo      = @"Business information "; // DO NOT REMOVE SPACE AT THE END...MAJOREST OF HACKS RIGHT HERE!!
 static NSString * const kManagePhotos   = @"Manage photos";
 static NSString * const kServices = @"My services";
 static NSString * const kAvailability = @"Availability";
-static NSString * const kStaff        = @"Manage staff";
+static NSString * const kStaff        = @"Staff management";
 
 // Segues
 static NSString * const kWelcomeSegue   = @"bpSettingsToWelcomeVC";
 static NSString * const kBusinessSegue  = @"settingsToProfileInfoVC";
+static NSString * const kSalonInfoSegue = @"settingsToSalonInfoVC";
 static NSString * const kGallerySegue   = @"settingsToGalleryVC";
 static NSString * const kAvailabilitySegue = @"settingsToAvailabilityVC";
 static NSString * const kAddServicesSegue  = @"settingsToAddServicesVC";

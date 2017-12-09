@@ -27,10 +27,8 @@
     
         self.tableViewDataSource = @[
                                      kProfile,
-                                     kBusinessInfo,
+                                     kSalonInfo,
                                      kManagePhotos,
-                                     kServices,
-                                     kAvailability,
                                      kStaff
                                      ];
     }
@@ -47,6 +45,13 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
 
+    if ([segue.identifier isEqualToString:kSalonInfoSegue]) {
+        
+        UINavigationController *navController = [segue destinationViewController];
+        EKSalonInfoViewController *vc = (EKSalonInfoViewController *)([navController viewControllers][0]);
+        vc.unwindSegueID = @"unwindFromSalonInfoToBPSettingsVC";
+    }
+    
     if ([segue.identifier isEqualToString:kBusinessSegue]) {
      
         UINavigationController *navController = [segue destinationViewController];
