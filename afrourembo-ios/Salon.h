@@ -14,6 +14,15 @@
 #import "Review.h"
 #import "Service.h"
 
+@interface SalonInfo : NSObject
+
+@property NSString *name;
+@property NSNumber *longitude;
+@property NSNumber *latitude;
+@property NSString *address;
+
+@end
+
 @interface SalonFacebook : NSObject
 @property NSString *fbToken; //token returned by Facebook upon signup. Use to register user on our server
 @end

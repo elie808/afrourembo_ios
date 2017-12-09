@@ -8,9 +8,14 @@
 
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
+#import <MBProgressHUD/MBProgressHUD.h>
 
 #import "Salon.h"
 #import "Address.h"
+#import "EKSettings.h"
+
+#import "Salon+API.h"
+#import "UIViewController+Helpers.h"
 
 #import "EKTextFieldTableViewCell.h"
 

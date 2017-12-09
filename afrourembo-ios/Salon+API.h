@@ -27,10 +27,21 @@ typedef void (^SalonErrorBlock)(NSError *error, NSString *errorMessage, NSIntege
 /// email, password, fName, lName, phone
 + (RKObjectMapping *)map2;
 
+/// name, longitude, latitude, address
++ (RKObjectMapping *)map3;
+
+
 /// salon sign up request
 + (RKRequestDescriptor *)salonRegistrationRequestDescriptor;
 
+/// salon name, address and info on sign up
++ (RKRequestDescriptor *)salonInfoRequestDescriptor;
+
+
 + (RKResponseDescriptor *)salonRegistrationResponseDescriptor;
+
+/// salon name, address, info on sign up
++ (RKResponseDescriptor *)postSalonInfoResponseDescriptor;
 
 /// when queried by customer
 + (RKResponseDescriptor *)getStaffResponseDescriptor;
@@ -41,6 +52,9 @@ typedef void (^SalonErrorBlock)(NSError *error, NSString *errorMessage, NSIntege
 + (RKResponseDescriptor *)getStaffJoinRequestsResponseDescriptor;
 
 + (void)signUpSalon:(NSString *)email password:(NSString *)password firstName:(NSString *)fName lastName:(NSString *)lName phoneNumber:(NSString *)phone withBlock:(SalonSignUpSuccessBlock)successBlock withErrors:(SalonErrorBlock)errorBlock;
+
+/// Set salon's info; name, address, potentially user's role in salon at some point...
++ (void)postSalonInfo:(NSString *)businessName address:(NSString *)address longitude:(NSNumber *)longitude lattitude:(NSNumber *)latitude andToken:(NSString*)token withBlock:(SalonSignUpSuccessBlock)successBlock withErrors:(SalonErrorBlock)errorBlock;
 
 /// Called by customers on company profile to view professionals currently working in the salon being viewed 
 + (void)getStaffForSalon:(NSString *)salonID forCustomer:(NSString *)userToken withBlock:(SalonStaffFetchSuccessBlock)successBlock withErrors:(SalonErrorBlock)errorBlock;

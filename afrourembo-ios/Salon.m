@@ -8,10 +8,11 @@
 
 #import "Salon.h"
 
-@implementation SalonFacebook
+@implementation SalonInfo
+@end
 
+@implementation SalonFacebook
 @end
 
 @implementation Salon
-
 @end

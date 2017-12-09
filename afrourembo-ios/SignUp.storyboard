@@ -1882,7 +1882,6 @@
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="didTapSubmit:" destination="05v-6l-dbB" eventType="touchDown" id="eqn-1x-YEl"/>
-                                    <segue destination="NQ1-Re-GMD" kind="presentation" id="P0w-MD-IMP"/>
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="JmY-JM-i2J">
@@ -2002,6 +2001,7 @@
                         <outlet property="tableView" destination="JmY-JM-i2J" id="MsS-Dl-tjD"/>
                         <segue destination="1Pe-qS-UPc" kind="presentation" identifier="salonInfoToSalonAdressVC" id="Lhg-LB-mBt"/>
                         <segue destination="hiu-fb-7EH" kind="show" identifier="salonInfoToRoleVC" id="Ofm-k8-KTx"/>
+                        <segue destination="NQ1-Re-GMD" kind="presentation" identifier="salonInfoToMainVendorDash" id="ZJE-Ps-s0t"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="H6Y-CP-B4c" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2097,7 +2097,7 @@
                 <viewControllerPlaceholder storyboardName="Vendor_Main" id="NQ1-Re-GMD" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bRn-gV-ttB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2542" y="1691"/>
+            <point key="canvasLocation" x="2526" y="1669"/>
         </scene>
         <!--Salon Role View Controller-->
         <scene sceneID="6FF-xu-DDZ">
@@ -2881,8 +2881,8 @@
         <image name="salonFlowLine" width="300" height="44"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="WR4-wb-Am0"/>
         <segue reference="pcN-xV-EFc"/>
-        <segue reference="XIv-EK-ddw"/>
         <segue reference="zqt-Ee-Ez4"/>
         <segue reference="hg1-H8-gAt"/>
     </inferredMetricsTieBreakers>

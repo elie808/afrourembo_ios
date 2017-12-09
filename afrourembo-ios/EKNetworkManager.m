@@ -65,7 +65,8 @@
                                                     ]];
     
     [objectManager addRequestDescriptorsFromArray:@[
-                                                    [Salon salonRegistrationRequestDescriptor]
+                                                    [Salon salonRegistrationRequestDescriptor],
+                                                    [Salon salonInfoRequestDescriptor]
                                                     ]];
     
     [objectManager addRequestDescriptorsFromArray:@[
@@ -158,7 +159,8 @@
                                                      [Salon salonRegistrationResponseDescriptor],
                                                      [Salon getStaffResponseDescriptor],
                                                      [Salon getStaffJoinRequestsResponseDescriptor],
-                                                     [Salon getCurrentStaffResponseDescriptor]
+                                                     [Salon getCurrentStaffResponseDescriptor],
+                                                     [Salon postSalonInfoResponseDescriptor]
                                                      ]];
     
     [objectManager addResponseDescriptorsFromArray:@[

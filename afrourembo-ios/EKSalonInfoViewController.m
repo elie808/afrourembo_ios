@@ -14,6 +14,7 @@ static NSString * const kAdressCell = @"salonAddressSignUpCell";
 
 static NSString * const kAdressSegue = @"salonInfoToSalonAdressVC";
 static NSString * const kRoleSegue = @"salonInfoToRoleVC";
+static NSString * const kSalonDashSegue = @"salonInfoToMainVendorDash";
 
 @implementation EKSalonInfoViewController {
     NSArray *_dataSourceArray;
@@ -108,22 +109,45 @@ static NSString * const kRoleSegue = @"salonInfoToRoleVC";
 
 - (IBAction)didTapSubmit:(id)sender {
     
-    NSLog(@"COMPANY: %@", self.companyName);
-    NSLog(@"ROLE: %@", self.role);
-    NSLog(@"ADDRESS: %@", self.address);
-    NSLog(@"COORDS: %f %f", self.addressCoords.latitude, self.addressCoords.longitude);
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    [Salon postSalonInfo:self.companyName
+                 address:self.address
+               longitude:[NSNumber numberWithFloat:self.addressCoords.longitude]
+               lattitude:[NSNumber numberWithFloat:self.addressCoords.latitude]
+                andToken:self.passedSalon.token
+               withBlock:^(Salon *salonObj) {
+                   
+                   [MBProgressHUD hideHUDForView:self.view animated:YES];
+                   [EKSettings updateSavedSalon:salonObj];
+
+                   [self performSegueWithIdentifier:kSalonDashSegue sender:nil];
+                   
+//                   if (self.unwindSegueID && self.unwindSegueID.length) {
+//                       [self performSegueWithIdentifier:self.unwindSegueID sender:nil]; //unwind to bpSettingsVC
+//                   } else {
+//                       [self performSegueWithIdentifier:kAddServiceSegue sender:nil];
+//                   }
+                   
+               } withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
+                   
+                   [MBProgressHUD hideHUDForView:self.view animated:YES];
+                   [self showMessage:errorMessage withTitle:@"Error" completionBlock:nil];
+               }];
 }
 
 #pragma mark - Navigation
 
 - (IBAction)unwindToSalonInfoVC:(UIStoryboardSegue *)segue {
 
-        [self initializeDataSource];
-        [self.tableView reloadData];
+    [self initializeDataSource];
+    [self.tableView reloadData];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
- 
+    
+    if ([segue.identifier isEqualToString:kSalonDashSegue]) {
+        
+    }
 }
 
 #pragma mark - Helpers

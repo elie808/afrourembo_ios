@@ -38,6 +38,14 @@
     return mapping;
 }
 
++ (RKObjectMapping *)map3 {
+    
+    RKObjectMapping *mapping = [RKObjectMapping mappingForClass:[SalonInfo class]];
+    [mapping addAttributeMappingsFromArray:@[@"name", @"longitude", @"latitude", @"address"]];
+    
+    return mapping;
+}
+
 #pragma mark - Requests
 
 + (RKRequestDescriptor *)salonRegistrationRequestDescriptor {
@@ -45,6 +53,16 @@
     RKRequestDescriptor *request = [RKRequestDescriptor
                                     requestDescriptorWithMapping:[[Salon map2] inverseMapping]
                                     objectClass:[Salon class]
+                                    rootKeyPath:nil
+                                    method:RKRequestMethodPOST];
+    return request;
+}
+
++ (RKRequestDescriptor *)salonInfoRequestDescriptor {
+    
+    RKRequestDescriptor *request = [RKRequestDescriptor
+                                    requestDescriptorWithMapping:[[Salon map3] inverseMapping]
+                                    objectClass:[SalonInfo class]
                                     rootKeyPath:nil
                                     method:RKRequestMethodPOST];
     return request;
@@ -58,6 +76,17 @@
                                       responseDescriptorWithMapping:[Salon map1]
                                       method:RKRequestMethodPOST
                                       pathPattern:kSalonRegisterAPIPath
+                                      keyPath:nil
+                                      statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+    return response;
+}
+
++ (RKResponseDescriptor *)postSalonInfoResponseDescriptor {
+    
+    RKResponseDescriptor *response = [RKResponseDescriptor
+                                      responseDescriptorWithMapping:[Salon map1]
+                                      method:RKRequestMethodPOST
+                                      pathPattern:kSalonInfoAPIPath
                                       keyPath:nil
                                       statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     return response;
@@ -150,6 +179,55 @@
                                                 errorBlock(error, @"You are not connected to the internet.", 0);
                                             }
                                         }];    
+}
+
++ (void)postSalonInfo:(NSString *)businessName address:(NSString *)address longitude:(NSNumber *)longitude lattitude:(NSNumber *)latitude andToken:(NSString*)token withBlock:(SalonSignUpSuccessBlock)successBlock withErrors:(SalonErrorBlock)errorBlock {
+    
+    [[[RKObjectManager sharedManager] HTTPClient] setDefaultHeader:@"Authorization" value:token];
+    
+    SalonInfo *salonInfo = [SalonInfo new];
+    salonInfo.name = businessName;
+    salonInfo.longitude = longitude;
+    salonInfo.latitude  = latitude;
+    salonInfo.address   = address;
+    
+    [[RKObjectManager sharedManager] postObject:salonInfo
+                                           path:kSalonInfoAPIPath
+                                     parameters:nil
+                                        success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+                                            
+                                            if (mappingResult.array.count > 0) {
+                                                
+                                                Salon *salonObj = [mappingResult.array firstObject];
+                                                successBlock(salonObj);
+                                                
+                                            } else {
+                                                
+                                                successBlock(nil);
+                                            }
+
+                                        } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                                            
+                                            if (operation.HTTPRequestOperation.responseData) {
+                                                
+                                                // exctract error message
+                                                NSDictionary *myDic = [NSJSONSerialization
+                                                                       JSONObjectWithData:operation.HTTPRequestOperation.responseData
+                                                                       options:NSJSONReadingMutableLeaves
+                                                                       error:nil];
+                                                
+                                                NSString *errorMessage = [myDic valueForKey:@"message"];
+                                                
+                                                NSNumber *statusCode = [myDic valueForKey:@"statusCode"];
+                                                
+                                                NSLog(@"-------ERROR MESSAGE: %@", errorMessage);
+                                                errorBlock(error, errorMessage, [statusCode integerValue]);
+                                                
+                                            } else {
+                                                
+                                                errorBlock(error, @"You are not connected to the internet.", 0);
+                                            }
+                                        }];
 }
 
 + (void)getCurrentStaffForSalon:(NSString *)salonToken withBlock:(SalonStaffFetchSuccessBlock)successBlock withErrors:(SalonErrorBlock)errorBlock {
