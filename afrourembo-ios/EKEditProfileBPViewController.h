@@ -14,6 +14,7 @@
 #import "EKSettings.h"
 
 #import "Professional+API.h"
+#import "Salon+API.h"
 #import "ProfilePicture+API.h"
 #import "UIImage+Helpers.h"
 #import "UIViewController+Helpers.h"

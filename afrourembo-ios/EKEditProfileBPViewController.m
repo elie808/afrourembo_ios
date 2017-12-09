@@ -25,29 +25,56 @@ static NSString * const kUnwindSegue = @"unwindEditProfileToSettingsVC";
 
     _dataSourceArray = [NSMutableArray new];
     
-    //TODO: Add support for SALON
-    
-    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    [Professional getProfileForProfessional:[EKSettings getSavedVendor].token
-                                  withBlock:^(Professional *professionalObj) {
-                                     
-                                      [MBProgressHUD hideHUDForView:self.view animated:YES];
-                                      _dataSourceArray = @[
-                                                           @{@"First name" : professionalObj.fName},
-                                                           @{@"Last name" : professionalObj.lName},
-                                                           @{@"Phone number" : professionalObj.phone},
-                                                           @{@"About" : professionalObj.about}
-                                                           ];
-                                      
-                                      [self.profilePicImageView yy_setImageWithURL:[NSURL URLWithString:professionalObj.profilePicture]
-                                                                           options:YYWebImageOptionProgressiveBlur];
-                                      
-                                      [self.tableView reloadData];
-                                      
-                                  } withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
-                                      [MBProgressHUD hideHUDForView:self.view animated:YES];
-                                      [self showMessage:errorMessage withTitle:@"Error" completionBlock:nil];
-                                  }];
+    if ([EKSettings getSavedVendor]) {
+        
+        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        [Professional getProfileForProfessional:[EKSettings getSavedVendor].token
+                                      withBlock:^(Professional *professionalObj) {
+                                          
+                                          [MBProgressHUD hideHUDForView:self.view animated:YES];
+                                          _dataSourceArray = @[
+                                                               @{@"First name" : professionalObj.fName.length > 0 ? professionalObj.fName:@""},
+                                                               @{@"Last name" : professionalObj.lName.length > 0 ? professionalObj.lName:@""},
+                                                               @{@"Phone number" : professionalObj.phone.length >0 ? professionalObj.phone:@""},
+                                                               @{@"About" : professionalObj.about.length>0 ? professionalObj.about:@""}
+                                                               ];
+                                          
+                                          [self.profilePicImageView yy_setImageWithURL:[NSURL URLWithString:professionalObj.profilePicture]
+                                                                               options:YYWebImageOptionProgressiveBlur];
+                                          
+                                          [self.tableView reloadData];
+                                          
+                                      } withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
+                                          
+                                          [MBProgressHUD hideHUDForView:self.view animated:YES];
+                                          [self showMessage:errorMessage withTitle:@"Error" completionBlock:nil];
+                                      }];
+        
+    } else if ([EKSettings getSavedSalon]) {
+     
+        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        [Salon getProfileForSalon:[EKSettings getSavedSalon].token
+                        withBlock:^(Salon *salonObj) {
+                            
+                            [MBProgressHUD hideHUDForView:self.view animated:YES];
+                            _dataSourceArray = @[
+                                                 @{@"First name" : salonObj.fName.length > 0 ? salonObj.fName : @""},
+                                                 @{@"Last name" : salonObj.lName.length > 0 ? salonObj.lName : @""},
+                                                 @{@"Phone number" : salonObj.phone.length > 0 ? salonObj.phone : @""},
+                                                 @{@"About" : salonObj.about.length > 0 ? salonObj.about : @""}
+                                                 ];
+                            
+//                            [self.profilePicImageView yy_setImageWithURL:[NSURL URLWithString:professionalObj.profilePicture]
+//                                                                 options:YYWebImageOptionProgressiveBlur];
+                            
+                            [self.tableView reloadData];
+                            
+                        } withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
+                            
+                            [MBProgressHUD hideHUDForView:self.view animated:YES];
+                            [self showMessage:errorMessage withTitle:@"Error" completionBlock:nil];
+                        }];
+    }
 }
 
 #pragma mark - UITableViewDataSource
@@ -106,27 +133,40 @@ static NSString * const kUnwindSegue = @"unwindEditProfileToSettingsVC";
     NSString *phoneStr = phoneCell.cellTextField.text;
     NSString *aboutStr = aboutCell.cellTextField.text;
     
-    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    [Professional udpateProfile:fNameStr
-                       lastName:lNameStr
-                    phoneNumber:phoneStr
-                          about:aboutStr
-                      withToken:[EKSettings getSavedVendor].token
-                      withBlock:^(Professional *professionalObj) {
+    if ([EKSettings getSavedVendor]) {
+        
+        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        [Professional udpateProfile:fNameStr lastName:lNameStr phoneNumber:phoneStr about:aboutStr withToken:[EKSettings getSavedVendor].token
+                          withBlock:^(Professional *professionalObj) {
+                              
+                              [EKSettings updateSavedProfessional:professionalObj];
+                              
+                              [MBProgressHUD hideHUDForView:self.view animated:YES];
+                              
+                              [self performSegueWithIdentifier:kUnwindSegue sender:nil];
+                              
+                          } withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
+                              
+                              [MBProgressHUD hideHUDForView:self.view animated:YES];
+                              [self showMessage:errorMessage withTitle:@"There is something wrong" completionBlock:nil];
+                          }];
+        
+    } else if ([EKSettings getSavedSalon]) {
     
-                          [EKSettings updateSavedProfessional:professionalObj];
-                          
-                          [MBProgressHUD hideHUDForView:self.view animated:YES];
-                          
-                          [self performSegueWithIdentifier:kUnwindSegue sender:nil];
-                          
-                      } withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
-                          
-                          [MBProgressHUD hideHUDForView:self.view animated:YES];
-                          [self showMessage:errorMessage
-                                  withTitle:@"There is something wrong"
-                            completionBlock:nil];
-                      }];
+        [Salon udpateSalonProfile:fNameStr lastName:lNameStr phoneNumber:phoneStr about:aboutStr withToken:[EKSettings getSavedSalon].token
+                        withBlock:^(Salon *salonObj) {
+            
+                            [MBProgressHUD hideHUDForView:self.view animated:YES];
+                            
+                            [EKSettings updateSavedSalon:salonObj];
+                            [self performSegueWithIdentifier:kUnwindSegue sender:nil];
+                            
+        } withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
+            
+            [MBProgressHUD hideHUDForView:self.view animated:YES];
+            [self showMessage:errorMessage withTitle:@"There is something wrong" completionBlock:nil];
+        }];
+    }
 }
 
 #pragma mark - UIImagePickerControllerDelegate
