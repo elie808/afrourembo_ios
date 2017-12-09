@@ -127,7 +127,9 @@
                                                      [ProfilePicture postUserProfilePictureResponseDescriptor],
                                                      [ProfilePicture postProfessionalProfilePictureResponseDescriptor],
                                                      [ProfilePicture postProfessionalPortfolioPictureResponseDescriptor],
-                                                     [ProfilePicture deleteProfessionalPortfolioPictureResponseDescriptor]
+                                                     [ProfilePicture deleteProfessionalPortfolioPictureResponseDescriptor],
+                                                     [ProfilePicture postSalonPortfolioPictureResponseDescriptor],
+                                                     [ProfilePicture deleteSalonPortfolioPictureResponseDescriptor]
                                                      ]];
     
     [objectManager addResponseDescriptorsFromArray:@[

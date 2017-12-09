@@ -518,8 +518,7 @@
 			children = (
 				470627581FA7CBD5006E2BB1 /* EKVendorGalleryViewController.h */,
 				470627591FA7CBD5006E2BB1 /* EKVendorGalleryViewController.m */,
-				4706275C1FA7E44E006E2BB1 /* EKVendorGalleryCollectionViewCell.h */,
-				4706275D1FA7E44E006E2BB1 /* EKVendorGalleryCollectionViewCell.m */,
+				475B328D1FDC1CF400A7B94B /* Cells */,
 			);
 			name = "BP - Gallery";
 			sourceTree = "<group>";
@@ -735,6 +734,15 @@
 				475A4CFA1EC01EAB0089D477 /* EKExploreViewController+SideMenuTableView.m */,
 			);
 			name = Category;
+			sourceTree = "<group>";
+		};
+		475B328D1FDC1CF400A7B94B /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				4706275C1FA7E44E006E2BB1 /* EKVendorGalleryCollectionViewCell.h */,
+				4706275D1FA7E44E006E2BB1 /* EKVendorGalleryCollectionViewCell.m */,
+			);
+			name = Cells;
 			sourceTree = "<group>";
 		};
 		475FC37E1EB6B57D00BB0731 /* BP - Add Service List */ = {

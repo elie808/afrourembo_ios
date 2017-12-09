@@ -58,6 +58,28 @@
     return response;
 }
 
++ (RKResponseDescriptor *)postSalonPortfolioPictureResponseDescriptor {
+    
+    RKResponseDescriptor *response = [RKResponseDescriptor
+                                      responseDescriptorWithMapping:[Salon map1]
+                                      method:RKRequestMethodPOST
+                                      pathPattern:kSalonPortfolioAPIPath
+                                      keyPath:nil
+                                      statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+    return response;
+}
+
++ (RKResponseDescriptor *)deleteSalonPortfolioPictureResponseDescriptor {
+    
+    RKResponseDescriptor *response = [RKResponseDescriptor
+                                      responseDescriptorWithMapping:[Salon map1]
+                                      method:RKRequestMethodDELETE
+                                      pathPattern:kSalonPortfolioAPIPath
+                                      keyPath:nil
+                                      statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+    return response;
+}
+
 #pragma mark - APIs
 
 + (void)uploadCustomerProfilePicture:(NSData *)imageData withToken:(NSString *)userToken withBlock:(UserProfilePictureSuccessBlock)successBlock withErrors:(UserProfilePictureErrorBlock)errorBlock {
@@ -253,6 +275,110 @@
                                                   
                                                   Professional *professional = [mappingResult.array firstObject];
                                                   successBlock(professional);
+                                                  
+                                              } else {
+                                                  successBlock(nil);
+                                              }
+                                              
+                                          } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                                              
+                                              if (operation.HTTPRequestOperation.responseData) {
+                                                  
+                                                  // exctract error message
+                                                  NSDictionary *myDic = [NSJSONSerialization
+                                                                         JSONObjectWithData:operation.HTTPRequestOperation.responseData
+                                                                         options:NSJSONReadingMutableLeaves
+                                                                         error:nil];
+                                                  
+                                                  NSString *errorMessage = [myDic valueForKey:@"message"];
+                                                  
+                                                  NSNumber *statusCode = [myDic valueForKey:@"statusCode"];
+                                                  
+                                                  NSLog(@"-------ERROR MESSAGE: %@", errorMessage);
+                                                  errorBlock(error, errorMessage, [statusCode integerValue]);
+                                                  
+                                              } else {
+                                                  
+                                                  errorBlock(error, @"You are not connected to the internet.", 0);
+                                              }
+                                          }];
+}
+
+////////////-------------------
+
++ (void)uploadSalonPortfolioPicture:(NSData *)imageData withToken:(NSString *)userToken withBlock:(SalonProfilePictureSuccessBlock)successBlock withErrors:(UserProfilePictureErrorBlock)errorBlock {
+    
+    [[[RKObjectManager sharedManager] HTTPClient] setDefaultHeader:@"Authorization" value:userToken];
+    
+    NSMutableURLRequest *request = [[RKObjectManager sharedManager]
+                                    multipartFormRequestWithObject:nil
+                                    method:RKRequestMethodPOST
+                                    path:kSalonPortfolioAPIPath
+                                    parameters:nil
+                                    constructingBodyWithBlock:^(id<AFRKMultipartFormData> formData) {
+                                        
+                                        [formData appendPartWithFileData:imageData
+                                                                    name:@"stream"
+                                                                fileName:@"profilePicture.png"
+                                                                mimeType:@"image/png"];
+                                        
+                                    }];
+    
+    RKObjectRequestOperation *operation = [[RKObjectManager sharedManager] objectRequestOperationWithRequest:request success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+        
+        NSLog(@"!!! SUCCESS PUTTING PORTFOLIO PICTURE !!!");
+        
+        if (mappingResult.array.count > 0) {
+            
+            Salon *salon = [mappingResult.array firstObject];
+            successBlock(salon);
+            
+        } else {
+            
+            successBlock(nil);
+        }
+        
+    } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+        
+        if (operation.HTTPRequestOperation.responseData) {
+            
+            // exctract error message
+            NSDictionary *myDic = [NSJSONSerialization
+                                   JSONObjectWithData:operation.HTTPRequestOperation.responseData
+                                   options:NSJSONReadingMutableLeaves
+                                   error:nil];
+            
+            NSString *errorMessage = [myDic valueForKey:@"message"];
+            
+            NSNumber *statusCode = [myDic valueForKey:@"statusCode"];
+            
+            NSLog(@"-------ERROR MESSAGE: %@", errorMessage);
+            errorBlock(error, errorMessage, [statusCode integerValue]);
+            
+        } else {
+            
+            errorBlock(error, @"You are not connected to the internet.", 0);
+        }
+    }];
+    
+    [[RKObjectManager sharedManager] enqueueObjectRequestOperation:operation]; // NOTE: Must be enqueued rather than started
+}
+
++ (void)deleteSalonPortfolioPictureWithID:(NSString *)picID withToken:(NSString *)userToken withBlock:(SalonProfilePictureSuccessBlock)successBlock withErrors:(UserProfilePictureErrorBlock)errorBlock {
+    
+    [[[RKObjectManager sharedManager] HTTPClient] setDefaultHeader:@"Authorization" value:userToken];
+    
+    [[RKObjectManager sharedManager] deleteObject:nil
+                                             path:[NSString stringWithFormat:@"%@/%@",kSalonPortfolioAPIPath, picID]
+                                       parameters:nil
+                                          success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+                                              
+                                              NSLog(@"!!! SUCCESS DELETING PORTFOLIO PICTURE !!!");
+                                              
+                                              if (mappingResult.array.count > 0) {
+                                                  
+                                                  Salon *salon = [mappingResult.array firstObject];
+                                                  successBlock(salon);
                                                   
                                               } else {
                                                   successBlock(nil);
