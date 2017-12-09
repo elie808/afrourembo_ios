@@ -2271,6 +2271,7 @@
                                                 <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                                     <integer key="value" value="31"/>
                                                 </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                             </userDefinedRuntimeAttributes>
                                         </imageView>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aZP-LD-jaM">
@@ -2280,6 +2281,9 @@
                                                 <constraint firstAttribute="width" constant="21" id="RxJ-LQ-oYA"/>
                                             </constraints>
                                             <state key="normal" title="Button" image="icEdit"/>
+                                            <connections>
+                                                <action selector="didTapChageProfilePicture:" destination="kPc-xv-I96" eventType="touchDown" id="2DO-hD-TuV"/>
+                                            </connections>
                                         </button>
                                     </subviews>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -2311,7 +2315,7 @@
                                                 <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                             </userDefinedRuntimeAttributes>
                                             <connections>
-                                                <segue destination="05v-6l-dbB" kind="show" id="cin-5P-gXr"/>
+                                                <action selector="didTapSignUpButton:" destination="kPc-xv-I96" eventType="touchDown" id="mNc-Dy-hxm"/>
                                             </connections>
                                         </button>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gTr-71-tjS">
@@ -2383,6 +2387,9 @@
                                 <state key="normal" title="Sign up via Facebook" image="icFb">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="didTapFacebookSignUpButton:" destination="kPc-xv-I96" eventType="touchDown" id="Xrx-MY-AGP"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -2400,6 +2407,7 @@
                     <connections>
                         <outlet property="profilePicImageView" destination="c3i-mM-Kvu" id="rYM-W1-z8B"/>
                         <outlet property="tableView" destination="0ed-ML-gPV" id="P8o-hR-pdc"/>
+                        <segue destination="05v-6l-dbB" kind="show" identifier="signUpToSalonInfoVC" id="jgt-tL-mjs"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="szM-HX-1ax" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -13,6 +13,7 @@ static int const kMaxImageSize = 0.3; //MBs
 static NSString * const kSignUpCell = @"signUpBPCell";
 
 static NSString * const kRoleSegue = @"signupBPToRoleVC";
+static NSString * const kSalonInfoSegue = @"signUpToSalonInfoVC";
 
 @interface EKSignupBPViewController () {
     NSArray *_dataSourceArray;
@@ -99,48 +100,66 @@ static NSString * const kRoleSegue = @"signupBPToRoleVC";
     NSString *passStr  = passCell.cellTextField.text;
     NSString *phoneStr = phoneCell.cellTextField.text;
     
-    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    [Professional signUpProfessional:emailStr
-                            password:passStr
-                           firstName:fNameStr
-                            lastName:lNameStr
-                         phoneNumber:phoneStr
-                           withBlock:^(Professional *professionalObj) {
-                               
-                               NSLog(@"PROFESSIONAL SIGNED UP!!");
-                               [EKSettings saveVendor:professionalObj];
-                               
-                               // can't place this call outside, because we depend on token, which is innexistent outside...0 sense.
-                               if (_didPickProfilePicture) {
-
-                                   [ProfilePicture
-                                    uploadProfessionalProfilePicture:[UIImage compressImage:self.profilePicImageView.image
-                                                                                     toSize:kMaxImageSize]
-                                    withToken:professionalObj.token
-                                    withBlock:^(Professional *professional) {
-                                        
-                                        [MBProgressHUD hideHUDForView:self.view animated:YES];
-                                        // self.profilePicImageView.image = image;
-                                        [self performSegueWithIdentifier:kRoleSegue sender:professionalObj];
-                                    }
-                                    withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
-
-                                        [MBProgressHUD hideHUDForView:self.view animated:YES];
-                                        [self showMessage:errorMessage
-                                                withTitle:@"Error" completionBlock:nil];
-                                    }];
+    if (self.signUpRole == SignUpRoleBP) {
+     
+        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        [Professional signUpProfessional:emailStr password:passStr firstName:fNameStr lastName:lNameStr phoneNumber:phoneStr
+                               withBlock:^(Professional *professionalObj) {
+                                   
+                                   NSLog(@"PROFESSIONAL SIGNED UP!!");
+                                   [EKSettings saveVendor:professionalObj];
+                                   
+                                   // can't place this call outside, because we depend on token, which is innexistent outside...0 sense.
+                                   if (_didPickProfilePicture) {
+                                       
+                                       [ProfilePicture
+                                        uploadProfessionalProfilePicture:[UIImage compressImage:self.profilePicImageView.image
+                                                                                         toSize:kMaxImageSize]
+                                        withToken:professionalObj.token
+                                        withBlock:^(Professional *professional) {
+                                            
+                                            [MBProgressHUD hideHUDForView:self.view animated:YES];
+                                            // self.profilePicImageView.image = image;
+                                            [self performSegueWithIdentifier:kRoleSegue sender:professionalObj];
+                                        }
+                                        withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
+                                            
+                                            [MBProgressHUD hideHUDForView:self.view animated:YES];
+                                            [self showMessage:errorMessage withTitle:@"Error" completionBlock:nil];
+                                        }];
+                                   }
+                                   
+                                   [MBProgressHUD hideHUDForView:self.view animated:YES];
+                                   [self performSegueWithIdentifier:kRoleSegue sender:professionalObj];
                                }
-
-                               [MBProgressHUD hideHUDForView:self.view animated:YES];
-                               [self performSegueWithIdentifier:kRoleSegue sender:professionalObj];
-                           }
-                          withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
-                              
-                              [MBProgressHUD hideHUDForView:self.view animated:YES];
-                              [self showMessage:errorMessage
-                                      withTitle:@"There is something wrong"
-                                completionBlock:nil];
-                          }];
+                              withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
+                                  
+                                  [MBProgressHUD hideHUDForView:self.view animated:YES];
+                                  [self showMessage:errorMessage withTitle:@"There is something wrong" completionBlock:nil];
+                              }];
+        
+    } else if (self.signUpRole == SignUpRoleSalon) {
+        
+        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        [Salon signUpSalon:emailStr password:passStr firstName:fNameStr lastName:lNameStr phoneNumber:phoneStr
+                 withBlock:^(Salon *salonObj) {
+                     
+                     NSLog(@"SALON SIGNED UP!!");
+                     [EKSettings saveSalon:salonObj];
+                     
+                     // can't place this call outside, because we depend on token, which is innexistent outside...0 sense.
+                     if (_didPickProfilePicture) {
+                     }
+                     
+                     [MBProgressHUD hideHUDForView:self.view animated:YES];
+                     [self performSegueWithIdentifier:kSalonInfoSegue sender:salonObj];
+                     
+                 } withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
+                    
+                     [MBProgressHUD hideHUDForView:self.view animated:YES];
+                     [self showMessage:errorMessage withTitle:@"There is something wrong" completionBlock:nil];
+                }];
+    }
 }
 
 - (IBAction)didTapFacebookSignUpButton:(id)sender {
@@ -158,41 +177,50 @@ static NSString * const kRoleSegue = @"signupBPToRoleVC";
                      fromViewController:self
                                 handler:^(FBSDKLoginManagerLoginResult *result, NSError *error) {
                                     
-                                    if (error) {
-                                        
-                                        NSLog(@"Process error");
-                                        
-                                    } else if (result.isCancelled) {
-                                        
-                                        NSLog(@"Cancelled");
-                                        
-                                    } else {
-                                        
-                                        NSLog(@"Logged in");
-                                        NSLog(@"/n /n ~~~~~NAME: %@", [FBSDKProfile currentProfile].name);
-                                        
+                                    if (!error && !result.isCancelled ) {
+
                                         [MBProgressHUD showHUDAddedTo:self.view animated:YES];
                                         
-                                        [ProfessionalLogin
-                                         signUpProfessionalWithFacebook:result.token.tokenString
-                                         withBlock:^(Professional *professionalObj) {
-                                             
-                                             NSLog(@"PROF SIGNED UP!!");
-                                             
-                                             [MBProgressHUD hideHUDForView:self.view animated:YES];
-                                             
-                                             [EKSettings saveVendor:professionalObj];
-                                             
-                                             [self performSegueWithIdentifier:kRoleSegue sender:professionalObj];
-
-                                         } withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
-
-                                             [MBProgressHUD hideHUDForView:self.view animated:YES];
-                                             
-                                             [self showMessage:errorMessage
-                                                     withTitle:@"There is something wrong"
-                                               completionBlock:nil];
-                                         }];
+                                        if (self.signUpRole == SignUpRoleBP) {
+                                         
+                                            [ProfessionalLogin
+                                             signUpProfessionalWithFacebook:result.token.tokenString
+                                             withBlock:^(Professional *professionalObj) {
+                                                 
+                                                 NSLog(@"PROF SIGNED UP!!");
+                                                 
+                                                 [MBProgressHUD hideHUDForView:self.view animated:YES];
+                                                 
+                                                 [EKSettings saveVendor:professionalObj];
+                                                 
+                                                 [self performSegueWithIdentifier:kRoleSegue sender:professionalObj];
+                                                 
+                                             } withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
+                                                 
+                                                 [MBProgressHUD hideHUDForView:self.view animated:YES];
+                                                 [self showMessage:errorMessage withTitle:@"There is something wrong" completionBlock:nil];
+                                             }];
+                                            
+                                        } else if (self.signUpRole == SignUpRoleSalon) {
+                                            
+                                            [SalonLogin
+                                             signUpSalonWithFacebook:result.token.tokenString
+                                             withBlock:^(Salon *salonObj) {
+                                                 
+                                                 NSLog(@"SALON SIGNED UP!!");
+                                                 
+                                                 [MBProgressHUD hideHUDForView:self.view animated:YES];
+                                                 
+                                                 [EKSettings saveSalon:salonObj];
+                                                 
+                                                 [self performSegueWithIdentifier:kSalonInfoSegue sender:salonObj];
+                                                 
+                                             } withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
+                                                 
+                                                 [MBProgressHUD hideHUDForView:self.view animated:YES];
+                                                 [self showMessage:errorMessage withTitle:@"There is something wrong" completionBlock:nil];
+                                             }];
+                                        }
                                     }
                                 }];
     }
@@ -221,12 +249,17 @@ static NSString * const kRoleSegue = @"signupBPToRoleVC";
         Professional *profObj = (Professional *)sender;
         vc.passedProfessional = profObj;
     }
+    
+    if ([segue.identifier isEqualToString:kSalonInfoSegue]) {
+        EKSalonInfoViewController *vc = segue.destinationViewController;
+        Salon *salonObj = (Salon *)sender;
+        vc.passedSalon = salonObj;
+    }
 }
 
 #pragma mark - Actions
 
 - (IBAction)didTapChageProfilePicture:(id)sender {
-    
     [self presentAlertController];
 }
 

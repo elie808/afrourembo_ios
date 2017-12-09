@@ -7,9 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Address.h"
-#import "EKTextFieldTableViewCell.h"
 #import <MapKit/MapKit.h>
+
+#import "Salon.h"
+#import "Address.h"
+
+#import "EKTextFieldTableViewCell.h"
+
 
 @interface EKSalonInfoViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate>
 
@@ -18,6 +22,8 @@
 @property NSString *role;
 @property NSString *address;
 @property CLLocationCoordinate2D addressCoords;
+
+@property (strong, nonatomic) Salon *passedSalon;
 
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 
