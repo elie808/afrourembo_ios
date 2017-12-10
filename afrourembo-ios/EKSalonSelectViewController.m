@@ -14,6 +14,7 @@ static NSString * const kUnwindSegue  = @"unwindFromSalonListToBPSettingsVC";
 
 @implementation EKSalonSelectViewController {
     NSMutableArray *_dataSourceArray;
+    NSArray *_fullSalonList; // list of all available salons. Use to keep track of list after searches are performmed.
 }
 
 - (void)viewDidLoad {
@@ -22,18 +23,21 @@ static NSString * const kUnwindSegue  = @"unwindFromSalonListToBPSettingsVC";
     self.title = @"Select your salon";
     
     _dataSourceArray = [NSMutableArray new];
+    _fullSalonList = [NSArray new];
     
-    [Explore getSalonsForCategory:nil
-                       andService:nil
-                        WithBlock:^(NSArray<Salon *> *salonArray) {
-                            
-                            [_dataSourceArray addObjectsFromArray:salonArray];
-                            [self.tableView reloadData];
-                            
-                        } withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
-                            
-                            [self showMessage:errorMessage withTitle:@"Error" completionBlock:nil];
-                        }];
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    [Salon getSalon:nil
+          withBlock:^(NSArray<Salon *> *salonsArray) {
+            
+              [MBProgressHUD hideHUDForView:self.view animated:YES];
+              _fullSalonList = [NSArray arrayWithArray:salonsArray];
+              [_dataSourceArray addObjectsFromArray:salonsArray];
+              [self.tableView reloadData];
+              
+          } withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
+              [MBProgressHUD hideHUDForView:self.view animated:YES];
+              [self showMessage:errorMessage withTitle:@"Error" completionBlock:nil];
+         }];
 }
 
 #pragma mark - UITableViewDataSource
@@ -90,6 +94,44 @@ static NSString * const kUnwindSegue  = @"unwindFromSalonListToBPSettingsVC";
                       [MBProgressHUD hideHUDForView:self.view animated:YES];
                       [self showMessage:errorMessage withTitle:@"Error" completionBlock:nil];
                  }];
+}
+
+#pragma mark - UISeachBar
+
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
+    
+    [searchBar resignFirstResponder];
+    
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    [Salon getSalon:searchBar.text
+          withBlock:^(NSArray<Salon *> *salonsArray) {
+              
+              [MBProgressHUD hideHUDForView:self.view animated:YES];
+              [_dataSourceArray removeAllObjects];
+              [_dataSourceArray addObjectsFromArray:salonsArray];
+              [self.tableView reloadData];
+              
+          } withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
+              [MBProgressHUD hideHUDForView:self.view animated:YES];
+              [self showMessage:errorMessage withTitle:@"Error" completionBlock:nil];
+          }];
+
+}
+
+- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
+
+    if (searchText.length == 0) {
+        
+        [_dataSourceArray removeAllObjects];
+        [_dataSourceArray addObjectsFromArray:_fullSalonList];
+        [self.tableView reloadData];
+    }
+}
+
+#pragma mark - Actions
+
+- (IBAction)didTapCancelButton:(id)sender {
+    
 }
 
 #pragma mark - Navigation

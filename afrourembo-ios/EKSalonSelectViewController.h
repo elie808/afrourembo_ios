@@ -18,11 +18,13 @@
 #import "UIViewController+Helpers.h"
 
 
-@interface EKSalonSelectViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+@interface EKSalonSelectViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UISearchControllerDelegate>
 
 @property (strong, nonatomic) NSString *unwindSegue;
 
 @property (strong, nonatomic) Professional *passedProfessional;
+
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *barItem;
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 
 @end

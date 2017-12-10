@@ -832,6 +832,9 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                     <textInputTraits key="textInputTraits"/>
+                                    <connections>
+                                        <outlet property="delegate" destination="fYx-x9-wM9" id="7vd-kr-dZB"/>
+                                    </connections>
                                 </searchBar>
                                 <view key="tableFooterView" contentMode="scaleToFill" id="La6-KC-tNa">
                                     <rect key="frame" x="0.0" y="603" width="375" height="44"/>
@@ -2897,6 +2900,6 @@
         <segue reference="hg1-H8-gAt"/>
         <segue reference="zqt-Ee-Ez4"/>
         <segue reference="pcN-xV-EFc"/>
-        <segue reference="WR4-wb-Am0"/>
+        <segue reference="XIv-EK-ddw"/>
     </inferredMetricsTieBreakers>
 </document>
