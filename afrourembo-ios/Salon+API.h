@@ -15,6 +15,7 @@
 
 typedef void (^SalonSignUpSuccessBlock)(Salon *salonObj);
 typedef void (^SalonStaffFetchSuccessBlock)(NSArray <Professional *> *staffArray);
+typedef void (^SalonListFetchSuccessBlock)(NSArray <Salon *> *salonsArray);
 typedef void (^SalonJoinSuccessBlock)();
 typedef void (^SalonJoinFetchSuccessBlock)(NSArray <JoinSalonRequest *> *joinRequests);
 typedef void (^SalonErrorBlock)(NSError *error, NSString *errorMessage, NSInteger statusCode);
@@ -40,6 +41,8 @@ typedef void (^SalonErrorBlock)(NSError *error, NSString *errorMessage, NSIntege
 
 + (RKResponseDescriptor *)salonRegistrationResponseDescriptor;
 
++ (RKResponseDescriptor *)getSalonListResponseDescriptor;
+
 /// salon name, address, info on sign up
 + (RKResponseDescriptor *)postSalonInfoResponseDescriptor;
 
@@ -59,6 +62,9 @@ typedef void (^SalonErrorBlock)(NSError *error, NSString *errorMessage, NSIntege
 
 /// Set salon's info; name, address, potentially user's role in salon at some point...
 + (void)postSalonInfo:(NSString *)businessName address:(NSString *)address longitude:(NSNumber *)longitude lattitude:(NSNumber *)latitude andToken:(NSString*)token withBlock:(SalonSignUpSuccessBlock)successBlock withErrors:(SalonErrorBlock)errorBlock;
+
+/// Called by professional looking to join a salon. If a name argument is provided, method returns specific salon, otherwise it returns a list of all available salons
++ (void)getSalon:(NSString *)name withBlock:(SalonListFetchSuccessBlock)successBlock withErrors:(SalonErrorBlock)errorBlock;
 
 /// Update/edit salon info from account settings
 + (void)udpateSalonProfile:(NSString *)fName lastName:(NSString *)lName phoneNumber:(NSString *)phone about:(NSString *)aboutText withToken:(NSString *)userToken withBlock:(SalonSignUpSuccessBlock)successBlock withErrors:(SalonErrorBlock)errorBlock;

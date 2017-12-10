@@ -92,6 +92,17 @@
     return response;
 }
 
++ (RKResponseDescriptor *)getSalonListResponseDescriptor {
+    
+    RKResponseDescriptor *response = [RKResponseDescriptor
+                                      responseDescriptorWithMapping:[Salon map1]
+                                      method:RKRequestMethodGET
+                                      pathPattern:kSalonListAPIPath
+                                      keyPath:nil
+                                      statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+    return response;
+}
+
 + (RKResponseDescriptor *)getStaffResponseDescriptor {
     
     RKResponseDescriptor *response = [RKResponseDescriptor
@@ -250,6 +261,43 @@
                                                 errorBlock(error, @"You are not connected to the internet.", 0);
                                             }
                                         }];
+}
+
++ (void)getSalon:(NSString *)name withBlock:(SalonListFetchSuccessBlock)successBlock withErrors:(SalonErrorBlock)errorBlock {
+
+    [[RKObjectManager sharedManager] getObjectsAtPath:name.length > 0 ? [NSString stringWithFormat:@"%@?name=%@", kSalonListAPIPath, name] : kSalonListAPIPath
+                                           parameters:nil
+                                              success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+                                                  
+                                                  NSLog(@"Success getting Salon(s) !!");
+                                                  if (mappingResult.array.count > 0) {
+                                                      successBlock(mappingResult.array);
+                                                  } else {
+                                                      successBlock(nil);
+                                                  }
+                                                  
+                                              } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                                                  
+                                                  if (operation.HTTPRequestOperation.responseData) {
+                                                      
+                                                      // exctract error message
+                                                      NSDictionary *myDic = [NSJSONSerialization
+                                                                             JSONObjectWithData:operation.HTTPRequestOperation.responseData
+                                                                             options:NSJSONReadingMutableLeaves
+                                                                             error:nil];
+                                                      
+                                                      NSString *errorMessage = [myDic valueForKey:@"message"];
+                                                      
+                                                      NSNumber *statusCode = [myDic valueForKey:@"statusCode"];
+                                                      
+                                                      NSLog(@"-------ERROR MESSAGE: %@", errorMessage);
+                                                      errorBlock(error, errorMessage, [statusCode integerValue]);
+                                                      
+                                                  } else {
+                                                      
+                                                      errorBlock(error, @"You are not connected to the internet.", 0);
+                                                  }
+                                              }];
 }
 
 + (void)getProfileForSalon:(NSString *)token withBlock:(SalonSignUpSuccessBlock)successBlock withErrors:(SalonErrorBlock)errorBlock {

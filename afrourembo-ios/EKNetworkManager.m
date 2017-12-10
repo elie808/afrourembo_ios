@@ -161,6 +161,7 @@
     [objectManager addResponseDescriptorsFromArray:@[
                                                      [Salon salonRegistrationResponseDescriptor],
                                                      [Salon getStaffResponseDescriptor],
+                                                     [Salon getSalonListResponseDescriptor],
                                                      [Salon getStaffJoinRequestsResponseDescriptor],
                                                      [Salon getCurrentStaffResponseDescriptor],
                                                      [Salon postSalonInfoResponseDescriptor],
