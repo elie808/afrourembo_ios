@@ -37,7 +37,7 @@ static CGFloat const kDatePickerHeight = 180;
     
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleDone
                                                                              target:self action:@selector(didTapDoneButton)];
-    // self.navigationItem.rightBarButtonItem.tintColor = [UIColor colorWithRed:255./255. green:195./255. blue:0./255. alpha:1.0];
+     self.navigationItem.rightBarButtonItem.tintColor = [UIColor colorWithRed:255./255. green:195./255. blue:0./255. alpha:1.0];
     
     [self initializeDataFormatters];
     

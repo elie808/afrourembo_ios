@@ -115,11 +115,11 @@ static NSString * const kWorkInSalonBP   =  @"salonRoleVCToBusinessModelVC";
     }
     
     if ([segue.identifier isEqualToString:kWorkInSalonBP]) {
-//        EKBusinessModelViewController *vc = segue.destinationViewController;
-//        vc.BusinessModelUser = BusinessModelUserWorksInSalonBP;
-        
+
         EKSalonSelectViewController *vc = segue.destinationViewController;
         vc.passedProfessional = self.passedProfessional;
+        vc.barItem.tintColor = [UIColor clearColor];
+        vc.barItem.enabled = NO;
     }
 }
 

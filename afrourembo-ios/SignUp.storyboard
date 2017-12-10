@@ -890,13 +890,14 @@
                     </view>
                     <navigationItem key="navigationItem" id="Qah-gd-tZx">
                         <barButtonItem key="leftBarButtonItem" title="Cancel" id="RXB-kq-Eal">
-                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="tintColor" red="1" green="0.76470588240000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <segue destination="yDV-PG-2M0" kind="unwind" unwindAction="unwindToBpSettingsVC:" id="luK-vd-Hdf"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="barItem" destination="RXB-kq-Eal" id="GEf-pN-y9H"/>
                         <outlet property="tableView" destination="c3W-aT-8qT" id="mNJ-f2-kCW"/>
                         <segue destination="glK-ac-Okm" kind="show" identifier="salonSelectToServiceVC" id="XIv-EK-ddw"/>
                         <segue destination="yDV-PG-2M0" kind="unwind" identifier="unwindFromSalonListToBPSettingsVC" unwindAction="unwindToBpSettingsVC:" id="y38-HS-lNs"/>
@@ -1057,7 +1058,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="uvt-hy-UT1">
                         <barButtonItem key="rightBarButtonItem" title="Next" style="done" id="gqy-0u-NqU">
-                            <color key="tintColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="tintColor" red="1" green="0.76470588240000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <action selector="didTapNextButton:" destination="kAy-4g-950" id="bKE-g6-HB4"/>
                             </connections>
@@ -1370,10 +1371,10 @@
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="availabilitySwitchCell" id="b6A-ZD-cvj" customClass="EKSwitchTableViewCell">
-                                        <rect key="frame" x="0.0" y="55.5" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="56" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="b6A-ZD-cvj" id="IDb-pj-YgH">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="opN-Po-hfk">
@@ -1406,10 +1407,10 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="availabilityTimeCell" id="fnk-r3-iWM" customClass="EKDualButtonTableViewCell">
-                                        <rect key="frame" x="0.0" y="99.5" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="100" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fnk-r3-iWM" id="dre-d8-6yP">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="I0C-Wh-cvO">
@@ -2893,9 +2894,9 @@
         <image name="salonFlowLine" width="300" height="44"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="hg1-H8-gAt"/>
         <segue reference="zqt-Ee-Ez4"/>
         <segue reference="pcN-xV-EFc"/>
-        <segue reference="XIv-EK-ddw"/>
-        <segue reference="hg1-H8-gAt"/>
+        <segue reference="WR4-wb-Am0"/>
     </inferredMetricsTieBreakers>
 </document>
