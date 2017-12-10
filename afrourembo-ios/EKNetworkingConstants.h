@@ -67,6 +67,7 @@ static NSString * const kSalonDeleteStaffAPIPath  = @"salon/staff/:id";
 static NSString * const kSalonDashboardAPIPath = @"salon/dashboard";
 static NSString * const kSalonClientsAPIPath   = @"salon/clients";
 static NSString * const kSalonPortfolioAPIPath = @"salon/portfolio";
+static NSString * const kSalonPictureAPIPath   = @"salon/profile/picture";
 
 #pragma mark - Status Codes
 
