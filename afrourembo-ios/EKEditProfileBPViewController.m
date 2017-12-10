@@ -64,8 +64,8 @@ static NSString * const kUnwindSegue = @"unwindEditProfileToSettingsVC";
                                                  @{@"About" : salonObj.about.length > 0 ? salonObj.about : @""}
                                                  ];
                             
-//                            [self.profilePicImageView yy_setImageWithURL:[NSURL URLWithString:professionalObj.profilePicture]
-//                                                                 options:YYWebImageOptionProgressiveBlur];
+                            [self.profilePicImageView yy_setImageWithURL:[NSURL URLWithString:salonObj.profilePicture]
+                                                                 options:YYWebImageOptionProgressiveBlur];
                             
                             [self.tableView reloadData];
                             
@@ -174,24 +174,44 @@ static NSString * const kUnwindSegue = @"unwindEditProfileToSettingsVC";
 // This method is called when an image has been chosen from the library or taken from the camera.
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
     
-//    UIImage *image = [info valueForKey:UIImagePickerControllerOriginalImage];
+    UIImage *image = [info valueForKey:UIImagePickerControllerOriginalImage];
     
     [picker dismissViewControllerAnimated:YES completion:^{
        
-        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-        [ProfilePicture uploadProfessionalProfilePicture:[UIImage compressImage:self.profilePicImageView.image toSize:kMaxImageSize]
-                                               withToken:[EKSettings getSavedVendor].token
-                                               withBlock:^(Professional *professional) {
-                                                   
-                                                   [MBProgressHUD hideHUDForView:self.view animated:YES];
-                                                   [self.profilePicImageView
-                                                    yy_setImageWithURL:[NSURL URLWithString:professional.profilePicture]
-                                                    options:YYWebImageOptionProgressiveBlur];
-                                                   
-                                               } withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
-                                                   [MBProgressHUD hideHUDForView:self.view animated:YES];
-                                                   [self showMessage:errorMessage withTitle:@"Error" completionBlock:nil];
-                                               }];
+        if ([EKSettings getSavedVendor]) {
+            
+            [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+            [ProfilePicture uploadProfessionalProfilePicture:[UIImage compressImage:image toSize:kMaxImageSize]
+                                                   withToken:[EKSettings getSavedVendor].token
+                                                   withBlock:^(Professional *professional) {
+                                                       
+                                                       [MBProgressHUD hideHUDForView:self.view animated:YES];
+                                                       [self.profilePicImageView
+                                                        yy_setImageWithURL:[NSURL URLWithString:professional.profilePicture]
+                                                        options:YYWebImageOptionProgressiveBlur];
+                                                       
+                                                   } withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
+                                                       [MBProgressHUD hideHUDForView:self.view animated:YES];
+                                                       [self showMessage:errorMessage withTitle:@"Error" completionBlock:nil];
+                                                   }];
+            
+        } else if ([EKSettings getSavedSalon]) {
+         
+            [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+            [ProfilePicture uploadSalonProfilePicture:[UIImage compressImage:image toSize:kMaxImageSize]
+                                            withToken:[EKSettings getSavedSalon].token
+                                            withBlock:^(Salon *salon) {
+                                                
+                                                [MBProgressHUD hideHUDForView:self.view animated:YES];
+                                                [self.profilePicImageView
+                                                 yy_setImageWithURL:[NSURL URLWithString:salon.profilePicture]
+                                                 options:YYWebImageOptionProgressiveBlur];
+                                                
+                                            } withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
+                                                [MBProgressHUD hideHUDForView:self.view animated:YES];
+                                                [self showMessage:errorMessage withTitle:@"Error" completionBlock:nil];
+                                           }];
+        }
     }];
 }
 
