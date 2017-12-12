@@ -11,7 +11,8 @@
 
 #pragma mark - URLs
 
-static NSString * const kBaseURL = @"http://35.158.118.170/api/v1/";
+//@"http://35.158.118.170/api/v1/";
+static NSString * const kBaseURL = @"http://54.93.253.233/api/v1/";
 
 #pragma mark - Routes
 
