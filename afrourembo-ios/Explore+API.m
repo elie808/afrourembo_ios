@@ -55,7 +55,7 @@
 
 #pragma mark - APIs
 
-+ (void)getProfessionalsForCategory:(NSString *)category andService:(NSString *)service WithBlock:(ExploreProfessionalsSuccessBlock)successBlock withErrors:(ExploreErrorBlock)errorBlock {
++ (void)getProfessionalsForCategory:(NSString *)category andQuery:(NSString *)query WithBlock:(ExploreProfessionalsSuccessBlock)successBlock withErrors:(ExploreErrorBlock)errorBlock {
     
     NSString *URL;
     
@@ -63,9 +63,9 @@
         
         URL = [NSString stringWithFormat:@"%@?category=%@", kUserExploreProfessionalsAPIPath, category];
         
-    } else if (category && category.length > 0 && service && service.length > 0) {
+    } else if (category && category.length > 0 && query && query.length > 0) {
         
-        URL = [NSString stringWithFormat:@"%@?category=%@&service=%@", kUserExploreProfessionalsAPIPath, category, service];
+        URL = [NSString stringWithFormat:@"%@?category=%@&query=%@", kUserExploreProfessionalsAPIPath, category, query];
         
     } else {
         
@@ -103,7 +103,7 @@
                                               }];
 }
 
-+ (void)getSalonsForCategory:(NSString *)category andService:(NSString *)service WithBlock:(ExploreSalonsSuccessBlock)successBlock withErrors:(ExploreErrorBlock)errorBlock {
++ (void)getSalonsForCategory:(NSString *)category andQuery:(NSString *)query WithBlock:(ExploreSalonsSuccessBlock)successBlock withErrors:(ExploreErrorBlock)errorBlock {
     
     NSString *URL;
     
@@ -111,9 +111,9 @@
      
          URL = [NSString stringWithFormat:@"%@?category=%@", kUserExploreSalonsAPIPath, category];
      
-     } else if (category && category.length > 0 && service && service.length > 0) {
+     } else if (category && category.length > 0 && query && query.length > 0) {
      
-         URL = [NSString stringWithFormat:@"%@?category=%@&service=%@", kUserExploreSalonsAPIPath, category, service];
+         URL = [NSString stringWithFormat:@"%@?category=%@&query=%@", kUserExploreSalonsAPIPath, category, query];
      
      } else {
          

@@ -22,8 +22,8 @@ typedef void (^ExploreErrorBlock)(NSError *error, NSString *errorMessage, NSInte
 + (RKResponseDescriptor *)exploreProfessionalsResponseDescriptor;
 + (RKResponseDescriptor *)exploreSalonsResponseDescriptor;
 
-+ (void)getProfessionalsForCategory:(NSString *)category andService:(NSString *)service WithBlock:(ExploreProfessionalsSuccessBlock)successBlock withErrors:(ExploreErrorBlock)errorBlock;
++ (void)getProfessionalsForCategory:(NSString *)category andQuery:(NSString *)query WithBlock:(ExploreProfessionalsSuccessBlock)successBlock withErrors:(ExploreErrorBlock)errorBlock;
 
-+ (void)getSalonsForCategory:(NSString *)category andService:(NSString *)service WithBlock:(ExploreSalonsSuccessBlock)successBlock withErrors:(ExploreErrorBlock)errorBlock;
++ (void)getSalonsForCategory:(NSString *)category andQuery:(NSString *)query WithBlock:(ExploreSalonsSuccessBlock)successBlock withErrors:(ExploreErrorBlock)errorBlock;
 
 @end

@@ -28,9 +28,9 @@
         self.contentOffsetDictionary = [NSMutableDictionary new];
         
         [Explore getProfessionalsForCategory:self.passedService.name
-                                  andService:nil
+                                    andQuery:nil
                                    WithBlock:^(NSArray<Professional *> *proArray) {
-                                     
+                                       
                                        _listViewVisible = NO;
                                        
                                        [self.venuesList addObjectsFromArray:proArray];
@@ -45,21 +45,21 @@
                                   }];
         
         [Explore getSalonsForCategory:self.passedService.name
-                           andService:nil
+                             andQuery:nil
                             WithBlock:^(NSArray<Salon *> *salonArray) {
                                 
                                 _listViewVisible = NO;
-
+                                
                                 [self.venuesList addObjectsFromArray:salonArray];
-
+                                
                                 [self.dataSourceArray addObjectsFromArray:salonArray];
                                 [self.tableView reloadData];
-
-                                [self placeVenuePins:salonArray];
                                 
+                                [self placeVenuePins:salonArray];
+                            
                             } withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
-                                [self showMessage:errorMessage withTitle:@"Error" completionBlock:nil];
-                            }];
+                               [self showMessage:errorMessage withTitle:@"Error" completionBlock:nil];
+                           }];
     }
     
     [self initLayout];
