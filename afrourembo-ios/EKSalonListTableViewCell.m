@@ -24,7 +24,9 @@
     self.cellAddressLabel.text = salon.address;
     
     [self.cellUserImageView yy_setImageWithURL:[NSURL URLWithString:salon.profilePicture]
-                                       options:YYWebImageOptionProgressiveBlur|YYWebImageOptionSetImageWithFadeAnimation];
+                                   placeholder:[UIImage imageNamed:@"icPlaceholder"]
+                                       options:YYWebImageOptionProgressiveBlur|YYWebImageOptionSetImageWithFadeAnimation
+                                    completion:nil];
     
     self.cellStarImageView.image = [UIImage imageForStars:salon.stars];
     self.cellPhotoCountLabel.text = [NSString numberOfPhotosForCount:salon.portfolio.count];
@@ -34,8 +36,11 @@
         self.cellPhotoCountLabel.text = [NSString numberOfPhotosForCount:salon.portfolio.count];
         
         Pictures *picObj = salon.portfolio[0];
+        
         [self.cellMainImageView yy_setImageWithURL:[NSURL URLWithString:picObj.picture]
-                                           options:YYWebImageOptionProgressiveBlur|YYWebImageOptionSetImageWithFadeAnimation];
+                                       placeholder:[UIImage imageNamed:@"brush_tableview"]
+                                           options:YYWebImageOptionProgressiveBlur|YYWebImageOptionSetImageWithFadeAnimation
+                                        completion:nil];
     }
 }
 
