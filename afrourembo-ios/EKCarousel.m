@@ -28,6 +28,8 @@
             
             UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(self.frame.size.width * i, 0,
                                                                                    self.frame.size.width, self.frame.size.height)];
+            imageView.contentMode = UIViewContentModeScaleAspectFill;
+            
             [self addSubview:imageView];
             
             // Load Image from URL
