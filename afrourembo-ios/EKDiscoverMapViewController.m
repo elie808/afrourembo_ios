@@ -10,9 +10,7 @@
 #import "EKDiscoverMapViewController+MapDelegate.h"
 #import "EKDiscoverMapViewController+TableView.h"
 
-@implementation EKDiscoverMapViewController {
-    BOOL _listViewVisible; // keep track if tableView is visible or not. Animate toggleButton accordingly
-}
+@implementation EKDiscoverMapViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -34,8 +32,8 @@
                                        _listViewVisible = NO;
                                        
                                        [self.venuesList addObjectsFromArray:proArray];
-                                       
                                        [self.dataSourceArray addObjectsFromArray:proArray];
+                                       
                                        [self.tableView reloadData];
                                        
                                        [self placeVenuePins:proArray];
@@ -71,36 +69,7 @@
 
 - (IBAction)didTapPresentListButton:(UIButton *)sender {
     
-    if (!_listViewVisible) {
-    
-        [self.dataSourceArray removeAllObjects];
-        [self.dataSourceArray addObjectsFromArray:self.venuesList];
-        [self.tableView reloadData];
-    }
-    
-    CGRect visibleListFrame = CGRectMake(self.mapView.frame.origin.x, self.mapView.frame.origin.y,
-                                         self.mapView.frame.size.width, self.mapView.frame.size.height);
-    
-    CGRect hiddenListFrame = CGRectMake(self.mapView.frame.origin.x, self.mapView.frame.size.height,
-                                        self.mapView.frame.size.width, self.mapView.frame.size.height);
-    
-    [UIView animateWithDuration:0.6
-                          delay:0.0
-         usingSpringWithDamping:0.6
-          initialSpringVelocity:0.5
-                        options:UIViewAnimationOptionCurveLinear
-                     animations:^{
-                         
-                         self.tableView.frame = _listViewVisible ? hiddenListFrame : visibleListFrame;
-                     }
-                     completion:^(BOOL finished) {
-                         
-                         _listViewVisible = !_listViewVisible;
-                         
-                         _listViewVisible ?
-                         [self.toggleButton setImage:[UIImage imageNamed:@"icXListView"] forState:UIControlStateNormal] :
-                         [self.toggleButton setImage:[UIImage imageNamed:@"icListView"] forState:UIControlStateNormal];
-                     }];
+    [self showHideList];
 }
 
 #pragma mark - Navigation
@@ -171,6 +140,40 @@
     
     self.tableView.frame = CGRectMake(self.mapView.frame.origin.x, self.mapView.frame.size.height,
                                       self.mapView.frame.size.width, self.mapView.frame.size.height);
+}
+
+- (void)showHideList {
+    
+    if (!_listViewVisible) {
+        
+        [self.dataSourceArray removeAllObjects];
+        [self.dataSourceArray addObjectsFromArray:self.venuesList];
+        [self.tableView reloadData];
+    }
+    
+    CGRect visibleListFrame = CGRectMake(self.mapView.frame.origin.x, self.mapView.frame.origin.y,
+                                         self.mapView.frame.size.width, self.mapView.frame.size.height);
+    
+    CGRect hiddenListFrame = CGRectMake(self.mapView.frame.origin.x, self.mapView.frame.size.height,
+                                        self.mapView.frame.size.width, self.mapView.frame.size.height);
+    
+    [UIView animateWithDuration:0.6
+                          delay:0.0
+         usingSpringWithDamping:0.6
+          initialSpringVelocity:0.5
+                        options:UIViewAnimationOptionCurveLinear
+                     animations:^{
+                         
+                         self.tableView.frame = _listViewVisible ? hiddenListFrame : visibleListFrame;
+                     }
+                     completion:^(BOOL finished) {
+                         
+                         _listViewVisible = !_listViewVisible;
+                         
+                         _listViewVisible ?
+                         [self.toggleButton setImage:[UIImage imageNamed:@"icXListView"] forState:UIControlStateNormal] :
+                         [self.toggleButton setImage:[UIImage imageNamed:@"icListView"] forState:UIControlStateNormal];
+                     }];
 }
 
 @end

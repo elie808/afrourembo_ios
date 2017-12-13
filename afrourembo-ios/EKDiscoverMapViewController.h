@@ -26,8 +26,16 @@ static NSString * const kCompanyProfile = @"discoverMapToCompanyProfileVC";
 @property (strong, nonatomic) Customer *passedCustomer;
 @property (strong, nonatomic) Service *passedService;
 
+/// used to keep track of collectionViews scrolling positions/offsets
+@property (strong, nonatomic) NSMutableDictionary *contentOffsetDictionary;
+
+@property (strong, nonatomic) NSMutableArray *dataSourceArray;
+
 /// store Pro/Salon list, to enable filtering tableView dataSource for oneCell display
 @property (strong, nonatomic) NSMutableArray *venuesList;
+
+// keep track if tableView is visible or not. Animate toggleButton accordingly
+@property (assign, atomic) BOOL listViewVisible;
 
 @property (strong, nonatomic) IBOutlet UISearchBar *searchBar;
 @property (strong, nonatomic) IBOutlet UIButton *toggleButton;
@@ -36,14 +44,12 @@ static NSString * const kCompanyProfile = @"discoverMapToCompanyProfileVC";
 @property (assign, nonatomic) CLLocationCoordinate2D venueCoordinates;
 
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
-@property (strong, nonatomic) NSMutableArray *dataSourceArray;
-
-/// used to keep track of collectionViews scrolling positions/offsets
-@property (strong, nonatomic) NSMutableDictionary *contentOffsetDictionary;
 
 - (IBAction)didTapPresentListButton:(UIButton *)sender;
 
 /// Show/Hide list tableView in "one cell" layout, on top of map
 - (void)animateOneCellList:(BOOL)show;
+
+- (void)showHideList;
 
 @end

@@ -158,10 +158,9 @@ static NSString *kSalonAnnotation = @"salonLocations";
     
     [searchBar resignFirstResponder];
     
+    /*
     // should be some address, state, and zip
     NSString *searchText = [NSString stringWithFormat:@"%@ nairobi kenya", searchBar.text];
-    
-    NSLog(@"SEARCH: %@", searchText);
     
     CGFloat latitude = -1.280424;
     CGFloat longitude = 36.816311;
@@ -198,11 +197,95 @@ static NSString *kSalonAnnotation = @"salonLocations";
                                             completionBlock:nil];
                                       }
                                   }];
+     */
+
+    [Explore getProfessionalsForCategory:self.passedService.name
+                                andQuery:searchBar.text
+                               WithBlock:^(NSArray<Professional *> *proArray) {
+
+                                   [self.venuesList removeAllObjects];
+                                   [self.dataSourceArray removeAllObjects];
+
+                                   self.listViewVisible = NO;
+                                   
+                                   [self.venuesList addObjectsFromArray:proArray];
+                                   [self.dataSourceArray addObjectsFromArray:proArray];
+                                   
+                                   [self.tableView reloadData];
+                                   
+                                   [self placeVenuePins:proArray];
+                                   
+                                   
+                                   [Explore getSalonsForCategory:self.passedService.name
+                                                        andQuery:searchBar.text
+                                                       WithBlock:^(NSArray<Salon *> *salonArray) {
+                                                           
+                                                           self.listViewVisible = NO;
+                                                           
+                                                           [self.venuesList addObjectsFromArray:salonArray];
+                                                           
+                                                           [self.dataSourceArray addObjectsFromArray:salonArray];
+                                                           [self.tableView reloadData];
+                                                           
+                                                           [self placeVenuePins:salonArray];
+                                                           
+                                                       } withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
+                                                           [self showMessage:errorMessage withTitle:@"Error" completionBlock:nil];
+                                                       }];
+                                   
+                                   
+                               } withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
+                                   [self showMessage:errorMessage withTitle:@"Error" completionBlock:nil];
+                               }];
 }
 
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
-    
-    NSLog(@"SERCH TEXT: %@", searchText);
+
+    if (searchText.length == 0) {
+
+        [self showHideList];
+        
+        [searchBar resignFirstResponder];
+        
+        [Explore getProfessionalsForCategory:self.passedService.name
+                                    andQuery:searchBar.text
+                                   WithBlock:^(NSArray<Professional *> *proArray) {
+                                       
+                                       [self.venuesList removeAllObjects];
+                                       [self.dataSourceArray removeAllObjects];
+                                       
+                                       self.listViewVisible = NO;
+                                       
+                                       [self.venuesList addObjectsFromArray:proArray];
+                                       [self.dataSourceArray addObjectsFromArray:proArray];
+                                       
+                                       [self.tableView reloadData];
+                                       
+                                       [self placeVenuePins:proArray];
+                                      
+                                       
+                                       [Explore getSalonsForCategory:self.passedService.name
+                                                            andQuery:searchBar.text
+                                                           WithBlock:^(NSArray<Salon *> *salonArray) {
+                                                               
+                                                               self.listViewVisible = NO;
+                                                               
+                                                               [self.venuesList addObjectsFromArray:salonArray];
+                                                               
+                                                               [self.dataSourceArray addObjectsFromArray:salonArray];
+                                                               [self.tableView reloadData];
+                                                               
+                                                               [self placeVenuePins:salonArray];
+                                                               
+                                                           } withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
+                                                               [self showMessage:errorMessage withTitle:@"Error" completionBlock:nil];
+                                                           }];
+
+                                       
+                                   } withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
+                                       [self showMessage:errorMessage withTitle:@"Error" completionBlock:nil];
+                                   }];
+    }
 }
 
 @end
