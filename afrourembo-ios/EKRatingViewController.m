@@ -23,24 +23,27 @@ static NSString * const KUnwind = @"unwindToOrders";
 #pragma mark - UITextFieldDelegate
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
-    return YES;
+    return [textField resignFirstResponder];
 }
 
 #pragma mark - Actions
 
 - (IBAction)didTapSubmit:(id)sender {
     
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     [Review postReviewForBooking:self.passedBooking.bookingId
                      withService:self.passedBooking.currentBookingId
                           rating:[NSNumber numberWithFloat:self.ratingSlider.value]
                        andReview:self.reviewTextField.text
                          forUser:[EKSettings getSavedCustomer].token
                        withBlock:^(Review *reviews) {
-                         
+    
+                           [MBProgressHUD hideHUDForView:self.view animated:YES];
                            [self performSegueWithIdentifier:KUnwind sender:nil];
                            
                        } withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
-                          
+                           [MBProgressHUD hideHUDForView:self.view animated:YES];
+                           [self showMessage:errorMessage withTitle:@"Error" completionBlock:nil];
                       }];
 }
 

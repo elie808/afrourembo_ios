@@ -7,6 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MBProgressHUD/MBProgressHUD.h>
+
 #import "ClientBooking.h"
 #import "EKSettings.h"
 #import "HCSStarRatingView.h"
