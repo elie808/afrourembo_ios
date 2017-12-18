@@ -34,11 +34,12 @@
 
 static NSString * const kBookingSegue     = @"companyProfileVCToBookingVC";
 
-@interface EKCompanyProfileViewController : UIViewController <UIGestureRecognizerDelegate, MWPhotoBrowserDelegate>
+@interface EKCompanyProfileViewController : UIViewController <MWPhotoBrowserDelegate>
 
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) IBOutlet EKCarousel *carousel;
 @property (strong, nonatomic) IBOutlet UILabel *photoCountLabel;
+@property (strong, nonatomic) IBOutlet UIImageView *starsImageView;
 
 @property (strong, nonatomic) Customer *passedCustomer;
 @property (strong, nonatomic) Salon *passedSalon;

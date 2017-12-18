@@ -66,6 +66,8 @@
     
     if (self.passedProfessional) {
         
+        self.starsImageView.image = [UIImage imageForStars:self.passedProfessional.ratingBasedOn];
+        
         NSMutableArray *picLinksArray = [NSMutableArray new];
         
         for (Pictures *pic in self.passedProfessional.portfolio) {
@@ -78,6 +80,8 @@
         self.photoCountLabel.text = [NSString stringWithFormat:@"%lu photos", (unsigned long)picLinksArray.count];
         
     } else if (self.passedSalon) {
+        
+        self.starsImageView.image = [UIImage imageForStars:self.passedSalon.stars];
         
         NSMutableArray *picLinksArray = [NSMutableArray new];
         
@@ -159,7 +163,7 @@
 
 #pragma mark - Actions
 
-- (IBAction)didTapCarousel:(UITapGestureRecognizer *)gesture {
+- (IBAction)didTapShowGallery:(id)sender {
     [self showPhotoGallery];
 }
 

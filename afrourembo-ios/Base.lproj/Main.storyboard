@@ -1453,15 +1453,32 @@
                                             <gestureRecognizers/>
                                             <connections>
                                                 <outlet property="delegate" destination="q3N-QV-x45" id="Isk-WK-rky"/>
-                                                <outletCollection property="gestureRecognizers" destination="IJz-Xh-ixi" appends="YES" id="6Mc-Yb-5ll"/>
                                             </connections>
                                         </scrollView>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="0star" translatesAutoresizingMaskIntoConstraints="NO" id="eJU-gn-pzG">
+                                            <rect key="frame" x="137" y="148" width="100" height="17"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="100" id="7KA-ux-rY1"/>
+                                                <constraint firstAttribute="height" constant="17" id="8HU-tT-LDV"/>
+                                            </constraints>
+                                        </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 Photos" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e7g-Nq-gJ2">
                                             <rect key="frame" x="8" y="150" width="50" height="14.5"/>
                                             <fontDescription key="fontDescription" type="system" weight="light" pointSize="12"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xhv-ju-RfC">
+                                            <rect key="frame" x="332" y="138" width="35" height="35"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="35" id="sHy-bg-fiW"/>
+                                                <constraint firstAttribute="height" constant="35" id="zMV-8y-L62"/>
+                                            </constraints>
+                                            <state key="normal" image="icGallery"/>
+                                            <connections>
+                                                <action selector="didTapShowGallery:" destination="q3N-QV-x45" eventType="touchDown" id="jDs-J0-9FY"/>
+                                            </connections>
+                                        </button>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WEC-yZ-fJU">
                                             <rect key="frame" x="332" y="8" width="35" height="35"/>
                                             <constraints>
@@ -1478,12 +1495,16 @@
                                     <color key="backgroundColor" red="0.8980392157" green="0.8980392157" blue="0.8980392157" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <constraints>
                                         <constraint firstItem="e7g-Nq-gJ2" firstAttribute="leading" secondItem="gpH-m2-Y1a" secondAttribute="leading" constant="8" id="8HE-YX-U4J"/>
+                                        <constraint firstItem="xhv-ju-RfC" firstAttribute="leading" secondItem="eJU-gn-pzG" secondAttribute="trailing" constant="95" id="AeM-yQ-nLs"/>
                                         <constraint firstItem="EHU-HD-AFQ" firstAttribute="top" secondItem="gpH-m2-Y1a" secondAttribute="top" id="FTr-62-bWd"/>
                                         <constraint firstAttribute="trailing" secondItem="WEC-yZ-fJU" secondAttribute="trailing" constant="8" id="Mf3-QD-cAh"/>
                                         <constraint firstAttribute="bottom" secondItem="EHU-HD-AFQ" secondAttribute="bottom" id="NHW-jI-QmI"/>
+                                        <constraint firstAttribute="bottom" secondItem="xhv-ju-RfC" secondAttribute="bottom" id="NeZ-HE-IcY"/>
                                         <constraint firstAttribute="trailing" secondItem="EHU-HD-AFQ" secondAttribute="trailing" id="U8p-Ml-LQk"/>
                                         <constraint firstItem="EHU-HD-AFQ" firstAttribute="leading" secondItem="gpH-m2-Y1a" secondAttribute="leading" id="Vk9-Uh-YmJ"/>
                                         <constraint firstItem="WEC-yZ-fJU" firstAttribute="top" secondItem="gpH-m2-Y1a" secondAttribute="top" constant="8" id="X5z-bM-hzF"/>
+                                        <constraint firstAttribute="bottom" secondItem="eJU-gn-pzG" secondAttribute="bottom" constant="8" id="XcF-Hp-Wmr"/>
+                                        <constraint firstAttribute="trailing" secondItem="xhv-ju-RfC" secondAttribute="trailing" constant="8" id="vBW-WL-gck"/>
                                         <constraint firstAttribute="bottom" secondItem="e7g-Nq-gJ2" secondAttribute="bottom" constant="8" id="xfd-yT-Vui"/>
                                     </constraints>
                                 </view>
@@ -1860,17 +1881,12 @@
                     <connections>
                         <outlet property="carousel" destination="EHU-HD-AFQ" id="mUO-kx-Tjx"/>
                         <outlet property="photoCountLabel" destination="e7g-Nq-gJ2" id="34O-qs-DdB"/>
+                        <outlet property="starsImageView" destination="eJU-gn-pzG" id="u6L-C5-YYu"/>
                         <outlet property="tableView" destination="eqU-Vo-25N" id="D4C-L2-csJ"/>
                         <segue destination="lyj-pg-PLO" kind="show" identifier="companyProfileVCToBookingVC" id="iva-nY-mfi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Y2w-Xy-4O0" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="IJz-Xh-ixi">
-                    <connections>
-                        <action selector="didTapCarousel:" destination="q3N-QV-x45" id="RlB-td-O6v"/>
-                        <outlet property="delegate" destination="q3N-QV-x45" id="zQf-gp-DDk"/>
-                    </connections>
-                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="2487.1999999999998" y="-646.32683658170924"/>
         </scene>
@@ -2660,6 +2676,7 @@
         <image name="icFavorites" width="14" height="17"/>
         <image name="icFbActive" width="24" height="24"/>
         <image name="icFilter" width="18" height="16"/>
+        <image name="icGallery" width="16" height="16"/>
         <image name="icInstagramActive" width="24" height="24"/>
         <image name="icListView" width="18" height="18"/>
         <image name="icLogout" width="22" height="20"/>
