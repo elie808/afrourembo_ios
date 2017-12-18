@@ -7,11 +7,12 @@
 //
 
 #import "EKBookingViewController.h"
+#import "EKBookingViewController+CollectionView.h"
 
 static NSString * const kCartSegue   = @"bookingTimeToCartVC";
 
 //static NSString * const kPlaceHolderText = @"What do you like about this place?";
-static CGFloat const kContainerViewHeight = 100;
+//static CGFloat const kContainerViewHeight = 100;
 
 @implementation EKBookingViewController {
     BOOL _keyboardShowing;
@@ -36,6 +37,16 @@ static CGFloat const kContainerViewHeight = 100;
                                               self.timeCollectionView.frame.size.width, self.timeCollectionView.frame.size.height);
     self.emptyTimeDataView.hidden = NO;
     [self.view addSubview:self.emptyTimeDataView];
+    
+    
+    if (self.professionalsDataSource.count == 1) {
+        
+        Professional *pro = [self.professionalsDataSource firstObject];
+        
+        [self.proCollectionView selectItemAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:0] animated:YES
+                                       scrollPosition:UICollectionViewScrollPositionNone];
+        [self getDaysForPro:pro];
+    }
 }
 
 /*
@@ -106,7 +117,7 @@ static CGFloat const kContainerViewHeight = 100;
         reservationObj.salonId      = self.salonId;
         reservationObj.salonName    = self.salonName;
         reservationObj.type = kProfessionalType;
-        reservationObj.note = self.bookingNote;
+        reservationObj.note = self.bookingNote.length ? self.bookingNote : @"No notes";
         
         Booking *booking1 = [Booking new];
         
@@ -162,12 +173,6 @@ static CGFloat const kContainerViewHeight = 100;
     
     [self presentViewController:alert animated:YES completion:nil];
 }
-
-//- (IBAction)didTapDoneButton:(id)sender {
-//    
-//    [self.textView resignFirstResponder];
-//    self.containerView.hidden = YES;
-//}
 
 #pragma mark - Navigation
 

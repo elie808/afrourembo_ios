@@ -10,4 +10,7 @@
 
 @interface EKBookingViewController (CollectionView) <UICollectionViewDelegate, UICollectionViewDataSource>
 
+/// convenience method to be called from EKBookingVC, to allow automatically selecting a professional when there's only one available
+- (void)getDaysForPro:(Professional *)pro;
+
 @end

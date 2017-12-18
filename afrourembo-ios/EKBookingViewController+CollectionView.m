@@ -85,26 +85,7 @@ static NSString * const kTimeCell = @"bookingTimeCell";
         
         Professional *pro = self.professionalsDataSource[indexPath.row];
         
-        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-        [Day getAvailabilityOfVendor:pro.professionalID
-                              ofType:kProfessionalType // hardcoded, because we decided to only support this type for now ...
-                           withToken:[EKSettings getSavedCustomer].token
-                           withBlock:^(NSArray *daysArray) {
-                               
-                               [MBProgressHUD hideHUDForView:self.view animated:YES];
-                               
-                               self.selectedPro = pro;
-                               self.emptyTimeDataView.hidden = YES;
-                               [self populateDataSourcesFrom:daysArray];
-                               [self.dayCollectionView reloadData];
-                               
-                           } withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
-                               
-                               [MBProgressHUD hideHUDForView:self.view animated:YES];
-                               self.emptyTimeDataView.hidden = NO;
-                               
-                               [self handleVendorAvailabilityErrors:error errorMessage:errorMessage statusCode:statusCode];
-                           }];
+        [self getDaysForPro:pro];
     }
     
     if (collectionView == self.dayCollectionView) {
@@ -136,6 +117,32 @@ static NSString * const kTimeCell = @"bookingTimeCell";
         
         return UIEdgeInsetsMake(0, 0, 0, 0);
     }
+}
+
+#pragma mark - Helpers
+
+- (void)getDaysForPro:(Professional *)pro {
+    
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    [Day getAvailabilityOfVendor:pro.professionalID
+                          ofType:kProfessionalType // hardcoded, because we decided to only support this type for now ...
+                       withToken:[EKSettings getSavedCustomer].token
+                       withBlock:^(NSArray *daysArray) {
+                           
+                           [MBProgressHUD hideHUDForView:self.view animated:YES];
+                           
+                           self.selectedPro = pro;
+                           self.emptyTimeDataView.hidden = YES;
+                           [self populateDataSourcesFrom:daysArray];
+                           [self.dayCollectionView reloadData];
+         
+                       } withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
+                           
+                           [MBProgressHUD hideHUDForView:self.view animated:YES];
+                           self.emptyTimeDataView.hidden = NO;
+                           
+                           [self handleVendorAvailabilityErrors:error errorMessage:errorMessage statusCode:statusCode];
+                       }];
 }
 
 @end

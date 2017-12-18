@@ -64,6 +64,5 @@ static NSString * const kSignUpSegue = @"bookingVCToSignUpVC";
 
 - (IBAction)didTapNextButton:(UIBarButtonItem *)sender;
 - (IBAction)didTapAddNoteButton:(id)sender;
-- (IBAction)didTapDoneButton:(id)sender;
 
 @end

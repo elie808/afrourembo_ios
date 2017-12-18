@@ -19,7 +19,11 @@
 - (void)configureCellWithPro:(Professional *)proObj {
     
     self.cellNameLabel.text = [NSString stringWithFormat:@"%@ %@", proObj.fName, proObj.lName];
-    [self.cellImageView yy_setImageWithURL:[NSURL URLWithString:proObj.profilePicture] options:YYWebImageOptionProgressive];
+
+    [self.cellImageView yy_setImageWithURL:[NSURL URLWithString:proObj.profilePicture]
+                               placeholder:[UIImage imageNamed:@"icPlaceholder"]
+                                   options:YYWebImageOptionProgressive
+                                completion:nil];
 }
 
 @end
