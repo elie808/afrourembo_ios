@@ -1336,8 +1336,8 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="QHl-jb-XFH">
-                        <barButtonItem key="rightBarButtonItem" title="Next" id="frB-gg-QPe">
-                            <color key="tintColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <barButtonItem key="rightBarButtonItem" title="Next" style="done" id="frB-gg-QPe">
+                            <color key="tintColor" red="1" green="0.76470588240000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <action selector="didTapNextButton:" destination="glK-ac-Okm" id="DjR-qS-Ggd"/>
                             </connections>
@@ -1628,14 +1628,15 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="New service" id="uTz-Xd-khv">
-                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="sHb-mh-Glc">
-                            <color key="tintColor" red="1" green="0.76470588240000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <barButtonItem key="rightBarButtonItem" enabled="NO" style="done" systemItem="done" id="sHb-mh-Glc">
+                            <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <connections>
                                 <action selector="didTapDoneButton:" destination="bDT-Qn-xWO" id="Od3-o9-0i0"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="doneButton" destination="sHb-mh-Glc" id="hrf-lh-9sA"/>
                         <outlet property="removeServiceButton" destination="xVm-gD-OA7" id="KVV-gX-YQi"/>
                         <outlet property="tableView" destination="0fY-Jg-TSi" id="s4y-Ho-Iy6"/>
                         <outlet property="timePickerView" destination="x1Z-FL-Pmk" id="SsZ-qr-QYI"/>
@@ -2898,8 +2899,8 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="hg1-H8-gAt"/>
-        <segue reference="zqt-Ee-Ez4"/>
         <segue reference="pcN-xV-EFc"/>
         <segue reference="XIv-EK-ddw"/>
+        <segue reference="z4e-2X-Leh"/>
     </inferredMetricsTieBreakers>
 </document>

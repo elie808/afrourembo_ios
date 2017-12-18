@@ -59,19 +59,9 @@ static CGFloat const kTimePickerHeight = 230.;
     }
     
     [self initializeDataSource];
- 
     
-    self.keyboardToolbar = [[UIToolbar alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 50)];
-    self.keyboardToolbar.barStyle = UIBarStyleDefault;
-    self.keyboardToolbar.items = [NSArray arrayWithObjects:
-                                  [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace
-                                                                               target:nil action:nil],
-                                  [[UIBarButtonItem alloc]initWithTitle:@"Done" style:UIBarButtonItemStyleDone target:self
-                                                                 action:@selector(doneWithNumberPad)],
-                                  nil];
-    [self.keyboardToolbar sizeToFit];
+    [self initializeKeyboardUI];
 
-    
     self.timePickerView.frame = CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, kTimePickerHeight);
     [self.view addSubview:self.timePickerView];
     self.timePickerView.hidden = YES;
@@ -255,23 +245,29 @@ static CGFloat const kTimePickerHeight = 230.;
 /// used to make populating and updating the tabelView values simple, with a backing data model and minimal code in tableView:cellForRow
 - (void)initializeDataSource {
     
-//    if (self.serviceToEdit.name.length > 0) {
-//    
-//        _dataSourceArray = @[
-//                             @{@"Group" : self.serviceToEdit.categoryId},
-//                             @{@"Title" : self.serviceToEdit.name},
-//                             @{@"Price" : [NSString stringWithFormat:@"%f", self.serviceToEdit.price]},
-//                             @{@"Time for service" : [NSString stringWithFormat:@"%f", self.serviceToEdit.time]}
-//                             ];
-//        
-//    } else {
+    // show Done button
+    if (self.serviceToEdit && self.serviceToEdit.categoryName.length > 0) {
+        self.doneButton.tintColor = [UIColor colorWithRed:255./255. green:195./255. blue:0./255. alpha:1.0];
+        self.doneButton.enabled = YES;
+    }
     
-        _dataSourceArray = @[
-                             @{@"Service" : self.serviceToEdit.categoryName},
-                             @{@"Price (KSH)" : [NSString stringWithFormat:@"%ld", (long)self.serviceToEdit.price]},
-                             @{@"Time for service" : [NSString stringWithFormat:@"%ld", (long)self.serviceToEdit.time]}
-                             ];
-//    }
+    _dataSourceArray = @[ @{@"Service" : self.serviceToEdit.categoryName},
+                          @{@"Price (KSH)" : [NSString stringWithFormat:@"%ld", (long)self.serviceToEdit.price]},
+                          @{@"Time for service" : [NSString stringWithFormat:@"%ld", (long)self.serviceToEdit.time]}
+                          ];
+}
+
+- (void)initializeKeyboardUI {
+    
+    self.keyboardToolbar = [[UIToolbar alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 50)];
+    self.keyboardToolbar.barStyle = UIBarStyleDefault;
+    self.keyboardToolbar.items = [NSArray arrayWithObjects:
+                                  [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace
+                                                                               target:nil action:nil],
+                                  [[UIBarButtonItem alloc]initWithTitle:@"Done" style:UIBarButtonItemStyleDone target:self
+                                                                 action:@selector(doneWithNumberPad)],
+                                  nil];
+    [self.keyboardToolbar sizeToFit];
 }
 
 - (void)showDatePicker {

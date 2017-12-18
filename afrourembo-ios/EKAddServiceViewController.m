@@ -26,8 +26,8 @@ static NSString * const kUnwindToSettings = @"unwindAddServicesToBPSettings";
     
     self.dataSourceArray = [NSMutableArray new];
     
-    // if viewcontroller is accessed from professional's Settings. Could potentially use the unwindSegueID property for extra ghettoness
-    if ([EKSettings getSavedVendor].token.length > 0) {
+    // check if viewcontroller is accessed from professional's Settings. Could potentially use the unwindSegueID property for extra ghettoness
+    if (self.unwindSegueID.length > 0 && [EKSettings getSavedVendor].token.length > 0) {
         
         [MBProgressHUD showHUDAddedTo:self.view animated:YES];
         [Professional getProfileForProfessional:[EKSettings getSavedVendor].token

@@ -18,6 +18,7 @@
 @property (strong, nonatomic) Service *passedService;
 @property (strong, nonatomic) Service *serviceToEdit; // to be passed down to presented segues, and updated by unwinding vc's
 
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *doneButton;
 @property (strong, nonatomic) IBOutlet UIView *timePickerView;
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) IBOutlet UIButton *removeServiceButton;
