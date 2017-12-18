@@ -22,13 +22,14 @@
 
     self.cellUserNameLabel.text = salon.name;
     self.cellAddressLabel.text = salon.address;
+    self.cellStarImageView.image = [UIImage imageForStars:salon.rating];
+    self.cellNumberOfReviewsLabel.text = [NSString stringWithFormat:@"%@ Review(s)", salon.ratingBasedOn];
     
     [self.cellUserImageView yy_setImageWithURL:[NSURL URLWithString:salon.profilePicture]
                                    placeholder:[UIImage imageNamed:@"icPlaceholder"]
                                        options:YYWebImageOptionProgressiveBlur|YYWebImageOptionSetImageWithFadeAnimation
                                     completion:nil];
     
-    self.cellStarImageView.image = [UIImage imageForStars:salon.stars];
     self.cellPhotoCountLabel.text = [NSString numberOfPhotosForCount:salon.portfolio.count];
     
     if (salon.portfolio && salon.portfolio.count > 0) {
@@ -47,7 +48,8 @@
 - (void)configureCellWithProfessional:(Professional *)profObj {
     
     self.cellUserNameLabel.text = [NSString stringWithFormat:@"%@ %@",profObj.fName, profObj.lName];
-    self.cellStarImageView.image = [UIImage imageForStars:profObj.ratingBasedOn];
+    self.cellStarImageView.image = [UIImage imageForStars:profObj.rating];
+    self.cellNumberOfReviewsLabel.text = [NSString stringWithFormat:@"%@ Review(s)", profObj.ratingBasedOn];
     
     [self.cellUserImageView yy_setImageWithURL:[NSURL URLWithString:profObj.profilePicture]
                                        options:YYWebImageOptionProgressiveBlur|YYWebImageOptionSetImageWithFadeAnimation];

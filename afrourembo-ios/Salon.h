@@ -50,6 +50,9 @@
 
 @property (assign, nonatomic) BOOL isCentralizedModel;
 
+@property NSNumber *rating;
+@property NSNumber *ratingBasedOn;
+
 // unmapped fields
 @property NSNumber *stars;
 @property NSNumber *price;

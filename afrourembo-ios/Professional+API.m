@@ -17,7 +17,7 @@
     RKObjectMapping *mapping = [RKObjectMapping mappingForClass:[Professional class]];
     [mapping addAttributeMappingsFromArray:@[@"email", @"password", @"token", @"fName", @"lName", @"phone", @"isMobile", @"about"]];
     
-    [mapping addAttributeMappingsFromArray:@[@"ratingBasedOn", @"profilePicture"]];
+    [mapping addAttributeMappingsFromArray:@[@"rating", @"ratingBasedOn", @"profilePicture"]];
     
     [mapping addAttributeMappingsFromDictionary:@{@"_id" : @"professionalID"}];
 

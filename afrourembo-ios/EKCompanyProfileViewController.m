@@ -66,7 +66,7 @@
     
     if (self.passedProfessional) {
         
-        self.starsImageView.image = [UIImage imageForStars:self.passedProfessional.ratingBasedOn];
+        self.starsImageView.image = [UIImage imageForStars:self.passedProfessional.rating];
         
         NSMutableArray *picLinksArray = [NSMutableArray new];
         
@@ -81,7 +81,7 @@
         
     } else if (self.passedSalon) {
         
-        self.starsImageView.image = [UIImage imageForStars:self.passedSalon.stars];
+        self.starsImageView.image = [UIImage imageForStars:self.passedSalon.rating];
         
         NSMutableArray *picLinksArray = [NSMutableArray new];
         

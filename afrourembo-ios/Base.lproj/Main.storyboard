@@ -1285,12 +1285,20 @@
                                             <constraint firstAttribute="height" constant="28" id="uaU-BV-pcu"/>
                                         </constraints>
                                     </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QAB-Wn-cPh">
+                                        <rect key="frame" x="119" y="22" width="183" height="0.0"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="Sx5-jS-Vaq" firstAttribute="leading" secondItem="f8s-GF-DTw" secondAttribute="trailing" constant="8" id="5Fr-Vx-R0o"/>
+                                    <constraint firstItem="QAB-Wn-cPh" firstAttribute="top" secondItem="rKQ-Bg-kks" secondAttribute="topMargin" constant="14" id="9PM-GK-RQB"/>
                                     <constraint firstItem="hSu-Bq-YXp" firstAttribute="leading" secondItem="rKQ-Bg-kks" secondAttribute="leadingMargin" constant="3" id="B5a-oh-r5F"/>
                                     <constraint firstItem="MPr-Px-M5P" firstAttribute="leading" secondItem="rKQ-Bg-kks" secondAttribute="leading" id="CTu-F5-eQu"/>
                                     <constraint firstItem="P2E-en-Jcn" firstAttribute="top" secondItem="f8s-GF-DTw" secondAttribute="bottom" constant="8" id="CZF-1Z-Nmy"/>
+                                    <constraint firstItem="AMY-dc-u1b" firstAttribute="leading" secondItem="QAB-Wn-cPh" secondAttribute="trailing" constant="8" id="EdX-B9-74c"/>
                                     <constraint firstAttribute="trailing" secondItem="MPr-Px-M5P" secondAttribute="trailing" id="FvS-g2-LIT"/>
                                     <constraint firstItem="AMY-dc-u1b" firstAttribute="centerY" secondItem="EdU-W5-9l8" secondAttribute="centerY" id="HXe-4e-kHd"/>
                                     <constraint firstItem="EdU-W5-9l8" firstAttribute="leading" secondItem="rKQ-Bg-kks" secondAttribute="leadingMargin" constant="3" id="IpT-i1-RLe"/>
@@ -1301,6 +1309,7 @@
                                     <constraint firstItem="P2E-en-Jcn" firstAttribute="leading" secondItem="rKQ-Bg-kks" secondAttribute="leading" id="fXP-O3-tHh"/>
                                     <constraint firstItem="EdU-W5-9l8" firstAttribute="top" secondItem="rKQ-Bg-kks" secondAttribute="topMargin" constant="13" id="gbs-g7-drZ"/>
                                     <constraint firstItem="AMY-dc-u1b" firstAttribute="trailing" secondItem="MPr-Px-M5P" secondAttribute="trailing" id="k2f-4n-BgM"/>
+                                    <constraint firstItem="QAB-Wn-cPh" firstAttribute="leading" secondItem="EdU-W5-9l8" secondAttribute="trailing" constant="8" id="lOZ-DM-dqK"/>
                                     <constraint firstItem="4qZ-ee-hft" firstAttribute="trailing" secondItem="rKQ-Bg-kks" secondAttribute="trailingMargin" id="lbS-dS-MQ5"/>
                                     <constraint firstItem="hSu-Bq-YXp" firstAttribute="top" secondItem="EdU-W5-9l8" secondAttribute="bottom" constant="10" id="mxN-Hf-fTZ"/>
                                     <constraint firstAttribute="bottom" secondItem="P2E-en-Jcn" secondAttribute="bottom" id="oZB-q8-H3m"/>
@@ -1317,6 +1326,7 @@
                                 <outlet property="cellAddressLabel" destination="HGP-CY-LOa" id="Swo-x0-mhU"/>
                                 <outlet property="cellIsMobileImageView" destination="4qZ-ee-hft" id="9S8-D0-mL8"/>
                                 <outlet property="cellMainImageView" destination="MPr-Px-M5P" id="ghm-ea-pRj"/>
+                                <outlet property="cellNumberOfReviewsLabel" destination="QAB-Wn-cPh" id="iek-Ln-t85"/>
                                 <outlet property="cellPhotoCountLabel" destination="hSu-Bq-YXp" id="3Xu-N7-9kN"/>
                                 <outlet property="cellPriceLabel" destination="AMY-dc-u1b" id="hPs-dL-4aK"/>
                                 <outlet property="cellStarImageView" destination="EdU-W5-9l8" id="JmA-bA-Eoa"/>
@@ -1386,8 +1396,15 @@
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MBa-xK-ie0">
+                                        <rect key="frame" x="119" y="22" width="248" height="0.0"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <constraints>
+                                    <constraint firstItem="MBa-xK-ie0" firstAttribute="top" secondItem="hIh-uQ-I27" secondAttribute="topMargin" constant="14" id="3VK-zh-IPS"/>
                                     <constraint firstItem="2pa-7h-yud" firstAttribute="top" secondItem="hyM-Xu-Nqb" secondAttribute="bottom" constant="146" id="5Pf-gf-f0L"/>
                                     <constraint firstItem="PVO-ej-I3X" firstAttribute="top" secondItem="2pa-7h-yud" secondAttribute="top" id="AXV-aZ-Pga"/>
                                     <constraint firstAttribute="trailing" secondItem="pwf-Rp-zoY" secondAttribute="trailing" id="HRv-Nt-mwM"/>
@@ -1396,6 +1413,7 @@
                                     <constraint firstItem="PVO-ej-I3X" firstAttribute="bottom" secondItem="2pa-7h-yud" secondAttribute="bottom" id="OKc-el-2eX"/>
                                     <constraint firstItem="loB-F3-b5i" firstAttribute="trailing" secondItem="h18-qW-Hst" secondAttribute="trailing" id="T6Y-Vw-fmk"/>
                                     <constraint firstItem="PVO-ej-I3X" firstAttribute="leading" secondItem="2pa-7h-yud" secondAttribute="trailing" constant="8" symbolic="YES" id="Umo-TD-fV4"/>
+                                    <constraint firstItem="MBa-xK-ie0" firstAttribute="trailing" secondItem="hIh-uQ-I27" secondAttribute="trailingMargin" id="Xei-Q3-ltE"/>
                                     <constraint firstItem="2Vf-b9-sox" firstAttribute="top" secondItem="hyM-Xu-Nqb" secondAttribute="bottom" constant="10" id="aCg-bv-pFT"/>
                                     <constraint firstItem="h18-qW-Hst" firstAttribute="trailing" secondItem="hIh-uQ-I27" secondAttribute="trailingMargin" id="ffc-DI-9xe"/>
                                     <constraint firstItem="pwf-Rp-zoY" firstAttribute="leading" secondItem="hIh-uQ-I27" secondAttribute="leading" id="g0Q-zx-9cI"/>
@@ -1406,6 +1424,7 @@
                                     <constraint firstItem="2pa-7h-yud" firstAttribute="leading" secondItem="hIh-uQ-I27" secondAttribute="leadingMargin" id="qHN-VV-HeT"/>
                                     <constraint firstItem="loB-F3-b5i" firstAttribute="leading" secondItem="PVO-ej-I3X" secondAttribute="trailing" constant="11" id="qKQ-1V-6Ij"/>
                                     <constraint firstItem="hyM-Xu-Nqb" firstAttribute="leading" secondItem="hIh-uQ-I27" secondAttribute="leadingMargin" constant="3" id="vZP-IS-fYd"/>
+                                    <constraint firstItem="MBa-xK-ie0" firstAttribute="leading" secondItem="hyM-Xu-Nqb" secondAttribute="trailing" constant="8" id="xoe-Al-nSX"/>
                                 </constraints>
                             </tableViewCellContentView>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1413,6 +1432,7 @@
                                 <outlet property="cellAddressLabel" destination="loB-F3-b5i" id="UXh-KL-i7t"/>
                                 <outlet property="cellIsMobileImageView" destination="h18-qW-Hst" id="Ws2-4I-Wba"/>
                                 <outlet property="cellMainImageView" destination="pwf-Rp-zoY" id="eVh-FB-Ugg"/>
+                                <outlet property="cellNumberOfReviewsLabel" destination="MBa-xK-ie0" id="0BR-rN-7hG"/>
                                 <outlet property="cellPhotoCountLabel" destination="2Vf-b9-sox" id="GYy-V2-MuA"/>
                                 <outlet property="cellStarImageView" destination="hyM-Xu-Nqb" id="XZX-IN-YNI"/>
                                 <outlet property="cellUserImageView" destination="2pa-7h-yud" id="yVg-y4-5CA"/>

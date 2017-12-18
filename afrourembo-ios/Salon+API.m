@@ -17,6 +17,8 @@
     RKObjectMapping *mapping = [RKObjectMapping mappingForClass:[Salon class]];
     [mapping addAttributeMappingsFromArray:@[@"token", @"fName", @"lName", @"email", @"profilePicture", @"name", @"phone", @"address", @"longitude", @"latitude", @"about"]];
     
+    [mapping addAttributeMappingsFromArray:@[@"rating", @"ratingBasedOn"]];
+    
     [mapping addAttributeMappingsFromDictionary:@{@"_id" : @"salonID"}];
     
     RKObjectMapping *portfolioMapping = [RKObjectMapping mappingForClass:[Pictures class]];

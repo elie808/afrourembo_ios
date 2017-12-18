@@ -31,6 +31,7 @@
 
 @property NSString *token;
 
+@property NSNumber *rating;
 @property NSNumber *ratingBasedOn;
 @property NSString *profilePicture;
 

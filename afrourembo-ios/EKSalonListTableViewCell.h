@@ -18,6 +18,7 @@
 
 @property (strong, nonatomic) IBOutlet UIImageView *cellMainImageView;
 @property (strong, nonatomic) IBOutlet UIImageView *cellStarImageView;
+@property (strong, nonatomic) IBOutlet UILabel *cellNumberOfReviewsLabel;
 @property (strong, nonatomic) IBOutlet UILabel *cellPriceLabel;
 @property (strong, nonatomic) IBOutlet UILabel *cellPhotoCountLabel;
 @property (strong, nonatomic) IBOutlet UIImageView *cellUserImageView;
