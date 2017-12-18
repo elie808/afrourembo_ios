@@ -9,7 +9,7 @@
 #import "EKVendorGalleryViewController.h"
 
 static int const kMaxImageSize = 0.3; //MBs
-
+static NSString * const kUnwind = @"unwindSegue";
 static NSString * const kGalleryCell  = @"galleryCell";
 
 @implementation EKVendorGalleryViewController {
@@ -64,14 +64,6 @@ static NSString * const kGalleryCell  = @"galleryCell";
                                placeholder:[UIImage imageNamed:@"icGalleryEmpty"]
                                    options:YYWebImageOptionProgressiveBlur|YYWebImageOptionSetImageWithFadeAnimation
                                 completion:nil];
-    
-//    if (pic.isSelected) {
-//        cell.layer.borderWidth = 2;
-//        cell.layer.borderColor = [UIColor colorWithRed:255./255. green:195./255. blue:0./255. alpha:1.0].CGColor;
-//    } else {
-//        cell.layer.borderWidth = 1;
-//        cell.layer.borderColor = [UIColor clearColor].CGColor;
-//    }
 
     if ([pic.pictureID isEqualToString:_selectedPic.pictureID]) {
         cell.layer.borderWidth = 2;
@@ -95,28 +87,24 @@ static NSString * const kGalleryCell  = @"galleryCell";
     } else {
         _selectedPic = pic;
     }
-
-    //    pic.isSelected = !pic.isSelected;
-    
-    // to support multiple image delete
-    // if (pic.isSelected) { [_picsToDeleteArray addObject:pic]; } else { [_picsToDeleteArray removeObject:pic]; }
-    
-//    if (_picsToDeleteArray.count == 0) {
-//        self.deleteButton.tintColor = [UIColor clearColor];
-//    } else {
-//        self.deleteButton.tintColor = [UIColor colorWithRed:255./255. green:195./255. blue:0./255. alpha:1.0];
-//    }
     
     [self.collectionView reloadData];
     
     if (_selectedPic) {
-        self.deleteButton.tintColor = [UIColor colorWithRed:255./255. green:195./255. blue:0./255. alpha:1.0];
+        self.deleteButton.tintColor = [UIColor colorWithRed:255./255. green:86./255. blue:0./255. alpha:1.0];
+        self.deleteButton.enabled = YES;
     } else {
         self.deleteButton.tintColor = [UIColor clearColor];
+        self.deleteButton.enabled = NO;
     }
 }
 
 #pragma mark - Actions
+
+- (IBAction)didTapDoneButton:(id)sender {
+    
+    [self performSegueWithIdentifier:kUnwind sender:nil];
+}
 
 - (IBAction)didTapAddPhotoPicture:(id)sender {
     
@@ -124,12 +112,15 @@ static NSString * const kGalleryCell  = @"galleryCell";
 }
 
 - (IBAction)deletePictures:(id)sender {
-    
-//    if (_picsToDeleteArray && _picsToDeleteArray.count > 0) {
-//        for (Pictures *pic in _picsToDeleteArray) {
-//            [self deletePictureWithID:pic.pictureID];
-//        }
-//    }
+   
+    // batch delete
+    /*
+    if (_picsToDeleteArray && _picsToDeleteArray.count > 0) {
+        for (Pictures *pic in _picsToDeleteArray) {
+            [self deletePictureWithID:pic.pictureID];
+        }
+    }
+     */
     
     if (_selectedPic) { [self deletePictureWithID:_selectedPic.pictureID]; }
 }
@@ -142,7 +133,7 @@ static NSString * const kGalleryCell  = @"galleryCell";
     UIImage *image = [info valueForKey:UIImagePickerControllerOriginalImage];
     
     [picker dismissViewControllerAnimated:YES completion:nil];
-    
+
     if ([EKSettings getSavedVendor]) {
         
         [MBProgressHUD showHUDAddedTo:self.view animated:YES];
@@ -164,13 +155,16 @@ static NSString * const kGalleryCell  = @"galleryCell";
                                                          self.emptyDataView.hidden = NO;
                                                      }
                                                      
+                                                     self.doneButton.enabled = YES;
+                                                     self.doneButton.tintColor = [UIColor colorWithRed:255./255. green:195./255. blue:0./255. alpha:1.0];
+                                                     
                                                  } withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
                                                      [MBProgressHUD hideHUDForView:self.view animated:YES];
                                                      [self showMessage:errorMessage withTitle:@"Error" completionBlock:nil];
                                                  }];
         
     } else if ([EKSettings getSavedSalon]) {
-     
+        
         [MBProgressHUD showHUDAddedTo:self.view animated:YES];
         [ProfilePicture uploadSalonPortfolioPicture:[UIImage compressImage:image toSize:kMaxImageSize]
                                           withToken:[EKSettings getSavedSalon].token
@@ -190,12 +184,16 @@ static NSString * const kGalleryCell  = @"galleryCell";
                                                   self.emptyDataView.hidden = NO;
                                               }
                                               
+                                              self.doneButton.enabled = YES;
+                                              self.doneButton.tintColor = [UIColor colorWithRed:255./255. green:195./255. blue:0./255. alpha:1.0];
+                                              
                                           } withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
                                               
                                               [MBProgressHUD hideHUDForView:self.view animated:YES];
                                               [self showMessage:errorMessage withTitle:@"Error" completionBlock:nil];
-                                         }];
+                                          }];
     }
+
 }
 
 #pragma mark - Helpers
@@ -269,6 +267,10 @@ static NSString * const kGalleryCell  = @"galleryCell";
                                                                self.emptyDataView.hidden = NO;
                                                            }
                                                            
+                                                           _selectedPic = nil;
+                                                           self.deleteButton.tintColor = [UIColor clearColor];
+                                                           self.deleteButton.enabled = NO;
+                                                           
                                                        } withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
                                                            
                                                            [MBProgressHUD hideHUDForView:self.view animated:YES];
@@ -295,6 +297,10 @@ static NSString * const kGalleryCell  = @"galleryCell";
                                                     } else {
                                                         self.emptyDataView.hidden = NO;
                                                     }
+                                                    
+                                                    _selectedPic = nil;
+                                                    self.deleteButton.tintColor = [UIColor clearColor];
+                                                    self.deleteButton.enabled = NO;
                                                     
                                                 } withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
                                                     
