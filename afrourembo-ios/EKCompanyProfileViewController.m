@@ -12,6 +12,7 @@
 @implementation EKCompanyProfileViewController {
     NSString *_vendorID;
     NSString *_vendorType;
+    NSMutableArray *_photoGalleryDataSource; // Used as data source for the full screen photo gallery
 }
 
 - (void)viewDidLoad {
@@ -42,14 +43,35 @@
     [self configureCarousel];
 }
 
+#pragma mark - MWPhotoBrowserDelegate
+
+- (NSUInteger)numberOfPhotosInPhotoBrowser:(MWPhotoBrowser *)photoBrowser {
+    return _photoGalleryDataSource.count;
+}
+
+- (id <MWPhoto>)photoBrowser:(MWPhotoBrowser *)photoBrowser photoAtIndex:(NSUInteger)index {
+    
+    if (index < _photoGalleryDataSource.count) {
+        return [_photoGalleryDataSource objectAtIndex:index];
+    }
+    
+    return nil;
+}
+
 #pragma mark - Helpers
 
 - (void)configureCarousel {
     
+    _photoGalleryDataSource = [NSMutableArray new];
+    
     if (self.passedProfessional) {
         
         NSMutableArray *picLinksArray = [NSMutableArray new];
-        for (Pictures *pic in self.passedProfessional.portfolio) { [picLinksArray addObject:pic.picture]; }
+        
+        for (Pictures *pic in self.passedProfessional.portfolio) {
+            [picLinksArray addObject:pic.picture];
+            [_photoGalleryDataSource addObject:[MWPhoto photoWithURL:[NSURL URLWithString:pic.picture]]];
+        }
         
         [self.carousel configureWithVenueImages:picLinksArray];
         
@@ -58,7 +80,11 @@
     } else if (self.passedSalon) {
         
         NSMutableArray *picLinksArray = [NSMutableArray new];
-        for (Pictures *pic in self.passedSalon.portfolio) { [picLinksArray addObject:pic.picture]; }
+        
+        for (Pictures *pic in self.passedSalon.portfolio) {
+            [picLinksArray addObject:pic.picture];
+            [_photoGalleryDataSource addObject:[MWPhoto photoWithURL:[NSURL URLWithString:pic.picture]]];
+        }
         
         [self.carousel configureWithVenueImages:picLinksArray];
         
@@ -118,6 +144,17 @@
     } else {
         
     }
+}
+
+- (void)showPhotoGallery {
+    
+    // Create browser (must be done each time photo browser is displayed. Photo browser objects cannot be re-used)
+    MWPhotoBrowser *browser = [[MWPhotoBrowser alloc] initWithDelegate:self];
+    // browser.displayActionButton = YES; // Show action button to allow sharing, copying, etc (defaults to YES)
+    // browser.displayNavArrows = NO; // Whether to display left and right nav arrows on toolbar (defaults to NO)
+
+    
+    [self.navigationController pushViewController:browser animated:YES];
 }
 
 #pragma mark - Actions

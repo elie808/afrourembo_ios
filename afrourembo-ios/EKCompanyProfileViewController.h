@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+
 #import "EKCompanyServiceTableViewCell.h"
 #import "EKCompanyReviewTableViewCell.h"
 #import "EKCompanyProfessionalTableViewCell.h"
@@ -28,11 +29,12 @@
 #import "Salon+API.h"
 #import "UIViewController+Helpers.h"
 
+#import "MWPhotoBrowser.h"
 #import <YYWebImage/YYWebImage.h>
 
 static NSString * const kBookingSegue     = @"companyProfileVCToBookingVC";
 
-@interface EKCompanyProfileViewController : UIViewController
+@interface EKCompanyProfileViewController : UIViewController <MWPhotoBrowserDelegate>
 
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) IBOutlet EKCarousel *carousel;
