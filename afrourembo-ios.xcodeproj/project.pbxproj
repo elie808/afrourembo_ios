@@ -436,7 +436,7 @@
 		47C480501F4DBF0C00493E0B /* EKBookingViewController+Helpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "EKBookingViewController+Helpers.m"; sourceTree = "<group>"; };
 		47C480541F4DCFBD00493E0B /* EKPaymentGatewayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKPaymentGatewayViewController.h; sourceTree = "<group>"; };
 		47C480551F4DCFBD00493E0B /* EKPaymentGatewayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKPaymentGatewayViewController.m; sourceTree = "<group>"; };
-		47C480571F4DD34F00493E0B /* payment_gateway */ = {isa = PBXFileReference; lastKnownFileType = text; path = payment_gateway; sourceTree = "<group>"; };
+		47C480571F4DD34F00493E0B /* payment_gateway */ = {isa = PBXFileReference; lastKnownFileType = text; name = payment_gateway; path = ../payment_gateway; sourceTree = "<group>"; };
 		47C480591F4E312600493E0B /* payment_gateway.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = payment_gateway.html; sourceTree = "<group>"; };
 		47C7D4CA1EBB5EF000457E53 /* Day.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Day.h; sourceTree = "<group>"; };
 		47C7D4CB1EBB5EF000457E53 /* Day.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Day.m; sourceTree = "<group>"; };
@@ -824,7 +824,6 @@
 		478278C01E7923D000FB2FD2 = {
 			isa = PBXGroup;
 			children = (
-				47C480571F4DD34F00493E0B /* payment_gateway */,
 				478278CB1E7923D000FB2FD2 /* afrourembo-ios */,
 				478278CA1E7923D000FB2FD2 /* Products */,
 				A377625E4420D4B718A46A25 /* Pods */,
@@ -843,22 +842,15 @@
 		478278CB1E7923D000FB2FD2 /* afrourembo-ios */ = {
 			isa = PBXGroup;
 			children = (
-				47C30CAD1EC11F8B00CE66DD /* afrourembo-ios.entitlements */,
 				478278CF1E7923D000FB2FD2 /* AppDelegate.h */,
 				478278D01E7923D000FB2FD2 /* AppDelegate.m */,
-				474BD56E1E97F721009410C4 /* EKNavigationViewController.h */,
-				474BD56F1E97F721009410C4 /* EKNavigationViewController.m */,
 				4787C6E51EB4213500DF7B83 /* Networking */,
 				47FFF9721E99E7FD008B6A31 /* Cells */,
-				478BDEEC1E99A25E00F74A5C /* EKImageTextButton.h */,
-				478BDEED1E99A25E00F74A5C /* EKImageTextButton.m */,
 				478BDEFA1E99C60100F74A5C /* Models */,
 				47A3BB851E7A8BE400963F27 /* View Controllers */,
 				478BDF091E99D85E00F74A5C /* Utilities */,
 				478278E31E79240C00FB2FD2 /* Storyboards */,
 				478278D81E7923D000FB2FD2 /* Assets.xcassets */,
-				478278DD1E7923D000FB2FD2 /* Info.plist */,
-				47C480591F4E312600493E0B /* payment_gateway.html */,
 				478278CC1E7923D000FB2FD2 /* Supporting Files */,
 			);
 			path = "afrourembo-ios";
@@ -867,7 +859,11 @@
 		478278CC1E7923D000FB2FD2 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				47C30CAD1EC11F8B00CE66DD /* afrourembo-ios.entitlements */,
+				478278DD1E7923D000FB2FD2 /* Info.plist */,
 				478278CD1E7923D000FB2FD2 /* main.m */,
+				47C480591F4E312600493E0B /* payment_gateway.html */,
+				47C480571F4DD34F00493E0B /* payment_gateway */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -1012,9 +1008,13 @@
 			isa = PBXGroup;
 			children = (
 				474024411EDE23390089A6D2 /* afrourembo-ios-Bridging-Header.h */,
-				478BDF061E99D85500F74A5C /* EKConstants.h */,
 				47652BF21F01DAA500796E04 /* Customer+Helpers.h */,
 				47652BF31F01DAA500796E04 /* Customer+Helpers.m */,
+				478BDF061E99D85500F74A5C /* EKConstants.h */,
+				478BDEEC1E99A25E00F74A5C /* EKImageTextButton.h */,
+				478BDEED1E99A25E00F74A5C /* EKImageTextButton.m */,
+				474BD56E1E97F721009410C4 /* EKNavigationViewController.h */,
+				474BD56F1E97F721009410C4 /* EKNavigationViewController.m */,
 				47652BF81F01DC8B00796E04 /* EKSettings.h */,
 				47652BF91F01DC8B00796E04 /* EKSettings.m */,
 				4734F5EC1F33FD2600982D94 /* NSDate+Helpers.h */,
