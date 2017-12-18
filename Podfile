@@ -22,5 +22,6 @@ target 'afrourembo-ios' do
   pod 'Realm'
   pod 'RestKit'
   pod 'YYWebImage'
+  pod 'AXPhotoViewer'
 
 end

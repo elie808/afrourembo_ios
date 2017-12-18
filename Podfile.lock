@@ -1,4 +1,12 @@
 PODS:
+  - AXPhotoViewer (1.3.4):
+    - AXPhotoViewer/Lite (= 1.3.4)
+  - AXPhotoViewer/Core (1.3.4):
+    - AXStateButton (>= 1.1.3)
+    - FLAnimatedImage (>= 1.0.0)
+  - AXPhotoViewer/Lite (1.3.4):
+    - AXPhotoViewer/Core
+  - AXStateButton (1.1.4)
   - Bolts (1.8.4):
     - Bolts/AppLinks (= 1.8.4)
     - Bolts/Tasks (= 1.8.4)
@@ -18,6 +26,7 @@ PODS:
     - FBSDKCoreKit
   - FBSDKShareKit (4.27.0):
     - FBSDKCoreKit
+  - FLAnimatedImage (1.0.12)
   - FSCalendar (2.7.9)
   - HCSStarRatingView (1.5)
   - ISO8601DateFormatterValueTransformer (0.6.1):
@@ -58,6 +67,7 @@ PODS:
     - YYImage
 
 DEPENDENCIES:
+  - AXPhotoViewer
   - Charts (= 3.0.2)
   - DateTools
   - EAIntroView
@@ -74,6 +84,8 @@ DEPENDENCIES:
   - YYWebImage
 
 SPEC CHECKSUMS:
+  AXPhotoViewer: 31105fad96a882bf45e98488db57e1069428c5b6
+  AXStateButton: 6c515a433e37551505046429b5be04c12daa8c07
   Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
   Charts: 236d6ccdd0ce6feae151d89e829a7397381a21fd
   DateTools: 933ac9c490f21f92127cf690ccd8c397e0126caf
@@ -82,6 +94,7 @@ SPEC CHECKSUMS:
   FBSDKCoreKit: ebc6c5f5b3f0e72396041050e2266781a38ac587
   FBSDKLoginKit: 887be4b7452e1c5a3cc4485ce152529965a0c41e
   FBSDKShareKit: 4f83956d4ca2960730fe7588a168eb8d535c06dc
+  FLAnimatedImage: 4a0b56255d9b05f18b6dd7ee06871be5d3b89e31
   FSCalendar: a04b09f16f811bc92e82f3cf852a15225233b9d5
   HCSStarRatingView: 1d18f79654735514cd6f00e6d90e38cb6320dc31
   ISO8601DateFormatterValueTransformer: 52da467d6ec899d6aedda8e48280ac92e8ee97e6
@@ -97,6 +110,6 @@ SPEC CHECKSUMS:
   YYImage: 1e1b62a9997399593e4b9c4ecfbbabbf1d3f3b54
   YYWebImage: 5f7f36aee2ae293f016d418c7d6ba05c4863e928
 
-PODFILE CHECKSUM: 30898a219a23d9e7779c1c3569cb5a5e1d872cb3
+PODFILE CHECKSUM: 01514517ef4dcdac533f3706226a1cae47be77a4
 
 COCOAPODS: 1.1.1
