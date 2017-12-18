@@ -859,6 +859,7 @@
 		478278CC1E7923D000FB2FD2 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				474024411EDE23390089A6D2 /* afrourembo-ios-Bridging-Header.h */,
 				47C30CAD1EC11F8B00CE66DD /* afrourembo-ios.entitlements */,
 				478278DD1E7923D000FB2FD2 /* Info.plist */,
 				478278CD1E7923D000FB2FD2 /* main.m */,
@@ -1007,7 +1008,6 @@
 		478BDF091E99D85E00F74A5C /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
-				474024411EDE23390089A6D2 /* afrourembo-ios-Bridging-Header.h */,
 				47652BF21F01DAA500796E04 /* Customer+Helpers.h */,
 				47652BF31F01DAA500796E04 /* Customer+Helpers.m */,
 				478BDF061E99D85500F74A5C /* EKConstants.h */,
