@@ -1450,8 +1450,10 @@
                                     <subviews>
                                         <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" directionalLockEnabled="YES" alwaysBounceHorizontal="YES" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EHU-HD-AFQ" customClass="EKCarousel">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="173"/>
+                                            <gestureRecognizers/>
                                             <connections>
                                                 <outlet property="delegate" destination="q3N-QV-x45" id="Isk-WK-rky"/>
+                                                <outletCollection property="gestureRecognizers" destination="IJz-Xh-ixi" appends="YES" id="6Mc-Yb-5ll"/>
                                             </connections>
                                         </scrollView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 Photos" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e7g-Nq-gJ2">
@@ -1863,6 +1865,12 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Y2w-Xy-4O0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="IJz-Xh-ixi">
+                    <connections>
+                        <action selector="didTapCarousel:" destination="q3N-QV-x45" id="RlB-td-O6v"/>
+                        <outlet property="delegate" destination="q3N-QV-x45" id="zQf-gp-DDk"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="2487.1999999999998" y="-646.32683658170924"/>
         </scene>

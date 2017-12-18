@@ -152,12 +152,16 @@
     MWPhotoBrowser *browser = [[MWPhotoBrowser alloc] initWithDelegate:self];
     // browser.displayActionButton = YES; // Show action button to allow sharing, copying, etc (defaults to YES)
     // browser.displayNavArrows = NO; // Whether to display left and right nav arrows on toolbar (defaults to NO)
-
+    // [browser setCurrentPhotoIndex:1];
     
     [self.navigationController pushViewController:browser animated:YES];
 }
 
 #pragma mark - Actions
+
+- (IBAction)didTapCarousel:(UITapGestureRecognizer *)gesture {
+    [self showPhotoGallery];
+}
 
 - (IBAction)didTapFavoriteButton:(id)sender {
     
