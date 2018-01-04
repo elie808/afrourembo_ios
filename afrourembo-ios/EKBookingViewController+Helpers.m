@@ -10,8 +10,10 @@
 
 @implementation EKBookingViewController (Helpers)
 
-- (void)populateDataSourcesFrom:(NSArray<Day*> *)daysArray {
+- (NSArray<Day *> *)populateDataSourcesFrom:(NSArray<Day*> *)daysArray {
 
+    NSMutableArray *populatedDays = [NSMutableArray new];
+    
     NSDate *todayDate = [[NSCalendar currentCalendar] startOfDayForDate:[NSDate date]];
     
     // create 10 days from today
@@ -23,12 +25,14 @@
         weekDay.dayName = [NSDate stringFromDate:[todayDate dateByAddingDays:i] withFormat:DateFormatLetterDayMonthYearAbbreviated];
         weekDay.dayNumber = [Day dayNumberFromDay:[todayDate dateByAddingDays:i]];
 
-        // check if pro is available on this weekDay
+        // check if the pro is available on this weekday
         NSPredicate *pred = [NSPredicate predicateWithFormat:[NSString stringWithFormat:@"dayNumber = %@", weekDay.dayNumber]];
-        if ([daysArray filteredArrayUsingPredicate:pred].count > 0) {
+        NSArray *dayFromWeek = [daysArray filteredArrayUsingPredicate:pred];
+        
+        if (dayFromWeek.count > 0) {
 
             // get the pro's available start-end times and add them to weekDay
-            Day *proAvailableDay = [[daysArray filteredArrayUsingPredicate:pred] firstObject];
+            Day *proAvailableDay = [dayFromWeek firstObject];
             
             weekDay.timeSlotsArray = [NSArray arrayWithArray:[self markDayAvailable:weekDay.dayDate
                                                                        startingHour:proAvailableDay.fromHours
@@ -42,8 +46,10 @@
             weekDay.timeSlotsArray = [self markDayUnavailable:weekDay.dayDate from:@9 endingHour:@17 inMinuteIncrements:@15];
         }
         
-        [self.daysDataSource addObject:weekDay];
+        [populatedDays addObject:weekDay];
     }
+    
+    return [NSArray arrayWithArray:populatedDays];
 }
 
 - (NSArray *)markDayAvailable:(NSDate *)day startingHour:(NSNumber *)startHour endingHour:(NSNumber *)toHour lunchBreakStartHour:(NSNumber *)lbFromHour lunchBreakEndHour:(NSNumber *)lbToHour inMinuteIncrements:(NSNumber *)minIncrements {

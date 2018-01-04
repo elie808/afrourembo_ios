@@ -133,7 +133,7 @@ static NSString * const kTimeCell = @"bookingTimeCell";
                            
                            self.selectedPro = pro;
                            self.emptyTimeDataView.hidden = YES;
-                           [self populateDataSourcesFrom:daysArray];
+                           [self.daysDataSource addObjectsFromArray:[self populateDataSourcesFrom:daysArray]];
                            [self.dayCollectionView reloadData];
          
                        } withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
