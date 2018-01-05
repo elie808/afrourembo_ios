@@ -146,7 +146,7 @@ static NSString *kSalonAnnotation = @"salonLocations";
     // Set pin on map
     [self.mapView addAnnotations:pinsArray];
     
-    // Make sure that coords are not 0 before zooming map there 
+    // Make sure that coords are not 0 before zooming map there
     if ( fabs(coords.latitude) > 0 && fabs(coords.longitude) > 0) {
      
         // zoom to pin Location
