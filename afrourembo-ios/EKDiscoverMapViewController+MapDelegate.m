@@ -146,10 +146,14 @@ static NSString *kSalonAnnotation = @"salonLocations";
     // Set pin on map
     [self.mapView addAnnotations:pinsArray];
     
-    // zoom to pin Location
-    MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(coords, PINS_ZOOM_FACTOR * METERS_PER_MILE,
-                                                                       PINS_ZOOM_FACTOR * METERS_PER_MILE);
-    [self.mapView setRegion:viewRegion animated:YES];
+    // Make sure that coords are not 0 before zooming map there 
+    if ( fabs(coords.latitude) > 0 && fabs(coords.longitude) > 0) {
+     
+        // zoom to pin Location
+        MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(coords, PINS_ZOOM_FACTOR * METERS_PER_MILE,
+                                                                           PINS_ZOOM_FACTOR * METERS_PER_MILE);
+        [self.mapView setRegion:viewRegion animated:YES];
+    }
 }
 
 #pragma mark - UISeachBar
