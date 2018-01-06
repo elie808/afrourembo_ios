@@ -17,6 +17,12 @@
 #import <DateTools/DateTools.h>
 #import <MBProgressHUD/MBProgressHUD.h>
 
+// helper model to use for UI display
+@interface ServicesUIModel : NSObject
+@property NSString *serviceName;
+@property NSInteger serviceCount;
+@end
+
 @interface EKServicesChartViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 
 @property (strong, nonatomic) IBOutlet UIView *headerView;
