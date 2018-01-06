@@ -104,6 +104,8 @@ static NSInteger const kViewCount = 3;
         case 2: {
             
             EKServicesChartViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"content3"];
+            ////// _dashboardItems
+//            [vc.tableView reloadData];
             return vc;
             
         } break;
@@ -142,10 +144,10 @@ static NSInteger const kViewCount = 3;
     
     _dashboardItems = dashboardItemsArray;
     
-    [[NSNotificationCenter defaultCenter] postNotificationName:kDashboardNotification
-                                                        object:nil
-                                                      userInfo:[NSDictionary dictionaryWithObject:dashboardItemsArray
-                                                                                           forKey:kDashObjKey]];
+//    [[NSNotificationCenter defaultCenter] postNotificationName:kDashboardNotification
+//                                                        object:nil
+//                                                      userInfo:[NSDictionary dictionaryWithObject:dashboardItemsArray
+//                                                                                           forKey:kDashObjKey]];
 }
 
 /*

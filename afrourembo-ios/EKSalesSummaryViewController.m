@@ -17,10 +17,13 @@
     
     _summary = [Summary new];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(receivedNotification:)
-                                                 name:kDashboardNotification
-                                               object:nil];
+//    _summary = [self computeAnalyticsForItems:self.dataSource];
+//    [self.tableView reloadData];
+    
+//    [[NSNotificationCenter defaultCenter] addObserver:self
+//                                             selector:@selector(receivedNotification:)
+//                                                 name:kDashboardNotification
+//                                               object:nil];
 }
 
 - (void)receivedNotification:(NSNotification *) notification {
