@@ -21,6 +21,8 @@ static NSString * const kCartSegue   = @"bookingTimeToCartVC";
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+    self.title = self.passedService.serviceName;
+    
     // init data source
     self.daysDataSource     = [NSMutableArray new];
     self.timesDataSource    = [NSMutableArray new];

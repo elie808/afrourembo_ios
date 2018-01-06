@@ -98,6 +98,7 @@ static NSString * const kProfessionalsCollectionCell = @"companyProfessionalsCol
                     Service *serviceObj = [self.passedProfessional.services objectAtIndex:indexPath.row];
                     
                     cell.cellDelegate = self;
+                    cell.cellIndexPath = indexPath;
                     [cell configureCellForService:serviceObj];
                     
                 } else {
@@ -197,6 +198,7 @@ static NSString * const kProfessionalsCollectionCell = @"companyProfessionalsCol
                     Service *serviceObj = [self.passedSalon.selectedProfessional.services objectAtIndex:indexPath.row];
                     
                     cell.cellDelegate = self;
+                    cell.cellIndexPath = indexPath;
                     [cell configureCellForService:serviceObj];
                     
                     return cell;
