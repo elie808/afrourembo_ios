@@ -21,12 +21,17 @@
 #import "UIViewController+Helpers.h"
 #import <DateTools/DateTools.h>
 #import <MBProgressHUD/MBProgressHUD.h>
+@import Charts.Swift;
 
-@interface EKDashboardViewController : UIViewController <UIPageViewControllerDataSource>
+@interface EKDashboardViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 
-@property (strong, nonatomic) UIPageViewController *pageViewController;
+//@property (strong, nonatomic) UIPageViewController *pageViewController;
 
-- (IBAction)didTapFilterButton:(UIBarButtonItem *)sender;
+//- (IBAction)didTapFilterButton:(UIBarButtonItem *)sender;
+
+@property (strong, nonatomic) IBOutlet UIView *headerView;
+@property (strong, nonatomic) IBOutlet UITableView *tableView;
+@property (strong, nonatomic) IBOutlet LineChartView *revenueGraph;
 
 - (void)configureWithDashboardItems:(NSArray<Dashboard *> *)dashboardItemsArray;
 

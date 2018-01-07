@@ -8,7 +8,7 @@
 
 #import "EKDashboardViewController.h"
 
-static NSInteger const kViewCount = 3;
+//static NSInteger const kViewCount = 3;
 
 @implementation EKDashboardViewController {
     NSUInteger _index;
@@ -21,6 +21,7 @@ static NSInteger const kViewCount = 3;
     _dashboardItems = [NSArray new];
     _index = 0;
     
+    /*
     // Create PageViewController
     self.pageViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"PageViewController"];
     self.pageViewController.view.frame = CGRectMake(0, 64, self.view.frame.size.width, self.view.frame.size.height-64);
@@ -34,15 +35,95 @@ static NSInteger const kViewCount = 3;
     [self addChildViewController:self.pageViewController];
     [self.view addSubview:self.pageViewController.view];
     [self.pageViewController didMoveToParentViewController:self];
+     */
+    
+    if ([EKSettings getSavedVendor]) {
+        
+        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        [Dashboard getDashboardOfVendor:[EKSettings getSavedVendor].token
+                              withBlock:^(NSArray<Dashboard *> *dashboardItems) {
+                                  
+                                  [MBProgressHUD hideHUDForView:self.view animated:YES];
+                                  
+                              } withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
+                                  [MBProgressHUD hideHUDForView:self.view animated:YES];
+                                  [self showMessage:errorMessage withTitle:@"Error" completionBlock:nil];
+                              }];
+        
+    } else if ([EKSettings getSavedSalon]) {
+        
+        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        [Dashboard getDashboardOfSalon:[EKSettings getSavedSalon].token
+                             withBlock:^(NSArray<Dashboard *> *dashboardItems) {
+                                 
+                                 [MBProgressHUD hideHUDForView:self.view animated:YES];
+                                 
+                             } withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
+                                 [MBProgressHUD hideHUDForView:self.view animated:YES];
+                                 [self showMessage:errorMessage withTitle:@"Error" completionBlock:nil];
+                             }];
+    }
 }
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
+}
 
+#pragma mark - UITableViewDataSource
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return 2;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    EKSalesSummaryTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SummaryCell" forIndexPath:indexPath];
+    
+    switch (indexPath.row) {
+        case 0: {
+            
+            cell.cellLeftTitleLabel.text = @"Total sales";
+            cell.cellLeftValueLabel.text = @"KES 619"; //[NSString stringWithFormat:@"KES %ld", (long)_summary.totalSalesValue];
+            cell.cellRightTitleLabel.text = @"Total books";
+            cell.cellRightValueLabel.text = @"69"; //[NSString stringWithFormat:@"%ld", (long)_summary.totalBookingsValue];
+            
+        } break;
+            
+        case 1: {
+            
+            cell.cellLeftTitleLabel.text = @"Month sales";
+            cell.cellLeftValueLabel.text = @"KES 619"; //[NSString stringWithFormat:@"KES %ld", (long)_summary.monthlySalesValue];
+            cell.cellRightTitleLabel.text = @"Month books";
+            cell.cellRightValueLabel.text = @"19"; //[NSString stringWithFormat:@"%ld", (long)_summary.monthlyBookingsValue];
+            
+        } break;
+            
+        default: break;
+    }
+    
+    return cell;
+}
+
+- (NSString*)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    return @"section text placeholder";
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    return self.headerView;
+}
+
+#pragma mark - UITableViewDelegate
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
 }
 
 #pragma mark - Page View Controller Data Source
-
+/*
 - (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerBeforeViewController:(UIViewController *)viewController {
     
     NSLog(@"\n");
@@ -113,9 +194,10 @@ static NSInteger const kViewCount = 3;
         default: return nil; break;
     }
 }
+*/
 
 #pragma mark - Actions
-
+/*
 - (IBAction)didTapFilterButton:(UIBarButtonItem *)sender {
     
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Log out ?"
@@ -137,8 +219,35 @@ static NSInteger const kViewCount = 3;
     
     [self presentViewController:alertController animated:YES completion:^{}];
 }
+ */
 
 #pragma mark - Helpers 
+
+- (void)zabre:(NSArray *)dashboardItems {
+    
+    NSDate *todayDate = [[NSCalendar currentCalendar] startOfDayForDate:[NSDate date]];
+    
+    for (Dashboard *dashObj in dashboardItems) {
+        
+        // if (dashObj.startDate dateIs) { }
+    }
+    
+    NSMutableArray <ChartDataEntry*> *dataEntries2 = [NSMutableArray new];
+    
+    ChartDataEntry *data1 = [[ChartDataEntry alloc] initWithX:1 y:1];
+    [dataEntries2 addObject:data1];
+    
+    ChartDataEntry *data2 = [[ChartDataEntry alloc] initWithX:2 y:2];
+    [dataEntries2 addObject:data2];
+    
+    ChartDataEntry *data3 = [[ChartDataEntry alloc] initWithX:3 y:3];
+    [dataEntries2 addObject:data3];
+    
+    LineChartDataSet *lineDataSet = [[LineChartDataSet alloc] initWithValues:dataEntries2 label:@"LEGEND DESCRIPTION"];
+    LineChartData *lineData = [[LineChartData alloc] initWithDataSet:lineDataSet];
+    
+    self.revenueGraph.data = lineData;
+}
 
 - (void)configureWithDashboardItems:(NSArray<Dashboard *> *)dashboardItemsArray {
     
