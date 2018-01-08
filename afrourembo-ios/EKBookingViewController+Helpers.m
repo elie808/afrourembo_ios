@@ -63,11 +63,12 @@
     for (int hour = [startHour intValue]; hour < [toHour intValue]; hour++) {
         
         for (int startingMin = 0; startingMin < 60; startingMin += [minIncrements intValue]) {
-            
-            if (lbFromHour > 0 && lbToHour > 0) {
-                
-                // block out lunch break hours
-                if ( hour >= [lbFromHour intValue] && hour < [lbToHour intValue] ) {
+
+            // check if lunch break properties are non nil (or even exist) on server before acounting for lunchbreak hours
+            if (lbFromHour && lbToHour) {
+
+                // block out lunch break hours as long as those values make sense ( are > 0)
+                if (lbFromHour > 0 && lbToHour > 0 && hour >= [lbFromHour intValue] && hour < [lbToHour intValue] ) {
                     
                     isHourAvailable = NO;
                     
@@ -75,6 +76,11 @@
                     
                     isHourAvailable = YES;
                 }
+                
+            } else {
+                
+                isHourAvailable = YES;
+            }
     
                 TimeSlot *slot = [TimeSlot new];
                 
@@ -89,7 +95,6 @@
                 slot.hourString = [NSDate stringFromDate:slot.date withFormat:DateFormatDigitHourMinute];
 
                 [timeSlotsArray addObject:slot];
-            }
         }
     }
     
