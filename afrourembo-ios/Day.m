@@ -123,12 +123,21 @@ static NSString * const kDefaultLunchEndHour = @"2:00 PM";
     NSDateComponents *components = [cal components:NSCalendarUnitDay | NSCalendarUnitWeekday fromDate:date];
     
     NSInteger dayNumber = [components weekday]; // get iOS' weekDay value. We correct for in what follows
-    
+
     return [NSNumber numberWithInteger:[Day convertiOSDayToOurGaySystem:dayNumber]];
 }
 
 + (NSInteger)convertiOSDayToOurGaySystem:(NSInteger)iOSDayNumber {
     
+    switch (iOSDayNumber) {
+            
+        case 7: return 0; break;
+            
+        default: return iOSDayNumber; break;
+    }
+
+    // obsolete conversion. Keeping it in case it comes back into fashion ...
+    /*
     switch (iOSDayNumber) {
             
         case 2: return 0; break; //Monday
@@ -147,6 +156,7 @@ static NSString * const kDefaultLunchEndHour = @"2:00 PM";
             
         default: return 10; break; //return whatever. This will probably blow up another method somewhere. Debug accordingly
     }
+     */
 }
 
 + (NSString *)dayStringFromNumber:(NSNumber *)dayNumber {
