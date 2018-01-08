@@ -10,6 +10,9 @@
 
 //static NSInteger const kViewCount = 3;
 
+@implementation DashboardUIModel
+@end
+
 @implementation EKDashboardViewController {
     NSUInteger _index;
     NSArray <Dashboard *> *_dashboardItems;
@@ -44,6 +47,7 @@
                               withBlock:^(NSArray<Dashboard *> *dashboardItems) {
                                   
                                   [MBProgressHUD hideHUDForView:self.view animated:YES];
+                                  [self computeStatsFromItems:dashboardItems];
                                   
                               } withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
                                   [MBProgressHUD hideHUDForView:self.view animated:YES];
@@ -57,6 +61,7 @@
                              withBlock:^(NSArray<Dashboard *> *dashboardItems) {
                                  
                                  [MBProgressHUD hideHUDForView:self.view animated:YES];
+                                 [self computeStatsFromItems:dashboardItems];
                                  
                              } withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
                                  [MBProgressHUD hideHUDForView:self.view animated:YES];
@@ -87,18 +92,18 @@
         case 0: {
             
             cell.cellLeftTitleLabel.text = @"Total sales";
-            cell.cellLeftValueLabel.text = @"KES 619"; //[NSString stringWithFormat:@"KES %ld", (long)_summary.totalSalesValue];
+            cell.cellLeftValueLabel.text = [NSString stringWithFormat:@"KES %ld", (long)self.UIModel.totalSales];
             cell.cellRightTitleLabel.text = @"Total books";
-            cell.cellRightValueLabel.text = @"69"; //[NSString stringWithFormat:@"%ld", (long)_summary.totalBookingsValue];
+            cell.cellRightValueLabel.text = [NSString stringWithFormat:@"%ld", (long)self.UIModel.totalBookings];
             
         } break;
             
         case 1: {
             
             cell.cellLeftTitleLabel.text = @"Month sales";
-            cell.cellLeftValueLabel.text = @"KES 619"; //[NSString stringWithFormat:@"KES %ld", (long)_summary.monthlySalesValue];
+            cell.cellLeftValueLabel.text = [NSString stringWithFormat:@"KES %ld", (long)self.UIModel.monthlySales];
             cell.cellRightTitleLabel.text = @"Month books";
-            cell.cellRightValueLabel.text = @"19"; //[NSString stringWithFormat:@"%ld", (long)_summary.monthlyBookingsValue];
+            cell.cellRightValueLabel.text = [NSString stringWithFormat:@"%ld", (long)self.UIModel.monthlyBookings];
             
         } break;
             
@@ -223,30 +228,44 @@
 
 #pragma mark - Helpers 
 
-- (void)zabre:(NSArray *)dashboardItems {
-    
+- (void)computeStatsFromItems:(NSArray <Dashboard *> *)dashboardItems {
+
     NSDate *todayDate = [[NSCalendar currentCalendar] startOfDayForDate:[NSDate date]];
+    NSDate *monthAgo = [todayDate dateBySubtractingMonths:1];
+    
+    self.UIModel = [DashboardUIModel new];
+    self.UIModel.totalBookings = dashboardItems.count;
+    self.UIModel.totalSales = ((NSNumber *)[[dashboardItems valueForKey:@"price"] valueForKeyPath: @"@sum.self"]).integerValue;
     
     for (Dashboard *dashObj in dashboardItems) {
+
+        // dashObj.startDate is later in time than date
+        if ( [dashObj.startDate compare:monthAgo] == NSOrderedDescending) {
+            self.UIModel.monthlySales   = self.UIModel.monthlySales + dashObj.price.integerValue;
+            self.UIModel.monthlyBookings = self.UIModel.monthlyBookings + 1;
+        }
+    }
+
+    NSMutableArray <BarChartDataEntry*> *dataEntries = [NSMutableArray new];
+    
+    for (int i = 0; i < 7; i ++) {
+
+//        [dashObj.startDate weekday]
         
-        // if (dashObj.startDate dateIs) { }
+        BarChartDataEntry *dataEntry = [[BarChartDataEntry alloc] initWithX:i y:i*i];
+        [dataEntries addObject:dataEntry];
     }
     
-    NSMutableArray <ChartDataEntry*> *dataEntries2 = [NSMutableArray new];
+    BarChartDataSet *barDataSet = [[BarChartDataSet alloc] initWithValues:dataEntries label:@"Legend here"];
+    BarChartData *barData = [[BarChartData alloc] initWithDataSet:barDataSet];
+
+    self.revenueGraph.data = barData;
     
-    ChartDataEntry *data1 = [[ChartDataEntry alloc] initWithX:1 y:1];
-    [dataEntries2 addObject:data1];
+//    [self.revenueGraph setDrawBordersEnabled:NO];
+//    [self.revenueGraph setDrawGridBackgroundEnabled:NO];
+//    [self.revenueGraph setGridBackgroundColor:[UIColor redColor]];
     
-    ChartDataEntry *data2 = [[ChartDataEntry alloc] initWithX:2 y:2];
-    [dataEntries2 addObject:data2];
-    
-    ChartDataEntry *data3 = [[ChartDataEntry alloc] initWithX:3 y:3];
-    [dataEntries2 addObject:data3];
-    
-    LineChartDataSet *lineDataSet = [[LineChartDataSet alloc] initWithValues:dataEntries2 label:@"LEGEND DESCRIPTION"];
-    LineChartData *lineData = [[LineChartData alloc] initWithDataSet:lineDataSet];
-    
-    self.revenueGraph.data = lineData;
+    [self.tableView reloadData];
 }
 
 - (void)configureWithDashboardItems:(NSArray<Dashboard *> *)dashboardItemsArray {
