@@ -16,17 +16,47 @@
     [super viewDidLoad];
     
     self.dataSource = [NSMutableArray new];
-    self.dataSource = [NSMutableArray new];
     self.tableDataSource = [NSMutableArray new];
     self.contentOffsetDictionary = [NSMutableDictionary new];
-    
-    [self createCalendarGrid];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
     [[self.tabBarController.tabBar.items objectAtIndex:kScheduleVCIndex] setBadgeValue:nil];
+    
+    if ([EKSettings getSavedVendor]) {
+        
+        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        [Dashboard getDashboardOfVendor:[EKSettings getSavedVendor].token
+                              withBlock:^(NSArray<Dashboard *> *dashboardItems) {
+                                  
+                                  [MBProgressHUD hideHUDForView:self.view animated:YES];
+                                  [self.dataSource addObjectsFromArray:dashboardItems];
+                                  [self.calendar reloadData];
+                                  [self createCalendarGrid];
+                                  
+                              } withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
+                                  [MBProgressHUD hideHUDForView:self.view animated:YES];
+                                  [self showMessage:errorMessage withTitle:@"Error" completionBlock:nil];
+                              }];
+        
+    } else if ([EKSettings getSavedSalon]) {
+        
+        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        [Dashboard getDashboardOfSalon:[EKSettings getSavedSalon].token
+                             withBlock:^(NSArray<Dashboard *> *dashboardItems) {
+                                 
+                                 [MBProgressHUD hideHUDForView:self.view animated:YES];
+                                 [self.dataSource addObjectsFromArray:dashboardItems];
+                                 [self.calendar reloadData];
+                                 [self createCalendarGrid];
+                                 
+                             } withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
+                                 [MBProgressHUD hideHUDForView:self.view animated:YES];
+                                 [self showMessage:errorMessage withTitle:@"Error" completionBlock:nil];
+                             }];
+    }
 }
 
 #pragma mark - FSCalendar

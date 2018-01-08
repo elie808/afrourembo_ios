@@ -191,6 +191,12 @@ static NSString * const kCollectionCell = @"todayCell";
             if ([dashObj.startDate daysFrom:todayDate] == 0 &&
                 [dashObj.startDate hoursFrom:hour] == 0) {
                 
+                NSLog(@"\n \n Booking with ID: %@", dashObj.bookingId);
+                NSLog(@"Hour: %@", hour);
+                NSLog(@"today.appointmentsHour: %@", today.appointmentsHour);
+                NSLog(@"dashObj.fName: %@ - dashObj.lName: %@", dashObj.fName, dashObj.lName);
+                NSLog(@"Starts on date: %@ \n \n", dashObj.startDate);
+                
                 today.appointmentsArray = @[[self convertToAppointementObject:dashObj]];
             }
         }
