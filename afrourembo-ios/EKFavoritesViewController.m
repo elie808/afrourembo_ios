@@ -29,9 +29,8 @@ static NSString * const kVendorProfile = @"favoritesToVendorProfileVC";
     [Customer getFavoritesForUser:[EKSettings getSavedCustomer].token
                         withBlock:^(NSArray<Favorite *> *favoriteObj) {
                           
+                            [MBProgressHUD hideHUDForView:self.view animated:YES];
                             if (favoriteObj.count > 0) {
-                                
-                                [MBProgressHUD hideHUDForView:self.view animated:YES];
                                 self.emptyFavoritesView.hidden = YES;
                                 _dataSourceArray = [NSMutableArray arrayWithArray:favoriteObj];
                                 [self.tableView reloadData];
