@@ -23,7 +23,7 @@
     
     _dashboardItems = [NSArray new];
     _index = 0;
-    
+   
     /*
     // Create PageViewController
     self.pageViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"PageViewController"];
@@ -68,6 +68,12 @@
                                  [self showMessage:errorMessage withTitle:@"Error" completionBlock:nil];
                              }];
     }
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    //    [self.revenueGraph setDrawGridBackgroundEnabled:NO];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -230,15 +236,33 @@
 
 - (void)computeStatsFromItems:(NSArray <Dashboard *> *)dashboardItems {
 
+//    self.revenueGraph.gridBackgroundColor = [UIColor redColor];
+//    self.revenueGraph.drawBarShadowEnabled = YES;
+    
+//    self.revenueGraph.drawBordersEnabled = NO;
+//    
+//    self.revenueGraph.xAxis.granularityEnabled = YES;
+//    self.revenueGraph.xAxis.granularity = 1.0; //default granularity is 1.0, but it is better to be explicit
+//    self.revenueGraph.xAxis.decimals = 0;
+    
+    NSMutableDictionary *weekdaySales = [NSMutableDictionary new];           // hold sales per day of the week
+    NSMutableArray <BarChartDataEntry*> *dataEntries = [NSMutableArray new]; // datasource for chart plotting
     NSDate *todayDate = [[NSCalendar currentCalendar] startOfDayForDate:[NSDate date]];
     NSDate *monthAgo = [todayDate dateBySubtractingMonths:1];
     
+    // populate the all time stats
     self.UIModel = [DashboardUIModel new];
     self.UIModel.totalBookings = dashboardItems.count;
     self.UIModel.totalSales = ((NSNumber *)[[dashboardItems valueForKey:@"price"] valueForKeyPath: @"@sum.self"]).integerValue;
     
     for (Dashboard *dashObj in dashboardItems) {
 
+        // segment sales numbers per day of the week
+        NSInteger weekdayNumber = [dashObj.startDate weekday];
+        NSNumber *salesOnWeekday = [weekdaySales valueForKey:[NSString stringWithFormat:@"%ld", (long)weekdayNumber]];
+        NSNumber *totalSalesOnWeekday = @(dashObj.price.integerValue + salesOnWeekday.integerValue);
+        [weekdaySales setValue:totalSalesOnWeekday forKey:[NSString stringWithFormat:@"%ld", (long)weekdayNumber]];
+        
         // dashObj.startDate is later in time than date
         if ( [dashObj.startDate compare:monthAgo] == NSOrderedDescending) {
             self.UIModel.monthlySales   = self.UIModel.monthlySales + dashObj.price.integerValue;
@@ -246,24 +270,19 @@
         }
     }
 
-    NSMutableArray <BarChartDataEntry*> *dataEntries = [NSMutableArray new];
-    
-    for (int i = 0; i < 7; i ++) {
-
-//        [dashObj.startDate weekday]
+    // plot sales data
+    for (NSInteger i = 0; i < 7; i ++) {
         
-        BarChartDataEntry *dataEntry = [[BarChartDataEntry alloc] initWithX:i y:i*i];
+        NSString *dicKey = [NSString stringWithFormat:@"%ld", (long)i];
+        
+        BarChartDataEntry *dataEntry = [[BarChartDataEntry alloc] initWithX:i y:((NSNumber *)[weekdaySales valueForKey:dicKey]).integerValue];
         [dataEntries addObject:dataEntry];
     }
     
-    BarChartDataSet *barDataSet = [[BarChartDataSet alloc] initWithValues:dataEntries label:@"Legend here"];
+    BarChartDataSet *barDataSet = [[BarChartDataSet alloc] initWithValues:dataEntries label:@"Revenue"];
     BarChartData *barData = [[BarChartData alloc] initWithDataSet:barDataSet];
 
     self.revenueGraph.data = barData;
-    
-//    [self.revenueGraph setDrawBordersEnabled:NO];
-//    [self.revenueGraph setDrawGridBackgroundEnabled:NO];
-//    [self.revenueGraph setGridBackgroundColor:[UIColor redColor]];
     
     [self.tableView reloadData];
 }
