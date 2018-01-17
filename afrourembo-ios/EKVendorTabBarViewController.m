@@ -111,14 +111,14 @@
 
 - (void)configureClientsVC:(NSArray<Customer *> *)customersArray {
     
-    if ( [[[self viewControllers] objectAtIndex:kClientsVCIndex]
-          isKindOfClass:[UINavigationController class]] ) {
-        
-        UINavigationController *navController = [[self viewControllers] objectAtIndex:kClientsVCIndex];
-        
-        EKClientsViewController *vc = (EKClientsViewController *)([navController viewControllers][0]);
-        [vc configureWithDashboardItems:customersArray];
-    }
+//    if ( [[[self viewControllers] objectAtIndex:kClientsVCIndex]
+//          isKindOfClass:[UINavigationController class]] ) {
+//        
+//        UINavigationController *navController = [[self viewControllers] objectAtIndex:kClientsVCIndex];
+//        
+//        EKClientsViewController *vc = (EKClientsViewController *)([navController viewControllers][0]);
+//        [vc configureWithDashboardItems:customersArray];
+//    }
 }
 
 /*

@@ -26,6 +26,39 @@ static NSString * const kClientsDetailSegue = @"clientsListToClientsDetailsVC";
     [self.view addSubview:self.emptyDataView];    
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    if ([EKSettings getSavedVendor]) {
+        
+        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        [Professional getClientsForProfessional:[EKSettings getSavedVendor].token
+                                      withBlock:^(NSArray<Customer *> *customersArray) {
+                                          
+                                          [MBProgressHUD hideHUDForView:self.view animated:YES];
+                                          [self configureWithDashboardItems:customersArray];
+                                          
+                                      } withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
+                                          [MBProgressHUD hideHUDForView:self.view animated:YES];
+                                          [self showMessage:errorMessage withTitle:@"Error" completionBlock:nil];
+                                      }];
+        
+    } else if ([EKSettings getSavedSalon]) {
+        
+        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        [Professional getClientsForSalon:[EKSettings getSavedSalon].token
+                               withBlock:^(NSArray<Customer *> *customersArray) {
+                                   
+                                   [MBProgressHUD hideHUDForView:self.view animated:YES];
+                                   [self configureWithDashboardItems:customersArray];
+                                   
+                               } withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
+                                   [MBProgressHUD hideHUDForView:self.view animated:YES];
+                                   [self showMessage:errorMessage withTitle:@"Error" completionBlock:nil];
+                               }];
+    }
+}
+
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
