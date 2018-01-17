@@ -87,20 +87,23 @@
     
     if ([[[self viewControllers] objectAtIndex:kTodayVCIndex] isKindOfClass:[EKTodayViewController class]] ) {
         
+        // kept to display a tab controller badge
         EKTodayViewController *vc = [[self viewControllers] objectAtIndex:kTodayVCIndex];
         [vc configureWithDashboardItems:dashboardItems];
     }
     
     if ([[[self viewControllers] objectAtIndex:kScheduleVCIndex] isKindOfClass:[EKScheduleMonthlyViewController class]] ) {
         
+        // kept to display a tab controller badge
         EKScheduleMonthlyViewController *vc = [[self viewControllers] objectAtIndex:kScheduleVCIndex];
         [vc configureWithDashboardItems:dashboardItems];
     }
     
     if ([[[self viewControllers] objectAtIndex:kDashboardVCIndex] isKindOfClass:[EKDashboardViewController class]] ) {
-        
-        EKDashboardViewController *vc = [[self viewControllers] objectAtIndex:kDashboardVCIndex];
-        [vc configureWithDashboardItems:dashboardItems];
+
+        // useless
+//        EKDashboardViewController *vc = [[self viewControllers] objectAtIndex:kDashboardVCIndex];
+//        [vc configureWithDashboardItems:dashboardItems];
     }
     
     if ([[[self viewControllers] objectAtIndex:kSettingsVCIndex] isKindOfClass:[EKSettingsBPViewController class]] ) {

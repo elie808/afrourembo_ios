@@ -35,6 +35,37 @@ static NSString * const kCollectionCell = @"todayCell";
     [super viewWillAppear:animated];
     
     [[self.tabBarController.tabBar.items objectAtIndex:kTodayVCIndex] setBadgeValue:nil];
+    
+    if ([EKSettings getSavedVendor]) {
+        
+        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        [Dashboard getDashboardOfVendor:[EKSettings getSavedVendor].token
+                              withBlock:^(NSArray<Dashboard *> *dashboardItems) {
+                                  
+                                  [MBProgressHUD hideHUDForView:self.view animated:YES];
+                                  [self configureWithDashboardItems:dashboardItems];
+                                  
+                              } withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
+                                  
+                                  [MBProgressHUD hideHUDForView:self.view animated:YES];
+                                  [self showMessage:errorMessage withTitle:@"Error" completionBlock:nil];
+                              }];
+        
+    } else if ([EKSettings getSavedSalon]) {
+        
+        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        [Dashboard getDashboardOfSalon:[EKSettings getSavedSalon].token
+                             withBlock:^(NSArray<Dashboard *> *dashboardItems) {
+                                 
+                                 [MBProgressHUD hideHUDForView:self.view animated:YES];
+                                 [self configureWithDashboardItems:dashboardItems];
+                                 
+                             } withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
+                                 
+                                 [MBProgressHUD hideHUDForView:self.view animated:YES];
+                                 [self showMessage:errorMessage withTitle:@"Error" completionBlock:nil];
+                             }];
+    }
 }
 
 #pragma mark - UITableViewDataSource

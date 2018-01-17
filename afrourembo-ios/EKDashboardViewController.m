@@ -39,6 +39,10 @@
     [self.view addSubview:self.pageViewController.view];
     [self.pageViewController didMoveToParentViewController:self];
      */
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
     
     if ([EKSettings getSavedVendor]) {
         
@@ -68,12 +72,6 @@
                                  [self showMessage:errorMessage withTitle:@"Error" completionBlock:nil];
                              }];
     }
-}
-
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    
-    //    [self.revenueGraph setDrawGridBackgroundEnabled:NO];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
