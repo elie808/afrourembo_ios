@@ -41,7 +41,6 @@
 		47448AE01EAE462F0098CED3 /* EKEditProfileInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47448ADF1EAE462F0098CED3 /* EKEditProfileInfoViewController.m */; };
 		474BD5701E97F721009410C4 /* EKNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 474BD56F1E97F721009410C4 /* EKNavigationViewController.m */; };
 		474BD5731E97F8F3009410C4 /* EKTextFieldTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 474BD5721E97F8F3009410C4 /* EKTextFieldTableViewCell.m */; };
-		474ED7B91E9C471F0099CA0A /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 474ED7B81E9C471F0099CA0A /* MapKit.framework */; };
 		474ED7BC1E9C68940099CA0A /* EKDiscoverMapViewController+MapDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 474ED7BB1E9C68940099CA0A /* EKDiscoverMapViewController+MapDelegate.m */; };
 		474ED7C01E9C6BD90099CA0A /* EKDiscoverMapViewController+TableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 474ED7BF1E9C6BD90099CA0A /* EKDiscoverMapViewController+TableView.m */; };
 		474FAE921F38E0A900970A1F /* TimeSlot.m in Sources */ = {isa = PBXBuildFile; fileRef = 474FAE911F38E0A900970A1F /* TimeSlot.m */; };
@@ -236,7 +235,6 @@
 		474BD56F1E97F721009410C4 /* EKNavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKNavigationViewController.m; sourceTree = "<group>"; };
 		474BD5711E97F8F3009410C4 /* EKTextFieldTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKTextFieldTableViewCell.h; sourceTree = "<group>"; };
 		474BD5721E97F8F3009410C4 /* EKTextFieldTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKTextFieldTableViewCell.m; sourceTree = "<group>"; };
-		474ED7B81E9C471F0099CA0A /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		474ED7BA1E9C68940099CA0A /* EKDiscoverMapViewController+MapDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "EKDiscoverMapViewController+MapDelegate.h"; sourceTree = "<group>"; };
 		474ED7BB1E9C68940099CA0A /* EKDiscoverMapViewController+MapDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "EKDiscoverMapViewController+MapDelegate.m"; sourceTree = "<group>"; };
 		474ED7BE1E9C6BD90099CA0A /* EKDiscoverMapViewController+TableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "EKDiscoverMapViewController+TableView.h"; sourceTree = "<group>"; };
@@ -487,7 +485,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				474ED7B91E9C471F0099CA0A /* MapKit.framework in Frameworks */,
 				22C292D6FFA22AC47BB29DD5 /* Pods_afrourembo_ios.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -498,7 +495,6 @@
 		376EF87A76DC645C4434BC15 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				474ED7B81E9C471F0099CA0A /* MapKit.framework */,
 				3B75458C58C1790EFF018F83 /* Pods_afrourembo_ios.framework */,
 			);
 			name = Frameworks;
@@ -1460,7 +1456,7 @@
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.Maps.iOS = {
-								enabled = 1;
+								enabled = 0;
 							};
 							com.apple.Push = {
 								enabled = 1;
