@@ -14,17 +14,19 @@
 
 @property NSString *bookingId;
 @property NSString *currency;
+@property NSString *customerId;
+@property NSString *service;
 
 @property NSNumber *price;
+@property NSString *note;
 
 @property NSDate *startDate;
 @property NSDate *endDate;
 
-@property NSString *service;
-@property NSString *customerId;
 @property NSString *fName;
 @property NSString *lName;
 @property NSString *phone;
 @property NSString *email;
+@property NSString *profilePicture;
 
 @end

@@ -18,7 +18,7 @@
     
     [mapping addAttributeMappingsFromDictionary:@{@"_id" : @"itemId"}];
     
-    [mapping addAttributeMappingsFromArray:@[@"bookingId", @"currency", @"price", @"startDate", @"endDate", @"service", @"customerId", @"fName", @"lName", @"phone", @"email"]];
+    [mapping addAttributeMappingsFromArray:@[@"bookingId", @"currency", @"price", @"startDate", @"endDate", @"service", @"customerId", @"fName", @"lName", @"phone", @"email", @"note", @"profilePicture"]];
     
     return mapping;
 }
