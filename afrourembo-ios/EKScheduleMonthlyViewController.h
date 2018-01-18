@@ -10,6 +10,7 @@
 #import <DateTools/DateTools.h>
 #import <MBProgressHUD/MBProgressHUD.h>
 
+#import "EKClientAppointmentDetailsViewController.h"
 #import "FSCalendar.h"
 #import "EKTodayTableViewCell.h"
 #import "EKTodayCollectionViewCell.h"
@@ -20,6 +21,8 @@
 
 #import "Dashboard+API.h"
 #import "UIViewController+Helpers.h"
+
+static NSString * const kAptDetailsSegue = @"scheduleMonthlyToClientAppointementDetailsVC";
 
 @interface EKScheduleMonthlyViewController : UIViewController
 

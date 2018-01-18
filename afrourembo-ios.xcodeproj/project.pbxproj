@@ -59,6 +59,7 @@
 		47605F151F3F211D00991C3A /* Booking+API.m in Sources */ = {isa = PBXBuildFile; fileRef = 47605F141F3F211D00991C3A /* Booking+API.m */; };
 		47605F181F3F5ABA00991C3A /* Reservation.m in Sources */ = {isa = PBXBuildFile; fileRef = 47605F171F3F5ABA00991C3A /* Reservation.m */; };
 		47605F1B1F3F5B0600991C3A /* Reservation+API.m in Sources */ = {isa = PBXBuildFile; fileRef = 47605F1A1F3F5B0600991C3A /* Reservation+API.m */; };
+		476078F42010F24A009EECA3 /* EKClientAppointmentDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 476078F32010F24A009EECA3 /* EKClientAppointmentDetailsViewController.m */; };
 		4760FC7C1EF88C8200099DFD /* EKSalonAddressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4760FC7B1EF88C8200099DFD /* EKSalonAddressViewController.m */; };
 		476368C71F8BB77900249318 /* ResetPassword.m in Sources */ = {isa = PBXBuildFile; fileRef = 476368C61F8BB77900249318 /* ResetPassword.m */; };
 		476368CA1F8BB80300249318 /* ResetPassword+API.m in Sources */ = {isa = PBXBuildFile; fileRef = 476368C91F8BB80300249318 /* ResetPassword+API.m */; };
@@ -271,6 +272,8 @@
 		47605F171F3F5ABA00991C3A /* Reservation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reservation.m; sourceTree = "<group>"; };
 		47605F191F3F5B0600991C3A /* Reservation+API.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Reservation+API.h"; sourceTree = "<group>"; };
 		47605F1A1F3F5B0600991C3A /* Reservation+API.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Reservation+API.m"; sourceTree = "<group>"; };
+		476078F22010F24A009EECA3 /* EKClientAppointmentDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKClientAppointmentDetailsViewController.h; sourceTree = "<group>"; };
+		476078F32010F24A009EECA3 /* EKClientAppointmentDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKClientAppointmentDetailsViewController.m; sourceTree = "<group>"; };
 		4760FC7A1EF88C8200099DFD /* EKSalonAddressViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKSalonAddressViewController.h; sourceTree = "<group>"; };
 		4760FC7B1EF88C8200099DFD /* EKSalonAddressViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKSalonAddressViewController.m; sourceTree = "<group>"; };
 		476368C51F8BB77900249318 /* ResetPassword.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResetPassword.h; sourceTree = "<group>"; };
@@ -760,6 +763,15 @@
 			name = "BP - Create New Service";
 			sourceTree = "<group>";
 		};
+		476078F52010F25F009EECA3 /* BP - Client Appointment Details */ = {
+			isa = PBXGroup;
+			children = (
+				476078F22010F24A009EECA3 /* EKClientAppointmentDetailsViewController.h */,
+				476078F32010F24A009EECA3 /* EKClientAppointmentDetailsViewController.m */,
+			);
+			name = "BP - Client Appointment Details";
+			sourceTree = "<group>";
+		};
 		47652BFE1F01FB5D00796E04 /* BP - Settings */ = {
 			isa = PBXGroup;
 			children = (
@@ -1206,6 +1218,7 @@
 				475FC3821EB6BF6100BB0731 /* BP - Create New Service */,
 				477256061EB95908007CBD6B /* BP - Availability */,
 				479520101EB3A40A00E377E5 /* BP - Monthly Schedule */,
+				476078F52010F25F009EECA3 /* BP - Client Appointment Details */,
 				47652BFE1F01FB5D00796E04 /* BP - Settings */,
 				4706275B1FA7CBDA006E2BB1 /* BP - Gallery */,
 				479F7D781EF17C0100EB445A /* SALON - Info */,
@@ -1583,6 +1596,7 @@
 				478971941EA756F100917DB1 /* EKEditFacebookProfileInfoViewController.m in Sources */,
 				47822B091EDDC37C001E247F /* EKSalesSummaryTableViewCell.m in Sources */,
 				475572111F519A1D00741CA9 /* Payment.m in Sources */,
+				476078F42010F24A009EECA3 /* EKClientAppointmentDetailsViewController.m in Sources */,
 				47C07CF81FBF000F00950EB0 /* EKEditProfileBPViewController.m in Sources */,
 				47843A581F048CD000686CDD /* Day+API.m in Sources */,
 				479E37DC1FC41A9500630954 /* Pictures.m in Sources */,

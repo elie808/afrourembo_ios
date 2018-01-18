@@ -85,6 +85,17 @@ static NSString * const kCollectionCell = @"todayCell";
     return cell;
 }
 
+#pragma mark - UICollectionViewDelegate
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    
+    NSInteger index = ((EKInCellCollectionView*)collectionView).collectionIndexPath.row;
+    Today *todayObj = [self.tableDataSource objectAtIndex:index];
+    Appointment *aptObj = [todayObj.appointmentsArray objectAtIndex:indexPath.row];
+    
+    [self performSegueWithIdentifier:kAptDetailsSegue sender:aptObj];
+}
+
 #pragma mark - Helpers
 
 /// create empty calendar UI
@@ -109,23 +120,6 @@ static NSString * const kCollectionCell = @"todayCell";
     }
     
     [self.tableView reloadData];
-}
-
-/// pure convenience method, to keep using Appointment objects, since this view's UI was built on them initially...
-- (Appointment *)convertToAppointementObject:(Dashboard *)dashboardObject {
-    
-    Appointment *appt1 = [Appointment new];
-    appt1.clientName = [NSString stringWithFormat:@"%@ %@", dashboardObject.fName, dashboardObject.lName];
-    appt1.serviceDescription = dashboardObject.service;
-    
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    dateFormatter.dateFormat = @"hh a";
-    appt1.serviceTime = [dateFormatter stringFromDate:dashboardObject.startDate];
-    
-    appt1.serviceDuration = [dashboardObject.endDate minutesFrom:dashboardObject.startDate];
-    appt1.serviceStatus = 2; //mark as scheduled
-    
-    return appt1;
 }
 
 /// create calendar UI with booked appointements
@@ -197,7 +191,7 @@ static NSString * const kCollectionCell = @"todayCell";
                 NSLog(@"dashObj.fName: %@ - dashObj.lName: %@", dashObj.fName, dashObj.lName);
                 NSLog(@"Starts on date: %@ \n \n", dashObj.startDate);
                 
-                today.appointmentsArray = @[[self convertToAppointementObject:dashObj]];
+                today.appointmentsArray = @[[Appointment convertToAppointementObject:dashObj]];
             }
         }
         
