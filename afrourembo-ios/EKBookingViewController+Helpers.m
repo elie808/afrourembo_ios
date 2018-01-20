@@ -24,22 +24,37 @@
         weekDay.dayDate = [todayDate dateByAddingDays:i];
         weekDay.dayName = [NSDate stringFromDate:[todayDate dateByAddingDays:i] withFormat:DateFormatLetterDayMonthYearAbbreviated];
         weekDay.dayNumber = [Day dayNumberFromDay:[todayDate dateByAddingDays:i]];
-
+        
         // check if the pro is available on this weekday
         NSPredicate *pred = [NSPredicate predicateWithFormat:[NSString stringWithFormat:@"dayNumber = %@", weekDay.dayNumber]];
         NSArray *dayFromWeek = [daysArray filteredArrayUsingPredicate:pred];
         
+        // if pro is available on that day
         if (dayFromWeek.count > 0) {
 
             // get the pro's available start-end times and add them to weekDay
             Day *proAvailableDay = [dayFromWeek firstObject];
             
-            weekDay.timeSlotsArray = [NSArray arrayWithArray:[self markDayAvailable:weekDay.dayDate
-                                                                       startingHour:proAvailableDay.fromHours
-                                                                         endingHour:proAvailableDay.toHours
-                                                                lunchBreakStartHour:proAvailableDay.lunchBreakFromHours
-                                                                  lunchBreakEndHour:proAvailableDay.lunchBreakToHours
-                                                                 inMinuteIncrements:@15]];
+            if (i == 0) {
+
+                weekDay.timeSlotsArray = [NSArray arrayWithArray:[self markTodayAvailable:weekDay.dayDate
+                                                                             startingHour:proAvailableDay.fromHours
+                                                                               endingHour:proAvailableDay.toHours
+                                                                      lunchBreakStartHour:proAvailableDay.lunchBreakFromHours
+                                                                        lunchBreakEndHour:proAvailableDay.lunchBreakToHours
+                                                                       inMinuteIncrements:@15
+                                                                              atTimeToday:[[NSDate date] hour]]];
+                
+            } else {
+
+                weekDay.timeSlotsArray = [NSArray arrayWithArray:[self markDayAvailable:weekDay.dayDate
+                                                                           startingHour:proAvailableDay.fromHours
+                                                                             endingHour:proAvailableDay.toHours
+                                                                    lunchBreakStartHour:proAvailableDay.lunchBreakFromHours
+                                                                      lunchBreakEndHour:proAvailableDay.lunchBreakToHours
+                                                                     inMinuteIncrements:@15]];
+            }
+
         } else {
 
             // since pro isn't available, mark weekDay as unavailable and populate with arbitrary start-end times
@@ -100,6 +115,58 @@
     
     return [NSArray arrayWithArray:timeSlotsArray];
 }
+
+/// Mark today as available, but disable the calendar till the current time
+- (NSArray *)markTodayAvailable:(NSDate *)day startingHour:(NSNumber *)startHour endingHour:(NSNumber *)toHour lunchBreakStartHour:(NSNumber *)lbFromHour lunchBreakEndHour:(NSNumber *)lbToHour inMinuteIncrements:(NSNumber *)minIncrements atTimeToday:(NSInteger )currentTime {
+    
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    NSDateComponents *comps = [calendar components: NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay fromDate:day];
+    
+    NSMutableArray *timeSlotsArray = [NSMutableArray new];
+    BOOL isHourAvailable;
+    
+    for (int hour = [startHour intValue]; hour < [toHour intValue]; hour++) {
+        
+        for (int startingMin = 0; startingMin < 60; startingMin += [minIncrements intValue]) {
+
+            // check if lunch break properties are non nil (or even exist) on server before acounting for lunchbreak hours
+            if (lbFromHour && lbToHour) {
+                
+                // block out lunch break hours as long as those values make sense ( are > 0)
+                if (lbFromHour > 0 && lbToHour > 0 && hour >= [lbFromHour intValue] && hour < [lbToHour intValue] ) {
+                    isHourAvailable = NO;
+                } else {
+                    isHourAvailable = YES;
+                }
+                
+            } else {
+                
+                isHourAvailable = YES;
+            }
+            
+            if (hour < currentTime) {
+                isHourAvailable = NO;
+            }
+            
+            TimeSlot *slot = [TimeSlot new];
+            
+            [comps setHour:hour];
+            [comps setMinute:startingMin];
+            [comps setSecond:[@0 intValue]];
+            slot.date = [calendar dateFromComponents:comps];
+            
+            slot.isAvailable = isHourAvailable;
+            slot.isSelected = NO;
+            
+            slot.hourString = [NSDate stringFromDate:slot.date withFormat:DateFormatDigitHourMinute];
+            
+            [timeSlotsArray addObject:slot];
+        }
+    }
+    
+    return [NSArray arrayWithArray:timeSlotsArray];
+}
+
 
 - (NSArray *)markDayUnavailable:(NSDate *)day from:(NSNumber *)startHour endingHour:(NSNumber *)toHour inMinuteIncrements:(NSNumber *)minIncrements {
     
