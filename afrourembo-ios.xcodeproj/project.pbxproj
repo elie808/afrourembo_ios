@@ -60,6 +60,7 @@
 		47605F181F3F5ABA00991C3A /* Reservation.m in Sources */ = {isa = PBXBuildFile; fileRef = 47605F171F3F5ABA00991C3A /* Reservation.m */; };
 		47605F1B1F3F5B0600991C3A /* Reservation+API.m in Sources */ = {isa = PBXBuildFile; fileRef = 47605F1A1F3F5B0600991C3A /* Reservation+API.m */; };
 		476078F42010F24A009EECA3 /* EKClientAppointmentDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 476078F32010F24A009EECA3 /* EKClientAppointmentDetailsViewController.m */; };
+		476078F820161600009EECA3 /* VendorBookings.m in Sources */ = {isa = PBXBuildFile; fileRef = 476078F720161600009EECA3 /* VendorBookings.m */; };
 		4760FC7C1EF88C8200099DFD /* EKSalonAddressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4760FC7B1EF88C8200099DFD /* EKSalonAddressViewController.m */; };
 		476368C71F8BB77900249318 /* ResetPassword.m in Sources */ = {isa = PBXBuildFile; fileRef = 476368C61F8BB77900249318 /* ResetPassword.m */; };
 		476368CA1F8BB80300249318 /* ResetPassword+API.m in Sources */ = {isa = PBXBuildFile; fileRef = 476368C91F8BB80300249318 /* ResetPassword+API.m */; };
@@ -274,6 +275,8 @@
 		47605F1A1F3F5B0600991C3A /* Reservation+API.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Reservation+API.m"; sourceTree = "<group>"; };
 		476078F22010F24A009EECA3 /* EKClientAppointmentDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKClientAppointmentDetailsViewController.h; sourceTree = "<group>"; };
 		476078F32010F24A009EECA3 /* EKClientAppointmentDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKClientAppointmentDetailsViewController.m; sourceTree = "<group>"; };
+		476078F620161600009EECA3 /* VendorBookings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VendorBookings.h; sourceTree = "<group>"; };
+		476078F720161600009EECA3 /* VendorBookings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VendorBookings.m; sourceTree = "<group>"; };
 		4760FC7A1EF88C8200099DFD /* EKSalonAddressViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKSalonAddressViewController.h; sourceTree = "<group>"; };
 		4760FC7B1EF88C8200099DFD /* EKSalonAddressViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKSalonAddressViewController.m; sourceTree = "<group>"; };
 		476368C51F8BB77900249318 /* ResetPassword.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResetPassword.h; sourceTree = "<group>"; };
@@ -1009,6 +1012,8 @@
 				474FAE911F38E0A900970A1F /* TimeSlot.m */,
 				47EF0E2E1EDA23B3000B07BB /* Today.h */,
 				47EF0E2F1EDA23B3000B07BB /* Today.m */,
+				476078F620161600009EECA3 /* VendorBookings.h */,
+				476078F720161600009EECA3 /* VendorBookings.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -1628,6 +1633,7 @@
 				473535331F0B1E71009FCE41 /* Explore.m in Sources */,
 				479F7D711EF16D6700EB445A /* ProfessionalLogin.m in Sources */,
 				47605F1B1F3F5B0600991C3A /* Reservation+API.m in Sources */,
+				476078F820161600009EECA3 /* VendorBookings.m in Sources */,
 				47FE51CC1EFD5BE100A39BAE /* Service+API.m in Sources */,
 				477935551F89A1EF00E0C034 /* EKResetPhoneNumberViewController.m in Sources */,
 				47C7D4CC1EBB5EF000457E53 /* Day.m in Sources */,
