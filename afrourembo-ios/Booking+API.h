@@ -7,7 +7,11 @@
 //
 
 #import "Booking.h"
+
+#import "VendorBookings.h"
+
 #import <RestKit/RestKit.h>
+
 #import "EKNetworkingConstants.h"
 
 typedef void (^VendorBookingsSuccessBlock)(NSArray *array);
@@ -15,7 +19,7 @@ typedef void (^VendorBookingsErrorBlock)(NSError *error, NSString *errorMessage,
 
 @interface Booking (API)
 
-///
+/// bookingTitle
 + (RKObjectMapping *)map1;
 
 /// Maps the returned reponse from the GET vendor bookings call

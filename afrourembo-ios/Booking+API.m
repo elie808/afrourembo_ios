@@ -26,8 +26,11 @@
 
 + (RKResponseDescriptor *)getBookingsForVendorResponseDescriptor {
     
+    RKObjectMapping *mapping = [RKObjectMapping mappingForClass:[VendorBookings class]];
+    [mapping addAttributeMappingsFromArray:@[@"userId", @"userType", @"fromTime", @"toTime"]];
+
     RKResponseDescriptor *response = [RKResponseDescriptor
-                                      responseDescriptorWithMapping:[Booking map1]
+                                      responseDescriptorWithMapping:mapping
                                       method:RKRequestMethodGET
                                       pathPattern:kUserProfessionalBookingsAPIPath
                                       keyPath:nil
