@@ -122,20 +122,34 @@ static NSString * const kTimeCell = @"bookingTimeCell";
 #pragma mark - Helpers
 
 - (void)getDaysForPro:(Professional *)pro {
-    
+
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     [Day getAvailabilityOfVendor:pro.professionalID
                           ofType:kProfessionalType // hardcoded, because we decided to only support this type for now ...
                        withToken:[EKSettings getSavedCustomer].token
                        withBlock:^(NSArray *daysArray) {
                            
-                           [MBProgressHUD hideHUDForView:self.view animated:YES];
-                           
                            self.selectedPro = pro;
                            self.emptyTimeDataView.hidden = YES;
                            [self.daysDataSource addObjectsFromArray:[self populateDataSourcesFrom:daysArray]];
-                           [self.dayCollectionView reloadData];
-         
+                           // [self.dayCollectionView reloadData];
+                           
+                           // get the already booked slots/appointements of a professional
+                           [Booking getBookingsForVendor:pro.professionalID
+                                                  ofType:kProfessionalType
+                                               withToken:[EKSettings getSavedCustomer].token
+                                               withBlock:^(NSArray<VendorBookings *> *array) {
+                                                   
+                                                   [MBProgressHUD hideHUDForView:self.view animated:YES];
+                                                   [self disableBookedTimeSlots:array];
+                                                   [self.dayCollectionView reloadData];
+                                                   
+                                               } withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
+                                                   
+                                                   [MBProgressHUD hideHUDForView:self.view animated:YES];
+                                                   [self handleVendorAvailabilityErrors:error errorMessage:errorMessage statusCode:statusCode];
+                                               }];
+                           
                        } withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
                            
                            [MBProgressHUD hideHUDForView:self.view animated:YES];

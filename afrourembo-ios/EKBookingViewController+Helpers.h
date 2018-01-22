@@ -19,6 +19,9 @@
 /// Helper method called by populateDataSourcesFrom:, to abstract populating the hours inside each day
 - (NSArray *)markDayUnavailable:(NSDate *)day from:(NSNumber *)startHour endingHour:(NSNumber *)toHour inMinuteIncrements:(NSNumber *)minIncrements;
 
+/// Disable already booked slots on an available day  
+- (void)disableBookedTimeSlots:(NSArray<VendorBookings *> *)vendorBookingsArray;
+
 - (void)highlightCellsForTimeSlotAtIndexPath:(NSIndexPath *)indexPath;
 
 - (void)handleVendorAvailabilityErrors:(NSError *)error errorMessage:(NSString *)errorMessage statusCode:(NSInteger) statusCode;

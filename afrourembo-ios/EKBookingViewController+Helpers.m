@@ -198,6 +198,42 @@
     return [NSArray arrayWithArray:timeSlotsArray];
 }
 
+- (void)disableBookedTimeSlots:(NSArray<VendorBookings *> *)vendorBookingsArray {
+    
+    if (self.daysDataSource.count > 0 && vendorBookingsArray.count > 0) {
+        
+        // go over the 10 weekdays in the data source
+        for (Day *weekDay in self.daysDataSource) {
+            
+            // check all the booked dates of professional
+            for (VendorBookings *bookedDate in vendorBookingsArray) {
+                
+                // if a booked date coincides with a day in the data source
+                if ([weekDay.dayDate isSameDay:bookedDate.fromTime]) {
+                    
+                    // set unavailable slots
+                    for (TimeSlot *timeSlot in weekDay.timeSlotsArray) {
+                        
+                        if ( [timeSlot.date hoursFrom:bookedDate.fromTime] == 0 && [timeSlot.date minutesFrom:bookedDate.fromTime] == 0) {
+                            
+                            timeSlot.isAvailable = NO;
+                            
+                        } else if ([timeSlot.date hoursFrom:bookedDate.toTime] == 0 && [timeSlot.date minutesFrom:bookedDate.toTime] == 0) {
+                            
+                            timeSlot.isAvailable = NO;
+                            
+                        } else if ([timeSlot.date hoursFrom:bookedDate.fromTime] > 0 && [timeSlot.date hoursFrom:bookedDate.toTime] < 0) {
+                            
+                            timeSlot.isAvailable = NO;
+                        }
+                        
+                    }
+                }
+            }
+        }
+    }
+}
+
 - (void)highlightCellsForTimeSlotAtIndexPath:(NSIndexPath *)indexPath {
     
     TimeSlot *timeSlot = self.timesDataSource[indexPath.row];
