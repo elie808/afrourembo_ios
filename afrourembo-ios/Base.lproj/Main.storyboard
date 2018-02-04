@@ -1242,7 +1242,7 @@
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                         </userDefinedRuntimeAttributes>
                                     </label>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="f8s-GF-DTw">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icPlaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="f8s-GF-DTw">
                                         <rect key="frame" x="11" y="144" width="28" height="28"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="28" id="8BN-9i-VN0"/>
@@ -1368,7 +1368,7 @@
                                             <constraint firstAttribute="width" constant="28" id="hbZ-A4-kdA"/>
                                         </constraints>
                                     </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2pa-7h-yud">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icPlaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="2pa-7h-yud">
                                         <rect key="frame" x="8" y="184" width="28" height="28"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="28" id="VTw-ZF-lTm"/>
@@ -1570,7 +1570,7 @@
                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OzJ-b4-0Ai">
                                                                         <rect key="frame" x="11" y="4" width="58" height="58"/>
                                                                         <subviews>
-                                                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dummy_male2" translatesAutoresizingMaskIntoConstraints="NO" id="0o4-av-mGc">
+                                                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icPlaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="0o4-av-mGc">
                                                                                 <rect key="frame" x="5" y="5" width="48" height="48"/>
                                                                                 <userDefinedRuntimeAttributes>
                                                                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -1731,7 +1731,7 @@
                                                     <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                 </textView>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dummy_male1" translatesAutoresizingMaskIntoConstraints="NO" id="4lR-AM-m5i">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icPlaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="4lR-AM-m5i">
                                                     <rect key="frame" x="23" y="183.5" width="24" height="24"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="24" id="Vvg-DG-BeF"/>
@@ -1959,7 +1959,7 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VZp-PA-lfO">
                                                     <rect key="frame" x="12" y="5" width="76" height="77"/>
                                                     <subviews>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ihm-xl-KCF">
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icPlaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="Ihm-xl-KCF">
                                                             <rect key="frame" x="6" y="6" width="64" height="64"/>
                                                             <userDefinedRuntimeAttributes>
                                                                 <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -2688,8 +2688,6 @@
     <resources>
         <image name="0star" width="108" height="15"/>
         <image name="brush_tableview" width="320" height="285"/>
-        <image name="dummy_male1" width="118" height="118"/>
-        <image name="dummy_male2" width="153" height="151"/>
         <image name="icBookingEmpty" width="56" height="43"/>
         <image name="icCartActive" width="20" height="18"/>
         <image name="icFavEmpty" width="58" height="70"/>
@@ -2703,6 +2701,7 @@
         <image name="icMenu" width="16" height="16"/>
         <image name="icNext" width="10" height="16"/>
         <image name="icPaymentDone" width="64" height="64"/>
+        <image name="icPlaceholder" width="62" height="62"/>
         <image name="icTwitterActive" width="24" height="21"/>
     </resources>
     <inferredMetricsTieBreakers>
