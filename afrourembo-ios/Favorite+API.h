@@ -7,7 +7,12 @@
 //
 
 #import "Favorite.h"
+#import <RestKit/RestKit.h>
+#import "EKNetworkingConstants.h"
 
 @interface Favorite (API)
+
+/// userId, userType, address, businessName, rating, ratingBasedOn;
++ (RKObjectMapping *)map1;
 
 @end

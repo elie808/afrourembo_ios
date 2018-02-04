@@ -10,4 +10,15 @@
 
 @implementation Favorite (API)
 
++ (RKObjectMapping *)map1 {
+    
+    RKObjectMapping *mapping = [RKObjectMapping mappingForClass:[Favorite class]];
+    [mapping addAttributeMappingsFromArray:@[@"address", @"businessName", @"rating", @"ratingBasedOn"]];
+    
+    [mapping addAttributeMappingsFromDictionary:@{@"_id" : @"userId"}];
+    [mapping addAttributeMappingsFromDictionary:@{@"type" : @"userType"}];
+    
+    return mapping;
+}
+
 @end
