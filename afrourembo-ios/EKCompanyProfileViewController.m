@@ -23,6 +23,8 @@
 
     if (self.passedProfessional) {
         
+        [self configureFavoritesButton];
+        
         self.title = [NSString stringWithFormat:@"%@ %@", self.passedProfessional.fName, self.passedProfessional.lName];
         
         _vendorID = self.passedProfessional.professionalID;
@@ -31,6 +33,8 @@
         [self getReviewsForVendor:_vendorID ofType:_vendorType];
         
     } else if (self.passedSalon) {
+        
+        [self configureFavoritesButton];
         
         self.title = self.passedSalon.name;
         
@@ -41,6 +45,15 @@
     }
     
     [self configureCarousel];
+}
+
+- (void)configureFavoritesButton {
+    
+    if ([EKSettings getSavedCustomer] && [EKSettings getSavedCustomer].token) {
+        self.favoritesButton.hidden = NO;
+    } else {
+        self.favoritesButton.hidden = YES;
+    }
 }
 
 #pragma mark - MWPhotoBrowserDelegate
