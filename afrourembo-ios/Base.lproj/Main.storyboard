@@ -611,6 +611,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="collectionView" destination="1RK-K3-2Xp" id="7AT-5G-WMl"/>
+                        <outlet property="favoritesButton" destination="1zr-tG-XYo" id="KOE-2X-jVC"/>
                         <outlet property="sideMenuButton" destination="sk3-lC-cna" id="8gH-7o-CB1"/>
                         <outlet property="sideMenuTableView" destination="T0y-Fx-VWk" id="2RM-JF-Ho8"/>
                         <segue destination="ITR-70-tiW" kind="show" identifier="exploreToDiscover" id="0Iw-2o-UQu"/>
@@ -1900,6 +1901,7 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="carousel" destination="EHU-HD-AFQ" id="mUO-kx-Tjx"/>
+                        <outlet property="favoritesButton" destination="WEC-yZ-fJU" id="Iqm-o7-M5c"/>
                         <outlet property="photoCountLabel" destination="e7g-Nq-gJ2" id="34O-qs-DdB"/>
                         <outlet property="starsImageView" destination="eJU-gn-pzG" id="u6L-C5-YYu"/>
                         <outlet property="tableView" destination="eqU-Vo-25N" id="D4C-L2-csJ"/>

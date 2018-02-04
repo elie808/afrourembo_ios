@@ -25,6 +25,7 @@
 @property (strong, nonatomic) Customer *passedCustomer;
 
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *sideMenuButton;
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *favoritesButton;
 @property (strong, nonatomic) IBOutlet UITableView *sideMenuTableView;
 @property (strong, nonatomic) IBOutlet UICollectionView *collectionView;
 

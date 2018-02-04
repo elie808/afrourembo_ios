@@ -22,25 +22,9 @@ static NSString * const kDiscoverSegue  = @"exploreToDiscover";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.sideMenuDataSource = @[ @{@"icExploreActive"  : @"Explore"},
-                                 @{@"icCartActive"     : @"Cart"},
-                                 @{@"icPaymentsActive" : @"Orders"},
-//                                 @{@"icGiftNormal"     : @"Gifts"},
-                                 @{@"icSettingsActive" : @"Settings"}
-                                 ];
+    [self configureSideTableView];
     
-    _sideMenuOpen = NO;
-    self.sideMenuTableView.frame = CGRectMake(-self.view.frame.size.width, 0,
-                                              self.view.frame.size.width/1.5, self.view.frame.size.height);
-    [self.view addSubview:self.sideMenuTableView];
-    
-    // add drop shadow
-    self.sideMenuTableView.clipsToBounds = NO;
-    self.sideMenuTableView.layer.masksToBounds = NO;
-    [self.sideMenuTableView.layer setShadowColor:[[UIColor blackColor] CGColor]];
-    [self.sideMenuTableView.layer setShadowOffset:CGSizeMake(-10, 10)];
-    [self.sideMenuTableView.layer setShadowRadius:10.0];
-    [self.sideMenuTableView.layer setShadowOpacity:0.6];
+    [self configureFavoritesButton];
     
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     [Category getCategoriesWithBlock:^(NSArray *categoriesArray) {
@@ -54,39 +38,6 @@ static NSString * const kDiscoverSegue  = @"exploreToDiscover";
         
         [MBProgressHUD hideHUDForView:self.view animated:YES];
     }];
-}
-
-- (NSArray *)createStubs {
-    
-    /*
-    Service *service1 = [Service new];
-    service1.name = kService1;
-    service1.icon = @"dummy_portrait1";
-    
-    Service *service2 = [Service new];
-    service2.name = kService2;
-    service2.icon = @"dummy_portrait2";
-    
-    Service *service3 = [Service new];
-    service3.name = kService3;
-    service3.icon = @"dummy_portrait3";
-    
-    Service *service4 = [Service new];
-    service4.name = kService4;
-    service4.icon = @"dummy_portrait4";
-    
-    return @[service1, service2, service3, service4, service1, service2, service3, service4, service1, service2, service3, service4];
-    */
-    
-    Category *cat = [Category new];
-    cat.name = kService1;
-    cat.icon = @[@"dummy_portrait4"];
-    
-    Category *cat1 = [Category new];
-    cat1.name = kService2;
-    cat1.icon = @[@"dummy_portrait3"];
-    
-    return @[cat, cat1 ,cat];
 }
 
 #pragma mark - UICollectionViewLayout
@@ -146,6 +97,43 @@ static NSString * const kDiscoverSegue  = @"exploreToDiscover";
 
 #pragma mark - Helpers
 
+- (void)configureSideTableView {
+    
+    self.sideMenuDataSource = @[ @{@"icExploreActive"  : @"Explore"},
+                                 @{@"icCartActive"     : @"Cart"},
+                                 @{@"icPaymentsActive" : @"Orders"},
+                                 //                                 @{@"icGiftNormal"     : @"Gifts"},
+                                 @{@"icSettingsActive" : @"Settings"}
+                                 ];
+    
+    _sideMenuOpen = NO;
+    self.sideMenuTableView.frame = CGRectMake(-self.view.frame.size.width, 0,
+                                              self.view.frame.size.width/1.5, self.view.frame.size.height);
+    [self.view addSubview:self.sideMenuTableView];
+    
+    // add drop shadow
+    self.sideMenuTableView.clipsToBounds = NO;
+    self.sideMenuTableView.layer.masksToBounds = NO;
+    [self.sideMenuTableView.layer setShadowColor:[[UIColor blackColor] CGColor]];
+    [self.sideMenuTableView.layer setShadowOffset:CGSizeMake(-10, 10)];
+    [self.sideMenuTableView.layer setShadowRadius:10.0];
+    [self.sideMenuTableView.layer setShadowOpacity:0.6];
+}
+
+- (void)configureFavoritesButton {
+    
+    if ( (self.passedCustomer && self.passedCustomer.token) || ([EKSettings getSavedCustomer] && [EKSettings getSavedCustomer].token) ) {
+        
+        self.favoritesButton.enabled = YES;
+        [self.favoritesButton setTintColor:[UIColor whiteColor]];
+        
+    } else {
+        
+        self.favoritesButton.enabled = NO;
+        [self.favoritesButton setTintColor:[UIColor clearColor]];
+    }
+}
+
 - (void)animateSideMenu {
     
     CGRect sideMenuFrame = CGRectZero;
@@ -171,6 +159,39 @@ static NSString * const kDiscoverSegue  = @"exploreToDiscover";
                      completion:^(BOOL finished) {
                          [self.sideMenuButton setImage:sideButtonImage];
                      }];
+}
+
+- (NSArray *)createStubs {
+    
+    /*
+     Service *service1 = [Service new];
+     service1.name = kService1;
+     service1.icon = @"dummy_portrait1";
+     
+     Service *service2 = [Service new];
+     service2.name = kService2;
+     service2.icon = @"dummy_portrait2";
+     
+     Service *service3 = [Service new];
+     service3.name = kService3;
+     service3.icon = @"dummy_portrait3";
+     
+     Service *service4 = [Service new];
+     service4.name = kService4;
+     service4.icon = @"dummy_portrait4";
+     
+     return @[service1, service2, service3, service4, service1, service2, service3, service4, service1, service2, service3, service4];
+     */
+    
+    Category *cat = [Category new];
+    cat.name = kService1;
+    cat.icon = @[@"dummy_portrait4"];
+    
+    Category *cat1 = [Category new];
+    cat1.name = kService2;
+    cat1.icon = @[@"dummy_portrait3"];
+    
+    return @[cat, cat1 ,cat];
 }
 
 #pragma mark - Navigation
