@@ -10,6 +10,9 @@
 
 @interface Favorite : NSObject
 
+/// used to map the _id received from server, not to be confused with userId. MOTHERFUCK THIS RETARDED DESIGN
+@property NSString *serverID;
+
 @property NSString *userId;
 @property NSString *userType;
 

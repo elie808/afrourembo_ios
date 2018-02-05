@@ -15,4 +15,7 @@
 /// userId, userType, address, businessName, rating, ratingBasedOn;
 + (RKObjectMapping *)map1;
 
+/// userId, userType
++ (RKObjectMapping *)map2;
+
 @end

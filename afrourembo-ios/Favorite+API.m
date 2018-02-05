@@ -21,4 +21,14 @@
     return mapping;
 }
 
++ (RKObjectMapping *)map2 {
+    
+    RKObjectMapping *mapping = [RKObjectMapping mappingForClass:[Favorite class]];
+    [mapping addAttributeMappingsFromArray:@[@"userType", @"userId"]];
+    
+    [mapping addAttributeMappingsFromDictionary:@{@"_id" : @"serverID"}];
+    
+    return mapping;
+}
+
 @end
