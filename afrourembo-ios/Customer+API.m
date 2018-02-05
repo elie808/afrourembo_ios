@@ -17,6 +17,10 @@
     RKObjectMapping *mapping = [RKObjectMapping mappingForClass:[Customer class]];
     [mapping addAttributeMappingsFromArray:@[@"email", @"password", @"token", @"fName", @"lName", @"phone", @"profilePicture"]];
    
+    [mapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"favorites"
+                                                                            toKeyPath:@"favorites"
+                                                                          withMapping:[Favorite map2]]];
+    
     return mapping;
 }
 
@@ -161,11 +165,11 @@
 
 + (RKResponseDescriptor *)userPostFavoritesResponseDescriptor {
     
-    RKObjectMapping *mapping = [RKObjectMapping mappingForClass:[ClientBooking class]];
-    [mapping addAttributeMappingsFromArray:@[@"bookingId"]];
+//    RKObjectMapping *mapping = [RKObjectMapping mappingForClass:[ClientBooking class]];
+//    [mapping addAttributeMappingsFromArray:@[@"bookingId"]];
     
     RKResponseDescriptor *response = [RKResponseDescriptor
-                                      responseDescriptorWithMapping:mapping
+                                      responseDescriptorWithMapping:[Favorite map2]
                                       method:RKRequestMethodPOST
                                       pathPattern:kUserFavoritesAPIPath
                                       keyPath:nil
@@ -175,14 +179,8 @@
 
 + (RKResponseDescriptor *)userGetFavoritesResponseDescriptor {
     
-    RKObjectMapping *mapping = [RKObjectMapping mappingForClass:[Favorite class]];
-    [mapping addAttributeMappingsFromArray:@[@"address", @"businessName", @"rating", @"ratingBasedOn"]];
-    
-    [mapping addAttributeMappingsFromDictionary:@{@"_id" : @"userId"}];
-    [mapping addAttributeMappingsFromDictionary:@{@"type" : @"userType"}];
-    
     RKResponseDescriptor *response = [RKResponseDescriptor
-                                      responseDescriptorWithMapping:mapping
+                                      responseDescriptorWithMapping:[Favorite map1]
                                       method:RKRequestMethodGET
                                       pathPattern:kUserFavoritesAPIPath
                                       keyPath:nil
@@ -509,46 +507,6 @@
                                               }];
 }
 
-+ (void)postFavorite:(NSString *)userID vendorType:(NSString *)userType withToken:(NSString *)token withBlock:(CustomerFavoritesCodeSuccessBlock)successBlock withErrors:(CustomerSignUpErrorBlock)errorBlock {
-    
-    [[[RKObjectManager sharedManager] HTTPClient] setDefaultHeader:@"Authorization" value:token];
-    
-    Favorite *favObj = [Favorite new];
-    favObj.userId = userID;
-    favObj.userType = userType;
-    
-    [[RKObjectManager sharedManager] postObject:favObj
-                                           path:kUserFavoritesAPIPath
-                                     parameters:nil
-                                        success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-                                            
-//                                            Customer *customerObj = [mappingResult.array firstObject];
-                                            successBlock(nil);
-                                            
-                                        } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-                                            
-                                            if (operation.HTTPRequestOperation.responseData) {
-                                                
-                                                // exctract error message
-                                                NSDictionary *myDic = [NSJSONSerialization
-                                                                       JSONObjectWithData:operation.HTTPRequestOperation.responseData
-                                                                       options:NSJSONReadingMutableLeaves
-                                                                       error:nil];
-                                                
-                                                NSString *errorMessage = [myDic valueForKey:@"message"];
-                                                
-                                                NSNumber *statusCode = [myDic valueForKey:@"statusCode"];
-                                                
-                                                NSLog(@"-------ERROR MESSAGE: %@", errorMessage);
-                                                errorBlock(error, errorMessage, [statusCode integerValue]);
-                                                
-                                            } else {
-                                                
-                                                errorBlock(error, @"You are not connected to the internet.", 0);
-                                            }
-                                        }];
-}
-
 + (void)getFavoritesForUser:(NSString *)token withBlock:(CustomerFavoritesCodeSuccessBlock)successBlock withErrors:(CustomerSignUpErrorBlock)errorBlock {
     
     [[[RKObjectManager sharedManager] HTTPClient] setDefaultHeader:@"Authorization" value:token];
@@ -584,7 +542,47 @@
                                               }];
 }
 
-+ (void)deleteFavorite:(NSString *)userID withToken:(NSString *)token withBlock:(CustomerFavoritesCodeSuccessBlock)successBlock withErrors:(CustomerSignUpErrorBlock)errorBlock {
++ (void)postFavorite:(NSString *)userID vendorType:(NSString *)userType withToken:(NSString *)token withBlock:(CustomerFavoriteVendorCodeSuccessBlock)successBlock withErrors:(CustomerSignUpErrorBlock)errorBlock {
+    
+    [[[RKObjectManager sharedManager] HTTPClient] setDefaultHeader:@"Authorization" value:token];
+    
+    Favorite *favObj = [Favorite new];
+    favObj.userId = userID;
+    favObj.userType = userType;
+    
+    [[RKObjectManager sharedManager] postObject:favObj
+                                           path:kUserFavoritesAPIPath
+                                     parameters:nil
+                                        success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+                                            
+                                            Favorite *favObj = [mappingResult.array firstObject];
+                                            successBlock(favObj);
+                                            
+                                        } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                                            
+                                            if (operation.HTTPRequestOperation.responseData) {
+                                                
+                                                // exctract error message
+                                                NSDictionary *myDic = [NSJSONSerialization
+                                                                       JSONObjectWithData:operation.HTTPRequestOperation.responseData
+                                                                       options:NSJSONReadingMutableLeaves
+                                                                       error:nil];
+                                                
+                                                NSString *errorMessage = [myDic valueForKey:@"message"];
+                                                
+                                                NSNumber *statusCode = [myDic valueForKey:@"statusCode"];
+                                                
+                                                NSLog(@"-------ERROR MESSAGE: %@", errorMessage);
+                                                errorBlock(error, errorMessage, [statusCode integerValue]);
+                                                
+                                            } else {
+                                                
+                                                errorBlock(error, @"You are not connected to the internet.", 0);
+                                            }
+                                        }];
+}
+
++ (void)deleteFavorite:(NSString *)userID withToken:(NSString *)token withBlock:(CustomerFavoriteVendorCodeSuccessBlock)successBlock withErrors:(CustomerSignUpErrorBlock)errorBlock {
     
     [[[RKObjectManager sharedManager] HTTPClient] setDefaultHeader:@"Authorization" value:token];
     
@@ -595,11 +593,8 @@
                                               
                                               NSLog(@"!!! SUCCESS DELETING FAVORITE VENDOR !!!");
 
-                                              if (mappingResult.array.count > 0) {
-                                                  successBlock(mappingResult.array);
-                                              } else {
-                                                  successBlock(nil);
-                                              }
+                                              Favorite *favObj = [mappingResult.array firstObject];
+                                              successBlock(favObj);
                                               
                                           } failure:^(RKObjectRequestOperation *operation, NSError *error) {
                                               

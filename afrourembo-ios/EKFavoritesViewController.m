@@ -24,22 +24,31 @@ static NSString * const kVendorProfile = @"favoritesToVendorProfileVC";
                                             self.tableView.frame.size.width, self.tableView.frame.size.height);
     self.emptyFavoritesView.hidden = NO;
     [self.view addSubview:self.emptyFavoritesView];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
     
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     [Customer getFavoritesForUser:[EKSettings getSavedCustomer].token
                         withBlock:^(NSArray<Favorite *> *favoriteObj) {
-                          
+                            
                             [MBProgressHUD hideHUDForView:self.view animated:YES];
+                            
+                            [_dataSourceArray removeAllObjects];
+                            
                             if (favoriteObj.count > 0) {
                                 self.emptyFavoritesView.hidden = YES;
                                 _dataSourceArray = [NSMutableArray arrayWithArray:favoriteObj];
-                                [self.tableView reloadData];
                             }
                             
+                            [self.tableView reloadData];
+                            
                         } withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
+                            
                             [MBProgressHUD hideHUDForView:self.view animated:YES];
                             [self showMessage:errorMessage withTitle:@"Error" completionBlock:nil];
-                       }];
+                        }];
 }
 
 #pragma mark - UITableViewDataSource

@@ -12,10 +12,12 @@
 #import "ResetPassword.h"
 #import "ClientBooking.h"
 #import "Favorite.h"
+#import "Favorite+API.h"
 
 typedef void (^CustomerSignUpSuccessBlock)(Customer *customerObj);
 typedef void (^CustomerResetCodeSuccessBlock)(void);
 typedef void (^CustomerFavoritesCodeSuccessBlock)(NSArray <Favorite*> *favoriteObj);
+typedef void (^CustomerFavoriteVendorCodeSuccessBlock)(Favorite *favoriteObj);
 typedef void (^CustomerBookingsSuccessBlock)(NSArray <ClientBooking*> *customerObj);
 typedef void (^CustomerSignUpErrorBlock)(NSError *error, NSString *errorMessage, NSInteger statusCode);
 typedef void (^CustomerEditErrorBlock)(NSError *error, NSString *errorMessage);
@@ -95,10 +97,10 @@ typedef void (^CustomerEditErrorBlock)(NSError *error, NSString *errorMessage);
 
 + (void)getBookingsForUser:(NSString *)token withBlock:(CustomerBookingsSuccessBlock)successBlock withErrors:(CustomerSignUpErrorBlock)errorBlock;
 
-+ (void)postFavorite:(NSString *)userID vendorType:(NSString *)userType withToken:(NSString *)token withBlock:(CustomerFavoritesCodeSuccessBlock)successBlock withErrors:(CustomerSignUpErrorBlock)errorBlock;
-
 + (void)getFavoritesForUser:(NSString *)token withBlock:(CustomerFavoritesCodeSuccessBlock)successBlock withErrors:(CustomerSignUpErrorBlock)errorBlock;
 
-+ (void)deleteFavorite:(NSString *)userID withToken:(NSString *)token withBlock:(CustomerFavoritesCodeSuccessBlock)successBlock withErrors:(CustomerSignUpErrorBlock)errorBlock;
++ (void)postFavorite:(NSString *)userID vendorType:(NSString *)userType withToken:(NSString *)token withBlock:(CustomerFavoriteVendorCodeSuccessBlock)successBlock withErrors:(CustomerSignUpErrorBlock)errorBlock;
+
++ (void)deleteFavorite:(NSString *)userID withToken:(NSString *)token withBlock:(CustomerFavoriteVendorCodeSuccessBlock)successBlock withErrors:(CustomerSignUpErrorBlock)errorBlock;
 
 @end

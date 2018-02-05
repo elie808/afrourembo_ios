@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Favorite.h"
 
 @interface CustomerFacebook : NSObject
 @property NSString *fbToken; //token returned by Facebook upon signup. Use to register user on our server
@@ -24,5 +25,7 @@
 @property NSString *lName;
 @property NSString *phone;
 @property NSString *profilePicture;
+
+@property NSArray <Favorite *> *favorites;
 
 @end
