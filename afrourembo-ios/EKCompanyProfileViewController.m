@@ -12,7 +12,15 @@
 @implementation EKCompanyProfileViewController {
     NSString *_vendorID;
     NSString *_vendorType;
-    NSMutableArray *_photoGalleryDataSource; // Used as data source for the full screen photo gallery
+    
+    /// used as data source for the full screen photo gallery
+    NSMutableArray *_photoGalleryDataSource;
+    
+    /// used to delete vendor from favorites. Obviously different that userID. Obviously dumb as fuck
+    NSString *_vendorUserID;
+    
+    /// to decide whether a vendor should be favorited or unfavorited by the favoritesButton
+    BOOL _canFavoriteVendor;
 }
 
 - (void)viewDidLoad {
@@ -23,8 +31,6 @@
 
     if (self.passedProfessional) {
         
-        [self configureFavoritesButton];
-        
         self.title = [NSString stringWithFormat:@"%@ %@", self.passedProfessional.fName, self.passedProfessional.lName];
         
         _vendorID = self.passedProfessional.professionalID;
@@ -33,8 +39,6 @@
         [self getReviewsForVendor:_vendorID ofType:_vendorType];
         
     } else if (self.passedSalon) {
-        
-        [self configureFavoritesButton];
         
         self.title = self.passedSalon.name;
         
@@ -47,11 +51,34 @@
     [self configureCarousel];
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    [self configureFavoritesButton];
+}
+
 - (void)configureFavoritesButton {
     
-    if ([EKSettings getSavedCustomer] && [EKSettings getSavedCustomer].token) {
+    if ( (self.passedCustomer && self.passedCustomer.token) || ([EKSettings getSavedCustomer] && [EKSettings getSavedCustomer].token) ) {
+        
         self.favoritesButton.hidden = NO;
+
+        _canFavoriteVendor = YES; // default
+        [self.favoritesButton setImage:[UIImage imageNamed:@"icNoFav"] forState:UIControlStateNormal];
+        
+        // check if vendor is already favorited by user
+        for (Favorite *favObj in [EKSettings getSavedCustomer].favorites) {
+            
+            if ([_vendorID isEqualToString:favObj.userId]) {
+                
+                _vendorUserID = favObj.serverID;
+                _canFavoriteVendor = NO;
+                [self.favoritesButton setImage:[UIImage imageNamed:@"icFavorites"] forState:UIControlStateNormal];
+            }
+        }
+        
     } else {
+        
         self.favoritesButton.hidden = YES;
     }
 }
@@ -182,21 +209,66 @@
 
 - (IBAction)didTapFavoriteButton:(id)sender {
     
-    [Customer postFavorite:_vendorID vendorType:_vendorType withToken:[EKSettings getSavedCustomer].token
-                 withBlock:^(NSArray<Favorite *> *favoriteObj) {
-                     [self showMessage:@"Added to favorites!" withTitle:@"Success" completionBlock:nil];
-                 } withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
-                     [self showMessage:errorMessage withTitle:@"Error" completionBlock:nil];
-                 }];
-    
-//    [Customer deleteFavorite:_vendorID
-//                   withToken:[EKSettings getSavedCustomer].token
-//                   withBlock:^(NSArray<Favorite *> *favoriteObj) {
-//                       [self showMessage:@"Removed from favorites!" withTitle:@"Success" completionBlock:nil];
-//                   } withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
-//                      [self showMessage:errorMessage withTitle:@"Error" completionBlock:nil];
-//                  }];
-    
+    if (_canFavoriteVendor) {
+        
+        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        [Customer postFavorite:_vendorID vendorType:_vendorType withToken:[EKSettings getSavedCustomer].token
+                     withBlock:^(Favorite *favoriteObj) {
+
+                         [MBProgressHUD hideHUDForView:self.view animated:YES];
+                         
+                         // update localy saved user
+                         Customer *savedCustomer = [EKSettings getSavedCustomer];
+                         NSMutableArray *temp = [NSMutableArray arrayWithArray:savedCustomer.favorites];
+                         [temp addObject:favoriteObj];
+                         savedCustomer.favorites = [NSArray arrayWithArray:temp];
+                         [EKSettings updateSavedCustomer:savedCustomer];
+                         
+                         _canFavoriteVendor = NO;
+                         _vendorUserID = favoriteObj.serverID; // to allow unfavoring vendor without navigating back
+                         [self.favoritesButton setImage:[UIImage imageNamed:@"icFavorites"] forState:UIControlStateNormal];
+                         
+                     } withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
+                         [MBProgressHUD hideHUDForView:self.view animated:YES];
+                         [self showMessage:errorMessage withTitle:@"Error" completionBlock:nil];
+                     }];
+        
+    } else {
+        
+        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        [Customer deleteFavorite:_vendorUserID
+                       withToken:[EKSettings getSavedCustomer].token
+                       withBlock:^(Favorite *favoriteObj) {
+
+                           [MBProgressHUD hideHUDForView:self.view animated:YES];
+                           
+                           // update localy saved user
+                           Customer *savedCustomer = [EKSettings getSavedCustomer];
+                           NSMutableArray *temp = [NSMutableArray arrayWithArray:savedCustomer.favorites];
+                           
+                           NSUInteger favIndex = 69000; // hacky way to initialize this var. Using a huge number that'll "probably not occur"
+                           for (Favorite *favObj in temp) {
+                               if ([_vendorID isEqualToString:favObj.userId]) {
+                                   favIndex = [temp indexOfObject:favObj];
+                               }
+                           }
+                           
+                           if (favIndex < 69000) {
+                               [temp removeObjectAtIndex:favIndex];
+                           }
+                           
+                           savedCustomer.favorites = [NSArray arrayWithArray:temp];
+                           [EKSettings updateSavedCustomer:savedCustomer];
+                           
+                           _canFavoriteVendor = YES;
+                           [self.favoritesButton setImage:[UIImage imageNamed:@"icNoFav"] forState:UIControlStateNormal];
+                           
+                       } withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
+                           
+                           [MBProgressHUD hideHUDForView:self.view animated:YES];
+                           [self showMessage:errorMessage withTitle:@"Error" completionBlock:nil];
+                       }];
+    }
 }
 
 - (IBAction)didTapInstagramButton:(id)sender {
