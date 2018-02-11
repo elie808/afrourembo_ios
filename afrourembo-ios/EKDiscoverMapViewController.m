@@ -138,7 +138,7 @@
     // to ensure the toggleButton is always visible as the topmost view (could use layer.zPosition = MAXFLOAT as an alternative)
     [self.view insertSubview:self.tableView belowSubview:self.toggleButton];
     
-    self.tableView.frame = CGRectMake(self.mapView.frame.origin.x, self.mapView.frame.size.height,
+    self.tableView.frame = CGRectMake(self.view.frame.origin.x, self.view.frame.size.height,
                                       self.mapView.frame.size.width, self.mapView.frame.size.height);
 }
 
@@ -154,7 +154,7 @@
     CGRect visibleListFrame = CGRectMake(self.mapView.frame.origin.x, self.mapView.frame.origin.y,
                                          self.mapView.frame.size.width, self.mapView.frame.size.height);
     
-    CGRect hiddenListFrame = CGRectMake(self.mapView.frame.origin.x, self.mapView.frame.size.height,
+    CGRect hiddenListFrame = CGRectMake(self.view.frame.origin.x, self.view.frame.size.height,
                                         self.mapView.frame.size.width, self.mapView.frame.size.height);
     
     [UIView animateWithDuration:0.6
