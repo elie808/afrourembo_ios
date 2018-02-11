@@ -11,9 +11,6 @@
 
 static NSString * const kCartSegue   = @"bookingTimeToCartVC";
 
-//static NSString * const kPlaceHolderText = @"What do you like about this place?";
-//static CGFloat const kContainerViewHeight = 100;
-
 @implementation EKBookingViewController {
     BOOL _keyboardShowing;
 }
@@ -28,10 +25,6 @@ static NSString * const kCartSegue   = @"bookingTimeToCartVC";
     self.selectedToDate     = nil;
     self.bookingNote        = @"";
     self.selectedPro        = nil;
-    
-//    self.containerView.frame = CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, kContainerViewHeight);
-//    [self.view addSubview:self.containerView];
-//    self.containerView.hidden = YES;
     
     self.emptyTimeDataView.frame = CGRectMake(self.timeCollectionView.frame.origin.x, self.timeCollectionView.frame.origin.y,
                                               self.timeCollectionView.frame.size.width, self.timeCollectionView.frame.size.height);
@@ -54,51 +47,7 @@ static NSString * const kCartSegue   = @"bookingTimeToCartVC";
 
     [self setTwoLineTitle:self.passedService.serviceName
                secondLine:[NSString stringWithFormat:@"%ld %@ for %ld minutes", (long)self.passedService.price, self.passedService.currency, self.passedService.time]];
-    //@"5000 KES for 1 hour(s) 45 minutes"];
-    
-//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
-//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
 }
-
-/*
-- (void)viewWillDisappear:(BOOL)animated {
-    [super viewWillDisappear:animated];
-    
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillShowNotification object:nil];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillHideNotification object:nil];
-}
-*/
- 
-#pragma mark - UITextViewDelegate
-
-/*
-- (void)textViewDidChange:(UITextView *)textView {
-    
-    _bookingNote = textView.text;
-}
-
-- (void)textViewDidBeginEditing:(UITextView *)textView {
-    
-//    if ( [textView.text isEqualToString:kPlaceHolderText] ) {
-//        
-//        textView.text = @"";
-//        textView.textColor = [UIColor blackColor];
-//    }
-//    
-//    [textView becomeFirstResponder];
-}
-
-- (void)textViewDidEndEditing:(UITextView *)textView {
-    
-//    if ([textView.text isEqualToString:@""] || textView.text.length == 0) {
-//        
-//        textView.text = kPlaceHolderText;
-//        textView.textColor = [UIColor lightGrayColor];
-//    }
-//    
-//    [textView resignFirstResponder];
-}
-*/
 
 #pragma mark - UIGestureRecognizerDelegate
 
@@ -203,9 +152,7 @@ static NSString * const kCartSegue   = @"bookingTimeToCartVC";
     label.numberOfLines = 2;
     label.adjustsFontSizeToFitWidth = YES;
     label.textAlignment = NSTextAlignmentCenter;
-    
-    //    UIFont *arialFont = [UIFont boldSystemFontOfSize:14];
-    //    NSDictionary *arialDict = [NSDictionary dictionaryWithObject:arialFont forKey:NSFontAttributeName];
+
     NSMutableAttributedString *aAttrString = [[NSMutableAttributedString alloc]
                                               initWithString:[NSString stringWithFormat:@"%@ \n", firstLine]
                                               attributes:[NSDictionary dictionaryWithObject:[UIFont boldSystemFontOfSize:16]
@@ -227,40 +174,5 @@ static NSString * const kCartSegue   = @"bookingTimeToCartVC";
     
     self.navigationItem.titleView = wrapperView;
 }
-
-/*
-- (void)keyboardWillShow:(NSNotification *)notification {
-    
-    CGSize keyboardSize = [[[notification userInfo] objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
-    
-    if (!_keyboardShowing) {
-        
-        [UIView animateWithDuration:0.5 animations:^{
-            
-            self.containerView.hidden = NO;
-            
-            self.containerView.frame = CGRectMake(0,
-                                                  self.view.frame.size.height - (keyboardSize.height + kContainerViewHeight),
-                                                  self.view.frame.size.width,
-                                                  kContainerViewHeight);
-            
-            _keyboardShowing = YES;
-        }];
-    }
-}
-
-- (void)keyboardWillHide:(NSNotification *)notification {
-    
-    if (_keyboardShowing) {
-        
-        [UIView animateWithDuration:0.5 animations:^{
-            
-            self.containerView.frame = CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, kContainerViewHeight);;
-            self.containerView.hidden = YES;
-            _keyboardShowing = NO;
-        }];
-    }
-}
-*/
 
 @end
