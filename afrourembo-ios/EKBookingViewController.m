@@ -21,8 +21,6 @@ static NSString * const kCartSegue   = @"bookingTimeToCartVC";
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    self.title = self.passedService.serviceName;
-    
     // init data source
     self.daysDataSource     = [NSMutableArray new];
     self.timesDataSource    = [NSMutableArray new];
@@ -51,22 +49,26 @@ static NSString * const kCartSegue   = @"bookingTimeToCartVC";
     }
 }
 
-/*
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
 
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
+    [self setTwoLineTitle:self.passedService.serviceName
+               secondLine:[NSString stringWithFormat:@"%ld %@ for %ld minutes", (long)self.passedService.price, self.passedService.currency, self.passedService.time]];
+    //@"5000 KES for 1 hour(s) 45 minutes"];
+    
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
 }
 
+/*
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillHideNotification object:nil];
 }
- */
-
+*/
+ 
 #pragma mark - UITextViewDelegate
 
 /*
@@ -187,6 +189,44 @@ static NSString * const kCartSegue   = @"bookingTimeToCartVC";
 }
 
 #pragma mark - Helpers
+
+/// Show title on 2 lines in the navigation controller bar
+- (void)setTwoLineTitle:(NSString *)firstLine secondLine:(NSString*)secondLine {
+    
+    CGFloat titleLabelWidth = [UIScreen mainScreen].bounds.size.width/1.8;
+    
+    UIView *wrapperView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, titleLabelWidth, 44)];
+    
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, titleLabelWidth, 44)];
+    label.backgroundColor = [UIColor clearColor];
+    label.textColor = [UIColor whiteColor];
+    label.numberOfLines = 2;
+    label.adjustsFontSizeToFitWidth = YES;
+    label.textAlignment = NSTextAlignmentCenter;
+    
+    //    UIFont *arialFont = [UIFont boldSystemFontOfSize:14];
+    //    NSDictionary *arialDict = [NSDictionary dictionaryWithObject:arialFont forKey:NSFontAttributeName];
+    NSMutableAttributedString *aAttrString = [[NSMutableAttributedString alloc]
+                                              initWithString:[NSString stringWithFormat:@"%@ \n", firstLine]
+                                              attributes:[NSDictionary dictionaryWithObject:[UIFont boldSystemFontOfSize:16]
+                                                                                     forKey:NSFontAttributeName]];
+    
+    NSMutableAttributedString *vAttrString = [[NSMutableAttributedString alloc]
+                                              initWithString:secondLine
+                                              attributes:[NSDictionary dictionaryWithObject:[UIFont systemFontOfSize:12]
+                                                                                     forKey:NSFontAttributeName]];
+    
+    // color some words off the title
+    // [vAttrString addAttribute:NSForegroundColorAttributeName value:[UIColor blackColor] range:(NSMakeRange(0, 15))];
+    
+    [aAttrString appendAttributedString:vAttrString];
+    
+    label.attributedText = aAttrString;
+    
+    [wrapperView addSubview:label];
+    
+    self.navigationItem.titleView = wrapperView;
+}
 
 /*
 - (void)keyboardWillShow:(NSNotification *)notification {
