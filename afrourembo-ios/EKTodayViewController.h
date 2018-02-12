@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+#import "EKClientAppointmentDetailsViewController.h"
+
 #import "EKTodayTableViewCell.h"
 #import "EKTodayCollectionViewCell.h"
 
@@ -23,6 +25,8 @@
 #import "UIViewController+Helpers.h"
 #import <DateTools/DateTools.h>
 #import <MBProgressHUD/MBProgressHUD.h>
+
+static NSString * const kClientDetailsSegue = @"scheduleTodayToClientAppointementDetailsVC";
 
 @interface EKTodayViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UICollectionViewDelegate, UICollectionViewDataSource>
 

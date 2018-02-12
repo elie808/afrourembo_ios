@@ -408,6 +408,7 @@
                     <connections>
                         <outlet property="dateLabel" destination="pl2-Ew-6gQ" id="a96-zh-eEI"/>
                         <outlet property="tableView" destination="Snn-SK-ke9" id="NzT-W2-Dm7"/>
+                        <segue destination="UfH-Vd-GFs" kind="presentation" identifier="scheduleTodayToClientAppointementDetailsVC" modalPresentationStyle="overCurrentContext" id="uux-3N-H89"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6jn-04-hYb" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -450,7 +451,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T1M-xn-mI1">
-                                        <rect key="frame" x="72" y="48" width="44" height="44"/>
+                                        <rect key="frame" x="72" y="82" width="44" height="44"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="44" id="6Yf-c5-AHa"/>
                                             <constraint firstAttribute="height" constant="44" id="Gys-y7-Jge"/>
@@ -461,7 +462,7 @@
                                             <action selector="didTapSMSButton:" destination="uLV-Kt-loM" eventType="touchDown" id="psC-Jt-zvG"/>
                                         </connections>
                                     </button>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="MFc-go-BAq">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="MFc-go-BAq">
                                         <rect key="frame" x="20" y="20" width="44" height="44"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="44" id="TRX-Gr-gre"/>
@@ -474,20 +475,20 @@
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                         </userDefinedRuntimeAttributes>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yR3-9T-6Ni">
-                                        <rect key="frame" x="79" y="20" width="213" height="0.0"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yR3-9T-6Ni">
+                                        <rect key="frame" x="79" y="20" width="213" height="17"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="19T-Ea-wQt">
-                                        <rect key="frame" x="79" y="28" width="213" height="0.0"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="19T-Ea-wQt">
+                                        <rect key="frame" x="79" y="45" width="213" height="17"/>
                                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Client didn't leave a note..." lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6tv-mI-R7c">
-                                        <rect key="frame" x="20" y="100" width="260" height="67"/>
+                                        <rect key="frame" x="20" y="134" width="260" height="67"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="67" id="BsF-f0-kSM"/>
                                         </constraints>
@@ -496,7 +497,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ovv-4v-HmD">
-                                        <rect key="frame" x="250" y="175" width="30" height="72"/>
+                                        <rect key="frame" x="250" y="209" width="30" height="38"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                         <state key="normal" title="OK">
                                             <color key="titleColor" red="1" green="0.76470588240000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -552,7 +553,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cbO-pp-GUs" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="nEz-kR-CpI" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="5277.6000000000004" y="570.76461769115451"/>
+            <point key="canvasLocation" x="3854" y="-992"/>
         </scene>
         <!--welcomeVC-->
         <scene sceneID="v9f-5i-kK5">
@@ -1817,6 +1818,138 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6hU-OT-OJE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-82" y="1317"/>
+        </scene>
+        <!--Client Appointment Details View Controller-->
+        <scene sceneID="GYW-KF-2hE">
+            <objects>
+                <viewController id="UfH-Vd-GFs" customClass="EKClientAppointmentDetailsViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="E0U-GU-ebx"/>
+                        <viewControllerLayoutGuide type="bottom" id="w3V-f9-hU2"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Tl2-3i-wo7">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ppk-SL-wm4">
+                                <rect key="frame" x="37" y="184" width="300" height="260"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uWn-WX-J59">
+                                        <rect key="frame" x="20" y="82" width="44" height="44"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="9WJ-he-ezW"/>
+                                            <constraint firstAttribute="width" constant="44" id="P1H-48-7Ub"/>
+                                        </constraints>
+                                        <state key="normal" image="icCall"/>
+                                        <connections>
+                                            <action selector="didTapCallButton:" destination="xIo-pz-5o3" eventType="touchUpInside" id="c2x-36-RZY"/>
+                                            <action selector="didTapPhoneButton:" destination="UfH-Vd-GFs" eventType="touchDown" id="mPo-Oy-ft0"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="65O-lM-gfD">
+                                        <rect key="frame" x="72" y="82" width="44" height="44"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="BLW-QU-f20"/>
+                                            <constraint firstAttribute="width" constant="44" id="eLt-uz-xBz"/>
+                                        </constraints>
+                                        <state key="normal" image="icSms"/>
+                                        <connections>
+                                            <action selector="didTapSMSButton:" destination="UfH-Vd-GFs" eventType="touchDown" id="0CQ-ks-hgX"/>
+                                            <action selector="didTapSMSButton:" destination="xIo-pz-5o3" eventType="touchUpInside" id="97i-Mm-tvu"/>
+                                        </connections>
+                                    </button>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5x2-SC-Kd0">
+                                        <rect key="frame" x="20" y="20" width="44" height="44"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="44" id="e9W-hu-ZiY"/>
+                                            <constraint firstAttribute="height" constant="44" id="mTq-yF-f8E"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="22"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9XH-ao-H37">
+                                        <rect key="frame" x="79" y="20" width="213" height="17"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nQh-VI-6oj">
+                                        <rect key="frame" x="79" y="45" width="213" height="17"/>
+                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
+                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Client didn't leave a note..." lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mWz-ln-Lc9">
+                                        <rect key="frame" x="20" y="134" width="260" height="67"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="67" id="an8-DO-8vI"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xhg-Qf-xC2">
+                                        <rect key="frame" x="250" y="209" width="30" height="38"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                        <state key="normal" title="OK">
+                                            <color key="titleColor" red="1" green="0.76470588240000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="ram-4V-pKe" kind="unwind" unwindAction="unwindToTodayVC:" id="D7E-fJ-Ffh"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="mWz-ln-Lc9" firstAttribute="top" secondItem="65O-lM-gfD" secondAttribute="bottom" constant="8" id="8id-Yl-h1I"/>
+                                    <constraint firstItem="Xhg-Qf-xC2" firstAttribute="top" secondItem="mWz-ln-Lc9" secondAttribute="bottom" constant="8" id="ADS-kc-SQY"/>
+                                    <constraint firstItem="65O-lM-gfD" firstAttribute="top" secondItem="nQh-VI-6oj" secondAttribute="bottom" constant="20" id="BCn-Ec-P12"/>
+                                    <constraint firstItem="uWn-WX-J59" firstAttribute="top" secondItem="5x2-SC-Kd0" secondAttribute="bottom" constant="18" id="FXX-8A-xd1"/>
+                                    <constraint firstItem="5x2-SC-Kd0" firstAttribute="leading" secondItem="ppk-SL-wm4" secondAttribute="leading" constant="20" id="GPO-UX-VZA"/>
+                                    <constraint firstItem="nQh-VI-6oj" firstAttribute="top" secondItem="9XH-ao-H37" secondAttribute="bottom" constant="8" id="Gd0-K2-Fxy"/>
+                                    <constraint firstAttribute="trailing" secondItem="Xhg-Qf-xC2" secondAttribute="trailing" constant="20" id="JEG-Dc-FvA"/>
+                                    <constraint firstItem="uWn-WX-J59" firstAttribute="leading" secondItem="ppk-SL-wm4" secondAttribute="leading" constant="20" id="KrS-M5-YOZ"/>
+                                    <constraint firstAttribute="trailing" secondItem="mWz-ln-Lc9" secondAttribute="trailing" constant="20" id="Ns8-KS-1Ml"/>
+                                    <constraint firstAttribute="bottom" secondItem="Xhg-Qf-xC2" secondAttribute="bottom" constant="13" id="P4M-Vg-USL"/>
+                                    <constraint firstItem="5x2-SC-Kd0" firstAttribute="top" secondItem="ppk-SL-wm4" secondAttribute="top" constant="20" id="RU3-Qd-rcB"/>
+                                    <constraint firstItem="mWz-ln-Lc9" firstAttribute="leading" secondItem="ppk-SL-wm4" secondAttribute="leading" constant="20" id="UNW-Ts-rnZ"/>
+                                    <constraint firstItem="65O-lM-gfD" firstAttribute="leading" secondItem="uWn-WX-J59" secondAttribute="trailing" constant="8" id="VYi-UP-uaC"/>
+                                    <constraint firstAttribute="trailing" secondItem="9XH-ao-H37" secondAttribute="trailing" constant="8" id="aaQ-zz-Bi1"/>
+                                    <constraint firstAttribute="width" constant="300" id="b7R-Kg-ZKD"/>
+                                    <constraint firstAttribute="height" constant="260" id="c3p-ze-wjp"/>
+                                    <constraint firstAttribute="trailing" secondItem="nQh-VI-6oj" secondAttribute="trailing" constant="8" id="cKP-dB-cWq"/>
+                                    <constraint firstItem="9XH-ao-H37" firstAttribute="top" secondItem="ppk-SL-wm4" secondAttribute="top" constant="20" id="obg-Ah-AMl"/>
+                                    <constraint firstItem="nQh-VI-6oj" firstAttribute="leading" secondItem="5x2-SC-Kd0" secondAttribute="trailing" constant="15" id="vGB-Su-lPS"/>
+                                    <constraint firstItem="9XH-ao-H37" firstAttribute="leading" secondItem="5x2-SC-Kd0" secondAttribute="trailing" constant="15" id="wbj-rg-WGR"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="22"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="ppk-SL-wm4" firstAttribute="centerY" secondItem="Tl2-3i-wo7" secondAttribute="centerY" constant="-19.5" id="H8h-Uf-j9v"/>
+                            <constraint firstItem="ppk-SL-wm4" firstAttribute="centerX" secondItem="Tl2-3i-wo7" secondAttribute="centerX" id="lhb-ib-cqR"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="clientNameLabel" destination="9XH-ao-H37" id="TLD-7x-bfq"/>
+                        <outlet property="clientProfilePictureImageView" destination="5x2-SC-Kd0" id="nlb-F4-Ydd"/>
+                        <outlet property="noteLabel" destination="mWz-ln-Lc9" id="0F0-ou-5G3"/>
+                        <outlet property="serviceNameLabel" destination="nQh-VI-6oj" id="VuD-nE-l8X"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="I56-7I-u98" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="ram-4V-pKe" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="3854" y="-1770"/>
         </scene>
     </scenes>
     <resources>

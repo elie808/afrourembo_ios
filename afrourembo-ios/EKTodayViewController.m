@@ -147,13 +147,25 @@ static NSString * const kCollectionCell = @"todayCell";
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     
+    NSInteger index = ((EKInCellCollectionView*)collectionView).collectionIndexPath.row;
+    Today *todayObj = [_dataSource objectAtIndex:index];
+    Appointment *aptObj = [todayObj.appointmentsArray objectAtIndex:indexPath.row];
+    
+    [self performSegueWithIdentifier:kClientDetailsSegue sender:aptObj];
 }
 
 #pragma mark - Navigation
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    
+ 
+    if ([segue.identifier isEqualToString:kClientDetailsSegue]) {
+        
+        EKClientAppointmentDetailsViewController *vc = segue.destinationViewController;
+        vc.passedAppointment = (Appointment *)sender;
+    }
 }
+
+- (IBAction)unwindToTodayVC:(UIStoryboardSegue *)segue {}
 
 #pragma mark - Helpers
 
