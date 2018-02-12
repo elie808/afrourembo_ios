@@ -11,6 +11,7 @@
 static int const kMaxImageSize = 0.3; //MBs
 
 static NSString * const keditProfileInfoCell = @"editProfileInfoCell";
+static NSString * const keditPhoneNumberCell = @"editPhontNumberCell";
 static NSString * const kExploreSegue = @"editVcToExploreVC";
 
 @interface EKEditProfileInfoViewController () {
@@ -33,7 +34,7 @@ static NSString * const kExploreSegue = @"editVcToExploreVC";
     _dataSourceArray = @[
                          @{@"First name" : self.passedUser.fName.length > 0 ? self.passedUser.fName : @"Your name"},
                          @{@"Last name" : self.passedUser.lName.length > 0 ? self.passedUser.lName : @"Your last name"},
-                         @{@"Phone number" : self.passedUser.phone.length > 0 ? self.passedUser.phone : @"(___) ___ - ___"}
+                         @{@"Phone number" : self.passedUser.phone.length > 0 ? self.passedUser.phone : @"(+254) ___ - ___"}
                          ];
 }
 
@@ -49,11 +50,10 @@ static NSString * const kExploreSegue = @"editVcToExploreVC";
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    EKTextFieldTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:keditProfileInfoCell forIndexPath:indexPath];
-    
     NSString *labelValue = [[(NSDictionary *)[_dataSourceArray objectAtIndex:indexPath.row] allKeys] firstObject];
     NSString *placeHolderValue = [[(NSDictionary *)[_dataSourceArray objectAtIndex:indexPath.row] allValues] firstObject];
     
+    EKTextFieldTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:keditProfileInfoCell forIndexPath:indexPath];
     cell.cellTitleLabel.text = labelValue;
     
     if (indexPath.row == 0 && self.passedUser.fName.length > 0) {
@@ -69,9 +69,18 @@ static NSString * const kExploreSegue = @"editVcToExploreVC";
     }
     
     if (indexPath.row == 2 && self.passedUser.phone.length > 0) {
+        
+        EKTextFieldTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:keditPhoneNumberCell forIndexPath:indexPath];
         cell.cellTextField.text = placeHolderValue;
+        cell.cellTitleLabel.text = labelValue;
+        return cell;
+        
     } else {
+        
+        EKTextFieldTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:keditPhoneNumberCell forIndexPath:indexPath];
         cell.cellTextField.placeholder = placeHolderValue;
+        cell.cellTitleLabel.text = labelValue;
+        return cell;
     }
     
     return cell;
