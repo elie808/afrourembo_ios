@@ -177,21 +177,17 @@ static NSString * const kCollectionCell = @"todayCell";
         
         Today *today = [Today new];
         today.appointmentsHour = [dateFormatter stringFromDate:hour];
-        today.appointmentsArray = @[];
+        today.appointmentsArray = [NSMutableArray new];
         
         for (Dashboard *dashObj in dashboardItems) {
             
-            // if the startDate is today
+            // if the startDate is today, and at the same hour as the current iteration of timeOfDay (but earlier than the next iteration)
             if ([dashObj.startDate daysFrom:todayDate] == 0 &&
-                [dashObj.startDate hoursFrom:hour] == 0) {
-                
-                NSLog(@"\n \n Booking with ID: %@", dashObj.bookingId);
-                NSLog(@"Hour: %@", hour);
-                NSLog(@"today.appointmentsHour: %@", today.appointmentsHour);
-                NSLog(@"dashObj.fName: %@ - dashObj.lName: %@", dashObj.fName, dashObj.lName);
-                NSLog(@"Starts on date: %@ \n \n", dashObj.startDate);
-                
-                today.appointmentsArray = @[[Appointment convertToAppointementObject:dashObj]];
+                ([dashObj.startDate hoursFrom:hour] == 0 ||
+                 ([dashObj.startDate hoursFrom:hour] > 0 && [dashObj.startDate hoursFrom:hour] < 1 )
+                 )) {
+                    
+                    [today.appointmentsArray addObject:[Appointment convertToAppointementObject:dashObj]];
             }
         }
         

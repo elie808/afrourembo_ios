@@ -12,6 +12,6 @@
 
 //TODO: change to NSDate
 @property NSString *appointmentsHour; // starting hour, use to divide appoitments into groups
-@property NSArray *appointmentsArray; // all appointment objects booked within an hour of appointmentsHour
+@property NSMutableArray *appointmentsArray; // all appointment objects booked within an hour of appointmentsHour
 
 @end

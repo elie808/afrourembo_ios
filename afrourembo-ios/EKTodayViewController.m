@@ -127,6 +127,8 @@ static NSString * const kCollectionCell = @"todayCell";
     NSInteger index = ((EKInCellCollectionView *)collectionView).collectionIndexPath.row;
     Today *todayObj = [_dataSource objectAtIndex:index];
     
+    NSLog(@"%@ : %lu", todayObj.appointmentsHour, (unsigned long)todayObj.appointmentsArray.count);
+    
     return todayObj.appointmentsArray.count;
 }
 
@@ -236,27 +238,30 @@ static NSString * const kCollectionCell = @"todayCell";
     
     for (int hoursIncrement = 0; hoursIncrement < 24; hoursIncrement++) {
         
-        NSDate *hour = [todayDate dateByAddingHours:hoursIncrement];
+        NSDate *timeOfDay = [todayDate dateByAddingHours:hoursIncrement];
         
         Today *today = [Today new];
-        today.appointmentsHour = [dateFormatter stringFromDate:hour];
-        today.appointmentsArray = @[];
+        today.appointmentsHour = [dateFormatter stringFromDate:timeOfDay];
+        today.appointmentsArray = [NSMutableArray new];
         
         for (Dashboard *dashObj in dashboardItems) {
-            
-            // if the startDate is today
+
+            // if the startDate is today, and at the same hour as the current iteration of timeOfDay (but earlier than the next iteration)
             if ([dashObj.startDate daysFrom:todayDate] == 0 &&
-                [dashObj.startDate hoursFrom:hour] == 0) {
-                
+                ([dashObj.startDate hoursFrom:timeOfDay] == 0 ||
+                 ([dashObj.startDate hoursFrom:timeOfDay] > 0 && [dashObj.startDate hoursFrom:timeOfDay] < 1 )
+                 )) {
+
 //                NSLog(@"\n \n Booking with ID: %@", dashObj.bookingId);
 //                NSLog(@"Hour: %@", hour);
 //                NSLog(@"today.appointmentsHour: %@", today.appointmentsHour);
 //                NSLog(@"dashObj.fName: %@ - dashObj.lName: %@", dashObj.fName, dashObj.lName);
 //                NSLog(@"Starts on date: %@ \n \n", dashObj.startDate);
-                
-                today.appointmentsArray = @[[self convertToAppointementObject:dashObj]];
-                appointementsToday ++;
-            }
+            
+                    [today.appointmentsArray addObject:[self convertToAppointementObject:dashObj]];
+
+                    appointementsToday ++;
+                }
         }
         
         [_dataSource addObject:today];
