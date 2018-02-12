@@ -60,8 +60,16 @@ static NSString * const kCartSegue   = @"bookingTimeToCartVC";
 
 - (IBAction)didTapNextButton:(UIBarButtonItem *)sender {
     
-    if (_selectedPro) {
+    if (!_selectedPro) {
         
+        [self showMessage:@"Select a professional before proceeding" withTitle:@"Error" completionBlock:nil];
+        
+    } else if (!self.selectedFromDate || !self.selectedToDate) {
+    
+        [self showMessage:@"Select a time slot for your appointment before proceeding" withTitle:@"Error" completionBlock:nil];
+        
+    } else {
+    
         Reservation *reservationObj = [Reservation new];
         reservationObj.actorId      = _selectedPro.professionalID;
         reservationObj.serviceId    = self.passedService.serverServiceId;
@@ -91,10 +99,6 @@ static NSString * const kCartSegue   = @"bookingTimeToCartVC";
         [[RLMRealm defaultRealm] commitWriteTransaction];
         
         [self performSegueWithIdentifier:kCartSegue sender:nil];
-    
-    } else {
-    
-        [self showMessage:@"Select a professional and a time slot before proceeding" withTitle:@"Error" completionBlock:nil];
     }
 }
 
