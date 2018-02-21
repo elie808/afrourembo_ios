@@ -127,7 +127,7 @@ static NSString * const kCollectionCell = @"todayCell";
     NSInteger index = ((EKInCellCollectionView *)collectionView).collectionIndexPath.row;
     Today *todayObj = [_dataSource objectAtIndex:index];
     
-    NSLog(@"%@ : %lu", todayObj.appointmentsHour, (unsigned long)todayObj.appointmentsArray.count);
+//    NSLog(@"%@ : %lu", todayObj.appointmentsHour, (unsigned long)todayObj.appointmentsArray.count);
     
     return todayObj.appointmentsArray.count;
 }

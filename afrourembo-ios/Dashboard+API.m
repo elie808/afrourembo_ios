@@ -41,7 +41,7 @@
     RKResponseDescriptor *response = [RKResponseDescriptor
                                       responseDescriptorWithMapping:[Dashboard map1]
                                       method:RKRequestMethodGET
-                                      pathPattern:kProfessionalDashboardAPIPath
+                                      pathPattern:kSalonDashboardAPIPath
                                       keyPath:nil
                                       statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     return response;
