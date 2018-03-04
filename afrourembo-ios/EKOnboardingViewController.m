@@ -55,9 +55,12 @@ static NSString * const kRoleSegue = @"onboardingToRole";
     self.introView.backgroundColor = [UIColor grayColor];
     self.introView.skipButton = skipButton;
     [self.introView setDelegate:self];
+    self.introView.swipeToExit = NO;
     [self.introView setPages:@[page1, page2, page3]];
     
     [self.introView showInView:self.view animateDuration:0.0];
+    
+    [NSTimer scheduledTimerWithTimeInterval:2.5f target:self selector:@selector(autoScrollPage) userInfo:nil repeats:YES];
 }
 
 #pragma mark - Actions
@@ -75,13 +78,22 @@ static NSString * const kRoleSegue = @"onboardingToRole";
 }
 
 - (void)intro:(EAIntroView *)introView pageAppeared:(EAIntroPage *)page withIndex:(NSUInteger)pageIndex {
-    
+
 }
 
 #pragma mark - Navigation
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
 
+}
+
+#pragma mark - Helpers
+
+- (void)autoScrollPage {
+    
+    if (self.introView.visiblePageIndex+1 < self.introView.pages.count) {
+        [self.introView scrollToPageForIndex:self.introView.visiblePageIndex+1 animated:YES];
+    }
 }
 
 @end
