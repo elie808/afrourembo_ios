@@ -152,6 +152,7 @@ static NSString * const kEditProfileSegue = @"signUpToEditProfile";
         EKEditProfileInfoViewController *vc = segue.destinationViewController;
         Customer *customerObj = (Customer *)sender;
         vc.passedUser = customerObj;
+        vc.navigationItem.hidesBackButton = YES;
     }
 }
 

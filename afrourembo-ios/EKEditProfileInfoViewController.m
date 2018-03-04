@@ -25,11 +25,11 @@ static NSString * const kExploreSegue = @"editVcToExploreVC";
     
     self.title = @"Profile information";
     
-//    if (self.passedUser.profilePicture.length > 0) {
-//        
-//        [self.profilePicImageView yy_setImageWithURL:[NSURL URLWithString:self.passedUser.profilePicture]
-//                                             options:YYWebImageOptionProgressiveBlur];
-//    }
+    if (self.passedUser.profilePicture.length > 0) {
+        
+        [self.profilePicImageView yy_setImageWithURL:[NSURL URLWithString:self.passedUser.profilePicture]
+                                             options:YYWebImageOptionProgressiveBlur];
+    }
     
     _dataSourceArray = @[
                          @{@"First name" : self.passedUser.fName.length > 0 ? self.passedUser.fName : @"Your name"},
@@ -56,34 +56,53 @@ static NSString * const kExploreSegue = @"editVcToExploreVC";
     EKTextFieldTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:keditProfileInfoCell forIndexPath:indexPath];
     cell.cellTitleLabel.text = labelValue;
     
-    if (indexPath.row == 0 && self.passedUser.fName.length > 0) {
-        cell.cellTextField.text = placeHolderValue;
-    } else {
-        cell.cellTextField.placeholder = placeHolderValue;
+    switch (indexPath.row) {
+            
+        case 0: {
+    
+            cell.cellTextField.tag = 0;
+            
+            if (self.passedUser.fName.length > 0) {
+                cell.cellTextField.text = placeHolderValue;
+            } else {
+                cell.cellTextField.placeholder = placeHolderValue;
+            }
+            
+            return cell;
+            
+        } break;
+        
+        case 1: {
+
+            cell.cellTextField.tag = 1;
+            
+            if (self.passedUser.lName.length > 0) {
+                cell.cellTextField.text = placeHolderValue;
+            } else {
+                cell.cellTextField.placeholder = placeHolderValue;
+            }
+            
+            return cell;
+            
+        } break;
+            
+        case 2: {
+            
+            cell.cellTextField.tag = 2;
+            
+            if (self.passedUser.phone.length > 0) {
+                cell.cellTextField.text = placeHolderValue;
+            } else {
+                cell.cellTextField.placeholder = placeHolderValue;
+            }
+            
+            return cell;
+            
+        } break;
+            
+        default: return cell; break;
     }
     
-    if (indexPath.row == 1 && self.passedUser.lName.length > 0) {
-        cell.cellTextField.text = placeHolderValue;
-    } else {
-        cell.cellTextField.placeholder = placeHolderValue;
-    }
-    
-    if (indexPath.row == 2 && self.passedUser.phone.length > 0) {
-        
-        EKTextFieldTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:keditPhoneNumberCell forIndexPath:indexPath];
-        cell.cellTextField.text = placeHolderValue;
-        cell.cellTitleLabel.text = labelValue;
-        return cell;
-        
-    } else {
-        
-        EKTextFieldTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:keditPhoneNumberCell forIndexPath:indexPath];
-        cell.cellTextField.placeholder = placeHolderValue;
-        cell.cellTitleLabel.text = labelValue;
-        return cell;
-    }
-    
-    return cell;
 }
 
 #pragma mark - UITableViewDelegate
@@ -93,6 +112,18 @@ static NSString * const kExploreSegue = @"editVcToExploreVC";
 }
 
 #pragma mark - UITextField Delegate
+
+- (void)textFieldDidEndEditing:(UITextField *)textField {
+    
+    switch (textField.tag) {
+            
+        case 0: self.passedUser.fName = textField.text; break;
+        case 1: self.passedUser.lName = textField.text; break;
+        case 2: self.passedUser.phone = textField.text; break;
+            
+        default: break;
+    }
+}
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     
@@ -132,44 +163,55 @@ static NSString * const kExploreSegue = @"editVcToExploreVC";
     [self presentAlertController];
 }
 
+- (IBAction)didChangeTextField:(UITextField *)textField {
+    
+    switch (textField.tag) {
+            
+        case 0: self.passedUser.fName = textField.text; break;
+        case 1: self.passedUser.lName = textField.text; break;
+        case 2: self.passedUser.phone = textField.text; break;
+            
+        default: break;
+    }
+}
+
 - (IBAction)didTapSubmitButton:(id)sender {
-
-    EKTextFieldTableViewCell *fNameCell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
-    EKTextFieldTableViewCell *lNameCell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:0]];
-    EKTextFieldTableViewCell *phoneCell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:2 inSection:0]];
     
-    NSString *fNameStr  = fNameCell.cellTextField.text;
-    NSString *lNameStr   = lNameCell.cellTextField.text;
-    NSString *phoneStr   = phoneCell.cellTextField.text;
-    
-    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    [Customer updateCustomerProfile:fNameStr
-                           lastName:lNameStr
-                              phone:phoneStr
-                            forUser:self.passedUser.token
-                          withBlock:^(Customer *customerObj) {
-                     
-                              [MBProgressHUD hideHUDForView:self.view animated:YES];
-                        
-                              [EKSettings updateSavedCustomer:customerObj];
-
-                              if (self.unwindToExploreVC) {
-                              
-                                  [self.navigationController popViewControllerAnimated:YES];
-                              
-                              } else {
-                               
-                                  [self showMessage:@"You have succesfully created your AfroUrembo account!"
-                                          withTitle:@"Success"
-                                    completionBlock:^(UIAlertAction *action) {
-                                        [self performSegueWithIdentifier:kExploreSegue sender:nil];
-                                    }];
-                              }
-                    } withErrors:^(NSError *error, NSString *errorMessage) {
-                        
-                        [MBProgressHUD hideHUDForView:self.view animated:YES];
-                        [self showMessage:errorMessage withTitle:@"There is something wrong" completionBlock:nil];
-                   }];
+    if (self.passedUser.fName.length > 0 && self.passedUser.lName.length > 0 && self.passedUser.phone.length > 0) {
+        
+        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        [Customer updateCustomerProfile:self.passedUser.fName
+                               lastName:self.passedUser.lName
+                                  phone:self.passedUser.phone
+                                forUser:self.passedUser.token
+                              withBlock:^(Customer *customerObj) {
+                                  
+                                  [MBProgressHUD hideHUDForView:self.view animated:YES];
+                                  
+                                  [EKSettings updateSavedCustomer:customerObj];
+                                  
+                                  if (self.unwindToExploreVC) {
+                                      
+                                      [self.navigationController popViewControllerAnimated:YES];
+                                      
+                                  } else {
+                                      
+                                      [self showMessage:@"You have succesfully created your AfroUrembo account!"
+                                              withTitle:@"Success"
+                                        completionBlock:^(UIAlertAction *action) {
+                                            [self performSegueWithIdentifier:kExploreSegue sender:nil];
+                                        }];
+                                  }
+                              } withErrors:^(NSError *error, NSString *errorMessage) {
+                                  
+                                  [MBProgressHUD hideHUDForView:self.view animated:YES];
+                                  [self showMessage:errorMessage withTitle:@"There is something wrong" completionBlock:nil];
+                              }];
+        
+    } else {
+     
+        [self showMessage:@"Warning" withTitle:@"Please fill out all fields before proceeding" completionBlock:nil];
+    }
 }
 
 #pragma mark - Navigation

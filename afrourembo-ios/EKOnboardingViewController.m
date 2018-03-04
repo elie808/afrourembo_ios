@@ -60,7 +60,7 @@ static NSString * const kRoleSegue = @"onboardingToRole";
     
     [self.introView showInView:self.view animateDuration:0.0];
     
-    [NSTimer scheduledTimerWithTimeInterval:2.5f target:self selector:@selector(autoScrollPage) userInfo:nil repeats:YES];
+    [NSTimer scheduledTimerWithTimeInterval:1.5f target:self selector:@selector(autoScrollPage) userInfo:nil repeats:YES];
 }
 
 #pragma mark - Actions
