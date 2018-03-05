@@ -10,37 +10,15 @@
 
 @implementation EKClientAppointmentDetailsViewController
 
-/*
- @property NSDate *appointmentDate;      // day, month, year
- 
- @property NSString *clientName;         // client full name
- 
- @property NSString *serviceTime;        // start time in HH:mm
- @property NSInteger serviceDuration;    // total service duration in minutes
- @property NSInteger serviceStatus;      // 0,1,2 - done, cancelled, scheduled
- 
- @property NSInteger servicePrice;
- @property NSString *serviceNote;
- 
- @property NSString *clientPhone;
- @property NSString *clientEmail;
- @property NSString *clientProfilePicture;
- */
-
 - (void)viewDidLoad {
     [super viewDidLoad];
-
-    self.serviceNameLabel.text = self.passedAppointment.serviceDescription;
-
-//    [self.clientProfilePictureImageView yy_setImageWithURL:[NSURL URLWithString:self.passedAppointment.clientProfilePicture]
-//                               placeholder:[UIImage imageNamed:@"icPlaceholder"]
-//                                   options:YYWebImageOptionProgressiveBlur|YYWebImageOptionSetImageWithFadeAnimation
-//                                completion:nil];
 
     [self.clientProfilePictureImageView yy_setImageWithURL:[NSURL URLWithString:self.passedAppointment.clientProfilePicture]
                                                    options:YYWebImageOptionProgressiveBlur|YYWebImageOptionSetImageWithFadeAnimation];
     
     self.clientNameLabel.text = self.passedAppointment.clientName;
+    self.serviceNameLabel.text = self.passedAppointment.serviceDescription;
+    self.clientPhoneNumberLabel.text = self.passedAppointment.clientPhone;
     self.noteLabel.text = self.passedAppointment.serviceNote;
 }
 

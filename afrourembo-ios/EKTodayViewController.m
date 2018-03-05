@@ -257,8 +257,8 @@ static NSString * const kCollectionCell = @"todayCell";
 //                NSLog(@"today.appointmentsHour: %@", today.appointmentsHour);
 //                NSLog(@"dashObj.fName: %@ - dashObj.lName: %@", dashObj.fName, dashObj.lName);
 //                NSLog(@"Starts on date: %@ \n \n", dashObj.startDate);
-            
-                    [today.appointmentsArray addObject:[self convertToAppointementObject:dashObj]];
+
+                    [today.appointmentsArray addObject:[Appointment convertToAppointementObject:dashObj]];
 
                     appointementsToday ++;
                 }

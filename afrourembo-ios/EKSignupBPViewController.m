@@ -34,7 +34,7 @@ static NSString * const kSalonInfoSegue = @"signUpToSalonInfoVC";
                          @{@"Last name" : @"Your last name"},
                          @{@"Email" : @"address@mail.com"},
                          @{@"Password" : @"Your password"},
-                         @{@"Phone number" : @"phone number"}
+                         @{@"Phone number" : @"(+254) ___ - ___"}
                          ];
 }
 

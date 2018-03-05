@@ -18,6 +18,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *serviceNameLabel;
 @property (strong, nonatomic) IBOutlet UIImageView *clientProfilePictureImageView;
 @property (strong, nonatomic) IBOutlet UILabel *clientNameLabel;
+@property (strong, nonatomic) IBOutlet UILabel *clientPhoneNumberLabel;
 
 @property (strong, nonatomic) IBOutlet UILabel *noteLabel;
 

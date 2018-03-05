@@ -123,45 +123,6 @@ static NSString * const kCollectionCell = @"todayCell";
 }
 
 /// create calendar UI with booked appointements
-//- (void)populateCalendarWithDashObjects:(NSArray *)dashboardItems {
-//    
-//    [self.tableDataSource removeAllObjects];
-//    
-//    NSDate *todayDate = [[NSCalendar currentCalendar] startOfDayForDate:[NSDate date]];
-//    
-//    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-//    dateFormatter.dateFormat = @"hh a";
-//    
-//    for (int hoursIncrement = 0; hoursIncrement < 24; hoursIncrement++) {
-//        
-//        NSDate *hour = [todayDate dateByAddingHours:hoursIncrement];
-//        
-//        Today *today = [Today new];
-//        today.appointmentsHour = [dateFormatter stringFromDate:hour];
-//        today.appointmentsArray = @[];
-//        
-//        for (Dashboard *dashObj in dashboardItems) {
-//            
-//            // if the startDate is today
-//            if ([dashObj.startDate daysFrom:todayDate] == 0 &&
-//                [dashObj.startDate hoursFrom:hour] == 0) {
-//                
-//                //                NSLog(@"\n \n Booking with ID: %@", dashObj.bookingId);
-//                //                NSLog(@"Hour: %@", hour);
-//                //                NSLog(@"today.appointmentsHour: %@", today.appointmentsHour);
-//                //                NSLog(@"dashObj.fName: %@ - dashObj.lName: %@", dashObj.fName, dashObj.lName);
-//                //                NSLog(@"Starts on date: %@ \n \n", dashObj.startDate);
-//                
-//                today.appointmentsArray = @[[self convertToAppointementObject:dashObj]];
-//            }
-//        }
-//        
-//        [self.tableDataSource addObject:today];
-//    }
-//    
-//}
-
-/// create calendar UI with booked appointements
 - (void)populateCalendarWithDashObjects:(NSArray *)dashboardItems forDate:(NSDate *)date {
     
     [self.tableDataSource removeAllObjects];
