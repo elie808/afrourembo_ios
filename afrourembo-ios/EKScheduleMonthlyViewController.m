@@ -32,11 +32,13 @@
                               withBlock:^(NSArray<Dashboard *> *dashboardItems) {
                                   
                                   [MBProgressHUD hideHUDForView:self.view animated:YES];
+                                  [self.dataSource removeAllObjects];
                                   [self.dataSource addObjectsFromArray:dashboardItems];
                                   [self.calendar reloadData];
                                   [self createCalendarGrid];
                                   
                               } withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
+                                  
                                   [MBProgressHUD hideHUDForView:self.view animated:YES];
                                   [self showMessage:errorMessage withTitle:@"Error" completionBlock:nil];
                               }];
@@ -48,11 +50,13 @@
                              withBlock:^(NSArray<Dashboard *> *dashboardItems) {
                                  
                                  [MBProgressHUD hideHUDForView:self.view animated:YES];
+                                 [self.dataSource removeAllObjects];
                                  [self.dataSource addObjectsFromArray:dashboardItems];
                                  [self.calendar reloadData];
                                  [self createCalendarGrid];
                                  
                              } withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
+                                 
                                  [MBProgressHUD hideHUDForView:self.view animated:YES];
                                  [self showMessage:errorMessage withTitle:@"Error" completionBlock:nil];
                              }];
