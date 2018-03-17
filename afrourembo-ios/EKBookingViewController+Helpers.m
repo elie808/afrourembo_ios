@@ -144,7 +144,7 @@
                 isHourAvailable = YES;
             }
             
-            if (hour < currentTime) {
+            if (hour <= currentTime) {
                 isHourAvailable = NO;
             }
             
