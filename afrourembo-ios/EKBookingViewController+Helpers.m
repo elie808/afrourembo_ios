@@ -25,16 +25,19 @@
         weekDay.dayName = [NSDate stringFromDate:[todayDate dateByAddingDays:i] withFormat:DateFormatLetterDayMonthYearAbbreviated];
         weekDay.dayNumber = [Day dayNumberFromDay:[todayDate dateByAddingDays:i]];
         
+        NSLog(@"i = %d, dayName: %@ - after convertion - weekDay.dayNumber = %@", i, weekDay.dayName, weekDay.dayNumber);
+        
         // check if the pro is available on this weekday
         NSPredicate *pred = [NSPredicate predicateWithFormat:[NSString stringWithFormat:@"dayNumber = %@", weekDay.dayNumber]];
         NSArray *dayFromWeek = [daysArray filteredArrayUsingPredicate:pred];
         
         // if pro is available on that day
         if (dayFromWeek.count > 0) {
-
+            
             // get the pro's available start-end times and add them to weekDay
             Day *proAvailableDay = [dayFromWeek firstObject];
-            
+
+            // if creating today's time slots
             if (i == 0) {
 
                 weekDay.timeSlotsArray = [NSArray arrayWithArray:[self markTodayAvailable:weekDay.dayDate
@@ -43,7 +46,7 @@
                                                                       lunchBreakStartHour:proAvailableDay.lunchBreakFromHours
                                                                         lunchBreakEndHour:proAvailableDay.lunchBreakToHours
                                                                        inMinuteIncrements:@15
-                                                                              atTimeToday:[[NSDate date] hour]]];
+                                                                              atTimeToday:[NSDate date]]];
                 
             } else {
 
@@ -117,7 +120,7 @@
 }
 
 /// Mark today as available, but disable the calendar till the current time
-- (NSArray *)markTodayAvailable:(NSDate *)day startingHour:(NSNumber *)startHour endingHour:(NSNumber *)toHour lunchBreakStartHour:(NSNumber *)lbFromHour lunchBreakEndHour:(NSNumber *)lbToHour inMinuteIncrements:(NSNumber *)minIncrements atTimeToday:(NSInteger )currentTime {
+- (NSArray *)markTodayAvailable:(NSDate *)day startingHour:(NSNumber *)startHour endingHour:(NSNumber *)toHour lunchBreakStartHour:(NSNumber *)lbFromHour lunchBreakEndHour:(NSNumber *)lbToHour inMinuteIncrements:(NSNumber *)minIncrements atTimeToday:(NSDate *)currentTime {
     
     NSCalendar *calendar = [NSCalendar currentCalendar];
     NSDateComponents *comps = [calendar components: NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay fromDate:day];
@@ -144,7 +147,8 @@
                 isSlotAvailable = YES;
             }
             
-            if (hour <= currentTime) {
+            // block slot if it coincides with the current hour and minutes  
+            if (hour <= [currentTime hour] && startingMin <= [currentTime minute]) {
                 isSlotAvailable = NO;
             }
             
