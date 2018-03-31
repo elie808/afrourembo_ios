@@ -10,6 +10,7 @@
 #import "Booking.h"
 #import "ClientBooking.h"
 #import "NSDate+Helpers.h"
+#import <DateTools/DateTools.h>
 
 @interface EKCartCollectionViewCell (Helpers)
 

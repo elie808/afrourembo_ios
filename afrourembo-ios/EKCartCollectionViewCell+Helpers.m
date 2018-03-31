@@ -32,15 +32,29 @@
     self.bookingDescriptionLabel.text = order.note;
     
     if (order.reviewed) {
+        
         [self.actionButton setTitle:@"Order reviewed" forState:UIControlStateNormal];
         [self.actionButton setTitleColor:[UIColor colorWithRed:55./255. green:170./255. blue:0./255. alpha:1.0]
                                 forState:UIControlStateNormal];
         self.actionButton.enabled = NO;
+        
     } else {
-        [self.actionButton setTitle:@"Leave review" forState:UIControlStateNormal];
-        [self.actionButton setTitleColor:[UIColor colorWithRed:255./255. green:195./255. blue:0./255. alpha:1.0]
-                                forState:UIControlStateNormal];
-        self.actionButton.enabled = YES;
+        
+        // enable reviewing an order if an hour has passed since its start time
+        if ([order.date hoursEarlierThan:[NSDate date]] >= 1) {
+            
+            [self.actionButton setTitle:@"Leave review" forState:UIControlStateNormal];
+            [self.actionButton setTitleColor:[UIColor colorWithRed:255./255. green:195./255. blue:0./255. alpha:1.0]
+                                    forState:UIControlStateNormal];
+            self.actionButton.enabled = YES;
+
+        } else {
+
+            [self.actionButton setTitle:@"Leave review" forState:UIControlStateNormal];
+            [self.actionButton setTitleColor:[UIColor lightGrayColor]
+                                    forState:UIControlStateNormal];
+            self.actionButton.enabled = NO;
+        }
     }
 }
 
