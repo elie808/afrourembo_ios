@@ -124,39 +124,32 @@ static NSString * const kDefaultLunchEndHour = @"2:00 PM";
     
     NSInteger dayNumber = [components weekday]; // get iOS' weekDay value. We correct for in what follows
 
+    NSLog(@"----- iOS value for dayNumber = %ld -- pass it to convertion method", (long)dayNumber);
+    
     return [NSNumber numberWithInteger:[Day convertiOSDayToOurGaySystem:dayNumber]];
 }
 
+//correct for the fact that iOS counts days 1-7 (starting Sunday), and we need 0-6 (starting Monday).
 + (NSInteger)convertiOSDayToOurGaySystem:(NSInteger)iOSDayNumber {
     
     switch (iOSDayNumber) {
+
+        case 1: return 0; break;
             
-        case 7: return 0; break;
+        case 2: return 1; break;
+            
+        case 3: return 2; break;
+        
+        case 4: return 3; break;
+        
+        case 5: return 4; break;
+        
+        case 6: return 5; break;
+        
+        case 7: return 6; break;
             
         default: return iOSDayNumber; break;
     }
-
-    // obsolete conversion. Keeping it in case it comes back into fashion ...
-    /*
-    switch (iOSDayNumber) {
-            
-        case 2: return 0; break; //Monday
-            
-        case 3: return 1; break; //Tuesday
-            
-        case 4: return 2; break; //Wednesday
-            
-        case 5: return 3; break; //Thursday
-            
-        case 6: return 4; break; //Friday
-            
-        case 7: return 5; break; //Saturday
-            
-        case 1: return 6; break; //Sunday
-            
-        default: return 10; break; //return whatever. This will probably blow up another method somewhere. Debug accordingly
-    }
-     */
 }
 
 + (NSString *)dayStringFromNumber:(NSNumber *)dayNumber {
