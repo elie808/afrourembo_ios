@@ -42,6 +42,10 @@
                                        placeholder:[UIImage imageNamed:@"brush_tableview"]
                                            options:YYWebImageOptionProgressiveBlur|YYWebImageOptionSetImageWithFadeAnimation
                                         completion:nil];
+    } else {
+        
+        self.cellPhotoCountLabel.text = [NSString numberOfPhotosForCount:0];
+        self.cellMainImageView.image = [UIImage imageNamed:@"brush_tableview"];
     }
 }
 
@@ -51,9 +55,16 @@
     self.cellStarImageView.image = [UIImage imageForStars:profObj.rating];
     self.cellNumberOfReviewsLabel.text = [NSString stringWithFormat:@"%@ Review(s)", profObj.ratingBasedOn];
     
-    [self.cellUserImageView yy_setImageWithURL:[NSURL URLWithString:profObj.profilePicture]
-                                       options:YYWebImageOptionProgressiveBlur|YYWebImageOptionSetImageWithFadeAnimation];
-    
+    if (profObj.profilePicture && profObj.profilePicture.length > 0) {
+
+        [self.cellUserImageView yy_setImageWithURL:[NSURL URLWithString:profObj.profilePicture]
+                                           options:YYWebImageOptionProgressiveBlur|YYWebImageOptionSetImageWithFadeAnimation];
+        
+    } else {
+        
+        self.cellUserImageView.image = [UIImage imageNamed:@"icPlaceholder"];
+    }
+ 
     if (profObj.services && profObj.services.count > 0 ) {
         
         Service *serviceObj = profObj.services[0];
@@ -71,6 +82,10 @@
         Pictures *picObj = profObj.portfolio[0];
         [self.cellMainImageView yy_setImageWithURL:[NSURL URLWithString:picObj.picture]
                                            options:YYWebImageOptionProgressiveBlur|YYWebImageOptionSetImageWithFadeAnimation];
+    } else {
+        
+        self.cellPhotoCountLabel.text = [NSString numberOfPhotosForCount:0];
+        self.cellMainImageView.image = [UIImage imageNamed:@"brush_tableview"];
     }
     
     if (profObj.isMobile) {

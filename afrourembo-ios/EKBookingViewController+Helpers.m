@@ -123,7 +123,7 @@
     NSDateComponents *comps = [calendar components: NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay fromDate:day];
     
     NSMutableArray *timeSlotsArray = [NSMutableArray new];
-    BOOL isHourAvailable;
+    BOOL isSlotAvailable;
     
     for (int hour = [startHour intValue]; hour < [toHour intValue]; hour++) {
         
@@ -134,18 +134,18 @@
                 
                 // block out lunch break hours as long as those values make sense ( are > 0)
                 if (lbFromHour > 0 && lbToHour > 0 && hour >= [lbFromHour intValue] && hour < [lbToHour intValue] ) {
-                    isHourAvailable = NO;
+                    isSlotAvailable = NO;
                 } else {
-                    isHourAvailable = YES;
+                    isSlotAvailable = YES;
                 }
                 
             } else {
                 
-                isHourAvailable = YES;
+                isSlotAvailable = YES;
             }
             
             if (hour <= currentTime) {
-                isHourAvailable = NO;
+                isSlotAvailable = NO;
             }
             
             TimeSlot *slot = [TimeSlot new];
@@ -155,7 +155,7 @@
             [comps setSecond:[@0 intValue]];
             slot.date = [calendar dateFromComponents:comps];
             
-            slot.isAvailable = isHourAvailable;
+            slot.isAvailable = isSlotAvailable;
             slot.isSelected = NO;
             
             slot.hourString = [NSDate stringFromDate:slot.date withFormat:DateFormatDigitHourMinute];

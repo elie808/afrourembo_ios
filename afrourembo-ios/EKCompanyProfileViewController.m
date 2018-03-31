@@ -108,31 +108,46 @@
         
         self.starsImageView.image = [UIImage imageForStars:self.passedProfessional.rating];
         
-        NSMutableArray *picLinksArray = [NSMutableArray new];
+        self.photoCountLabel.text = [NSString stringWithFormat:@"%lu photos", (unsigned long)self.passedProfessional.portfolio.count];
         
-        for (Pictures *pic in self.passedProfessional.portfolio) {
-            [picLinksArray addObject:pic.picture];
-            [_photoGalleryDataSource addObject:[MWPhoto photoWithURL:[NSURL URLWithString:pic.picture]]];
+        if (self.passedProfessional.portfolio.count > 0) {
+        
+            NSMutableArray *picLinksArray = [NSMutableArray new];
+            
+            for (Pictures *pic in self.passedProfessional.portfolio) {
+                [picLinksArray addObject:pic.picture];
+                [_photoGalleryDataSource addObject:[MWPhoto photoWithURL:[NSURL URLWithString:pic.picture]]];
+            }
+            
+            [self.carousel configureWithVenueImages:picLinksArray];
+            
+        } else {
+            
+//            [self.carousel configureWithVenueImages:@[[MWPhoto photoWithImage:[UIImage imageNamed:@"brush_tableview"]]]];
         }
-        
-        [self.carousel configureWithVenueImages:picLinksArray];
-        
-        self.photoCountLabel.text = [NSString stringWithFormat:@"%lu photos", (unsigned long)picLinksArray.count];
-        
+
     } else if (self.passedSalon) {
         
         self.starsImageView.image = [UIImage imageForStars:self.passedSalon.rating];
         
-        NSMutableArray *picLinksArray = [NSMutableArray new];
+        self.photoCountLabel.text = [NSString stringWithFormat:@"%lu photos", (unsigned long)self.passedSalon.portfolio.count];
         
-        for (Pictures *pic in self.passedSalon.portfolio) {
-            [picLinksArray addObject:pic.picture];
-            [_photoGalleryDataSource addObject:[MWPhoto photoWithURL:[NSURL URLWithString:pic.picture]]];
+        if (self.passedSalon.portfolio.count > 0) {
+        
+            NSMutableArray *picLinksArray = [NSMutableArray new];
+            
+            for (Pictures *pic in self.passedSalon.portfolio) {
+                [picLinksArray addObject:pic.picture];
+                [_photoGalleryDataSource addObject:[MWPhoto photoWithURL:[NSURL URLWithString:pic.picture]]];
+            }
+            
+            [self.carousel configureWithVenueImages:picLinksArray];
+            
+        } else {
+           
+//            [self.carousel configureWithVenueImages:@[[MWPhoto photoWithImage:[UIImage imageNamed:@"brush_tableview"]]]];
         }
         
-        [self.carousel configureWithVenueImages:picLinksArray];
-        
-        self.photoCountLabel.text = [NSString stringWithFormat:@"%lu photos", (unsigned long)picLinksArray.count];
     }
 }
 
