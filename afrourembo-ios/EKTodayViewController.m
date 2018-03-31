@@ -267,6 +267,27 @@ static NSString * const kCollectionCell = @"todayCell";
         [_dataSource addObject:today];
     }
     
+    // scroll daily calendar to show the first appointement
+    if (_dataSource.count > 0) {
+        
+        // go through the tableDataSource array and find the first Today obj with a non-empty appointmentsArray
+        for (NSUInteger i = 0; i < _dataSource.count; i++) {
+            
+            Today *todayObj = [_dataSource objectAtIndex:i];
+            
+            // todayObj has an appointment
+            if (todayObj.appointmentsArray.count > 0) {
+                
+                NSIndexPath *indexPath = [NSIndexPath indexPathForRow:i inSection:0];
+                [self.tableView scrollToRowAtIndexPath:indexPath
+                                      atScrollPosition:UITableViewScrollPositionTop
+                                              animated:YES];
+                
+                i = _dataSource.count;
+            }
+        }
+    }
+    
     if (appointementsToday > 0) {
         [[self.tabBarController.tabBar.items objectAtIndex:kTodayVCIndex]
          setBadgeValue:[NSString stringWithFormat:@"%ld", (long)appointementsToday]];
