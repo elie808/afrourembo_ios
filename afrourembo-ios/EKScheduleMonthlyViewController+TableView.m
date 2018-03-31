@@ -132,6 +132,7 @@ static NSString * const kCollectionCell = @"todayCell";
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     dateFormatter.dateFormat = @"hh a";
     
+    // create a Today object for each hour of the day, and add appointements at the right hours
     for (int hoursIncrement = 0; hoursIncrement < 24; hoursIncrement++) {
         
         NSDate *hour = [todayDate dateByAddingHours:hoursIncrement];
@@ -140,6 +141,7 @@ static NSString * const kCollectionCell = @"todayCell";
         today.appointmentsHour = [dateFormatter stringFromDate:hour];
         today.appointmentsArray = [NSMutableArray new];
         
+        // check if any booked appointement is at "hour"
         for (Dashboard *dashObj in dashboardItems) {
             
             // if the startDate is today, and at the same hour as the current iteration of timeOfDay (but earlier than the next iteration)
@@ -154,6 +156,29 @@ static NSString * const kCollectionCell = @"todayCell";
         
         [self.tableDataSource addObject:today];
     }
+    
+    // scroll daily calendar to show the first appointement
+    if (self.tableDataSource.count > 0) {
+        
+        // go through the tableDataSource array and find the first Today obj with a non-empty appointmentsArray
+        for (NSUInteger i = 0; i < self.tableDataSource.count; i++) {
+            
+            Today *todayObj = [self.tableDataSource objectAtIndex:i];
+            
+            // todayObj has an appointment
+            if (todayObj.appointmentsArray.count > 0) {
+         
+                NSIndexPath *indexPath = [NSIndexPath indexPathForRow:i inSection:0];
+                [self.tableView scrollToRowAtIndexPath:indexPath
+                                      atScrollPosition:UITableViewScrollPositionTop
+                                              animated:YES];
+                
+                i = self.tableDataSource.count;
+            }
+        }
+    }
+    
+    
 }
 
 @end
