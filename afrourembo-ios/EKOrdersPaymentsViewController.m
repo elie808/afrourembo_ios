@@ -40,6 +40,12 @@ static NSString * const kRatingSegue = @"ordersPaymentsToRatingVC";
                                self.emptyOrdersView.hidden = YES;
                                
                                _ordersArray = [NSMutableArray arrayWithArray:customerObj];
+                               
+                               // sort orders by dates
+                               [_ordersArray sortUsingComparator:^NSComparisonResult(ClientBooking *obj1, ClientBooking *obj2){
+                                   return [obj2.date compare:obj1.date];
+                               }];
+                               
                                [self.collectionView reloadData];
                            }
                            
