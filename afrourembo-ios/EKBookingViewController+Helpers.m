@@ -147,8 +147,13 @@
                 isSlotAvailable = YES;
             }
             
-            // block slot if it coincides with the current hour and minutes  
-            if (hour <= [currentTime hour] && startingMin <= [currentTime minute]) {
+            // block slot if it's earlier than current hour
+            if (hour < [currentTime hour]) {
+                isSlotAvailable = NO;
+            }
+            
+            // block slot if it coincides with the current hour and minutes
+            if (hour == [currentTime hour] && startingMin <= [currentTime minute]) {
                 isSlotAvailable = NO;
             }
             
