@@ -8,11 +8,12 @@
 
 #import "EKCartViewController.h"
 
-static NSString * const kSuccessSegue = @"cartToSuccessVC";
+static NSString * const kSuccessSegue = @"cartToSuccessVC"; // use this to bypass payment gateway
 static NSString * const kCartCell = @"cartCollectionCellID";
 
 static NSString * const kSignUpSegue = @"cartVCToSignUpVC";
 static NSString * const kWebViewSegue = @"cartVCtoWebVC";
+static NSString * const kPaymentSegue = @"cartVCtoPaymentVC";
 
 @implementation EKCartViewController {
 //    NSMutableArray *_dataSourceArray;
@@ -97,6 +98,9 @@ static NSString * const kWebViewSegue = @"cartVCtoWebVC";
         [reservationsArray addObject:[Booking convertBookingObj:bookingObj]];
     }
     
+    [self performSegueWithIdentifier:kPaymentSegue sender:nil];
+    
+    /*
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     [Reservation postUserReservations:reservationsArray
                               forUser:[EKSettings getSavedCustomer].token
@@ -140,6 +144,7 @@ static NSString * const kWebViewSegue = @"cartVCtoWebVC";
                                [MBProgressHUD hideHUDForView:self.view animated:YES];
                                [self handleVendorAvailabilityErrors:error errorMessage:errorMessage statusCode:statusCode];
                            }];
+     */
 }
 
 #pragma mark - Navigation
@@ -158,9 +163,14 @@ static NSString * const kWebViewSegue = @"cartVCtoWebVC";
         }
     }
     
+    if ([segue.identifier isEqualToString:kPaymentSegue]) {
+        EKPaymentViewController *vc = segue.destinationViewController;
+    }
+    
     if ([segue.identifier isEqualToString:kSuccessSegue]) {
         
     }
+    
 }
 
 #pragma mark - Helpers

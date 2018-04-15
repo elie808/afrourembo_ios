@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface EKPaymentViewController : UIViewController
+@interface EKPaymentViewController : UIViewController <UIPageViewControllerDataSource>
+
+@property (strong, nonatomic) UIPageViewController *pageViewController;
+@property (strong, nonatomic) IBOutlet UISegmentedControl *segmentedControl;
 
 @end

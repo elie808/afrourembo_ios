@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 #import "EKPaymentGatewayViewController.h"
+#import "EKPaymentViewController.h"
 #import "EKCartCollectionViewCell.h"
 
 #import "Booking.h"
