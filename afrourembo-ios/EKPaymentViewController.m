@@ -10,39 +10,48 @@
 #import "EKCreditCardViewController.h"
 #import "EKMPesaViewController.h"
 
-
-@implementation EKPaymentViewController
+@implementation EKPaymentViewController {
+    NSInteger _totalBookingsValue;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     _index = 0;
-    
-    // compute tableview length depending on the number of reservations
-    CGFloat tableHeight = 20;//(_bookingsArray.count * 44) + 8;
-    
-    self.tableView.frame = CGRectMake(self.tableView.frame.origin.x, self.tableView.frame.origin.y,
-                                      self.tableView.frame.size.width, tableHeight);
-    
-    // Create PageViewController
-    self.pageViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"PageViewController"];
-    self.pageViewController.view.frame = CGRectMake(0,
-                                                    self.segmentedControl.frame.origin.y + 8,
-                                                    self.view.frame.size.width,
-                                                    self.view.frame.size.height - self.tableView.frame.size.height - 46);
-    // self.pageViewController.dataSource = self; //un-comment to re-enable swipe gestures on pagecontroller
+    _totalBookingsValue = 0;
     
     EKMPesaViewController *vc1 = [self.storyboard instantiateViewControllerWithIdentifier:@"mpesa_view"];
     EKCreditCardViewController *vc2 = [self.storyboard instantiateViewControllerWithIdentifier:@"creditCard_view"];
     
     _vcDataSource = @[vc1, vc2];
-        
+    
+    // Create PageViewController
+    self.pageViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"PageViewController"];
+    // self.pageViewController.dataSource = self; //un-comment to re-enable swipe gestures on pagecontroller
     [self.pageViewController setViewControllers:@[_vcDataSource.firstObject]
                                       direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
     
     [self addChildViewController:self.pageViewController];
-    [self.view addSubview:self.pageViewController.view];
+    [self.pageVCPlaceholderView addSubview:self.pageViewController.view];
     [self.pageViewController didMoveToParentViewController:self];
+
+    // compute total cost of all bookings
+    NSNumberFormatter *f = [[NSNumberFormatter alloc] init];
+    f.numberStyle = NSNumberFormatterDecimalStyle;
+    for (Booking *bookingObj in _bookingsArray) {
+        
+        NSString *stringNumber = [bookingObj.bookingCost stringByReplacingOccurrencesOfString:@" KES" withString:@""];
+
+        NSNumber *myNumber = [f numberFromString:stringNumber];
+        _totalBookingsValue = _totalBookingsValue + myNumber.integerValue;
+    }
+}
+
+- (void)viewDidLayoutSubviews {
+    [super viewDidLayoutSubviews];
+    
+    // compute tableview length depending on the number of reservations + 1 total row
+    self.tableHeightConstraint.constant = ((_bookingsArray.count + 1) * 44) + 8;
 }
 
 #pragma mark - PageViewController DataSource
@@ -82,16 +91,26 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return _bookingsArray.count;
+    return _bookingsArray.count + 1;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    Booking *booking = [_bookingsArray objectAtIndex:indexPath.row];
-    
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
-    cell.textLabel.text = booking.bookingTitle;
-    cell.detailTextLabel.text = booking.bookingCost;
+    
+    if (indexPath.row == _bookingsArray.count) {
+        
+        cell.textLabel.font = [UIFont boldSystemFontOfSize:17.0];
+        cell.detailTextLabel.font = [UIFont boldSystemFontOfSize:17.0];
+        cell.textLabel.text = @"Total";
+        cell.detailTextLabel.text = [NSString stringWithFormat:@"%ld KES", (long)_totalBookingsValue];
+        
+    } else {
+    
+        Booking *booking = [_bookingsArray objectAtIndex:indexPath.row];
+        cell.textLabel.text = booking.bookingTitle;
+        cell.detailTextLabel.text = booking.bookingCost;
+    }
     
     return cell;
 }
@@ -110,7 +129,6 @@
             
         case 0: {
             
-            NSLog(@"MPESA BABY");
             EKMPesaViewController *vc1 = _vcDataSource[_index];
             NSLog(@"%@", vc1.MPesaPin);
             
@@ -118,7 +136,6 @@
         
         case 1: {
           
-            NSLog(@"CREDIT CARD ON DECK");
             EKCreditCardViewController *vc2 = _vcDataSource[_index];
             NSLog(@"%@", vc2._cardNumber);
             

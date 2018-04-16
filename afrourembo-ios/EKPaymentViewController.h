@@ -12,6 +12,9 @@
 
 @interface EKPaymentViewController : UIViewController <UIPageViewControllerDataSource, UITableViewDelegate, UITableViewDataSource>
 
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *tableHeightConstraint;
+@property (strong, nonatomic) IBOutlet UIView *pageVCPlaceholderView;
+
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) IBOutlet UISegmentedControl *segmentedControl;
 
