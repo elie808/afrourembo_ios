@@ -24,7 +24,7 @@ static NSString * const kResetPassSegue = @"confirmPhoneNumberToResetPasswordVC"
     self.title = @"Confirm phone number";
     
     _dataSourceArray = @[
-                         @{@"Phone number" : @"00 12345678"},
+                         @{@"Phone number" : @"(+254) ___ - ___"},
                          ];
 
 }
@@ -66,13 +66,14 @@ static NSString * const kResetPassSegue = @"confirmPhoneNumberToResetPasswordVC"
     
     NSString *phoneStr = [phoneCell.cellTextField trimWhiteSpace:phoneCell.cellTextField.text];
     
-    if (phoneStr.length > 0 && [phoneStr isValidPhoneNumber]) {
+//    if (phoneStr.length > 0 && [phoneStr isValidPhoneNumber]) {
+    if (phoneStr.length > 0) {
     
         [self confirmPhoneNumber:phoneStr];
     
     } else {
         
-        [self showMessage:@"Please enter a valid phone number in the following format (area code-number), before proceeding"
+        [self showMessage:@"Please enter a valid phone number in the following format (+area code-number), before proceeding"
                 withTitle:@"Warning" completionBlock:nil];
     }
 }

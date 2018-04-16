@@ -14,6 +14,11 @@ static NSString * const kDashboardSegue = @"resetPassToDashboardVC";
 
 @interface EKResetPhoneNumberViewController () {
     NSArray *_dataSourceArray;
+    
+    // viewModel
+    NSString *_confirmationCode;
+    NSString *_phoneNumber;
+    NSString *_password;
 }
 @end
 
@@ -29,6 +34,8 @@ static NSString * const kDashboardSegue = @"resetPassToDashboardVC";
                          @{@"Phone number" : @"00 12345678"},
                          @{@"New password" : @"password"},
                          ];
+    
+    _phoneNumber = self.passedPhoneNumber.length > 0 ? self.passedPhoneNumber : @"";
     
 //    NSLog(@"\n \n \n \n PHON NUMEBR : %@", self.passedPhoneNumber);
 }
@@ -53,9 +60,24 @@ static NSString * const kDashboardSegue = @"resetPassToDashboardVC";
     cell.cellTitleLabel.text = labelValue;
     cell.cellTextField.placeholder = placeHolderValue;
     
-    if (indexPath.row == 0) { cell.cellTextField.text = @"abc123"; }
-    if (indexPath.row == 1) {
-        cell.cellTextField.text = self.passedPhoneNumber.length > 0 ? self.passedPhoneNumber : @"0012345678";
+    switch (indexPath.row) {
+        
+        case 0:
+            cell.cellTextField.tag = 0;
+            cell.cellTextField.text = _confirmationCode;
+            break;
+            
+        case 1:
+            cell.cellTextField.tag = 1;
+            cell.cellTextField.text = _phoneNumber;
+            break;
+            
+        case 2:
+            cell.cellTextField.tag = 2;
+            cell.cellTextField.text = _password;
+            break;
+            
+        default: break;
     }
     
     return cell;
@@ -65,6 +87,26 @@ static NSString * const kDashboardSegue = @"resetPassToDashboardVC";
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
+}
+
+#pragma mark - UITextFieldDelegate
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    return textField.resignFirstResponder;
+}
+
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
+
+    switch (textField.tag) {
+            
+        case 0: _confirmationCode = textField.text; break;
+        case 1: _phoneNumber = textField.text; break;
+        case 2: _password = textField.text; break;
+            
+        default: break;
+    }
+    
+    return YES;
 }
 
 #pragma mark - Actions
@@ -79,8 +121,9 @@ static NSString * const kDashboardSegue = @"resetPassToDashboardVC";
     NSString *confirmationCodeStr = codeCell.cellTextField.text;
     NSString *passwordStr = passCell.cellTextField.text;
     
-    if (confirmationCodeStr.length > 0 && passwordStr.length > 0 && phonenumberStr.length > 0 && [phonenumberStr isValidPhoneNumber]) {
-        
+//    if (confirmationCodeStr.length > 0 && passwordStr.length > 0 && phonenumberStr.length > 0 && [phonenumberStr isValidPhoneNumber]) {
+    if (confirmationCodeStr.length > 0 && passwordStr.length > 0 && phonenumberStr.length > 0) {
+    
         [self resetPassword:passwordStr forConfirmationCode:confirmationCodeStr andPhoneNumber:phonenumberStr];
         
     } else {
