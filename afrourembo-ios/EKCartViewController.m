@@ -91,14 +91,14 @@ static NSString * const kPaymentSegue = @"cartVCtoPaymentVC";
 
 - (IBAction)didTapCheckoutButton:(UIButton *)button {
 
-    // filter Reservation objects out of Booking objects in the dataSource
-    NSMutableArray *reservationsArray = [NSMutableArray new];
-    for (Booking *bookingObj in _bookings) {
-        
-        [reservationsArray addObject:[Booking convertBookingObj:bookingObj]];
-    }
+    [self performSegueWithIdentifier:kPaymentSegue sender:_bookings];
     
-    [self performSegueWithIdentifier:kPaymentSegue sender:nil];
+    // filter Reservation objects out of Booking objects in the dataSource
+//    NSMutableArray *reservationsArray = [NSMutableArray new];
+//    for (Booking *bookingObj in _bookings) {
+//        
+//        [reservationsArray addObject:[Booking convertBookingObj:bookingObj]];
+//    }
     
     /*
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
@@ -165,6 +165,7 @@ static NSString * const kPaymentSegue = @"cartVCtoPaymentVC";
     
     if ([segue.identifier isEqualToString:kPaymentSegue]) {
         EKPaymentViewController *vc = segue.destinationViewController;
+        vc.bookingsArray = _bookings;
     }
     
     if ([segue.identifier isEqualToString:kSuccessSegue]) {

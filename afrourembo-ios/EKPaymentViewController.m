@@ -11,20 +11,26 @@
 #import "EKMPesaViewController.h"
 
 
-@implementation EKPaymentViewController {
-    NSUInteger _index;
-    NSArray *_vcDataSource;
-}
+@implementation EKPaymentViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     _index = 0;
     
+    // compute tableview length depending on the number of reservations
+    CGFloat tableHeight = 20;//(_bookingsArray.count * 44) + 8;
+    
+    self.tableView.frame = CGRectMake(self.tableView.frame.origin.x, self.tableView.frame.origin.y,
+                                      self.tableView.frame.size.width, tableHeight);
+    
     // Create PageViewController
     self.pageViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"PageViewController"];
-    self.pageViewController.view.frame = CGRectMake(0, 46, self.view.frame.size.width, self.view.frame.size.height-46);
-    self.pageViewController.dataSource = self;
+    self.pageViewController.view.frame = CGRectMake(0,
+                                                    self.segmentedControl.frame.origin.y + 8,
+                                                    self.view.frame.size.width,
+                                                    self.view.frame.size.height - self.tableView.frame.size.height - 46);
+    // self.pageViewController.dataSource = self; //un-comment to re-enable swipe gestures on pagecontroller
     
     EKMPesaViewController *vc1 = [self.storyboard instantiateViewControllerWithIdentifier:@"mpesa_view"];
     EKCreditCardViewController *vc2 = [self.storyboard instantiateViewControllerWithIdentifier:@"creditCard_view"];
@@ -37,10 +43,9 @@
     [self addChildViewController:self.pageViewController];
     [self.view addSubview:self.pageViewController.view];
     [self.pageViewController didMoveToParentViewController:self];
-    
 }
 
-#pragma mark - Page View Controller Data Source
+#pragma mark - PageViewController DataSource
 
 - (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerBeforeViewController:(UIViewController *)viewController {
     
@@ -67,50 +72,78 @@
 
 - (UIViewController *)viewControllerAtIndex:(NSUInteger)index {
     
-    //    if ((index > 1) || (index == NSNotFound)) {
-    //        return nil;
-    //    }
-
-//    switch (index) {
-//            
-//        case 0: {
-//            
-////            EKSalesSummaryViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"content1"];
-////            vc.dataSource = _dashboardItems;
-//            UIViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"mpesa_view"];
-//            return vc;
-//            
-//        } break;
-//            
-//        case 1: {
-//            
-//            // EKChartSummaryViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"content2"];
-//            // vc.view.backgroundColor = [UIColor redColor];
-//            UIViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"creditCard_view"];
-//            return vc;
-//            
-//        } break;
-//            
-//        default: return nil; break;
-//    }
-    
-    self.segmentedControl.selectedSegmentIndex = index;
-    
     return _vcDataSource[index];
 }
 
+#pragma mark - UITableViewDataSource
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return _bookingsArray.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    Booking *booking = [_bookingsArray objectAtIndex:indexPath.row];
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
+    cell.textLabel.text = booking.bookingTitle;
+    cell.detailTextLabel.text = booking.bookingCost;
+    
+    return cell;
+}
+
+#pragma mark - UITableViewDelegate
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+}
+
+#pragma mark - Actions
+
+- (IBAction)didTapPayButton:(UIBarButtonItem *)sender {
+
+    switch (_index) {
+            
+        case 0: {
+            
+            NSLog(@"MPESA BABY");
+            EKMPesaViewController *vc1 = _vcDataSource[_index];
+            NSLog(@"%@", vc1.MPesaPin);
+            
+        } break;
+        
+        case 1: {
+          
+            NSLog(@"CREDIT CARD ON DECK");
+            EKCreditCardViewController *vc2 = _vcDataSource[_index];
+            NSLog(@"%@", vc2._cardNumber);
+            
+        } break;
+            
+        default: break;
+    }
+    
+}
+
 - (IBAction)didChangeSegmented:(UISegmentedControl *)sender {
-    
-//    if (sender.selectedSegmentIndex == 0) {
-//        _index = 0;
-//    } else {
-//        _index = 1;
-//    }
-    
+
     _index = sender.selectedSegmentIndex;
     
-    [self.pageViewController setViewControllers:@[_vcDataSource[sender.selectedSegmentIndex]]
-                                      direction:UIPageViewControllerNavigationDirectionForward animated:YES completion:nil];
+    if (sender.selectedSegmentIndex == 0) {
+ 
+        [self.pageViewController setViewControllers:@[_vcDataSource[sender.selectedSegmentIndex]]
+                                          direction:UIPageViewControllerNavigationDirectionReverse animated:YES completion:nil];
+    
+    } else if (sender.selectedSegmentIndex == 1) {
+    
+        [self.pageViewController setViewControllers:@[_vcDataSource[sender.selectedSegmentIndex]]
+                                          direction:UIPageViewControllerNavigationDirectionForward animated:YES completion:nil];
+    }
+
 }
 
 

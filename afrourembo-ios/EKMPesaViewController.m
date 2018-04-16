@@ -8,11 +8,10 @@
 
 #import "EKMPesaViewController.h"
 
-@interface EKMPesaViewController ()
-
-@end
-
-@implementation EKMPesaViewController
+@implementation EKMPesaViewController {
+    
+    UITextField *_activeTextField;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -35,12 +34,20 @@
     switch (indexPath.row) {
         case 0:
             cell.cellTitleLabel.text = @"Phone number";
-            cell.cellTextField.placeholder = @"placeholder";
+            cell.cellTextField.placeholder = @"+254000000";
+            cell.cellTextField.keyboardType = UIKeyboardTypePhonePad;
+            cell.cellTextField.text = self.phoneNumber;
+            cell.cellTextField.tag = 0;
+            [self addKeyboadToolbarTo:cell.cellTextField];
             break;
             
         case 1:
             cell.cellTitleLabel.text = @"M-PESA pin";
-            cell.cellTextField.placeholder = @"placeholder";
+            cell.cellTextField.placeholder = @"XXXX";
+            cell.cellTextField.keyboardType = UIKeyboardTypeNumberPad;
+            cell.cellTextField.text = self.MPesaPin;
+            cell.cellTextField.tag = 1;
+            [self addKeyboadToolbarTo:cell.cellTextField];
             break;
             
         default: break;
@@ -55,6 +62,74 @@
     
 }
 
+#pragma mark - UITextField
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField {
+    
+    _activeTextField = textField;
+}
+
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
+    
+    // Prevent crashing undo bug
+    if (range.length + range.location > textField.text.length) {
+        return NO;
+    }
+    
+    NSUInteger newLength = [textField.text length] + [string length] - range.length;
+    
+    switch (textField.tag) {
+            
+        case 0: // Phone number
+            self.phoneNumber = textField.text;
+            return YES;
+            break;
+            
+        case 1: // MPesa pin
+            self.MPesaPin = textField.text;
+            return newLength <= 4; break;
+            
+        default: return YES; break;
+    }
+}
+
+#pragma mark - Actions
+
+- (void)addKeyboadToolbarTo:(UITextField *)textField {
+    
+    UIToolbar *keyboardToolbar = [[UIToolbar alloc] init];
+    [keyboardToolbar sizeToFit];
+    
+    UIBarButtonItem *flexBarButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace
+                                                                                   target:nil action:nil];
+    UIBarButtonItem *doneBarButton = [[UIBarButtonItem alloc]
+                                      initWithBarButtonSystemItem:UIBarButtonSystemItemDone
+                                      target:self action:@selector(diTapToolbarDoneButton) ];
+    
+    
+    keyboardToolbar.items = @[flexBarButton, doneBarButton];
+    
+    textField.inputAccessoryView = keyboardToolbar;
+}
+
+- (IBAction)diTapToolbarDoneButton {
+    
+    if (_activeTextField && _activeTextField.isFirstResponder) {
+        [_activeTextField resignFirstResponder];
+    }
+}
+
+#pragma mark - Helpers
+
+- (BOOL)validateData {
+    
+    //    _cardNumber;
+    //    _MMYY;
+    //    _fullName;
+    //    _CVV;
+    
+    return YES;
+}
 
 /*
 #pragma mark - Navigation
