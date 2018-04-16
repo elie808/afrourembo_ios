@@ -210,7 +210,7 @@ static NSString * const kExploreSegue = @"editVcToExploreVC";
         
     } else {
      
-        [self showMessage:@"Warning" withTitle:@"Please fill out all fields before proceeding" completionBlock:nil];
+        [self showMessage:@"Please fill out all fields before proceeding" withTitle:@"Warning" completionBlock:nil];
     }
 }
 
