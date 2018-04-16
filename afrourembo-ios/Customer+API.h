@@ -24,7 +24,7 @@ typedef void (^CustomerEditErrorBlock)(NSError *error, NSString *errorMessage);
 
 @interface Customer (API)
 
-/// email, password, token, fName, lName, phone
+/// email, password, token, fName, lName, phone, profileComplete, passwordSet
 + (RKObjectMapping *)map1;
 
 /// email, password

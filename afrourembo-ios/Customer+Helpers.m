@@ -83,6 +83,8 @@
                               @"profilePicture" : self.profilePicture.length > 0 ? self.profilePicture : @"",
                               @"token" : self.token.length > 0 ? self.token : @"",
                               @"favorites" : favoritesArray.count > 0 ? favoritesArray : [NSArray new],
+                              @"profileComplete" : [NSNumber numberWithBool:self.profileComplete],
+                              @"passwordSet" : [NSNumber numberWithBool:self.passwordSet],
                               };
     
     NSError *error;

@@ -15,8 +15,8 @@
 + (RKObjectMapping *)map1 {
     
     RKObjectMapping *mapping = [RKObjectMapping mappingForClass:[Customer class]];
-    [mapping addAttributeMappingsFromArray:@[@"email", @"password", @"token", @"fName", @"lName", @"phone", @"profilePicture"]];
-   
+    [mapping addAttributeMappingsFromArray:@[@"email", @"password", @"token", @"fName", @"lName", @"phone", @"profilePicture", @"profileComplete", @"passwordSet"]];
+
     [mapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"favorites"
                                                                             toKeyPath:@"favorites"
                                                                           withMapping:[Favorite map2]]];

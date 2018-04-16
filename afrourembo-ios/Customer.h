@@ -26,6 +26,9 @@
 @property NSString *phone;
 @property NSString *profilePicture;
 
+@property BOOL profileComplete;
+@property BOOL passwordSet;
+
 @property NSArray <Favorite *> *favorites;
 
 @end
