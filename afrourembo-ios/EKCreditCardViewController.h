@@ -7,9 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "EKDatePickerViewController.h"
 #import "EKTextFieldTableViewCell.h"
 
-@interface EKCreditCardViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate>
+@interface EKCreditCardViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate, EKDatePickerDelegate>
 
 @property (nonatomic, strong) IBOutlet UITableView *tableView;
 

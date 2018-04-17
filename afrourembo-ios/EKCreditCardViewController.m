@@ -8,6 +8,8 @@
 
 #import "EKCreditCardViewController.h"
 
+static NSString * const kDatePickerSegue = @"creditCardToDatePickerVC";
+
 @implementation EKCreditCardViewController {
     UITextField *_activeTextField;
 }
@@ -83,6 +85,11 @@
 - (void)textFieldDidBeginEditing:(UITextField *)textField {
     
     _activeTextField = textField;
+    
+    if (textField.tag == 1) {
+        [textField resignFirstResponder];
+        [self performSegueWithIdentifier:kDatePickerSegue sender:nil];
+    }
 }
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
@@ -146,6 +153,8 @@
     }
 }
 
+- (IBAction)unwindToCreditCardVC:(UIStoryboardSegue *)segue { }
+
 #pragma mark - Helpers
 
 - (BOOL)validateData {
@@ -158,14 +167,14 @@
     return YES;
 }
 
-/*
 #pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+
+    if ([segue.identifier isEqualToString:kDatePickerSegue]) {
+        EKDatePickerViewController *vc = segue.destinationViewController;
+        vc.delegate = self;
+    }
 }
-*/
 
 @end
