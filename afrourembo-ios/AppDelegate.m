@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 
 static NSString * const kWelcomeStoryboard = @"Welcome";
+static NSString * const kSignUpStoryboard = @"SignUp";
 static NSString * const kMainStoryboard = @"Main";
 static NSString * const kVendorMainStoryboard = @"Vendor_Main";
 
@@ -30,11 +31,29 @@ static NSString * const kVendorMainStoryboard = @"Vendor_Main";
     
     if ([EKSettings getSavedCustomer]) {
         
+        Customer *customer = [EKSettings getSavedCustomer];
+        
         // Explore
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:kMainStoryboard bundle:nil];
         UINavigationController *rootViewController = [storyboard instantiateViewControllerWithIdentifier:kExploreVC];
         self.window.rootViewController = rootViewController;
         
+        //TODO: Will need to figure out a smart way to detect if profileComplete is False, or doesn't exist at all to avoid weird shitatom
+//        if (customer.profileComplete) {
+//
+//            // Explore
+//            UIStoryboard *storyboard = [UIStoryboard storyboardWithName:kMainStoryboard bundle:nil];
+//            UINavigationController *rootViewController = [storyboard instantiateViewControllerWithIdentifier:kExploreVC];
+//            self.window.rootViewController = rootViewController;
+//            
+//        } else {
+//            
+//            // Edit Info
+//            UIStoryboard *storyboard = [UIStoryboard storyboardWithName:kSignUpStoryboard bundle:nil];
+//            UINavigationController *rootViewController = [storyboard instantiateViewControllerWithIdentifier:kCustomerInfoVC];
+//            self.window.rootViewController = rootViewController;
+//        }
+ 
     } else if ([EKSettings getSavedVendor]) {
     
         // Vendor
