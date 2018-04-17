@@ -13,6 +13,7 @@
 
 static NSString * const kSplashVC = @"splashVC";
 static NSString * const kExploreVC = @"exploreVC";
+static NSString * const kCustomerInfoVC = @"customerProfileVC";
 static NSString * const kVendorDashVC = @"vendor_dashboard";
 
 #pragma mark - Storyboard IDs

@@ -57,6 +57,9 @@
     delta.profilePicture = newCustomer.profilePicture.length > 0 ? newCustomer.profilePicture : existingCustomer.profilePicture;
     delta.token = newCustomer.token.length > 0 ? newCustomer.token : existingCustomer.token;
     
+    delta.passwordSet = newCustomer.passwordSet;
+    delta.profileComplete = newCustomer.profileComplete;
+    
     delta.favorites = [NSArray arrayWithArray:newCustomer.favorites];
     
     return delta;
