@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "EKDatePickerViewController.h"
 #import "EKTextFieldTableViewCell.h"
+#import "NSDate+Helpers.h"
 
 @interface EKCreditCardViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate, EKDatePickerDelegate>
 

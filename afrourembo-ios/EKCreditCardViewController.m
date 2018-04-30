@@ -127,6 +127,14 @@ static NSString * const kDatePickerSegue = @"creditCardToDatePickerVC";
     }
 }
 
+#pragma mark - EKDatePickerDelegate
+
+- (void)didPickDate:(NSDate *)date {
+    
+    self._MMYY = [NSDate stringFromDate:date withFormat:DateFormatDigitMonthDashYear];
+    [self.tableView reloadData];
+}
+
 #pragma mark - Actions
 
 - (void)addKeyboadToolbarTo:(UITextField *)textField {
