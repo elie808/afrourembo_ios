@@ -14,6 +14,7 @@ typedef NS_ENUM(NSUInteger, DateFormat) {
     DateFormatDigitYearMonthDay,
     DateFormatDigitYearMonth,
     DateFormatDigitMonthYear,
+    DateFormatDigitMonthDashYear,
     DateFormatDigitHourMinute,
     DateFormatDigitYearMonthDayHourMinute
 };
