@@ -1470,14 +1470,14 @@
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" directionalLockEnabled="YES" alwaysBounceHorizontal="YES" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EHU-HD-AFQ" customClass="EKCarousel">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="220"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="220"/>
                                             <gestureRecognizers/>
                                             <connections>
                                                 <outlet property="delegate" destination="q3N-QV-x45" id="Isk-WK-rky"/>
                                             </connections>
                                         </scrollView>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="0star" translatesAutoresizingMaskIntoConstraints="NO" id="eJU-gn-pzG">
-                                            <rect key="frame" x="362" y="195" width="100" height="17"/>
+                                            <rect key="frame" x="137" y="195" width="100" height="17"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="100" id="7KA-ux-rY1"/>
                                                 <constraint firstAttribute="height" constant="17" id="8HU-tT-LDV"/>
@@ -1490,7 +1490,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xhv-ju-RfC">
-                                            <rect key="frame" x="557" y="185" width="35" height="35"/>
+                                            <rect key="frame" x="332" y="185" width="35" height="35"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="35" id="sHy-bg-fiW"/>
                                                 <constraint firstAttribute="height" constant="35" id="zMV-8y-L62"/>
@@ -1501,7 +1501,7 @@
                                             </connections>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WEC-yZ-fJU">
-                                            <rect key="frame" x="557" y="8" width="35" height="35"/>
+                                            <rect key="frame" x="332" y="8" width="35" height="35"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="35" id="5H0-wT-9HB"/>
                                                 <constraint firstAttribute="height" constant="35" id="iYj-b9-zz7"/>
@@ -3000,7 +3000,7 @@
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="712380087" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jLv-VN-jzR">
-                                            <rect key="frame" x="8" y="8" width="584" height="37"/>
+                                            <rect key="frame" x="8" y="8" width="359" height="37"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>

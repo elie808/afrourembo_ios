@@ -18,6 +18,7 @@ static NSString * const kSalonInfoSegue = @"signUpToSalonInfoVC";
 @interface EKSignupBPViewController () {
     NSArray *_dataSourceArray;
     BOOL _didPickProfilePicture;
+    UITextField *_activeTextField; //only used for phone number textfield for now
 } @end
 
 @implementation EKSignupBPViewController
@@ -64,6 +65,9 @@ static NSString * const kSalonInfoSegue = @"signUpToSalonInfoVC";
     
     if (indexPath.row == 4) {
         cell.cellTextField.keyboardType = UIKeyboardTypePhonePad;
+        [self addKeyboadToolbarTo:cell.cellTextField];
+        cell.cellTextField.tag = 4;
+        _activeTextField = cell.cellTextField;
     }
     
     return cell;
@@ -76,6 +80,14 @@ static NSString * const kSalonInfoSegue = @"signUpToSalonInfoVC";
 }
 
 #pragma mark - UITextField Delegate
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField {
+    // uncoment to enable using the Done toolbar button for all textfields
+    // _activeTextField = textField;
+    if (textField.tag == 4) {
+        [self.tableView setContentOffset:CGPointMake(0, 50) animated:YES];
+    }
+}
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     
@@ -263,7 +275,32 @@ static NSString * const kSalonInfoSegue = @"signUpToSalonInfoVC";
     [self presentAlertController];
 }
 
+- (IBAction)diTapToolbarDoneButton {
+    
+    if (_activeTextField && _activeTextField.isFirstResponder) {
+        [_activeTextField resignFirstResponder];
+        [self.tableView setContentOffset:CGPointMake(0, -50) animated:YES];
+    }
+}
+
 #pragma mark - Helpers
+
+- (void)addKeyboadToolbarTo:(UITextField *)textField {
+    
+    UIToolbar *keyboardToolbar = [[UIToolbar alloc] init];
+    [keyboardToolbar sizeToFit];
+    
+    UIBarButtonItem *flexBarButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace
+                                                                                   target:nil action:nil];
+    UIBarButtonItem *doneBarButton = [[UIBarButtonItem alloc]
+                                      initWithBarButtonSystemItem:UIBarButtonSystemItemDone
+                                      target:self action:@selector(diTapToolbarDoneButton) ];
+    
+    
+    keyboardToolbar.items = @[flexBarButton, doneBarButton];
+    
+    textField.inputAccessoryView = keyboardToolbar;
+}
 
 - (void)presentAlertController {
     

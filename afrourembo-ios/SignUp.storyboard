@@ -2376,6 +2376,9 @@
                                                     <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <textInputTraits key="textInputTraits"/>
+                                                    <connections>
+                                                        <outlet property="delegate" destination="kPc-xv-I96" id="ldE-h1-Orc"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -2899,9 +2902,9 @@
         <image name="salonFlowLine" width="300" height="44"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="XIv-EK-ddw"/>
-        <segue reference="pcN-xV-EFc"/>
         <segue reference="z4e-2X-Leh"/>
-        <segue reference="w0H-6g-W5f"/>
+        <segue reference="pcN-xV-EFc"/>
+        <segue reference="XIv-EK-ddw"/>
+        <segue reference="hg1-H8-gAt"/>
     </inferredMetricsTieBreakers>
 </document>
