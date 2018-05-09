@@ -59,7 +59,7 @@
     
     NSString *URL;
     
-    if (category && category.length > 0) {
+    if (category && category.length > 0 && query.length == 0) {
         
         URL = [NSString stringWithFormat:@"%@?category=%@", kUserExploreProfessionalsAPIPath, category];
         

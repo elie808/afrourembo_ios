@@ -161,55 +161,61 @@ static NSString *kSalonAnnotation = @"salonLocations";
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
     
     [searchBar resignFirstResponder];
-    
-    /*
-    // should be some address, state, and zip
-    NSString *searchText = [NSString stringWithFormat:@"%@ nairobi kenya", searchBar.text];
-    
-    CGFloat latitude = -1.280424;
-    CGFloat longitude = 36.816311;
-    
-    CLCircularRegion *searchRegion = [[CLCircularRegion alloc] initWithCenter:CLLocationCoordinate2DMake(latitude, longitude)
-                                                                       radius:8000.0
-                                                                   identifier:kKenyaRegion];
-    
-    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    [[[CLGeocoder alloc] init] geocodeAddressString:searchText
-                                           inRegion:searchRegion
-                                  completionHandler:^(NSArray<CLPlacemark *> * _Nullable placemarks, NSError * _Nullable error) {
-                                      
-                                      if (placemarks && placemarks.count > 0) {
-                                          
-                                          [MBProgressHUD hideHUDForView:self.view animated:YES];
-                                          
-                                          CLPlacemark *topResult = [placemarks objectAtIndex:0];
-                                          MKPlacemark *placemark = [[MKPlacemark alloc] initWithPlacemark:topResult];
-                                          
-                                          MKCoordinateRegion region = self.mapView.region;
-                                          region.center = placemark.region.center;
-                                          region.span.longitudeDelta /= 8.0;
-                                          region.span.latitudeDelta /= 8.0;
-                                          
-                                          [self.mapView setRegion:region animated:YES];
-                                          // [self.mapView addAnnotation:placemark];
-                                          
-                                      } else {
-                                          
-                                          [MBProgressHUD hideHUDForView:self.view animated:YES];
-                                          [self showMessage:@"We can't find the address you're searching for."
-                                                  withTitle:@"Address not found"
-                                            completionBlock:nil];
-                                      }
-                                  }];
-     */
 
+    if (searchBar.text.length > 0) {
+     
+        [Explore getProfessionalsForCategory:self.passedService.name
+                                    andQuery:searchBar.text
+                                   WithBlock:^(NSArray<Professional *> *proArray) {
+                                       
+                                       [self.venuesList removeAllObjects];
+                                       [self.dataSourceArray removeAllObjects];
+                                       
+                                       self.listViewVisible = NO;
+                                       
+                                       [self.venuesList addObjectsFromArray:proArray];
+                                       [self.dataSourceArray addObjectsFromArray:proArray];
+                                       
+                                       [self.tableView reloadData];
+                                       
+                                       [self placeVenuePins:proArray];
+                                       
+                                       
+                                       [Explore getSalonsForCategory:self.passedService.name
+                                                            andQuery:searchBar.text
+                                                           WithBlock:^(NSArray<Salon *> *salonArray) {
+                                                               
+                                                               self.listViewVisible = NO;
+                                                               
+                                                               [self.venuesList addObjectsFromArray:salonArray];
+                                                               
+                                                               [self.dataSourceArray addObjectsFromArray:salonArray];
+                                                               [self.tableView reloadData];
+                                                               
+                                                               [self placeVenuePins:salonArray];
+                                                               
+                                                           } withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
+                                                               [self showMessage:errorMessage withTitle:@"Error" completionBlock:nil];
+                                                           }];
+                                       
+                                       
+                                   } withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
+                                       [self showMessage:errorMessage withTitle:@"Error" completionBlock:nil];
+                                   }];
+    }
+}
+
+- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
+    
+    [searchBar resignFirstResponder];
+    
     [Explore getProfessionalsForCategory:self.passedService.name
-                                andQuery:searchBar.text
+                                andQuery:nil
                                WithBlock:^(NSArray<Professional *> *proArray) {
-
+                                   
                                    [self.venuesList removeAllObjects];
                                    [self.dataSourceArray removeAllObjects];
-
+                                   
                                    self.listViewVisible = NO;
                                    
                                    [self.venuesList addObjectsFromArray:proArray];
@@ -221,7 +227,7 @@ static NSString *kSalonAnnotation = @"salonLocations";
                                    
                                    
                                    [Explore getSalonsForCategory:self.passedService.name
-                                                        andQuery:searchBar.text
+                                                        andQuery:nil
                                                        WithBlock:^(NSArray<Salon *> *salonArray) {
                                                            
                                                            self.listViewVisible = NO;
@@ -245,6 +251,7 @@ static NSString *kSalonAnnotation = @"salonLocations";
 
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
 
+    /*
     if (searchText.length == 0) {
 
         [self showHideList];
@@ -290,6 +297,7 @@ static NSString *kSalonAnnotation = @"salonLocations";
                                        [self showMessage:errorMessage withTitle:@"Error" completionBlock:nil];
                                    }];
     }
+     */
 }
 
 @end
