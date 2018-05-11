@@ -93,14 +93,14 @@ static NSString * const kPaymentSegue = @"cartVCtoPaymentVC";
 
     [self performSegueWithIdentifier:kPaymentSegue sender:_bookings];
     
-    // filter Reservation objects out of Booking objects in the dataSource
-//    NSMutableArray *reservationsArray = [NSMutableArray new];
-//    for (Booking *bookingObj in _bookings) {
-//        
-//        [reservationsArray addObject:[Booking convertBookingObj:bookingObj]];
-//    }
-    
     /*
+    // filter Reservation objects out of Booking objects in the dataSource
+    NSMutableArray *reservationsArray = [NSMutableArray new];
+    for (Booking *bookingObj in _bookings) {
+        
+        [reservationsArray addObject:[Booking convertBookingObj:bookingObj]];
+    }
+    
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     [Reservation postUserReservations:reservationsArray
                               forUser:[EKSettings getSavedCustomer].token
@@ -144,7 +144,7 @@ static NSString * const kPaymentSegue = @"cartVCtoPaymentVC";
                                [MBProgressHUD hideHUDForView:self.view animated:YES];
                                [self handleVendorAvailabilityErrors:error errorMessage:errorMessage statusCode:statusCode];
                            }];
-     */
+    */
 }
 
 #pragma mark - Navigation

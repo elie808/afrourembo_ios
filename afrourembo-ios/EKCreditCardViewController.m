@@ -166,6 +166,35 @@ static NSString * const kDatePickerSegue = @"creditCardToDatePickerVC";
 #pragma mark - Helpers
 
 - (BOOL)validateData {
+
+//    Map<String, String> params = new HashMap<>();
+//    params.put("Mobicard_Version", "1.0");
+//    params.put("Mobicard_Mode", "SILENT-HOSTED");
+//    params.put("Mobicard_Order_Amount", String.valueOf((int) cartInfo.getAmount() * 100)); //amount should be sent in cents
+//    params.put("Mobicard_Order_Currency", cartInfo.getCurrency()); //KES
+//    params.put("Mobicard_Item_Description", cartInfo.getDescription()); //shou maken - service+pro+client
+//    params.put("Mobicard_Transaction_Reference", bookingId); //
+//    params.put("Mobicard_MerchantID", BuildConfig.PAYMENT_GATEWAY_MERCHANT_ID);
+//    params.put("Mobicard_API_Key", BuildConfig.PAYMENT_GATEWAY_API_KEY);
+//    params.put("Mobicard_First_Name", firstName);
+//    params.put("Mobicard_Last_Name", lastName);
+//    params.put("Mobicard_Address", address);
+//    params.put("Mobicard_Postal_Code", postal); //has to be <= 20 chars
+//    params.put("Mobicard_Country_Code", countryStr); //LB
+//    params.put("Mobicard_Mobile_Number", phone);
+//    params.put("Mobicard_Email", mLocalDataStore.getUser().getEmail()); //user.email
+//    params.put("Mobicard_Payment_Type", "CARD");
+//    params.put("Mobicard_Payment_Set", "1");
+    
+//    params.put("Mobicard_Cnumber", creditcardNumber); //42s
+//    params.put("Mobicard_Cvv", creditcardCvvNumber); //100
+//    params.put("Mobicard_Cexp_Month", creditcardMonthExpiry); //02
+//    params.put("Mobicard_Cexp_Year", creditcardYearExpiry); //2019
+//    
+//    JSONObject jsonObject = new JSONObject(params);
+//    mView.startCreditCardPayment(jsonObject);
+
+    
     
 //    _cardNumber;
 //    _MMYY;

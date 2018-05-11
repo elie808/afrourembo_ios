@@ -3115,9 +3115,9 @@
         <image name="icTwitterActive" width="24" height="21"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="U39-u0-bPg"/>
         <segue reference="oT6-4C-Llh"/>
+        <segue reference="Tgh-kR-Ldd"/>
         <segue reference="yqX-hc-pNV"/>
-        <segue reference="obx-IB-IIW"/>
-        <segue reference="MUO-W6-Tur"/>
     </inferredMetricsTieBreakers>
 </document>

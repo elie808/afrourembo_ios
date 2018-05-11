@@ -9,8 +9,9 @@
 #import <UIKit/UIKit.h>
 #import <Realm/Realm.h>
 #import "Booking.h"
+#import "EKNetworkingConstants.h"
 
-@interface EKPaymentViewController : UIViewController <UIPageViewControllerDataSource, UITableViewDelegate, UITableViewDataSource>
+@interface EKPaymentViewController : UIViewController <UIPageViewControllerDataSource, UITableViewDelegate, UITableViewDataSource, UIWebViewDelegate>
 
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *tableHeightConstraint;
 @property (strong, nonatomic) IBOutlet UIView *pageVCPlaceholderView;
