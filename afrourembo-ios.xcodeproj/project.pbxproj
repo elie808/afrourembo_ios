@@ -131,6 +131,9 @@
 		47AB79861F5FEF9F001D7AAA /* Dashboard.m in Sources */ = {isa = PBXBuildFile; fileRef = 47AB79851F5FEF9F001D7AAA /* Dashboard.m */; };
 		47AB79891F5FF090001D7AAA /* Dashboard+API.m in Sources */ = {isa = PBXBuildFile; fileRef = 47AB79881F5FF090001D7AAA /* Dashboard+API.m */; };
 		47AB798C1F60CED9001D7AAA /* Professional+Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 47AB798B1F60CED9001D7AAA /* Professional+Helpers.m */; };
+		47ADF0F920AC26CD008F8E40 /* EKBPPaymentInfoTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47ADF0F820AC26CD008F8E40 /* EKBPPaymentInfoTableViewController.m */; };
+		47ADF0FC20AC3418008F8E40 /* Bank.m in Sources */ = {isa = PBXBuildFile; fileRef = 47ADF0FB20AC3418008F8E40 /* Bank.m */; };
+		47ADF0FF20AC3461008F8E40 /* Bank+API.m in Sources */ = {isa = PBXBuildFile; fileRef = 47ADF0FE20AC3461008F8E40 /* Bank+API.m */; };
 		47AF51AF1E9B686F005FE6EB /* EKInCellCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 47AF51AE1E9B686F005FE6EB /* EKInCellCollectionView.m */; };
 		47AF51B21E9B6897005FE6EB /* EKSalonListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 47AF51B11E9B6897005FE6EB /* EKSalonListTableViewCell.m */; };
 		47AF51B71E9B765D005FE6EB /* EKSalonListCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 47AF51B61E9B765D005FE6EB /* EKSalonListCollectionViewCell.m */; };
@@ -422,6 +425,12 @@
 		47AB79881F5FF090001D7AAA /* Dashboard+API.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Dashboard+API.m"; sourceTree = "<group>"; };
 		47AB798A1F60CED9001D7AAA /* Professional+Helpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Professional+Helpers.h"; sourceTree = "<group>"; };
 		47AB798B1F60CED9001D7AAA /* Professional+Helpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Professional+Helpers.m"; sourceTree = "<group>"; };
+		47ADF0F720AC26CD008F8E40 /* EKBPPaymentInfoTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKBPPaymentInfoTableViewController.h; sourceTree = "<group>"; };
+		47ADF0F820AC26CD008F8E40 /* EKBPPaymentInfoTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKBPPaymentInfoTableViewController.m; sourceTree = "<group>"; };
+		47ADF0FA20AC3418008F8E40 /* Bank.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bank.h; sourceTree = "<group>"; };
+		47ADF0FB20AC3418008F8E40 /* Bank.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Bank.m; sourceTree = "<group>"; };
+		47ADF0FD20AC3461008F8E40 /* Bank+API.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Bank+API.h"; sourceTree = "<group>"; };
+		47ADF0FE20AC3461008F8E40 /* Bank+API.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Bank+API.m"; sourceTree = "<group>"; };
 		47AF51AD1E9B686F005FE6EB /* EKInCellCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKInCellCollectionView.h; sourceTree = "<group>"; };
 		47AF51AE1E9B686F005FE6EB /* EKInCellCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKInCellCollectionView.m; sourceTree = "<group>"; };
 		47AF51B01E9B6897005FE6EB /* EKSalonListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKSalonListTableViewCell.h; sourceTree = "<group>"; };
@@ -992,6 +1001,8 @@
 				47FE51C21EFD26F900A39BAE /* Address.m */,
 				4757C6511ED98D8000C2B52F /* Appointment.h */,
 				4757C6521ED98D8000C2B52F /* Appointment.m */,
+				47ADF0FA20AC3418008F8E40 /* Bank.h */,
+				47ADF0FB20AC3418008F8E40 /* Bank.m */,
 				4787C6DB1EB40D5500DF7B83 /* Booking.h */,
 				4787C6DC1EB40D5500DF7B83 /* Booking.m */,
 				479E37DD1FC43B8E00630954 /* BusinessInfo.h */,
@@ -1243,6 +1254,7 @@
 				47074F8C1EAEB4AC00E35EA7 /* BP - Sign up ViewController */,
 				47B0AA551FD95B6300ABE2E1 /* BP - TabBar Controller */,
 				47F7140E1ED6FB320028FB65 /* BP - Business Model */,
+				47ADF0F320AC1A94008F8E40 /* BP - Payment Info */,
 				470F0B921EDB7D5A002FDE96 /* BP - Dashboard */,
 				4757C64A1ED87A0300C2B52F /* BP - BP Today Calendar View */,
 				479A85071F9E6012002ECC2C /* BP - Clients List */,
@@ -1285,6 +1297,15 @@
 				477935541F89A1EF00E0C034 /* EKResetPhoneNumberViewController.m */,
 			);
 			name = "Customer - Sign In ViewController";
+			sourceTree = "<group>";
+		};
+		47ADF0F320AC1A94008F8E40 /* BP - Payment Info */ = {
+			isa = PBXGroup;
+			children = (
+				47ADF0F720AC26CD008F8E40 /* EKBPPaymentInfoTableViewController.h */,
+				47ADF0F820AC26CD008F8E40 /* EKBPPaymentInfoTableViewController.m */,
+			);
+			name = "BP - Payment Info";
 			sourceTree = "<group>";
 		};
 		47AF4F301FD47E6000C296CC /* Customer - Rating ViewController */ = {
@@ -1408,6 +1429,8 @@
 		47FF4F6C1EB557660022A6ED /* API */ = {
 			isa = PBXGroup;
 			children = (
+				47ADF0FD20AC3461008F8E40 /* Bank+API.h */,
+				47ADF0FE20AC3461008F8E40 /* Bank+API.m */,
 				47605F131F3F211D00991C3A /* Booking+API.h */,
 				47605F141F3F211D00991C3A /* Booking+API.m */,
 				47FE51C71EFD5BD400A39BAE /* Category+API.h */,
@@ -1608,6 +1631,7 @@
 			files = (
 				47FF4F6B1EB557620022A6ED /* Customer+API.m in Sources */,
 				470CD7491EA11AD40086DEE4 /* EKCompanyContactTableViewCell.m in Sources */,
+				47ADF0FF20AC3461008F8E40 /* Bank+API.m in Sources */,
 				47605DC51F8EF01200DB1968 /* EKSettingsBPViewController+CollectionView.m in Sources */,
 				4757C6491ED879FB00C2B52F /* EKTodayViewController.m in Sources */,
 				47F714111ED704350028FB65 /* EKSalonSelectViewController.m in Sources */,
@@ -1671,6 +1695,7 @@
 				47CC1E4C20865660006DF10F /* EKDatePickerViewController.m in Sources */,
 				47FE51CC1EFD5BE100A39BAE /* Service+API.m in Sources */,
 				477935551F89A1EF00E0C034 /* EKResetPhoneNumberViewController.m in Sources */,
+				47ADF0FC20AC3418008F8E40 /* Bank.m in Sources */,
 				47C7D4CC1EBB5EF000457E53 /* Day.m in Sources */,
 				4757C6531ED98D8000C2B52F /* Appointment.m in Sources */,
 				47B82E721FCC6D9F0075CDC5 /* EKRatingViewController.m in Sources */,
@@ -1714,6 +1739,7 @@
 				475FC3811EB6BF5E00BB0731 /* EKAddNewServiceViewController.m in Sources */,
 				471F5FBB1F4870550097817E /* ProfilePicture.m in Sources */,
 				479A850E1F9E9DA7002ECC2C /* ClientBooking.m in Sources */,
+				47ADF0F920AC26CD008F8E40 /* EKBPPaymentInfoTableViewController.m in Sources */,
 				474ED7BC1E9C68940099CA0A /* EKDiscoverMapViewController+MapDelegate.m in Sources */,
 				47AB79891F5FF090001D7AAA /* Dashboard+API.m in Sources */,
 				47EF0E301EDA23B3000B07BB /* Today.m in Sources */,

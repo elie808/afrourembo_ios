@@ -12,19 +12,22 @@
 #pragma mark - URLs
 
 //static NSString * const kBaseURL = @"http://54.93.253.233/api/v1/";      // staging
-static NSString * const kBaseURL = @"https://app.afrourembo.com/api/v1/";  // prod
-
-static NSString * const kMerchantID = @"1021";  // staging
-static NSString * const kMobicardAPIKey = @"MWRmZjYyZDdmMDMzMTAwNjcyOWM5MTYwMGUzMGM3M2UxOWJjNmU5YjBkNzMifQ==";  // staging
+static NSString * const kBaseURL = @"http://development.afrourembo.com:3000/api/v1/";
+//static NSString * const kMerchantID = @"1021";  // staging
+//static NSString * const kMobicardAPIKey = @"MWRmZjYyZDdmMDMzMTAwNjcyOWM5MTYwMGUzMGM3M2UxOWJjNmU5YjBkNzMifQ==";  // staging
 static NSString * const kMobicardURL = @"https://mobicardsystems.com/received_rest";  // staging
 
-//static NSString * const kMerchantID = @"1593";  // prod
-//static NSString * const kMobicardAPIKey = @"MWMyOWIzZjZmYzZhMDA0M2IzYTMyNGVkOTVkNzAyYzNmNjkwNDA2MzA2ZTFiZiJ9";  // prod
+//static NSString * const kBaseURL = @"https://app.afrourembo.com/api/v1/";  // prod
+static NSString * const kMerchantID = @"1593";  // prod
+static NSString * const kMobicardAPIKey = @"MWMyOWIzZjZmYzZhMDA0M2IzYTMyNGVkOTVkNzAyYzNmNjkwNDA2MzA2ZTFiZiJ9";  // prod
 //static NSString * const kMobicardURL = @"https://mobicardsystems.com/received";  // prod
 
 #pragma mark - Routes
 
 static NSString * const kCategoriesAPIPath   = @"categories";
+
+static NSString * const kBankListAPIPath = @"banks";
+static NSString * const kProfessionalBankAPIPath = @"professional/payment/info";
 
 static NSString * const kUserRegisterAPIPath = @"user/register";
 static NSString * const kUserBookingsAPIPath = @"user/bookings";

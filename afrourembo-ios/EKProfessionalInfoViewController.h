@@ -12,6 +12,7 @@
 #import "EKTextFieldTableViewCell.h"
 #import "EKProfessionalInfoTableViewCell.h"
 #import "EKProfessionalAddressViewController.h"
+#import "EKBPPaymentInfoTableViewController.h"
 #import "ProfessionalInfo+API.h"
 #import "Professional+API.h"
 #import "EKSettings.h"

@@ -15,7 +15,7 @@
 + (RKObjectMapping *)map1 {
     
     RKObjectMapping *mapping = [RKObjectMapping mappingForClass:[Professional class]];
-    [mapping addAttributeMappingsFromArray:@[@"email", @"password", @"token", @"fName", @"lName", @"phone", @"isMobile", @"about"]];
+    [mapping addAttributeMappingsFromArray:@[@"email", @"password", @"token", @"fName", @"lName", @"phone", @"isMobile", @"about", @"paymentInfoComplete"]];
     
     [mapping addAttributeMappingsFromArray:@[@"rating", @"ratingBasedOn", @"profilePicture"]];
     
@@ -72,7 +72,7 @@
 + (RKObjectMapping *)map4 {
     
     RKObjectMapping *mapping = [RKObjectMapping mappingForClass:[Professional class]];
-    [mapping addAttributeMappingsFromArray:@[@"email", @"password", @"token", @"fName", @"lName", @"phone", @"isMobile"]];
+    [mapping addAttributeMappingsFromArray:@[@"email", @"password", @"token", @"fName", @"lName", @"phone", @"isMobile", @"paymentInfoComplete"]];
     
     [mapping addAttributeMappingsFromArray:@[@"ratingBasedOn", @"profilePicture"]];
     

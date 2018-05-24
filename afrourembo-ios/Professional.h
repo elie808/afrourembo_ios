@@ -28,6 +28,7 @@
 @property NSString *about;
 
 @property (assign, nonatomic) BOOL isMobile;
+@property (assign, nonatomic) BOOL paymentInfoComplete;
 
 @property NSString *token;
 

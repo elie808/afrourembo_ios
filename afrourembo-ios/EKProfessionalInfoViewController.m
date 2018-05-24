@@ -13,7 +13,8 @@ static NSString * const kAdressCell         = @"professionalAddressCell";
 static NSString * const kPhoneCell          = @"professionalPhoneNumberCell";
 static NSString * const kSwitchCell         = @"professionalMobileCell";
 
-static NSString * const kAddServiceSegue    = @"profInfoToAddServiceVC";
+//static NSString * const kAddServiceSegue    = @"profInfoToAddServiceVC";
+static NSString * const kPaymentInfoSegue   = @"profInfoToPaymentInfoVC";
 static NSString * const kAddressSegue       = @"professionalInfoToProfessionalAdressVC";
 
 @implementation EKProfessionalInfoViewController {
@@ -143,7 +144,7 @@ static NSString * const kAddressSegue       = @"professionalInfoToProfessionalAd
                             if (self.unwindSegueID && self.unwindSegueID.length) {
                                 [self performSegueWithIdentifier:self.unwindSegueID sender:nil]; //unwind to bpSettingsVC
                             } else {
-                                [self performSegueWithIdentifier:kAddServiceSegue sender:nil];
+                                [self performSegueWithIdentifier:kPaymentInfoSegue sender:nil];
                             }
                             
                         } withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
@@ -168,9 +169,30 @@ static NSString * const kAddressSegue       = @"professionalInfoToProfessionalAd
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     
-    if ([segue.identifier isEqualToString:kAddServiceSegue]) {
+    // 
+//    if ([segue.identifier isEqualToString:kAddServiceSegue]) {
+//        
+//        EKAddServiceViewController *vc = segue.destinationViewController;
+//        vc.passedProfessional = self.passedProfessional;
+//        
+//        BusinessInfo *selectedBusinessAdress = [BusinessInfo new];
+//        selectedBusinessAdress.name = self.businessName;
+//        selectedBusinessAdress.address = self.address;
+//        selectedBusinessAdress.longitude = self.addressCoords.longitude;
+//        selectedBusinessAdress.latitude = self.addressCoords.latitude;
+//        
+////        selectedBusinessAdress.location = @{@"longitude" : [NSNumber numberWithFloat:self.addressCoords.longitude],
+////                                            @"latitude" : [NSNumber numberWithFloat:self.addressCoords.latitude]};
+//        
+//        vc.passedProfessional.business = selectedBusinessAdress;
+//        
+//        vc.passedProfessional.phone = self.phoneNumber;
+//        vc.passedProfessional.isMobile = self.isMobile;
+//    }
+    
+    if ([segue.identifier isEqualToString:kPaymentInfoSegue]) {
         
-        EKAddServiceViewController *vc = segue.destinationViewController;
+        EKBPPaymentInfoTableViewController *vc = segue.destinationViewController;
         vc.passedProfessional = self.passedProfessional;
         
         BusinessInfo *selectedBusinessAdress = [BusinessInfo new];
@@ -181,7 +203,7 @@ static NSString * const kAddressSegue       = @"professionalInfoToProfessionalAd
         
 //        selectedBusinessAdress.location = @{@"longitude" : [NSNumber numberWithFloat:self.addressCoords.longitude],
 //                                            @"latitude" : [NSNumber numberWithFloat:self.addressCoords.latitude]};
-        
+
         vc.passedProfessional.business = selectedBusinessAdress;
         
         vc.passedProfessional.phone = self.phoneNumber;

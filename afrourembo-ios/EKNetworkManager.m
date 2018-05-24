@@ -34,6 +34,10 @@
 + (void)configureRequestDescriptors:(RKObjectManager *)objectManager {
     
     [objectManager addRequestDescriptorsFromArray:@[
+                                                    [Bank professionalBankInfoRequestDescriptor]
+                                                    ]];
+    
+    [objectManager addRequestDescriptorsFromArray:@[
                                                     [Day availabilityRequestDescriptor]
                                                     ]];
     
@@ -82,6 +86,11 @@
 #pragma mark - Response
 
 + (void)configureResponseDescriptors:(RKObjectManager *)objectManager {
+    
+    [objectManager addResponseDescriptorsFromArray:@[
+                                                     [Bank getBanksResponseDescriptor],
+                                                     [Bank professionalBankPostResponseDescriptor]
+                                                     ]];
     
     [objectManager addResponseDescriptorsFromArray:@[
                                                      [Booking getBookingsForVendorResponseDescriptor]

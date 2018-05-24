@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <RestKit/RestKit.h>
 
+#import "Bank+API.h"
 #import "Booking+API.h"
 #import "Category+API.h"
 #import "Customer+API.h"
