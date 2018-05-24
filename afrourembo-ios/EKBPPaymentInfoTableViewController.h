@@ -8,16 +8,18 @@
 
 #import <UIKit/UIKit.h>
 #import "EKAddServiceViewController.h"
+#import "EKBankPickerViewController.h"
 #import "Bank+API.h"
 #import "Professional.h"
 #import "Salon.h"
 
 #import <MBProgressHUD/MBProgressHUD.h>
 
-@interface EKBPPaymentInfoTableViewController : UITableViewController <UITextFieldDelegate>
+@interface EKBPPaymentInfoTableViewController : UITableViewController <UITextFieldDelegate, EKBankPickerDelegate>
 
 @property (strong, nonatomic) IBOutlet UITextField *firstNameTextField;
 @property (strong, nonatomic) IBOutlet UITextField *lastNameTextField;
+@property (strong, nonatomic) IBOutlet UILabel *bankLabel;
 @property (strong, nonatomic) IBOutlet UITextField *accountNumberTextField;
 
 @property NSString *unwindSegueID;

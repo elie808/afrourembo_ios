@@ -8,9 +8,13 @@
 
 #import "EKBPPaymentInfoTableViewController.h"
 
-@implementation EKBPPaymentInfoTableViewController
+@implementation EKBPPaymentInfoTableViewController {
+    NSArray *_banksArray;
+    NSString *_bankID;
+}
 
 static NSString * const kAddServiceSegue   = @"paymentInfoToAddServiceVC";
+static NSString * const kBankPickerSegue   = @"bpPaymentToBankPickerVC";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -21,8 +25,8 @@ static NSString * const kAddServiceSegue   = @"paymentInfoToAddServiceVC";
     }
     
     [Bank getBanksListWithBlock:^(NSArray *array) {
-        
-        NSLog(@"BANKS ARRAY: %@", array);
+
+        _banksArray = [NSArray arrayWithArray:array];
         
     } withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
         
@@ -42,7 +46,7 @@ static NSString * const kAddServiceSegue   = @"paymentInfoToAddServiceVC";
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     if (indexPath.row == 2) {
-        
+        [self performSegueWithIdentifier:kBankPickerSegue sender:nil];
     }
 }
 
@@ -52,13 +56,22 @@ static NSString * const kAddServiceSegue   = @"paymentInfoToAddServiceVC";
     return textField.resignFirstResponder;
 }
 
+#pragma mark - EKBankPickerDelegate
+
+- (void)didPickBank:(Bank *)bank {
+    _bankLabel.text = bank.name;
+    _bankID = bank.bankID;
+}
+
 #pragma mark - Actions
+
+- (IBAction)unwindToBPPaymentInfoVC:(UIStoryboardSegue *)segue {}
 
 - (IBAction)didTapSave:(UIButton *)sender {
     
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     [Bank postPaymentInfoForProfessional:self.passedProfessional.token
-                                    bank:@"l06xzh4x0d"
+                                    bank:_bankID
                                firstName:self.firstNameTextField.text
                                 lastName:self.lastNameTextField.text
                             acountNumber:self.accountNumberTextField.text
@@ -76,6 +89,13 @@ static NSString * const kAddServiceSegue   = @"paymentInfoToAddServiceVC";
 #pragma mark - Navigation
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    
+    if ([segue.identifier isEqualToString:kBankPickerSegue]) {
+        
+        EKBankPickerViewController *vc = segue.destinationViewController;
+        vc.delegate = self;
+        vc.dataSource = [NSArray arrayWithArray:_banksArray];
+    }
     
     if ([segue.identifier isEqualToString:kAddServiceSegue]) {
 

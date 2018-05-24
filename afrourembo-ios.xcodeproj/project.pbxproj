@@ -163,6 +163,7 @@
 		47E2F0061EA5FE9D002E2FD4 /* EKSignupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47E2F0051EA5FE9D002E2FD4 /* EKSignupViewController.m */; };
 		47E2F0091EA5FF97002E2FD4 /* EKProfileInfoFacebookViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47E2F0081EA5FF97002E2FD4 /* EKProfileInfoFacebookViewController.m */; };
 		47EA09DC1EB7594800400603 /* EKAccessoryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 47EA09DB1EB7594800400603 /* EKAccessoryTableViewCell.m */; };
+		47EA8ED720B7261A00355228 /* EKBankPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47EA8ED620B7261A00355228 /* EKBankPickerViewController.m */; };
 		47EF0E301EDA23B3000B07BB /* Today.m in Sources */ = {isa = PBXBuildFile; fileRef = 47EF0E2F1EDA23B3000B07BB /* Today.m */; };
 		47F7140D1ED6FB2D0028FB65 /* EKBusinessModelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47F7140C1ED6FB2D0028FB65 /* EKBusinessModelViewController.m */; };
 		47F714111ED704350028FB65 /* EKSalonSelectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47F714101ED704350028FB65 /* EKSalonSelectViewController.m */; };
@@ -485,6 +486,8 @@
 		47E2F0081EA5FF97002E2FD4 /* EKProfileInfoFacebookViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKProfileInfoFacebookViewController.m; sourceTree = "<group>"; };
 		47EA09DA1EB7594800400603 /* EKAccessoryTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKAccessoryTableViewCell.h; sourceTree = "<group>"; };
 		47EA09DB1EB7594800400603 /* EKAccessoryTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKAccessoryTableViewCell.m; sourceTree = "<group>"; };
+		47EA8ED520B7261A00355228 /* EKBankPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKBankPickerViewController.h; sourceTree = "<group>"; };
+		47EA8ED620B7261A00355228 /* EKBankPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKBankPickerViewController.m; sourceTree = "<group>"; };
 		47EF0E2E1EDA23B3000B07BB /* Today.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Today.h; sourceTree = "<group>"; };
 		47EF0E2F1EDA23B3000B07BB /* Today.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Today.m; sourceTree = "<group>"; };
 		47F7140B1ED6FB2D0028FB65 /* EKBusinessModelViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKBusinessModelViewController.h; sourceTree = "<group>"; };
@@ -1304,6 +1307,8 @@
 			children = (
 				47ADF0F720AC26CD008F8E40 /* EKBPPaymentInfoTableViewController.h */,
 				47ADF0F820AC26CD008F8E40 /* EKBPPaymentInfoTableViewController.m */,
+				47EA8ED520B7261A00355228 /* EKBankPickerViewController.h */,
+				47EA8ED620B7261A00355228 /* EKBankPickerViewController.m */,
 			);
 			name = "BP - Payment Info";
 			sourceTree = "<group>";
@@ -1779,6 +1784,7 @@
 				47448AE01EAE462F0098CED3 /* EKEditProfileInfoViewController.m in Sources */,
 				47AF51B21E9B6897005FE6EB /* EKSalonListTableViewCell.m in Sources */,
 				47E2F0061EA5FE9D002E2FD4 /* EKSignupViewController.m in Sources */,
+				47EA8ED720B7261A00355228 /* EKBankPickerViewController.m in Sources */,
 				474BD5701E97F721009410C4 /* EKNavigationViewController.m in Sources */,
 				47FE51C91EFD5BD400A39BAE /* Category+API.m in Sources */,
 				47D88E6E1E793893001B88D0 /* EKWelcomeViewController.m in Sources */,

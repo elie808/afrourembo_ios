@@ -21,6 +21,15 @@ static NSString * const kVendorMainStoryboard = @"Vendor_Main";
     
     [EKNetworkManager configureRestKit];
     
+//    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:kSignUpStoryboard bundle:nil];
+//    UINavigationController *rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"paymentInfoVC"];
+//    self.window.rootViewController = rootViewController;
+    
+    
+    
+    
+    
+    
 //    NSLog(@"\n \n Realm directory: %@", [RLMRealmConfiguration defaultConfiguration]);
 //    [[NSFileManager defaultManager] removeItemAtURL:[RLMRealmConfiguration defaultConfiguration].fileURL error:nil];
 //    [[RLMRealm defaultRealm] beginWriteTransaction]; [[RLMRealm defaultRealm] deleteAllObjects]; [[RLMRealm defaultRealm] commitWriteTransaction];
@@ -28,6 +37,8 @@ static NSString * const kVendorMainStoryboard = @"Vendor_Main";
 //    [EKSettings deleteSavedCustomer];
 //    [EKSettings deleteSavedVendor];
 //    [EKSettings deleteSavedSalon];
+    
+    
     
     if ([EKSettings getSavedCustomer]) {
         
@@ -76,26 +87,7 @@ static NSString * const kVendorMainStoryboard = @"Vendor_Main";
         UINavigationController *rootViewController = [storyboard instantiateViewControllerWithIdentifier:kSplashVC];
         self.window.rootViewController = rootViewController;
     }
-    
-    // Pro Info
-//    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"SignUp" bundle:nil];
-//    UINavigationController *rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"proInfoVC"];
-//    self.window.rootViewController = rootViewController;
-    
-    // Availability
-//    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"SignUp" bundle:nil];
-//    UINavigationController *rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"AvailabilityVC"];
-//    self.window.rootViewController = rootViewController;
-    
-    // Add Service
-//    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"SignUp" bundle:nil];
-//    UINavigationController *rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"addNewServiceVC"];
-//    self.window.rootViewController = rootViewController;
-    
-    // role VC
-//    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"SignUp" bundle:nil];
-//    UINavigationController *rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"roleVC"];
-//    self.window.rootViewController = rootViewController;
+
 
     return YES;
 }
