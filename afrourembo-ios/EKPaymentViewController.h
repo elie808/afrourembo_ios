@@ -15,6 +15,7 @@
 
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *tableHeightConstraint;
 @property (strong, nonatomic) IBOutlet UIView *pageVCPlaceholderView;
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *payButton;
 
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) IBOutlet UISegmentedControl *segmentedControl;

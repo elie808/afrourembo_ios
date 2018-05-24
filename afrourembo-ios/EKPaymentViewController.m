@@ -10,8 +10,12 @@
 #import "EKCreditCardViewController.h"
 #import "EKMPesaViewController.h"
 
+static NSString * const kSuccessURL = @"https://mobicardsystems.com/failedpage";
+static NSString * const kSucessSegue = @"paymentToSuccessVC";
+
 @implementation EKPaymentViewController {
     NSInteger _totalBookingsValue;
+    UIWebView *_buyView;
 }
 
 - (void)viewDidLoad {
@@ -45,6 +49,12 @@
         NSNumber *myNumber = [f numberFromString:stringNumber];
         _totalBookingsValue = _totalBookingsValue + myNumber.integerValue;
     }
+    
+    // Create UIWebView that will host the payment gateway
+    _buyView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+    _buyView.backgroundColor = [UIColor whiteColor];
+    _buyView.scalesPageToFit = YES;
+    _buyView.delegate = self;
 }
 
 - (void)viewDidLayoutSubviews {
@@ -129,9 +139,15 @@
 
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
     
-    //TODO: Intercept webview responses
-    NSLog(@"%@", request);
+    // Intercept webview responses
+    NSLog(@"relativeString: %@", request.URL.relativeString);
     
+    if ([request.URL.relativeString isEqualToString:kSuccessURL]) {
+        [_buyView removeFromSuperview];
+        [self.payButton setEnabled:YES];
+        [self performSegueWithIdentifier:kSucessSegue sender:nil];
+    }
+
     return YES;
 }
 
@@ -152,7 +168,9 @@
           
             EKCreditCardViewController *vc2 = _vcDataSource[_index];
             NSLog(@"%@", vc2._cardNumber);
+            [self.payButton setEnabled:NO];
             [self payWithCreditCard];
+            
             
         } break;
             
@@ -229,14 +247,9 @@
     [request setValue:[NSString stringWithFormat:@"%lu", (unsigned long)[jsondata length]] forHTTPHeaderField:@"Content-Length"];
     [request setHTTPBody:jsondata];
     
-    // load the request in the UIWebView.
-    UIWebView *buyView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
-    buyView.backgroundColor = [UIColor whiteColor];
-    buyView.scalesPageToFit = YES;
-    buyView.delegate = self;
-    [buyView loadRequest:request];
+    [_buyView loadRequest:request];
     
-    [self.view addSubview:buyView];
+    [self.view addSubview:_buyView];
 }
 
 /*

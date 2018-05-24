@@ -2406,9 +2406,11 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="pageVCPlaceholderView" destination="bAb-w8-LIV" id="0Rg-Dx-Jav"/>
+                        <outlet property="payButton" destination="vU5-OL-zmh" id="12N-ck-xvr"/>
                         <outlet property="segmentedControl" destination="4Zw-kA-gYK" id="uZB-z1-Xyr"/>
                         <outlet property="tableHeightConstraint" destination="PTL-lh-F7A" id="9Uc-Rs-iWl"/>
                         <outlet property="tableView" destination="V3P-T5-Kal" id="JLB-sw-7Nj"/>
+                        <segue destination="rtY-H3-YQr" kind="showDetail" identifier="paymentToSuccessVC" id="jBr-aZ-DJF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hYW-aN-cpO" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -3115,9 +3117,9 @@
         <image name="icTwitterActive" width="24" height="21"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="U39-u0-bPg"/>
         <segue reference="oT6-4C-Llh"/>
-        <segue reference="Tgh-kR-Ldd"/>
         <segue reference="yqX-hc-pNV"/>
+        <segue reference="U39-u0-bPg"/>
+        <segue reference="jBr-aZ-DJF"/>
     </inferredMetricsTieBreakers>
 </document>
