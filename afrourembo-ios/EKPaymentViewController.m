@@ -13,6 +13,8 @@
 static NSString * const kSuccessURL = @"https://mobicardsystems.com/failedpage";
 static NSString * const kSucessSegue = @"paymentToSuccessVC";
 
+static NSString * const kCurrencyCode = @"KES";
+
 @implementation EKPaymentViewController {
     NSInteger _totalBookingsValue;
     UIWebView *_buyView;
@@ -113,7 +115,7 @@ static NSString * const kSucessSegue = @"paymentToSuccessVC";
         cell.textLabel.font = [UIFont boldSystemFontOfSize:17.0];
         cell.detailTextLabel.font = [UIFont boldSystemFontOfSize:17.0];
         cell.textLabel.text = @"Total";
-        cell.detailTextLabel.text = [NSString stringWithFormat:@"%ld KES", (long)_totalBookingsValue];
+        cell.detailTextLabel.text = [NSString stringWithFormat:@"%ld %@", (long)_totalBookingsValue, kCurrencyCode];
         
     } else {
     
@@ -167,10 +169,8 @@ static NSString * const kSucessSegue = @"paymentToSuccessVC";
         case 1: {
           
             EKCreditCardViewController *vc2 = _vcDataSource[_index];
-            NSLog(@"%@", vc2._cardNumber);
-            [self.payButton setEnabled:NO];
-            [self payWithCreditCard];
-            
+            [self payWithCreditCard:vc2._cardNumber expiryDate:vc2._MMYY cvv:vc2._CVV phone:vc2._phone
+                          firstName:vc2._firstName lastName:vc2._lastName address:vc2._address postalCode:vc2._postalCode];
             
         } break;
             
@@ -198,30 +198,41 @@ static NSString * const kSucessSegue = @"paymentToSuccessVC";
 
 #pragma mark - Helpers
 
-- (void)payWithCreditCard {
+- (void)payWithCreditCard:(NSString *)creditCardNumber expiryDate:(NSString *)mmYY cvv:(NSString *)cvv phone:(NSString *)phoneNumber firstName:(NSString *)fName lastName:(NSString *)lName address:(NSString *)address postalCode:(NSString *)postalCode {
+    
+    // get the booking ID from the first booking in the array/cue
+    NSString *bookingID;
+    if (_bookingsArray.count > 0) {
+        bookingID = (_bookingsArray.firstObject).reservation.bookingId;
+    } else {
+        bookingID = @"1234567";
+    }
+    
     
     NSMutableDictionary *params = [NSMutableDictionary new];
     
     [params setValue:@"1.0" forKey:@"Mobicard_Version"];
     [params setValue:@"SILENT-HOSTED" forKey:@"Mobicard_Mode"];
-    [params setValue:@"3000" forKey:@"Mobicard_Order_Amount"];  // in cents
-    [params setValue:@"KES" forKey:@"Mobicard_Order_Currency"]; // try to infer from somewhere
-    [params setValue:@"itemDescriptionHere" forKey:@"Mobicard_Item_Description"]; // service+pro+client
-    [params setValue:@"1234567" forKey:@"Mobicard_Transaction_Reference"]; // bookingID
     
-    [params setValue:@"FirstName" forKey:@"Mobicard_First_Name"];   // get First Name
-    [params setValue:@"LastName" forKey:@"Mobicard_Last_Name"];     // get Last Name
-    [params setValue:@"Some Address" forKey:@"Mobicard_Address"];   // get Adress
-    [params setValue:@"0000" forKey:@"Mobicard_Postal_Code"];   // <20 chars
+    [params setValue:@"3000" forKey:@"Mobicard_Order_Amount"];  // in cents // _totalBookingsValue * 100 ?
+    [params setValue:kCurrencyCode forKey:@"Mobicard_Order_Currency"]; // try to infer from somewhere
+    
+    [params setValue:@"itemDescriptionHere" forKey:@"Mobicard_Item_Description"]; // service+pro+client
+    [params setValue:bookingID forKey:@"Mobicard_Transaction_Reference"]; // bookingID
+    
+    [params setValue:fName forKey:@"Mobicard_First_Name"];   // get First Name
+    [params setValue:lName forKey:@"Mobicard_Last_Name"];     // get Last Name
+    [params setValue:address forKey:@"Mobicard_Address"];   // get Adress
+    [params setValue:postalCode forKey:@"Mobicard_Postal_Code"];   // <20 chars
     
     [params setValue:@"KEN" forKey:@"Mobicard_Country_Code"];
-    [params setValue:[EKSettings getSavedCustomer].phone forKey:@"Mobicard_Mobile_Number"];
+    [params setValue:phoneNumber forKey:@"Mobicard_Mobile_Number"];
     [params setValue:[EKSettings getSavedCustomer].email forKey:@"Mobicard_Email"];
     [params setValue:@"CARD" forKey:@"Mobicard_Payment_Type"];
     [params setValue:@"1" forKey:@"Mobicard_Payment_Set"];
     
-    [params setValue:@"4242424242424242424" forKey:@"Mobicard_Cnumber"];
-    [params setValue:@"100" forKey:@"Mobicard_Cvv"];
+    [params setValue:creditCardNumber forKey:@"Mobicard_Cnumber"]; //@"4242424242424242424"
+    [params setValue:cvv forKey:@"Mobicard_Cvv"];
     [params setValue:@"02" forKey:@"Mobicard_Cexp_Month"];
     [params setValue:@"2019" forKey:@"Mobicard_Cexp_Year"];
     
@@ -250,6 +261,8 @@ static NSString * const kSucessSegue = @"paymentToSuccessVC";
     [_buyView loadRequest:request];
     
     [self.view addSubview:_buyView];
+    
+    [self.payButton setEnabled:NO];
 }
 
 /*

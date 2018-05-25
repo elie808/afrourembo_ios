@@ -2848,6 +2848,7 @@
                                         </connections>
                                     </pickerView>
                                 </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="e2g-XZ-lbV" firstAttribute="top" secondItem="uCV-EC-0cP" secondAttribute="top" constant="8" id="4rF-ps-o1K"/>
                                     <constraint firstItem="rR6-Oa-10j" firstAttribute="top" secondItem="e2g-XZ-lbV" secondAttribute="bottom" constant="8" symbolic="YES" id="5B8-FF-liF"/>

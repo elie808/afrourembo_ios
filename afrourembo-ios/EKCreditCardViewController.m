@@ -25,7 +25,7 @@ static NSString * const kDatePickerSegue = @"creditCardToDatePickerVC";
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 4;
+    return 8;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -48,24 +48,58 @@ static NSString * const kDatePickerSegue = @"creditCardToDatePickerVC";
             cell.cellTextField.text = self._MMYY;
             cell.cellTextField.tag = 1;
             [self addKeyboadToolbarTo:cell.cellTextField];
-            
             break;
         
         case 2:
-            cell.cellTitleLabel.text = @"Full name";
-            cell.cellTextField.placeholder = @"First name Last name";
-            cell.cellTextField.text = self._fullName;
+            cell.cellTitleLabel.text = @"CVV";
+            cell.cellTextField.placeholder = @"000";
+            cell.cellTextField.text = self._CVV;
+            cell.cellTextField.keyboardType = UIKeyboardTypeNumberPad;
             cell.cellTextField.tag = 2;
             [self addKeyboadToolbarTo:cell.cellTextField];
             break;
             
         case 3:
-            cell.cellTitleLabel.text = @"CVV";
-            cell.cellTextField.placeholder = @"000";
-            cell.cellTextField.text = self._CVV;
-            cell.cellTextField.keyboardType = UIKeyboardTypeNumberPad;
+            cell.cellTitleLabel.text = @"First name";
+            cell.cellTextField.placeholder = @"First name";
+            cell.cellTextField.text = self._firstName;
             cell.cellTextField.tag = 3;
             [self addKeyboadToolbarTo:cell.cellTextField];
+            break;
+        
+        case 4:
+            cell.cellTitleLabel.text = @"Last name";
+            cell.cellTextField.placeholder = @"Last name";
+            cell.cellTextField.text = self._lastName;
+            cell.cellTextField.tag = 4;
+            [self addKeyboadToolbarTo:cell.cellTextField];
+            break;
+
+        case 5:
+            cell.cellTitleLabel.text = @"Phone";
+            cell.cellTextField.placeholder = @"+254-123-1234567";
+            cell.cellTextField.text = [EKSettings getSavedCustomer].phone;
+            cell.cellTextField.tag = 5;
+            cell.cellTextField.keyboardType = UIKeyboardTypeNumberPad;
+            [self addKeyboadToolbarTo:cell.cellTextField];
+            break;
+        
+        case 6:
+            cell.cellTitleLabel.text = @"Address";
+            cell.cellTextField.placeholder = @"Address";
+            cell.cellTextField.text = self._address;
+            cell.cellTextField.tag = 6;
+            [self addKeyboadToolbarTo:cell.cellTextField];
+            break;
+            
+        case 7:
+            cell.cellTitleLabel.text = @"Postal code";
+            cell.cellTextField.placeholder = @"0000";
+            cell.cellTextField.text = self._postalCode;
+            cell.cellTextField.tag = 7;
+            cell.cellTextField.keyboardType = UIKeyboardTypeNumberPad;
+            [self addKeyboadToolbarTo:cell.cellTextField];
+            
             break;
     
         default: break;
@@ -90,6 +124,30 @@ static NSString * const kDatePickerSegue = @"creditCardToDatePickerVC";
         [textField resignFirstResponder];
         [self performSegueWithIdentifier:kDatePickerSegue sender:nil];
     }
+    
+    if (textField.tag == 2) { //cvv
+        [self.tableView setContentOffset:CGPointMake(0, 10) animated:YES];
+    }
+    
+    if (textField.tag == 3) { //first name
+        [self.tableView setContentOffset:CGPointMake(0, 60) animated:YES];
+    }
+    
+    if (textField.tag == 4) { //last name
+        [self.tableView setContentOffset:CGPointMake(0, 120) animated:YES];
+    }
+    
+    if (textField.tag == 5) { //phone
+        [self.tableView setContentOffset:CGPointMake(0, 180) animated:YES];
+    }
+    
+    if (textField.tag == 6) { //address
+        [self.tableView setContentOffset:CGPointMake(0, 240) animated:YES];
+    }
+    
+    if (textField.tag == 7) { //postal code
+        [self.tableView setContentOffset:CGPointMake(0, 300) animated:YES];
+    }
 }
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
@@ -113,15 +171,36 @@ static NSString * const kDatePickerSegue = @"creditCardToDatePickerVC";
             return newLength <= 5;
             break;
             
-        case 2: // Full name
-            self._fullName = textField.text;
-            return YES;
-            break;
-            
-        case 3: // CVV
+        case 2: // CVV
             self._CVV = textField.text;
             return newLength <= 3;
             break;
+            
+        case 3: // firstName
+            self._firstName = textField.text;
+            return YES;
+            break;
+        
+        case 4: // lastName
+            self._lastName = textField.text;
+            return YES;
+            break;
+            
+        case 5: // phone
+            self._phone = textField.text;
+            return YES;
+            break;
+            
+        case 6: // address
+            self._address = textField.text;
+            return YES;
+            break;
+        
+        case 7: // postal code
+            self._postalCode = textField.text;
+            return newLength <= 4;
+            break;
+            
             
         default: return YES; break;
     }

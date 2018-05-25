@@ -19,8 +19,13 @@
 // viewModel
 @property (nonatomic, strong) NSString *_cardNumber;
 @property (nonatomic, strong) NSString *_MMYY;
-@property (nonatomic, strong) NSString *_fullName;
+//@property (nonatomic, strong) NSString *_fullName;
+@property (nonatomic, strong) NSString *_firstName;
+@property (nonatomic, strong) NSString *_lastName;
 @property (nonatomic, strong) NSString *_CVV;
+@property (nonatomic, strong) NSString *_phone;
+@property (nonatomic, strong) NSString *_address;
+@property (nonatomic, strong) NSString *_postalCode;
 
 - (BOOL)validateData;
 
