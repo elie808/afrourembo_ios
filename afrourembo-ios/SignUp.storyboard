@@ -905,6 +905,7 @@
                         <outlet property="tableView" destination="c3W-aT-8qT" id="mNJ-f2-kCW"/>
                         <segue destination="glK-ac-Okm" kind="show" identifier="salonSelectToServiceVC" id="XIv-EK-ddw"/>
                         <segue destination="yDV-PG-2M0" kind="unwind" identifier="unwindFromSalonListToBPSettingsVC" unwindAction="unwindToBpSettingsVC:" id="y38-HS-lNs"/>
+                        <segue destination="Uuj-FS-vQb" kind="show" identifier="salonSelectToPaymentVC" id="Ri0-7w-7Qj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5iP-XG-rl7" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1224,18 +1225,29 @@
                         </connections>
                     </tableView>
                     <toolbarItems/>
+                    <navigationItem key="navigationItem" title="Payment information" id="lXA-LA-Ds5">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="0I0-7T-nWw">
+                            <color key="tintColor" red="1" green="0.76470588240000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <action selector="didTapCancel:" destination="Uuj-FS-vQb" id="Ppc-3f-KF3"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="accountNumberTextField" destination="w8d-7V-JeJ" id="rE6-2c-ohD"/>
                         <outlet property="bankLabel" destination="kxo-IB-9rF" id="gMt-DC-MtB"/>
+                        <outlet property="cancelBarButton" destination="0I0-7T-nWw" id="FDB-FQ-qqs"/>
                         <outlet property="firstNameTextField" destination="6Nf-wS-v8h" id="MEa-ob-4iG"/>
                         <outlet property="lastNameTextField" destination="kJq-82-vsc" id="cMK-6a-AB4"/>
                         <segue destination="glK-ac-Okm" kind="show" identifier="paymentInfoToAddServiceVC" id="xMm-WA-TTo"/>
                         <segue destination="ltZ-kk-fgo" kind="presentation" identifier="bpPaymentToBankPickerVC" modalPresentationStyle="overCurrentContext" id="KEo-30-Nay"/>
+                        <segue destination="pfX-R1-39U" kind="unwind" identifier="unwindBankInfoToBPSettings" unwindAction="unwindToBpSettingsVC:" id="fZC-b7-9jl"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fp8-7g-fHd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="pfX-R1-39U" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="4257" y="430"/>
         </scene>
@@ -1509,7 +1521,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Mod-NP-lO6">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <view key="tableFooterView" contentMode="scaleToFill" id="DGC-ra-aiu">
                                     <rect key="frame" x="0.0" y="72" width="375" height="75"/>
@@ -1631,7 +1643,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="43q-WW-izN">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="availabilitySwitchCell" id="b6A-ZD-cvj" customClass="EKSwitchTableViewCell">
@@ -1802,7 +1814,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="0fY-Jg-TSi">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <view key="tableFooterView" contentMode="scaleToFill" id="MoA-Aq-tTV">
                                     <rect key="frame" x="0.0" y="72" width="375" height="64"/>
@@ -3162,9 +3174,10 @@
         <image name="salonFlowLine" width="300" height="44"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="hg1-H8-gAt"/>
-        <segue reference="xMm-WA-TTo"/>
+        <segue reference="XIv-EK-ddw"/>
+        <segue reference="Ri0-7w-7Qj"/>
         <segue reference="pcN-xV-EFc"/>
         <segue reference="z4e-2X-Leh"/>
+        <segue reference="hg1-H8-gAt"/>
     </inferredMetricsTieBreakers>
 </document>

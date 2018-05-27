@@ -10,6 +10,7 @@
 
 static NSString * const kSalonSelectCell = @"salonSelectCell";
 static NSString * const kServiceSegue = @"salonSelectToServiceVC";
+static NSString * const kPaymentInfoSegue = @"salonSelectToPaymentVC";
 static NSString * const kUnwindSegue  = @"unwindFromSalonListToBPSettingsVC";
 
 @implementation EKSalonSelectViewController {
@@ -86,7 +87,8 @@ static NSString * const kUnwindSegue  = @"unwindFromSalonListToBPSettingsVC";
                       if (self.unwindSegue && self.unwindSegue.length > 0) {
                           [self performSegueWithIdentifier:kUnwindSegue sender:nil];
                       } else {
-                          [self performSegueWithIdentifier:kServiceSegue sender:nil];
+//                          [self performSegueWithIdentifier:kServiceSegue sender:nil];
+                          [self performSegueWithIdentifier:kPaymentInfoSegue sender:nil];
                       }
 
                   } withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
@@ -143,6 +145,13 @@ static NSString * const kUnwindSegue  = @"unwindFromSalonListToBPSettingsVC";
         EKAddServiceViewController *vc = segue.destinationViewController;
         vc.passedProfessional = self.passedProfessional;
     }
+    
+    if ([segue.identifier isEqualToString:kPaymentInfoSegue]) {
+        
+        EKBPPaymentInfoTableViewController *vc = segue.destinationViewController;
+        vc.passedProfessional = self.passedProfessional;
+    }
+
 }
 
 @end

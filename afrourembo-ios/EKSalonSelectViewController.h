@@ -11,6 +11,7 @@
 
 #import "EKSalonSelectTableViewCell.h"
 #import "EKAddServiceViewController.h"
+#import "EKBPPaymentInfoTableViewController.h"
 #import "Professional.h"
 #import "Salon.h"
 
