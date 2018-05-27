@@ -42,6 +42,7 @@
 		474984DC2083B23000A68BA7 /* EKCreditCardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 474984DB2083B23000A68BA7 /* EKCreditCardViewController.m */; };
 		474984DF2083B2BE00A68BA7 /* EKMPesaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 474984DE2083B2BE00A68BA7 /* EKMPesaViewController.m */; };
 		474A55362027C7FE00E79CFB /* Favorite+API.m in Sources */ = {isa = PBXBuildFile; fileRef = 474A55352027C7FE00E79CFB /* Favorite+API.m */; };
+		474B2B5320BA664500CF3365 /* EKSalonStaffPaymentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 474B2B5220BA664500CF3365 /* EKSalonStaffPaymentViewController.m */; };
 		474BD5701E97F721009410C4 /* EKNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 474BD56F1E97F721009410C4 /* EKNavigationViewController.m */; };
 		474BD5731E97F8F3009410C4 /* EKTextFieldTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 474BD5721E97F8F3009410C4 /* EKTextFieldTableViewCell.m */; };
 		474ED7BC1E9C68940099CA0A /* EKDiscoverMapViewController+MapDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 474ED7BB1E9C68940099CA0A /* EKDiscoverMapViewController+MapDelegate.m */; };
@@ -248,6 +249,8 @@
 		474984DE2083B2BE00A68BA7 /* EKMPesaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKMPesaViewController.m; sourceTree = "<group>"; };
 		474A55342027C7FE00E79CFB /* Favorite+API.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Favorite+API.h"; sourceTree = "<group>"; };
 		474A55352027C7FE00E79CFB /* Favorite+API.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Favorite+API.m"; sourceTree = "<group>"; };
+		474B2B5120BA664500CF3365 /* EKSalonStaffPaymentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKSalonStaffPaymentViewController.h; sourceTree = "<group>"; };
+		474B2B5220BA664500CF3365 /* EKSalonStaffPaymentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKSalonStaffPaymentViewController.m; sourceTree = "<group>"; };
 		474BD56E1E97F721009410C4 /* EKNavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKNavigationViewController.h; sourceTree = "<group>"; };
 		474BD56F1E97F721009410C4 /* EKNavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKNavigationViewController.m; sourceTree = "<group>"; };
 		474BD5711E97F8F3009410C4 /* EKTextFieldTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKTextFieldTableViewCell.h; sourceTree = "<group>"; };
@@ -708,6 +711,15 @@
 				47CC1E4B20865660006DF10F /* EKDatePickerViewController.m */,
 			);
 			name = "Customer - Payment";
+			sourceTree = "<group>";
+		};
+		474B2B5420BA664B00CF3365 /* SALON - Staff Payment */ = {
+			isa = PBXGroup;
+			children = (
+				474B2B5120BA664500CF3365 /* EKSalonStaffPaymentViewController.h */,
+				474B2B5220BA664500CF3365 /* EKSalonStaffPaymentViewController.m */,
+			);
+			name = "SALON - Staff Payment";
 			sourceTree = "<group>";
 		};
 		474ED7BD1E9C689A0099CA0A /* Categories */ = {
@@ -1276,6 +1288,7 @@
 				47329CA41F0BE75600E5DF13 /* SALON - Address */,
 				47329CA31F0BE74800E5DF13 /* SALON - Role */,
 				4734BCC31FD24AE200C5725D /* SALON - Manage Staff */,
+				474B2B5420BA664B00CF3365 /* SALON - Staff Payment */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -1741,6 +1754,7 @@
 				470627541FA746A8006E2BB1 /* EKClientDetailsViewController.m in Sources */,
 				4734F5F11F3401D200982D94 /* EKCarousel.m in Sources */,
 				476368CA1F8BB80300249318 /* ResetPassword+API.m in Sources */,
+				474B2B5320BA664500CF3365 /* EKSalonStaffPaymentViewController.m in Sources */,
 				475FC3811EB6BF5E00BB0731 /* EKAddNewServiceViewController.m in Sources */,
 				471F5FBB1F4870550097817E /* ProfilePicture.m in Sources */,
 				479A850E1F9E9DA7002ECC2C /* ClientBooking.m in Sources */,
