@@ -18,9 +18,6 @@ static NSString * const datePickerSegue = @"staffPaymentToDatePickerVC";
     NSDate *_startDate;
     NSDate *_endDate;
     
-    BOOL _startDateSet;
-    BOOL _endDateSet;
-    
     NSMutableArray<StaffPayment*> *_dataSource;
 }
 
@@ -29,10 +26,6 @@ static NSString * const datePickerSegue = @"staffPaymentToDatePickerVC";
     
     //init
     _dataSource = [NSMutableArray new];
-    _startDate = [NSDate new];
-    _endDate = [NSDate new];
-    _startDateSet = NO;
-    _endDateSet = NO;
 }
 
 #pragma mark - UITableViewDataSource
@@ -70,13 +63,14 @@ static NSString * const datePickerSegue = @"staffPaymentToDatePickerVC";
         _selectedLabel.text = [NSDate stringFromDate:date withFormat:DateFormatLetterDayMonthYear];
     
         if (_selectedLabel == self.startDateLabel) {
+            
+            if (!_startDate) { _startDate = [NSDate new]; }
             _startDate = date;
-            _startDateSet = YES;
         }
         
         if (_selectedLabel == self.endDateLabel) {
+            if (!_endDate) { _endDate = [NSDate new]; }
             _endDate = date;
-            _endDateSet = YES;
         }
     }
 }
@@ -90,7 +84,7 @@ static NSString * const datePickerSegue = @"staffPaymentToDatePickerVC";
     NSString *fromDate;
     NSString *toDate;
     
-    if (_startDateSet && _endDateSet) {
+    if (_startDate && _endDate) {
         
         fromDate = [NSString stringWithFormat:@"%f", [_startDate timeIntervalSince1970]];
         toDate = [NSString stringWithFormat:@"%f", [_endDate timeIntervalSince1970]];
