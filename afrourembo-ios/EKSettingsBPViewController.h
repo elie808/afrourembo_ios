@@ -15,9 +15,11 @@
 #import "EKSalonInfoViewController.h"
 #import "EKSalonSelectViewController.h"
 #import "EKProfessionalInfoViewController.h"
+#import "EKBPPaymentInfoTableViewController.h"
 
 #import <YYWebImage/YYWebImage.h>
 
+// UI menu items
 static NSString * const kProfile  = @"Profile information";
 static NSString * const kBusinessInfo   = @"Business information";
 static NSString * const kSalonInfo      = @"Business information "; // DO NOT REMOVE SPACE AT THE END...MAJOREST OF HACKS RIGHT HERE!!
@@ -25,6 +27,8 @@ static NSString * const kManagePhotos   = @"Manage photos";
 static NSString * const kServices = @"My services";
 static NSString * const kAvailability = @"Availability";
 static NSString * const kStaff        = @"Staff management";
+static NSString * const kBankInfo     = @"Bank info";
+static NSString * const kStaffPayment = @"Staff Payment";
 
 // Segues
 static NSString * const kWelcomeSegue   = @"bpSettingsToWelcomeVC";
@@ -36,6 +40,9 @@ static NSString * const kAddServicesSegue  = @"settingsToAddServicesVC";
 static NSString * const kProfileSegue   = @"settingsToEditProfileVC";
 static NSString * const kStaffSegue     = @"bpSettingsToManageStaffVC";
 static NSString * const kSalonListSegue    = @"settingsToSelectSalonVC";
+static NSString * const kProPaymentInfoSegue = @"settingsToPaymentInfoVC";
+static NSString * const kStaffPaymentSegue = @"settingsToStaffPaymentVC";
+
 
 @interface EKSettingsBPViewController : UIViewController
 

@@ -20,7 +20,8 @@
                                      kBusinessInfo,
                                      kManagePhotos,
                                      kServices,
-                                     kAvailability
+                                     kAvailability,
+                                     kBankInfo
                                      ];
         
         self.collectionViewDataSource = [NSArray arrayWithArray:[EKSettings getSavedVendor].partOf];
@@ -33,7 +34,8 @@
                                      kProfile,
                                      kSalonInfo,
                                      kManagePhotos,
-                                     kStaff
+                                     kStaff,
+                                     kStaffPayment
                                      ];
     }
 }
@@ -94,6 +96,16 @@
     if ([segue.identifier isEqualToString:kStaffSegue]) {
         
     }
+    
+    if ([segue.identifier isEqualToString:kProPaymentInfoSegue]) {
+        
+        UINavigationController *navController = [segue destinationViewController];
+        EKBPPaymentInfoTableViewController *vc = (EKBPPaymentInfoTableViewController *)([navController viewControllers][0]);
+        vc.passedProfessional = [EKSettings getSavedVendor];
+//        vc.allFieldsEditable = NO;
+        vc.unwindSegueID = @"unwindBankInfoToBPSettings";
+    }
+    
 }
 
 - (IBAction)unwindToBpSettingsVC:(UIStoryboardSegue *)segue {}

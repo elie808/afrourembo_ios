@@ -68,6 +68,14 @@ static NSString * const kTableCell = @"settingsTableCell";
     if ([selectedItem isEqualToString:kStaff]) {
         [self performSegueWithIdentifier:kStaffSegue sender:nil];
     }
+    
+    if ([selectedItem isEqualToString:kBankInfo]) {
+        [self performSegueWithIdentifier:kProPaymentInfoSegue sender:nil];
+    }
+    
+    if ([selectedItem isEqualToString:kStaffPayment]) {
+        [self performSegueWithIdentifier:kStaffPaymentSegue sender:nil];
+    }
 }
 
 @end
