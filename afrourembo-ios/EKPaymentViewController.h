@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <Realm/Realm.h>
 #import "Booking.h"
+#import "Payment.h"
 #import "EKNetworkingConstants.h"
 
 @interface EKPaymentViewController : UIViewController <UIPageViewControllerDataSource, UITableViewDelegate, UITableViewDataSource, UIWebViewDelegate>
@@ -22,6 +23,7 @@
 
 @property (strong, nonatomic) UIPageViewController *pageViewController;
 
+@property (strong, nonatomic) Payment *passedPaymentObj;
 @property (strong, nonatomic) RLMResults<Booking *> *bookingsArray;
 @property (assign, nonatomic) NSUInteger index;
 @property (strong, nonatomic) NSArray *vcDataSource;

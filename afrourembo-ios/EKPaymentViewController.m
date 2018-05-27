@@ -12,6 +12,7 @@
 
 static NSString * const kSuccessURL = @"https://mobicardsystems.com/failedpage";
 static NSString * const kSucessSegue = @"paymentToSuccessVC";
+//http://app.afrourembo.com:8080/successpage.html
 
 static NSString * const kCurrencyCode = @"KES";
 
@@ -145,8 +146,24 @@ static NSString * const kCurrencyCode = @"KES";
     NSLog(@"relativeString: %@", request.URL.relativeString);
     
     if ([request.URL.relativeString isEqualToString:kSuccessURL]) {
+        
         [_buyView removeFromSuperview];
+        
         [self.payButton setEnabled:YES];
+        
+        if ([EKSettings getSavedCustomer].email.length > 0) {
+            
+            NSPredicate *pred = [NSPredicate predicateWithFormat:@"bookingOwner = %@", [EKSettings getSavedCustomer].email];
+            RLMResults<Booking *> *bookings = [Booking objectsWithPredicate:pred];
+            
+            for (Booking *bookingObj in bookings) {
+                [[RLMRealm defaultRealm] beginWriteTransaction];
+                [[RLMRealm defaultRealm] deleteObject:bookingObj.reservation];
+                [[RLMRealm defaultRealm] deleteObject:bookingObj];
+                [[RLMRealm defaultRealm] commitWriteTransaction];
+            }
+        }
+        
         [self performSegueWithIdentifier:kSucessSegue sender:nil];
     }
 
@@ -169,7 +186,7 @@ static NSString * const kCurrencyCode = @"KES";
         case 1: {
           
             EKCreditCardViewController *vc2 = _vcDataSource[_index];
-            [self payWithCreditCard:vc2._cardNumber expiryDate:vc2._MMYY cvv:vc2._CVV phone:vc2._phone
+            [self payWithCreditCard:vc2._cardNumber expiryMonth:vc2._MM expiryYear:vc2._YY cvv:vc2._CVV phone:vc2._phone
                           firstName:vc2._firstName lastName:vc2._lastName address:vc2._address postalCode:vc2._postalCode];
             
         } break;
@@ -198,26 +215,20 @@ static NSString * const kCurrencyCode = @"KES";
 
 #pragma mark - Helpers
 
-- (void)payWithCreditCard:(NSString *)creditCardNumber expiryDate:(NSString *)mmYY cvv:(NSString *)cvv phone:(NSString *)phoneNumber firstName:(NSString *)fName lastName:(NSString *)lName address:(NSString *)address postalCode:(NSString *)postalCode {
+- (void)payWithCreditCard:(NSString *)creditCardNumber expiryMonth:(NSString *)mm expiryYear:(NSString *)yy cvv:(NSString *)cvv phone:(NSString *)phoneNumber firstName:(NSString *)fName lastName:(NSString *)lName address:(NSString *)address postalCode:(NSString *)postalCode {
     
-    // get the booking ID from the first booking in the array/cue
-    NSString *bookingID;
-    if (_bookingsArray.count > 0) {
-        bookingID = (_bookingsArray.firstObject).reservation.bookingId;
-    } else {
-        bookingID = @"1234567";
-    }
-    
+    NSString *bookingID = self.passedPaymentObj.bookingID;
+    NSString *totalBookingsInCents = [NSString stringWithFormat:@"%ld", _totalBookingsValue * 100];
     
     NSMutableDictionary *params = [NSMutableDictionary new];
     
     [params setValue:@"1.0" forKey:@"Mobicard_Version"];
     [params setValue:@"SILENT-HOSTED" forKey:@"Mobicard_Mode"];
     
-    [params setValue:@"3000" forKey:@"Mobicard_Order_Amount"];  // in cents // _totalBookingsValue * 100 ?
+    [params setValue:totalBookingsInCents forKey:@"Mobicard_Order_Amount"];  // in cents
     [params setValue:kCurrencyCode forKey:@"Mobicard_Order_Currency"]; // try to infer from somewhere
     
-    [params setValue:@"itemDescriptionHere" forKey:@"Mobicard_Item_Description"]; // service+pro+client
+    [params setValue:self.passedPaymentObj.description forKey:@"Mobicard_Item_Description"]; // service+pro+client
     [params setValue:bookingID forKey:@"Mobicard_Transaction_Reference"]; // bookingID
     
     [params setValue:fName forKey:@"Mobicard_First_Name"];   // get First Name
@@ -233,8 +244,8 @@ static NSString * const kCurrencyCode = @"KES";
     
     [params setValue:creditCardNumber forKey:@"Mobicard_Cnumber"]; //@"4242424242424242424"
     [params setValue:cvv forKey:@"Mobicard_Cvv"];
-    [params setValue:@"02" forKey:@"Mobicard_Cexp_Month"];
-    [params setValue:@"2019" forKey:@"Mobicard_Cexp_Year"];
+    [params setValue:mm forKey:@"Mobicard_Cexp_Month"];
+    [params setValue:yy forKey:@"Mobicard_Cexp_Year"];
     
     [params setValue:kMerchantID forKey:@"Mobicard_MerchantID"];
     [params setValue:kMobicardAPIKey forKey:@"Mobicard_API_Key"];

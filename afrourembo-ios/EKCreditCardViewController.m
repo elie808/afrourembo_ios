@@ -16,6 +16,10 @@ static NSString * const kDatePickerSegue = @"creditCardToDatePickerVC";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self._firstName = [EKSettings getSavedCustomer].fName;
+    self._lastName  = [EKSettings getSavedCustomer].lName;
+    self._phone = [EKSettings getSavedCustomer].phone;
 }
 
 #pragma mark - UITableViewDataSource
@@ -78,7 +82,7 @@ static NSString * const kDatePickerSegue = @"creditCardToDatePickerVC";
         case 5:
             cell.cellTitleLabel.text = @"Phone";
             cell.cellTextField.placeholder = @"+254-123-1234567";
-            cell.cellTextField.text = [EKSettings getSavedCustomer].phone;
+            cell.cellTextField.text = self._phone;
             cell.cellTextField.tag = 5;
             cell.cellTextField.keyboardType = UIKeyboardTypeNumberPad;
             [self addKeyboadToolbarTo:cell.cellTextField];
@@ -210,6 +214,10 @@ static NSString * const kDatePickerSegue = @"creditCardToDatePickerVC";
 
 - (void)didPickDate:(NSDate *)date {
     
+    self._MM = [NSDate stringFromDate:date withFormat:DateFormatDigitMonth];
+    self._YY = [NSDate stringFromDate:date withFormat:DateFormatDigitYear];
+    
+    // UI
     self._MMYY = [NSDate stringFromDate:date withFormat:DateFormatDigitMonthDashYear];
     [self.tableView reloadData];
 }

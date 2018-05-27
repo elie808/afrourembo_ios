@@ -18,8 +18,9 @@
 
 // viewModel
 @property (nonatomic, strong) NSString *_cardNumber;
-@property (nonatomic, strong) NSString *_MMYY;
-//@property (nonatomic, strong) NSString *_fullName;
+@property (nonatomic, strong) NSString *_MMYY;  // use for UI/display purposes
+@property (nonatomic, strong) NSString *_MM;    // use for posting to server
+@property (nonatomic, strong) NSString *_YY;    // use for posting to server
 @property (nonatomic, strong) NSString *_firstName;
 @property (nonatomic, strong) NSString *_lastName;
 @property (nonatomic, strong) NSString *_CVV;

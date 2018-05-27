@@ -24,12 +24,20 @@ static NSString * const kBankPickerSegue   = @"bpPaymentToBankPickerVC";
         self.lastNameTextField.text = self.passedProfessional.lName;
     }
     
+    // disable bar button if view accessed from Sign Up flow
+    if (!self.unwindSegueID && self.unwindSegueID.length == 0) {
+        self.cancelBarButton.enabled = NO;
+        self.cancelBarButton.tintColor = [UIColor clearColor];
+    } else {
+        [self getBPPaymentInfo];
+    }
+    
     [Bank getBanksListWithBlock:^(NSArray *array) {
 
         _banksArray = [NSArray arrayWithArray:array];
         
     } withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
-        
+        [self showMessage:errorMessage withTitle:@"Error" completionBlock:nil];
     }];
 }
 
@@ -46,7 +54,11 @@ static NSString * const kBankPickerSegue   = @"bpPaymentToBankPickerVC";
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     if (indexPath.row == 2) {
-        [self performSegueWithIdentifier:kBankPickerSegue sender:nil];
+//        if (self.allFieldsEditable) {
+        if (_banksArray.count > 0) {
+            [self performSegueWithIdentifier:kBankPickerSegue sender:nil];
+        }
+//        }
     }
 }
 
@@ -61,11 +73,19 @@ static NSString * const kBankPickerSegue   = @"bpPaymentToBankPickerVC";
 - (void)didPickBank:(Bank *)bank {
     _bankLabel.text = bank.name;
     _bankID = bank.bankID;
+    [self.tableView reloadData];
 }
 
 #pragma mark - Actions
 
 - (IBAction)unwindToBPPaymentInfoVC:(UIStoryboardSegue *)segue {}
+
+- (IBAction)didTapCancel:(UIBarButtonItem *)sender {
+
+    if (self.unwindSegueID && self.unwindSegueID.length > 0) {
+        [self performSegueWithIdentifier:self.unwindSegueID sender:nil];
+    }
+}
 
 - (IBAction)didTapSave:(UIButton *)sender {
     
@@ -78,11 +98,17 @@ static NSString * const kBankPickerSegue   = @"bpPaymentToBankPickerVC";
                                withBlock:^(Professional *professional) {
                                  
                                    [MBProgressHUD hideHUDForView:self.view animated:YES];
-                                   [self performSegueWithIdentifier:kAddServiceSegue sender:professional];
+                                   
+                                   if (self.unwindSegueID && self.unwindSegueID.length > 0) {
+                                       [self performSegueWithIdentifier:self.unwindSegueID sender:nil];
+                                   } else {
+                                       [self performSegueWithIdentifier:kAddServiceSegue sender:professional];
+                                   }
                                    
                                } withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
                                   
                                    [MBProgressHUD hideHUDForView:self.view animated:YES];
+                                   [self showMessage:errorMessage withTitle:@"Error" completionBlock:nil];
                               }];
 }
 
@@ -102,6 +128,57 @@ static NSString * const kBankPickerSegue   = @"bpPaymentToBankPickerVC";
         EKAddServiceViewController *vc = segue.destinationViewController;
         
         vc.passedProfessional = (Professional*)sender;
+    }
+}
+
+#pragma mark - Helpers
+
+- (void)getBPPaymentInfo {
+    
+    if ([EKSettings getSavedVendor]) {
+        
+        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        [Professional getProfileForProfessional:[EKSettings getSavedVendor].token
+                                      withBlock:^(Professional *professionalObj) {
+                                          
+                                          [MBProgressHUD hideHUDForView:self.view animated:YES];
+                                          
+                                          self.firstNameTextField.text = professionalObj.fName;
+                                          self.lastNameTextField.text = professionalObj.lName;
+                                          
+                                          if (professionalObj.paymentInfo.name.length > 0) {
+                                              self.bankLabel.text = professionalObj.paymentInfo.name;
+                                          }
+                                          
+                                          self.accountNumberTextField.text = professionalObj.paymentInfo.accountNumber;
+                                          _bankID = professionalObj.paymentInfo.bankID;
+
+                                          [self.tableView reloadData];
+                                          
+                                      } withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
+                                          
+                                          [MBProgressHUD hideHUDForView:self.view animated:YES];
+                                          [self showMessage:errorMessage withTitle:@"Error" completionBlock:nil];
+                                      }];
+        
+    } else if ([EKSettings getSavedSalon]) {
+        
+        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        [Salon getProfileForSalon:[EKSettings getSavedSalon].token
+                        withBlock:^(Salon *salonObj) {
+                            
+                            [MBProgressHUD hideHUDForView:self.view animated:YES];
+                            self.firstNameTextField.text = salonObj.fName;
+                            self.lastNameTextField.text = salonObj.lName;
+                            //                                          self.bankLabel.text
+                            //                                          self.accountNumberTextField.text
+                            [self.tableView reloadData];
+                            
+                        } withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
+                            
+                            [MBProgressHUD hideHUDForView:self.view animated:YES];
+                            [self showMessage:errorMessage withTitle:@"Error" completionBlock:nil];
+                        }];
     }
 }
 

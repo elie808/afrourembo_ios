@@ -22,7 +22,9 @@
 @property (strong, nonatomic) IBOutlet UILabel *bankLabel;
 @property (strong, nonatomic) IBOutlet UITextField *accountNumberTextField;
 
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *cancelBarButton;
 @property NSString *unwindSegueID;
+//@property (assign, nonatomic) BOOL allFieldsEditable; // to control if all fields are editable
 @property (strong, nonatomic) Professional *passedProfessional;
 @property (strong, nonatomic) Salon *passedSalon;
 
