@@ -91,9 +91,8 @@ static NSString * const kPaymentSegue = @"cartVCtoPaymentVC";
 
 - (IBAction)didTapCheckoutButton:(UIButton *)button {
 
-    [self performSegueWithIdentifier:kPaymentSegue sender:_bookings];
+//    [self performSegueWithIdentifier:kPaymentSegue sender:_bookings];
     
-    /*
     // filter Reservation objects out of Booking objects in the dataSource
     NSMutableArray *reservationsArray = [NSMutableArray new];
     for (Booking *bookingObj in _bookings) {
@@ -128,15 +127,17 @@ static NSString * const kPaymentSegue = @"cartVCtoPaymentVC";
                                 //TODO: REMOVE BELOW CODE WHEN PAYMENT WEBPAGE RE-ENABLED
                                 ///-----------------------///
                                 // if booking succesful, remove all cached cart items
-                                for (Booking *bookingObj in _bookings) {
-                                    [[RLMRealm defaultRealm] beginWriteTransaction];
-                                    [[RLMRealm defaultRealm] deleteObject:bookingObj.reservation];
-                                    [[RLMRealm defaultRealm] deleteObject:bookingObj];
-                                    [[RLMRealm defaultRealm] commitWriteTransaction];
-                                }
+//                                for (Booking *bookingObj in _bookings) {
+//                                    [[RLMRealm defaultRealm] beginWriteTransaction];
+//                                    [[RLMRealm defaultRealm] deleteObject:bookingObj.reservation];
+//                                    [[RLMRealm defaultRealm] deleteObject:bookingObj];
+//                                    [[RLMRealm defaultRealm] commitWriteTransaction];
+//                                }
                                 
-                                [self.collectionView reloadData];
-                                [self performSegueWithIdentifier:kSuccessSegue sender:nil];
+//                                [self.collectionView reloadData];
+//                                [self performSegueWithIdentifier:kSuccessSegue sender:nil];
+                                [self performSegueWithIdentifier:kPaymentSegue sender:paymentObj];
+
                                 ///-----------------------///
                             }
                            withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
@@ -144,7 +145,6 @@ static NSString * const kPaymentSegue = @"cartVCtoPaymentVC";
                                [MBProgressHUD hideHUDForView:self.view animated:YES];
                                [self handleVendorAvailabilityErrors:error errorMessage:errorMessage statusCode:statusCode];
                            }];
-    */
 }
 
 #pragma mark - Navigation
@@ -166,6 +166,7 @@ static NSString * const kPaymentSegue = @"cartVCtoPaymentVC";
     if ([segue.identifier isEqualToString:kPaymentSegue]) {
         EKPaymentViewController *vc = segue.destinationViewController;
         vc.bookingsArray = _bookings;
+        vc.passedPaymentObj = (Payment*)sender;
     }
     
     if ([segue.identifier isEqualToString:kSuccessSegue]) {
