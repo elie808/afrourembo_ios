@@ -50,6 +50,17 @@
                                                                             toKeyPath:@"business"
                                                                           withMapping:businessMapping]];
 
+    RKObjectMapping *paymentInfoMapping = [RKObjectMapping mappingForClass:[Bank class]];
+    [paymentInfoMapping addAttributeMappingsFromDictionary:@{@"bankName" : @"name"}];
+    [paymentInfoMapping addAttributeMappingsFromDictionary:@{@"bankCode" : @"bankID"}];
+    [paymentInfoMapping addAttributeMappingsFromDictionary:@{@"firstName" : @"fName"}];
+    [paymentInfoMapping addAttributeMappingsFromDictionary:@{@"lastName" : @"lName"}];
+    [paymentInfoMapping addAttributeMappingsFromDictionary:@{@"accountNumber" : @"accountNumber"}];
+
+    [mapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"paymentInfo"
+                                                                            toKeyPath:@"paymentInfo"
+                                                                          withMapping:paymentInfoMapping]];
+    
     return mapping;
 }
 

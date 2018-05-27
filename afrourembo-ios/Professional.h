@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Bank.h"
 #import "BusinessInfo.h"
 #import "Pictures.h"
 #import "Day+API.h"
@@ -42,5 +43,7 @@
 @property NSArray<Pictures*> *portfolio;
 @property NSArray<Service *> *services;
 @property NSArray *partOf; // list of salons the professional is part of
+
+@property Bank *paymentInfo;
 
 @end
