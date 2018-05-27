@@ -188,6 +188,10 @@
                                                      [Service postServicesResponseDescriptor],
                                                      [Service deleteServiceResponseDescriptor]
                                                      ]];
+    
+    [objectManager addResponseDescriptorsFromArray:@[
+                                                     [StaffPayment staffPaymentResponseDescriptor]
+                                                     ]];
 }
 
 @end

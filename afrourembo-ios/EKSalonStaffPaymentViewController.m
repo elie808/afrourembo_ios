@@ -13,12 +13,26 @@ static NSString * const datePickerSegue = @"staffPaymentToDatePickerVC";
 
 @implementation EKSalonStaffPaymentViewController {
     UILabel *_selectedLabel;
-//    NSDate *startDate;
-//    NSDate *endDate;
+    
+    NSDate *_selectedDate;
+    NSDate *_startDate;
+    NSDate *_endDate;
+    
+    BOOL _startDateSet;
+    BOOL _endDateSet;
+    
+    NSMutableArray<StaffPayment*> *_dataSource;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    //init
+    _dataSource = [NSMutableArray new];
+    _startDate = [NSDate new];
+    _endDate = [NSDate new];
+    _startDateSet = NO;
+    _endDateSet = NO;
 }
 
 #pragma mark - UITableViewDataSource
@@ -28,12 +42,16 @@ static NSString * const datePickerSegue = @"staffPaymentToDatePickerVC";
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 3;
+    return _dataSource.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kCell forIndexPath:indexPath];
+    EKSalonStaffTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kCell forIndexPath:indexPath];
+    
+    StaffPayment *obj = [_dataSource objectAtIndex:indexPath.row];
+    
+    [cell configureWith:obj];
     
     return cell;
 }
@@ -49,7 +67,17 @@ static NSString * const datePickerSegue = @"staffPaymentToDatePickerVC";
 - (void)didPickDate:(NSDate *)date {
 
     if (_selectedLabel) {
-        _selectedLabel.text = [NSDate stringFromDate:date withFormat:DateFormatLetterDayMonthYearAbbreviated];
+        _selectedLabel.text = [NSDate stringFromDate:date withFormat:DateFormatLetterDayMonthYear];
+    
+        if (_selectedLabel == self.startDateLabel) {
+            _startDate = date;
+            _startDateSet = YES;
+        }
+        
+        if (_selectedLabel == self.endDateLabel) {
+            _endDate = date;
+            _endDateSet = YES;
+        }
     }
 }
 
@@ -58,6 +86,32 @@ static NSString * const datePickerSegue = @"staffPaymentToDatePickerVC";
 - (IBAction)unwindToStaffPaymentVC:(UIStoryboardSegue *)segue {}
 
 - (IBAction)didTapUpdate:(UIButton *)sender {
+    
+    NSString *fromDate;
+    NSString *toDate;
+    
+    if (_startDateSet && _endDateSet) {
+        
+        fromDate = [NSString stringWithFormat:@"%f", [_startDate timeIntervalSince1970]];
+        toDate = [NSString stringWithFormat:@"%f", [_endDate timeIntervalSince1970]];
+    }
+    
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    [StaffPayment getStaffPaymentDetailsFrom:fromDate
+                                          to:toDate
+                                    forSalon:[EKSettings getSavedSalon].token
+                                   withBlock:^(NSArray<StaffPayment *> *staffPaymentArray) {
+                                       
+                                       [MBProgressHUD hideHUDForView:self.view animated:YES];
+                                       [_dataSource removeAllObjects];
+                                       [_dataSource addObjectsFromArray:staffPaymentArray];
+                                       [self.tableView reloadData];
+                                       
+                                   } withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
+                                       
+                                       [MBProgressHUD hideHUDForView:self.view animated:YES];
+                                       [self showMessage:errorMessage withTitle:@"Error" completionBlock:nil];
+                                   }];
 }
 
 - (IBAction)didTapStartDate:(UITapGestureRecognizer *)sender {

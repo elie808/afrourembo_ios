@@ -26,6 +26,7 @@
 #import "Salon+API.h"
 #import "SalonLogin+API.h"
 #import "Service+API.h"
+#import "StaffPayment+API.h"
 
 #import "EKNetworkingConstants.h"
 

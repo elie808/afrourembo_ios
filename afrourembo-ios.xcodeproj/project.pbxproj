@@ -43,6 +43,9 @@
 		474984DF2083B2BE00A68BA7 /* EKMPesaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 474984DE2083B2BE00A68BA7 /* EKMPesaViewController.m */; };
 		474A55362027C7FE00E79CFB /* Favorite+API.m in Sources */ = {isa = PBXBuildFile; fileRef = 474A55352027C7FE00E79CFB /* Favorite+API.m */; };
 		474B2B5320BA664500CF3365 /* EKSalonStaffPaymentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 474B2B5220BA664500CF3365 /* EKSalonStaffPaymentViewController.m */; };
+		474B2B5720BAFDB500CF3365 /* EKSalonStaffTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 474B2B5620BAFDB500CF3365 /* EKSalonStaffTableViewCell.m */; };
+		474B2B5A20BB1BAF00CF3365 /* StaffPayment.m in Sources */ = {isa = PBXBuildFile; fileRef = 474B2B5920BB1BAF00CF3365 /* StaffPayment.m */; };
+		474B2B5D20BB1D0100CF3365 /* StaffPayment+API.m in Sources */ = {isa = PBXBuildFile; fileRef = 474B2B5C20BB1D0100CF3365 /* StaffPayment+API.m */; };
 		474BD5701E97F721009410C4 /* EKNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 474BD56F1E97F721009410C4 /* EKNavigationViewController.m */; };
 		474BD5731E97F8F3009410C4 /* EKTextFieldTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 474BD5721E97F8F3009410C4 /* EKTextFieldTableViewCell.m */; };
 		474ED7BC1E9C68940099CA0A /* EKDiscoverMapViewController+MapDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 474ED7BB1E9C68940099CA0A /* EKDiscoverMapViewController+MapDelegate.m */; };
@@ -251,6 +254,12 @@
 		474A55352027C7FE00E79CFB /* Favorite+API.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Favorite+API.m"; sourceTree = "<group>"; };
 		474B2B5120BA664500CF3365 /* EKSalonStaffPaymentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKSalonStaffPaymentViewController.h; sourceTree = "<group>"; };
 		474B2B5220BA664500CF3365 /* EKSalonStaffPaymentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKSalonStaffPaymentViewController.m; sourceTree = "<group>"; };
+		474B2B5520BAFDB500CF3365 /* EKSalonStaffTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKSalonStaffTableViewCell.h; sourceTree = "<group>"; };
+		474B2B5620BAFDB500CF3365 /* EKSalonStaffTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKSalonStaffTableViewCell.m; sourceTree = "<group>"; };
+		474B2B5820BB1BAF00CF3365 /* StaffPayment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StaffPayment.h; sourceTree = "<group>"; };
+		474B2B5920BB1BAF00CF3365 /* StaffPayment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StaffPayment.m; sourceTree = "<group>"; };
+		474B2B5B20BB1D0100CF3365 /* StaffPayment+API.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "StaffPayment+API.h"; sourceTree = "<group>"; };
+		474B2B5C20BB1D0100CF3365 /* StaffPayment+API.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "StaffPayment+API.m"; sourceTree = "<group>"; };
 		474BD56E1E97F721009410C4 /* EKNavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKNavigationViewController.h; sourceTree = "<group>"; };
 		474BD56F1E97F721009410C4 /* EKNavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKNavigationViewController.m; sourceTree = "<group>"; };
 		474BD5711E97F8F3009410C4 /* EKTextFieldTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKTextFieldTableViewCell.h; sourceTree = "<group>"; };
@@ -718,6 +727,8 @@
 			children = (
 				474B2B5120BA664500CF3365 /* EKSalonStaffPaymentViewController.h */,
 				474B2B5220BA664500CF3365 /* EKSalonStaffPaymentViewController.m */,
+				474B2B5520BAFDB500CF3365 /* EKSalonStaffTableViewCell.h */,
+				474B2B5620BAFDB500CF3365 /* EKSalonStaffTableViewCell.m */,
 			);
 			name = "SALON - Staff Payment";
 			sourceTree = "<group>";
@@ -1062,6 +1073,8 @@
 				476F63711F075ECD00C27A92 /* SalonLogin.m */,
 				478BDEF71E99C5FC00F74A5C /* Service.h */,
 				478BDEF81E99C5FC00F74A5C /* Service.m */,
+				474B2B5820BB1BAF00CF3365 /* StaffPayment.h */,
+				474B2B5920BB1BAF00CF3365 /* StaffPayment.m */,
 				479250E11F7569E700C7507C /* Summary.h */,
 				479250E21F7569E700C7507C /* Summary.m */,
 				474FAE901F38E0A900970A1F /* TimeSlot.h */,
@@ -1481,6 +1494,8 @@
 				476F63771F0760C600C27A92 /* Salon+API.m */,
 				476F63731F075EF000C27A92 /* SalonLogin+API.h */,
 				476F63741F075EF000C27A92 /* SalonLogin+API.m */,
+				474B2B5B20BB1D0100CF3365 /* StaffPayment+API.h */,
+				474B2B5C20BB1D0100CF3365 /* StaffPayment+API.m */,
 				47FE51CA1EFD5BE100A39BAE /* Service+API.h */,
 				47FE51CB1EFD5BE100A39BAE /* Service+API.m */,
 			);
@@ -1673,16 +1688,19 @@
 				475FC37D1EB6B57900BB0731 /* EKAddServiceViewController.m in Sources */,
 				476368C71F8BB77900249318 /* ResetPassword.m in Sources */,
 				47652BFA1F01DC8B00796E04 /* EKSettings.m in Sources */,
+				474B2B5720BAFDB500CF3365 /* EKSalonStaffTableViewCell.m in Sources */,
 				478971941EA756F100917DB1 /* EKEditFacebookProfileInfoViewController.m in Sources */,
 				47822B091EDDC37C001E247F /* EKSalesSummaryTableViewCell.m in Sources */,
 				475572111F519A1D00741CA9 /* Payment.m in Sources */,
 				476078F42010F24A009EECA3 /* EKClientAppointmentDetailsViewController.m in Sources */,
+				474B2B5A20BB1BAF00CF3365 /* StaffPayment.m in Sources */,
 				47C07CF81FBF000F00950EB0 /* EKEditProfileBPViewController.m in Sources */,
 				47843A581F048CD000686CDD /* Day+API.m in Sources */,
 				479E37DC1FC41A9500630954 /* Pictures.m in Sources */,
 				479A84FC1F9DCE68002ECC2C /* Salon+Helpers.m in Sources */,
 				47FFF9751E99E81F008B6A31 /* EKImageTextTableViewCell.m in Sources */,
 				479F7D6E1EF0C17E00EB445A /* Professional+API.m in Sources */,
+				474B2B5D20BB1D0100CF3365 /* StaffPayment+API.m in Sources */,
 				47CAEE731F67D4310091919D /* EKScheduleMonthlyViewController+TableView.m in Sources */,
 				47605F151F3F211D00991C3A /* Booking+API.m in Sources */,
 				4787C6E41EB4212F00DF7B83 /* EKNetworkManager.m in Sources */,

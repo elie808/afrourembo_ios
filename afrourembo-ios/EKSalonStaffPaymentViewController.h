@@ -7,8 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MBProgressHUD/MBProgressHUD.h>
 #import "EKDatePickerViewController.h"
+#import "EKSalonStaffTableViewCell.h"
+#import "EKSettings.h"
+#import "StaffPayment+API.m"
 #import "NSDate+Helpers.h"
+#import "UIViewController+Helpers.h"
 
 @interface EKSalonStaffPaymentViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, EKDatePickerDelegate>
 

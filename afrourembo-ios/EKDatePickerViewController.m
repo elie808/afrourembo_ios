@@ -14,6 +14,8 @@
     
     NSString *_selectedMonth;
     NSString *_selectedYear;
+ 
+    NSDate *_selectedDate;
 }
 
 - (void)viewDidLoad {
@@ -25,6 +27,8 @@
     // initialize default selection
     _selectedYear = [NSString stringWithFormat:@"%ld", (long)_years[0].integerValue];
     _selectedMonth = @"1";
+    
+    _selectedDate = [NSDate date];
 }
 
 
@@ -83,17 +87,27 @@
 
 #pragma mark - Actions
 
+/// only use if using a DatePicker instead of a generic UIPickerView, since the delegate methods won't work for a Date Picker
+- (IBAction)didChangeValue:(UIDatePicker *)sender {
+    
+    _selectedDate = sender.date;
+    
+}
+
 - (IBAction)didTapDone:(UIButton *)sender {
     
-    NSString *str = [NSString stringWithFormat:@"%@/%@", _selectedMonth, _selectedYear]; //@"3/15/2012 9:15 PM";
+    if (self.pickerView) {
     
-    NSDateFormatter *formatter = [NSDate dateFormatter:DateFormatDigitMonthYear];
-    
-    NSDate *selectedDate = [formatter dateFromString:str];
+        NSString *str = [NSString stringWithFormat:@"%@/%@", _selectedMonth, _selectedYear]; //@"3/15/2012 9:15 PM";
+        
+        NSDateFormatter *formatter = [NSDate dateFormatter:DateFormatDigitMonthYear];
+        
+        _selectedDate = [formatter dateFromString:str];
+    }
     
     if (self.delegate) {
         
-        [self.delegate didPickDate:selectedDate];
+        [self.delegate didPickDate:_selectedDate];
         [self performSegueWithIdentifier:@"doneSegue" sender:nil];
     }
 }

@@ -73,6 +73,7 @@ static NSString * const kSalonLoginAPIPath     = @"salon/login";
 static NSString * const kSalonPassResetAPIPath = @"salon/password/reset";
 static NSString * const kSalonProfileAPIPath   = @"salon/profile";
 static NSString * const kSalonInfoAPIPath      = @"salon/business";
+static NSString * const kSalonStaffPaymentAPIPath = @"salon/staff/payments";
 static NSString * const kSalonStaffAPIPath     = @"salon/:userId/professionals";
 static NSString * const kSalonJoinRequestsAPIPath = @"salon/join/requests";
 static NSString * const kSalonCurrentStaffAPIPath = @"salon/staff";
