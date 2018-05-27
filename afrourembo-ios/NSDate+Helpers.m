@@ -95,6 +95,10 @@
 
         case DateFormatDigitMonthYear: dateFormatter.dateFormat = @"MM-yyyy"; break;
             
+        case DateFormatDigitMonth: dateFormatter.dateFormat = @"MM"; break;
+            
+        case DateFormatDigitYear: dateFormatter.dateFormat = @"yyyy"; break;
+            
         case DateFormatDigitMonthDashYear: dateFormatter.dateFormat = @"MM/yy"; break;
             
         case DateFormatDigitHourMinute: dateFormatter.dateFormat = @"HH:mm"; break;
