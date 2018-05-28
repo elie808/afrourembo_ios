@@ -704,7 +704,7 @@
                                         <rect key="frame" x="0.0" y="168" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="46s-4M-9Hq" id="shd-w7-ZDC">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -824,7 +824,7 @@
                                         <rect key="frame" x="0.0" y="73" width="375" height="70"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="tFC-wX-qBG" id="tjO-QW-dFD">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="69.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="70"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total Sales YTD" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KB4-vg-Fxg">
@@ -1047,7 +1047,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="70"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ECN-4I-p1V" id="NB5-C3-heK">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="69.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="70"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total Sales YTD" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dhd-MU-vps">
@@ -1186,7 +1186,7 @@
                                         <rect key="frame" x="0.0" y="35" width="375" height="55"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fhP-LC-s6X" id="0M4-1t-1AH">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="54.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="55"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="skI-wu-utb">
@@ -1328,7 +1328,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xfu-bH-pce" id="7On-vM-M0G">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="49.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icNext" translatesAutoresizingMaskIntoConstraints="NO" id="Faw-Wd-yUY">
@@ -1453,6 +1453,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5KI-XB-maR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2121" y="-193"/>
+        </scene>
+        <!--EditPaymentInfoVC-->
+        <scene sceneID="rwR-Vp-TDr">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Vendor_Settings" referencedIdentifier="EditPaymentInfoVC" id="9Sc-W9-Pdd" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iuU-8o-KgX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1314" y="512"/>
         </scene>
         <!--StaffPaymentVC-->
         <scene sceneID="5iq-MW-mbD">
@@ -1701,6 +1709,7 @@
                         <segue destination="2I3-FD-3zw" kind="show" identifier="settingsToSelectSalonVC" id="vnA-9V-Gib"/>
                         <segue destination="co6-L2-FfX" kind="showDetail" identifier="settingsToPaymentInfoVC" id="KLX-gs-1x6"/>
                         <segue destination="ghd-hJ-43F" kind="show" identifier="settingsToStaffPaymentVC" id="oE5-Va-cwi"/>
+                        <segue destination="9Sc-W9-Pdd" kind="show" identifier="settingsToSalonPaymentInfoVC" id="9pL-Kh-sYL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eB7-Us-jA5" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1769,7 +1778,7 @@
                 <viewControllerPlaceholder storyboardName="Vendor_Settings" referencedIdentifier="AvailabilitySettingsVC" id="vU9-hw-mUl" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vD3-qD-WJT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2078" y="1178"/>
+            <point key="canvasLocation" x="2506" y="1166"/>
         </scene>
         <!--AddServicesSettingsVC-->
         <scene sceneID="hh4-Zj-A0c">
@@ -1777,7 +1786,7 @@
                 <viewControllerPlaceholder storyboardName="Vendor_Settings" referencedIdentifier="AddServicesSettingsVC" id="gBf-Mb-y4I" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qrz-aq-lIf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2750" y="1127"/>
+            <point key="canvasLocation" x="2498" y="1070"/>
         </scene>
         <!--salonInfoSettingsVC-->
         <scene sceneID="oUP-bd-RCo">
@@ -1785,7 +1794,7 @@
                 <viewControllerPlaceholder storyboardName="Vendor_Settings" referencedIdentifier="salonInfoSettingsVC" id="WEU-hb-kfs" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DHH-YD-peM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2891" y="1030"/>
+            <point key="canvasLocation" x="2498" y="1029"/>
         </scene>
         <!--EditProfileSettingsVC-->
         <scene sceneID="I2g-zY-6rr">
@@ -1793,7 +1802,7 @@
                 <viewControllerPlaceholder storyboardName="Vendor_Settings" referencedIdentifier="EditProfileSettingsVC" id="QUJ-9U-m4i" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mVt-Ph-o67" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2532" y="1178"/>
+            <point key="canvasLocation" x="2497" y="1113"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="RGs-8J-I5e">

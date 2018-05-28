@@ -35,7 +35,8 @@
                                      kSalonInfo,
                                      kManagePhotos,
                                      kStaff,
-                                     kStaffPayment
+                                     kStaffPayment,
+                                     kSalonBankInfo
                                      ];
     }
 }
@@ -104,6 +105,15 @@
         vc.passedProfessional = [EKSettings getSavedVendor];
 //        vc.allFieldsEditable = NO;
         vc.unwindSegueID = @"unwindBankInfoToBPSettings";
+    }
+    
+    if ([segue.identifier isEqualToString:kSalonPaymentInfoSegue]) {
+        
+        UINavigationController *navController = [segue destinationViewController];
+        EKBPPaymentInfoTableViewController *vc = (EKBPPaymentInfoTableViewController *)([navController viewControllers][0]);
+        vc.unwindSegueID = @"unwindBankInfoToBPSettings";
+        vc.passedSalon = [EKSettings getSavedSalon];
+        
     }
     
 }

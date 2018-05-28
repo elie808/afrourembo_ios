@@ -114,10 +114,10 @@ static NSString * const kBankPickerSegue   = @"bpPaymentToBankPickerVC";
                                        [self showMessage:errorMessage withTitle:@"Error" completionBlock:nil];
                                    }];
         
-    } else if (self.passedSalon) {
+    } else if ([EKSettings getSavedSalon]) {
     
         [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-        [Bank postPaymentInfoForSalon:self.passedSalon.token
+        [Bank postPaymentInfoForSalon:[EKSettings getSavedSalon].token
                                         bank:_bankID
                                    firstName:self.firstNameTextField.text
                                     lastName:self.lastNameTextField.text
@@ -208,8 +208,14 @@ static NSString * const kBankPickerSegue   = @"bpPaymentToBankPickerVC";
                             [MBProgressHUD hideHUDForView:self.view animated:YES];
                             self.firstNameTextField.text = salonObj.fName;
                             self.lastNameTextField.text = salonObj.lName;
-                            //                                          self.bankLabel.text
-                            //                                          self.accountNumberTextField.text
+                            
+                            if (salonObj.paymentInfo.name.length > 0) {
+                                self.bankLabel.text = salonObj.paymentInfo.name;
+                            }
+                            
+                            self.accountNumberTextField.text = salonObj.paymentInfo.accountNumber;
+                            _bankID = salonObj.paymentInfo.bankID;
+
                             [self.tableView reloadData];
                             
                         } withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {

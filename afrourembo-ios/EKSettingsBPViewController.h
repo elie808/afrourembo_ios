@@ -28,6 +28,7 @@ static NSString * const kServices = @"My services";
 static NSString * const kAvailability = @"Availability";
 static NSString * const kStaff        = @"Staff management";
 static NSString * const kBankInfo     = @"Bank info";
+static NSString * const kSalonBankInfo = @"Bank info";
 static NSString * const kStaffPayment = @"Staff Payment";
 
 // Segues
@@ -41,6 +42,7 @@ static NSString * const kProfileSegue   = @"settingsToEditProfileVC";
 static NSString * const kStaffSegue     = @"bpSettingsToManageStaffVC";
 static NSString * const kSalonListSegue    = @"settingsToSelectSalonVC";
 static NSString * const kProPaymentInfoSegue = @"settingsToPaymentInfoVC";
+static NSString * const kSalonPaymentInfoSegue = @"settingsToSalonPaymentInfoVC";
 static NSString * const kStaffPaymentSegue = @"settingsToStaffPaymentVC";
 
 
