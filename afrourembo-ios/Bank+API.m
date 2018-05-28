@@ -118,8 +118,8 @@
                                      parameters:nil
                                         success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
                                             
+                                            //TODO: THIS IS NOT GETTING MAPPED PROPERLY !! FIX IT !!
                                             Professional *profObj = [mappingResult.array firstObject];
-                                            
                                             
                                             successBlock(profObj);
                                             

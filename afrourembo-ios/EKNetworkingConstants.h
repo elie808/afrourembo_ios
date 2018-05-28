@@ -27,7 +27,6 @@ static NSString * const kMobicardAPIKey = @"MWMyOWIzZjZmYzZhMDA0M2IzYTMyNGVkOTVk
 static NSString * const kCategoriesAPIPath   = @"categories";
 
 static NSString * const kBankListAPIPath = @"banks";
-static NSString * const kProfessionalBankAPIPath = @"professional/payment/info";
 
 static NSString * const kUserRegisterAPIPath = @"user/register";
 static NSString * const kUserBookingsAPIPath = @"user/bookings";
@@ -58,6 +57,7 @@ static NSString * const kProfessionalFBLoginAPIPath  = @"professional/facebook/l
 static NSString * const kProfessionalRegisterAPIPath = @"professional/register";
 static NSString * const kProfessionalLoginAPIPath    = @"professional/login";
 static NSString * const kProfessionalPassResetAPIPath = @"professional/password/reset";
+static NSString * const kProfessionalBankAPIPath     = @"professional/payment/info";
 static NSString * const kProfessionalProfileAPIPath  = @"professional/profile";
 static NSString * const kProfessionalPictureAPIPath  = @"professional/profile/picture";
 static NSString * const kProfessionalPortfolioAPIPath   = @"professional/portfolio";

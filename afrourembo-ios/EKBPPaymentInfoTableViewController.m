@@ -127,7 +127,11 @@ static NSString * const kBankPickerSegue   = @"bpPaymentToBankPickerVC";
 
         EKAddServiceViewController *vc = segue.destinationViewController;
         
-        vc.passedProfessional = (Professional*)sender;
+        if (!sender) { // check, since we're not able of mapping the pro object from the API response above :|
+            vc.passedProfessional = [EKSettings getSavedVendor];
+        } else {
+            vc.passedProfessional = (Professional*)sender;
+        }
     }
 }
 
