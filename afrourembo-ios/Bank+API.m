@@ -67,6 +67,17 @@
     return response;
 }
 
++ (RKResponseDescriptor *)salonBankPostResponseDescriptor {
+    
+    RKResponseDescriptor *response = [RKResponseDescriptor
+                                      responseDescriptorWithMapping:[Salon map1]
+                                      method:RKRequestMethodPOST
+                                      pathPattern:kSalonBankAPIPath
+                                      keyPath:nil
+                                      statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+    return response;
+}
+
 #pragma mark - APIs
 
 + (void)getBanksListWithBlock:(BanksListSuccessBlock)successBlock withErrors:(BanksListErrorBlock)errorBlock {
@@ -122,6 +133,50 @@
                                             Professional *profObj = [mappingResult.array firstObject];
                                             
                                             successBlock(profObj);
+                                            
+                                        } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                                            
+                                            if (operation.HTTPRequestOperation.responseData) {
+                                                
+                                                // exctract error message
+                                                NSDictionary *myDic = [NSJSONSerialization
+                                                                       JSONObjectWithData:operation.HTTPRequestOperation.responseData
+                                                                       options:NSJSONReadingMutableLeaves
+                                                                       error:nil];
+                                                
+                                                NSString *errorMessage = [myDic valueForKey:@"message"];
+                                                
+                                                NSNumber *statusCode = [myDic valueForKey:@"statusCode"];
+                                                
+                                                NSLog(@"-------ERROR MESSAGE: %@", errorMessage);
+                                                errorBlock(error, errorMessage, [statusCode integerValue]);
+                                                
+                                            } else {
+                                                
+                                                errorBlock(error, @"You are not connected to the internet.", 0);
+                                            }
+                                        }];
+}
+
++ (void)postPaymentInfoForSalon:(NSString*)token bank:(NSString *)bankId firstName:(NSString *)fName lastName:(NSString *)lName acountNumber:(NSString *)account  withBlock:(SalonBankInfoPostSuccessBlock)successBlock withErrors:(BanksListErrorBlock)errorBlock {
+    
+    Bank *bank = [Bank new];
+    
+    bank.bankId = bankId;
+    bank.fName = fName;
+    bank.lName = lName;
+    bank.accountNumber = account;
+    
+    [[[RKObjectManager sharedManager] HTTPClient] setDefaultHeader:@"Authorization" value:token];
+    
+    [[RKObjectManager sharedManager] postObject:bank
+                                           path:kSalonBankAPIPath
+                                     parameters:nil
+                                        success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+                                            
+                                            Salon *salonObj = [mappingResult.array firstObject];
+                                            
+                                            successBlock(salonObj);
                                             
                                         } failure:^(RKObjectRequestOperation *operation, NSError *error) {
                                             

@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
+#import "Bank.h"
 #import "Pictures.h"
 #import "Professional.h"
 #import "Review.h"
@@ -47,6 +48,8 @@
 @property CGFloat latitude;
 
 @property NSArray<Pictures*> *portfolio;
+
+@property Bank *paymentInfo;
 
 @property (assign, nonatomic) BOOL isCentralizedModel;
 

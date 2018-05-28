@@ -11,10 +11,12 @@
 #import <RestKit/RestKit.h>
 
 #import "Professional+API.h"
+#import "Salon.h"
 #import "EKNetworkingConstants.h"
 
 typedef void (^BanksListSuccessBlock)(NSArray *array);
 typedef void (^ProfessionalBankPostSuccessBlock)(Professional *professional);
+typedef void (^SalonBankInfoPostSuccessBlock)(Salon *salon);
 typedef void (^BanksListErrorBlock)(NSError *error, NSString *errorMessage, NSInteger statusCode);
 
 @interface Bank (API)
@@ -29,17 +31,14 @@ typedef void (^BanksListErrorBlock)(NSError *error, NSString *errorMessage, NSIn
 + (RKResponseDescriptor *)getBanksResponseDescriptor;
 
 + (RKResponseDescriptor *)professionalBankPostResponseDescriptor;
++ (RKResponseDescriptor *)salonBankPostResponseDescriptor;
 
 + (RKRequestDescriptor *)professionalBankInfoRequestDescriptor;
 
-/**
- Returns all the booked time slots of a professional
- 
- @param successBlock Server will return the booked time slots
- @param errorBlock Server error logging
- */
 + (void)getBanksListWithBlock:(BanksListSuccessBlock)successBlock withErrors:(BanksListErrorBlock)errorBlock;
 
 + (void)postPaymentInfoForProfessional:(NSString*)token bank:(NSString *)bankId firstName:(NSString *)fName lastName:(NSString *)lName acountNumber:(NSString *)account  withBlock:(ProfessionalBankPostSuccessBlock)successBlock withErrors:(BanksListErrorBlock)errorBlock;
+
++ (void)postPaymentInfoForSalon:(NSString*)token bank:(NSString *)bankId firstName:(NSString *)fName lastName:(NSString *)lName acountNumber:(NSString *)account  withBlock:(SalonBankInfoPostSuccessBlock)successBlock withErrors:(BanksListErrorBlock)errorBlock;
 
 @end

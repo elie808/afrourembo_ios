@@ -89,7 +89,8 @@
     
     [objectManager addResponseDescriptorsFromArray:@[
                                                      [Bank getBanksResponseDescriptor],
-                                                     [Bank professionalBankPostResponseDescriptor]
+                                                     [Bank professionalBankPostResponseDescriptor],
+                                                     [Bank salonBankPostResponseDescriptor]
                                                      ]];
     
     [objectManager addResponseDescriptorsFromArray:@[
