@@ -14,7 +14,7 @@ static NSString * const kAdressCell = @"salonAddressSignUpCell";
 
 static NSString * const kAdressSegue = @"salonInfoToSalonAdressVC";
 static NSString * const kRoleSegue = @"salonInfoToRoleVC";
-static NSString * const kSalonDashSegue = @"salonInfoToMainVendorDash";
+static NSString * const kSalonPaymentSegue = @"salonInfoToPaymentVC";
 
 @implementation EKSalonInfoViewController {
     NSArray *_dataSourceArray;
@@ -135,7 +135,7 @@ static NSString * const kSalonDashSegue = @"salonInfoToMainVendorDash";
                    if (self.unwindSegueID && self.unwindSegueID.length) {
                        [self performSegueWithIdentifier:self.unwindSegueID sender:nil]; //unwind to bpSettingsVC
                    } else {
-                       [self performSegueWithIdentifier:kSalonDashSegue sender:nil];
+                       [self performSegueWithIdentifier:kSalonPaymentSegue sender:salonObj];
                    }
                    
                } withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
@@ -155,7 +155,10 @@ static NSString * const kSalonDashSegue = @"salonInfoToMainVendorDash";
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     
-    if ([segue.identifier isEqualToString:kSalonDashSegue]) {
+    if ([segue.identifier isEqualToString:kSalonPaymentSegue]) {
+        
+        EKBPPaymentInfoTableViewController *vc = segue.destinationViewController;
+        vc.passedSalon = [EKSettings getSavedSalon]; // use the saved Salon obj, since the API response above returns no token !!!!!!
         
     }
 }

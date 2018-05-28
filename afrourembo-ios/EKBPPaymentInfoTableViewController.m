@@ -13,6 +13,7 @@
     NSString *_bankID;
 }
 
+static NSString * const kSalonDashSegue    = @"salonPaymentToSalonDashVC";
 static NSString * const kAddServiceSegue   = @"paymentInfoToAddServiceVC";
 static NSString * const kBankPickerSegue   = @"bpPaymentToBankPickerVC";
 
@@ -89,27 +90,56 @@ static NSString * const kBankPickerSegue   = @"bpPaymentToBankPickerVC";
 
 - (IBAction)didTapSave:(UIButton *)sender {
     
-    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    [Bank postPaymentInfoForProfessional:self.passedProfessional.token
-                                    bank:_bankID
-                               firstName:self.firstNameTextField.text
-                                lastName:self.lastNameTextField.text
-                            acountNumber:self.accountNumberTextField.text
-                               withBlock:^(Professional *professional) {
-                                 
-                                   [MBProgressHUD hideHUDForView:self.view animated:YES];
-                                   
-                                   if (self.unwindSegueID && self.unwindSegueID.length > 0) {
-                                       [self performSegueWithIdentifier:self.unwindSegueID sender:nil];
-                                   } else {
-                                       [self performSegueWithIdentifier:kAddServiceSegue sender:professional];
-                                   }
-                                   
-                               } withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
-                                  
-                                   [MBProgressHUD hideHUDForView:self.view animated:YES];
-                                   [self showMessage:errorMessage withTitle:@"Error" completionBlock:nil];
-                              }];
+    if (self.passedProfessional) {
+        
+        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        [Bank postPaymentInfoForProfessional:self.passedProfessional.token
+                                        bank:_bankID
+                                   firstName:self.firstNameTextField.text
+                                    lastName:self.lastNameTextField.text
+                                acountNumber:self.accountNumberTextField.text
+                                   withBlock:^(Professional *professional) {
+                                       
+                                       [MBProgressHUD hideHUDForView:self.view animated:YES];
+                                       
+                                       if (self.unwindSegueID && self.unwindSegueID.length > 0) {
+                                           [self performSegueWithIdentifier:self.unwindSegueID sender:nil];
+                                       } else {
+                                           [self performSegueWithIdentifier:kAddServiceSegue sender:professional];
+                                       }
+                                       
+                                   } withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
+                                       
+                                       [MBProgressHUD hideHUDForView:self.view animated:YES];
+                                       [self showMessage:errorMessage withTitle:@"Error" completionBlock:nil];
+                                   }];
+        
+    } else if (self.passedSalon) {
+    
+        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        [Bank postPaymentInfoForSalon:self.passedSalon.token
+                                        bank:_bankID
+                                   firstName:self.firstNameTextField.text
+                                    lastName:self.lastNameTextField.text
+                                acountNumber:self.accountNumberTextField.text
+                                   withBlock:^(Salon *salon) {
+                                       
+                                       [MBProgressHUD hideHUDForView:self.view animated:YES];
+                                       
+                                       if (self.unwindSegueID && self.unwindSegueID.length > 0) {
+                                           [self performSegueWithIdentifier:self.unwindSegueID sender:nil];
+                                       } else {
+                                           [self performSegueWithIdentifier:kSalonDashSegue sender:salon];
+                                       }
+                                       
+                                   } withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
+                                       
+                                       [MBProgressHUD hideHUDForView:self.view animated:YES];
+                                       [self showMessage:errorMessage withTitle:@"Error" completionBlock:nil];
+                                   }];
+
+    }
+
 }
 
 #pragma mark - Navigation
@@ -132,6 +162,10 @@ static NSString * const kBankPickerSegue   = @"bpPaymentToBankPickerVC";
         } else {
             vc.passedProfessional = (Professional*)sender;
         }
+    }
+    
+    if ([segue.identifier isEqualToString:kSalonDashSegue]) {
+        
     }
 }
 

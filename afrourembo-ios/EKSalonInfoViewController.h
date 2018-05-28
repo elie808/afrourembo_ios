@@ -15,6 +15,7 @@
 #import "EKSettings.h"
 
 #import "Salon+API.h"
+#import "EKBPPaymentInfoTableViewController.h"
 #import "UIViewController+Helpers.h"
 
 #import "EKTextFieldTableViewCell.h"
