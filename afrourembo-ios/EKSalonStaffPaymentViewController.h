@@ -15,7 +15,7 @@
 #import "NSDate+Helpers.h"
 #import "UIViewController+Helpers.h"
 
-@interface EKSalonStaffPaymentViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, EKDatePickerDelegate>
+@interface EKSalonStaffPaymentViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, EKDatePickerDelegate, SalonStaffCellDelegate>
 
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) IBOutlet UILabel *startDateLabel;

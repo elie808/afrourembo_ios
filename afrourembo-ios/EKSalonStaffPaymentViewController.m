@@ -9,6 +9,7 @@
 #import "EKSalonStaffPaymentViewController.h"
 
 static NSString * const kCell = @"staffPaymentCellID";
+static NSString * const kEmptyCell = @"emptyCellID";
 static NSString * const datePickerSegue = @"staffPaymentToDatePickerVC";
 
 @implementation EKSalonStaffPaymentViewController {
@@ -40,13 +41,22 @@ static NSString * const datePickerSegue = @"staffPaymentToDatePickerVC";
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    EKSalonStaffTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kCell forIndexPath:indexPath];
+    if (_dataSource.count == 0) {
+
+        return [tableView dequeueReusableCellWithIdentifier:kEmptyCell forIndexPath:indexPath];
     
-    StaffPayment *obj = [_dataSource objectAtIndex:indexPath.row];
-    
-    [cell configureWith:obj];
-    
-    return cell;
+    } else {
+     
+        EKSalonStaffTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kCell forIndexPath:indexPath];
+        
+        StaffPayment *obj = [_dataSource objectAtIndex:indexPath.row];
+        cell.delegate = self;
+        cell.indexPath = indexPath;
+        
+        [cell configureWith:obj];
+        
+        return cell;
+    }
 }
 
 #pragma mark - UITableViewDelegate
@@ -75,6 +85,43 @@ static NSString * const datePickerSegue = @"staffPaymentToDatePickerVC";
     }
 }
 
+#pragma mark - SalonStaffCellDelegate
+
+- (void)didTapCallAtIndex:(NSIndexPath *)index {
+    
+    StaffPayment *staffObj = [_dataSource objectAtIndex:index.row];
+    
+    NSString *unspacedPhoneNumber = [staffObj.professional.phone stringByReplacingOccurrencesOfString:@" " withString:@""];
+    
+    NSURL *phoneNumberURL = [NSURL URLWithString:[NSString stringWithFormat:@"tel:%@", unspacedPhoneNumber]];
+    
+    if ([[UIApplication sharedApplication] canOpenURL:phoneNumberURL]) {
+        
+        [[UIApplication sharedApplication] openURL:phoneNumberURL];
+        
+    } else {
+        
+    }
+}
+
+// it says Email, but using it for SMS. Shruggie.
+- (void)didTapEmailAtIndex:(NSIndexPath *)index {
+    
+    StaffPayment *staffObj = [_dataSource objectAtIndex:index.row];
+    
+    NSString *unspacedPhoneNumber = [staffObj.professional.phone stringByReplacingOccurrencesOfString:@" " withString:@""];
+    
+    NSURL *messageURL = [NSURL URLWithString:[NSString stringWithFormat:@"sms:%@", unspacedPhoneNumber]];
+    
+    if ([[UIApplication sharedApplication] canOpenURL:messageURL]) {
+        
+        [[UIApplication sharedApplication] openURL:messageURL];
+        
+    } else {
+        
+    }
+}
+
 #pragma mark - Actions
 
 - (IBAction)unwindToStaffPaymentVC:(UIStoryboardSegue *)segue {}
@@ -99,6 +146,22 @@ static NSString * const datePickerSegue = @"staffPaymentToDatePickerVC";
                                        [MBProgressHUD hideHUDForView:self.view animated:YES];
                                        [_dataSource removeAllObjects];
                                        [_dataSource addObjectsFromArray:staffPaymentArray];
+                                       [self.tableView reloadData];
+                                       
+                                       
+                                       Professional *pro = [Professional new];
+                                       pro.fName = @"Le firster";
+                                       pro.lName = @"LastName";
+                                       pro.profilePicture = @"http://www.gstatic.com/tv/thumb/persons/1579/1579_v9_ba.jpg";
+                                       pro.email = @"tel7as@mail.com";
+                                       pro.phone = @"+96106777999";
+                                       
+                                       StaffPayment *stafObj = [StaffPayment new];
+                                       stafObj.price = 1000;
+                                       stafObj.currency = @"KES";
+                                       stafObj.professional = pro;
+                                       
+                                       [_dataSource addObject:stafObj];
                                        [self.tableView reloadData];
                                        
                                    } withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {

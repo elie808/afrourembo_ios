@@ -49,7 +49,7 @@
 
     NSString *url;
     if (startDate.length > 0 && endDate.length > 0) {
-        url = [NSString stringWithFormat:@"%@?from=%@?to=%@", kSalonStaffPaymentAPIPath, startDate, endDate];
+        url = [NSString stringWithFormat:@"%@?from=%@&to=%@", kSalonStaffPaymentAPIPath, startDate, endDate];
     } else {
         url = kSalonStaffPaymentAPIPath;
     }

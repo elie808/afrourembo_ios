@@ -25,4 +25,20 @@
                                               completion:nil];
 }
 
+#pragma mark - Actions
+
+- (IBAction)didTapCall:(UIButton *)sender {
+    
+    if (self.delegate && [self.delegate respondsToSelector:@selector(didTapCallAtIndex:)]) {
+        [self.delegate didTapCallAtIndex:self.indexPath];
+    }
+}
+
+- (IBAction)didTapEMail:(UIButton *)sender {
+
+    if (self.delegate && [self.delegate respondsToSelector:@selector(didTapEmailAtIndex:)]) {
+        [self.delegate didTapEmailAtIndex:self.indexPath];
+    }
+}
+
 @end
