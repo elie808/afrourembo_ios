@@ -1448,7 +1448,8 @@
                         <segue destination="ujd-HZ-l3o" kind="relationship" relationship="viewControllers" id="IuQ-lK-ec3"/>
                         <segue destination="HGR-If-nUp" kind="relationship" relationship="viewControllers" id="Ivs-OY-efW"/>
                         <segue destination="hfr-Df-9yH" kind="relationship" relationship="viewControllers" id="Sjm-kA-3rH"/>
-                        <segue destination="RKV-8V-6o3" kind="show" identifier="zabre" id="EnV-0b-eVm"/>
+                        <segue destination="RKV-8V-6o3" kind="show" identifier="vendorTabCtrlToBPPaymentInfoVC" id="EnV-0b-eVm"/>
+                        <segue destination="yf9-3R-aVb" kind="show" identifier="vendorTabCtrlToSalonPaymentInfoVC" id="Uel-SR-qa8"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5KI-XB-maR" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1946,6 +1947,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2Yy-0I-ZdD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1103" y="-438"/>
+        </scene>
+        <!--EditPaymentInfoVC-->
+        <scene sceneID="OBi-MJ-NSl">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Vendor_Settings" referencedIdentifier="EditPaymentInfoVC" id="yf9-3R-aVb" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dp0-9Y-UZd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="952" y="-194"/>
         </scene>
     </scenes>
     <resources>

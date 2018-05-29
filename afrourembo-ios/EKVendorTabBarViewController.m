@@ -8,13 +8,16 @@
 
 #import "EKVendorTabBarViewController.h"
 
+static NSString * const kBankPaymentInfoSegue = @"vendorTabCtrlToBPPaymentInfoVC";
+static NSString * const kEditSalonPaymentInfoSegue = @"vendorTabCtrlToSalonPaymentInfoVC";
+
 @implementation EKVendorTabBarViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
 
     if ([EKSettings getSavedVendor]) {
-    
+        
         [MBProgressHUD showHUDAddedTo:self.view animated:YES];
         [Dashboard getDashboardOfVendor:[EKSettings getSavedVendor].token
                               withBlock:^(NSArray<Dashboard *> *dashboardItems) {
@@ -39,6 +42,7 @@
                                           [self showMessage:errorMessage withTitle:@"Error" completionBlock:nil];
                                       }];
         
+
     } else if ([EKSettings getSavedSalon]) {
     
         [MBProgressHUD showHUDAddedTo:self.view animated:YES];
@@ -79,6 +83,47 @@
                              }];
         
     }
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+    if ([EKSettings getSavedVendor]) {
+        
+        [Professional getProfileForProfessional:[EKSettings getSavedVendor].token
+                                      withBlock:^(Professional *professionalObj) {
+                                          
+                                          [EKSettings updateSavedProfessional:professionalObj];
+                                          
+                                          //TODO: Check paymentInfoComplete flag value
+                                          if (!professionalObj.paymentInfoComplete) {
+                                              NSLog(@"\n \n \n \n \n \n !!!!!!! PAYMENT INFO INCOMPLETE !!!!!!! \n \n \n \n \n \n");
+                                              [self performSegueWithIdentifier:kBankPaymentInfoSegue sender:nil];
+                                          } else {
+                                              NSLog(@"\n \n \n \n \n \n !!!!!!! PAYMENT COMPLETE :) !!!!!!! \n \n \n \n \n \n");
+                                          }
+                                          
+                                      } withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
+                                          
+                                      }];
+
+        
+    } else if ([EKSettings getSavedSalon]) {
+        
+        [Salon getProfileForSalon:[EKSettings getSavedSalon].token
+                        withBlock:^(Salon *salonObj) {
+                            
+                            //TODO: Check paymentInfoComplete flag value
+                            if (!salonObj.paymentInfoComplete) {
+                                NSLog(@"\n \n \n \n \n \n !!!!!!! PAYMENT INFO INCOMPLETE !!!!!!! \n \n \n \n \n \n");
+                                [self performSegueWithIdentifier:kEditSalonPaymentInfoSegue sender:nil];
+                            }
+                            
+                        } withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
+                            
+                        }];
+    }
+    
 }
 
 #pragma mark - Helpers
@@ -160,14 +205,26 @@
 }
 */
 
-/*
+
 #pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    
+    if ([segue.identifier isEqualToString:kBankPaymentInfoSegue]) {
+        
+        UINavigationController *navController = [segue destinationViewController];
+        EKBPPaymentInfoTableViewController *vc = (EKBPPaymentInfoTableViewController *)([navController viewControllers][0]);
+        vc.passedProfessional = [EKSettings getSavedVendor];
+        vc.unwindSegueID = @"unwindBankInfoToBPSettings";
+    }
+    
+    if ([segue.identifier isEqualToString:kEditSalonPaymentInfoSegue]) {
+        
+        UINavigationController *navController = [segue destinationViewController];
+        EKBPPaymentInfoTableViewController *vc = (EKBPPaymentInfoTableViewController *)([navController viewControllers][0]);
+        vc.passedSalon = [EKSettings getSavedSalon];
+        vc.unwindSegueID = @"unwindBankInfoToBPSettings";
+    }
 }
-*/
 
 @end

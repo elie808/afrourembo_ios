@@ -52,6 +52,7 @@
 @property Bank *paymentInfo;
 
 @property (assign, nonatomic) BOOL isCentralizedModel;
+@property BOOL paymentInfoComplete;
 
 @property NSNumber *rating;
 @property NSNumber *ratingBasedOn;

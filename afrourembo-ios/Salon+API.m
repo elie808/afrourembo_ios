@@ -15,7 +15,7 @@
 + (RKObjectMapping *)map1 {
     
     RKObjectMapping *mapping = [RKObjectMapping mappingForClass:[Salon class]];
-    [mapping addAttributeMappingsFromArray:@[@"token", @"fName", @"lName", @"email", @"profilePicture", @"name", @"phone", @"address", @"longitude", @"latitude", @"about"]];
+    [mapping addAttributeMappingsFromArray:@[@"token", @"fName", @"lName", @"email", @"profilePicture", @"name", @"phone", @"address", @"longitude", @"latitude", @"about", @"paymentInfoComplete"]];
     
     [mapping addAttributeMappingsFromArray:@[@"rating", @"ratingBasedOn"]];
     
